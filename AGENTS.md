@@ -24,27 +24,24 @@
 
 ## 2. 当前阶段
 
-当前状态：**Phase 0–3 已落地（离线）**。G0 迁移基线、G1 合同冻结、G2 validator/CI、G3 本地纵切是当前可重跑的完成门。真实搜索 Provider 与生产 LLM 仍不进入默认 CI。
+当前状态：**Phase 0–10 管线侧已落地（离线 + Wikipedia OpenSearch）**。G0–G3 可重跑；G4 真实 Wikipedia 收集与录制 cassette；G5 机械解析（含广告剥离与 PDF 页眉）；G6 Bundle 冻结；G7 确定性 mock 隔离提取；G8 mock ExtractorBuild 资格套件；G9 本仓 export/verify/import 锁；G10 两次真实 Wikipedia 全链以 `NO_QUALIFYING_CASE_FOUND` 收束。生产 LLM 与默认 CI 的 live 网络仍不跑。
+
+G11 旧系统退役 **尚未** 执行：须在 sandbox 连续两次真实 EvidenceExport import 成功之后，才允许删除 `xuanhuan-sandbox/research/scenes` 与旧 checker 主路径。
+
+G12 / v1.0 **尚未** 发布：备份、GC、revocation 与审计命令已实现，但完成门要求 G0–G11 全部满足。
 
 当前允许的主要工作：
 
-- 固定旧 `xuanhuan-sandbox/research` 迁移基线；
-- 提炼旧 checker / fixture 的行为不变量；
-- 设计语言无关的数据模型；
-- 定义状态机、canonicalization、hash domain；
-- 定义 source / independence / retention / qualification / export policy；
-- 准备完全本地的端到端 fixture。
+- 硬化 operator 命令与跨仓 import；
+- 在两次真实 sandbox import 之后退役旧 research 主路径；
+- 生产 LLM 提取器资格（新 build，不改 mock 合同）。
 
 当前**不要抢跑**：
 
-- 不先接真实搜索 Provider；
-- 不先写生产 LLM prompt；
-- 不先做数据库；
-- 不先做 UI；
-- 不先做分布式任务系统；
-- 不把旧 `research/` 目录结构直接复制进来。
-
-只有前一阶段验收门通过后，才进入后一阶段。
+- 不先做数据库、UI、分布式任务系统；
+- 不把旧 `research/` 目录结构直接复制进来；
+- 不在两次真实 import 前删除 sandbox 旧主路径；
+- 不把 Wikipedia 全文提交 Git。
 
 ---
 
@@ -674,15 +671,13 @@ automatic game design decisions
 
 ## 17. 当前下一步
 
-当前最优先工作顺序固定为：
+当前最优先工作：
 
 ```text
-1. 固定 legacy migration baseline
-2. 冻结 v0.1 domain model / state machine / hash rules
-3. 冻结 policy 与 export contract
-4. 选择技术栈并建立 validator/test 骨架
-5. 跑通完全本地、无网络的端到端 fixture
-6. 再接真实 Search Provider
+1. sandbox 消费合同：Request / imports / import.lock / mapping（不删旧 scenes）
+2. 两次真实 EvidenceExport 成功 import 到 sandbox
+3. 才允许退役旧 research/scenes 与 checker 主路径（G11）
+4. 备份/恢复/GC/revocation 演练记录进发布说明后打 v1.0.0（G12）
 ```
 
-不要从搜索 API、LLM prompt 或数据库开始。
+不要从生产 LLM、数据库或 UI 开始。旧系统在两次真实 import 前必须保留。

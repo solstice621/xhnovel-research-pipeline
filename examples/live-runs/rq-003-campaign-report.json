@@ -1,0 +1,51 @@
+{
+  "request_id": "REQ-LIVE-RQ003",
+  "query": "盟约",
+  "provider": "wikipedia-opensearch",
+  "hit_titles": [
+    {
+      "rank": 1,
+      "title": "盟约者",
+      "selection_status": "SELECTED"
+    },
+    {
+      "rank": 2,
+      "title": "盟約的利維坦",
+      "selection_status": "SELECTED"
+    },
+    {
+      "rank": 3,
+      "title": "盟約人生 (阿拉斯加州)",
+      "selection_status": "REJECTED"
+    },
+    {
+      "rank": 4,
+      "title": "盟約",
+      "selection_status": "REJECTED"
+    },
+    {
+      "rank": 5,
+      "title": "盟約 (電影)",
+      "selection_status": "REJECTED"
+    },
+    {
+      "rank": 6,
+      "title": "盟約者式五型巡航坦克",
+      "selection_status": "REJECTED"
+    }
+  ],
+  "stop_reason": "coverage_reached",
+  "campaign_report": "NO_QUALIFYING_CASE_FOUND",
+  "live_claim_count": 0,
+  "export_id": "EXP-LOCAL-001",
+  "export_hash": "sha256:e63531349af5f110099993c62bd7b1b3c22fa7d76fbc4017cae8c6b9a683e9d1",
+  "bundle_hash": "sha256:f297d0c01dfad45cd439b969229d5131a5f0425e993391de51fe66b153e1d8ab",
+  "page_retrievals": [
+    {
+      "id": "RET-WIKI-01-01-PAGE",
+      "status": "FETCHED",
+      "http_status": 200,
+      "final_url": "https://zh.wikipedia.org/wiki/%E7%9B%9F%E7%BA%A6%E8%80%85"
+    }
+  ]
+}

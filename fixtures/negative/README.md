@@ -1,7 +1,6 @@
 # Negative fixture family
 
-Executable cases live in `tests/test_attacks.py`. They mutate the local
-positive slice to reproduce SCENE-002 attack classes:
+Executable cases live in `tests/test_attacks.py` and `tests/test_g4_g12.py`.
 
 - missing / tampered artifact
 - placeholder hash
@@ -12,3 +11,5 @@ positive slice to reproduce SCENE-002 attack classes:
 - EPHEMERAL durability
 - export tamper
 - invalidated build
+- login wall / JS shell (`login-wall/`, `needs-renderer/`)
+

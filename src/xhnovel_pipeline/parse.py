@@ -11,6 +11,12 @@ from .hashing import digest_prefix, object_hash, sha256_bytes
 from .constants import PARSER_BUILD_ID, SCHEMA_VERSION
 
 SKIP_TAGS = {"script", "style", "nav", "noscript", "svg", "header", "footer", "aside"}
+AD_HINTS = ("ad-banner", "advertisement", "sponsored", "sponsor-slot", "广告位")
+
+
+def _is_ad_attrs(attrs: list[tuple[str, str | None]]) -> bool:
+    blob = " ".join((v or "") for _, v in attrs).casefold()
+    return any(hint in blob for hint in AD_HINTS)
 
 
 class _TextExtractor(HTMLParser):
@@ -23,7 +29,7 @@ class _TextExtractor(HTMLParser):
         self._buf: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        if tag in SKIP_TAGS:
+        if self._skip or tag in SKIP_TAGS or _is_ad_attrs(attrs):
             self._skip += 1
             return
         if tag == "title":
@@ -32,7 +38,7 @@ class _TextExtractor(HTMLParser):
             self._flush()
 
     def handle_endtag(self, tag: str) -> None:
-        if tag in SKIP_TAGS and self._skip:
+        if self._skip:
             self._skip -= 1
             return
         if tag == "title":
@@ -103,13 +109,26 @@ def parse_pdf(artifact_id: str, data: bytes, *, document_id: str) -> dict[str, A
     from pypdf import PdfReader
 
     reader = PdfReader(io.BytesIO(data))
-    blocks: list[tuple[int, str]] = []
+    page_lines: list[tuple[int, list[str]]] = []
     for i, page in enumerate(reader.pages, start=1):
         raw = page.extract_text() or ""
-        for para in re.split(r"\n\s*\n", raw):
-            text = normalize_text(para)
-            if text:
-                blocks.append((i, text))
+        lines = [normalize_text(x) for x in raw.splitlines()]
+        lines = [x for x in lines if x]
+        page_lines.append((i, lines))
+    repeating: set[str] = set()
+    if len(page_lines) >= 2:
+        firsts = [lines[0] for _, lines in page_lines if lines]
+        lasts = [lines[-1] for _, lines in page_lines if lines]
+        if firsts and len(set(firsts)) == 1:
+            repeating.add(firsts[0])
+        if lasts and len(set(lasts)) == 1:
+            repeating.add(lasts[0])
+    blocks: list[tuple[int, str]] = []
+    for i, lines in page_lines:
+        body = [ln for ln in lines if ln not in repeating]
+        text = normalize_text(" ".join(body))
+        if text:
+            blocks.append((i, text))
     segments = []
     for i, (page, text) in enumerate(blocks):
         segments.append(
@@ -139,9 +158,28 @@ def parse_pdf(artifact_id: str, data: bytes, *, document_id: str) -> dict[str, A
 
 
 def parse_artifact(artifact_id: str, data: bytes, media_type: str, document_id: str) -> dict[str, Any]:
-    if media_type == "application/pdf" or data.startswith(b"%PDF"):
-        return parse_pdf(artifact_id, data, document_id=document_id)
-    return parse_html(artifact_id, data, document_id=document_id)
+    from .errors import ValidationError
+
+    try:
+        if media_type == "application/pdf" or data.startswith(b"%PDF"):
+            return parse_pdf(artifact_id, data, document_id=document_id)
+        return parse_html(artifact_id, data, document_id=document_id)
+    except ValidationError:
+        raise
+    except Exception as exc:
+        raise ValidationError("E-PARSE", f"parser failed for {document_id}: {exc}") from exc
+
+
+def diff_segments(a: list[dict[str, Any]], b: list[dict[str, Any]]) -> dict[str, Any]:
+    ha = {s["normalized_text_hash"] for s in a}
+    hb = {s["normalized_text_hash"] for s in b}
+    return {
+        "removed_hashes": sorted(ha - hb),
+        "added_hashes": sorted(hb - ha),
+        "count_a": len(a),
+        "count_b": len(b),
+        "changed": ha != hb,
+    }
 
 
 def make_minimal_pdf(text: str) -> bytes:

@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from .access import is_snippet_kind, normalize_access_kind
+from .bundle_ops import bundle_from_snapshot
 from .catalog import Catalog
 from .constants import (
     COLLECTOR_BUILD_ID,
@@ -18,9 +19,13 @@ from .constants import (
 )
 from .errors import ValidationError
 from .hashing import artifact_id_for, object_hash, sha256_bytes, sorted_ids
+from .origin import near_duplicate_assessments
+from .page_kind import looks_like_js_shell, looks_like_login_wall
 from .parse import parse_artifact, text_hash
 from .policies import policy_bundle_hash
+from .qualification import qualify_mock_build
 from .schema import validate_schema
+from .stop import campaign_report_payload, decide_campaign_stop
 from .store import ArtifactStore
 from .urls import canonicalize_url
 from .validate import bundle_hash, validate_all
@@ -44,7 +49,7 @@ class FixtureFetcher:
         for k, v in mapping.items():
             self.mapping[k] = pathlib.Path(v)
 
-    def fetch(self, url: str) -> tuple[bytes, str, int]:
+    def fetch(self, url: str) -> tuple[bytes, str, int, str]:
         path = self.mapping.get(url) or self.mapping.get(canonicalize_url(url))
         if path is None:
             raise ValidationError("E-UNREACHABLE", f"no fixture for {url}")
@@ -54,7 +59,7 @@ class FixtureFetcher:
             media = "application/pdf"
         elif path.suffix == ".json":
             media = "application/json"
-        return data, media, 200
+        return data, media, 200, str(path)
 
 
 class FakeSearchProvider:
@@ -72,12 +77,18 @@ class FakeSearchProvider:
         return {"page": page, "hits": []}
 
 
-def make_build() -> dict[str, Any]:
-    prompt_hash = object_hash({"prompt": MOCK_PROMPT}, omit=())
+def make_build(*, prompt: str | None = None) -> dict[str, Any]:
+    prompt = MOCK_PROMPT if prompt is None else prompt
+    prompt_hash = object_hash({"prompt": prompt}, omit=())
     tool_hash = object_hash({"tools": []}, omit=())
-    build = {
+    if prompt == MOCK_PROMPT:
+        build_id = "BLD-MOCK-DETERMINISTIC-V1"
+    else:
+        digest = prompt_hash.replace("sha256:", "")[:8].upper()
+        build_id = f"BLD-MOCK-{digest}"
+    return {
         "schema_version": SCHEMA_VERSION,
-        "extractor_build_id": "BLD-MOCK-DETERMINISTIC-V1",
+        "extractor_build_id": build_id,
         "model": "mock-deterministic-v1",
         "prompt_template_hash": prompt_hash,
         "parameters": {"temperature": 0},
@@ -88,7 +99,6 @@ def make_build() -> dict[str, Any]:
         "created_at": NOW,
         "status": "UNQUALIFIED",
     }
-    return build
 
 
 def mock_extract(segments: list[dict[str, Any]], retrievals_by_doc: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
@@ -100,7 +110,8 @@ def mock_extract(segments: list[dict[str, Any]], retrievals_by_doc: dict[str, di
         lowered = text.casefold()
         if "忽略" in text and ("confirmed" in lowered or "指令" in text):
             continue
-        if not any(token in text for token in ("握", "拉", "相反控制", "落地", "持有")):
+        markers = ("握着", "抓住", "相反控制", "落地", "灯座", "灯柄")
+        if sum(token in text for token in markers) < 2:
             continue
         payload = {
             "actors": ["李衡", "王朔"] if "李衡" in text or "王朔" in text else ["未说明"],
@@ -198,22 +209,44 @@ def git_commit(root: pathlib.Path) -> str:
     return text[:40]
 
 
+def put_artifact(catalog: Catalog, store: ArtifactStore, data: bytes, *, media_type: str) -> str:
+    artifact_id = store.put(data)
+    if not any(a["artifact_id"] == artifact_id for a in catalog.all("Artifact")):
+        catalog.add(
+            "Artifact",
+            {
+                "schema_version": SCHEMA_VERSION,
+                "artifact_id": artifact_id,
+                "media_type": media_type,
+                "byte_length": len(data),
+                "retention_policy": "retention-v1",
+                "durability_status": "LOCAL",
+                "created_at": NOW,
+            },
+        )
+    return artifact_id
+
+
 def run_local_slice(
     fixture_dir: pathlib.Path,
     work_dir: pathlib.Path,
     *,
     repo_root: pathlib.Path,
+    provider: Any | None = None,
+    fetcher: Any | None = None,
 ) -> dict[str, Any]:
     fixture_dir = pathlib.Path(fixture_dir)
     work_dir = pathlib.Path(work_dir)
     store = ArtifactStore(work_dir / "objects")
     catalog = Catalog()
     request = load_json(fixture_dir / "request.json")
-    provider_json = load_json(fixture_dir / "provider.json")
-    mapping_file = json.loads((fixture_dir / "fetch-map.json").read_text(encoding="utf-8"))
-    mapping = {k: fixture_dir / v for k, v in mapping_file.items()}
-    fetcher = FixtureFetcher(mapping)
-    provider = FakeSearchProvider(provider_json)
+    if provider is None:
+        provider_json = load_json(fixture_dir / "provider.json")
+        provider = FakeSearchProvider(provider_json)
+    if fetcher is None:
+        mapping_file = json.loads((fixture_dir / "fetch-map.json").read_text(encoding="utf-8"))
+        mapping = {k: fixture_dir / v for k, v in mapping_file.items()}
+        fetcher = FixtureFetcher(mapping)
 
     catalog.add("ResearchRequest", request)
     validate_schema("ResearchRequest", request)
@@ -236,7 +269,7 @@ def run_local_slice(
         "schema_version": SCHEMA_VERSION,
         "query_id": "QRY-LOCAL-001",
         "campaign_id": campaign["campaign_id"],
-        "query_text": request["discovery_brief"],
+        "query_text": (request.get("search_constraints") or {}).get("query_text") or request["discovery_brief"],
         "query_role": "DISCOVER",
         "parent_query_id": None,
         "derived_from_hit_ids": [],
@@ -250,25 +283,44 @@ def run_local_slice(
     all_hits = []
     hit_extras: dict[str, dict[str, Any]] = {}
     max_queries = request["budget"]["max_queries"]
+    first_page_empty = False
+    fetch_budget_hit = False
     for page in range(1, max_queries + 1):
-        block = provider.search(query["query_text"], {"page": page, "locale": "zh-CN"})
+        page_retry_of = None
+        block = None
+        last_exc: ValidationError | None = None
+        for attempt in range(1, 4):
+            try:
+                block = provider.search(query["query_text"], {"page": page, "locale": "zh-CN"})
+                break
+            except ValidationError as exc:
+                if exc.code != "E-RETRYABLE":
+                    raise
+                failed_run = {
+                    "schema_version": SCHEMA_VERSION,
+                    "search_run_id": f"SRUN-LOCAL-{page:03d}-F{attempt}",
+                    "query_id": query["query_id"],
+                    "provider_id": provider.provider_id,
+                    "provider_build_id": provider.provider_build_id,
+                    "parameters": {"page": page, "locale": "zh-CN", "attempt": attempt},
+                    "started_at": NOW,
+                    "finished_at": NOW,
+                    "result_set_hash": object_hash({"hits": []}, omit=()),
+                    "status": "FAILED",
+                    "retry_of": page_retry_of,
+                }
+                catalog.add("SearchRun", failed_run)
+                page_retry_of = failed_run["search_run_id"]
+                last_exc = exc
+        if block is None:
+            raise last_exc or ValidationError("E-PROVIDER", "search failed")
+        if page == 1 and not block.get("hits"):
+            first_page_empty = True
         if not block.get("hits") and page > 1:
             break
         raw_bytes = json.dumps(block, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-        raw_id = store.put(raw_bytes)
+        raw_id = put_artifact(catalog, store, raw_bytes, media_type="application/json")
         raw_pages.append(raw_id)
-        catalog.add(
-            "Artifact",
-            {
-                "schema_version": SCHEMA_VERSION,
-                "artifact_id": raw_id,
-                "media_type": "application/json",
-                "byte_length": len(raw_bytes),
-                "retention_policy": "retention-v1",
-                "durability_status": "LOCAL",
-                "created_at": NOW,
-            },
-        )
         run = {
             "schema_version": SCHEMA_VERSION,
             "search_run_id": f"SRUN-LOCAL-{page:03d}",
@@ -281,7 +333,7 @@ def run_local_slice(
             "raw_response_artifact_id": raw_id,
             "result_set_hash": "sha256:" + "0" * 64,
             "status": "SUCCEEDED",
-            "retry_of": None,
+            "retry_of": page_retry_of,
         }
         hits_payload = []
         for hit in block.get("hits") or []:
@@ -341,19 +393,7 @@ def run_local_slice(
                 },
             )
         snippet_bytes = hit["snippet"].encode("utf-8")
-        snippet_aid = store.put(snippet_bytes)
-        catalog.add(
-            "Artifact",
-            {
-                "schema_version": SCHEMA_VERSION,
-                "artifact_id": snippet_aid,
-                "media_type": "text/plain",
-                "byte_length": len(snippet_bytes),
-                "retention_policy": "retention-v1",
-                "durability_status": "LOCAL",
-                "created_at": NOW,
-            },
-        )
+        snippet_aid = put_artifact(catalog, store, snippet_bytes, media_type="text/plain")
         snip_ret = {
             "schema_version": SCHEMA_VERSION,
             "retrieval_id": f"RET-{hit['hit_id'][4:]}-SNIP",
@@ -401,34 +441,71 @@ def run_local_slice(
             continue
         fetch_count += 1
         if fetch_count > request["budget"]["max_fetches"]:
+            fetch_budget_hit = True
             break
-        data, media, status = fetcher.fetch(hit["url"])
-        aid = store.put(data)
-        catalog.add(
-            "Artifact",
-            {
-                "schema_version": SCHEMA_VERSION,
-                "artifact_id": aid,
-                "media_type": media,
-                "byte_length": len(data),
-                "retention_policy": "retention-v1",
-                "durability_status": "LOCAL",
-                "created_at": NOW,
-            },
-        )
+        try:
+            fetched = fetcher.fetch(hit["url"])
+            data, media, status = fetched[0], fetched[1], fetched[2]
+            final_url = fetched[3] if len(fetched) > 3 else hit["url"]
+            if ";" in media:
+                media = media.split(";", 1)[0].strip()
+        except ValidationError as exc:
+            catalog.add(
+                "Retrieval",
+                {
+                    "schema_version": SCHEMA_VERSION,
+                    "retrieval_id": f"RET-{hit['hit_id'][4:]}-PAGE",
+                    "source_id": src_id,
+                    "discovery_hit_id": hit["hit_id"],
+                    "requested_url": hit["url"],
+                    "final_url": hit["url"],
+                    "access_kind": hit_extras.get(hit["hit_id"], {}).get("access_kind", "full_page"),
+                    "retrieved_at": NOW,
+                    "http_status": None,
+                    "content_type": "",
+                    "fetcher_build_id": FETCHER_BUILD_ID,
+                    "status": "FAILED" if exc.code != "E-SSRF-SCHEME" else "BLOCKED",
+                    "triage_assessment_id": f"TRI-{hit['hit_id'][4:]}-PAGE",
+                    "retry_of": None,
+                },
+            )
+            catalog.add(
+                "TriageAssessment",
+                {
+                    "schema_version": SCHEMA_VERSION,
+                    "assessment_id": f"TRI-{hit['hit_id'][4:]}-PAGE",
+                    "retrieval_id": f"RET-{hit['hit_id'][4:]}-PAGE",
+                    "tier": "D",
+                    "access_legitimacy": "UNKNOWN",
+                    "suspected_reprint": False,
+                    "allowed_uses": [],
+                    "selection_decision": "failed",
+                    "decision_reason": str(exc),
+                    "assessor_build_id": COLLECTOR_BUILD_ID,
+                    "policy_hash": policy_hash,
+                    "assessed_at": NOW,
+                },
+            )
+            continue
+        aid = put_artifact(catalog, store, data, media_type=media)
+        page_status = "FETCHED"
+        if looks_like_login_wall(data, status):
+            page_status = "BLOCKED"
+        elif looks_like_js_shell(data):
+            page_status = "NEEDS_RENDERER"
         page_ret = {
             "schema_version": SCHEMA_VERSION,
             "retrieval_id": f"RET-{hit['hit_id'][4:]}-PAGE",
             "source_id": src_id,
             "discovery_hit_id": hit["hit_id"],
             "requested_url": hit["url"],
-            "final_url": hit["url"],
+            "final_url": final_url,
             "access_kind": hit_extras.get(hit["hit_id"], {}).get("access_kind", "full_page"),
             "retrieved_at": NOW,
             "http_status": status,
             "content_type": media,
             "fetcher_build_id": FETCHER_BUILD_ID,
-            "status": "FETCHED",
+            "status": page_status,
             "triage_assessment_id": f"TRI-{hit['hit_id'][4:]}-PAGE",
             "retry_of": None,
         }
@@ -448,19 +525,43 @@ def run_local_slice(
                 "schema_version": SCHEMA_VERSION,
                 "assessment_id": page_ret["triage_assessment_id"],
                 "retrieval_id": page_ret["retrieval_id"],
-                "tier": hit_extras.get(hit["hit_id"], {}).get("tier", "B"),
-                "access_legitimacy": hit_extras.get(hit["hit_id"], {}).get("access_legitimacy", "PUBLIC"),
+                "tier": hit_extras.get(hit["hit_id"], {}).get("tier", "B") if page_status == "FETCHED" else "D",
+                "access_legitimacy": hit_extras.get(hit["hit_id"], {}).get("access_legitimacy", "PUBLIC")
+                if page_status == "FETCHED"
+                else "UNKNOWN",
                 "suspected_reprint": False,
-                "allowed_uses": ["event-facts"],
-                "selection_decision": "selected",
-                "decision_reason": hit.get("selection_reason", "fixture"),
+                "allowed_uses": ["event-facts"] if page_status == "FETCHED" else [],
+                "selection_decision": "selected" if page_status == "FETCHED" else page_status.lower(),
+                "decision_reason": hit.get("selection_reason", "fixture")
+                if page_status == "FETCHED"
+                else page_status,
                 "assessor_build_id": COLLECTOR_BUILD_ID,
                 "policy_hash": policy_hash,
                 "assessed_at": NOW,
             },
         )
+        if page_status != "FETCHED":
+            continue
         doc_id = f"DOC-{hit['hit_id'][4:]}"
-        parsed = parse_artifact(aid, data, media, doc_id)
+        try:
+            parsed = parse_artifact(aid, data, media, doc_id)
+        except ValidationError as exc:
+            catalog.add(
+                "ParseRun",
+                {
+                    "schema_version": SCHEMA_VERSION,
+                    "parse_run_id": f"PRUN-{hit['hit_id'][4:]}",
+                    "input_artifact_id": aid,
+                    "parser_build_id": PARSER_BUILD_ID,
+                    "parameters": {"media_type": media},
+                    "status": "FAILED",
+                    "retry_of": None,
+                    "supersedes": None,
+                },
+            )
+            if exc.code not in {"E-PARSE"}:
+                raise
+            continue
         catalog.add("ParsedDocument", parsed["document"])
         output_hash = object_hash({"document": parsed["document"], "segments": parsed["segments"]})
         catalog.add(
@@ -483,7 +584,8 @@ def run_local_slice(
         retrievals_for_docs[doc_id] = {"retrieval_id": page_ret["retrieval_id"], "artifact_id": aid}
 
     # origin assessments from fixture
-    origins = json.loads((fixture_dir / "origin.json").read_text(encoding="utf-8"))
+    origin_path = fixture_dir / "origin.json"
+    origins = json.loads(origin_path.read_text(encoding="utf-8")) if origin_path.exists() else []
     for orig in origins:
         orig.setdefault("schema_version", SCHEMA_VERSION)
         orig.setdefault("policy_hash", policy_hash)
@@ -491,13 +593,39 @@ def run_local_slice(
         orig.setdefault("assessor_build_id", COLLECTOR_BUILD_ID)
         catalog.add("OriginAssessment", orig)
 
+    texts_by_source: dict[str, str] = {}
+    for doc in catalog.all("ParsedDocument"):
+        meta = retrievals_for_docs.get(doc["document_id"])
+        if not meta:
+            continue
+        ret = catalog.get("Retrieval", meta["retrieval_id"])
+        text = " ".join(
+            s["normalized_text"] for s in catalog.all("Segment") if s["document_id"] == doc["document_id"]
+        )
+        texts_by_source[ret["source_id"]] = text
+    for extra in near_duplicate_assessments(
+        texts_by_source,
+        policy_hash=policy_hash,
+        assessor_build_id=COLLECTOR_BUILD_ID,
+        assessed_at=NOW,
+        schema_version=SCHEMA_VERSION,
+        existing=catalog.all("OriginAssessment"),
+    ):
+        catalog.add("OriginAssessment", extra)
+
     selected_page_rets = [
         r
         for r in catalog.all("Retrieval")
         if normalize_access_kind(r["access_kind"]) != "search_snippet" and r["status"] == "FETCHED"
     ]
-    campaign["status"] = "COMPLETED"
-    campaign["stop_reason"] = "coverage_reached" if selected_page_rets else "no_new_source"
+    status, stop_reason = decide_campaign_stop(
+        selected_page_count=len(selected_page_rets),
+        fetch_budget_hit=fetch_budget_hit,
+        first_page_empty=first_page_empty,
+        query_budget_hit=False,
+    )
+    campaign["status"] = status
+    campaign["stop_reason"] = stop_reason
 
     snapshot = {
         "schema_version": SCHEMA_VERSION,
@@ -517,29 +645,26 @@ def run_local_slice(
     snapshot["snapshot_hash"] = snapshot_hash_of(catalog, snapshot)
     catalog.add("CollectionSnapshot", snapshot)
 
-    bundle = {
-        "schema_version": SCHEMA_VERSION,
-        "bundle_id": "BND-LOCAL-001",
-        "request_id": request["request_id"],
-        "collection_snapshot_ids": [snapshot["snapshot_id"]],
-        "document_ids": catalog.ids("ParsedDocument"),
-        "segment_ids": catalog.ids("Segment"),
-        "retrieval_ids": [r["retrieval_id"] for r in selected_page_rets],
-        "artifact_ids": [a["artifact_id"] for a in catalog.all("Artifact") if a["media_type"] != "application/json"],
-        "triage_assessment_ids": catalog.ids("TriageAssessment"),
-        "origin_assessment_ids": catalog.ids("OriginAssessment"),
-        "selection_manifest": {
+    bundle = bundle_from_snapshot(
+        catalog,
+        bundle_id="BND-LOCAL-001",
+        request_id=request["request_id"],
+        snapshot_id=snapshot["snapshot_id"],
+        document_ids=catalog.ids("ParsedDocument"),
+        segment_ids=catalog.ids("Segment"),
+        retrieval_ids=[r["retrieval_id"] for r in selected_page_rets],
+        artifact_ids=[a["artifact_id"] for a in catalog.all("Artifact") if a["media_type"] != "application/json"],
+        triage_assessment_ids=catalog.ids("TriageAssessment"),
+        origin_assessment_ids=catalog.ids("OriginAssessment"),
+        selection_manifest={
             "selected_hit_ids": [h["hit_id"] for h in all_hits if h["selection_status"] == "SELECTED"],
             "rejected_hit_ids": [h["hit_id"] for h in all_hits if h["selection_status"] != "SELECTED"],
         },
-        "profile_id": PROFILE_ID,
-        "policy_bundle_hash": policy_hash,
-        "bundle_hash": "sha256:" + "0" * 64,
-        "frozen_at": NOW,
-        "supersedes": None,
-        "status": "FROZEN",
-    }
-    bundle["bundle_hash"] = bundle_hash(catalog, bundle)
+        profile_id=PROFILE_ID,
+        policy_bundle_hash=policy_hash,
+        frozen_at=NOW,
+        schema_version=SCHEMA_VERSION,
+    )
     catalog.add("EvidenceBundle", bundle)
 
     build = make_build()
@@ -550,6 +675,13 @@ def run_local_slice(
     injected = mock_extract(segments, retrievals_for_docs)
     if [c["statement"] for c in claims] != [c["statement"] for c in injected]:
         raise ValidationError("E-ADV-FAIL", "project injection changed claims")
+    qrun = qualify_mock_build(
+        repo_root,
+        extractor_build_id=build["extractor_build_id"],
+        claims=claims,
+        injected=injected,
+        qualified_at=NOW,
+    )
     for claim in claims:
         catalog.add("Claim", claim)
     upgrade_confirmed(catalog)
@@ -579,25 +711,9 @@ def run_local_slice(
         "retry_of": None,
     }
     catalog.add("ExtractionRun", run)
-    qrun = {
-        "schema_version": SCHEMA_VERSION,
-        "qualification_run_id": "QRUN-LOCAL-001",
-        "extractor_build_id": build["extractor_build_id"],
-        "fixture_suite_hash": object_hash({"suite": "local-adversarial"}),
-        "run_a": "fixtures/positive/minimal-local/run-a.json",
-        "run_b": "fixtures/positive/minimal-local/run-b.json",
-        "run_a_hash": object_hash({"run": "a"}),
-        "run_b_hash": object_hash({"run": "b"}),
-        "adversarial_project_expectation": "PASS",
-        "source_content_injection": "PASS",
-        "reproducibility": "PASS",
-        "result": "PASS",
-        "qualified_at": NOW,
-    }
-    catalog.add("QualificationRun", qrun)
     live_claims = [c for c in catalog.all("Claim") if c["status"] == "ACTIVE"]
     report = "CLAIMS_PRODUCED" if live_claims else "NO_QUALIFYING_CASE_FOUND"
-    if live_claims:
+    if live_claims and qrun["result"] == "PASS":
         build["status"] = "QUALIFIED"
         qrun["result"] = "PASS"
         assurance_level = "BUILD_QUALIFIED"
@@ -624,10 +740,12 @@ def run_local_slice(
             },
         )
     else:
-        qrun["result"] = "INCONCLUSIVE"
-        qrun["reproducibility"] = "INCONCLUSIVE"
+        if not live_claims:
+            qrun["result"] = "INCONCLUSIVE"
+            qrun["reproducibility"] = "INCONCLUSIVE"
         build["status"] = "UNQUALIFIED"
         assurance_level = "UNQUALIFIED"
+    catalog.add("QualificationRun", qrun)
     scene_facts = {
         "claims": [{"claim_id": c["claim_id"], "statement": c["statement"], "grade": c["grade"]} for c in live_claims],
         "campaign_report": report,
@@ -674,6 +792,34 @@ def run_local_slice(
     out.write_text(json.dumps(export, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (work_dir / "catalog.json").write_text(
         json.dumps({k: v for k, v in catalog.by_type.items() if v}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    page_retrievals = [
+        {
+            "id": r["retrieval_id"],
+            "status": r["status"],
+            "http_status": r.get("http_status"),
+            "final_url": r.get("final_url"),
+        }
+        for r in catalog.all("Retrieval")
+        if normalize_access_kind(r["access_kind"]) != "search_snippet"
+    ]
+    (work_dir / "campaign-report.json").write_text(
+        json.dumps(
+            campaign_report_payload(
+                request=request,
+                query=query,
+                campaign=campaign,
+                hits=all_hits,
+                page_retrievals=page_retrievals,
+                export=export,
+                live_claim_count=len(live_claims),
+                report=report,
+            ),
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
         encoding="utf-8",
     )
     return {"export": export, "catalog": catalog, "store": store, "work_dir": work_dir}

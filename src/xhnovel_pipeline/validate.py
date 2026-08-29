@@ -244,6 +244,10 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
             art = catalog.get("Artifact", aid)
             if bundle["status"] in {"FROZEN", "EXTRACTED", "EXPORTED"} and art["durability_status"] == "EPHEMERAL":
                 raise ValidationError("E-EPHEMERAL", f"{bundle['bundle_id']} cites EPHEMERAL {aid}")
+        if bundle["status"] in {"FROZEN", "EXTRACTED", "EXPORTED"}:
+            expected = bundle_hash(catalog, bundle)
+            if bundle["bundle_hash"] != expected:
+                raise ValidationError("E-FROZEN", f"{bundle['bundle_id']} frozen members changed in place")
         expected = bundle_hash(catalog, bundle)
         if bundle["bundle_hash"] != expected:
             raise ValidationError("E-HASH-MISMATCH", f"{bundle['bundle_id']} bundle_hash mismatch")

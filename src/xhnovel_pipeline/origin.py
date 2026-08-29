@@ -50,3 +50,66 @@ def platform_classes(sources: list[dict]) -> dict[str, str]:
 
 def independent_pair(rel: str) -> bool:
     return rel == "INDEPENDENT"
+
+
+def token_jaccard(a: str, b: str) -> float:
+    ta = {t for t in a.split() if t}
+    tb = {t for t in b.split() if t}
+    if not ta or not tb:
+        return 0.0
+    return len(ta & tb) / len(ta | tb)
+
+
+def existing_origin_pair(catalog_origins: list[dict], src_a: str, src_b: str) -> dict | None:
+    wanted = {src_a, src_b}
+    for orig in catalog_origins:
+        if {orig["source_a"], orig["source_b"]} == wanted:
+            return orig
+    return None
+
+
+def near_duplicate_assessments(
+    texts_by_source: dict[str, str],
+    *,
+    policy_hash: str,
+    assessor_build_id: str,
+    assessed_at: str,
+    schema_version: str,
+    existing: list[dict],
+    threshold: float = 0.92,
+) -> list[dict]:
+    """Emit OriginAssessment for near-duplicate texts. Never merge Source objects."""
+    extra: list[dict] = []
+    ids = list(texts_by_source)
+    n = 0
+    for i, a in enumerate(ids):
+        for b in ids[i + 1 :]:
+            if existing_origin_pair(existing, a, b):
+                continue
+            score = token_jaccard(texts_by_source[a], texts_by_source[b])
+            if texts_by_source[a] == texts_by_source[b]:
+                relation = "SAME_ORIGIN"
+                basis = ["exact_normalized_text"]
+                confidence = "HIGH"
+            elif score >= threshold:
+                relation = "LIKELY_SAME_ORIGIN"
+                basis = [f"near_duplicate_jaccard:{score:.2f}"]
+                confidence = "MEDIUM"
+            else:
+                continue
+            n += 1
+            extra.append(
+                {
+                    "schema_version": schema_version,
+                    "assessment_id": f"ORI-NEARDUP-{n:03d}",
+                    "source_a": a,
+                    "source_b": b,
+                    "relation": relation,
+                    "confidence": confidence,
+                    "basis": basis,
+                    "assessor_build_id": assessor_build_id,
+                    "policy_hash": policy_hash,
+                    "assessed_at": assessed_at,
+                }
+            )
+    return extra

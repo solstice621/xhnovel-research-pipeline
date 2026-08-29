@@ -2,14 +2,15 @@
 
 > 面向玄幻小说研究的自动搜索、证据收集、机械解析与可审计事实提取管线。
 
-**当前状态：v0.1-draft-frozen 合同已冻结；离线纵切可运行。**
+**当前状态：v0.1-draft-frozen 合同已冻结；离线纵切与 Wikipedia OpenSearch 收集可运行。G11 旧系统退役与 v1.0 发布尚未完成。**
 
-实现语言：Python 3.11+（ADR-0002）。不要从搜索 API 或生产 LLM 开始；先跑本地 fixture。
+实现语言：Python 3.11+（ADR-0002）。默认 CI 离线。真实 Wikipedia 不进入 PR 必跑。
 
 ```text
 python3 -m pip install -e ".[dev]"
 python3 tools/verify_migration_baseline.py
 xhnovel-pipeline run local-slice fixtures/positive/minimal-local
+xhnovel-pipeline qualify fixtures/positive/minimal-local
 ```
 
 迁移基线 `legacy_contract_commit`：`ff8b8bb49685c411fd3b56bb61f9173e30680901`。

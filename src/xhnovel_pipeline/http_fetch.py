@@ -9,6 +9,7 @@ from typing import Any
 
 from .errors import ValidationError
 from .ssrf import assert_public_http_url
+from .user_agent import USER_AGENT
 
 MAX_BYTES = 2_000_000
 MAX_REDIRECTS = 5
@@ -24,7 +25,9 @@ class HttpFetcher:
         current = url
         for _ in range(MAX_REDIRECTS):
             assert_public_http_url(current)
-            req = urllib.request.Request(current, headers={"User-Agent": "xhnovel-pipeline/0.1"})
+            req = urllib.request.Request(
+                current, headers={"User-Agent": USER_AGENT}
+            )
             try:
                 with urllib.request.urlopen(req, timeout=self.timeout, context=ssl.create_default_context()) as resp:
                     status = getattr(resp, "status", 200)

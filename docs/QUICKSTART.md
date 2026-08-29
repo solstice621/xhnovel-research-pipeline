@@ -9,4 +9,9 @@ xhnovel-pipeline run local-slice fixtures/positive/minimal-local
 
 The last command is offline. It writes a verified EvidenceExport under `.runtime/`.
 
-Live provider and LLM qualification are not part of default CI.
+```text
+xhnovel-pipeline qualify fixtures/positive/minimal-local
+xhnovel-pipeline backup .runtime/.../export.json .runtime/.../objects /tmp/export-backup
+```
+
+Live Wikipedia (`run wikipedia`) and LLM qualification are not part of default CI.
