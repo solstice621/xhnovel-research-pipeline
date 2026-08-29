@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/search-run.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "search_run_id",
+    "query_id",
+    "provider_id",
+    "provider_build_id",
+    "parameters",
+    "started_at",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "search_run_id": {
+      "type": "string",
+      "pattern": "^SRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "query_id": {
+      "type": "string",
+      "pattern": "^QRY-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "provider_id": {
+      "type": "string"
+    },
+    "provider_build_id": {
+      "type": "string"
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "started_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "finished_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "raw_response_artifact_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "result_set_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "status": {
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "SUCCEEDED",
+        "FAILED"
+      ]
+    },
+    "retry_of": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

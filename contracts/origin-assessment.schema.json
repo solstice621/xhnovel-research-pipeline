@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/origin-assessment.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "assessment_id",
+    "source_a",
+    "source_b",
+    "relation",
+    "confidence",
+    "basis",
+    "assessor_build_id",
+    "policy_hash",
+    "assessed_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "assessment_id": {
+      "type": "string",
+      "pattern": "^ORI-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "source_a": {
+      "type": "string",
+      "pattern": "^SRC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "source_b": {
+      "type": "string",
+      "pattern": "^SRC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "relation": {
+      "enum": [
+        "SAME_ORIGIN",
+        "LIKELY_SAME_ORIGIN",
+        "INDEPENDENT",
+        "UNKNOWN"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    "basis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "assessor_build_id": {
+      "type": "string"
+    },
+    "policy_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "assessed_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    }
+  }
+}

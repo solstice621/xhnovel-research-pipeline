@@ -1,0 +1,11 @@
+schema_version: "0.1-draft-frozen"
+id: origin-independence-v1
+relations: [SAME_ORIGIN, LIKELY_SAME_ORIGIN, INDEPENDENT, UNKNOWN]
+rules:
+  - different platform names are not automatically independent
+  - platform comparison is case-insensitive
+  - same_platform_as is transitive
+  - UNKNOWN must not satisfy dual-B confirmation
+  - exact byte match across sources is SAME_ORIGIN
+  - near-duplicate without independent publication metadata is LIKELY_SAME_ORIGIN
+dual_b_requires: INDEPENDENT

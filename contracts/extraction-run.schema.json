@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/extraction-run.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "extraction_run_id",
+    "bundle_id",
+    "bundle_hash",
+    "extractor_build_id",
+    "trigger",
+    "input_manifest",
+    "execution_environment",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "extraction_run_id": {
+      "type": "string",
+      "pattern": "^ERUN-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^BND-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "bundle_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "extractor_build_id": {
+      "type": "string",
+      "pattern": "^BLD-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "USER",
+            "POLICY",
+            "SCHEDULE",
+            "RETRY",
+            "MIGRATION"
+          ]
+        },
+        "actor_id": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "input_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "segment_ids",
+        "allowed_context_artifact_ids"
+      ],
+      "properties": {
+        "segment_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^SEG-[A-Z0-9][A-Z0-9._:-]{1,}$"
+          }
+        },
+        "system_prompt_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "user_prompt_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "tool_input_hashes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowed_context_artifact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          }
+        },
+        "forbidden_context_policy_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "execution_environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executor_build_id",
+        "context_isolation_mode",
+        "model_snapshot"
+      ],
+      "properties": {
+        "executor_build_id": {
+          "type": "string"
+        },
+        "context_isolation_mode": {
+          "enum": [
+            "ALLOWLIST",
+            "EMPTY"
+          ]
+        },
+        "model_snapshot": {
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "SUCCEEDED",
+        "FAILED",
+        "INCONCLUSIVE"
+      ]
+    },
+    "retry_of": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

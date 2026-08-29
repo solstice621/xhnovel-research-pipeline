@@ -1,0 +1,79 @@
+# Tombstone — SCENE-2026-08-29-002
+# 无 ACTIVE FactClaim。37fd364 隔离原文与事后 PAGE/SNIPPET 绑定只留 Git 历史。
+
+scene_id: SCENE-2026-08-29-002
+schema_version: "0.2"
+qualification_eligible: false
+isolation_status: SUPERSEDED
+live_original_fact_count: 0
+live_reception_count: 0
+effective_status: ADJACENT_CLUE
+evidence_eligible: false
+confirmation: PILOT
+confirmed_count: 0
+adversarial_fixture: FAIL
+reproducibility: INCONCLUSIVE
+qualification_credit: NONE
+h_a: UNKNOWN
+historical_isolation:
+  commit: 37fd364
+  consumed_source_ids: [SRC-01, SRC-02, SRC-03, SRC-04, SRC-05, SRC-06, SRC-07, SRC-08, SRC-09, SRC-10]
+  text: "git show 37fd364:research/scenes/SCENE-2026-08-29-002/scene-facts.md"
+  note: "精确材料包已丢失。不得把 source_id 级提取手工改写成 ACTIVE retrieval 绑定。"
+supersedes:
+- 37fd364:scene-facts CONFIRMED 15 and grade table
+- cb5f73f:R-1..R-4 ORIGINAL_FACT tags
+- 9073221/109df2c:ACTIVE and LEGACY_UNRESOLVED ledgers
+- CASE-2026-08-29-002#A2
+- CASE-2026-08-29-002#A3
+- CASE-2026-08-29-002#A4
+- CASE-2026-08-29-002 map LINKs/UNPLACED derived from A2-A4
+claims: []
+researcher_notes:
+- id: N-R1
+  kind: RESEARCHER_NOTE
+  grade: null
+  text: WuxiaWorld 第261章公开预览中，绿蛮自称正在携带某人，并因此不愿恋战。
+  retrieval_ids: [SRC-11-TEASER]
+  not_a_factclaim: true
+- id: N-R2
+  kind: RESEARCHER_NOTE
+  grade: null
+  text: WuxiaWorld 第261/262章公开预览中，与萧炎、海波东对峙的是八翼黑蛇皇白牙。
+  retrieval_ids: [SRC-11-TEASER, SRC-12-TEASER]
+  not_a_factclaim: true
+- id: N-R3
+  kind: RESEARCHER_NOTE
+  grade: INFERRED
+  text: 预览中的「某人」就是青鳞。公开预览未直接点名。
+  retrieval_ids: [SRC-11-TEASER, SRC-12-TEASER]
+  not_a_factclaim: true
+- id: N-R4
+  kind: RESEARCHER_NOTE
+  grade: INFERRED
+  text: 白牙的战术职能是殿后。预览只证明他是对峙者，未写出殿后编制。
+  retrieval_ids: [SRC-11-TEASER, SRC-12-TEASER]
+  not_a_factclaim: true
+- id: N-D1
+  kind: RESEARCHER_NOTE
+  grade: INFERRED
+  text: 第258章未授权转载显示墨阑向萧炎递交、萧炎伸手未接住时人被捞走。此为 C-1 的 D 级 branch lead，不是场景主定义。
+  retrieval_ids: [SRC-14-REPRINT]
+  not_a_factclaim: true
+  role: branch_lead_only
+element_mapping:
+  EC-1:
+    effective_status: UNKNOWN
+    note: 本案例未证明墨承是 runtime current_holder，也未证明死后按所在地派生；提案未过原子门。
+  EC-2_carry:
+    effective_status: NOT_A_GAP
+    note: M-1 已有取得后 MoveActivity(venue_exit)。
+  EC-2_reacquire_in_motion:
+    effective_status: UNKNOWN
+    note: 移动中第三方如何重新取得物品仍未测；本案例不是该测试。
+  EC-3:
+    effective_status: REJECTED_BY_CONSTRAINT
+    note: 通用活动失效位撞上已排除的 interrupted。
+  EC-4:
+    effective_status: UNKNOWN
+    note: 不得 COVERED；仅一次冻结攻击，PROBE-01 未冻结。

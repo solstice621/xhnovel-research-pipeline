@@ -1,0 +1,2 @@
+# Declared dependency for research/scripts/check_evidence_yaml.py
+PyYAML>=6.0

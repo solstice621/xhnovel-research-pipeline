@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/qualification.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "qualification_run_id",
+    "extractor_build_id",
+    "fixture_suite_hash",
+    "run_a",
+    "run_b",
+    "adversarial_project_expectation",
+    "source_content_injection",
+    "reproducibility",
+    "result",
+    "qualified_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "qualification_run_id": {
+      "type": "string",
+      "pattern": "^QRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "extractor_build_id": {
+      "type": "string",
+      "pattern": "^BLD-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "fixture_suite_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "run_a": {
+      "type": "string"
+    },
+    "run_b": {
+      "type": "string"
+    },
+    "run_a_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "run_b_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "adversarial_project_expectation": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "source_content_injection": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "reproducibility": {
+      "enum": [
+        "PASS",
+        "INCONCLUSIVE"
+      ]
+    },
+    "result": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "INCONCLUSIVE"
+      ]
+    },
+    "qualified_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    }
+  }
+}

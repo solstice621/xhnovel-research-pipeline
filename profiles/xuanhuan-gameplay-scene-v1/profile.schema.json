@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/profiles/xuanhuan-gameplay-scene-v1/profile.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["actors", "action", "target", "precondition", "state_transition"],
+  "properties": {
+    "actors": {"type": "array", "items": {"type": "string"}},
+    "action": {"type": "string"},
+    "target": {"type": "string"},
+    "precondition": {"type": "string"},
+    "state_transition": {"type": "string"},
+    "timeline": {"type": "array", "items": {"type": "string"}},
+    "conflicts": {"type": "array", "items": {"type": "string"}},
+    "immediate_feedback": {"type": "string"},
+    "new_affordances": {"type": "array", "items": {"type": "string"}},
+    "persistence": {"type": "string"}
+  }
+}

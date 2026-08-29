@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/query-spec.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "query_id",
+    "campaign_id",
+    "query_text",
+    "query_role",
+    "generated_by",
+    "locale"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "query_id": {
+      "type": "string",
+      "pattern": "^QRY-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "campaign_id": {
+      "type": "string",
+      "pattern": "^CAM-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "query_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "query_role": {
+      "enum": [
+        "DISCOVER",
+        "PRIMARY_SOURCE",
+        "CONFIRM",
+        "CHALLENGE",
+        "CONFLICT"
+      ]
+    },
+    "parent_query_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "derived_from_hit_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^HIT-[A-Z0-9][A-Z0-9._:-]{1,}$"
+      }
+    },
+    "generated_by": {
+      "type": "string"
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    }
+  }
+}

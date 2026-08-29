@@ -2,8 +2,18 @@
 
 > 面向玄幻小说研究的自动搜索、证据收集、机械解析与可审计事实提取管线。
 
-**当前状态：BOOTSTRAP / Architecture & Data Model**  
-当前只冻结仓库使命、责任边界与实施纪律；实现语言、搜索 Provider、模型与持久化后端尚未冻结。
+**当前状态：v0.1-draft-frozen 合同已冻结；离线纵切可运行。**
+
+实现语言：Python 3.11+（ADR-0002）。不要从搜索 API 或生产 LLM 开始；先跑本地 fixture。
+
+```text
+python3 -m pip install -e ".[dev]"
+python3 tools/verify_migration_baseline.py
+xhnovel-pipeline run local-slice fixtures/positive/minimal-local
+```
+
+迁移基线 `legacy_contract_commit`：`ff8b8bb49685c411fd3b56bb61f9173e30680901`。
+SCENE-001 永不自动追认；SCENE-002 为 0 live FactClaim tombstone。
 
 ---
 

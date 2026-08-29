@@ -1,0 +1,34 @@
+schema_version: "0.1-draft-frozen"
+id: access-kind-v1
+rule: |
+  access_kind is normalized before comparison. Search snippet aliases
+  (search_snippet, search-snippet, Search_Snippet, search excerpt,
+  搜索摘录, 搜索摘要, search snippet) all become search_snippet.
+  Snippet kinds are always triaged Tier D.
+  unauthorized_reprint and catalog_page have no kind-level tier cap.
+  Authorization is recorded on access_legitimacy, not used to force D.
+aliases:
+  search_snippet:
+    - search_snippet
+    - searchsnippet
+    - search-snippet
+    - Search_Snippet
+    - search_excerpt
+    - search excerpt
+    - 搜索摘录
+    - 搜索摘要
+  full_page:
+    - full_page
+    - fullpage
+    - 全文
+  licensed_teaser:
+    - licensed_teaser
+    - licensedteaser
+  catalog_page:
+    - catalog_page
+    - catalogpage
+  unauthorized_reprint:
+    - unauthorized_reprint
+    - unauthorizedreprint
+snippet_kinds: [search_snippet, search_excerpt]
+no_tier_cap_kinds: [unauthorized_reprint, catalog_page]
