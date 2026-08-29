@@ -2,7 +2,7 @@
 
 > 面向玄幻小说研究的自动搜索、证据收集、机械解析与可审计事实提取管线。
 
-**当前状态：v0.1-draft-frozen 合同已冻结；离线纵切与 Wikipedia OpenSearch 收集可运行。G11 旧系统退役与 v1.0 发布尚未完成。**
+**当前状态：v1.0.0。** 合同 `0.1-draft-frozen` 为 export v1 兼容面。G0–G12 有可重跑命令与 fixture。默认 CI 离线。真实 Wikipedia 不进入 PR 必跑。Wikipedia 全文不进 Git。
 
 实现语言：Python 3.11+（ADR-0002）。默认 CI 离线。真实 Wikipedia 不进入 PR 必跑。
 
@@ -380,6 +380,4 @@ solstice621/xuanhuan-sandbox
 
 面向 AI Agent 的详细实现、证据、测试和修改纪律见 [`AGENTS.md`](./AGENTS.md)。
 
-当前最重要的下一步不是写搜索器，而是：
-
-> **冻结迁移基线和 v0.1 数据合同，并用本地 fixture 证明不可变边界。**
+当前最重要的下一步是生产 LLM 提取器资格（新 build），而不是再扩写收集合同。

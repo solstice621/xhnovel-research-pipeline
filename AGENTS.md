@@ -24,23 +24,19 @@
 
 ## 2. 当前阶段
 
-当前状态：**Phase 0–10 管线侧已落地（离线 + Wikipedia OpenSearch）**。G0–G3 可重跑；G4 真实 Wikipedia 收集与录制 cassette；G5 机械解析（含广告剥离与 PDF 页眉）；G6 Bundle 冻结；G7 确定性 mock 隔离提取；G8 mock ExtractorBuild 资格套件；G9 本仓 export/verify/import 锁；G10 两次真实 Wikipedia 全链以 `NO_QUALIFYING_CASE_FOUND` 收束。生产 LLM 与默认 CI 的 live 网络仍不跑。
+当前状态：**v1.0.0（G0–G12 门已用可重跑命令与 fixture 核过）。** 生产 LLM 与默认 CI 的 live 网络仍不跑。
 
-G11 旧系统退役 **尚未** 执行：须在 sandbox 连续两次真实 EvidenceExport import 成功之后，才允许删除 `xuanhuan-sandbox/research/scenes` 与旧 checker 主路径。
-
-G12 / v1.0 **尚未** 发布：备份、GC、revocation 与审计命令已实现，但完成门要求 G0–G11 全部满足。
+sandbox 旧 `research/scenes` 与 checker 已退出主路径（两次真实 import 成功之后）。本仓仍不得把 Wikipedia 全文提交 Git，也不得把 Project Context 注入 Extraction。
 
 当前允许的主要工作：
 
-- 硬化 operator 命令与跨仓 import；
-- 在两次真实 sandbox import 之后退役旧 research 主路径；
-- 生产 LLM 提取器资格（新 build，不改 mock 合同）。
+- 生产 LLM 提取器资格（新 build，不改 mock 合同）；
+- operator 运行与 incident 响应。
 
 当前**不要抢跑**：
 
 - 不先做数据库、UI、分布式任务系统；
 - 不把旧 `research/` 目录结构直接复制进来；
-- 不在两次真实 import 前删除 sandbox 旧主路径；
 - 不把 Wikipedia 全文提交 Git。
 
 ---
@@ -674,10 +670,9 @@ automatic game design decisions
 当前最优先工作：
 
 ```text
-1. sandbox 消费合同：Request / imports / import.lock / mapping（不删旧 scenes）
-2. 两次真实 EvidenceExport 成功 import 到 sandbox
-3. 才允许退役旧 research/scenes 与 checker 主路径（G11）
-4. 备份/恢复/GC/revocation 演练记录进发布说明后打 v1.0.0（G12）
+1. 生产 LLM 提取器资格（新 ExtractorBuild，不改 mock 合同）
+2. 按 docs/OPERATOR.md 与 docs/INCIDENT.md 运行
 ```
 
-不要从生产 LLM、数据库或 UI 开始。旧系统在两次真实 import 前必须保留。
+不要从数据库或 UI 开始。v1.0 明确不做这些。
+旧 sandbox scenes/checker 已退役；历史在 `fixtures/legacy/`。

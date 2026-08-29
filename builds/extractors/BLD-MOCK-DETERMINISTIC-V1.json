@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1-draft-frozen",
+  "extractor_build_id": "BLD-MOCK-DETERMINISTIC-V1",
+  "model": "mock-deterministic-v1",
+  "prompt_template_hash": "sha256:c5ab1b65ae7b5b8b78449312faa6bb3e03893a1d3c22f3d3d956b237144f9bd0",
+  "parameters": {
+    "temperature": 0
+  },
+  "profile_version": "xuanhuan-gameplay-scene/v1",
+  "executor_build_id": "executor-mock-v0.1",
+  "tool_policy_hash": "sha256:fe2f3b4ef49492d81cb350fb689bf9f9dff6cfd1817d72d6ff9fe3350e3d5e6a",
+  "repository_commit": "local-dev",
+  "created_at": "2026-08-29T00:00:00Z",
+  "status": "QUALIFIED"
+}

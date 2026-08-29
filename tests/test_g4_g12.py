@@ -69,6 +69,17 @@ def test_golden_html_drops_ads():
     assert "灯落地" in blob
 
 
+def test_vector_header_void_tags_do_not_eat_body():
+    html = (repo_root() / "fixtures/positive/golden-html/vector-header-void.html").read_bytes()
+    parsed = parse_html("sha256:" + "a" * 64, html, document_id="DOC-VECTOR")
+    blob = " ".join(s["normalized_text"] for s in parsed["segments"])
+    assert "跳转到内容" not in blob
+    assert "页脚版权" not in blob
+    assert "青铜是铜与锡的合金" in blob
+    assert "不是争夺" in blob
+    assert parsed["document"]["parser_build_id"] == "parser-html-pdf-v0.1.1"
+
+
 def test_parse_diff_detects_change():
     html = (repo_root() / "fixtures/positive/golden-html/mixed.html").read_bytes()
     a = parse_html("sha256:" + "a" * 64, html, document_id="DOC-A")["segments"]

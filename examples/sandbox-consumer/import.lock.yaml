@@ -1,5 +1,5 @@
 {
-  "export_id": "EXP-LOCAL-001",
+  "export_id": "EXP-FIXTURE-001",
   "export_hash": "replace-after-slice",
   "producer_commit": "replace-after-slice",
   "schema_version": "0.1-draft-frozen",

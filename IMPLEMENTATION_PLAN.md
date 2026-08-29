@@ -1,11 +1,10 @@
 # Research Pipeline 独立仓库实施总计划 v1.0
 
+> 状态：v1.0.0 发布门已按 G0–G12 执行。数据合同冻结为 `0.1-draft-frozen`（export v1 兼容面）。  
 > 工作仓名：`research-pipeline`（仅作计划代号，正式仓名不影响合同）  
-> 状态：PROPOSED — 核心方向已批准，数据模型尚未冻结  
 > 原仓基线：`solstice621/xuanhuan-sandbox`  
 > 当前 `main` 基线：`5a2b35e8d2c62ee4827b5df491e70322575e4404`  
-> 基线前置：先处理 PR #10，再固定最终 `legacy_contract_commit`  
-> 核心目标：**在声明搜索窗口内完整记录的自动收集 → 可重放机械解析 → 按需隔离语义提取 → 合格证据导出**
+> `legacy_contract_commit`：`ff8b8bb49685c411fd3b56bb61f9173e30680901`
 
 ---
 

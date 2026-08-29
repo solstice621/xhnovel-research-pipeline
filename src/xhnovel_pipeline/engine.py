@@ -721,7 +721,7 @@ def run_local_slice(
     if live_claims and qrun["result"] == "PASS":
         build["status"] = "QUALIFIED"
         qrun["result"] = "PASS"
-        assurance_level = "BUILD_QUALIFIED"
+        assurance_level = "BUNDLE_VERIFIED"
         catalog.add(
             "AssuranceRecord",
             {

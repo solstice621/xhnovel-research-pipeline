@@ -13,7 +13,7 @@ import pytest
 def test_offline_slice_verified_export(slice_result):
     export = slice_result["export"]
     catalog = slice_result["catalog"]
-    assert export["assurance"]["level"] == "BUILD_QUALIFIED"
+    assert export["assurance"]["level"] == "BUNDLE_VERIFIED"
     assert export["claims"]
     assert all("segment_id" in s for c in export["claims"] for s in c["support"])
     assert "element_mapping" not in export["scene_facts"]
@@ -78,7 +78,7 @@ def test_export_byte_tamper_fails(slice_result):
 
     raw = (slice_result["work_dir"] / "export.json").read_bytes()
     verify_export_bytes(raw)
-    tampered = raw.replace(b"BUILD_QUALIFIED", b"BUILD_QUALIFIEDx", 1)
+    tampered = raw.replace(b"BUNDLE_VERIFIED", b"BUNDLE_VERIFIEDx", 1)
     with pytest.raises(ValidationError):
         verify_export_bytes(tampered)
 

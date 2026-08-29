@@ -11,7 +11,9 @@ from .hashing import digest_prefix, object_hash, sha256_bytes
 from .constants import PARSER_BUILD_ID, SCHEMA_VERSION
 
 SKIP_TAGS = {"script", "style", "nav", "noscript", "svg", "header", "footer", "aside"}
+VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
 AD_HINTS = ("ad-banner", "advertisement", "sponsored", "sponsor-slot", "广告位")
+_MAIN_MARKERS = ('id="mw-content-text"', "id='mw-content-text'", 'id="bodyContent"', "id='bodyContent'")
 
 
 def _is_ad_attrs(attrs: list[tuple[str, str | None]]) -> bool:
@@ -30,10 +32,17 @@ class _TextExtractor(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if self._skip or tag in SKIP_TAGS or _is_ad_attrs(attrs):
-            self._skip += 1
+            if tag not in VOID_TAGS:
+                self._skip += 1
             return
         if tag == "title":
             self._capture_title = True
+        if tag in {"p", "h1", "h2", "h3", "li", "div", "article"}:
+            self._flush()
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if self._skip or tag in SKIP_TAGS or _is_ad_attrs(attrs):
+            return
         if tag in {"p", "h1", "h2", "h3", "li", "div", "article"}:
             self._flush()
 
@@ -72,11 +81,29 @@ def text_hash(text: str) -> str:
     return digest_prefix(sha256_bytes(text.encode("utf-8")))
 
 
+def _select_html_root(html: bytes) -> str:
+    text = html.decode("utf-8", errors="replace")
+    for marker in _MAIN_MARKERS:
+        idx = text.find(marker)
+        if idx >= 0:
+            lt = text.rfind("<", 0, idx)
+            return text[lt:] if lt >= 0 else text[idx:]
+    for pattern in (r"<main\b[^>]*>.*</main>", r"<article\b[^>]*>.*</article>"):
+        match = re.search(pattern, text, flags=re.IGNORECASE | re.DOTALL)
+        if match:
+            return match.group(0)
+    return text
+
+
 def parse_html(artifact_id: str, html: bytes, *, document_id: str) -> dict[str, Any]:
     extractor = _TextExtractor()
-    extractor.feed(html.decode("utf-8", errors="replace"))
+    extractor.feed(_select_html_root(html))
     extractor._flush()
     title = normalize_text(extractor.title)
+    if not title:
+        raw = html.decode("utf-8", errors="replace")
+        found = re.search(r"<title\b[^>]*>(.*?)</title>", raw, flags=re.IGNORECASE | re.DOTALL)
+        title = normalize_text(found.group(1) if found else "")
     segments = []
     for i, block in enumerate(extractor.blocks):
         segments.append(
