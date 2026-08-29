@@ -196,6 +196,11 @@ def snapshot_hash_of(catalog: Catalog, snapshot: dict[str, Any]) -> str:
     )
 
 
+def export_id_for(request_id: str) -> str:
+    suffix = request_id[4:] if request_id.startswith("REQ-") else request_id
+    return f"EXP-{suffix}"
+
+
 def git_commit(root: pathlib.Path) -> str:
     head = root / ".git" / "HEAD"
     if not head.exists():
@@ -752,7 +757,7 @@ def run_local_slice(
     }
     export = {
         "schema_version": SCHEMA_VERSION,
-        "export_id": "EXP-LOCAL-001",
+        "export_id": export_id_for(request["request_id"]),
         "export_hash": "sha256:" + "0" * 64,
         "producer": {
             "repository_commit": git_commit(repo_root),

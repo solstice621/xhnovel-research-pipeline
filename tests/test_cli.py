@@ -41,4 +41,4 @@ def test_cli_legacy_and_slice(tmp_path):
         ],
         cwd=root,
     )
-    assert export["export_id"] == "EXP-LOCAL-001"
+    assert export["export_id"] == "EXP-FIXTURE-001"
