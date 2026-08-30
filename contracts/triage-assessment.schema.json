@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/triage-assessment.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "assessment_id",
+    "retrieval_id",
+    "tier",
+    "access_legitimacy",
+    "assessor_build_id",
+    "policy_hash",
+    "assessed_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "assessment_id": {
+      "type": "string",
+      "pattern": "^TRI-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "retrieval_id": {
+      "type": "string",
+      "pattern": "^RET-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "tier": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    "access_legitimacy": {
+      "enum": [
+        "UNKNOWN",
+        "AUTHORIZED",
+        "UNAUTHORIZED_REPRINT",
+        "PUBLIC",
+        "RESTRICTED"
+      ]
+    },
+    "suspected_reprint": {
+      "type": "boolean"
+    },
+    "allowed_uses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "selection_decision": {
+      "type": "string"
+    },
+    "decision_reason": {
+      "type": "string"
+    },
+    "assessor_build_id": {
+      "type": "string"
+    },
+    "policy_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "assessed_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    }
+  }
+}

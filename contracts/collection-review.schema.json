@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/collection-review.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_id",
+    "collector_decision_id",
+    "reviewer_decision_id",
+    "review_mode",
+    "rubric_id",
+    "rubric_artifact_id",
+    "verdict",
+    "disagreements",
+    "conservative_outcome",
+    "requires_adjudication",
+    "reviewed_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "review_id": {
+      "type": "string",
+      "pattern": "^CRV-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "collector_decision_id": {
+      "type": "string",
+      "pattern": "^CDEC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "reviewer_decision_id": {
+      "type": "string",
+      "pattern": "^CDEC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "review_mode": {
+      "const": "INDEPENDENT_BLIND"
+    },
+    "rubric_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rubric_artifact_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "verdict": {
+      "enum": [
+        "AGREE",
+        "ESCALATED"
+      ]
+    },
+    "disagreements": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "conservative_outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "disposition": {
+          "enum": [
+            "SELECTED",
+            "REJECTED",
+            "LEAD_ONLY",
+            "QUARANTINED",
+            "CONTINUE",
+            "STOP"
+          ]
+        },
+        "tier": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "access_legitimacy": {
+          "enum": [
+            "UNKNOWN",
+            "AUTHORIZED",
+            "UNAUTHORIZED_REPRINT",
+            "PUBLIC",
+            "RESTRICTED"
+          ]
+        },
+        "origin_relation": {
+          "enum": [
+            "SAME_ORIGIN",
+            "LIKELY_SAME_ORIGIN",
+            "INDEPENDENT",
+            "UNKNOWN"
+          ]
+        },
+        "chapter_key": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "requires_adjudication": {
+      "type": "boolean"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    }
+  }
+}

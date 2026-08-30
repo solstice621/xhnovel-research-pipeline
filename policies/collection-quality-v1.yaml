@@ -1,0 +1,50 @@
+schema_version: "0.1-draft-frozen"
+id: collection-quality-v1
+principle: collector proposes, reviewer independently reassesses, deterministic validators gate
+review_mode: INDEPENDENT_BLIND
+hard_fail:
+  - missing_provider_result
+  - missing_or_mismatched_artifact
+  - fabricated_url_title_chapter_or_quote
+  - snippet_promoted_above_tier_d
+  - failed_retrieval_recorded_as_fetched
+  - false_independent_origin
+  - terminal_campaign_without_stop_reason
+critical_fields:
+  RELEVANCE: [disposition]
+  TRIAGE: [disposition, tier, access_legitimacy]
+  ORIGIN: [origin_relation]
+  CHAPTER_IDENTITY: [chapter_key]
+  STOP: [disposition]
+conservative_resolution:
+  RELEVANCE: LEAD_ONLY
+  TRIAGE:
+    tier: lower_quality_tier
+    access_legitimacy: UNKNOWN_on_disagreement
+    disposition: LEAD_ONLY_on_disagreement
+  ORIGIN: UNKNOWN
+  CHAPTER_IDENTITY: QUARANTINED
+  STOP: CONTINUE
+qualification_thresholds:
+  artifact_traceability: 1.0
+  relevant_result_recall: 0.95
+  selected_result_precision: 0.90
+  source_type_accuracy: 0.95
+  snippet_false_upgrade_count: 0
+  fabricated_reference_count: 0
+  false_independent_origin_count: 0
+  chapter_order_accuracy: 1.0
+  false_coverage_stop_count: 0
+production_review:
+  bootstrap: all decisions
+  stable:
+    - all selected decisions
+    - all tier_a_or_b decisions
+    - all independent_origin decisions
+    - all stop decisions
+    - all low_confidence decisions
+    - random_rejected_sample
+notes:
+  - model agreement is not evidence truth
+  - a review never upgrades EvidenceExport assurance
+  - unresolved critical disagreement prevents quality acceptance

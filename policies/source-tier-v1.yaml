@@ -1,0 +1,15 @@
+schema_version: "0.1-draft-frozen"
+id: source-tier-v1
+note: |
+  Tier is a Retrieval assessment, not a Source permanent property.
+  It answers evidence quality, not copyright.
+tiers:
+  A: original or near-original text that can directly confirm a specific fact
+  B: high-quality secondary structured summary / encyclopedia
+  C: reader discussion, comment, public memory
+  D: search snippet, low-quality reprint as lead-only, marketing, AI aggregation
+forced:
+  snippet: D
+forbidden:
+  snippet_as_b: true
+  snippet_alone_supports_original_fact: true

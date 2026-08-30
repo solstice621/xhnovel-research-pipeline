@@ -1,10 +1,10 @@
 # Research Pipeline 独立仓库实施总计划 v1.0
 
 > 工作仓名：`research-pipeline`（仅作计划代号，正式仓名不影响合同）  
-> 状态：PROPOSED — 核心方向已批准，数据模型尚未冻结  
+> 状态：PROPOSED — 核心方向已批准，数据模型尚未冻结
 > 原仓基线：`solstice621/xuanhuan-sandbox`  
 > 当前 `main` 基线：`5a2b35e8d2c62ee4827b5df491e70322575e4404`  
-> 基线前置：先处理 PR #10，再固定最终 `legacy_contract_commit`  
+> 基线前置：先处理 PR #10，再固定最终 `legacy_contract_commit`
 > 核心目标：**在声明搜索窗口内完整记录的自动收集 → 可重放机械解析 → 按需隔离语义提取 → 合格证据导出**
 
 ---
@@ -870,6 +870,12 @@ ResearchRequest
    - manual stop；
    - provider exhausted。
 10. 冻结 CollectionSnapshot。
+11. 模型辅助 Collection 采用独立质量侧链：
+   - 小模型输出不可变 `CollectionDecision`；
+   - 大模型仅接收同一冻结 Artifact 集，先盲审后比较；
+   - 两次规范化输出和 rubric 都写入 ArtifactStore；
+   - `CollectionReview` 只记录一致、分歧和保守结果，不产生 Claim；
+   - 关键分歧进入 `ESCALATED`，不得被总分覆盖。
 
 ### 测试
 
@@ -886,11 +892,18 @@ ResearchRequest
 - `UNKNOWN` origin 不得算独立。
 - 动态页、登录墙和不可达页必须显式记录状态。
 - SearchCampaign 无论成功或失败都有 stop_reason。
+- collector/reviewer 不得使用同一 build 或同一输出 Artifact 冒充独立复核。
+- reviewer 输入不得包含 collector 输出。
+- Tier、origin、章节或停止决定分歧必须得到保守结果并阻止质量门通过。
 
 ### 完成门 G4
 
 - 能针对一个真实 ResearchRequest 自动产生 CollectionSnapshot。
 - Snapshot 中仍不存在 Claim。
+
+**当前状态：部分实现。** 已有独立 `collect` 命令、本地 Snapshot 输出和
+CollectionDecision/CollectionReview 离线复核骨架；尚未接入真实 collector/reviewer
+模型 Adapter、小说章节采集 Adapter 和真实 ResearchRequest 验收，因此不得宣布 G4 通过。
 
 ---
 
@@ -1138,6 +1151,8 @@ HUMAN_AUDITED
 
 - 至少一个真实 ExtractorBuild 通过完整资格套件。
 - 资格结论可独立重放、验证和撤销。
+
+**当前状态：尚未宣布通过。** deterministic mock 现由 runner 对冻结 RUN-A/RUN-B 与 source-content injection fixture 实际执行，并由 validator 独立重放；它只证明该精确 mock build 的本地资格，不代表生产 LLM 资格，也不单独证明 G8/G12 已验收。旧资格记录不得继承。
 
 ---
 
@@ -1389,6 +1404,8 @@ sandbox：
 - 恢复、审计、资格失效、revocation 均演练通过。
 - 无未解决 P0/P1。
 - 不需要 UI、分布式系统或通用平台化能力。
+
+**当前状态：未通过，不得发布。** 已确认 P0/P1 直接违反本门；此前 release candidate 的命令记录仅保留作调查材料，不构成 G12 证据。
 
 ---
 

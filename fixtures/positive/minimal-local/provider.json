@@ -1,0 +1,60 @@
+{
+  "provider_id": "fake-local",
+  "provider_build_id": "fake-provider-v1",
+  "pages": [
+    {
+      "page": 1,
+      "hits": [
+        {
+          "hit_id": "HIT-001",
+          "rank": 1,
+          "url": "https://wiki-alpha.example/item/green-lamp",
+          "title": "青灯争夺（独立百科甲）",
+          "snippet": "李衡握着青铜青灯，王朔抓住灯座向外拉。",
+          "selection_status": "SELECTED",
+          "selection_reason": "encyclopedia candidate",
+          "platform_id": "wiki-alpha",
+          "tier": "B",
+          "access_kind": "full_page"
+        },
+        {
+          "hit_id": "HIT-002",
+          "rank": 2,
+          "url": "https://wiki-beta.example/entry/green-lamp",
+          "title": "青灯争夺（独立百科乙）",
+          "snippet": "双方在转移未完成时对青灯施加相反控制，灯最终落地。",
+          "selection_status": "SELECTED",
+          "selection_reason": "second independent encyclopedia",
+          "platform_id": "wiki-beta",
+          "tier": "B",
+          "access_kind": "full_page"
+        },
+        {
+          "hit_id": "HIT-003",
+          "rank": 3,
+          "url": "https://shop.example/ad",
+          "title": "限时购买青灯手办",
+          "snippet": "买买买！",
+          "selection_status": "REJECTED",
+          "selection_reason": "marketing page",
+          "platform_id": "shop-ad"
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "hits": [
+        {
+          "hit_id": "HIT-004",
+          "rank": 1,
+          "url": "https://wiki-alpha.example/item/green-lamp",
+          "title": "青灯争夺（重复结果）",
+          "snippet": "重复命中同一 URL。",
+          "selection_status": "DUPLICATE",
+          "selection_reason": "same canonical URL as HIT-001",
+          "platform_id": "wiki-alpha"
+        }
+      ]
+    }
+  ]
+}

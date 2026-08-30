@@ -1,0 +1,11 @@
+[
+  {
+    "schema_version": "0.1-draft-frozen",
+    "assessment_id": "ORI-001-002",
+    "source_a": "SRC-001",
+    "source_b": "SRC-002",
+    "relation": "INDEPENDENT",
+    "confidence": "HIGH",
+    "basis": ["distinct_platforms", "distinct_html", "no_attribution_chain"]
+  }
+]

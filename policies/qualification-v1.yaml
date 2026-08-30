@@ -1,0 +1,24 @@
+schema_version: "0.1-draft-frozen"
+id: qualification-v1
+assurance_levels: [UNQUALIFIED, BUILD_QUALIFIED, BUNDLE_VERIFIED, HUMAN_AUDITED]
+formal_export_minimum: BUILD_QUALIFIED
+build_identity:
+  - repository_commit
+  - source_tree_hash
+  - model
+  - prompt_template_hash
+  - parameters
+  - profile_version
+  - executor_build_id
+  - tool_policy_hash
+adversarial:
+  - project_expectation_injection
+  - source_content_injection
+reproducibility_requires:
+  - distinct run_a and run_b files
+  - matching sha256 of those files
+  - non-empty claims for a positive qualification
+  - no placeholder hashes
+invalidation: new model/prompt/profile/executor/parameters → new build, old QUALIFIED becomes INVALIDATED
+historical_export: not rewritten; STALE_* is allowed; REVOKED only for integrity/forgery
+legacy_scene_001_never_auto_qualifies: true

@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1-draft-frozen",
+  "request_id": "REQ-LIVE-RQ002",
+  "origin": {
+    "repository": "solstice621/xuanhuan-sandbox",
+    "commit": "5a2b35e8d2c62ee4827b5df491e70322575e4404",
+    "external_question_id": "RQ-002"
+  },
+  "mode": "EXPLORE",
+  "discovery_brief": "争夺 持有 物品 同时控制",
+    "search_constraints": {
+        "language": "zh",
+        "query_text": "青铜",
+        "false_positives": ["物品放在台上无人握持", "Take完成后再夺回", "争夺的是人不是物品"]
+    },
+  "extraction_profile": "xuanhuan-gameplay-scene/v1",
+  "budget": {"max_queries": 1, "max_fetches": 1, "max_bytes": 2000000},
+  "created_at": "2026-08-29T00:00:00Z",
+  "supersedes": null
+}

@@ -1,0 +1,114 @@
+# EvidenceBundle — SCENE-2026-08-29-001
+# 状态: PILOT(Evidence workflow 未通过资格门;本 bundle 不计收敛阈值)
+# 迁移政策: schema 0.1-legacy。未改写成 retrievals[] / claims.yaml；搜索摘录仍可能标 B/C。
+# 明确不合格，禁止进入资格统计。不是 0.2 绿灯。
+
+schema_version: "0.1-legacy"
+qualification_eligible: false
+qualification_credit: NONE
+legacy_reason: "Predates retrievals[] and claims.yaml. Search excerpts may still be tagged B/C. Unqualified; excluded from qualification statistics."
+
+scene:
+  scene_id: SCENE-2026-08-29-001
+  research_question: RQ-001 能力暴露应该产生什么有限信息?
+  mode: EXPLORE
+  work: 斗破苍穹(天蚕土豆,起点中文网连载玄幻小说;另有 2021 动画特别篇《斗破苍穹特别篇3三年之约》)
+  approximate_chapter: 小说正文约第 332—335 章(立约见第 4—7 章)
+  participants: 萧炎、纳兰嫣然、云棱(大长老,主持)、云岚宗观战弟子与长老、葛叶、(后续)云山、海波东等
+  location: 云岚宗云岚山,公开比试场
+  situation: 三年前纳兰嫣然携宗门之势登门退婚,萧炎立下三年后上云岚宗比斗之约;三年间萧炎实力大幅增长且曾以"岩枭"伪装身份活动;宗门内多数人对其认知仍停留在"废物/不自量力"
+  key_decision: 萧炎要求比试"生死各安天命",并在决斗中公开使用异火(佛怒火莲)
+  result: 萧炎击败修为高一星的纳兰嫣然;异火的公开使用连带暴露其"岩枭"伪装身份;引发自刎被阻、烧休书、云棱借故扣留、云山出关、逃离、袭击萧家、击杀云棱、宣布不死不休等连锁后果
+
+# 材料包: 提取输入为统一汇编的临时材料文件(不入库,仅存元数据)
+materials:
+  file: /tmp/scene-001-sources.md(临时工作文件)
+  sha256: 324a7ddf013c45cb96b0378d6e9e66d54963df901b5de24286d8f7ad294a87fc
+  note: 复现时按各 source url 重新抓取;小说正文与百科全文均不入库
+
+sources:
+  - source_id: SRC-01
+    tier: B
+    url: https://baike.baidu.com/item/纳兰嫣然/3280885
+    title: 纳兰嫣然(玄幻小说《斗破苍穹》中的角色)_百度百科
+    accessed: 2026-08-29
+    access_method: 页面全文抓取
+    purpose: [event-facts, actor-decisions, causal-chain, chapter-location]
+    excerpt: "施展出异火的萧炎,也暴露了他岩枭的身份"
+  - source_id: SRC-02
+    tier: B
+    url: https://m.baike.com/wikiid/7018479291386959108
+    title: 斗破苍穹特别篇3三年之约-快懂百科(动画向)
+    accessed: 2026-08-29
+    access_method: 搜索摘录
+    purpose: [event-facts-anime, context, cross-check]
+    excerpt: "纳兰嫣然不知道萧炎就是岩枭,还以为他是当初的那个'废物'"
+  - source_id: SRC-03
+    tier: D
+    url: https://www.tianyabooks.com/net/tctd01/62450.html
+    title: 天涯书库转载 第三百三十四章 三年之约!(未授权转载,仅线索)
+    accessed: 2026-08-29
+    access_method: 搜索摘录
+    purpose: [dialogue-context, chapter-location]
+    excerpt: "他也知道萧炎早已脱去了废物之名……可真要对战起来,云棱并不看好萧炎"
+  - source_id: SRC-04
+    tier: D
+    url: https://cn.tanglib.org/read/斗破苍穹/三年之约章纲
+    title: 唐库创作网《斗破苍穹》拆书章纲(AI 拆书,仅线索)
+    accessed: 2026-08-29
+    access_method: 搜索摘录
+    purpose: [chapter-location, setup-context]
+    excerpt: "大多数人,都会略微带着许些不屑与讥讽"
+  - source_id: SRC-05
+    tier: C
+    url: https://news.qq.com/rain/a/20240602A06MSC00
+    title: 腾讯新闻:斗破中纳兰嫣然和萧炎各时期实力对比
+    accessed: 2026-08-29
+    access_method: 搜索摘录
+    purpose: [power-levels, aftermath]
+    excerpt: "纳兰嫣然已经是二星大斗师,而萧炎……刚刚服用了三纹青灵丹进阶大斗师"
+  - source_id: SRC-06
+    tier: C
+    url: https://news.qq.com/rain/a/20211031A02X2E00
+    title: 腾讯新闻:斗破苍穹三年之约动画解说(云韵露脸,萧炎被困云岚宗)
+    accessed: 2026-08-29
+    access_method: 搜索摘录
+    purpose: [aftermath-anime, identity-exposure]
+    excerpt: "葛叶认出萧炎就是那名在墨承府邸出现的神秘斗皇"
+  - source_id: SRC-07
+    tier: D
+    url: https://xueba5.com/xw/21083.html
+    title: 学霸网:萧炎赴三年之约解说(仅线索)
+    accessed: 2026-08-29
+    access_method: 搜索摘录
+    purpose: [duel-process-leads, identity-exposure-leads]
+    excerpt: "萧炎在战斗中暴露了自己的身份,被……云棱认出"
+  - source_id: SRC-08
+    tier: C
+    url: https://www.pingwest.com/w/274885
+    title: 品玩:当"莫欺少年穷"的故事照入现实
+    accessed: 2026-08-29
+    access_method: 搜索摘录
+    purpose: [reader-experience, adaptation-differences]
+    excerpt: "原著对纳兰嫣然退婚的心路历程并未着墨太多,而动画给予了……自我辩白的机会"
+  - source_id: SRC-09
+    tier: D
+    url: https://book.qq.com/baike/3dyr9wrwxdwfr
+    title: QQ阅读百科"莫欺少年穷"词条(平台生成,细节存疑,仅线索)
+    accessed: 2026-08-29
+    access_method: 搜索摘录
+    purpose: [reception-leads]
+    excerpt: "第334章'三年之约'兑现,萧炎于云岚宗废墟宣告'我来了'"
+  - source_id: SRC-10
+    tier: C
+    url: http://zonghe.zhoukan.cc/zonghe/2025/0807/352629.html
+    title: 环球周刊网:莫欺少年穷是什么梗
+    accessed: 2026-08-29
+    access_method: 搜索摘录
+    purpose: [reader-experience, public-memory]
+    excerpt: "萧炎被退婚时喊出……成为名场面,这句话也因此在二次元圈大火"
+
+triage_notes:
+  - 本 bundle 无 Tier A（当时正版全文在付费墙内；天涯书库按**当时合同**计 D）。2026-08-29 用户裁决已取消「盗版站不得为 A」；本 0.1-legacy bundle 未按新合同重分级。正文仍不入库（§13）。
+  - Tier B 交叉基础:SRC-01(小说向)与 SRC-02(动画向)相互独立,但媒介不同,交叉确认仅适用于两者一致且不涉媒介改编差异的核心事件;
+  - 已知来源间张力(留给提取阶段裁定):谁认出萧炎身份(SRC-01 葛叶 / SRC-07 云棱);第 334 章内容(SRC-03 决斗开场 / SRC-09 "云岚宗废墟");决斗细节(SRC-07 的招式序列仅 Tier D)。

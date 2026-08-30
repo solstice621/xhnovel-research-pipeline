@@ -1,0 +1,58 @@
+{
+  "request_id": "REQ-LIVE-RQ003",
+  "query": "盟约",
+  "provider": "SRUN-LOCAL-001",
+  "hit_titles": [
+    {
+      "rank": 1,
+      "title": "盟约者",
+      "selection_status": "SELECTED",
+      "selection_reason": "wikipedia encyclopedia"
+    },
+    {
+      "rank": 2,
+      "title": "盟約的利維坦",
+      "selection_status": "SELECTED",
+      "selection_reason": "wikipedia encyclopedia"
+    },
+    {
+      "rank": 3,
+      "title": "盟約人生 (阿拉斯加州)",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    },
+    {
+      "rank": 4,
+      "title": "盟約",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    },
+    {
+      "rank": 5,
+      "title": "盟約 (電影)",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    },
+    {
+      "rank": 6,
+      "title": "盟約者式五型巡航坦克",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    }
+  ],
+  "stop_reason": "coverage_reached",
+  "campaign_status": "COMPLETED",
+  "campaign_report": "NO_QUALIFYING_CASE_FOUND",
+  "live_claim_count": 0,
+  "export_id": "EXP-LIVE-RQ003",
+  "export_hash": "sha256:11c3b3a0be328925d3e7a9e16779b190405cbdf9ca294cb88d1585f305cde065",
+  "bundle_hash": "sha256:9346a8f69ca9c71accf714ba12799873a64946b6d480ba1339db5846a3422154",
+  "page_retrievals": [
+    {
+      "id": "RET-WIKI-01-01-PAGE",
+      "status": "FETCHED",
+      "http_status": 200,
+      "final_url": "https://zh.wikipedia.org/wiki/%E7%9B%9F%E7%BA%A6%E8%80%85"
+    }
+  ]
+}

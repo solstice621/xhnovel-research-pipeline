@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1-draft-frozen",
+  "export_id": "EXP-LIVE-RQ002",
+  "export_hash": "sha256:e8c4ca5fe0a7e65f942a38187d3255a0de57f78053cbf0c79c3e699606680ae3",
+  "producer": {
+    "repository_commit": "3abd807be2afc70e1c7e54b5c0cd08b131431f63",
+    "collector_build_id": "collector-v0.1",
+    "parser_build_id": "parser-html-pdf-v0.1",
+    "extractor_build_id": "BLD-MOCK-DETERMINISTIC-V1"
+  },
+  "origin_request": {
+    "schema_version": "0.1-draft-frozen",
+    "request_id": "REQ-LIVE-RQ002",
+    "origin": {
+      "repository": "solstice621/xuanhuan-sandbox",
+      "commit": "5a2b35e8d2c62ee4827b5df491e70322575e4404",
+      "external_question_id": "RQ-002"
+    },
+    "mode": "EXPLORE",
+    "discovery_brief": "争夺 持有 物品 同时控制",
+    "search_constraints": {
+      "language": "zh",
+      "query_text": "青铜",
+      "false_positives": [
+        "物品放在台上无人握持",
+        "Take完成后再夺回",
+        "争夺的是人不是物品"
+      ]
+    },
+    "extraction_profile": "xuanhuan-gameplay-scene/v1",
+    "budget": {
+      "max_queries": 1,
+      "max_fetches": 1,
+      "max_bytes": 2000000
+    },
+    "created_at": "2026-08-29T00:00:00Z",
+    "supersedes": null
+  },
+  "bundle": {
+    "bundle_id": "BND-LOCAL-001",
+    "bundle_hash": "sha256:b415dd784d6f2b909854983574d4cfb2a0e8386130b0254cef14e7b9448060c9"
+  },
+  "claims": [],
+  "scene_facts": {
+    "claims": [],
+    "campaign_report": "NO_QUALIFYING_CASE_FOUND"
+  },
+  "policies": {
+    "policy_bundle_hash": "sha256:cd2b515a57898ab08e7d9e29a4fcee54384078314506d377a5e791b1cf6bf958"
+  },
+  "assurance": {
+    "level": "UNQUALIFIED",
+    "qualification_run_id": "QRUN-LOCAL-001",
+    "auditability": "FULL"
+  },
+  "artifact_manifest": [
+    {
+      "artifact_id": "sha256:e24e46b6a42bbae6aae0f65382ec50e3e4d8f15458a783287c72f918fe61052f",
+      "byte_length": 3989,
+      "durability_status": "LOCAL",
+      "availability": "AVAILABLE"
+    },
+    {
+      "artifact_id": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byte_length": 0,
+      "durability_status": "LOCAL",
+      "availability": "AVAILABLE"
+    },
+    {
+      "artifact_id": "sha256:c6d72a2643b2cfed1fe5ccd568916f8ea80f0222c5d1c3562be12854ef768ae7",
+      "byte_length": 162257,
+      "durability_status": "LOCAL",
+      "availability": "AVAILABLE"
+    }
+  ],
+  "created_at": "2026-08-29T00:00:00Z",
+  "revocation": null
+}

@@ -1,0 +1,9 @@
+schema_version: "0.1-draft-frozen"
+id: retention-v1
+durability: [EPHEMERAL, LOCAL, DURABLE]
+rules:
+  - formal eligible bundles cannot depend on EPHEMERAL artifacts
+  - /tmp is EPHEMERAL
+  - metadata-only or excerpt-only retention must set auditability LIMITED_BY_RETENTION_POLICY
+  - retention is independent of tier
+  - GC must not delete objects cited by a Snapshot, Bundle or Export; retention delete writes a tombstone

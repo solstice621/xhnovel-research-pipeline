@@ -1,0 +1,21 @@
+schema_version: "0.1-draft-frozen"
+id: isolation-v1
+extraction_may_read:
+  - frozen EvidenceBundle members listed in input_manifest
+  - the declared profile files whose hashes are in the manifest
+extraction_must_not_read:
+  - git worktree except those hashes
+  - consumer Project Context
+  - undeclared tools
+  - network
+forbidden_context_tokens:
+  - M-1
+  - NOT_A_GAP
+  - current_holder
+  - current_controller
+  - COVERED
+  - PARTIAL
+  - ABSENT
+  - REJECTED_BY_CONSTRAINT
+  - design-map
+source_text_is_untrusted: true

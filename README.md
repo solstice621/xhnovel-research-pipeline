@@ -2,7 +2,8 @@
 
 > 面向玄幻小说研究的自动搜索、证据收集、机械解析与可审计事实提取管线。
 
-**当前状态：BOOTSTRAP / Architecture & Data Model**  
+**当前状态：BOOTSTRAP / Phase 0–1。** `cursor/implement-plan-g0-g12-c90d` 的 `v1.0.0` 与 G0–G12 complete 声明已撤回；历史发布记录不能作为发布或 qualification 证据。当前 deterministic mock 的资格结果只用于本地 fixture 验证，不代表生产 LLM 已资格化。
+
 当前只冻结仓库使命、责任边界与实施纪律；实现语言、搜索 Provider、模型与持久化后端尚未冻结。
 
 ---
@@ -110,6 +111,11 @@ Artifact
 
 Source / Retrieval
 └─ OriginAssessment
+
+Frozen collection inputs
+├─ CollectionDecision (collector)
+├─ CollectionDecision (blind reviewer)
+└─ CollectionReview (deterministic comparison)
 
 SearchCampaign + Retrievals + Artifacts
 └─ CollectionSnapshot

@@ -1,0 +1,21 @@
+{
+  "provider_id": "fake-local",
+  "provider_build_id": "fake-provider-v1",
+  "pages": [
+    {
+      "page": 1,
+      "hits": [
+        {
+          "hit_id": "HIT-N1",
+          "rank": 1,
+          "url": "https://forum.example/thread",
+          "title": "邻接讨论",
+          "snippet": "有人记得夺宝桥段。",
+          "selection_status": "REJECTED",
+          "selection_reason": "adjacent discussion, not contested take of a held item",
+          "platform_id": "forum"
+        }
+      ]
+    }
+  ]
+}

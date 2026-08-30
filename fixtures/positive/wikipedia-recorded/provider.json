@@ -1,0 +1,36 @@
+{
+  "provider_id": "wikipedia-opensearch",
+  "provider_build_id": "wikipedia-opensearch-v1",
+  "pages": [
+    {
+      "page": 1,
+      "query": "青铜",
+      "hits": [
+        {
+          "hit_id": "HIT-WIKI-01-01",
+          "rank": 1,
+          "url": "https://zh.wikipedia.org/wiki/%E9%9D%92%E9%93%9C",
+          "title": "青铜",
+          "snippet": "青铜是铜与锡等的合金。",
+          "selection_status": "SELECTED",
+          "selection_reason": "encyclopedia candidate",
+          "platform_id": "zh.wikipedia.org",
+          "tier": "B",
+          "access_kind": "full_page"
+        },
+        {
+          "hit_id": "HIT-WIKI-01-02",
+          "rank": 2,
+          "url": "https://zh.wikipedia.org/wiki/%E9%9D%92%E9%93%9C%E6%97%B6%E4%BB%A3",
+          "title": "青铜时代",
+          "snippet": "考古学年代分期。",
+          "selection_status": "REJECTED",
+          "selection_reason": "not a contested-take case",
+          "platform_id": "zh.wikipedia.org",
+          "tier": "B",
+          "access_kind": "full_page"
+        }
+      ]
+    }
+  ]
+}

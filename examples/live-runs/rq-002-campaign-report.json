@@ -1,0 +1,82 @@
+{
+  "request_id": "REQ-LIVE-RQ002",
+  "query": "青铜",
+  "provider": "SRUN-LOCAL-001",
+  "hit_titles": [
+    {
+      "rank": 1,
+      "title": "青铜",
+      "selection_status": "SELECTED",
+      "selection_reason": "wikipedia encyclopedia"
+    },
+    {
+      "rank": 2,
+      "title": "青铜时代",
+      "selection_status": "SELECTED",
+      "selection_reason": "wikipedia encyclopedia"
+    },
+    {
+      "rank": 3,
+      "title": "青铜器修复及复制技艺",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    },
+    {
+      "rank": 4,
+      "title": "青铜骑士",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    },
+    {
+      "rank": 5,
+      "title": "青铜峡市",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    },
+    {
+      "rank": 6,
+      "title": "青铜器",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    },
+    {
+      "rank": 7,
+      "title": "青铜峡水库",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    },
+    {
+      "rank": 8,
+      "title": "青铜蛙",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    },
+    {
+      "rank": 9,
+      "title": "青铜峡事件",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    },
+    {
+      "rank": 10,
+      "title": "青铜葵花",
+      "selection_status": "REJECTED",
+      "selection_reason": "over fetch budget"
+    }
+  ],
+  "stop_reason": "coverage_reached",
+  "campaign_status": "COMPLETED",
+  "campaign_report": "NO_QUALIFYING_CASE_FOUND",
+  "live_claim_count": 0,
+  "export_id": "EXP-LIVE-RQ002",
+  "export_hash": "sha256:e8c4ca5fe0a7e65f942a38187d3255a0de57f78053cbf0c79c3e699606680ae3",
+  "bundle_hash": "sha256:b415dd784d6f2b909854983574d4cfb2a0e8386130b0254cef14e7b9448060c9",
+  "page_retrievals": [
+    {
+      "id": "RET-WIKI-01-01-PAGE",
+      "status": "FETCHED",
+      "http_status": 200,
+      "final_url": "https://zh.wikipedia.org/wiki/%E9%9D%92%E9%93%9C"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/collection-decision.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "decision_id",
+    "task",
+    "subject_ids",
+    "input_artifact_ids",
+    "input_manifest_hash",
+    "assessor_role",
+    "assessor_build_id",
+    "output_artifact_id",
+    "outcome",
+    "confidence",
+    "basis",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "decision_id": {
+      "type": "string",
+      "pattern": "^CDEC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "task": {
+      "enum": [
+        "RELEVANCE",
+        "TRIAGE",
+        "ORIGIN",
+        "CHAPTER_IDENTITY",
+        "STOP"
+      ]
+    },
+    "subject_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "input_artifact_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^sha256:[0-9a-f]{64}$"
+      }
+    },
+    "input_manifest_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "assessor_role": {
+      "enum": [
+        "COLLECTOR",
+        "REVIEWER"
+      ]
+    },
+    "assessor_build_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "output_artifact_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "disposition": {
+          "enum": [
+            "SELECTED",
+            "REJECTED",
+            "LEAD_ONLY",
+            "QUARANTINED",
+            "CONTINUE",
+            "STOP"
+          ]
+        },
+        "tier": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "access_legitimacy": {
+          "enum": [
+            "UNKNOWN",
+            "AUTHORIZED",
+            "UNAUTHORIZED_REPRINT",
+            "PUBLIC",
+            "RESTRICTED"
+          ]
+        },
+        "origin_relation": {
+          "enum": [
+            "SAME_ORIGIN",
+            "LIKELY_SAME_ORIGIN",
+            "INDEPENDENT",
+            "UNKNOWN"
+          ]
+        },
+        "chapter_key": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "confidence": {
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    "basis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/discovery-hit.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "hit_id",
+    "search_run_id",
+    "rank",
+    "url",
+    "title",
+    "snippet",
+    "selection_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "hit_id": {
+      "type": "string",
+      "pattern": "^HIT-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "search_run_id": {
+      "type": "string",
+      "pattern": "^SRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "rank": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "snippet": {
+      "type": "string"
+    },
+    "selection_status": {
+      "enum": [
+        "SELECTED",
+        "REJECTED",
+        "DUPLICATE",
+        "UNREACHABLE"
+      ]
+    },
+    "selection_reason": {
+      "type": "string"
+    }
+  }
+}

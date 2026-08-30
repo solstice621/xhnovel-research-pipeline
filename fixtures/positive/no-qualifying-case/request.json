@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1-draft-frozen",
+  "request_id": "REQ-EMPTY-001",
+  "origin": {
+    "repository": "solstice621/xuanhuan-sandbox",
+    "commit": "5a2b35e8d2c62ee4827b5df491e70322575e4404",
+    "external_question_id": "RQ-002"
+  },
+  "mode": "CHALLENGE",
+  "discovery_brief": "严格条件下的争夺结算案例；本夹具故意没有合格全文页。",
+  "search_constraints": {"language": "zh"},
+  "extraction_profile": "xuanhuan-gameplay-scene/v1",
+  "budget": {"max_queries": 1, "max_fetches": 1, "max_bytes": 2000000},
+  "created_at": "2026-08-29T00:00:00Z",
+  "supersedes": null
+}

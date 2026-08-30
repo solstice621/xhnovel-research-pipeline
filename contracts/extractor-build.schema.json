@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/extractor-build.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "extractor_build_id",
+    "model",
+    "prompt_template_hash",
+    "parameters",
+    "profile_version",
+    "executor_build_id",
+    "tool_policy_hash",
+    "repository_commit",
+    "source_tree_hash",
+    "created_at",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "extractor_build_id": {
+      "type": "string",
+      "pattern": "^BLD-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "model": {
+      "type": "string"
+    },
+    "prompt_template_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "profile_version": {
+      "type": "string"
+    },
+    "executor_build_id": {
+      "type": "string"
+    },
+    "tool_policy_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "repository_commit": {
+      "type": "string"
+    },
+    "source_tree_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "status": {
+      "enum": [
+        "UNQUALIFIED",
+        "QUALIFIED",
+        "INVALIDATED"
+      ]
+    }
+  }
+}

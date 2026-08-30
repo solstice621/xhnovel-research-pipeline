@@ -1,0 +1,282 @@
+# EvidenceBundle — SCENE-2026-08-29-002
+# 状态: PILOT；本 bundle 不计收敛阈值
+# 纠偏: 检索拆分、C-1 并列、夹具三分项。历史隔离产物为 LEGACY_UNRESOLVED，不是 live FactClaim。
+
+schema_version: "0.2"
+qualification_eligible: false
+qualification_credit: NONE
+isolation_status: SUPERSEDED
+adversarial_fixture: FAIL
+reproducibility: INCONCLUSIVE
+canonical_exclusions:
+  participants: ["墨阑"]
+  situation: ["击杀墨承后向墨家索人", "向墨家索人"]
+  key_decision: ["交接未完成", "未接到"]
+
+scene:
+  scene_id: SCENE-2026-08-29-002
+  research_question: RQ-002 争夺他人当前持有／控制的实体怎样结算?
+  mode: EXPLORE
+  work: 斗破苍穹(天蚕土豆,起点中文网连载玄幻小说)
+  approximate_chapter: 中文章序约第 256—262 章（目录定位见 SRC-15）；授权英译章序见 SRC-11～SRC-13
+  participants: 青鳞（被争夺的人，非物品）、墨承、萧炎、海波东、绿蛮、白牙、纳兰嫣然、葛叶、墨家
+  location: 墨家寿宴大厅；随后为空域追击
+  situation: 墨承觊觎碧蛇三花瞳掳走青鳞；记载有向墨承索人遭拒并击杀墨承。击杀后组织是否交人、如何交人仍未知或冲突（C-1）。不得把任一 C-1 分支写成已决事实。
+  key_decision: 本案例未确认一次成功的物品 Take。萧炎是否成为持有者见 timeline.branches（C-1 CONFLICTING），本字段不选边。
+  result: 墨承死亡；有口径写青鳞最终在天蛇府。C-1 未决。以上不是 live FactClaim。
+  timeline:
+    status: CONFLICTING
+    conflict_id: C-1
+    question: 青鳞是否曾实际转移到萧炎一方手中
+    branches:
+      A:
+        label: 已到手——天蛇府从萧炎/海波东手中劫走
+        grade: CONFLICTING
+        retrieval_ids: [SRC-01-PAGE, SRC-01-SNIPPET]
+      B:
+        label: 未到手——正要救回时被抢走 / 捷足先登
+        grade: CONFLICTING
+        retrieval_ids: [SRC-01-SNIPPET, SRC-04-PAGE]
+      D_lead:
+        label: 交接未完成时从递交者处截走
+        grade: INFERRED
+        tier: D
+        retrieval_ids: [SRC-14-REPRINT]
+        role: branch_lead_only
+        not_canonical_scene_definition: true
+        canonical_forbidden_tokens: ["交接未完成", "未接到"]
+
+scope_caveats:
+  - 被争夺对象是人物而非物品。本案例只作邻接线索，不得确认 H-A，不得推进 EC-1～EC-4。
+  - SRC-07～SRC-10 是其他作品套路材料，全部 Tier D。
+  - SRC-11～SRC-15 是纠偏阶段后加，没有新的隔离提取 RUN；不得产出 FactClaim。
+  - 仅 D 级出现的人物不得写入 participants。
+
+correction_2026_08_29:
+  adversarial_fixture: FAIL
+  reproducibility: INCONCLUSIVE
+  qualification_credit: NONE
+  confirmed_count_effective: 0
+  isolated_extraction_sources: [SRC-01, SRC-02, SRC-03, SRC-04, SRC-05, SRC-06, SRC-07, SRC-08, SRC-09, SRC-10]
+  post_isolation_sources: [SRC-11, SRC-12, SRC-13, SRC-14, SRC-15]
+  claims_ref: claims.yaml
+
+materials:
+  file: /tmp/scene-002-sources.md
+  sha256: 7f08fb34307c7f1828e1da7b7fa291bd477fbde0357480e93ab0bde619cbf1e4
+  note: 截断指纹；精确包未入库。页面级 hash 原记录缺失。
+
+sources:
+  - source_id: SRC-01
+    platform: 百度百科
+    url: https://baike.baidu.com/item/青鳞/3281499
+    title: 青鳞(玄幻小说《斗破苍穹》中的角色)_百度百科
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-01-PAGE
+        access_kind: full_page
+        tier: B
+        hash: null
+        hash_note: missing-from-37fd364
+        purpose: [event-facts]
+        excerpt: 从萧炎、海波东手中劫下带回天蛇府培养
+      - retrieval_id: SRC-01-SNIPPET
+        access_kind: search_snippet
+        tier: D
+        hash: null
+        hash_note: snippet-has-no-page-hash
+        purpose: [discovery-lead-only]
+        excerpt: 逼迫墨家交出了青鳞……然而青鳞却被天蛇府捷足先登
+
+  - source_id: SRC-02
+    platform: 快懂百科
+    url: https://www.baike.com/wikiid/4000946432153676366
+    title: 青鳞-快懂百科
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-02-SNIPPET
+        access_kind: search_snippet
+        tier: D
+        hash: null
+        purpose: [discovery-lead-only]
+        excerpt: 天蛇府的绿蛮和八翼黑蛇皇白牙出现,青鳞被天蛇府劫走
+
+  - source_id: SRC-03
+    platform: 微信百科
+    url: https://baike.weixin.qq.com/v35964328.htm
+    title: 青鳞_百科
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-03-SNIPPET
+        access_kind: search_snippet
+        tier: D
+        hash: null
+        purpose: [discovery-lead-only]
+        excerpt: 被墨家大长老墨承觊觎双眼而抓获……之后被天蛇府带走培养
+
+  - source_id: SRC-04
+    platform: 百度百科
+    same_platform_as: SRC-01
+    url: https://baike.baidu.com/item/纳兰嫣然/3280885
+    title: 纳兰嫣然(玄幻小说《斗破苍穹》中的角色)_百度百科
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-04-PAGE
+        access_kind: full_page
+        tier: B
+        hash: null
+        hash_note: missing-from-37fd364
+        purpose: [event-facts]
+        excerpt: 萧炎正要救回青鳞，天蛇府的斗皇绿蛮半路杀出，抢走了青鳞
+
+  - source_id: SRC-05
+    url: https://bangumi.tv/character/176210
+    title: 青鳞 | Bangumi 番组计划
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-05-SNIPPET
+        access_kind: search_snippet
+        tier: D
+        hash: null
+        purpose: [discovery-lead-only]
+        excerpt: 联手自萧炎、海波东手中劫下并带回天蛇府培养
+
+  - source_id: SRC-06
+    url: https://www.hongxiu.com/ask/qrhvxjdxazf
+    title: 斗破苍穹青鳞介绍 - 红袖读书问答
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-06-SNIPPET
+        access_kind: search_snippet
+        tier: D
+        hash: null
+        purpose: [discovery-lead-only]
+        excerpt: 萧炎为救她大闹墨家并击杀墨承
+
+  - source_id: SRC-07
+    url: https://www.hobtm.com/info/162384/168.html
+    title: 《修仙从仙丹入体开始》第175章 转载(其他作品,套路线索)
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-07-SNIPPET
+        access_kind: search_snippet
+        tier: D
+        hash: null
+        purpose: [trope-lead-only]
+        excerpt: 只要我的神识比他的神识强大我就能轻松抹去这戒指上的灵魂印记
+
+  - source_id: SRC-08
+    url: http://www.fs0.net/bCEbdG/lnlSnnn%20.html
+    title: 《都穿越了多捞点》第617章 转载(其他作品,设定说明)
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-08-SNIPPET
+        access_kind: search_snippet
+        tier: D
+        hash: null
+        purpose: [trope-lead-only]
+        excerpt: 若是你的修为低于这神识印记的主人……你的神识也会遭受到反噬
+
+  - source_id: SRC-09
+    url: https://www.xinjianpan.com/txt/qtu4/8f7.html
+    title: 《神灭珠》第429章 转载(其他作品,套路线索)
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-09-SNIPPET
+        access_kind: search_snippet
+        tier: D
+        hash: null
+        purpose: [trope-lead-only]
+        excerpt: 由于储物袋的主人早已陨落,其与储物袋之间的联系也随之消散
+
+  - source_id: SRC-10
+    url: https://www.sanyewu.com/95236/95236788/438851578_2.html
+    title: 《一亩仙田百倍速》第106章杀人夺宝转载(其他作品,套路线索)
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-10-SNIPPET
+        access_kind: search_snippet
+        tier: D
+        hash: null
+        purpose: [trope-lead-only]
+        excerpt: 神识一扫,确认对方身上再无其他有价值物品,也并无追踪印记之类的隐患
+
+  - source_id: SRC-11
+    platform: WuxiaWorld
+    post_isolation: true
+    url: https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-261/
+    title: "Battle Through the Heavens - Chapter 261: The Huge Fight In the Sky (Teaser)"
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-11-TEASER
+        access_kind: licensed_teaser
+        tier: A
+        hash: null
+        purpose: [researcher-note-only]
+        excerpt: I am carrying someone with me and also don't wish to wind up fighting them.
+        note: 公开预览只证明绿蛮携带「某人」且不愿恋战；「某人=青鳞」与「白牙=殿后」不得标 CONFIRMED。
+
+  - source_id: SRC-12
+    platform: WuxiaWorld
+    post_isolation: true
+    url: https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-262/
+    title: "Battle Through the Heavens - Chapter 262: Merging the Heavenly Flames, Angry Buddha Lotus Flame! (Teaser)"
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-12-TEASER
+        access_kind: licensed_teaser
+        tier: A
+        hash: null
+        purpose: [researcher-note-only]
+        excerpt: Hai Bo Dong may have indeed held something back, but he and Qing Lin were not close.
+        note: 预览证明对峙者是八翼黑蛇皇；不直接证明战术职能是殿后。
+
+  - source_id: SRC-13
+    platform: WebNovel
+    post_isolation: true
+    url: https://www.webnovel.com/book/8093990805004205
+    title: Battle Through The Heavens — WebNovel 官方目录（章名定位）
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-13-CATALOG
+        access_kind: catalog_page
+        tier: B
+        hash: null
+        purpose: [chapter-location]
+        excerpt: "260 The Huge Fight In the Sky / 262 Terrifying Destructive Force"
+
+  - source_id: SRC-14
+    platform: 天涯书库
+    post_isolation: true
+    url: https://www.tianyabooks.com/net/tctd01/62375.html
+    title: 斗破苍穹 第两百五十八章 神秘的青衣女人（转载，正文不入库）
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-14-REPRINT
+        access_kind: unauthorized_reprint
+        tier: D
+        hash: null
+        purpose: [branch-lead-only]
+        excerpt: 伸出手来，想要将青鳞接过
+        note: 仅作 C-1 的 D 级 branch lead，不得写入 scene 主定义。
+
+  - source_id: SRC-15
+    platform: 得到APP
+    post_isolation: true
+    url: https://www.dedao.cn/ebook/detail?id=ORa2P4NNLqmQPG2178z5gvkDndlOxWyYOpPWajK6BEVXYRrJpA9M4oybeZpqAKQg
+    title: 《斗破苍穹》电子书目录（章名定位）
+    accessed: 2026-08-29
+    retrievals:
+      - retrieval_id: SRC-15-CATALOG
+        access_kind: catalog_page
+        tier: D
+        hash: null
+        purpose: [chapter-location]
+        excerpt: 第二百五十六章 斩杀墨承 / 第二百五十七章 神秘的青衣女人
+
+triage_notes:
+  - 无完整正版中文章文入库。SRC-11/12 公开预览句可对那几句本身计 A，但不能把未读全文算进 FactClaim。
+  - 2026-08-29 用户裁决：不对盗版网站做分层限制。SRC-14 仍标 D 是本 tombstone 当时按旧合同只留短摘录的历史分级，不是当前合同的强制门；未重跑隔离，不得据此把 N-D1 升为 ACTIVE/CONFIRMED。
+  - 完整百科页只有 SRC-01-PAGE 与 SRC-04-PAGE，同属百度，不能独立交叉。live CONFIRMED 计数为 0。
+  - 新的隔离提取必须引用当时实际读取的 retrieval_id。本 scene 的历史行不得把事后 PAGE/SNIPPET 绑定当成已验证溯源。
+  - C-1 在 scene.timeline.branches 并列；D_lead 不是场景主定义。canonical participants 不含墨阑。

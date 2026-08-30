@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1-draft-frozen",
+  "request_id": "REQ-FIXTURE-001",
+  "origin": {
+    "repository": "solstice621/xuanhuan-sandbox",
+    "commit": "5a2b35e8d2c62ee4827b5df491e70322575e4404",
+    "external_question_id": "RQ-002"
+  },
+  "mode": "EXPLORE",
+  "discovery_brief": "寻找原作中两个具身角色对同一被握持物品同时施加相反控制并产生可观察结算的案例。对象必须是物品不是人。",
+  "search_constraints": {
+    "language": "zh",
+    "false_positives": ["物品放在台上无人握持", "Take完成后再夺回"]
+  },
+  "extraction_profile": "xuanhuan-gameplay-scene/v1",
+  "budget": {"max_queries": 2, "max_fetches": 4, "max_bytes": 2000000},
+  "created_at": "2026-08-29T00:00:00Z",
+  "supersedes": null
+}

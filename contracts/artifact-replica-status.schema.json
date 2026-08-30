@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/artifact-replica-status.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "backend_id",
+    "integrity_status",
+    "availability"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "artifact_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "backend_id": {
+      "type": "string"
+    },
+    "storage_uri": {
+      "type": "string"
+    },
+    "integrity_status": {
+      "enum": [
+        "OK",
+        "MISSING",
+        "CORRUPT"
+      ]
+    },
+    "last_verified_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "availability": {
+      "enum": [
+        "AVAILABLE",
+        "MISSING",
+        "CORRUPT",
+        "RETENTION_DELETED"
+      ]
+    }
+  }
+}

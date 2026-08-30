@@ -1,0 +1,19 @@
+schema_version: "0.1-draft-frozen"
+id: claim-grading-v1
+kinds: [ORIGINAL_FACT, RECEPTION]
+grades: [CONFIRMED, SUPPORTED, INFERRED, UNKNOWN, CONFLICTING]
+live_statuses: [ACTIVE]
+dead_statuses: [SUPERSEDED, ARCHIVED]
+rules:
+  ORIGINAL_FACT:
+    CONFIRMED:
+      - one non-snippet Tier A
+      - or two INDEPENDENT non-snippet Tier B
+    SUPPORTED:
+      - one non-snippet Tier A or B
+      - never snippet or Tier D alone
+  RECEPTION:
+    CONFIRMED: two INDEPENDENT non-snippet Tier C
+    SUPPORTED: one non-snippet Tier C
+conflicting_must_not_be_silently_canonicalized: true
+live_claim_requires_segment: true
