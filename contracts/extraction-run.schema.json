@@ -63,7 +63,11 @@
       "additionalProperties": false,
       "required": [
         "segment_ids",
-        "allowed_context_artifact_ids"
+        "system_prompt_hash",
+        "user_prompt_hash",
+        "tool_input_hashes",
+        "allowed_context_artifact_ids",
+        "forbidden_context_policy_hash"
       ],
       "properties": {
         "segment_ids": {
@@ -106,7 +110,9 @@
       "required": [
         "executor_build_id",
         "context_isolation_mode",
-        "model_snapshot"
+        "model_snapshot",
+        "parameters",
+        "tool_policy_hash"
       ],
       "properties": {
         "executor_build_id": {
@@ -120,6 +126,13 @@
         },
         "model_snapshot": {
           "type": "string"
+        },
+        "parameters": {
+          "type": "object"
+        },
+        "tool_policy_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
         }
       }
     },

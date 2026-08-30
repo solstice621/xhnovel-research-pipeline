@@ -12,6 +12,8 @@
     "profile_version",
     "executor_build_id",
     "tool_policy_hash",
+    "repository_commit",
+    "source_tree_hash",
     "created_at",
     "status"
   ],
@@ -45,6 +47,10 @@
     },
     "repository_commit": {
       "type": "string"
+    },
+    "source_tree_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
     },
     "created_at": {
       "type": "string",

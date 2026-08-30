@@ -24,20 +24,27 @@
 
 ## 2. 当前阶段
 
-当前状态：**v1.0.0（G0–G12 门已用可重跑命令与 fixture 核过）。** 生产 LLM 与默认 CI 的 live 网络仍不跑。
-
-sandbox 旧 `research/scenes` 与 checker 已退出主路径（两次真实 import 成功之后）。本仓仍不得把 Wikipedia 全文提交 Git，也不得把 Project Context 注入 Extraction。
+当前状态：**BOOTSTRAP / Phase 0–1**。
 
 当前允许的主要工作：
 
-- 生产 LLM 提取器资格（新 build，不改 mock 合同）；
-- operator 运行与 incident 响应。
+- 固定旧 `xuanhuan-sandbox/research` 迁移基线；
+- 提炼旧 checker / fixture 的行为不变量；
+- 设计语言无关的数据模型；
+- 定义状态机、canonicalization、hash domain；
+- 定义 source / independence / retention / qualification / export policy；
+- 准备完全本地的端到端 fixture。
 
 当前**不要抢跑**：
 
-- 不先做数据库、UI、分布式任务系统；
-- 不把旧 `research/` 目录结构直接复制进来；
-- 不把 Wikipedia 全文提交 Git。
+- 不先接真实搜索 Provider；
+- 不先写生产 LLM prompt；
+- 不先做数据库；
+- 不先做 UI；
+- 不先做分布式任务系统；
+- 不把旧 `research/` 目录结构直接复制进来。
+
+只有前一阶段验收门通过后，才进入后一阶段。
 
 ---
 
@@ -667,12 +674,15 @@ automatic game design decisions
 
 ## 17. 当前下一步
 
-当前最优先工作：
+当前最优先工作顺序固定为：
 
 ```text
-1. 生产 LLM 提取器资格（新 ExtractorBuild，不改 mock 合同）
-2. 按 docs/OPERATOR.md 与 docs/INCIDENT.md 运行
+1. 固定 legacy migration baseline
+2. 冻结 v0.1 domain model / state machine / hash rules
+3. 冻结 policy 与 export contract
+4. 选择技术栈并建立 validator/test 骨架
+5. 跑通完全本地、无网络的端到端 fixture
+6. 再接真实 Search Provider
 ```
 
-不要从数据库或 UI 开始。v1.0 明确不做这些。
-旧 sandbox scenes/checker 已退役；历史在 `fixtures/legacy/`。
+不要从搜索 API、LLM prompt 或数据库开始。

@@ -43,16 +43,21 @@ When hashing an object that contains its own hash field, omit that field
 
 ## 5. bundle_hash coverage
 
+The hash covers the canonical records in the frozen evidence closure, not only
+their ids:
+
 ```text
-segment_ids + each segment.normalized_text_hash
-retrieval_ids + artifact_ids
-triage_assessment_ids + origin_assessment_ids
-profile_id
-policy_bundle_hash
-selection_manifest
+request + campaign + query specs + search runs + discovery hits + collection snapshot
+sources + retrievals + retrieval/artifact edges + artifacts
+parse runs + parsed documents + segments
+triage assessments + origin assessments
+profile_id + policy_bundle_hash + selection_manifest
 ```
 
-Replica health, storage URI and last-verified time are excluded.
+The validator recomputes every Segment normalized-text hash before computing
+the bundle hash. Replica health and storage URI remain outside this domain.
+
+Changing any selected assessment or evidence record requires a new Bundle.
 
 ## 6. export_hash coverage
 

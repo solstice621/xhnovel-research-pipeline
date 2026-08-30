@@ -40,6 +40,14 @@ imported_at
 Re-import of the same hash is idempotent. Mapping files must not modify
 `export.yaml` bytes.
 
+Import requires an explicitly trusted producer catalog. Standalone
+`verify-export` checks only the envelope schema and self-hash; it is not an
+authentication result and cannot authorize import. The trusted catalog must
+contain the exact export and pass collection, evidence, qualification and
+export validation. Import must also receive the producer ArtifactStore (or a
+verified restored copy); `FULL` auditability is rejected when any manifest
+artifact is missing or corrupt.
+
 ## Compatibility
 
 Unknown future major versions are rejected. v1 readers may ignore unknown

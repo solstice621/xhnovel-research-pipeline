@@ -8,8 +8,11 @@ HttpFetcher allows only `http` and `https`. It refuses `file://`, `ftp://`,
 credentials-in-URL, redirects to blocked hosts, redirect loops, responses over
 `max_bytes`, and decompression bombs (compressed-to-uncompressed ratio cap).
 
-DNS results are checked against private, loopback, link-local, ULA and cloud
-metadata ranges before connect. Local fixture fetching is a separate
+Every DNS result must be a global unicast address. IPv4-mapped and transition
+addresses, multicast, private, loopback, link-local, site-local, reserved and
+unspecified ranges are refused. The fetcher connects directly to the validated
+socket address, retains the original hostname for HTTPS SNI/certificate checks,
+and does not use environment proxies. Local fixture fetching is a separate
 `FixtureFetcher` and never opens a socket.
 
 Do not bypass paywalls, login walls, CAPTCHAs or access control.

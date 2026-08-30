@@ -2,19 +2,9 @@
 
 > 面向玄幻小说研究的自动搜索、证据收集、机械解析与可审计事实提取管线。
 
-**当前状态：v1.0.0。** 合同 `0.1-draft-frozen` 为 export v1 兼容面。G0–G12 有可重跑命令与 fixture。默认 CI 离线。真实 Wikipedia 不进入 PR 必跑。Wikipedia 全文不进 Git。
+**当前状态：BOOTSTRAP / Phase 0–1。** `cursor/implement-plan-g0-g12-c90d` 的 `v1.0.0` 与 G0–G12 complete 声明已撤回；历史发布记录不能作为发布或 qualification 证据。当前 deterministic mock 的资格结果只用于本地 fixture 验证，不代表生产 LLM 已资格化。
 
-实现语言：Python 3.11+（ADR-0002）。默认 CI 离线。真实 Wikipedia 不进入 PR 必跑。
-
-```text
-python3 -m pip install -e ".[dev]"
-python3 tools/verify_migration_baseline.py
-xhnovel-pipeline run local-slice fixtures/positive/minimal-local
-xhnovel-pipeline qualify fixtures/positive/minimal-local
-```
-
-迁移基线 `legacy_contract_commit`：`ff8b8bb49685c411fd3b56bb61f9173e30680901`。
-SCENE-001 永不自动追认；SCENE-002 为 0 live FactClaim tombstone。
+当前只冻结仓库使命、责任边界与实施纪律；实现语言、搜索 Provider、模型与持久化后端尚未冻结。
 
 ---
 
@@ -121,6 +111,11 @@ Artifact
 
 Source / Retrieval
 └─ OriginAssessment
+
+Frozen collection inputs
+├─ CollectionDecision (collector)
+├─ CollectionDecision (blind reviewer)
+└─ CollectionReview (deterministic comparison)
 
 SearchCampaign + Retrievals + Artifacts
 └─ CollectionSnapshot
@@ -380,4 +375,6 @@ solstice621/xuanhuan-sandbox
 
 面向 AI Agent 的详细实现、证据、测试和修改纪律见 [`AGENTS.md`](./AGENTS.md)。
 
-当前最重要的下一步是生产 LLM 提取器资格（新 build），而不是再扩写收集合同。
+当前最重要的下一步不是写搜索器，而是：
+
+> **冻结迁移基线和 v0.1 数据合同，并用本地 fixture 证明不可变边界。**

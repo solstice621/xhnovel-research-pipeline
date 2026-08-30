@@ -3,7 +3,8 @@
   "builds": [
     {
       "extractor_build_id": "BLD-MOCK-DETERMINISTIC-V1",
-      "status": "QUALIFIED",
+      "status": "INVALIDATED",
+      "invalidation_reason": "withdrawn qualification basis after adversarial review",
       "prompt_template_hash": "sha256:c5ab1b65ae7b5b8b78449312faa6bb3e03893a1d3c22f3d3d956b237144f9bd0",
       "model": "mock-deterministic-v1",
       "profile_version": "xuanhuan-gameplay-scene/v1",

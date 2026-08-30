@@ -56,7 +56,7 @@
       }
     },
     "origin_request": {
-      "type": "object"
+      "$ref": "https://xhnovel.local/contracts/research-request.schema.json"
     },
     "bundle": {
       "type": "object",
@@ -79,14 +79,24 @@
     "claims": {
       "type": "array",
       "items": {
-        "type": "object"
+        "$ref": "https://xhnovel.local/contracts/claim.schema.json"
       }
     },
     "scene_facts": {
       "type": "object"
     },
     "policies": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_bundle_hash"
+      ],
+      "properties": {
+        "policy_bundle_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
     },
     "assurance": {
       "type": "object",

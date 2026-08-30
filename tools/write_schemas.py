@@ -40,6 +40,8 @@ idpat = {
     "RET": r"^RET-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "TRI": r"^TRI-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "ORI": r"^ORI-[A-Z0-9][A-Z0-9._:-]{1,}$",
+    "CDEC": r"^CDEC-[A-Z0-9][A-Z0-9._:-]{1,}$",
+    "CRV": r"^CRV-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "PRUN": r"^PRUN-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "DOC": r"^DOC-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "SEG": r"^SEG-[A-Z0-9][A-Z0-9._:-]{1,}$",
@@ -495,6 +497,132 @@ def main() -> None:
             ),
         },
     )
+    decision_outcome = obj(
+        [],
+        {
+            "disposition": {
+                "enum": [
+                    "SELECTED",
+                    "REJECTED",
+                    "LEAD_ONLY",
+                    "QUARANTINED",
+                    "CONTINUE",
+                    "STOP",
+                ]
+            },
+            "tier": {"enum": ["A", "B", "C", "D"]},
+            "access_legitimacy": {
+                "enum": [
+                    "UNKNOWN",
+                    "AUTHORIZED",
+                    "UNAUTHORIZED_REPRINT",
+                    "PUBLIC",
+                    "RESTRICTED",
+                ]
+            },
+            "origin_relation": {
+                "enum": ["SAME_ORIGIN", "LIKELY_SAME_ORIGIN", "INDEPENDENT", "UNKNOWN"]
+            },
+            "chapter_key": {"type": "string", "minLength": 1},
+        },
+        {"minProperties": 1},
+    )
+    dump(
+        "collection-decision.schema.json",
+        {
+            "$schema": SCHEMA,
+            "$id": f"{BASE}/collection-decision.schema.json",
+            **obj(
+                [
+                    "schema_version",
+                    "decision_id",
+                    "task",
+                    "subject_ids",
+                    "input_artifact_ids",
+                    "input_manifest_hash",
+                    "assessor_role",
+                    "assessor_build_id",
+                    "output_artifact_id",
+                    "outcome",
+                    "confidence",
+                    "basis",
+                    "created_at",
+                ],
+                {
+                    "schema_version": {"const": VERSION},
+                    "decision_id": sid("CDEC"),
+                    "task": {
+                        "enum": ["RELEVANCE", "TRIAGE", "ORIGIN", "CHAPTER_IDENTITY", "STOP"]
+                    },
+                    "subject_ids": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": True,
+                        "items": {"type": "string", "minLength": 1},
+                    },
+                    "input_artifact_ids": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": True,
+                        "items": {"type": "string", "pattern": art},
+                    },
+                    "input_manifest_hash": {"type": "string", "pattern": sha},
+                    "assessor_role": {"enum": ["COLLECTOR", "REVIEWER"]},
+                    "assessor_build_id": {"type": "string", "minLength": 1},
+                    "output_artifact_id": {"type": "string", "pattern": art},
+                    "outcome": decision_outcome,
+                    "confidence": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+                    "basis": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {"type": "string", "minLength": 1},
+                    },
+                    "created_at": {"type": "string", "pattern": iso},
+                },
+            ),
+        },
+    )
+    dump(
+        "collection-review.schema.json",
+        {
+            "$schema": SCHEMA,
+            "$id": f"{BASE}/collection-review.schema.json",
+            **obj(
+                [
+                    "schema_version",
+                    "review_id",
+                    "collector_decision_id",
+                    "reviewer_decision_id",
+                    "review_mode",
+                    "rubric_id",
+                    "rubric_artifact_id",
+                    "verdict",
+                    "disagreements",
+                    "conservative_outcome",
+                    "requires_adjudication",
+                    "reviewed_at",
+                ],
+                {
+                    "schema_version": {"const": VERSION},
+                    "review_id": sid("CRV"),
+                    "collector_decision_id": sid("CDEC"),
+                    "reviewer_decision_id": sid("CDEC"),
+                    "review_mode": {"const": "INDEPENDENT_BLIND"},
+                    "rubric_id": {"type": "string", "minLength": 1},
+                    "rubric_artifact_id": {"type": "string", "pattern": art},
+                    "verdict": {"enum": ["AGREE", "ESCALATED"]},
+                    "disagreements": {
+                        "type": "array",
+                        "uniqueItems": True,
+                        "items": {"type": "string", "minLength": 1},
+                    },
+                    "conservative_outcome": decision_outcome,
+                    "requires_adjudication": {"type": "boolean"},
+                    "reviewed_at": {"type": "string", "pattern": iso},
+                },
+            ),
+        },
+    )
     dump(
         "parse-run.schema.json",
         {
@@ -655,7 +783,22 @@ def main() -> None:
                     "artifact_ids": {"type": "array", "items": {"type": "string", "pattern": art}},
                     "triage_assessment_ids": {"type": "array", "items": sid("TRI")},
                     "origin_assessment_ids": {"type": "array", "items": sid("ORI")},
-                    "selection_manifest": {"type": "object"},
+                    "selection_manifest": {
+                        "type": "object",
+                        "required": ["selected_hit_ids", "rejected_hit_ids"],
+                        "properties": {
+                            "selected_hit_ids": {
+                                "type": "array",
+                                "items": sid("HIT"),
+                                "uniqueItems": True,
+                            },
+                            "rejected_hit_ids": {
+                                "type": "array",
+                                "items": sid("HIT"),
+                                "uniqueItems": True,
+                            },
+                        },
+                    },
                     "profile_id": {"type": "string"},
                     "policy_bundle_hash": {"type": "string", "pattern": sha},
                     "bundle_hash": {"type": "string", "pattern": sha},
@@ -698,7 +841,14 @@ def main() -> None:
                         },
                     ),
                     "input_manifest": obj(
-                        ["segment_ids", "allowed_context_artifact_ids"],
+                        [
+                            "segment_ids",
+                            "system_prompt_hash",
+                            "user_prompt_hash",
+                            "tool_input_hashes",
+                            "allowed_context_artifact_ids",
+                            "forbidden_context_policy_hash",
+                        ],
                         {
                             "segment_ids": {"type": "array", "items": sid("SEG")},
                             "system_prompt_hash": {"type": "string", "pattern": sha},
@@ -712,11 +862,19 @@ def main() -> None:
                         },
                     ),
                     "execution_environment": obj(
-                        ["executor_build_id", "context_isolation_mode", "model_snapshot"],
+                        [
+                            "executor_build_id",
+                            "context_isolation_mode",
+                            "model_snapshot",
+                            "parameters",
+                            "tool_policy_hash",
+                        ],
                         {
                             "executor_build_id": {"type": "string"},
                             "context_isolation_mode": {"enum": ["ALLOWLIST", "EMPTY"]},
                             "model_snapshot": {"type": "string"},
+                            "parameters": {"type": "object"},
+                            "tool_policy_hash": {"type": "string", "pattern": sha},
                         },
                     ),
                     "status": {"enum": ["QUEUED", "RUNNING", "SUCCEEDED", "FAILED", "INCONCLUSIVE"]},
@@ -734,6 +892,7 @@ def main() -> None:
                 [
                     "schema_version",
                     "claim_id",
+                    "extraction_run_id",
                     "kind",
                     "status",
                     "grade",
@@ -745,6 +904,7 @@ def main() -> None:
                 {
                     "schema_version": {"const": VERSION},
                     "claim_id": sid("CLM"),
+                    "extraction_run_id": sid("ERUN"),
                     "kind": {"enum": ["ORIGINAL_FACT", "RECEPTION"]},
                     "status": {"enum": ["ACTIVE", "SUPERSEDED", "ARCHIVED"]},
                     "grade": {"enum": ["CONFIRMED", "SUPPORTED", "INFERRED", "UNKNOWN", "CONFLICTING"]},
@@ -783,6 +943,8 @@ def main() -> None:
                     "profile_version",
                     "executor_build_id",
                     "tool_policy_hash",
+                    "repository_commit",
+                    "source_tree_hash",
                     "created_at",
                     "status",
                 ],
@@ -796,6 +958,7 @@ def main() -> None:
                     "executor_build_id": {"type": "string"},
                     "tool_policy_hash": {"type": "string", "pattern": sha},
                     "repository_commit": {"type": "string"},
+                    "source_tree_hash": {"type": "string", "pattern": sha},
                     "created_at": {"type": "string", "pattern": iso},
                     "status": {"enum": ["UNQUALIFIED", "QUALIFIED", "INVALIDATED"]},
                 },
@@ -812,9 +975,14 @@ def main() -> None:
                     "schema_version",
                     "qualification_run_id",
                     "extractor_build_id",
+                    "extractor_build_hash",
                     "fixture_suite_hash",
                     "run_a",
                     "run_b",
+                    "run_a_hash",
+                    "run_b_hash",
+                    "run_a_result",
+                    "run_b_result",
                     "adversarial_project_expectation",
                     "source_content_injection",
                     "reproducibility",
@@ -825,11 +993,72 @@ def main() -> None:
                     "schema_version": {"const": VERSION},
                     "qualification_run_id": sid("QRUN"),
                     "extractor_build_id": sid("BLD"),
+                    "extractor_build_hash": {"type": "string", "pattern": sha},
                     "fixture_suite_hash": {"type": "string", "pattern": sha},
                     "run_a": {"type": "string"},
                     "run_b": {"type": "string"},
                     "run_a_hash": {"type": "string", "pattern": sha},
                     "run_b_hash": {"type": "string", "pattern": sha},
+                    "run_a_result": obj(
+                        ["execution_id", "input_hash", "claims", "claim_set_hash", "result_hash"],
+                        {
+                            "execution_id": {"type": "string", "minLength": 1},
+                            "input_hash": {"type": "string", "pattern": sha},
+                            "claims": {
+                                "type": "array",
+                                "items": obj(
+                                    ["kind", "grade", "statement", "profile_schema", "profile_payload"],
+                                    {
+                                        "kind": {"enum": ["ORIGINAL_FACT", "RECEPTION"]},
+                                        "grade": {
+                                            "enum": [
+                                                "CONFIRMED",
+                                                "SUPPORTED",
+                                                "INFERRED",
+                                                "UNKNOWN",
+                                                "CONFLICTING",
+                                            ]
+                                        },
+                                        "statement": {"type": "string", "minLength": 1},
+                                        "profile_schema": {"type": "string", "minLength": 1},
+                                        "profile_payload": {"type": "object"},
+                                    },
+                                ),
+                            },
+                            "claim_set_hash": {"type": "string", "pattern": sha},
+                            "result_hash": {"type": "string", "pattern": sha},
+                        },
+                    ),
+                    "run_b_result": obj(
+                        ["execution_id", "input_hash", "claims", "claim_set_hash", "result_hash"],
+                        {
+                            "execution_id": {"type": "string", "minLength": 1},
+                            "input_hash": {"type": "string", "pattern": sha},
+                            "claims": {
+                                "type": "array",
+                                "items": obj(
+                                    ["kind", "grade", "statement", "profile_schema", "profile_payload"],
+                                    {
+                                        "kind": {"enum": ["ORIGINAL_FACT", "RECEPTION"]},
+                                        "grade": {
+                                            "enum": [
+                                                "CONFIRMED",
+                                                "SUPPORTED",
+                                                "INFERRED",
+                                                "UNKNOWN",
+                                                "CONFLICTING",
+                                            ]
+                                        },
+                                        "statement": {"type": "string", "minLength": 1},
+                                        "profile_schema": {"type": "string", "minLength": 1},
+                                        "profile_payload": {"type": "object"},
+                                    },
+                                ),
+                            },
+                            "claim_set_hash": {"type": "string", "pattern": sha},
+                            "result_hash": {"type": "string", "pattern": sha},
+                        },
+                    ),
                     "adversarial_project_expectation": {"enum": ["PASS", "FAIL"]},
                     "source_content_injection": {"enum": ["PASS", "FAIL"]},
                     "reproducibility": {"enum": ["PASS", "INCONCLUSIVE"]},
@@ -854,6 +1083,8 @@ def main() -> None:
                         "enum": ["UNQUALIFIED", "BUILD_QUALIFIED", "BUNDLE_VERIFIED", "HUMAN_AUDITED"]
                     },
                     "policy_hash": {"type": "string", "pattern": sha},
+                    "qualification_run_id": sid("QRUN"),
+                    "extraction_run_id": sid("ERUN"),
                     "created_at": {"type": "string", "pattern": iso},
                 },
             ),
@@ -897,7 +1128,7 @@ def main() -> None:
                             "extractor_build_id": sid("BLD"),
                         },
                     ),
-                    "origin_request": {"type": "object"},
+                    "origin_request": {"$ref": f"{BASE}/research-request.schema.json"},
                     "bundle": obj(
                         ["bundle_id", "bundle_hash"],
                         {
@@ -905,9 +1136,15 @@ def main() -> None:
                             "bundle_hash": {"type": "string", "pattern": sha},
                         },
                     ),
-                    "claims": {"type": "array", "items": {"type": "object"}},
+                    "claims": {
+                        "type": "array",
+                        "items": {"$ref": f"{BASE}/claim.schema.json"},
+                    },
                     "scene_facts": {"type": "object"},
-                    "policies": {"type": "object"},
+                    "policies": obj(
+                        ["policy_bundle_hash"],
+                        {"policy_bundle_hash": {"type": "string", "pattern": sha}},
+                    ),
                     "assurance": obj(
                         ["level"],
                         {

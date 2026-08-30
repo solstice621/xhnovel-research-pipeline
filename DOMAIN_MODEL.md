@@ -8,7 +8,8 @@ canonical JSON (see `HASHING_AND_CANONICALIZATION.md`). `artifact_id` is
 `sha256:` plus the hex digest of the raw bytes.
 
 ID prefixes: `REQ-` `CAM-` `QRY-` `SRUN-` `HIT-` `SRC-` `RET-` `TRI-` `ORI-`
-`PRUN-` `DOC-` `SEG-` `SNP-` `BND-` `ERUN-` `CLM-` `BLD-` `QRUN-` `ASR-` `EXP-`.
+`CDEC-` `CRV-` `PRUN-` `DOC-` `SEG-` `SNP-` `BND-` `ERUN-` `CLM-` `BLD-`
+`QRUN-` `ASR-` `EXP-`.
 
 SearchRun uses `SRUN-` (not generic `RUN-`) so parse/extract runs cannot collide.
 
@@ -104,6 +105,20 @@ SearchRun uses `SRUN-` (not generic `RUN-`) so parse/extract runs cannot collide
 - `UNKNOWN` cannot satisfy dual-B confirmation.
 - Validator: collection + evidence (grading).
 
+## CollectionDecision / CollectionReview
+
+- A CollectionDecision is an immutable normalized proposal from either a
+  collector or an independent reviewer build.
+- It binds task, subject ids, frozen input Artifact ids, input manifest hash,
+  normalized output Artifact and exact build id.
+- Collector and reviewer builds and output Artifacts must differ. Blind reviewer
+  input cannot include the collector output Artifact.
+- CollectionReview is a deterministic comparison, not a third model opinion.
+- Material disagreement is `ESCALATED` with a conservative temporary outcome;
+  it is not silently rewritten into the collector assessment.
+- Review status is separate from EvidenceExport assurance.
+- Validator: collection.
+
 ## ParseRun
 
 - Creator: parser.
@@ -150,6 +165,7 @@ SearchRun uses `SRUN-` (not generic `RUN-`) so parse/extract runs cannot collide
 - Creator: extractor only.
 - Live rows: `ACTIVE`. `SUPERSEDED` cannot stay ACTIVE.
 - ID: `CLM-`.
+- Each Claim names the exact `extraction_run_id` that produced it.
 - Support must include retrieval_id, artifact_id, segment_id, normalized_text_hash.
 - Validator: evidence.
 
@@ -157,6 +173,8 @@ SearchRun uses `SRUN-` (not generic `RUN-`) so parse/extract runs cannot collide
 
 - Build identity covers model, prompts, parameters, profile, executor, tools.
 - Qualification is per build, not per scene.
+- A PASS record binds the exact build identity, fixture bytes and two distinct
+  execution-result records; assurance records reference that PASS.
 - Historical exports are not rewritten on invalidation.
 - Validator: qualification.
 

@@ -6,6 +6,7 @@
   "required": [
     "schema_version",
     "claim_id",
+    "extraction_run_id",
     "kind",
     "status",
     "grade",
@@ -21,6 +22,10 @@
     "claim_id": {
       "type": "string",
       "pattern": "^CLM-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "extraction_run_id": {
+      "type": "string",
+      "pattern": "^ERUN-[A-Z0-9][A-Z0-9._:-]{1,}$"
     },
     "kind": {
       "enum": [

@@ -79,7 +79,29 @@
       }
     },
     "selection_manifest": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "selected_hit_ids",
+        "rejected_hit_ids"
+      ],
+      "properties": {
+        "selected_hit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^HIT-[A-Z0-9][A-Z0-9._:-]{1,}$"
+          },
+          "uniqueItems": true
+        },
+        "rejected_hit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^HIT-[A-Z0-9][A-Z0-9._:-]{1,}$"
+          },
+          "uniqueItems": true
+        }
+      }
     },
     "profile_id": {
       "type": "string"

@@ -3,6 +3,7 @@ documents:
   - policies/access-kind-v1.yaml
   - policies/source-tier-v1.yaml
   - policies/origin-independence-v1.yaml
+  - policies/collection-quality-v1.yaml
   - policies/claim-grading-v1.yaml
   - policies/retention-v1.yaml
   - policies/isolation-v1.yaml

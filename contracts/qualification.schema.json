@@ -7,9 +7,14 @@
     "schema_version",
     "qualification_run_id",
     "extractor_build_id",
+    "extractor_build_hash",
     "fixture_suite_hash",
     "run_a",
     "run_b",
+    "run_a_hash",
+    "run_b_hash",
+    "run_a_result",
+    "run_b_result",
     "adversarial_project_expectation",
     "source_content_injection",
     "reproducibility",
@@ -28,6 +33,10 @@
       "type": "string",
       "pattern": "^BLD-[A-Z0-9][A-Z0-9._:-]{1,}$"
     },
+    "extractor_build_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
     "fixture_suite_hash": {
       "type": "string",
       "pattern": "^sha256:[0-9a-f]{64}$"
@@ -45,6 +54,148 @@
     "run_b_hash": {
       "type": "string",
       "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "run_a_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_id",
+        "input_hash",
+        "claims",
+        "claim_set_hash",
+        "result_hash"
+      ],
+      "properties": {
+        "execution_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "grade",
+              "statement",
+              "profile_schema",
+              "profile_payload"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "ORIGINAL_FACT",
+                  "RECEPTION"
+                ]
+              },
+              "grade": {
+                "enum": [
+                  "CONFIRMED",
+                  "SUPPORTED",
+                  "INFERRED",
+                  "UNKNOWN",
+                  "CONFLICTING"
+                ]
+              },
+              "statement": {
+                "type": "string",
+                "minLength": 1
+              },
+              "profile_schema": {
+                "type": "string",
+                "minLength": 1
+              },
+              "profile_payload": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "claim_set_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "result_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "run_b_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_id",
+        "input_hash",
+        "claims",
+        "claim_set_hash",
+        "result_hash"
+      ],
+      "properties": {
+        "execution_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "grade",
+              "statement",
+              "profile_schema",
+              "profile_payload"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "ORIGINAL_FACT",
+                  "RECEPTION"
+                ]
+              },
+              "grade": {
+                "enum": [
+                  "CONFIRMED",
+                  "SUPPORTED",
+                  "INFERRED",
+                  "UNKNOWN",
+                  "CONFLICTING"
+                ]
+              },
+              "statement": {
+                "type": "string",
+                "minLength": 1
+              },
+              "profile_schema": {
+                "type": "string",
+                "minLength": 1
+              },
+              "profile_payload": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "claim_set_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "result_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
     },
     "adversarial_project_expectation": {
       "enum": [

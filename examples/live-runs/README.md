@@ -4,10 +4,12 @@ These JSON files are audit summaries of real Wikipedia OpenSearch campaigns.
 They record query, ordered hits, selection, stop_reason and export hash.
 They do **not** store article bytes (those stay in local CAS).
 
-Both first live requests terminated as `NO_QUALIFYING_CASE_FOUND`.
-That is a valid G10 result: complete recording, no fabricated claims.
+Both first live requests were recorded as `NO_QUALIFYING_CASE_FOUND`. They are
+historical release-candidate records, not valid G10 evidence: the producer
+qualification and import validation basis was later invalidated.
 
-Locked consumer copies live in `xuanhuan-sandbox/research/imports/`.
+The table below records the candidate bytes only. It does not assert the
+current state of any consumer repository.
 
 | request | export_id | export_hash | claims |
 |---|---|---|---|

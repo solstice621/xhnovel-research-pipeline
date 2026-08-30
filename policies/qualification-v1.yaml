@@ -4,10 +4,11 @@ assurance_levels: [UNQUALIFIED, BUILD_QUALIFIED, BUNDLE_VERIFIED, HUMAN_AUDITED]
 formal_export_minimum: BUILD_QUALIFIED
 build_identity:
   - repository_commit
+  - source_tree_hash
   - model
   - prompt_template_hash
   - parameters
-  - profile_id
+  - profile_version
   - executor_build_id
   - tool_policy_hash
 adversarial:
