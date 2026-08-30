@@ -7,12 +7,14 @@ import pytest
 from xhnovel_pipeline.bundle_ops import clone_bundle_with_selection, refuse_inplace_member_edit
 from xhnovel_pipeline.engine import FakeSearchProvider, make_build, run_local_slice
 from xhnovel_pipeline.errors import ValidationError
+from xhnovel_pipeline.extraction import mock_extract
 from xhnovel_pipeline.hardening import apply_gc, backup_export, restore_from_backup, write_revocation
 from xhnovel_pipeline.origin import near_duplicate_assessments, token_jaccard
 from xhnovel_pipeline.page_kind import looks_like_js_shell, looks_like_login_wall
 from xhnovel_pipeline.parse import diff_segments, parse_artifact, parse_html
 from xhnovel_pipeline.paths import repo_root
-from xhnovel_pipeline.qualification import compare_claim_sets, fixture_suite_hash, qualify_mock_build
+from xhnovel_pipeline.schema import validate_schema
+from xhnovel_pipeline.qualification import build_source_hash, fixture_suite_hash, qualify_mock_build
 from xhnovel_pipeline.stop import decide_campaign_stop
 from xhnovel_pipeline.store import ArtifactStore
 from xhnovel_pipeline.validate import validate_evidence
@@ -20,17 +22,29 @@ from xhnovel_pipeline.validate import validate_evidence
 
 def test_stop_reasons():
     assert decide_campaign_stop(
-        selected_page_count=1, fetch_budget_hit=False, first_page_empty=False, query_budget_hit=False
+        coverage_reached=True,
+        fetch_budget_hit=False,
+        provider_exhausted=False,
+        query_budget_hit=False,
     ) == ("COMPLETED", "coverage_reached")
     assert decide_campaign_stop(
-        selected_page_count=0, fetch_budget_hit=True, first_page_empty=False, query_budget_hit=False
+        coverage_reached=False,
+        fetch_budget_hit=True,
+        provider_exhausted=False,
+        query_budget_hit=False,
     ) == ("BUDGET_STOPPED", "budget_exhausted")
     assert decide_campaign_stop(
-        selected_page_count=0, fetch_budget_hit=False, first_page_empty=True, query_budget_hit=False
+        coverage_reached=False,
+        fetch_budget_hit=False,
+        provider_exhausted=True,
+        query_budget_hit=False,
     ) == ("EXHAUSTED", "provider_exhausted")
     assert decide_campaign_stop(
-        selected_page_count=0, fetch_budget_hit=False, first_page_empty=False, query_budget_hit=False
-    ) == ("COMPLETED", "no_new_source")
+        coverage_reached=False,
+        fetch_budget_hit=False,
+        provider_exhausted=False,
+        query_budget_hit=False,
+    ) == ("EXHAUSTED", "no_new_source")
 
 
 def test_search_retry_records_failed_run(tmp_path):
@@ -129,12 +143,12 @@ def test_second_bundle_from_same_snapshot(slice_result):
     second = clone_bundle_with_selection(
         catalog,
         src,
-        bundle_id="BND-LOCAL-002",
         selection_manifest={**src["selection_manifest"], "note": "second selection"},
     )
     catalog.add("EvidenceBundle", second)
     assert second["bundle_hash"] != src["bundle_hash"]
     assert second["collection_snapshot_ids"] == src["collection_snapshot_ids"]
+    assert second["supersedes"] == src["bundle_id"]
 
 
 def test_prompt_change_new_build_id():
@@ -142,6 +156,12 @@ def test_prompt_change_new_build_id():
     b = make_build(prompt=a["prompt_template_hash"] + " changed")
     assert a["extractor_build_id"] != b["extractor_build_id"]
     assert a["prompt_template_hash"] != b["prompt_template_hash"]
+
+
+def test_repository_commit_change_new_build_id():
+    a = make_build(repository_commit="a" * 40)
+    b = make_build(repository_commit="b" * 40)
+    assert a["extractor_build_id"] != b["extractor_build_id"]
 
 
 def test_qualification_suite_hash_stable():
@@ -184,12 +204,12 @@ def test_campaign_report_written(slice_result):
 
 
 def test_conflicting_grade_legal(slice_result):
-    catalog = slice_result["catalog"]
-    claim = dict(catalog.all("Claim")[0])
-    claim["claim_id"] = "CLM-CONFLICT-001"
+    claim = dict(slice_result["catalog"].all("Claim")[0])
     claim["grade"] = "CONFLICTING"
-    catalog.add("Claim", claim)
-    validate_evidence(catalog, slice_result["store"])
+    from xhnovel_pipeline.ids import derived_id
+
+    claim["claim_id"] = derived_id("Claim", {key: value for key, value in claim.items() if key != "claim_id"})
+    validate_schema("Claim", claim)
 
 
 def test_parse_failure_no_document():
@@ -200,14 +220,48 @@ def test_parse_failure_no_document():
 
 def test_qualify_mock_on_positive_claims(slice_result):
     root = repo_root()
-    claims = [c for c in slice_result["catalog"].all("Claim") if c["status"] == "ACTIVE"]
+    build = slice_result["catalog"].all("ExtractorBuild")[0]
     q = qualify_mock_build(
         root,
-        extractor_build_id="BLD-MOCK-DETERMINISTIC-V1",
-        claims=claims,
-        injected=claims,
         qualified_at="2026-08-29T00:00:00Z",
+        build=build,
     )
     assert q["result"] == "PASS"
     assert q["run_a"] != q["run_b"]
-    assert compare_claim_sets(claims, claims)
+    assert q["run_a_result"]["claim_set_hash"] == q["run_b_result"]["claim_set_hash"]
+
+
+def test_source_injection_qualification_compares_clean_and_injected_pages(monkeypatch):
+    import xhnovel_pipeline.qualification as qualification
+
+    root = repo_root()
+    build = make_build(source_tree_hash=build_source_hash(root))
+    real_extract = qualification.mock_extract
+
+    def injection_sensitive_extract(segments, retrievals_by_doc, **kwargs):
+        claims = real_extract(segments, retrievals_by_doc, **kwargs)
+        if claims and any("忽略" in segment["normalized_text"] for segment in segments):
+            claims[0]["grade"] = "CONFIRMED"
+        return claims
+
+    monkeypatch.setattr(qualification, "mock_extract", injection_sensitive_extract)
+    result = qualify_mock_build(root, qualified_at="2026-08-29T00:00:00Z", build=build)
+
+    assert result["source_content_injection"] == "FAIL"
+    assert result["result"] == "FAIL"
+
+
+def test_mock_extractor_rejects_unqualified_artifact_content():
+    segment = {
+        "document_id": "DOC-UNTRUSTED",
+        "segment_id": "SEG-UNTRUSTED-001",
+        "normalized_text": "李衡握着长刀，王朔抓住灯座，长刀随后落地。",
+        "normalized_text_hash": "sha256:" + "a" * 64,
+    }
+    claims = mock_extract(
+        [segment],
+        {"DOC-UNTRUSTED": {"retrieval_id": "RET-UNTRUSTED", "artifact_id": "sha256:" + "b" * 64}},
+        extraction_run_id="ERUN-UNTRUSTED",
+        project_context={},
+    )
+    assert claims == []

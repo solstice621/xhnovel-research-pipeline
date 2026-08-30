@@ -5,7 +5,14 @@ import copy
 import pytest
 
 from xhnovel_pipeline.errors import SchemaError, ValidationError
-from xhnovel_pipeline.validate import validate_all, validate_evidence, validate_collection, validate_qualification, validate_export
+from xhnovel_pipeline.validate import (
+    _no_forbidden,
+    validate_all,
+    validate_collection,
+    validate_evidence,
+    validate_export,
+    validate_qualification,
+)
 from xhnovel_pipeline.access import normalize_access_kind
 from xhnovel_pipeline.hashing import object_hash
 
@@ -33,8 +40,28 @@ def test_unknown_origin_cannot_confirm(slice_result):
     catalog = slice_result["catalog"]
     for orig in catalog.all("OriginAssessment"):
         orig["relation"] = "UNKNOWN"
+    bundle = catalog.all("EvidenceBundle")[0]
+    from xhnovel_pipeline.ids import derived_id
+    from xhnovel_pipeline.validate import bundle_hash
+
+    bundle["bundle_hash"] = bundle_hash(catalog, bundle)
+    run = catalog.all("ExtractionRun")[0]
+    old_run_id = run["extraction_run_id"]
+    run["bundle_hash"] = bundle["bundle_hash"]
+    run["extraction_run_id"] = derived_id(
+        "ExtractionRun",
+        {
+            key: value
+            for key, value in run.items()
+            if key not in {"schema_version", "extraction_run_id", "status"}
+        },
+    )
     for claim in _live(catalog):
-        claim["grade"] = "CONFIRMED"
+        if claim["extraction_run_id"] == old_run_id:
+            claim["extraction_run_id"] = run["extraction_run_id"]
+    claims = _live(catalog)
+    claims[0]["support"] = [support for claim in claims for support in claim["support"]]
+    claims[0]["grade"] = "CONFIRMED"
     with pytest.raises(ValidationError) as exc:
         validate_evidence(catalog, slice_result["store"])
     assert exc.value.code in {"E-UNKNOWN-ORIGIN", "E-NOT-INDEPENDENT"}
@@ -106,12 +133,24 @@ def test_legacy_scene_001_never_qualifies():
 
 def test_source_injection_does_not_emit_project_tokens(slice_result):
     export = slice_result["export"]
-    blob = str(export)
-    assert "M-1" not in blob
-    assert "NOT_A_GAP" not in blob
+    semantic_output = [
+        {
+            "statement": claim["statement"],
+            "profile_payload": claim["profile_payload"],
+        }
+        for claim in export["claims"]
+    ]
+    _no_forbidden(semantic_output, "claim output")
     # injected paragraph was not turned into a claim
     for claim in export["claims"]:
         assert "忽略" not in claim["statement"]
+
+
+def test_project_token_check_does_not_match_content_derived_ids():
+    _no_forbidden({"claim_id": "CLM-16F437676D5B67C38615"}, "claim")
+    with pytest.raises(ValidationError) as exc:
+        _no_forbidden({"statement": "M-1 当前缺少什么"}, "claim")
+    assert exc.value.code == "E-PROJECT-LEAK"
 
 
 def test_export_tamper_hash(slice_result):
@@ -124,14 +163,14 @@ def test_export_tamper_hash(slice_result):
 
 def test_superseded_claim_cannot_stay_confirmed(slice_result):
     catalog = slice_result["catalog"]
-    for claim in catalog.all("Claim"):
-        if claim["status"] == "SUPERSEDED":
-            claim["grade"] = "CONFIRMED"
-            with pytest.raises(ValidationError) as exc:
-                validate_evidence(catalog, slice_result["store"])
-            assert exc.value.code == "E-DEAD-CONFIRMED"
-            return
-    pytest.skip("no superseded claim in this slice")
+    claim = next(claim for claim in catalog.all("Claim") if claim["status"] == "ACTIVE")
+    claim["status"] = "SUPERSEDED"
+    claim["grade"] = "CONFIRMED"
+
+    with pytest.raises(ValidationError) as exc:
+        validate_evidence(catalog, slice_result["store"])
+
+    assert exc.value.code == "E-DEAD-CONFIRMED"
 
 
 def test_invalidated_build_cannot_export(slice_result):

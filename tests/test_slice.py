@@ -13,7 +13,7 @@ import pytest
 def test_offline_slice_verified_export(slice_result):
     export = slice_result["export"]
     catalog = slice_result["catalog"]
-    assert export["assurance"]["level"] == "BUNDLE_VERIFIED"
+    assert export["assurance"]["level"] == "BUILD_QUALIFIED"
     assert export["claims"]
     assert all("segment_id" in s for c in export["claims"] for s in c["support"])
     assert "element_mapping" not in export["scene_facts"]
@@ -50,18 +50,22 @@ def test_bundle_member_change_changes_hash(slice_result):
     bundle["segment_ids"] = list(bundle["segment_ids"]) + [extra]
     from xhnovel_pipeline.validate import bundle_hash
 
-    assert bundle_hash(catalog, bundle) != original or extra in bundle["segment_ids"]
+    assert bundle_hash(catalog, bundle) != original
     bundle["profile_id"] = "other"
     assert bundle_hash(catalog, bundle) != original
 
 
-def test_retry_creates_new_run(slice_result):
+def test_retry_of_successful_run_is_rejected(slice_result):
     catalog = slice_result["catalog"]
     run = dict(catalog.all("SearchRun")[0])
     run["search_run_id"] = "SRUN-RETRY-001"
     run["retry_of"] = catalog.all("SearchRun")[0]["search_run_id"]
     catalog.add("SearchRun", run)
-    assert catalog.all("SearchRun")[0]["search_run_id"] != "SRUN-RETRY-001"
+
+    with pytest.raises(ValidationError) as exc:
+        validate_all(catalog, slice_result["store"])
+
+    assert exc.value.code == "E-RETRY-LINEAGE"
 
 
 def test_artifact_tamper_fails(slice_result, tmp_path):
@@ -78,18 +82,20 @@ def test_export_byte_tamper_fails(slice_result):
 
     raw = (slice_result["work_dir"] / "export.json").read_bytes()
     verify_export_bytes(raw)
-    tampered = raw.replace(b"BUNDLE_VERIFIED", b"BUNDLE_VERIFIEDx", 1)
+    tampered = raw.replace(b"BUILD_QUALIFIED", b"BUILD_QUALIFIEDx", 1)
     with pytest.raises(ValidationError):
         verify_export_bytes(tampered)
 
 
 def test_same_retrieval_reusable(slice_result):
     catalog = slice_result["catalog"]
-    bundle = dict(catalog.all("EvidenceBundle")[0])
+    original = catalog.all("EvidenceBundle")[0]
+    bundle = dict(original)
     bundle["bundle_id"] = "BND-LOCAL-002"
     bundle["selection_manifest"] = dict(bundle["selection_manifest"], note="second request reuse")
     from xhnovel_pipeline.validate import bundle_hash
 
     bundle["bundle_hash"] = bundle_hash(catalog, bundle)
     catalog.add("EvidenceBundle", bundle)
-    assert bundle["retrieval_ids"] == catalog.all("EvidenceBundle")[0]["retrieval_ids"] or True
+    assert bundle["retrieval_ids"] == original["retrieval_ids"]
+    assert bundle["bundle_hash"] != original["bundle_hash"]
