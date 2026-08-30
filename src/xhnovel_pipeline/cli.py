@@ -6,7 +6,9 @@ import pathlib
 import sys
 
 from .catalog import Catalog
-from .engine import NOW, run_local_slice
+from .collection import run_collection
+from .collection_quality import compare_collection_decisions
+from .engine import NOW, run_local_slice, utc_now
 from .errors import PipelineError
 from .paths import repo_root
 from .store import ArtifactStore
@@ -17,6 +19,7 @@ from .bundle_ops import refuse_inplace_member_edit
 from .hardening import apply_gc, backup_export, live_artifact_ids, restore_from_backup, write_revocation
 from .parse import diff_segments
 from .qualification import invalidate_build, upsert_build_record
+from .hashing import artifact_id_for
 
 
 def _catalog_from_json(path: pathlib.Path) -> tuple[Catalog, ArtifactStore | None]:
@@ -44,6 +47,20 @@ def main(argv: list[str] | None = None) -> int:
     p_run.add_argument("mode", choices=["local-slice", "wikipedia"])
     p_run.add_argument("fixture", type=pathlib.Path)
     p_run.add_argument("--work-dir", type=pathlib.Path, default=None)
+
+    p_collect = sub.add_parser("collect")
+    p_collect.add_argument("mode", choices=["local", "wikipedia"])
+    p_collect.add_argument("fixture", type=pathlib.Path)
+    p_collect.add_argument("--work-dir", type=pathlib.Path, default=None)
+
+    p_review = sub.add_parser("review-collection")
+    p_review.add_argument("collector_decision", type=pathlib.Path)
+    p_review.add_argument("reviewer_decision", type=pathlib.Path)
+    p_review.add_argument(
+        "--rubric",
+        type=pathlib.Path,
+        default=repo_root() / "policies" / "collection-quality-v1.yaml",
+    )
 
     p_ver = sub.add_parser("verify-export")
     p_ver.add_argument("export", type=pathlib.Path)
@@ -140,6 +157,37 @@ def main(argv: list[str] | None = None) -> int:
             print(f"OK: verified export {result['export']['export_id']}")
             print(result["work_dir"] / "export.json")
             return 0
+        if args.cmd == "collect":
+            work = args.work_dir or (root / ".runtime" / "collections" / args.fixture.name)
+            if args.mode == "wikipedia":
+                from .http_fetch import HttpFetcher
+                from .wikipedia import WikipediaOpenSearchProvider
+
+                result = run_collection(
+                    args.fixture,
+                    work,
+                    repo_root=root,
+                    provider=WikipediaOpenSearchProvider(),
+                    fetcher=HttpFetcher(),
+                )
+            else:
+                result = run_collection(args.fixture, work, repo_root=root)
+            print(f"OK: frozen collection {result['snapshot']['snapshot_id']}")
+            print(result["work_dir"] / "snapshot.json")
+            return 0
+        if args.cmd == "review-collection":
+            collector = json.loads(args.collector_decision.read_text(encoding="utf-8"))
+            reviewer = json.loads(args.reviewer_decision.read_text(encoding="utf-8"))
+            rubric_artifact_id = artifact_id_for(args.rubric.read_bytes())
+            review = compare_collection_decisions(
+                collector,
+                reviewer,
+                rubric_id="collection-quality-v1",
+                rubric_artifact_id=rubric_artifact_id,
+                reviewed_at=utc_now(),
+            )
+            print(json.dumps(review, ensure_ascii=False, indent=2))
+            return 0 if review["verdict"] == "AGREE" else 2
         if args.cmd == "verify-export":
             audit.verify_export_bytes(args.export.read_bytes())
             print("OK: export hash")

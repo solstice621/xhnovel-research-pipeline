@@ -2,22 +2,57 @@ from __future__ import annotations
 
 from typing import Any
 
+from .origin import platform_classes
+
+
+def has_two_independent_secondary_sources(
+    *,
+    retrievals: list[dict[str, Any]],
+    triage_assessments: list[dict[str, Any]],
+    origin_assessments: list[dict[str, Any]],
+    sources: list[dict[str, Any]],
+) -> bool:
+    triage_by_id = {item["assessment_id"]: item for item in triage_assessments}
+    eligible_sources = {
+        retrieval["source_id"]
+        for retrieval in retrievals
+        if retrieval.get("status") == "FETCHED"
+        and triage_by_id.get(retrieval.get("triage_assessment_id"), {}).get("retrieval_id")
+        == retrieval["retrieval_id"]
+        and triage_by_id.get(retrieval.get("triage_assessment_id"), {}).get("tier") == "B"
+    }
+    if len(eligible_sources) < 2:
+        return False
+    classes = platform_classes(sources)
+    relations_by_pair: dict[frozenset[str], set[str]] = {}
+    for assessment in origin_assessments:
+        source_a = assessment.get("source_a")
+        source_b = assessment.get("source_b")
+        if (
+            source_a in eligible_sources
+            and source_b in eligible_sources
+            and source_a != source_b
+            and classes.get(source_a) != classes.get(source_b)
+        ):
+            relations_by_pair.setdefault(frozenset((source_a, source_b)), set()).add(assessment.get("relation"))
+    return any(relations == {"INDEPENDENT"} for relations in relations_by_pair.values())
+
 
 def decide_campaign_stop(
     *,
-    selected_page_count: int,
+    coverage_reached: bool,
     fetch_budget_hit: bool,
-    first_page_empty: bool,
+    provider_exhausted: bool,
     query_budget_hit: bool,
 ) -> tuple[str, str]:
     """Return (campaign status, stop_reason). Terminal campaigns always have a reason."""
-    if selected_page_count:
+    if coverage_reached:
         return "COMPLETED", "coverage_reached"
     if fetch_budget_hit or query_budget_hit:
         return "BUDGET_STOPPED", "budget_exhausted"
-    if first_page_empty:
+    if provider_exhausted:
         return "EXHAUSTED", "provider_exhausted"
-    return "COMPLETED", "no_new_source"
+    return "EXHAUSTED", "no_new_source"
 
 
 def campaign_report_payload(

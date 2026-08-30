@@ -11,6 +11,10 @@ from referencing.jsonschema import DRAFT202012
 from .errors import SchemaError
 from .paths import repo_root
 
+PROFILE_SCHEMA_BY_ID = {
+    "xuanhuan-gameplay-scene/v1": "profiles/xuanhuan-gameplay-scene-v1/profile.schema.json",
+}
+
 SCHEMA_BY_TYPE = {
     "ResearchRequest": "research-request.schema.json",
     "SearchCampaign": "search-campaign.schema.json",
@@ -24,6 +28,8 @@ SCHEMA_BY_TYPE = {
     "ArtifactReplicaStatus": "artifact-replica-status.schema.json",
     "TriageAssessment": "triage-assessment.schema.json",
     "OriginAssessment": "origin-assessment.schema.json",
+    "CollectionDecision": "collection-decision.schema.json",
+    "CollectionReview": "collection-review.schema.json",
     "ParseRun": "parse-run.schema.json",
     "ParsedDocument": "parsed-document.schema.json",
     "Segment": "segment.schema.json",
@@ -57,3 +63,15 @@ def validate_schema(kind: str, obj: dict[str, Any], *, root: pathlib.Path | None
     if errors:
         first = errors[0]
         raise SchemaError("E-SCHEMA", f"{kind}: {first.message} at {list(first.path)}")
+
+
+def validate_profile_payload(profile_id: str, payload: dict[str, Any], *, root: pathlib.Path | None = None) -> None:
+    root = root or repo_root()
+    rel = PROFILE_SCHEMA_BY_ID.get(profile_id)
+    if rel is None:
+        raise SchemaError("E-PROFILE-SCHEMA", f"unsupported profile schema {profile_id!r}")
+    schema = json.loads((root / rel).read_text(encoding="utf-8"))
+    errors = sorted(Draft202012Validator(schema).iter_errors(payload), key=lambda e: list(e.path))
+    if errors:
+        first = errors[0]
+        raise SchemaError("E-PROFILE-SCHEMA", f"{profile_id}: {first.message} at {list(first.path)}")

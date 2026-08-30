@@ -5,6 +5,7 @@ from typing import Any
 
 from .catalog import Catalog
 from .errors import ValidationError
+from .ids import derived_id
 from .validate import bundle_hash
 
 FROZEN_STATES = {"FROZEN", "EXTRACTED", "EXPORTED"}
@@ -14,6 +15,7 @@ def freeze_bundle(catalog: Catalog, bundle: dict[str, Any]) -> dict[str, Any]:
     if bundle["status"] == "DRAFT":
         bundle["status"] = "FROZEN"
     bundle["bundle_hash"] = bundle_hash(catalog, bundle)
+    bundle["bundle_id"] = derived_id("EvidenceBundle", {"bundle_hash": bundle["bundle_hash"]})
     catalog.frozen_bundle_ids.add(bundle["bundle_id"])
     return bundle
 
@@ -36,7 +38,6 @@ def refuse_inplace_member_edit(catalog: Catalog, bundle: dict[str, Any], **field
 def bundle_from_snapshot(
     catalog: Catalog,
     *,
-    bundle_id: str,
     request_id: str,
     snapshot_id: str,
     document_ids: list[str],
@@ -54,7 +55,7 @@ def bundle_from_snapshot(
 ) -> dict[str, Any]:
     bundle = {
         "schema_version": schema_version,
-        "bundle_id": bundle_id,
+        "bundle_id": "BND-PENDING",
         "request_id": request_id,
         "collection_snapshot_ids": [snapshot_id],
         "document_ids": document_ids,
@@ -75,10 +76,15 @@ def bundle_from_snapshot(
     return bundle
 
 
-def clone_bundle_with_selection(catalog: Catalog, src: dict[str, Any], *, bundle_id: str, selection_manifest: dict[str, Any]) -> dict[str, Any]:
+def clone_bundle_with_selection(
+    catalog: Catalog,
+    src: dict[str, Any],
+    *,
+    selection_manifest: dict[str, Any],
+) -> dict[str, Any]:
     bundle = copy.deepcopy(src)
-    bundle["bundle_id"] = bundle_id
     bundle["selection_manifest"] = selection_manifest
+    bundle["supersedes"] = src["bundle_id"]
     bundle["status"] = "DRAFT"
     freeze_bundle(catalog, bundle)
     return bundle

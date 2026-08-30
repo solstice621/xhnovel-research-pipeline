@@ -15,6 +15,8 @@ ID_FIELDS = {
     "Retrieval": "retrieval_id",
     "TriageAssessment": "assessment_id",
     "OriginAssessment": "assessment_id",
+    "CollectionDecision": "decision_id",
+    "CollectionReview": "review_id",
     "ParseRun": "parse_run_id",
     "ParsedDocument": "document_id",
     "Segment": "segment_id",

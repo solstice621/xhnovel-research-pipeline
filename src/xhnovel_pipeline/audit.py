@@ -5,10 +5,11 @@ import pathlib
 from typing import Any
 
 from .catalog import Catalog
-from .errors import ValidationError
+from .errors import PipelineError, ValidationError
 from .hashing import object_hash
+from .schema import validate_profile_payload, validate_schema
 from .store import ArtifactStore
-from .validate import validate_export
+from .validate import validate_all
 
 
 def explain_claim(catalog: Catalog, claim_id: str) -> dict[str, Any]:
@@ -42,18 +43,34 @@ def trace_request(catalog: Catalog, request_id: str) -> dict[str, Any]:
     }
 
 
-def verify_export_bytes(data: bytes, catalog: Catalog | None = None) -> dict[str, Any]:
+def verify_export_bytes(
+    data: bytes,
+    catalog: Catalog | None = None,
+    store: ArtifactStore | None = None,
+) -> dict[str, Any]:
+    """Validate an export envelope; a catalog additionally authenticates it for import."""
     try:
         export = json.loads(data.decode("utf-8"))
-    except json.JSONDecodeError as exc:
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ValidationError("E-EXPORT-TAMPER", "export is not valid JSON") from exc
+    if not isinstance(export, dict):
+        raise ValidationError("E-EXPORT-TAMPER", "export envelope must be an object")
+    try:
+        validate_schema("EvidenceExport", export)
+        for claim in export["claims"]:
+            validate_profile_payload(claim["profile_schema"], claim["profile_payload"])
+    except PipelineError as exc:
+        raise ValidationError("E-EXPORT-TAMPER", f"invalid export envelope: {exc}") from exc
     expected = object_hash(export, omit=("export_hash",))
     if export.get("export_hash") != expected:
         raise ValidationError("E-EXPORT-TAMPER", "export_hash does not match payload")
     if catalog is not None:
-        # replace existing export with this one for validation
-        catalog.by_type["EvidenceExport"] = [export]
-        validate_export(catalog)
+        if store is None:
+            raise ValidationError("E-IMPORT-TRUST", "trusted import verification requires an ArtifactStore")
+        trusted = catalog.get("EvidenceExport", export["export_id"])
+        if trusted != export:
+            raise ValidationError("E-IMPORT-TRUST", "export is not the exact export in the trusted catalog")
+        validate_all(catalog, store)
     return export
 
 
