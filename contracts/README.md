@@ -24,3 +24,9 @@ shape are `profiles/xuanhuan-gameplay-scene-v1/neutral-prompt.md` and
 No schema grants model qualification. Model-backed exports remain
 `UNQUALIFIED` with `DEGRADED` auditability until a separate promotion and
 accuracy-review workflow exists.
+
+`EvidenceExport.artifact_manifest` is the private replay closure. Its required
+`availability` field is derived from the immutable ingestion rights. Source and
+model-request artifacts are always `WITHHELD_BY_RIGHTS`; constrained model
+output/receipt artifacts become `AVAILABLE` only when excerpt export is
+explicitly allowed.

@@ -10,6 +10,9 @@
     "collection_snapshot_ids",
     "document_ids",
     "segment_ids",
+    "retrieval_ids",
+    "artifact_ids",
+    "triage_assessment_ids",
     "selection_manifest",
     "profile_id",
     "policy_bundle_hash",
@@ -31,6 +34,8 @@
     },
     "collection_snapshot_ids": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "pattern": "^SNP-[A-Z0-9][A-Z0-9._:-]{1,}$"
@@ -38,6 +43,8 @@
     },
     "document_ids": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "pattern": "^DOC-[A-Z0-9][A-Z0-9._:-]{1,}$"
@@ -45,6 +52,8 @@
     },
     "segment_ids": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "pattern": "^SEG-[A-Z0-9][A-Z0-9._:-]{1,}$"
@@ -52,6 +61,8 @@
     },
     "retrieval_ids": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "pattern": "^RET-[A-Z0-9][A-Z0-9._:-]{1,}$"
@@ -59,6 +70,8 @@
     },
     "artifact_ids": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "pattern": "^sha256:[0-9a-f]{64}$"
@@ -66,6 +79,8 @@
     },
     "triage_assessment_ids": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "pattern": "^TRI-[A-Z0-9][A-Z0-9._:-]{1,}$"
@@ -73,9 +88,15 @@
     },
     "selection_manifest": {
       "type": "object",
+      "required": [
+        "selected_chapter_ids",
+        "duplicate_chapter_ids",
+        "ignored_chapter_ids"
+      ],
       "properties": {
         "selected_chapter_ids": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string",
             "pattern": "^CHP-[A-Z0-9][A-Z0-9._:-]{1,}$"

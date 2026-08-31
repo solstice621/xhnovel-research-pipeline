@@ -18,7 +18,7 @@
     "schema_version": {"const": "0.2-draft"},
     "merge_run_id": {"type": "string", "pattern": "^SMRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"},
     "scene_scout_run_id": {"type": "string", "pattern": "^SSRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"},
-    "algorithm_id": {"const": "source-span-action-chain-v1"},
+    "algorithm_id": {"const": "source-span-action-chain-v2"},
     "input_candidate_hashes": {
       "type": "array",
       "uniqueItems": true,

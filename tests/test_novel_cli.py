@@ -8,6 +8,8 @@ import zipfile
 import pytest
 
 from xhnovel_pipeline import cli
+from xhnovel_pipeline.catalog import Catalog
+from xhnovel_pipeline.errors import ValidationError
 from xhnovel_pipeline.runtime import TEST_NOW as NOW
 from xhnovel_pipeline.http_fetch import HttpFetcher
 from xhnovel_pipeline.paths import repo_root
@@ -51,6 +53,22 @@ def _write_epub(path) -> None:
             "OEBPS/c2.xhtml",
             "<html><body><h1>第二章 拜师</h1><p>长老收他为徒。</p></body></html>",
         )
+
+
+def test_catalog_rejects_unknown_record_types_and_malformed_json_members(tmp_path):
+    with pytest.raises(ValidationError, match="E-CATALOG-KIND"):
+        Catalog().add("Claim", {})
+
+    cases = [
+        {"Claim": []},
+        {"ResearchRequest": {}},
+        {"ResearchRequest": ["not-an-object"]},
+    ]
+    for index, value in enumerate(cases):
+        path = tmp_path / f"bad-catalog-{index}.json"
+        path.write_text(json.dumps(value), encoding="utf-8")
+        with pytest.raises(ValidationError, match="E-CATALOG-(KIND|RECORD)"):
+            cli._catalog_from_json(path)
 
 
 @pytest.mark.parametrize("kind", ["directory", "txt", "epub"])

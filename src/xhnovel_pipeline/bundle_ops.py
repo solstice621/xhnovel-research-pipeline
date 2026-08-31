@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import copy
 from typing import Any
 
 from .catalog import Catalog
@@ -70,19 +69,5 @@ def bundle_from_snapshot(
         "supersedes": supersedes,
         "status": "DRAFT",
     }
-    freeze_bundle(catalog, bundle)
-    return bundle
-
-
-def clone_bundle_with_selection(
-    catalog: Catalog,
-    src: dict[str, Any],
-    *,
-    selection_manifest: dict[str, Any],
-) -> dict[str, Any]:
-    bundle = copy.deepcopy(src)
-    bundle["selection_manifest"] = selection_manifest
-    bundle["supersedes"] = src["bundle_id"]
-    bundle["status"] = "DRAFT"
     freeze_bundle(catalog, bundle)
     return bundle

@@ -28,7 +28,30 @@
           "uniqueItems": true,
           "items": {"$ref": "#/$defs/source_span"}
         }
-      }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "status": {"const": "UNKNOWN"},
+            "values": {"maxItems": 0},
+            "support_spans": {"maxItems": 0}
+          }
+        },
+        {
+          "properties": {
+            "status": {"const": "KNOWN"},
+            "values": {"minItems": 1},
+            "support_spans": {"minItems": 1}
+          }
+        },
+        {
+          "properties": {
+            "status": {"const": "CONFLICTING"},
+            "values": {"minItems": 2},
+            "support_spans": {"minItems": 1}
+          }
+        }
+      ]
     }
   },
   "type": "object",

@@ -115,13 +115,17 @@ then divided into windows with these hard invariants:
 
 Every returned candidate cites exact source spans. Each observation field has a
 status (`KNOWN`, `UNKNOWN`, or `CONFLICTING`), values, and its own supporting
-spans. `UNKNOWN` has empty values and support. Conflicting observations set the
-candidate to `NEEDS_ADJUDICATION`; processing of other windows continues.
+spans. `KNOWN` requires at least one value and support span; `CONFLICTING`
+requires at least two values and a support span; `UNKNOWN` has empty values and
+support. Conflicting observations set the candidate to `NEEDS_ADJUDICATION`;
+processing of other windows continues.
 
 Duplicate candidates from overlapping windows are merged using source-span and
-actor/action/target evidence, then ordered by chapter ordinal, segment ordinal,
-and exact span start. The merge record exposes local-overlap and work-order
-reduction stages. There is no whole-book model analysis call.
+actor/action/target evidence. Local groups use complete-link overlap, and a
+second complete-link work-order stage merges duplicates that cross chapter
+boundaries without transitive wide-span bridging. Results are ordered by
+chapter ordinal, segment ordinal, and exact span start. There is no whole-book
+model analysis call.
 
 ## Concurrency, failure, and accounting
 
@@ -161,7 +165,10 @@ Successful research outputs are stored under
 Output files are immutable. Validation reconstructs windows, requests, model
 outputs, attempt chains, usage totals, merge results, exact candidates, and the
 artifact-manifest closure. Model-backed exports are always `UNQUALIFIED` and
-`DEGRADED`; changing that flag to `FULL` is rejected.
+`DEGRADED`; changing that flag to `FULL` is rejected. The closure remains
+available for private replay, while every manifest entry is marked
+`WITHHELD_BY_RIGHTS` when the immutable ingestion declaration disallows excerpt
+export.
 
 Commands:
 

@@ -17,6 +17,7 @@ from .novel_assessment import (
     declared_rights,
     declared_source_quality,
     deterministic_triage_assessment,
+    rights_for_bundle,
 )
 from .novel_ingest import (
     novel_ingestion_artifact_ids,
@@ -31,7 +32,12 @@ from .novel_selection import (
 )
 from .policies import policy_bundle_hash
 from .ranking import run_fame_ranking, validate_fame_ranking, write_ranking_result
-from .scene_scout import run_scene_scout, scene_scout_artifact_ids, validate_scene_scouts
+from .scene_scout import (
+    run_scene_scout,
+    scene_scout_artifact_ids,
+    scene_scout_distributable_artifact_ids,
+    validate_scene_scouts,
+)
 from .schema import validate_schema
 from .store import ArtifactStore
 from .validate import validate_collection, validate_evidence, validate_export
@@ -256,12 +262,19 @@ def prepare_novel_evidence_bundle(
 
 def _make_unqualified_export(
     catalog: Catalog,
+    store: ArtifactStore,
     bundle: dict[str, Any],
     scout: dict[str, Any],
     *,
     repo_root: pathlib.Path,
     now: str,
 ) -> dict[str, Any]:
+    rights = rights_for_bundle(catalog, store, bundle, require_storage=True)
+    distributable_ids = (
+        set(scene_scout_distributable_artifact_ids(catalog, scout))
+        if rights["may_export_excerpts"]
+        else set()
+    )
     request = catalog.get("ResearchRequest", bundle["request_id"])
     run = catalog.get("SceneScoutRun", scout["run"]["scene_scout_run_id"])
     merge_run = catalog.get("SceneMergeRun", scout["merge_run"]["merge_run_id"])
@@ -330,7 +343,11 @@ def _make_unqualified_export(
                 "artifact_id": artifact["artifact_id"],
                 "byte_length": artifact["byte_length"],
                 "durability_status": artifact["durability_status"],
-                "availability": "AVAILABLE",
+                "availability": (
+                    "AVAILABLE"
+                    if artifact["artifact_id"] in distributable_ids
+                    else "WITHHELD_BY_RIGHTS"
+                ),
             }
             for artifact in (
                 catalog.get("Artifact", artifact_id)
@@ -401,6 +418,7 @@ def run_novel_research(
     )
     export = _make_unqualified_export(
         catalog,
+        store,
         bundle,
         scout,
         repo_root=repo_root,

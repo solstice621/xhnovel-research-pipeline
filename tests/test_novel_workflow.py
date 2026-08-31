@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import copy
 import json
+import subprocess
+import sys
 from collections import Counter
 from threading import Lock
 
 import pytest
 
-from xhnovel_pipeline.errors import ValidationError
+from xhnovel_pipeline.errors import SchemaError, ValidationError
 from xhnovel_pipeline.hashing import object_hash
 from xhnovel_pipeline.ids import derived_id
 from xhnovel_pipeline.model_api import OpenAIResponsesClient
@@ -15,7 +17,13 @@ from xhnovel_pipeline.novel_ingest import run_novel_ingestion
 from xhnovel_pipeline.novel_workflow import run_novel_research
 from xhnovel_pipeline.paths import repo_root
 from xhnovel_pipeline.runtime import TEST_NOW as NOW
-from xhnovel_pipeline.validate import validate_all, validate_collection, validate_export
+from xhnovel_pipeline.scene_scout import merge_scene_candidates, run_scene_scout
+from xhnovel_pipeline.validate import (
+    validate_all,
+    validate_collection,
+    validate_evidence,
+    validate_export,
+)
 
 
 RIGHTS = {
@@ -159,6 +167,14 @@ def _run(tmp_path, *, text="第一章 天门\n林舟触发天门机关，山路�
     )
 
 
+def _raw_candidate(spans, label):
+    candidate = _candidate(spans[0])
+    candidate["source_spans"] = copy.deepcopy(spans)
+    candidate["window_id"] = f"SWIN-TEST-{label}"
+    candidate["raw_hash"] = object_hash({"raw_candidate": label}, omit=())
+    return candidate
+
+
 def test_one_click_workflow_exports_only_draft_unverified_scene_candidates(tmp_path):
     result = _run(tmp_path)
 
@@ -169,16 +185,76 @@ def test_one_click_workflow_exports_only_draft_unverified_scene_candidates(tmp_p
     assert candidate["adjudication_status"] == "NOT_REQUIRED"
     assert result["export"]["scene_candidates"] == [candidate]
     assert result["export"]["scene_discovery"]["candidate_count"] == 1
-    assert result["catalog"].all("Claim") == []
-    assert result["catalog"].all("ExtractionRun") == []
-    assert result["catalog"].all("PlotAnalysis") == []
+    assert "Claim" not in result["catalog"].by_type
+    assert "ExtractionRun" not in result["catalog"].by_type
+    assert "PlotAnalysis" not in result["catalog"].by_type
     assert result["catalog"].all("CollectionDecision") == []
     assert result["catalog"].all("CollectionReview") == []
     assert (result["work_dir"] / "scene-scout-run.json").is_file()
     assert (result["work_dir"] / "scene-merge-run.json").is_file()
     assert (result["work_dir"] / "scene-candidates.json").is_file()
     assert not (result["work_dir"] / "plot-analysis.json").exists()
+    assert {
+        item["availability"] for item in result["export"]["artifact_manifest"]
+    } == {"WITHHELD_BY_RIGHTS"}
     validate_all(result["catalog"], result["store"])
+
+
+def test_full_research_catalog_roundtrips_and_validates_in_a_fresh_process(tmp_path):
+    result = _run(tmp_path, transport=_empty_transport)
+
+    completed = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "xhnovel_pipeline.cli",
+            "validate",
+            "all",
+            str(result["work_dir"] / "catalog.json"),
+            "--store",
+            str(result["store"].root),
+        ],
+        cwd=repo_root(),
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert completed.returncode == 0, completed.stderr
+    assert completed.stdout == "OK: validate all\n"
+
+
+@pytest.mark.parametrize("invalid_kind", ["known_without_support", "conflicting_one_value"])
+def test_scene_scout_rejects_observations_without_required_evidence(tmp_path, invalid_kind):
+    def transport(url, headers, body, timeout):
+        model_input = json.loads(json.loads(body)["input"])
+        span_input = model_input["window"]["source_spans"][0]
+        span = {
+            "segment_id": span_input["segment_id"],
+            "start": span_input["start"],
+            "end": min(span_input["end"], span_input["start"] + 2),
+        }
+        candidate = _candidate(span)
+        if invalid_kind == "known_without_support":
+            candidate["actors"]["support_spans"] = []
+        else:
+            candidate["action"] = {
+                "status": "CONFLICTING",
+                "values": ["触发"],
+                "support_spans": [span],
+            }
+        return 200, {}, _response({"candidates": [candidate]})
+
+    with pytest.raises(ValidationError, match="E-MODEL-OUTPUT"):
+        _run(tmp_path, transport=transport)
+
+
+def test_replay_rejects_known_observation_with_no_support(tmp_path):
+    result = _run(tmp_path)
+    result["scout"]["candidates"][0]["actors"]["support_spans"] = []
+
+    with pytest.raises(SchemaError, match="E-SCHEMA"):
+        validate_all(result["catalog"], result["store"])
 
 
 def test_discovery_brief_is_bound_into_every_model_request(tmp_path):
@@ -361,6 +437,140 @@ def test_rights_gate_blocks_external_model_before_ingestion_or_transport(tmp_pat
     assert not (tmp_path / "run" / "ingestion").exists()
 
 
+def test_direct_scene_scout_call_rechecks_immutable_external_model_rights(tmp_path):
+    source = tmp_path / "book.txt"
+    source.write_text("第一章 天门\n正文。", encoding="utf-8")
+    spec = _spec(source)
+    spec["rights"]["may_send_to_external_model"] = False
+    ingestion = run_novel_ingestion(
+        spec,
+        tmp_path / "ingestion",
+        repo_root=repo_root(),
+        now=NOW,
+    )
+    catalog = ingestion["catalog"]
+    snapshot = {
+        "snapshot_id": "SNP-TEST-RIGHTS",
+        "request_id": "REQ-TEST-RIGHTS",
+        "ingestion_run_id": ingestion["ingestion"]["ingestion_run_id"],
+    }
+    bundle = {
+        "bundle_id": "BND-TEST-RIGHTS",
+        "request_id": snapshot["request_id"],
+        "collection_snapshot_ids": [snapshot["snapshot_id"]],
+        "status": "FROZEN",
+    }
+    catalog.add("CollectionSnapshot", snapshot)
+    catalog.add("EvidenceBundle", bundle)
+    calls = 0
+
+    def transport(url, headers, body, timeout):
+        nonlocal calls
+        calls += 1
+        return 200, {}, _response({"candidates": []})
+
+    with pytest.raises(ValidationError, match="E-RIGHTS-EXTERNAL-MODEL"):
+        run_scene_scout(
+            catalog,
+            ingestion["store"],
+            bundle,
+            client=_client(transport),
+            repo_root=repo_root(),
+            created_at=NOW,
+        )
+    assert calls == 0
+
+
+def test_bundle_selection_must_exactly_induce_members(tmp_path):
+    result = _run(
+        tmp_path,
+        text=(
+            "第一章 天门\n林舟触发天门机关。\n\n"
+            "第二章 山路\n林舟进入山路。"
+        ),
+        transport=_empty_transport,
+    )
+    selected = result["bundle"]["selection_manifest"]["selected_chapter_ids"]
+    assert len(selected) == 2
+    result["bundle"]["selection_manifest"]["selected_chapter_ids"] = selected[:1]
+
+    with pytest.raises(ValidationError, match="E-BUNDLE-SELECTION-CLOSURE"):
+        validate_evidence(result["catalog"], result["store"])
+
+
+def test_cross_chapter_duplicate_candidates_merge_in_work_order_stage(tmp_path):
+    result = _run(
+        tmp_path,
+        text=(
+            "第一章 天门\n林舟触发天门机关。\n\n"
+            "第二章 山路\n机关开启后林舟进入山路。"
+        ),
+        transport=_empty_transport,
+    )
+    chapters = [
+        result["catalog"].get("NovelChapter", chapter_id)
+        for chapter_id in result["ingestion"]["ready_chapter_ids"]
+    ]
+    spans = []
+    for chapter in chapters:
+        segment = result["catalog"].get("Segment", chapter["segment_ids"][0])
+        spans.append(
+            {
+                "segment_id": segment["segment_id"],
+                "start": 0,
+                "end": min(4, len(segment["normalized_text"])),
+            }
+        )
+    raw = [_raw_candidate(spans, "CROSS-A"), _raw_candidate([spans[1]], "CROSS-B")]
+
+    merge_run, merged = merge_scene_candidates(
+        result["catalog"],
+        raw,
+        request_id=result["bundle"]["request_id"],
+        bundle_id=result["bundle"]["bundle_id"],
+        scout_run_id="SSRUN-TEST-CROSS",
+    )
+
+    assert merge_run["stages"] == [
+        {"stage": "LOCAL_OVERLAP_MERGE", "input_count": 2, "output_count": 2},
+        {"stage": "WORK_ORDER_REDUCTION", "input_count": 2, "output_count": 1},
+    ]
+    assert len(merged) == 1
+
+
+def test_wide_candidate_does_not_transitively_bridge_separate_events(tmp_path):
+    result = _run(
+        tmp_path,
+        text="第一章 天门\n" + "甲" * 80,
+        transport=_empty_transport,
+    )
+    chapter = result["catalog"].get(
+        "NovelChapter", result["ingestion"]["ready_chapter_ids"][0]
+    )
+    segment = max(
+        (result["catalog"].get("Segment", segment_id) for segment_id in chapter["segment_ids"]),
+        key=lambda item: len(item["normalized_text"]),
+    )
+    segment_id = segment["segment_id"]
+    raw = [
+        _raw_candidate([{"segment_id": segment_id, "start": 0, "end": 10}], "BRIDGE-A"),
+        _raw_candidate([{"segment_id": segment_id, "start": 5, "end": 25}], "BRIDGE-WIDE"),
+        _raw_candidate([{"segment_id": segment_id, "start": 20, "end": 30}], "BRIDGE-C"),
+    ]
+
+    merge_run, merged = merge_scene_candidates(
+        result["catalog"],
+        raw,
+        request_id=result["bundle"]["request_id"],
+        bundle_id=result["bundle"]["bundle_id"],
+        scout_run_id="SSRUN-TEST-BRIDGE",
+    )
+
+    assert merge_run["stages"][0]["output_count"] == 2
+    assert merge_run["stages"][1]["output_count"] == 2
+    assert len(merged) == 2
+
+
 def test_retry_attempts_and_usage_are_immutable_and_replayable(tmp_path, monkeypatch):
     monkeypatch.setattr("xhnovel_pipeline.model_api.time.sleep", lambda _: None)
     calls = 0
@@ -516,3 +726,40 @@ def test_export_cannot_upgrade_model_backed_auditability_to_full(tmp_path):
 
     with pytest.raises(ValidationError, match="E-AUDITABILITY"):
         validate_export(result["catalog"], result["store"])
+
+
+def test_export_cannot_mark_rights_withheld_artifacts_available(tmp_path):
+    result = _run(tmp_path)
+    export = result["export"]
+    export["artifact_manifest"][0]["availability"] = "AVAILABLE"
+    identity = {key: value for key, value in export.items() if key not in {"export_id", "export_hash"}}
+    export["export_id"] = derived_id("EvidenceExport", identity)
+    export["export_hash"] = object_hash(export, omit=("export_hash",))
+
+    with pytest.raises(ValidationError, match="E-RIGHTS-EXPORT"):
+        validate_export(result["catalog"], result["store"])
+
+
+def test_excerpt_export_rights_never_expose_source_or_model_request_artifacts(tmp_path):
+    def allow_excerpt_export(spec):
+        spec["rights"]["may_export_excerpts"] = True
+
+    result = _run(tmp_path, spec_mutator=allow_excerpt_export)
+    availability = {
+        item["artifact_id"]: item["availability"]
+        for item in result["export"]["artifact_manifest"]
+    }
+
+    assert all(
+        availability[artifact_id] == "WITHHELD_BY_RIGHTS"
+        for artifact_id in result["bundle"]["artifact_ids"]
+    )
+    assert all(
+        availability[artifact_id] == "WITHHELD_BY_RIGHTS"
+        for artifact_id in result["scout"]["run"]["model_request_artifact_ids"]
+    )
+    assert all(
+        availability[artifact_id] == "AVAILABLE"
+        for artifact_id in result["scout"]["run"]["provider_response_artifact_ids"]
+    )
+    validate_export(result["catalog"], result["store"])

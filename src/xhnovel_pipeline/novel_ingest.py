@@ -1752,11 +1752,16 @@ def validate_novel_ingestion(catalog: Catalog, store: ArtifactStore) -> None:
             raise ValidationError("E-CHAPTER-KIND", "only frontmatter/navigation may be ignored")
     for run in catalog.all("NovelIngestionRun"):
         work = catalog.get("NovelWork", run["work_id"])
-        work_chapters = [
+        unordered_work_chapters = [
             item for item in catalog.all("NovelChapter") if item["work_id"] == run["work_id"]
         ]
-        if run["chapter_ids"] != [item["chapter_id"] for item in work_chapters]:
+        chapter_ids = run["chapter_ids"]
+        catalog_chapter_ids = [item["chapter_id"] for item in unordered_work_chapters]
+        if len(chapter_ids) != len(set(chapter_ids)) or set(chapter_ids) != set(catalog_chapter_ids):
             raise ValidationError("E-CHAPTER-ORDER", f"{run['ingestion_run_id']} chapter order changed")
+        work_chapters = [catalog.get("NovelChapter", chapter_id) for chapter_id in chapter_ids]
+        if any(chapter["work_id"] != run["work_id"] for chapter in work_chapters):
+            raise ValidationError("E-LINEAGE", f"{run['ingestion_run_id']} includes another work's chapter")
         try:
             input_spec = json.loads(store.get(run["input_spec_artifact_id"]).decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:

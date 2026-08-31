@@ -142,7 +142,8 @@
         "required": [
           "artifact_id",
           "byte_length",
-          "durability_status"
+          "durability_status",
+          "availability"
         ],
         "properties": {
           "artifact_id": {
@@ -160,7 +161,7 @@
             ]
           },
           "availability": {
-            "type": "string"
+            "enum": ["AVAILABLE", "WITHHELD_BY_RIGHTS"]
           }
         }
       }

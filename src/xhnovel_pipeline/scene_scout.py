@@ -24,6 +24,7 @@ from .model_api import (
     OpenAIResponsesClient,
     _response_output_text,
 )
+from .novel_assessment import rights_for_bundle
 from .runtime import repository_commit
 from .schema import validate_schema
 from .store import ArtifactStore
@@ -31,7 +32,7 @@ from .store import ArtifactStore
 DEFAULT_WINDOW_CHARS = 10_000
 DEFAULT_OVERLAP_CHARS = 1_800
 DEFAULT_MAX_WORKERS = 8
-SCENE_MERGE_ALGORITHM_ID = "source-span-action-chain-v1"
+SCENE_MERGE_ALGORITHM_ID = "source-span-action-chain-v2"
 PROFILE_DIR = pathlib.Path("profiles/xuanhuan-gameplay-scene-v1")
 PROMPT_FILE = PROFILE_DIR / "neutral-prompt.md"
 OUTPUT_SCHEMA_FILE = PROFILE_DIR / "scene-scout-output.schema.json"
@@ -519,8 +520,14 @@ def _validate_scout_output(
                 observation["values"] or observation["support_spans"]
             ):
                 raise ValidationError("E-MODEL-OUTPUT", f"UNKNOWN {field} must have no values/support")
-            if observation["status"] != "UNKNOWN" and not observation["values"]:
-                raise ValidationError("E-MODEL-OUTPUT", f"known/conflicting {field} needs values")
+            if observation["status"] != "UNKNOWN" and (
+                not observation["values"] or not observation["support_spans"]
+            ):
+                raise ValidationError(
+                    "E-MODEL-OUTPUT", f"known/conflicting {field} needs values and support"
+                )
+            if observation["status"] == "CONFLICTING" and len(observation["values"]) < 2:
+                raise ValidationError("E-MODEL-OUTPUT", f"CONFLICTING {field} needs two values")
     return value["candidates"]
 
 
@@ -611,7 +618,7 @@ def merge_scene_candidates(
             for span in candidate["source_spans"]
         )
         chapter_buckets.setdefault(chapter_ordinal, []).append(candidate)
-    groups: list[list[dict[str, Any]]] = []
+    local_stage_groups: list[list[dict[str, Any]]] = []
     for chapter_ordinal in sorted(chapter_buckets):
         local_groups: list[list[dict[str, Any]]] = []
         ordered = sorted(
@@ -633,17 +640,43 @@ def merge_scene_candidates(
             matched = [
                 group
                 for group in local_groups
-                if any(_candidates_overlap(candidate, item) for item in group)
+                if all(_candidates_overlap(candidate, item) for item in group)
             ]
             if not matched:
                 local_groups.append([candidate])
                 continue
             primary = matched[0]
             primary.append(candidate)
-            for extra in matched[1:]:
-                primary.extend(extra)
-                local_groups.remove(extra)
-        groups.extend(local_groups)
+        local_stage_groups.extend(local_groups)
+
+    def group_order(group: list[dict[str, Any]]) -> tuple[Any, ...]:
+        return min(
+            (
+                chapter_by_segment[span["segment_id"]]["ordinal"],
+                catalog.get("Segment", span["segment_id"])["ordinal"],
+                span["start"],
+                span["segment_id"],
+                item["raw_hash"],
+            )
+            for item in group
+            for span in item["source_spans"]
+        )
+
+    groups: list[list[dict[str, Any]]] = []
+    for local_group in sorted(local_stage_groups, key=group_order):
+        matched = [
+            group
+            for group in groups
+            if all(
+                _candidates_overlap(left, right)
+                for left in local_group
+                for right in group
+            )
+        ]
+        if matched:
+            matched[0].extend(local_group)
+        else:
+            groups.append(list(local_group))
     input_hashes = sorted(item["raw_hash"] for item in raw_candidates)
     merge_identity = {
         "scene_scout_run_id": scout_run_id,
@@ -712,11 +745,11 @@ def merge_scene_candidates(
             {
                 "stage": "LOCAL_OVERLAP_MERGE",
                 "input_count": len(raw_candidates),
-                "output_count": len(groups),
+                "output_count": len(local_stage_groups),
             },
             {
                 "stage": "WORK_ORDER_REDUCTION",
-                "input_count": len(groups),
+                "input_count": len(local_stage_groups),
                 "output_count": len(merged),
             },
         ],
@@ -746,6 +779,8 @@ def make_scout_build(
         "prompt_template_hash": artifact_id_for(prompt_bytes),
         "parameters": {
             "endpoint": client.endpoint,
+            "timeout_seconds": format(client.timeout, ".17g"),
+            "max_attempts": client.max_attempts,
             "structured_output": True,
             "max_input_chars": max_input_chars,
             "max_request_bytes": max_request_bytes,
@@ -788,6 +823,13 @@ def _run_scene_scout_locked(
         raise ValidationError("E-FROZEN", "scene scout requires a frozen bundle")
     if catalog.get("EvidenceBundle", bundle.get("bundle_id", "")) != bundle:
         raise ValidationError("E-SCENE-LINEAGE", "scene scout requires the stored frozen bundle")
+    rights_for_bundle(
+        catalog,
+        store,
+        bundle,
+        require_storage=True,
+        require_external_model=True,
+    )
     if not isinstance(max_workers, int) or isinstance(max_workers, bool) or not 1 <= max_workers <= 64:
         raise ValidationError("E-SCENE-CONCURRENCY", "max_workers must be between 1 and 64")
     for field, value in (
@@ -1183,6 +1225,22 @@ def scene_scout_artifact_ids(
         ids.add(attempt["request_artifact_id"])
         if attempt["response_artifact_id"]:
             ids.add(attempt["response_artifact_id"])
+    return sorted_ids(ids)
+
+
+def scene_scout_distributable_artifact_ids(
+    catalog: Catalog,
+    scout: dict[str, Any],
+) -> list[str]:
+    """Return model-output audit artifacts that do not embed source request text."""
+    run = scout["run"]
+    ids = set(run["provider_response_artifact_ids"])
+    ids.add(run["checkpoint_artifact_id"])
+    ids.update(run["attempt_record_artifact_ids"])
+    for attempt_id in run["model_attempt_ids"]:
+        response_artifact_id = catalog.get("ModelAttempt", attempt_id)["response_artifact_id"]
+        if response_artifact_id:
+            ids.add(response_artifact_id)
     return sorted_ids(ids)
 
 

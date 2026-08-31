@@ -18,16 +18,20 @@ TXT / directory / EPUB / bounded static site
   -> DRAFT / UNVERIFIED SceneCandidates
 ```
 
-Scene Scout output is not a verified fact or a formal claim. Every known field
-must cite an exact normalized-text `(segment_id, start, end)` span. Unknown and
-conflicting observations are represented structurally; conflicts become
-`NEEDS_ADJUDICATION`. A successful run may contain zero candidates.
+Scene Scout output is not a verified fact or a formal claim. Every known or
+conflicting field must cite an exact normalized-text `(segment_id, start, end)`
+span; conflicting fields carry at least two values. Unknown observations have
+no values or support. Conflicts become `NEEDS_ADJUDICATION`. A successful run
+may contain zero candidates.
 
 Rights and trust are explicit. Technical access never implies permission. The
 research command requires a declared non-`UNKNOWN` rights basis,
 `may_store_full_text: true`, and `may_send_to_external_model: true`. Only source
 quality classified as Tier A or B is eligible for event-scene discovery; Tier D
 content remains `lead-only` and is never sent to the Scene Scout.
+The send boundary re-resolves rights from the immutable ingestion spec. Export
+manifests mark the audit closure `WITHHELD_BY_RIGHTS` when excerpts may not be
+distributed.
 
 Quick start:
 

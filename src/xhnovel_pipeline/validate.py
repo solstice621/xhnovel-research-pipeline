@@ -12,11 +12,11 @@ from .errors import ValidationError
 from .hashing import collection_snapshot_hash, is_real_sha256, object_hash, sorted_ids
 from .ids import derived_id
 from .novel_assessment import (
-    declared_rights,
     declared_source_quality,
     deterministic_triage_assessment,
     find_bound_chapter_identity_review,
     find_bound_triage_review,
+    rights_for_bundle,
     reviewed_triage_assessment,
     validate_bound_chapter_identity_review,
 )
@@ -244,7 +244,10 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
             if doc["input_artifact_id"] != parse["input_artifact_id"]:
                 raise ValidationError("E-LINEAGE", f"{parse['parse_run_id']} document input artifact mismatch")
             if parse["status"] == "SUCCEEDED":
-                segments = [s for s in catalog.all("Segment") if s["document_id"] == doc["document_id"]]
+                segments = sorted(
+                    (s for s in catalog.all("Segment") if s["document_id"] == doc["document_id"]),
+                    key=lambda segment: segment["ordinal"],
+                )
                 expected = object_hash({"document": doc, "segments": segments})
                 if parse.get("output_hash") != expected:
                     raise ValidationError("E-HASH-MISMATCH", f"{parse['parse_run_id']} output_hash mismatch")
@@ -262,9 +265,7 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
                         parse["parameters"].get("media_type", artifact["media_type"]),
                         doc["document_id"],
                     )
-                    if replayed["document"] != doc or replayed["segments"] != sorted(
-                        segments, key=lambda segment: segment["ordinal"]
-                    ):
+                    if replayed["document"] != doc or replayed["segments"] != segments:
                         raise ValidationError("E-PARSE-REPLAY", f"{parse['parse_run_id']} differs from artifact replay")
         parse_identity = {
             "input_artifact_id": parse["input_artifact_id"],
@@ -325,15 +326,14 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
                 "E-NOVEL-TRIAGE-BIND", "novel bundle must bind one ingestion and its ArtifactStore"
             )
         ingestion = catalog.get("NovelIngestionRun", next(iter(ingestion_ids)))
-        try:
-            ingestion_spec = json.loads(
-                store.get(ingestion["input_spec_artifact_id"]).decode("utf-8")
-            )
-        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
-            raise ValidationError("E-RIGHTS", "ingestion rights declaration is not readable") from exc
-        rights = declared_rights(
-            ingestion_spec, require_storage=True, require_external_model=True
+        rights = rights_for_bundle(
+            catalog,
+            store,
+            bundle,
+            require_storage=True,
+            require_external_model=True,
         )
+        ingestion_spec = json.loads(store.get(ingestion["input_spec_artifact_id"]).decode("utf-8"))
         source_quality = declared_source_quality(ingestion_spec)
         snapshot_retrieval_ids = {ident for snapshot in snapshots for ident in snapshot["retrieval_ids"]}
         snapshot_artifact_ids = {ident for snapshot in snapshots for ident in snapshot["artifact_ids"]}
@@ -351,13 +351,44 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
                 )
             if bundle["selection_manifest"].get("review_completion_result") != "PASS":
                 raise ValidationError("E-REVIEW-GATE", f"{bundle['bundle_id']} review gate is not PASS")
-        selected_chapter_ids = bundle["selection_manifest"].get("selected_chapter_ids", [])
-        if not isinstance(selected_chapter_ids, list) or len(selected_chapter_ids) != len(
-            set(selected_chapter_ids)
+        manifest = bundle["selection_manifest"]
+        selected_chapter_ids = manifest.get("selected_chapter_ids")
+        if (
+            selected_chapter_ids != ingestion["ready_chapter_ids"]
+            or manifest.get("duplicate_chapter_ids") != ingestion["duplicate_chapter_ids"]
+            or manifest.get("ignored_chapter_ids") != ingestion["ignored_chapter_ids"]
         ):
             raise ValidationError(
-                "E-CHAPTER-IDENTITY-BIND",
-                f"{bundle['bundle_id']} has an invalid selected chapter partition",
+                "E-BUNDLE-SELECTION-CLOSURE",
+                f"{bundle['bundle_id']} selection differs from the ingestion partition",
+            )
+        selected_chapters = [
+            catalog.get("NovelChapter", chapter_id) for chapter_id in selected_chapter_ids
+        ]
+        expected_retrieval_ids = [chapter["retrieval_id"] for chapter in selected_chapters]
+        expected_artifact_ids = sorted_ids(
+            {chapter["artifact_id"] for chapter in selected_chapters}
+        )
+        expected_document_ids = list(
+            dict.fromkeys(chapter["document_id"] for chapter in selected_chapters)
+        )
+        expected_segment_ids = [
+            segment_id for chapter in selected_chapters for segment_id in chapter["segment_ids"]
+        ]
+        expected_triage_ids = [
+            catalog.get("Retrieval", retrieval_id)["triage_assessment_id"]
+            for retrieval_id in expected_retrieval_ids
+        ]
+        if (
+            bundle["retrieval_ids"] != expected_retrieval_ids
+            or bundle["artifact_ids"] != expected_artifact_ids
+            or bundle["document_ids"] != expected_document_ids
+            or bundle["segment_ids"] != expected_segment_ids
+            or bundle["triage_assessment_ids"] != expected_triage_ids
+        ):
+            raise ValidationError(
+                "E-BUNDLE-SELECTION-CLOSURE",
+                f"{bundle['bundle_id']} members are not induced by selected chapters",
             )
         if selected_chapter_ids and review_snapshots:
             if store is None:
@@ -607,6 +638,16 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
                 and (observation["values"] or observation["support_spans"])
             ):
                 raise ValidationError("E-SCENE-SPAN", f"scene candidate {field} support differs")
+            if observation["status"] != "UNKNOWN" and (
+                not observation["values"] or not observation["support_spans"]
+            ):
+                raise ValidationError(
+                    "E-SCENE-SPAN", f"scene candidate {field} lacks values or support"
+                )
+            if observation["status"] == "CONFLICTING" and len(observation["values"]) < 2:
+                raise ValidationError(
+                    "E-SCENE-SPAN", f"scene candidate {field} lacks conflicting values"
+                )
         earliest = min(
             candidate["source_spans"],
             key=lambda span: (
@@ -827,18 +868,38 @@ def validate_export(catalog: Catalog, store: ArtifactStore | None = None) -> Non
                 "model-backed scene exports remain DEGRADED until every attempt is immutable",
             )
         manifest_ids = [item["artifact_id"] for item in export["artifact_manifest"]]
-        from .scene_scout import scene_scout_artifact_ids
+        from .scene_scout import (
+            scene_scout_artifact_ids,
+            scene_scout_distributable_artifact_ids,
+        )
 
         expected_artifact_ids = set(
             scene_scout_artifact_ids(catalog, bundle, {"run": run})
         )
         if len(manifest_ids) != len(set(manifest_ids)) or set(manifest_ids) != expected_artifact_ids:
             raise ValidationError("E-ARTIFACT-BIND", "artifact manifest does not exactly match catalog artifacts")
+        if store is None:
+            raise ValidationError("E-RIGHTS-EXPORT", "export validation requires the immutable rights store")
+        rights = rights_for_bundle(catalog, store, bundle, require_storage=True)
+        distributable_ids = (
+            set(scene_scout_distributable_artifact_ids(catalog, {"run": run}))
+            if rights["may_export_excerpts"]
+            else set()
+        )
         for item in export["artifact_manifest"]:
             _require_hash(item["artifact_id"], "manifest")
             art = catalog.get("Artifact", item["artifact_id"])
             if item["byte_length"] != art["byte_length"] or item["durability_status"] != art["durability_status"]:
                 raise ValidationError("E-ARTIFACT-BIND", "artifact manifest differs from catalog")
+            expected_availability = (
+                "AVAILABLE"
+                if item["artifact_id"] in distributable_ids
+                else "WITHHELD_BY_RIGHTS"
+            )
+            if item["availability"] != expected_availability:
+                raise ValidationError(
+                    "E-RIGHTS-EXPORT", "artifact availability differs from declared export rights"
+                )
             if item["durability_status"] == "EPHEMERAL" and audit == "FULL":
                 raise ValidationError("E-EPHEMERAL", "FULL auditability cannot depend on EPHEMERAL artifacts")
             if store:

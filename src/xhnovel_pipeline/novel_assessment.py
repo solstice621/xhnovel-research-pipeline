@@ -8,6 +8,7 @@ from .canonical import canonical_dumps
 from .catalog import Catalog
 from .constants import SCHEMA_VERSION
 from .errors import ValidationError
+from .hashing import artifact_id_for, object_hash
 from .ids import derived_id
 from .novel_adapters import chapter_number
 from .store import ArtifactStore
@@ -69,6 +70,44 @@ def declared_rights(
             "an explicit non-UNKNOWN rights basis and external-model permission are required",
         )
     return copy.deepcopy(rights)
+
+
+def rights_for_bundle(
+    catalog: Catalog,
+    store: ArtifactStore,
+    bundle: dict[str, Any],
+    *,
+    require_storage: bool = False,
+    require_external_model: bool = False,
+) -> dict[str, Any]:
+    """Resolve immutable declared rights through Bundle -> Snapshot -> Ingestion -> spec."""
+    snapshot_ids = bundle.get("collection_snapshot_ids")
+    if not isinstance(snapshot_ids, list) or not snapshot_ids:
+        raise ValidationError("E-RIGHTS", "bundle has no collection snapshot rights lineage")
+    snapshots = [catalog.get("CollectionSnapshot", snapshot_id) for snapshot_id in snapshot_ids]
+    request_id = bundle.get("request_id")
+    if any(snapshot.get("request_id") != request_id for snapshot in snapshots):
+        raise ValidationError("E-RIGHTS", "bundle and snapshot request lineage differs")
+    ingestion_ids = {snapshot.get("ingestion_run_id") for snapshot in snapshots}
+    if len(ingestion_ids) != 1 or None in ingestion_ids:
+        raise ValidationError("E-RIGHTS", "bundle must resolve to exactly one ingestion rights record")
+    ingestion = catalog.get("NovelIngestionRun", next(iter(ingestion_ids)))
+    try:
+        raw = store.get(ingestion["input_spec_artifact_id"])
+        spec = json.loads(raw.decode("utf-8"))
+    except (KeyError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValidationError("E-RIGHTS", "stored ingestion specification is invalid") from exc
+    if (
+        not isinstance(spec, dict)
+        or artifact_id_for(raw) != ingestion["input_spec_artifact_id"]
+        or object_hash(spec, omit=()) != ingestion["input_spec_hash"]
+    ):
+        raise ValidationError("E-RIGHTS", "stored ingestion rights specification changed")
+    return declared_rights(
+        spec,
+        require_storage=require_storage,
+        require_external_model=require_external_model,
+    )
 
 
 def declared_source_quality(spec: dict[str, Any]) -> dict[str, str]:

@@ -6,7 +6,7 @@ import pathlib
 import sys
 
 from .catalog import Catalog
-from .errors import PipelineError
+from .errors import PipelineError, ValidationError
 from .model_api import OpenAIResponsesClient
 from .novel_ingest import load_novel_spec, run_novel_ingestion, validate_novel_ingestion
 from .novel_selection import validate_source_resolutions
@@ -25,10 +25,21 @@ from .validate import validate_all, validate_evidence, validate_export
 
 
 def _catalog_from_json(path: pathlib.Path) -> Catalog:
-    data = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValidationError("E-CATALOG-JSON", f"invalid catalog JSON: {path}") from exc
+    if not isinstance(data, dict):
+        raise ValidationError("E-CATALOG-JSON", "catalog root must be an object")
     catalog = Catalog()
     for kind, records in data.items():
+        if kind not in catalog.by_type:
+            raise ValidationError("E-CATALOG-KIND", f"unknown catalog record type {kind!r}")
+        if not isinstance(records, list):
+            raise ValidationError("E-CATALOG-RECORD", f"catalog {kind} value must be an array")
         for record in records:
+            if not isinstance(record, dict):
+                raise ValidationError("E-CATALOG-RECORD", f"{kind} record must be an object")
             catalog.add(kind, record)
     return catalog
 
