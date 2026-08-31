@@ -14,7 +14,15 @@ Prioritize player-or-agent interaction with an external world:
 
 Every candidate and every known field must cite exact `segment_id`, `start`, and
 `end` offsets within the supplied normalized segment text. Do not cite text outside
-the window. Zero candidates is a valid successful result.
+the window. Prefer copying a complete source-span triple exactly as supplied in
+`window.source_spans`; never expand a partial window span to the whole segment or
+reinterpret its local substring offset as zero. If you cite a narrower subrange,
+its `start` and `end` must remain absolute offsets in that segment.
+
+Every `support_spans` triple used by a known or conflicting observation must also
+appear verbatim in that candidate's top-level `source_spans`. Build the candidate
+span list as the union of all observation support spans. Zero candidates is a
+valid successful result.
 
 Use structured field status, never placeholder strings: `KNOWN` when the cited text
 supports the values, `UNKNOWN` with empty values/support when silent, and

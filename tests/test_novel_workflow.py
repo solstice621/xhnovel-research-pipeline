@@ -286,6 +286,20 @@ def test_discovery_brief_is_bound_into_every_model_request(tmp_path):
         assert model_input["discovery_brief"] == "只寻找制度压力造成的能力变化"
 
 
+def test_scene_scout_prompt_states_the_runtime_citation_contract():
+    prompt = (
+        repo_root()
+        / "profiles"
+        / "xuanhuan-gameplay-scene-v1"
+        / "neutral-prompt.md"
+    ).read_text(encoding="utf-8")
+    normalized = " ".join(prompt.split())
+
+    assert "never expand a partial window span to the whole segment" in normalized
+    assert "must also appear verbatim in that candidate's top-level `source_spans`" in normalized
+    assert "union of all observation support spans" in normalized
+
+
 def test_snapshot_rejects_a_different_valid_ingestion_run(tmp_path):
     first_dir = tmp_path / "first"
     first_dir.mkdir()
