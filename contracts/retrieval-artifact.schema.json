@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/retrieval-artifact.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "retrieval_id",
+    "artifact_id",
+    "role"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "retrieval_id": {
+      "type": "string",
+      "pattern": "^RET-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "artifact_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "role": {
+      "enum": [
+        "RAW_RESPONSE",
+        "RESPONSE_HEADERS",
+        "RENDERED_DOM",
+        "SCREENSHOT",
+        "PROVIDER_JSON",
+        "PDF_BYTES"
+      ]
+    },
+    "parent_artifact_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "transform_build_id": {
+      "type": "string"
+    }
+  }
+}

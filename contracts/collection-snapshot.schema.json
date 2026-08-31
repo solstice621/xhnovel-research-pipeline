@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/collection-snapshot.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "snapshot_id",
+    "request_id",
+    "ingestion_run_id",
+    "retrieval_ids",
+    "artifact_ids",
+    "triage_assessment_ids",
+    "snapshot_hash",
+    "frozen_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^SNP-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^REQ-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "ingestion_run_id": {
+      "type": "string",
+      "pattern": "^NING-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "retrieval_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^RET-[A-Z0-9][A-Z0-9._:-]{1,}$"
+      }
+    },
+    "artifact_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^sha256:[0-9a-f]{64}$"
+      }
+    },
+    "triage_assessment_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^TRI-[A-Z0-9][A-Z0-9._:-]{1,}$"
+      }
+    },
+    "collection_decision_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^CDEC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+      },
+      "uniqueItems": true
+    },
+    "collection_review_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^CRV-[A-Z0-9][A-Z0-9._:-]{1,}$"
+      },
+      "uniqueItems": true
+    },
+    "quality_policy_artifact_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "quality_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "result",
+        "required_count",
+        "reviewed_count",
+        "missing_decision_ids",
+        "duplicate_review_decision_ids",
+        "unresolved_review_ids"
+      ],
+      "properties": {
+        "result": {
+          "enum": [
+            "PASS",
+            "INCONCLUSIVE"
+          ]
+        },
+        "required_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reviewed_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missing_decision_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CDEC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+          }
+        },
+        "duplicate_review_decision_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CDEC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+          }
+        },
+        "unresolved_review_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CRV-[A-Z0-9][A-Z0-9._:-]{1,}$"
+          }
+        }
+      }
+    },
+    "snapshot_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "frozen_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "FROZEN"
+      ]
+    }
+  },
+  "dependentRequired": {
+    "quality_gate": [
+      "collection_decision_ids",
+      "collection_review_ids",
+      "quality_policy_artifact_id"
+    ],
+    "collection_decision_ids": [
+      "collection_review_ids",
+      "quality_policy_artifact_id",
+      "quality_gate"
+    ]
+  }
+}

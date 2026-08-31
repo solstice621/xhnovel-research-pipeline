@@ -1,0 +1,15 @@
+schema_version: "0.1-draft-frozen"
+id: novel-fame-ranking-v1
+method: reciprocal_rank_fusion
+rrf_k: 60
+score_scale: 1000000
+default_queries:
+  - "最著名的{genre}小说"
+  - "{genre}经典小说"
+  - "{genre}小说代表作"
+requirements:
+  - retain every provider result in the declared search window
+  - score only observed candidates
+  - preserve provider, query, page and rank for every signal
+  - never describe the result as an exhaustive internet ranking
+tie_break: canonical_title_ascending

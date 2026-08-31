@@ -1,0 +1,13 @@
+{
+  "source": {
+    "kind": "directory",
+    "path": "../fixtures/positive/novel-demo/chapters",
+    "title": "示例仙途",
+    "author": "fixture"
+  },
+  "limits": {
+    "max_chapters": 20,
+    "max_bytes": 1000000
+  },
+  "strict_order": true
+}

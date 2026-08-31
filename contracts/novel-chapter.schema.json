@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/novel-chapter.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "chapter_id",
+    "work_id",
+    "chapter_key",
+    "ordinal",
+    "declared_number",
+    "title",
+    "source_locator",
+    "source_id",
+    "retrieval_id",
+    "artifact_id",
+    "document_id",
+    "segment_ids",
+    "normalized_content_hash",
+    "media_type",
+    "status",
+    "duplicate_of"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "chapter_id": {
+      "type": "string",
+      "pattern": "^CHP-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "work_id": {
+      "type": "string",
+      "pattern": "^NWK-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "chapter_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ordinal": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "declared_number": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_locator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^SRC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "retrieval_id": {
+      "type": "string",
+      "pattern": "^RET-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "artifact_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "document_id": {
+      "type": "string",
+      "pattern": "^DOC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "segment_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^SEG-[A-Z0-9][A-Z0-9._:-]{1,}$"
+      },
+      "uniqueItems": true
+    },
+    "normalized_content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "media_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "READY",
+        "DUPLICATE"
+      ]
+    },
+    "duplicate_of": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^CHP-[A-Z0-9][A-Z0-9._:-]{1,}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

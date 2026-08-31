@@ -1,0 +1,19 @@
+profile_id: xuanhuan-gameplay-scene/v1
+extracts:
+  - actors
+  - action
+  - target
+  - precondition
+  - state_transition
+  - timeline
+  - conflicts
+  - immediate_feedback
+  - new_affordances
+  - persistence
+forbids:
+  - M-1 coverage
+  - current_holder
+  - NOT_A_GAP
+  - design-map patches
+  - element_mapping
+unknown_and_conflicting_are_legal: true
