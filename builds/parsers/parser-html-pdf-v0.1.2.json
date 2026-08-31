@@ -1,0 +1,11 @@
+{
+  "parser_build_id": "parser-html-pdf-v0.1.2",
+  "supersedes": "parser-html-pdf-v0.1.1",
+  "media_types": ["text/html", "application/xhtml+xml", "application/pdf"],
+  "skips": ["script", "style", "nav", "header", "footer", "aside", "advertisement"],
+  "html_root": "mw-content-text | main | article | document",
+  "void_tags_do_not_increment_skip": true,
+  "html_encodings": ["declared charset", "utf-8-sig", "utf-8", "gb18030", "big5"],
+  "dynamic_pages": "NEEDS_RENDERER",
+  "does_not": ["fact grading", "claim extraction", "project mapping"]
+}

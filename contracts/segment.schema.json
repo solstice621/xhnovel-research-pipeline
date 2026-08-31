@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/segment.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "segment_id",
+    "document_id",
+    "ordinal",
+    "segment_type",
+    "normalized_text",
+    "normalized_text_hash",
+    "source_locator"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "segment_id": {
+      "type": "string",
+      "pattern": "^SEG-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "document_id": {
+      "type": "string",
+      "pattern": "^DOC-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "parent_segment_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ordinal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "segment_type": {
+      "enum": [
+        "document",
+        "section",
+        "paragraph",
+        "sentence",
+        "quote"
+      ]
+    },
+    "normalized_text": {
+      "type": "string"
+    },
+    "normalized_text_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "source_locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "html",
+            "pdf",
+            "text"
+          ]
+        },
+        "selector": {
+          "type": "string"
+        },
+        "start": {
+          "type": "integer"
+        },
+        "end": {
+          "type": "integer"
+        },
+        "page": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

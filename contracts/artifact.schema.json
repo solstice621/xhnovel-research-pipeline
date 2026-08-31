@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/artifact.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "media_type",
+    "byte_length",
+    "retention_policy",
+    "durability_status",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "artifact_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "media_type": {
+      "type": "string"
+    },
+    "byte_length": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "retention_policy": {
+      "type": "string"
+    },
+    "durability_status": {
+      "enum": [
+        "EPHEMERAL",
+        "LOCAL",
+        "DURABLE"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "parent_artifact_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "transform_build_id": {
+      "type": "string"
+    }
+  }
+}
