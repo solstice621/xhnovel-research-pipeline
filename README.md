@@ -29,9 +29,10 @@ research command requires a declared non-`UNKNOWN` rights basis,
 `may_store_full_text: true`, and `may_send_to_external_model: true`. Only source
 quality classified as Tier A or B is eligible for event-scene discovery; Tier D
 content remains `lead-only` and is never sent to the Scene Scout.
-The send boundary re-resolves rights from the immutable ingestion spec. Export
-manifests mark the audit closure `WITHHELD_BY_RIGHTS` when excerpts may not be
-distributed.
+The send and export boundaries first validate the complete Bundle → Snapshot →
+Ingestion lineage, including induced members and deterministic triage, then
+re-resolve rights from the immutable ingestion spec. Export manifests mark the
+audit closure `WITHHELD_BY_RIGHTS` when excerpts may not be distributed.
 
 Quick start:
 

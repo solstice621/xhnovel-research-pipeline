@@ -30,3 +30,7 @@ accuracy-review workflow exists.
 model-request artifacts are always `WITHHELD_BY_RIGHTS`; constrained model
 output/receipt artifacts become `AVAILABLE` only when excerpt export is
 explicitly allowed.
+
+Rights resolution is downstream of complete lineage validation. The same
+ingestion, snapshot, Bundle member, and deterministic-triage checks protect the
+model-send boundary, export construction, and standalone export validation.

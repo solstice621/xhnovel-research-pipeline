@@ -17,7 +17,7 @@ from .novel_assessment import (
     declared_rights,
     declared_source_quality,
     deterministic_triage_assessment,
-    rights_for_bundle,
+    resolve_validated_bundle_ingestion,
 )
 from .novel_ingest import (
     novel_ingestion_artifact_ids,
@@ -269,7 +269,8 @@ def _make_unqualified_export(
     repo_root: pathlib.Path,
     now: str,
 ) -> dict[str, Any]:
-    rights = rights_for_bundle(catalog, store, bundle, require_storage=True)
+    lineage = resolve_validated_bundle_ingestion(catalog, store, bundle)
+    rights = lineage["rights"]
     distributable_ids = (
         set(scene_scout_distributable_artifact_ids(catalog, scout))
         if rights["may_export_excerpts"]

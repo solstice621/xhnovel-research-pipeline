@@ -16,6 +16,7 @@ from .novel_assessment import (
     deterministic_triage_assessment,
     find_bound_chapter_identity_review,
     find_bound_triage_review,
+    resolve_validated_bundle_ingestion,
     rights_for_bundle,
     reviewed_triage_assessment,
     validate_bound_chapter_identity_review,
@@ -880,7 +881,8 @@ def validate_export(catalog: Catalog, store: ArtifactStore | None = None) -> Non
             raise ValidationError("E-ARTIFACT-BIND", "artifact manifest does not exactly match catalog artifacts")
         if store is None:
             raise ValidationError("E-RIGHTS-EXPORT", "export validation requires the immutable rights store")
-        rights = rights_for_bundle(catalog, store, bundle, require_storage=True)
+        lineage = resolve_validated_bundle_ingestion(catalog, store, bundle)
+        rights = lineage["rights"]
         distributable_ids = (
             set(scene_scout_distributable_artifact_ids(catalog, {"run": run}))
             if rights["may_export_excerpts"]

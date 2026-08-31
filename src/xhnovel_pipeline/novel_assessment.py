@@ -110,6 +110,61 @@ def rights_for_bundle(
     )
 
 
+def resolve_validated_bundle_ingestion(
+    catalog: Catalog,
+    store: ArtifactStore,
+    bundle: dict[str, Any],
+    *,
+    require_external_model: bool = False,
+) -> dict[str, Any]:
+    """Resolve rights only after the complete immutable novel lineage validates."""
+    if catalog.get("EvidenceBundle", bundle.get("bundle_id", "")) != bundle:
+        raise ValidationError("E-BUNDLE-BIND", "bundle is not the stored immutable record")
+
+    # Local imports keep the validation dependency acyclic. These validators are
+    # the single source of truth for ingestion, snapshot, bundle-member, and
+    # deterministic triage closure; egress/export must not maintain weaker copies.
+    from .novel_ingest import validate_novel_ingestion
+    from .validate import validate_collection, validate_evidence
+
+    frozen_ids_before = set(catalog.frozen_bundle_ids)
+    try:
+        validate_novel_ingestion(catalog, store)
+        validate_collection(catalog, store)
+        validate_evidence(catalog, store)
+    finally:
+        catalog.frozen_bundle_ids.clear()
+        catalog.frozen_bundle_ids.update(frozen_ids_before)
+
+    snapshots = [
+        catalog.get("CollectionSnapshot", snapshot_id)
+        for snapshot_id in bundle["collection_snapshot_ids"]
+    ]
+    ingestion_ids = {snapshot["ingestion_run_id"] for snapshot in snapshots}
+    if len(ingestion_ids) != 1:
+        raise ValidationError("E-BUNDLE-BIND", "validated bundle has ambiguous ingestion lineage")
+    ingestion = catalog.get("NovelIngestionRun", next(iter(ingestion_ids)))
+    raw = store.get(ingestion["input_spec_artifact_id"])
+    try:
+        input_spec = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValidationError("E-RIGHTS", "stored ingestion specification is invalid") from exc
+    rights = rights_for_bundle(
+        catalog,
+        store,
+        bundle,
+        require_storage=True,
+        require_external_model=require_external_model,
+    )
+    return {
+        "bundle": bundle,
+        "snapshots": snapshots,
+        "ingestion": ingestion,
+        "input_spec": input_spec,
+        "rights": rights,
+    }
+
+
 def declared_source_quality(spec: dict[str, Any]) -> dict[str, str]:
     value = spec.get("source_quality")
     if value is None:

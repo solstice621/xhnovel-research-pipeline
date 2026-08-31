@@ -24,7 +24,7 @@ from .model_api import (
     OpenAIResponsesClient,
     _response_output_text,
 )
-from .novel_assessment import rights_for_bundle
+from .novel_assessment import resolve_validated_bundle_ingestion
 from .runtime import repository_commit
 from .schema import validate_schema
 from .store import ArtifactStore
@@ -823,11 +823,10 @@ def _run_scene_scout_locked(
         raise ValidationError("E-FROZEN", "scene scout requires a frozen bundle")
     if catalog.get("EvidenceBundle", bundle.get("bundle_id", "")) != bundle:
         raise ValidationError("E-SCENE-LINEAGE", "scene scout requires the stored frozen bundle")
-    rights_for_bundle(
+    resolve_validated_bundle_ingestion(
         catalog,
         store,
         bundle,
-        require_storage=True,
         require_external_model=True,
     )
     if not isinstance(max_workers, int) or isinstance(max_workers, bool) or not 1 <= max_workers <= 64:

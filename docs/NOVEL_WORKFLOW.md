@@ -170,6 +170,13 @@ available for private replay, while every manifest entry is marked
 `WITHHELD_BY_RIGHTS` when the immutable ingestion declaration disallows excerpt
 export.
 
+Before model egress or export, a shared resolver runs the authoritative
+ingestion, snapshot, evidence-member, and deterministic-triage validators. Only
+after the actual Bundle members are proven to be induced by the same Ingestion
+does it read that Ingestion's immutable rights. A permissive Snapshot therefore
+cannot authorize text members from a different denied Ingestion, and a refrozen
+Tier D assessment cannot self-promote to `event-facts`.
+
 Commands:
 
 ```powershell

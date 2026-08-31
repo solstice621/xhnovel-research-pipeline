@@ -10,12 +10,21 @@ from threading import Lock
 import pytest
 
 from xhnovel_pipeline.errors import SchemaError, ValidationError
-from xhnovel_pipeline.hashing import object_hash
+from xhnovel_pipeline.bundle_ops import bundle_from_snapshot, freeze_bundle
+from xhnovel_pipeline.constants import PROFILE_ID
+from xhnovel_pipeline.hashing import collection_snapshot_hash, object_hash, sorted_ids
 from xhnovel_pipeline.ids import derived_id
 from xhnovel_pipeline.model_api import OpenAIResponsesClient
-from xhnovel_pipeline.novel_ingest import run_novel_ingestion
-from xhnovel_pipeline.novel_workflow import run_novel_research
+from xhnovel_pipeline.novel_assessment import (
+    declared_rights,
+    declared_source_quality,
+    deterministic_triage_assessment,
+)
+from xhnovel_pipeline.novel_ingest import novel_ingestion_artifact_ids, run_novel_ingestion
+from xhnovel_pipeline.novel_workflow import prepare_novel_evidence_bundle, run_novel_research
+from xhnovel_pipeline.novel_workflow import _request_from_spec
 from xhnovel_pipeline.paths import repo_root
+from xhnovel_pipeline.policies import policy_bundle_hash
 from xhnovel_pipeline.runtime import TEST_NOW as NOW
 from xhnovel_pipeline.scene_scout import merge_scene_candidates, run_scene_scout
 from xhnovel_pipeline.validate import (
@@ -449,18 +458,72 @@ def test_direct_scene_scout_call_rechecks_immutable_external_model_rights(tmp_pa
         now=NOW,
     )
     catalog = ingestion["catalog"]
+    store = ingestion["store"]
+    run = ingestion["ingestion"]
+    lineage_time = run["started_at"]
+    request = _request_from_spec(
+        spec,
+        input_spec_hash=run["input_spec_hash"],
+        now=lineage_time,
+    )
+    catalog.add("ResearchRequest", request)
+    chapter_records = [
+        catalog.get("NovelChapter", chapter_id) for chapter_id in run["ready_chapter_ids"]
+    ]
+    policy_hash = policy_bundle_hash(repo_root())
+    triage_ids = []
+    for chapter in chapter_records:
+        retrieval = catalog.get("Retrieval", chapter["retrieval_id"])
+        assessment = deterministic_triage_assessment(
+            catalog,
+            retrieval,
+            rights=declared_rights(spec, require_storage=True),
+            source_quality=declared_source_quality(spec),
+            policy_hash=policy_hash,
+            assessed_at=lineage_time,
+        )
+        catalog.add("TriageAssessment", assessment)
+        retrieval["triage_assessment_id"] = assessment["assessment_id"]
+        triage_ids.append(assessment["assessment_id"])
     snapshot = {
-        "snapshot_id": "SNP-TEST-RIGHTS",
-        "request_id": "REQ-TEST-RIGHTS",
-        "ingestion_run_id": ingestion["ingestion"]["ingestion_run_id"],
-    }
-    bundle = {
-        "bundle_id": "BND-TEST-RIGHTS",
-        "request_id": snapshot["request_id"],
-        "collection_snapshot_ids": [snapshot["snapshot_id"]],
+        "schema_version": run["schema_version"],
+        "snapshot_id": "SNP-PENDING",
+        "request_id": request["request_id"],
+        "ingestion_run_id": run["ingestion_run_id"],
+        "retrieval_ids": sorted_ids(chapter["retrieval_id"] for chapter in chapter_records),
+        "artifact_ids": sorted_ids(novel_ingestion_artifact_ids(catalog, store, run)),
+        "triage_assessment_ids": sorted_ids(triage_ids),
+        "snapshot_hash": "sha256:" + "0" * 64,
+        "frozen_at": lineage_time,
+        "supersedes": None,
         "status": "FROZEN",
     }
+    snapshot["snapshot_hash"] = collection_snapshot_hash(snapshot)
+    snapshot["snapshot_id"] = derived_id(
+        "CollectionSnapshot", {"snapshot_hash": snapshot["snapshot_hash"]}
+    )
     catalog.add("CollectionSnapshot", snapshot)
+    bundle = bundle_from_snapshot(
+        catalog,
+        request_id=request["request_id"],
+        snapshot_id=snapshot["snapshot_id"],
+        document_ids=list(dict.fromkeys(chapter["document_id"] for chapter in chapter_records)),
+        segment_ids=[
+            segment_id for chapter in chapter_records for segment_id in chapter["segment_ids"]
+        ],
+        retrieval_ids=[chapter["retrieval_id"] for chapter in chapter_records],
+        artifact_ids=sorted_ids({chapter["artifact_id"] for chapter in chapter_records}),
+        triage_assessment_ids=triage_ids,
+        selection_manifest={
+            "selected_chapter_ids": run["ready_chapter_ids"],
+            "duplicate_chapter_ids": run["duplicate_chapter_ids"],
+            "ignored_chapter_ids": run["ignored_chapter_ids"],
+        },
+        profile_id=PROFILE_ID,
+        policy_bundle_hash=policy_hash,
+        frozen_at=lineage_time,
+        schema_version=run["schema_version"],
+    )
     catalog.add("EvidenceBundle", bundle)
     calls = 0
 
@@ -472,6 +535,131 @@ def test_direct_scene_scout_call_rechecks_immutable_external_model_rights(tmp_pa
     with pytest.raises(ValidationError, match="E-RIGHTS-EXTERNAL-MODEL"):
         run_scene_scout(
             catalog,
+            store,
+            bundle,
+            client=_client(transport),
+            repo_root=repo_root(),
+            created_at=NOW,
+        )
+    assert calls == 0
+
+
+def test_scene_scout_rejects_permissive_snapshot_with_denied_ingestion_members(tmp_path):
+    allowed_dir = tmp_path / "allowed"
+    allowed_dir.mkdir()
+    allowed = _run(allowed_dir, transport=_empty_transport)
+
+    denied_source = tmp_path / "denied.txt"
+    denied_source.write_text("第一章 密文\n禁止发送的目标正文。", encoding="utf-8")
+    denied_spec = _spec(denied_source)
+    denied_spec["source"]["title"] = "受限文本"
+    denied_spec["rights"]["may_send_to_external_model"] = False
+    denied = run_novel_ingestion(
+        denied_spec,
+        tmp_path / "denied-ingestion",
+        repo_root=repo_root(),
+        now=NOW,
+        catalog=allowed["catalog"],
+        store=allowed["store"],
+    )
+    denied_chapters = [
+        allowed["catalog"].get("NovelChapter", chapter_id)
+        for chapter_id in denied["ingestion"]["ready_chapter_ids"]
+    ]
+    denied_triage_ids = []
+    for chapter in denied_chapters:
+        retrieval = allowed["catalog"].get("Retrieval", chapter["retrieval_id"])
+        assessment = deterministic_triage_assessment(
+            allowed["catalog"],
+            retrieval,
+            rights=declared_rights(denied_spec, require_storage=True),
+            source_quality=declared_source_quality(denied_spec),
+            policy_hash=allowed["bundle"]["policy_bundle_hash"],
+            assessed_at=NOW,
+        )
+        allowed["catalog"].add("TriageAssessment", assessment)
+        retrieval["triage_assessment_id"] = assessment["assessment_id"]
+        denied_triage_ids.append(assessment["assessment_id"])
+
+    mixed_bundle = bundle_from_snapshot(
+        allowed["catalog"],
+        request_id=allowed["bundle"]["request_id"],
+        snapshot_id=allowed["snapshot"]["snapshot_id"],
+        document_ids=list(dict.fromkeys(chapter["document_id"] for chapter in denied_chapters)),
+        segment_ids=[
+            segment_id for chapter in denied_chapters for segment_id in chapter["segment_ids"]
+        ],
+        retrieval_ids=[chapter["retrieval_id"] for chapter in denied_chapters],
+        artifact_ids=sorted_ids({chapter["artifact_id"] for chapter in denied_chapters}),
+        triage_assessment_ids=denied_triage_ids,
+        selection_manifest={
+            "selected_chapter_ids": denied["ingestion"]["ready_chapter_ids"],
+            "duplicate_chapter_ids": denied["ingestion"]["duplicate_chapter_ids"],
+            "ignored_chapter_ids": denied["ingestion"]["ignored_chapter_ids"],
+        },
+        profile_id=allowed["bundle"]["profile_id"],
+        policy_bundle_hash=allowed["bundle"]["policy_bundle_hash"],
+        frozen_at=NOW,
+        schema_version=allowed["bundle"]["schema_version"],
+    )
+    allowed["catalog"].add("EvidenceBundle", mixed_bundle)
+    calls = 0
+
+    def transport(url, headers, body, timeout):
+        nonlocal calls
+        calls += 1
+        return 200, {}, _response({"candidates": []})
+
+    with pytest.raises(ValidationError, match="E-BUNDLE-SELECTION-CLOSURE"):
+        run_scene_scout(
+            allowed["catalog"],
+            allowed["store"],
+            mixed_bundle,
+            client=_client(transport),
+            repo_root=repo_root(),
+            created_at=NOW,
+        )
+    assert calls == 0
+
+
+def test_scene_scout_rejects_refrozen_tier_d_assessment_with_event_facts(tmp_path):
+    source = tmp_path / "book.txt"
+    source.write_text("第一章 灰本\n不得作为事件事实的正文。", encoding="utf-8")
+    spec = _spec(
+        source,
+        quality={"edition_status": "UNOFFICIAL_COPY", "textual_completeness": "PARTIAL"},
+    )
+    ingestion = run_novel_ingestion(
+        spec,
+        tmp_path / "ingestion",
+        repo_root=repo_root(),
+        now=NOW,
+    )
+    _, bundle = prepare_novel_evidence_bundle(
+        ingestion["catalog"],
+        ingestion["store"],
+        ingestion["ingestion"],
+        spec,
+        repo_root=repo_root(),
+        now=NOW,
+    )
+    assessment = ingestion["catalog"].get(
+        "TriageAssessment", bundle["triage_assessment_ids"][0]
+    )
+    assessment["tier"] = "B"
+    assessment["allowed_uses"] = ["event-facts"]
+    bundle["status"] = "DRAFT"
+    freeze_bundle(ingestion["catalog"], bundle)
+    calls = 0
+
+    def transport(url, headers, body, timeout):
+        nonlocal calls
+        calls += 1
+        return 200, {}, _response({"candidates": []})
+
+    with pytest.raises(ValidationError, match="E-NOVEL-TRIAGE-BIND"):
+        run_scene_scout(
+            ingestion["catalog"],
             ingestion["store"],
             bundle,
             client=_client(transport),
