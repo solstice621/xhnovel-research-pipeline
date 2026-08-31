@@ -482,6 +482,19 @@ def _span_key(span: dict[str, Any]) -> tuple[str, int, int]:
     return span["segment_id"], int(span["start"]), int(span["end"])
 
 
+def _close_candidate_support_spans(candidate: dict[str, Any]) -> None:
+    """Close the redundant top-level span list over every observation support span."""
+    spans_by_key = {
+        _span_key(span): dict(span) for span in candidate["source_spans"]
+    }
+    for field in OBSERVATION_FIELDS:
+        for span in candidate[field]["support_spans"]:
+            spans_by_key.setdefault(_span_key(span), dict(span))
+    candidate["source_spans"] = [
+        spans_by_key[key] for key in sorted(spans_by_key)
+    ]
+
+
 def _validate_scout_output(
     catalog: Catalog,
     value: dict[str, Any],
@@ -494,6 +507,8 @@ def _validate_scout_output(
     )
     if errors:
         raise ValidationError("E-MODEL-OUTPUT", f"scene scout output: {errors[0].message}")
+    for candidate in value["candidates"]:
+        _close_candidate_support_spans(candidate)
     allowed: dict[str, list[tuple[int, int]]] = {}
     for span in window["source_spans"]:
         allowed.setdefault(span["segment_id"], []).append((span["start"], span["end"]))

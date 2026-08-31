@@ -300,6 +300,69 @@ def test_scene_scout_prompt_states_the_runtime_citation_contract():
     assert "union of all observation support spans" in normalized
 
 
+def test_scene_scout_closes_observation_support_into_candidate_spans(tmp_path):
+    def transport(url, headers, body, timeout):
+        model_input = json.loads(json.loads(body)["input"])
+        span_input = next(
+            span for span in model_input["window"]["source_spans"]
+            if span["end"] - span["start"] >= 6
+        )
+        first = {
+            "segment_id": span_input["segment_id"],
+            "start": span_input["start"],
+            "end": span_input["start"] + 2,
+        }
+        omitted = {
+            "segment_id": span_input["segment_id"],
+            "start": span_input["start"] + 4,
+            "end": span_input["start"] + 6,
+        }
+        candidate = _candidate(first)
+        candidate["new_affordances"] = {
+            "status": "KNOWN",
+            "values": ["山路开启"],
+            "support_spans": [omitted],
+        }
+        return 200, {}, _response({"candidates": [candidate]})
+
+    result = _run(tmp_path, transport=transport)
+    candidate = result["scout"]["candidates"][0]
+    key = lambda span: (span["segment_id"], span["start"], span["end"])
+    assert {key(span) for span in candidate["source_spans"]} == {
+        key(span)
+        for span in (
+            candidate["action"]["support_spans"]
+            + candidate["new_affordances"]["support_spans"]
+        )
+    }
+
+
+def test_closed_observation_support_still_cannot_leave_the_input_window(tmp_path):
+    def transport(url, headers, body, timeout):
+        model_input = json.loads(json.loads(body)["input"])
+        span_input = model_input["window"]["source_spans"][0]
+        valid = {
+            "segment_id": span_input["segment_id"],
+            "start": span_input["start"],
+            "end": span_input["start"] + 1,
+        }
+        outside = {
+            "segment_id": span_input["segment_id"],
+            "start": span_input["end"],
+            "end": span_input["end"] + 1,
+        }
+        candidate = _candidate(valid)
+        candidate["new_affordances"] = {
+            "status": "KNOWN",
+            "values": ["越界内容"],
+            "support_spans": [outside],
+        }
+        return 200, {}, _response({"candidates": [candidate]})
+
+    with pytest.raises(ValidationError, match="E-SCENE-PARTIAL"):
+        _run(tmp_path, transport=transport)
+
+
 def test_snapshot_rejects_a_different_valid_ingestion_run(tmp_path):
     first_dir = tmp_path / "first"
     first_dir.mkdir()
