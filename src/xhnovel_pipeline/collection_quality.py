@@ -15,17 +15,12 @@ from .schema import validate_schema
 from .store import ArtifactStore
 
 TASK_REQUIRED_FIELDS = {
-    "RELEVANCE": {"disposition"},
-    "TRIAGE": {"disposition", "tier", "access_legitimacy"},
-    "ORIGIN": {"origin_relation"},
+    "TRIAGE": {"disposition", "tier"},
     "CHAPTER_IDENTITY": {"identity_status"},
-    "STOP": {"disposition"},
 }
 
 TASK_DISPOSITIONS = {
-    "RELEVANCE": {"SELECTED", "REJECTED", "LEAD_ONLY"},
     "TRIAGE": {"SELECTED", "REJECTED", "LEAD_ONLY", "QUARANTINED"},
-    "STOP": {"CONTINUE", "STOP"},
 }
 
 TIER_QUALITY = {"D": 0, "C": 1, "B": 2, "A": 3}
@@ -41,6 +36,9 @@ class CollectionAssessor(Protocol):
         task: str,
         subject_ids: list[str],
         artifacts: dict[str, bytes],
+        rubric_id: str,
+        rubric_artifact_id: str,
+        rubric_bytes: bytes,
     ) -> dict[str, Any]: ...
 
 
@@ -60,6 +58,8 @@ def make_collection_decision(
     task: str,
     subject_ids: list[str],
     input_artifact_ids: list[str],
+    rubric_id: str,
+    rubric_artifact_id: str,
     assessor_role: str,
     assessor_build_id: str,
     output_artifact_id: str,
@@ -78,6 +78,8 @@ def make_collection_decision(
         "subject_ids": sorted_ids(subject_ids),
         "input_artifact_ids": sorted_ids(input_artifact_ids),
         "input_manifest_hash": decision_input_hash(task, subject_ids, input_artifact_ids),
+        "rubric_id": rubric_id,
+        "rubric_artifact_id": rubric_artifact_id,
         "assessor_role": assessor_role,
         "assessor_build_id": assessor_build_id,
         "output_artifact_id": output_artifact_id,
@@ -151,11 +153,21 @@ def _run_assessor(
     subject_ids: list[str],
     input_artifact_ids: list[str],
     frozen_inputs: dict[str, bytes],
+    rubric_id: str,
+    rubric_artifact_id: str,
+    rubric_bytes: bytes,
     catalog: Catalog,
     store: ArtifactStore,
     created_at: str,
 ) -> dict[str, Any]:
-    result = assessor.assess(task=task, subject_ids=list(subject_ids), artifacts=dict(frozen_inputs))
+    result = assessor.assess(
+        task=task,
+        subject_ids=list(subject_ids),
+        artifacts=dict(frozen_inputs),
+        rubric_id=rubric_id,
+        rubric_artifact_id=rubric_artifact_id,
+        rubric_bytes=rubric_bytes,
+    )
     if set(result) != {"outcome", "confidence", "basis"}:
         raise ValidationError(
             "E-ASSESSOR-OUTPUT",
@@ -203,6 +215,8 @@ def _run_assessor(
         task=task,
         subject_ids=subject_ids,
         input_artifact_ids=input_artifact_ids,
+        rubric_id=rubric_id,
+        rubric_artifact_id=rubric_artifact_id,
         assessor_role=role,
         assessor_build_id=assessor.build_id,
         output_artifact_id=output_artifact_id,
@@ -239,18 +253,29 @@ def run_independent_collection_review(
     if collector_model is not None and reviewer_model is not None and collector_model == reviewer_model:
         raise ValidationError("E-REVIEW-INDEPENDENCE", "collector and reviewer models must differ")
     rubric_bytes = rubric_path.read_bytes()
+    rubric_artifact_id = _put_artifact(
+        catalog,
+        store,
+        rubric_bytes,
+        media_type="application/yaml",
+        created_at=created_at,
+    )
     frozen_inputs: dict[str, bytes] = {}
     for artifact_id in sorted_ids(input_artifact_ids):
         catalog.get("Artifact", artifact_id)
         frozen_inputs[artifact_id] = store.get(artifact_id)
+    decision_input_artifact_ids = sorted_ids([*input_artifact_ids, rubric_artifact_id])
 
     collector_decision = _run_assessor(
         collector,
         role="COLLECTOR",
         task=task,
         subject_ids=subject_ids,
-        input_artifact_ids=input_artifact_ids,
+        input_artifact_ids=decision_input_artifact_ids,
         frozen_inputs=frozen_inputs,
+        rubric_id=rubric_id,
+        rubric_artifact_id=rubric_artifact_id,
+        rubric_bytes=rubric_bytes,
         catalog=catalog,
         store=store,
         created_at=created_at,
@@ -260,17 +285,13 @@ def run_independent_collection_review(
         role="REVIEWER",
         task=task,
         subject_ids=subject_ids,
-        input_artifact_ids=input_artifact_ids,
+        input_artifact_ids=decision_input_artifact_ids,
         frozen_inputs=frozen_inputs,
+        rubric_id=rubric_id,
+        rubric_artifact_id=rubric_artifact_id,
+        rubric_bytes=rubric_bytes,
         catalog=catalog,
         store=store,
-        created_at=created_at,
-    )
-    rubric_artifact_id = _put_artifact(
-        catalog,
-        store,
-        rubric_bytes,
-        media_type="application/yaml",
         created_at=created_at,
     )
     review = compare_collection_decisions(
@@ -321,19 +342,19 @@ def collection_review_gate(
     }
 
 
-def bind_collection_quality_snapshot(
+def bind_collection_review_snapshot(
     catalog: Catalog,
     store: ArtifactStore,
     snapshot: dict[str, Any],
     *,
     required_collector_decision_ids: list[str],
-    quality_policy_artifact_id: str,
+    review_policy_artifact_id: str,
     frozen_at: str,
 ) -> dict[str, Any]:
     if snapshot.get("status") != "FROZEN":
         raise ValidationError("E-FROZEN", "collection quality can bind only a frozen snapshot")
-    catalog.get("Artifact", quality_policy_artifact_id)
-    store.verify(quality_policy_artifact_id)
+    catalog.get("Artifact", review_policy_artifact_id)
+    store.verify(review_policy_artifact_id)
     gate = collection_review_gate(catalog, store, required_collector_decision_ids)
     if gate["result"] != "PASS":
         raise ValidationError("E-REVIEW-GATE", "collection quality review is incomplete or unresolved")
@@ -358,7 +379,7 @@ def bind_collection_quality_snapshot(
                 if decision.get(field):
                     artifact_ids.add(decision[field])
         artifact_ids.add(review["rubric_artifact_id"])
-    artifact_ids.add(quality_policy_artifact_id)
+    artifact_ids.add(review_policy_artifact_id)
     bound = copy.deepcopy(snapshot)
     bound.update(
         {
@@ -366,8 +387,8 @@ def bind_collection_quality_snapshot(
             "artifact_ids": sorted_ids(artifact_ids),
             "collection_decision_ids": sorted_ids(decision_ids),
             "collection_review_ids": sorted_ids(review_ids),
-            "quality_policy_artifact_id": quality_policy_artifact_id,
-            "quality_gate": gate,
+            "review_policy_artifact_id": review_policy_artifact_id,
+            "review_completion_gate": gate,
             "snapshot_hash": "sha256:" + "0" * 64,
             "frozen_at": frozen_at,
             "supersedes": snapshot["snapshot_id"],
@@ -382,14 +403,8 @@ def bind_collection_quality_snapshot(
 
 
 def _conservative_outcome(task: str, left: dict[str, Any], right: dict[str, Any]) -> dict[str, Any]:
-    if task == "RELEVANCE":
-        return {"disposition": "LEAD_ONLY"}
-    if task == "ORIGIN":
-        return {"origin_relation": "UNKNOWN"}
     if task == "CHAPTER_IDENTITY":
         return {"identity_status": "QUARANTINED"}
-    if task == "STOP":
-        return {"disposition": "CONTINUE"}
     if task == "TRIAGE":
         left_tier = left.get("tier", "D")
         right_tier = right.get("tier", "D")
@@ -399,9 +414,6 @@ def _conservative_outcome(task: str, left: dict[str, Any], right: dict[str, Any]
             if left.get("disposition") == right.get("disposition")
             else "LEAD_ONLY",
             "tier": tier,
-            "access_legitimacy": left.get("access_legitimacy")
-            if left.get("access_legitimacy") == right.get("access_legitimacy")
-            else "UNKNOWN",
         }
     raise ValidationError("E-COLLECTION-REVIEW", f"unsupported collection decision task {task!r}")
 
@@ -424,7 +436,14 @@ def compare_collection_decisions(
     reviewer_model = reviewer.get("assessor_model")
     if collector_model is not None and reviewer_model is not None and collector_model == reviewer_model:
         raise ValidationError("E-REVIEW-INDEPENDENCE", "collector and reviewer models must differ")
-    for field in ("task", "subject_ids", "input_artifact_ids", "input_manifest_hash"):
+    for field in (
+        "task",
+        "subject_ids",
+        "input_artifact_ids",
+        "input_manifest_hash",
+        "rubric_id",
+        "rubric_artifact_id",
+    ):
         if collector.get(field) != reviewer.get(field):
             raise ValidationError("E-REVIEW-INPUT", f"independent review differs on {field}")
     if collector.get("output_artifact_id") == reviewer.get("output_artifact_id"):
@@ -533,8 +552,24 @@ def validate_collection_quality_records(catalog: Catalog, store: ArtifactStore |
                     "E-DECISION-MODEL-REQUEST",
                     f"{decision['decision_id']} model request artifact is invalid",
                 ) from exc
+            rubric_artifact_id = decision["rubric_artifact_id"]
+            if rubric_artifact_id not in decision["input_artifact_ids"]:
+                raise ValidationError(
+                    "E-DECISION-MODEL-REQUEST",
+                    f"{decision['decision_id']} rubric is absent from its input manifest",
+                )
+            try:
+                rubric_text = store.get(rubric_artifact_id).decode("utf-8")
+            except UnicodeDecodeError as exc:
+                raise ValidationError(
+                    "E-DECISION-MODEL-REQUEST",
+                    f"{decision['decision_id']} rubric artifact is not UTF-8",
+                ) from exc
             expected_artifacts = []
-            for artifact_id in sorted(decision["input_artifact_ids"]):
+            content_artifact_ids = sorted(
+                set(decision["input_artifact_ids"]) - {rubric_artifact_id}
+            )
+            for artifact_id in content_artifact_ids:
                 try:
                     text = store.get(artifact_id).decode("utf-8")
                 except UnicodeDecodeError as exc:
@@ -550,9 +585,17 @@ def validate_collection_quality_records(catalog: Catalog, store: ArtifactStore |
                 "task": decision["task"],
                 "subject_ids": decision["subject_ids"],
                 "input_artifact_ids": sorted(decision["input_artifact_ids"]),
+                "rubric": {
+                    "rubric_id": decision["rubric_id"],
+                    "artifact_id": rubric_artifact_id,
+                    "text": rubric_text,
+                },
                 "artifacts": expected_artifacts,
             }
             parameters = decision.get("assessor_parameters")
+            expected_task_schema_hash = object_hash(
+                TASK_SCHEMAS[decision["task"]], omit=()
+            )
             if (
                 input_value != expected_input
                 or response_value
@@ -562,12 +605,27 @@ def validate_collection_quality_records(catalog: Catalog, store: ArtifactStore |
                     "basis": decision["basis"],
                 }
                 or not isinstance(parameters, dict)
-                or set(parameters) != {"endpoint", "max_input_chars", "structured_output"}
+                or set(parameters)
+                != {
+                    "endpoint",
+                    "max_input_chars",
+                    "structured_output",
+                    "task",
+                    "rubric_id",
+                    "rubric_hash",
+                    "task_schema_hash",
+                }
                 or parameters.get("structured_output") is not True
                 or not isinstance(parameters.get("endpoint"), str)
                 or not parameters["endpoint"].startswith("https://")
                 or not isinstance(parameters.get("max_input_chars"), int)
-                or parameters["max_input_chars"] < sum(len(item["untrusted_text"]) for item in expected_artifacts)
+                or parameters["max_input_chars"]
+                < len(rubric_text)
+                + sum(len(item["untrusted_text"]) for item in expected_artifacts)
+                or parameters.get("rubric_id") != decision["rubric_id"]
+                or parameters.get("task") != decision["task"]
+                or parameters.get("rubric_hash") != rubric_artifact_id
+                or parameters.get("task_schema_hash") != expected_task_schema_hash
                 or request.get("model") != decision.get("assessor_model")
                 or request.get("instructions") != COLLECTION_SYSTEM_PROMPT
                 or request.get("store") is not False
@@ -614,6 +672,15 @@ def validate_collection_quality_records(catalog: Catalog, store: ArtifactStore |
         catalog.get("Artifact", review["rubric_artifact_id"])
         if store:
             store.verify(review["rubric_artifact_id"])
+        if (
+            collector["rubric_id"] != review["rubric_id"]
+            or reviewer["rubric_id"] != review["rubric_id"]
+            or collector["rubric_artifact_id"] != review["rubric_artifact_id"]
+            or reviewer["rubric_artifact_id"] != review["rubric_artifact_id"]
+        ):
+            raise ValidationError(
+                "E-REVIEW-BIND", f"{review['review_id']} decisions do not bind its rubric"
+            )
         expected = compare_collection_decisions(
             collector,
             reviewer,

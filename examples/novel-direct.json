@@ -5,9 +5,24 @@
     "title": "示例仙途",
     "author": "fixture"
   },
+  "rights": {
+    "basis": "USER_AUTHORIZED_LOCAL_COPY",
+    "may_store_full_text": true,
+    "may_send_to_external_model": true,
+    "may_export_excerpts": false
+  },
+  "source_quality": {
+    "edition_status": "USER_VERIFIED_COPY",
+    "textual_completeness": "COMPLETE"
+  },
   "limits": {
     "max_chapters": 20,
     "max_bytes": 1000000
+  },
+  "scene_scout": {
+    "window_chars": 10000,
+    "overlap_chars": 1800,
+    "max_workers": 8
   },
   "strict_order": true
 }

@@ -448,7 +448,6 @@ def test_validator_rejects_receipt_diverging_from_resealed_checkpoint(tmp_path):
         "chapter_ids": run["chapter_ids"],
         "checkpoint_hash": run["checkpoint_hash"],
         "strict_order": run["strict_order"],
-        "resumed_from_checkpoint": run["resumed_from_checkpoint"],
     }
     run["ingestion_run_id"] = derived_id("NovelIngestionRun", run_identity)
 
@@ -523,7 +522,6 @@ def test_validator_rejects_local_completion_diverging_from_frozen_ref(tmp_path, 
         "chapter_ids": run["chapter_ids"],
         "checkpoint_hash": run["checkpoint_hash"],
         "strict_order": run["strict_order"],
-        "resumed_from_checkpoint": run["resumed_from_checkpoint"],
     }
     run["ingestion_run_id"] = derived_id("NovelIngestionRun", run_identity)
 

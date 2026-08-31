@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "xhnovel-pipeline"
-version = "0.1.0.dev0"
-description = "Offline-first evidence collection, parse, extraction and export pipeline"
+version = "0.2.0.dev0"
+description = "Auditable Chinese-novel ingestion and gameplay-scene discovery pipeline"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -29,3 +29,14 @@ addopts = "-q"
 
 [tool.setuptools.package-data]
 xhnovel_pipeline = ["py.typed"]
+
+[tool.setuptools.data-files]
+"xhnovel_pipeline_data" = ["pyproject.toml", "requirements.lock"]
+"xhnovel_pipeline_data/contracts" = ["contracts/*.json", "contracts/*.md"]
+"xhnovel_pipeline_data/contracts/exports" = ["contracts/exports/*.json"]
+"xhnovel_pipeline_data/policies" = ["policies/*.yaml"]
+"xhnovel_pipeline_data/profiles/xuanhuan-gameplay-scene-v1" = [
+  "profiles/xuanhuan-gameplay-scene-v1/*.json",
+  "profiles/xuanhuan-gameplay-scene-v1/*.yaml",
+  "profiles/xuanhuan-gameplay-scene-v1/*.md",
+]

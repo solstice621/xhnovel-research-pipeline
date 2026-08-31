@@ -194,7 +194,8 @@ def test_cli_can_resume_a_completed_ingestion_without_immutable_id_collision(
         json.loads(path.read_text(encoding="utf-8"))
         for path in (work_dir / "ingestions").glob("*/novel-ingestion.json")
     ]
-    assert sorted(record["resumed_from_checkpoint"] for record in ingestions) == [False, True]
+    assert len(ingestions) == 1
+    assert ingestions[0]["resumed_from_checkpoint"] is False
 
 
 def test_cli_site_configuration_fails_cleanly_before_network_for_invalid_pattern(tmp_path):
@@ -335,10 +336,8 @@ def test_cli_rejects_non_array_source_catalog_before_ranking_without_traceback(
     completed = _run_cli(
         "research-famous-novel",
         str(spec_path),
-        "--collector-model",
-        "collector-model",
-        "--reviewer-model",
-        "reviewer-model",
+        "--scout-model",
+        "scene-scout-model",
         "--work-dir",
         str(tmp_path / "work"),
     )
@@ -385,10 +384,8 @@ def test_cli_rejects_malformed_famous_ranking_without_traceback(
     completed = _run_cli(
         "research-famous-novel",
         str(spec_path),
-        "--collector-model",
-        "collector-model",
-        "--reviewer-model",
-        "reviewer-model",
+        "--scout-model",
+        "scene-scout-model",
         "--work-dir",
         str(tmp_path / "work"),
     )
@@ -424,10 +421,8 @@ def test_cli_rejects_falsey_non_object_famous_defaults_before_ranking(
     completed = _run_cli(
         "research-famous-novel",
         str(spec_path),
-        "--collector-model",
-        "collector-model",
-        "--reviewer-model",
-        "reviewer-model",
+        "--scout-model",
+        "scene-scout-model",
         "--work-dir",
         str(tmp_path / "work"),
     )
@@ -493,7 +488,7 @@ def test_cli_ingests_static_site_configuration_with_bounded_offline_transport(
     assert {record["http_status"] for record in catalog["Retrieval"]} == {200}
 
 
-def test_cli_research_rejects_same_collection_models_before_api_or_output(tmp_path):
+def test_cli_research_requires_scene_scout_model_before_api_or_output(tmp_path):
     spec_path = tmp_path / "spec.json"
     spec_path.write_text(json.dumps({"source": {"kind": "txt", "path": "missing.txt"}}))
     work_dir = tmp_path / "work"
@@ -501,14 +496,11 @@ def test_cli_research_rejects_same_collection_models_before_api_or_output(tmp_pa
     completed = _run_cli(
         "research-novel",
         str(spec_path),
-        "--collector-model",
-        "same-model",
-        "--reviewer-model",
-        "same-model",
         "--work-dir",
         str(work_dir),
     )
 
     assert completed.returncode == 1
-    assert "E-REVIEW-INDEPENDENCE" in completed.stderr
+    assert "E-MODEL-CONFIG" in completed.stderr
+    assert "--scout-model is required" in completed.stderr
     assert not work_dir.exists()

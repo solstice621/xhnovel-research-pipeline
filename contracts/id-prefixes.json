@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1-draft-frozen",
+  "schema_version": "0.2-draft",
   "prefixes": {
     "REQ": "^REQ-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "NRH": "^NRH-[A-Z0-9][A-Z0-9._:-]{1,}$",
@@ -14,16 +14,17 @@
     "NRNK": "^NRNK-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "NCAN": "^NCAN-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "NSR": "^NSR-[A-Z0-9][A-Z0-9._:-]{1,}$",
-    "PAN": "^PAN-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "PRUN": "^PRUN-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "DOC": "^DOC-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "SEG": "^SEG-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "SNP": "^SNP-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "BND": "^BND-[A-Z0-9][A-Z0-9._:-]{1,}$",
-    "ERUN": "^ERUN-[A-Z0-9][A-Z0-9._:-]{1,}$",
-    "CLM": "^CLM-[A-Z0-9][A-Z0-9._:-]{1,}$",
+    "SWIN": "^SWIN-[A-Z0-9][A-Z0-9._:-]{1,}$",
+    "SSRUN": "^SSRUN-[A-Z0-9][A-Z0-9._:-]{1,}$",
+    "SMRUN": "^SMRUN-[A-Z0-9][A-Z0-9._:-]{1,}$",
+    "SCN": "^SCN-[A-Z0-9][A-Z0-9._:-]{1,}$",
+    "MAT": "^MAT-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "BLD": "^BLD-[A-Z0-9][A-Z0-9._:-]{1,}$",
     "EXP": "^EXP-[A-Z0-9][A-Z0-9._:-]{1,}$"
-  },
-  "search_run_note": "SRUN- not RUN-"
+  }
 }

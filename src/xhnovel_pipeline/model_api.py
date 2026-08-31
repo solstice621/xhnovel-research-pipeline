@@ -47,11 +47,49 @@ def _default_transport(
 
 
 @dataclass(frozen=True)
+class ModelAttemptTrace:
+    ordinal: int
+    status: str
+    http_status: int | None
+    response_bytes: bytes
+    error_code: str | None
+    error_message: str | None
+    response_id: str | None
+    usage: dict[str, int | None]
+
+
+class ModelCallError(ValidationError):
+    def __init__(
+        self,
+        code: str,
+        message: str,
+        *,
+        request_bytes: bytes,
+        attempts: tuple[ModelAttemptTrace, ...],
+    ) -> None:
+        self.request_bytes = request_bytes
+        self.attempts = attempts
+        super().__init__(code, message)
+
+
+@dataclass(frozen=True)
 class ModelCallResult:
     value: dict[str, Any]
     request_bytes: bytes
     response_bytes: bytes
     response_id: str | None
+    attempts: tuple[ModelAttemptTrace, ...]
+
+
+def _response_usage(response: Any) -> dict[str, int | None]:
+    raw = response.get("usage") if isinstance(response, dict) else None
+    if not isinstance(raw, dict):
+        raw = {}
+    result: dict[str, int | None] = {}
+    for field in ("input_tokens", "output_tokens", "total_tokens"):
+        value = raw.get(field)
+        result[field] = value if isinstance(value, int) and not isinstance(value, bool) else None
+    return result
 
 
 class OpenAIResponsesClient:
@@ -86,14 +124,14 @@ class OpenAIResponsesClient:
         self.max_attempts = max_attempts
         self.transport = transport or _default_transport
 
-    def generate_json(
+    def json_request_bytes(
         self,
         *,
         instructions: str,
         input_value: dict[str, Any],
         schema_name: str,
         schema: dict[str, Any],
-    ) -> ModelCallResult:
+    ) -> bytes:
         request_payload = {
             "model": self.model,
             "instructions": instructions,
@@ -108,42 +146,148 @@ class OpenAIResponsesClient:
             },
             "store": False,
         }
-        request_bytes = canonical_dumps(request_payload)
+        return canonical_dumps(request_payload)
+
+    def generate_json(
+        self,
+        *,
+        instructions: str,
+        input_value: dict[str, Any],
+        schema_name: str,
+        schema: dict[str, Any],
+    ) -> ModelCallResult:
+        request_bytes = self.json_request_bytes(
+            instructions=instructions,
+            input_value=input_value,
+            schema_name=schema_name,
+            schema=schema,
+        )
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
         }
-        response_bytes = b""
-        status = 0
+        attempts: list[ModelAttemptTrace] = []
         for attempt in range(1, self.max_attempts + 1):
-            status, _, response_bytes = self.transport(
-                self.endpoint, headers, request_bytes, self.timeout
-            )
+            try:
+                status, _, response_bytes = self.transport(
+                    self.endpoint, headers, request_bytes, self.timeout
+                )
+            except Exception as exc:
+                code = getattr(exc, "code", "E-MODEL-UNREACHABLE")
+                attempts.append(
+                    ModelAttemptTrace(
+                        ordinal=attempt,
+                        status="RETRYABLE" if attempt < self.max_attempts else "FAILED",
+                        http_status=None,
+                        response_bytes=b"",
+                        error_code=code,
+                        error_message=str(exc),
+                        response_id=None,
+                        usage=_response_usage(None),
+                    )
+                )
+                if attempt < self.max_attempts:
+                    time.sleep(min(2 ** (attempt - 1), 4))
+                    continue
+                raise ModelCallError(
+                    code,
+                    "model request failed before receiving a response",
+                    request_bytes=request_bytes,
+                    attempts=tuple(attempts),
+                ) from exc
             if len(response_bytes) > MAX_MODEL_RESPONSE_BYTES:
-                raise ValidationError("E-MODEL-RESPONSE-SIZE", "model response exceeds size limit")
-            if status not in RETRYABLE_STATUSES or attempt == self.max_attempts:
-                break
-            time.sleep(min(2 ** (attempt - 1), 4))
-        if status < 200 or status >= 300:
-            code = "E-MODEL-RETRYABLE" if status in RETRYABLE_STATUSES else "E-MODEL-HTTP"
-            raise ValidationError(code, f"model API returned HTTP {status}")
-        try:
-            response = json.loads(response_bytes.decode("utf-8"))
-        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
-            raise ValidationError("E-MODEL-RESPONSE", "model API returned invalid JSON") from exc
-        output_text = _response_output_text(response)
-        try:
-            value = json.loads(output_text)
-        except (TypeError, json.JSONDecodeError) as exc:
-            raise ValidationError("E-MODEL-OUTPUT", "model output is not valid JSON") from exc
-        if not isinstance(value, dict):
-            raise ValidationError("E-MODEL-OUTPUT", "model output must be an object")
-        return ModelCallResult(
-            value=value,
-            request_bytes=request_bytes,
-            response_bytes=response_bytes,
-            response_id=response.get("id") if isinstance(response, dict) else None,
-        )
+                code = "E-MODEL-RESPONSE-SIZE"
+                attempts.append(
+                    ModelAttemptTrace(
+                        attempt,
+                        "FAILED",
+                        status,
+                        response_bytes,
+                        code,
+                        "model response exceeds size limit",
+                        None,
+                        _response_usage(None),
+                    )
+                )
+                raise ModelCallError(
+                    code,
+                    "model response exceeds size limit",
+                    request_bytes=request_bytes,
+                    attempts=tuple(attempts),
+                )
+            if status < 200 or status >= 300:
+                retryable = status in RETRYABLE_STATUSES
+                code = "E-MODEL-RETRYABLE" if retryable else "E-MODEL-HTTP"
+                attempts.append(
+                    ModelAttemptTrace(
+                        attempt,
+                        "RETRYABLE" if retryable and attempt < self.max_attempts else "FAILED",
+                        status,
+                        response_bytes,
+                        code,
+                        f"model API returned HTTP {status}",
+                        None,
+                        _response_usage(None),
+                    )
+                )
+                if retryable and attempt < self.max_attempts:
+                    time.sleep(min(2 ** (attempt - 1), 4))
+                    continue
+                raise ModelCallError(
+                    code,
+                    f"model API returned HTTP {status}",
+                    request_bytes=request_bytes,
+                    attempts=tuple(attempts),
+                )
+            response: Any = None
+            try:
+                response = json.loads(response_bytes.decode("utf-8"))
+                output_text = _response_output_text(response)
+                value = json.loads(output_text)
+                if not isinstance(value, dict):
+                    raise ValidationError("E-MODEL-OUTPUT", "model output must be an object")
+            except (UnicodeDecodeError, json.JSONDecodeError, ValidationError) as exc:
+                code = getattr(exc, "code", "E-MODEL-RESPONSE")
+                attempt_status = "REFUSED" if code == "E-MODEL-REFUSAL" else "REJECTED"
+                attempts.append(
+                    ModelAttemptTrace(
+                        attempt,
+                        attempt_status,
+                        status,
+                        response_bytes,
+                        code,
+                        str(exc),
+                        response.get("id") if isinstance(response, dict) else None,
+                        _response_usage(response),
+                    )
+                )
+                raise ModelCallError(
+                    code,
+                    "model response could not be accepted",
+                    request_bytes=request_bytes,
+                    attempts=tuple(attempts),
+                ) from exc
+            response_id = response.get("id") if isinstance(response, dict) else None
+            attempts.append(
+                ModelAttemptTrace(
+                    attempt,
+                    "SUCCEEDED",
+                    status,
+                    response_bytes,
+                    None,
+                    None,
+                    response_id,
+                    _response_usage(response),
+                )
+            )
+            return ModelCallResult(
+                value=value,
+                request_bytes=request_bytes,
+                response_bytes=response_bytes,
+                response_id=response_id,
+                attempts=tuple(attempts),
+            )
+        raise AssertionError("model attempt loop exited without a result")
 
 
 def _response_output_text(response: Any) -> str:

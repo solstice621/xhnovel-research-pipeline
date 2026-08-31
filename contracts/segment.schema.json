@@ -15,7 +15,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "0.1-draft-frozen"
+      "const": "0.2-draft"
     },
     "segment_id": {
       "type": "string",

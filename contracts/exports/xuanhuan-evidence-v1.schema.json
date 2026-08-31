@@ -10,8 +10,8 @@
     "producer",
     "origin_request",
     "bundle",
-    "claims",
-    "scene_facts",
+    "scene_candidates",
+    "scene_discovery",
     "policies",
     "assurance",
     "artifact_manifest",
@@ -19,7 +19,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "0.1-draft-frozen"
+      "const": "0.2-draft"
     },
     "export_id": {
       "type": "string",
@@ -34,22 +34,22 @@
       "additionalProperties": false,
       "required": [
         "repository_commit",
-        "collector_build_id",
+        "source_classifier_build_id",
         "parser_build_id",
-        "extractor_build_id"
+        "scene_scout_build_id"
       ],
       "properties": {
         "repository_commit": {
           "type": "string",
           "minLength": 7
         },
-        "collector_build_id": {
+        "source_classifier_build_id": {
           "type": "string"
         },
         "parser_build_id": {
           "type": "string"
         },
-        "extractor_build_id": {
+        "scene_scout_build_id": {
           "type": "string",
           "pattern": "^BLD-[A-Z0-9][A-Z0-9._:-]{1,}$"
         }
@@ -76,14 +76,22 @@
         }
       }
     },
-    "claims": {
+    "scene_candidates": {
       "type": "array",
       "items": {
-        "$ref": "https://xhnovel.local/contracts/claim.schema.json"
+        "$ref": "https://xhnovel.local/contracts/scene-candidate.schema.json"
       }
     },
-    "scene_facts": {
-      "type": "object"
+    "scene_discovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scene_scout_run_id", "merge_run_id", "window_count", "candidate_count"],
+      "properties": {
+        "scene_scout_run_id": {"type": "string", "pattern": "^SSRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+        "merge_run_id": {"type": "string", "pattern": "^SMRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+        "window_count": {"type": "integer", "minimum": 0},
+        "candidate_count": {"type": "integer", "minimum": 0}
+      }
     },
     "policies": {
       "type": "object",

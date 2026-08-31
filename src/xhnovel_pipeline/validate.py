@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 from typing import Any
 
@@ -11,15 +12,19 @@ from .errors import ValidationError
 from .hashing import collection_snapshot_hash, is_real_sha256, object_hash, sorted_ids
 from .ids import derived_id
 from .novel_assessment import (
+    declared_rights,
+    declared_source_quality,
+    deterministic_triage_assessment,
     find_bound_chapter_identity_review,
     find_bound_triage_review,
     reviewed_triage_assessment,
     validate_bound_chapter_identity_review,
 )
+from .novel_ingest import novel_ingestion_artifact_ids
 from .parse import parse_artifact, parser_build_id_for, text_hash
 from .build_identity import BUILD_IDENTITY_FIELDS, build_source_hash
 from .paths import repo_root
-from .schema import SCHEMA_BY_TYPE, validate_profile_payload, validate_schema
+from .schema import SCHEMA_BY_TYPE, validate_schema
 from .store import ArtifactStore
 
 
@@ -125,9 +130,38 @@ def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) ->
 
     for snapshot in catalog.all("CollectionSnapshot"):
         catalog.get("ResearchRequest", snapshot["request_id"])
-        catalog.get("NovelIngestionRun", snapshot["ingestion_run_id"])
+        ingestion = catalog.get("NovelIngestionRun", snapshot["ingestion_run_id"])
         snapshot_retrieval_ids = set(snapshot["retrieval_ids"])
         snapshot_artifact_ids = set(snapshot["artifact_ids"])
+        ready_chapters = [
+            catalog.get("NovelChapter", chapter_id)
+            for chapter_id in ingestion["ready_chapter_ids"]
+        ]
+        expected_retrieval_ids = {chapter["retrieval_id"] for chapter in ready_chapters}
+        if (
+            any(chapter["work_id"] != ingestion["work_id"] for chapter in ready_chapters)
+            or snapshot_retrieval_ids != expected_retrieval_ids
+        ):
+            raise ValidationError(
+                "E-SNAPSHOT-INGESTION-LINEAGE",
+                f"{snapshot['snapshot_id']} retrievals do not exactly match its ingestion run",
+            )
+        expected_triage_ids = {
+            catalog.get("Retrieval", retrieval_id).get("triage_assessment_id")
+            for retrieval_id in expected_retrieval_ids
+        }
+        if None in expected_triage_ids or set(snapshot["triage_assessment_ids"]) != expected_triage_ids:
+            raise ValidationError(
+                "E-SNAPSHOT-INGESTION-LINEAGE",
+                f"{snapshot['snapshot_id']} triage set does not exactly close its ingestion run",
+            )
+        if store is not None:
+            ingestion_artifacts = set(novel_ingestion_artifact_ids(catalog, store, ingestion))
+            if not ingestion_artifacts <= snapshot_artifact_ids:
+                raise ValidationError(
+                    "E-SNAPSHOT-INGESTION-LINEAGE",
+                    f"{snapshot['snapshot_id']} omits ingestion closure artifacts",
+                )
         for rid in snapshot["retrieval_ids"]:
             retrieval = catalog.get("Retrieval", rid)
             linked_artifacts = {
@@ -145,7 +179,7 @@ def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) ->
             assessment = catalog.get("TriageAssessment", assessment_id)
             if assessment["retrieval_id"] not in snapshot_retrieval_ids:
                 raise ValidationError("E-OUT-OF-SNAPSHOT", f"{assessment_id} retrieval missing from snapshot")
-        if "quality_gate" in snapshot:
+        if "review_completion_gate" in snapshot:
             decision_ids = set(snapshot["collection_decision_ids"])
             review_ids = set(snapshot["collection_review_ids"])
             decisions = [catalog.get("CollectionDecision", ident) for ident in decision_ids]
@@ -169,114 +203,37 @@ def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) ->
             }
             if decision_ids != referenced_decision_ids:
                 raise ValidationError("E-REVIEW-BIND", f"{snapshot['snapshot_id']} decision set mismatch")
-            quality_artifacts = {snapshot["quality_policy_artifact_id"]}
+            review_artifacts = {snapshot["review_policy_artifact_id"]}
             for decision in decisions:
-                quality_artifacts.update(decision["input_artifact_ids"])
-                quality_artifacts.add(decision["output_artifact_id"])
+                review_artifacts.update(decision["input_artifact_ids"])
+                review_artifacts.add(decision["output_artifact_id"])
                 for field in ("model_request_artifact_id", "provider_response_artifact_id"):
                     if decision.get(field):
-                        quality_artifacts.add(decision[field])
-            quality_artifacts.update(review["rubric_artifact_id"] for review in reviews)
-            if quality_artifacts - snapshot_artifact_ids:
-                raise ValidationError("E-OUT-OF-SNAPSHOT", f"{snapshot['snapshot_id']} quality artifacts missing")
+                        review_artifacts.add(decision[field])
+            review_artifacts.update(review["rubric_artifact_id"] for review in reviews)
+            if review_artifacts - snapshot_artifact_ids:
+                raise ValidationError("E-OUT-OF-SNAPSHOT", f"{snapshot['snapshot_id']} review artifacts missing")
             expected_gate = collection_review_gate(catalog, store, required_collectors)
-            if snapshot["quality_gate"] != expected_gate or expected_gate["result"] != "PASS":
-                raise ValidationError("E-REVIEW-GATE", f"{snapshot['snapshot_id']} quality gate is not PASS")
+            if snapshot["review_completion_gate"] != expected_gate or expected_gate["result"] != "PASS":
+                raise ValidationError("E-REVIEW-GATE", f"{snapshot['snapshot_id']} review gate is not PASS")
         expected = collection_snapshot_hash(snapshot)
         if snapshot["snapshot_hash"] != expected:
             raise ValidationError("E-HASH-MISMATCH", f"{snapshot['snapshot_id']} snapshot_hash mismatch")
-        # collection layer must not contain claims
-        if catalog.all("Claim") and snapshot.get("contains_claims"):
-            raise ValidationError("E-COLLECTION-CLAIM", "collection snapshot must not contain claims")
-
     validate_collection_quality_records(catalog, store)
 
 
-def _support_ok(
-    catalog: Catalog,
-    claim: dict[str, Any],
-    run: dict[str, Any],
-    bundle: dict[str, Any],
-) -> None:
-    metas = []
-    bundle_triage_ids = set(bundle.get("triage_assessment_ids") or [])
-    for sup in claim["support"]:
-        ret = catalog.get("Retrieval", sup["retrieval_id"])
-        seg = catalog.get("Segment", sup["segment_id"])
-        art = catalog.get("Artifact", sup["artifact_id"])
-        doc = catalog.get("ParsedDocument", seg["document_id"])
-        if not any(
-            link["retrieval_id"] == ret["retrieval_id"] and link["artifact_id"] == art["artifact_id"]
-            for link in catalog.all("RetrievalArtifact")
-        ):
-            raise ValidationError("E-LINEAGE", f"{claim['claim_id']} missing RetrievalArtifact edge")
-        parses = [
-            parse
-            for parse in catalog.all("ParseRun")
-            if parse.get("status") == "SUCCEEDED"
-            and parse.get("input_artifact_id") == art["artifact_id"]
-            and parse.get("output_document_id") == doc["document_id"]
-        ]
-        if not parses or doc["input_artifact_id"] != art["artifact_id"]:
-            raise ValidationError("E-LINEAGE", f"{claim['claim_id']} artifact does not produce cited segment")
-        if sup["retrieval_id"] not in bundle.get("retrieval_ids", []):
-            raise ValidationError("E-OUT-OF-BUNDLE", f"{claim['claim_id']} retrieval not in bound bundle")
-        if sup["artifact_id"] not in bundle.get("artifact_ids", []):
-            raise ValidationError("E-OUT-OF-BUNDLE", f"{claim['claim_id']} artifact not in bound bundle")
-        if sup["segment_id"] not in bundle["segment_ids"]:
-            raise ValidationError("E-OUT-OF-BUNDLE", f"{claim['claim_id']} segment not in bound bundle")
-        if sup["segment_id"] not in run["input_manifest"]["segment_ids"]:
-            raise ValidationError("E-OUT-OF-RUN", f"{claim['claim_id']} segment not in extraction input")
-        if sup["artifact_id"] not in run["input_manifest"]["allowed_context_artifact_ids"]:
-            raise ValidationError("E-OUT-OF-RUN", f"{claim['claim_id']} artifact not in extraction allowlist")
-        if doc["document_id"] not in bundle.get("document_ids", []):
-            raise ValidationError("E-OUT-OF-BUNDLE", f"{claim['claim_id']} document not in bound bundle")
-        actual_text_hash = text_hash(seg["normalized_text"])
-        if seg["normalized_text_hash"] != actual_text_hash:
-            raise ValidationError("E-TEXT-HASH", f"{seg['segment_id']} normalized text changed")
-        if seg["normalized_text_hash"] != sup["normalized_text_hash"]:
-            raise ValidationError("E-TEXT-HASH", f"{claim['claim_id']} normalized_text_hash mismatch")
-        if not is_real_sha256(sup["artifact_id"]):
-            raise ValidationError("E-PLACEHOLDER-HASH", f"{claim['claim_id']} artifact hash")
-        _no_forbidden(claim["statement"], claim["claim_id"])
-        _no_forbidden(claim.get("profile_payload") or {}, claim["claim_id"])
-        triage_id = ret.get("triage_assessment_id")
-        if not triage_id or triage_id not in bundle_triage_ids:
-            raise ValidationError("E-OUT-OF-BUNDLE", f"{claim['claim_id']} triage not in bound bundle")
-        triage = catalog.get("TriageAssessment", triage_id)
-        if triage["retrieval_id"] != ret["retrieval_id"]:
-            raise ValidationError("E-LINEAGE", f"{claim['claim_id']} triage does not assess retrieval")
-        metas.append({"retrieval": ret, "triage": triage, "source_id": ret["source_id"], "artifact": art, "segment": seg})
-    if claim["status"] != "ACTIVE":
-        if claim["grade"] == "CONFIRMED":
-            raise ValidationError("E-DEAD-CONFIRMED", f"{claim['claim_id']} non-ACTIVE still CONFIRMED")
-        return
-    usable = [
-        m
-        for m in metas
-        if not is_snippet_kind(m["retrieval"]["access_kind"]) and m["triage"]["tier"] != "D"
-    ]
-    if claim["kind"] == "ORIGINAL_FACT":
-        if claim["grade"] == "SUPPORTED":
-            if not any(m["triage"]["tier"] in {"A", "B"} for m in usable):
-                raise ValidationError("E-TIER-D-SUPPORT", f"{claim['claim_id']} SUPPORTED ORIGINAL_FACT needs A/B")
-        if claim["grade"] == "CONFIRMED":
-            raise ValidationError(
-                "E-UNQUALIFIED-CONFIRMATION",
-                "standalone model extraction cannot emit CONFIRMED claims",
-            )
-    if claim["kind"] == "RECEPTION" and claim["grade"] == "CONFIRMED":
-        raise ValidationError(
-            "E-UNQUALIFIED-CONFIRMATION",
-            "standalone model extraction cannot emit CONFIRMED claims",
-        )
-    if claim["kind"] == "RECEPTION" and claim["grade"] == "SUPPORTED":
-        if not any(m["triage"]["tier"] == "C" for m in usable):
-            raise ValidationError("E-TIER-C-SUPPORT", f"{claim['claim_id']} SUPPORTED RECEPTION needs Tier C")
-
-
 def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> None:
-    for kind in ("ParseRun", "ParsedDocument", "Segment", "EvidenceBundle", "ExtractionRun", "Claim"):
+    for kind in (
+        "ParseRun",
+        "ParsedDocument",
+        "Segment",
+        "EvidenceBundle",
+        "SceneWindow",
+        "SceneScoutRun",
+        "SceneMergeRun",
+        "SceneCandidate",
+        "ModelAttempt",
+    ):
         for obj in catalog.all(kind):
             validate_typed(kind, obj)
 
@@ -362,22 +319,38 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
             if snapshot["request_id"] != bundle["request_id"]:
                 raise ValidationError("E-REQUEST-BIND", f"{snapshot_id} belongs to another request")
             snapshots.append(snapshot)
+        ingestion_ids = {snapshot["ingestion_run_id"] for snapshot in snapshots}
+        if len(ingestion_ids) != 1 or store is None:
+            raise ValidationError(
+                "E-NOVEL-TRIAGE-BIND", "novel bundle must bind one ingestion and its ArtifactStore"
+            )
+        ingestion = catalog.get("NovelIngestionRun", next(iter(ingestion_ids)))
+        try:
+            ingestion_spec = json.loads(
+                store.get(ingestion["input_spec_artifact_id"]).decode("utf-8")
+            )
+        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise ValidationError("E-RIGHTS", "ingestion rights declaration is not readable") from exc
+        rights = declared_rights(
+            ingestion_spec, require_storage=True, require_external_model=True
+        )
+        source_quality = declared_source_quality(ingestion_spec)
         snapshot_retrieval_ids = {ident for snapshot in snapshots for ident in snapshot["retrieval_ids"]}
         snapshot_artifact_ids = {ident for snapshot in snapshots for ident in snapshot["artifact_ids"]}
         snapshot_triage_ids = {ident for snapshot in snapshots for ident in snapshot["triage_assessment_ids"]}
-        quality_snapshots = [snapshot for snapshot in snapshots if "quality_gate" in snapshot]
+        review_snapshots = [snapshot for snapshot in snapshots if "review_completion_gate" in snapshot]
         bound_review_ids = sorted_ids(
             review_id
-            for snapshot in quality_snapshots
+            for snapshot in review_snapshots
             for review_id in snapshot["collection_review_ids"]
         )
-        if quality_snapshots:
+        if review_snapshots:
             if bundle["selection_manifest"].get("collection_review_ids") != bound_review_ids:
                 raise ValidationError(
                     "E-REVIEW-BIND", f"{bundle['bundle_id']} does not bind snapshot reviews"
                 )
-            if bundle["selection_manifest"].get("quality_gate_result") != "PASS":
-                raise ValidationError("E-REVIEW-GATE", f"{bundle['bundle_id']} quality gate is not PASS")
+            if bundle["selection_manifest"].get("review_completion_result") != "PASS":
+                raise ValidationError("E-REVIEW-GATE", f"{bundle['bundle_id']} review gate is not PASS")
         selected_chapter_ids = bundle["selection_manifest"].get("selected_chapter_ids", [])
         if not isinstance(selected_chapter_ids, list) or len(selected_chapter_ids) != len(
             set(selected_chapter_ids)
@@ -386,7 +359,7 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
                 "E-CHAPTER-IDENTITY-BIND",
                 f"{bundle['bundle_id']} has an invalid selected chapter partition",
             )
-        if selected_chapter_ids:
+        if selected_chapter_ids and review_snapshots:
             if store is None:
                 raise ValidationError(
                     "E-STORE",
@@ -419,14 +392,26 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
                         f"{retrieval_id} lacks its reviewed TriageAssessment in the bundle",
                     )
                 assessment = catalog.get("TriageAssessment", triage_id)
-                review = find_bound_triage_review(catalog, bound_review_ids, retrieval_id)
-                expected_assessment = reviewed_triage_assessment(
-                    catalog,
-                    retrieval,
-                    review,
-                    policy_hash=bundle["policy_bundle_hash"],
-                    assessed_at=assessment["assessed_at"],
-                )
+                if review_snapshots:
+                    review = find_bound_triage_review(catalog, bound_review_ids, retrieval_id)
+                    expected_assessment = reviewed_triage_assessment(
+                        catalog,
+                        retrieval,
+                        review,
+                        rights=rights,
+                        source_quality=source_quality,
+                        policy_hash=bundle["policy_bundle_hash"],
+                        assessed_at=assessment["assessed_at"],
+                    )
+                else:
+                    expected_assessment = deterministic_triage_assessment(
+                        catalog,
+                        retrieval,
+                        rights=rights,
+                        source_quality=source_quality,
+                        policy_hash=bundle["policy_bundle_hash"],
+                        assessed_at=assessment["assessed_at"],
+                    )
                 if assessment != expected_assessment:
                     raise ValidationError(
                         "E-NOVEL-TRIAGE-BIND",
@@ -466,71 +451,194 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
         if bundle["status"] in {"FROZEN", "EXTRACTED", "EXPORTED"}:
             catalog.frozen_bundle_ids.add(bundle["bundle_id"])
 
-    for run in catalog.all("ExtractionRun"):
+    from .scene_scout import bundle_chapter_index
+
+    for window in catalog.all("SceneWindow"):
+        bundle = catalog.get("EvidenceBundle", window["bundle_id"])
+        if bundle["request_id"] != window["request_id"]:
+            raise ValidationError("E-SCENE-LINEAGE", "scene window request differs from bundle")
+        chapter_by_segment, _ = bundle_chapter_index(catalog, bundle)
+        for span in window["source_spans"]:
+            if span["segment_id"] not in set(bundle["segment_ids"]):
+                raise ValidationError("E-OUT-OF-BUNDLE", "scene window cites an extra segment")
+            segment = catalog.get("Segment", span["segment_id"])
+            chapter = chapter_by_segment[span["segment_id"]]
+            assessment = catalog.get(
+                "TriageAssessment",
+                catalog.get("Retrieval", chapter["retrieval_id"])["triage_assessment_id"],
+            )
+            if "event-facts" not in assessment.get("allowed_uses", []):
+                raise ValidationError("E-ALLOWED-USE", "scene window cites a non-event-facts source")
+            if (
+                span["normalized_text_hash"] != segment["normalized_text_hash"]
+                or not 0 <= span["start"] < span["end"] <= len(segment["normalized_text"])
+            ):
+                raise ValidationError("E-SCENE-SPAN", "scene window source span is invalid")
+        identity = {
+            "request_id": window["request_id"],
+            "bundle_id": window["bundle_id"],
+            "ordinal": window["ordinal"],
+            "source_spans": window["source_spans"],
+            "window_chars": window["window_chars"],
+            "overlap_chars": window["overlap_chars"],
+        }
+        expected_hash = object_hash(identity, omit=())
+        if (
+            window["window_hash"] != expected_hash
+            or window["window_id"] != derived_id("SceneWindow", {"window_hash": expected_hash})
+            or window["text_length"]
+            != sum(span["end"] - span["start"] for span in window["source_spans"])
+            or not 0.15 <= window["overlap_chars"] / window["window_chars"] <= 0.20
+        ):
+            raise ValidationError("E-SCENE-WINDOW", "scene window identity or dimensions differ")
+
+    for run in catalog.all("SceneScoutRun"):
         bundle = catalog.get("EvidenceBundle", run["bundle_id"])
         build = catalog.get("ExtractorBuild", run["extractor_build_id"])
-        if bundle["status"] == "DRAFT":
-            raise ValidationError("E-FROZEN", f"{run['extraction_run_id']} bound to DRAFT bundle")
-        if run["bundle_hash"] != bundle["bundle_hash"]:
-            raise ValidationError("E-BUNDLE-BIND", f"{run['extraction_run_id']} bundle_hash does not match frozen bundle")
-        if bundle["profile_id"] != build["profile_version"]:
-            raise ValidationError("E-BUILD-BIND", f"{run['extraction_run_id']} profile differs from build")
-        manifest = run["input_manifest"]
-        environment = run["execution_environment"]
-        if manifest["system_prompt_hash"] != build["prompt_template_hash"]:
-            raise ValidationError("E-BUILD-BIND", f"{run['extraction_run_id']} system prompt differs from build")
-        if manifest["user_prompt_hash"] != build["prompt_template_hash"]:
-            raise ValidationError("E-BUILD-BIND", f"{run['extraction_run_id']} user prompt differs from build")
-        if manifest["forbidden_context_policy_hash"] != bundle["policy_bundle_hash"]:
-            raise ValidationError("E-POLICY-HASH", f"{run['extraction_run_id']} isolation policy differs from bundle")
-        if environment["model_snapshot"] != build["model"]:
-            raise ValidationError("E-BUILD-BIND", f"{run['extraction_run_id']} model differs from build")
-        if environment["executor_build_id"] != build["executor_build_id"]:
-            raise ValidationError("E-BUILD-BIND", f"{run['extraction_run_id']} executor differs from build")
-        if environment["parameters"] != build["parameters"]:
-            raise ValidationError("E-BUILD-BIND", f"{run['extraction_run_id']} parameters differ from build")
-        if environment["tool_policy_hash"] != build["tool_policy_hash"]:
-            raise ValidationError("E-BUILD-BIND", f"{run['extraction_run_id']} tool policy differs from build")
-        allowed = set(run["input_manifest"]["segment_ids"])
-        if allowed - set(bundle["segment_ids"]):
-            raise ValidationError("E-OUT-OF-BUNDLE", f"{run['extraction_run_id']} manifest cites extra segments")
-        allowed_artifacts = set(run["input_manifest"]["allowed_context_artifact_ids"])
-        if allowed_artifacts - set(bundle.get("artifact_ids") or []):
-            raise ValidationError("E-OUT-OF-BUNDLE", f"{run['extraction_run_id']} allowlist cites extra artifacts")
-        run_identity = {
-            key: value
-            for key, value in run.items()
-            if key not in {"schema_version", "extraction_run_id", "status"}
+        if (
+            bundle["status"] == "DRAFT"
+            or bundle["bundle_hash"] != run["bundle_hash"]
+            or bundle["request_id"] != run["request_id"]
+            or bundle["profile_id"] != build["profile_version"]
+            or len(run["window_ids"]) != len(run["model_request_artifact_ids"])
+            or len(run["window_ids"]) != len(run["provider_response_artifact_ids"])
+        ):
+            raise ValidationError("E-SCENE-LINEAGE", "scene scout run lineage is incomplete")
+        windows = [catalog.get("SceneWindow", window_id) for window_id in run["window_ids"]]
+        if [window["ordinal"] for window in windows] != list(range(1, len(windows) + 1)) or any(
+            window["bundle_id"] != bundle["bundle_id"] for window in windows
+        ):
+            raise ValidationError("E-SCENE-WINDOW", "scene scout window order differs")
+        for artifact_id in (
+            run["model_request_artifact_ids"] + run["provider_response_artifact_ids"]
+        ):
+            catalog.get("Artifact", artifact_id)
+            if store is not None:
+                store.verify(artifact_id)
+        identity = {
+            key: run[key]
+            for key in (
+                "request_id",
+                "bundle_id",
+                "bundle_hash",
+                "extractor_build_id",
+                "discovery_brief_hash",
+                "window_ids",
+                "model_request_artifact_ids",
+                "provider_response_artifact_ids",
+                "checkpoint_artifact_id",
+                "checkpoint_hash",
+                "resumed_from_checkpoint",
+                "model_attempt_ids",
+                "attempt_record_artifact_ids",
+                "usage_ledger",
+            )
         }
-        if run["extraction_run_id"] != derived_id("ExtractionRun", run_identity):
-            raise ValidationError("E-ID-BIND", f"{run['extraction_run_id']} does not match extraction input")
+        if run["scene_scout_run_id"] != derived_id("SceneScoutRun", identity):
+            raise ValidationError("E-ID-BIND", "scene scout run id differs from its inputs")
 
-    for claim in catalog.all("Claim"):
-        if claim["status"] == "ACTIVE" and not claim.get("support"):
-            raise ValidationError("E-NO-SEGMENT", f"{claim['claim_id']} live claim needs support")
-        run = catalog.get("ExtractionRun", claim["extraction_run_id"])
-        if run["status"] != "SUCCEEDED":
-            raise ValidationError("E-EXTRACTION-RUN", f"{claim['claim_id']} bound to non-successful extraction")
-        bundle = catalog.get("EvidenceBundle", run["bundle_id"])
-        if run["bundle_hash"] != bundle["bundle_hash"]:
-            raise ValidationError("E-BUNDLE-BIND", f"{claim['claim_id']} extraction bundle hash mismatch")
-        if claim["profile_schema"] != bundle["profile_id"]:
-            raise ValidationError("E-PROFILE-SCHEMA", f"{claim['claim_id']} profile differs from bundle")
-        validate_profile_payload(claim["profile_schema"], claim["profile_payload"])
-        _support_ok(catalog, claim, run, bundle)
-        claim_identity = {key: value for key, value in claim.items() if key != "claim_id"}
-        if claim["claim_id"] != derived_id("Claim", claim_identity):
-            raise ValidationError("E-ID-BIND", f"{claim['claim_id']} does not match claim content")
+    for merge in catalog.all("SceneMergeRun"):
+        catalog.get("SceneScoutRun", merge["scene_scout_run_id"])
+        if merge["input_candidate_count"] != len(merge["input_candidate_hashes"]):
+            raise ValidationError("E-SCENE-MERGE", "scene merge input count differs")
+        identity = {
+            "scene_scout_run_id": merge["scene_scout_run_id"],
+            "algorithm_id": merge["algorithm_id"],
+            "input_candidate_hashes": merge["input_candidate_hashes"],
+        }
+        if merge["merge_run_id"] != derived_id("SceneMergeRun", identity):
+            raise ValidationError("E-ID-BIND", "scene merge id differs from its inputs")
+        actual_ids = sorted(
+            candidate["scene_candidate_id"]
+            for candidate in catalog.all("SceneCandidate")
+            if candidate["scene_merge_run_id"] == merge["merge_run_id"]
+        )
+        if sorted(merge["output_candidate_ids"]) != actual_ids:
+            raise ValidationError("E-SCENE-MERGE", "scene merge output set differs")
 
-    if any(
-        run["execution_environment"]["executor_build_id"] == "openai-responses-v1"
-        for run in catalog.all("ExtractionRun")
-    ):
-        from .plot_extraction import validate_model_plot_extractions
+    for candidate in catalog.all("SceneCandidate"):
+        run = catalog.get("SceneScoutRun", candidate["scene_scout_run_id"])
+        merge = catalog.get("SceneMergeRun", candidate["scene_merge_run_id"])
+        bundle = catalog.get("EvidenceBundle", candidate["bundle_id"])
+        if (
+            candidate["request_id"] != run["request_id"]
+            or candidate["bundle_id"] != run["bundle_id"]
+            or merge["scene_scout_run_id"] != run["scene_scout_run_id"]
+            or set(candidate["window_ids"]) - set(run["window_ids"])
+        ):
+            raise ValidationError("E-SCENE-LINEAGE", "scene candidate lineage differs")
+        chapter_by_segment, _ = bundle_chapter_index(catalog, bundle)
+        span_keys = {
+            (span["segment_id"], span["start"], span["end"])
+            for span in candidate["source_spans"]
+        }
+        for span in candidate["source_spans"]:
+            segment = catalog.get("Segment", span["segment_id"])
+            chapter = chapter_by_segment.get(span["segment_id"])
+            if chapter is None or not 0 <= span["start"] < span["end"] <= len(
+                segment["normalized_text"]
+            ):
+                raise ValidationError("E-SCENE-SPAN", "scene candidate span is invalid")
+            assessment = catalog.get(
+                "TriageAssessment",
+                catalog.get("Retrieval", chapter["retrieval_id"])["triage_assessment_id"],
+            )
+            if "event-facts" not in assessment.get("allowed_uses", []):
+                raise ValidationError("E-ALLOWED-USE", "scene candidate cites a non-event-facts source")
+        for field in (
+            "actors",
+            "action",
+            "target",
+            "precondition",
+            "state_transition",
+            "external_response",
+            "immediate_feedback",
+            "new_affordances",
+            "persistence",
+            "mechanic_pressure_point",
+        ):
+            observation = candidate[field]
+            support_keys = {
+                (span["segment_id"], span["start"], span["end"])
+                for span in observation["support_spans"]
+            }
+            if not support_keys <= span_keys or (
+                observation["status"] == "UNKNOWN"
+                and (observation["values"] or observation["support_spans"])
+            ):
+                raise ValidationError("E-SCENE-SPAN", f"scene candidate {field} support differs")
+        earliest = min(
+            candidate["source_spans"],
+            key=lambda span: (
+                chapter_by_segment[span["segment_id"]]["ordinal"],
+                catalog.get("Segment", span["segment_id"])["ordinal"],
+                span["start"],
+                span["segment_id"],
+            ),
+        )
+        segment = catalog.get("Segment", earliest["segment_id"])
+        chapter = chapter_by_segment[earliest["segment_id"]]
+        expected_order = {
+            "chapter_id": chapter["chapter_id"],
+            "chapter_ordinal": chapter["ordinal"],
+            "document_id": segment["document_id"],
+            "segment_id": segment["segment_id"],
+            "segment_ordinal": segment["ordinal"],
+            "start": earliest["start"],
+        }
+        identity = {key: value for key, value in candidate.items() if key != "scene_candidate_id"}
+        if (
+            candidate["source_order"] != expected_order
+            or candidate["scene_candidate_id"] != derived_id("SceneCandidate", identity)
+        ):
+            raise ValidationError("E-ID-BIND", "scene candidate identity or order differs")
 
+    if catalog.all("SceneScoutRun"):
         if store is None:
-            raise ValidationError("E-STORE", "model extraction replay requires an ArtifactStore")
-        validate_model_plot_extractions(catalog, store)
+            raise ValidationError("E-STORE", "scene scout replay requires an ArtifactStore")
+        from .scene_scout import validate_scene_scouts
+
+        validate_scene_scouts(catalog, store, repo_root=repo_root())
 
     for bundle in catalog.all("EvidenceBundle"):
         if bundle["bundle_id"] != derived_id("EvidenceBundle", {"bundle_hash": bundle["bundle_hash"]}):
@@ -637,7 +745,12 @@ def validate_export(catalog: Catalog, store: ArtifactStore | None = None) -> Non
         if export["export_hash"] != expected:
             raise ValidationError("E-EXPORT-TAMPER", f"{export['export_id']} export_hash mismatch")
         producer = export["producer"]
-        for key in ("repository_commit", "collector_build_id", "parser_build_id", "extractor_build_id"):
+        for key in (
+            "repository_commit",
+            "source_classifier_build_id",
+            "parser_build_id",
+            "scene_scout_build_id",
+        ):
             if not producer.get(key):
                 raise ValidationError("E-PRODUCER", f"missing producer.{key}")
         bundle = catalog.get("EvidenceBundle", export["bundle"]["bundle_id"])
@@ -648,103 +761,77 @@ def validate_export(catalog: Catalog, store: ArtifactStore | None = None) -> Non
         request = catalog.get("ResearchRequest", bundle["request_id"])
         if export["origin_request"] != request:
             raise ValidationError("E-REQUEST-BIND", "export origin request does not match bundle request")
-        build = catalog.get("ExtractorBuild", producer["extractor_build_id"])
+        build = catalog.get("ExtractorBuild", producer["scene_scout_build_id"])
         if build.get("repository_commit") != producer["repository_commit"]:
             raise ValidationError("E-PRODUCER", "producer commit does not match extractor build")
-        plot_analysis_id = (export.get("scene_facts") or {}).get("plot_analysis_id")
-        analysis = None
-        if plot_analysis_id:
-            analysis = catalog.get("PlotAnalysis", plot_analysis_id)
-            expected_scene_facts = {
-                "plot_analysis_id": analysis["analysis_id"],
-                "timeline": analysis["timeline"],
-                "event_groups": analysis["event_groups"],
-                "key_events": analysis["key_events"],
-                "alias_groups": analysis["alias_groups"],
+        discovery = export["scene_discovery"]
+        run = catalog.get("SceneScoutRun", discovery["scene_scout_run_id"])
+        merge = catalog.get("SceneMergeRun", discovery["merge_run_id"])
+        if (
+            run["bundle_id"] != bundle["bundle_id"]
+            or run["extractor_build_id"] != build["extractor_build_id"]
+            or merge["scene_scout_run_id"] != run["scene_scout_run_id"]
+        ):
+            raise ValidationError("E-SCENE-BIND", "export scene discovery differs from bundle/build")
+        expected_candidates = [
+            catalog.get("SceneCandidate", candidate_id)
+            for candidate_id in merge["output_candidate_ids"]
+        ]
+        expected_discovery = {
+            "scene_scout_run_id": run["scene_scout_run_id"],
+            "merge_run_id": merge["merge_run_id"],
+            "window_count": len(run["window_ids"]),
+            "candidate_count": len(expected_candidates),
+        }
+        if export["scene_discovery"] != expected_discovery:
+            raise ValidationError("E-SCENE-BIND", "export scene discovery counts differ")
+        if export["scene_candidates"] != expected_candidates:
+            raise ValidationError("E-SCENE-BIND", "export candidates differ from merge output")
+        if any(
+            candidate["status"] != "DRAFT"
+            or candidate["verification"] != "UNVERIFIED"
+            for candidate in export["scene_candidates"]
+        ):
+            raise ValidationError("E-SCENE-TRUST", "unreviewed scene output must remain DRAFT/UNVERIFIED")
+        source_classifier_build_ids = sorted(
+            {
+                catalog.get("TriageAssessment", assessment_id)["assessor_build_id"]
+                for assessment_id in bundle["triage_assessment_ids"]
             }
-            if export["scene_facts"] != expected_scene_facts:
-                raise ValidationError("E-PLOT-BIND", "export scene facts differ from plot analysis")
-            analysis_run = catalog.get("ExtractionRun", analysis["extraction_run_id"])
-            if analysis_run["bundle_id"] != bundle["bundle_id"]:
-                raise ValidationError("E-PLOT-BIND", "plot analysis belongs to another bundle")
-            snapshot_ids = set(bundle["collection_snapshot_ids"])
-            decision_ids = {
-                decision_id
-                for snapshot in catalog.all("CollectionSnapshot")
-                if snapshot["snapshot_id"] in snapshot_ids
-                for decision_id in snapshot.get("collection_decision_ids", [])
+        )
+        parser_build_ids = sorted(
+            {
+                parse_run["parser_build_id"]
+                for parse_run in catalog.all("ParseRun")
+                if parse_run.get("output_document_id") in set(bundle["document_ids"])
             }
-            collection_build_ids = sorted(
-                {
-                    catalog.get("CollectionDecision", decision_id)["assessor_build_id"]
-                    for decision_id in decision_ids
-                }
-            )
-            parser_build_ids = sorted(
-                {
-                    parse_run["parser_build_id"]
-                    for parse_run in catalog.all("ParseRun")
-                    if parse_run.get("output_document_id") in set(bundle["document_ids"])
-                }
-            )
-            expected_collector = "collection-set-" + object_hash(
-                {"build_ids": collection_build_ids}, omit=()
-            ).removeprefix("sha256:")[:20]
-            expected_parser = "parser-set-" + object_hash(
-                {"build_ids": parser_build_ids}, omit=()
-            ).removeprefix("sha256:")[:20]
-            if (
-                producer["collector_build_id"] != expected_collector
-                or producer["parser_build_id"] != expected_parser
-            ):
-                raise ValidationError("E-PRODUCER", "producer build sets differ from bundle lineage")
-        if analysis is not None:
-            catalog_claims = {
-                claim_id: catalog.get("Claim", claim_id)
-                for claim_id in analysis["claim_ids"]
-            }
-            if any(
-                claim["status"] != "ACTIVE"
-                or claim["extraction_run_id"] != analysis["extraction_run_id"]
-                for claim in catalog_claims.values()
-            ):
-                raise ValidationError("E-CLAIM-BIND", "plot export claims differ from analysis")
-        else:
-            catalog_claims = {
-                claim["claim_id"]: claim
-                for claim in catalog.all("Claim")
-                if claim["status"] == "ACTIVE"
-            }
-        export_claims = {claim["claim_id"]: claim for claim in export["claims"]}
-        if len(export_claims) != len(export["claims"]) or export_claims != catalog_claims:
-            raise ValidationError("E-CLAIM-BIND", "export claims do not match active catalog claims")
-        for claim in export["claims"]:
-            run = catalog.get("ExtractionRun", claim["extraction_run_id"])
-            if run["bundle_id"] != bundle["bundle_id"] or run["extractor_build_id"] != producer["extractor_build_id"]:
-                raise ValidationError("E-CLAIM-BIND", "export claim run does not match producer or bundle")
-        _no_forbidden(export.get("scene_facts") or {}, "scene_facts")
-        if "element_mapping" in (export.get("scene_facts") or {}):
-            raise ValidationError("E-PROJECT-LEAK", "export scene_facts must not include element_mapping")
-        for claim in export["claims"]:
-            _no_forbidden(claim, "export claim")
+        )
+        expected_source_classifier = "source-classifier-set-" + object_hash(
+            {"build_ids": source_classifier_build_ids}, omit=()
+        ).removeprefix("sha256:")[:20]
+        expected_parser = "parser-set-" + object_hash(
+            {"build_ids": parser_build_ids}, omit=()
+        ).removeprefix("sha256:")[:20]
+        if (
+            producer["source_classifier_build_id"] != expected_source_classifier
+            or producer["parser_build_id"] != expected_parser
+        ):
+            raise ValidationError("E-PRODUCER", "producer build sets differ from bundle lineage")
+        _no_forbidden(export["scene_discovery"], "scene_discovery")
+        for candidate in export["scene_candidates"]:
+            _no_forbidden(candidate, "scene candidate")
         audit = export.get("assurance", {}).get("auditability", "FULL")
-        if analysis is not None and audit != "DEGRADED":
+        if audit != "DEGRADED":
             raise ValidationError(
                 "E-AUDITABILITY",
-                "model-backed novel exports must remain DEGRADED until failed calls and "
-                "automatic retry attempts have immutable run records",
+                "model-backed scene exports remain DEGRADED until every attempt is immutable",
             )
         manifest_ids = [item["artifact_id"] for item in export["artifact_manifest"]]
-        if analysis is not None:
-            from .plot_analysis import plot_analysis_artifact_ids
+        from .scene_scout import scene_scout_artifact_ids
 
-            expected_artifact_ids = set(
-                plot_analysis_artifact_ids(catalog, bundle, analysis)
-            )
-        else:
-            expected_artifact_ids = {
-                artifact["artifact_id"] for artifact in catalog.all("Artifact")
-            }
+        expected_artifact_ids = set(
+            scene_scout_artifact_ids(catalog, bundle, {"run": run})
+        )
         if len(manifest_ids) != len(set(manifest_ids)) or set(manifest_ids) != expected_artifact_ids:
             raise ValidationError("E-ARTIFACT-BIND", "artifact manifest does not exactly match catalog artifacts")
         for item in export["artifact_manifest"]:
@@ -787,16 +874,21 @@ def validate_all(catalog: Catalog, store: ArtifactStore | None = None) -> None:
         validate_export(catalog, store)
     if any(
         catalog.all(kind)
-        for kind in ("NovelWork", "NovelRankingRun", "NovelSourceResolution", "PlotAnalysis")
+        for kind in (
+            "NovelWork",
+            "NovelRankingRun",
+            "NovelSourceResolution",
+            "SceneScoutRun",
+        )
     ):
         if store is None:
             raise ValidationError("E-STORE", "novel workflow validation requires an ArtifactStore")
         from .novel_ingest import validate_novel_ingestion
         from .novel_selection import validate_source_resolutions
-        from .plot_analysis import validate_plot_analysis
         from .ranking import validate_fame_ranking
+        from .scene_scout import validate_scene_scouts
 
         validate_novel_ingestion(catalog, store)
         validate_fame_ranking(catalog, store)
         validate_source_resolutions(catalog, store)
-        validate_plot_analysis(catalog, store)
+        validate_scene_scouts(catalog, store, repo_root=repo_root())

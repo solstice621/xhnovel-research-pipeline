@@ -1,0 +1,26 @@
+schema_version: "0.2-draft"
+id: novel-source-rights-v1
+rights_gate:
+  required_fields:
+    - basis
+    - may_store_full_text
+    - may_send_to_external_model
+    - may_export_excerpts
+  model_stage_requires:
+    - basis is not UNKNOWN
+    - may_send_to_external_model is true
+source_quality:
+  required_fields:
+    - edition_status
+    - textual_completeness
+  event_facts_tiers:
+    A:
+      edition_status: OFFICIAL
+      textual_completeness: COMPLETE
+    B:
+      edition_status:
+        - PUBLISHED_EDITION
+        - USER_VERIFIED_COPY
+      textual_completeness: COMPLETE
+  all_other_combinations: D
+technical_access_is_not_rights: true

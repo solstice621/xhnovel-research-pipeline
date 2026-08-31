@@ -19,7 +19,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "0.1-draft-frozen"
+      "const": "0.2-draft"
     },
     "review_id": {
       "type": "string",
@@ -68,9 +68,7 @@
             "SELECTED",
             "REJECTED",
             "LEAD_ONLY",
-            "QUARANTINED",
-            "CONTINUE",
-            "STOP"
+            "QUARANTINED"
           ]
         },
         "tier": {
@@ -79,23 +77,6 @@
             "B",
             "C",
             "D"
-          ]
-        },
-        "access_legitimacy": {
-          "enum": [
-            "UNKNOWN",
-            "AUTHORIZED",
-            "UNAUTHORIZED_REPRINT",
-            "PUBLIC",
-            "RESTRICTED"
-          ]
-        },
-        "origin_relation": {
-          "enum": [
-            "SAME_ORIGIN",
-            "LIKELY_SAME_ORIGIN",
-            "INDEPENDENT",
-            "UNKNOWN"
           ]
         },
         "identity_status": {

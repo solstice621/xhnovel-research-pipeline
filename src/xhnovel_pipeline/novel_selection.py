@@ -17,15 +17,27 @@ from .store import ArtifactStore
 
 RESOLVER_BUILD_ID = "declared-source-catalog-v1"
 SOURCE_ENTRY_KEYS = {
+    "scene_scout",
     "candidate_id",
     "candidate_titles",
     "source",
     "evidence",
+    "rights",
+    "source_quality",
     "limits",
     "strict_order",
     "request",
 }
-RESOLVED_SPEC_KEYS = {"source", "evidence", "limits", "strict_order", "request"}
+RESOLVED_SPEC_KEYS = {
+    "scene_scout",
+    "source",
+    "evidence",
+    "rights",
+    "source_quality",
+    "limits",
+    "strict_order",
+    "request",
+}
 
 
 def _artifact_record(artifact_id: str, data: bytes, *, created_at: str) -> dict[str, Any]:

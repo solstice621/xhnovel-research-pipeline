@@ -1,255 +1,187 @@
-# Novel collection and plot workflow
+# Novel ingestion and Scene Scout workflow
 
-This is an experimental, auditable workflow. It does not qualify a model build
-or upgrade an export beyond `UNQUALIFIED`.
+## Purpose and trust boundary
 
-## Inputs
+The executable workflow discovers source-grounded scene candidates relevant to
+a user question. It does not score literary plot importance, run a whole-book
+analysis call, or promote model output into facts. Model observations remain
+`DRAFT / UNVERIFIED`; a separate future promotion workflow is required before
+they can become accepted evidence.
 
-Direct ingestion accepts a JSON specification with one `source`:
+The system can prove which immutable source bytes and model exchange produced a
+candidate. Replayability does not prove that the model interpreted the passage
+correctly.
 
-- `txt`: one UTF-8 or detectable text file split by chapter headings;
-- `epub`: EPUB spine order, with member and total uncompressed-size limits;
-- `directory`: naturally sorted `.txt`, `.html`, `.htm`, or `.xhtml` files;
-- `site`: a static HTML index plus bounded chapter and next-page URL patterns.
-
-See `examples/novel-direct.json`. Relative local paths are resolved against the
-specification file.
-
-Minimal source configurations are:
-
-```json
-{"source": {"kind": "directory", "path": "chapters", "recursive": false}}
-```
-
-```json
-{"source": {"kind": "txt", "path": "book.txt", "encoding": "auto"}}
-```
+## Direct research specification
 
 ```json
 {
   "source": {
-    "kind": "epub",
-    "path": "book.epub",
-    "max_member_bytes": 10000000,
-    "max_total_bytes": 200000000
-  }
-}
-```
-
-```json
-{
-  "source": {
-    "kind": "site",
-    "index_url": "https://authorized.example/books/demo/index.html",
-    "chapter_url_pattern": "/books/demo/chapters/[0-9]+\\.html$",
-    "next_index_url_pattern": "[?&]page=[0-9]+$",
-    "max_index_pages": 20,
-    "max_index_bytes": 50000000,
-    "max_chapters": 1000
+    "kind": "txt",
+    "path": "book.txt",
+    "title": "Example novel"
   },
-  "limits": {"max_chapters": 1000, "max_bytes": 100000000},
-  "strict_order": true
+  "rights": {
+    "basis": "USER_AUTHORIZED_LOCAL_COPY",
+    "may_store_full_text": true,
+    "may_send_to_external_model": true,
+    "may_export_excerpts": false
+  },
+  "source_quality": {
+    "edition_status": "USER_VERIFIED_COPY",
+    "textual_completeness": "COMPLETE"
+  },
+  "request": {
+    "discovery_brief": "寻找对象控制转移中遭到抵抗并改变后续行动空间的场景"
+  },
+  "limits": {
+    "max_chapters": 5000,
+    "max_bytes": 500000000
+  },
+  "scene_scout": {
+    "window_chars": 10000,
+    "overlap_chars": 1800,
+    "max_input_chars": 20000,
+    "max_request_bytes": 2000000,
+    "max_workers": 8
+  },
+  "strict_order": false
 }
 ```
 
-Directory input recognizes `.txt`, `.html`, `.htm`, and `.xhtml` files and is
-non-recursive unless `recursive` is true. TXT defaults to UTF-8/GB18030/Big5
-detection and the built-in Chinese chapter-heading pattern; `encoding` and
-`chapter_pattern` can override those defaults. EPUB follows package spine order.
-Top-level `limits.max_chapters` bounds discovered chapters. `limits.max_bytes`
-caps the cumulative fetched chapter bytes and is also applied before parsing any
-single local source, site response, or EPUB container. EPUB's member and total
-uncompressed-size limits are additional archive defenses. For the built-in site
-transport, a smaller top-level byte limit is enforced while the response is read,
-not only after download. Retained index-page provenance is cumulatively capped by
-the smaller of `limits.max_bytes` and `source.max_index_bytes`; the latter defaults
-to and cannot exceed 50 MB.
+Supported local kinds are `txt`, `directory`/`chapter-directory`, and `epub`.
+The bounded `site`/`static-site` adapter is also available but is not a rights
+signal: HTTP 200 is recorded only as successful technical access.
 
-Site patterns are Python regular expressions matched against canonical absolute
-URLs. Chapter and index redirects are checked again after fetching. Chapter
-links are same-origin by default. `allow_external_chapters` can relax only the
-chapter-origin check; pagination remains on the index origin. Do not enable it
-unless the external chapter host is an intended, authorized source.
+The model stage is gated before ingestion starts. It requires:
 
-The site adapter uses the hardened HTTP fetcher, rejects unsupported MIME types,
-checks every redirect, defaults to same-origin traversal, and does not render
-JavaScript or bypass authentication, paywalls, CAPTCHAs, or access controls.
-The user-declared `evidence` field, if present, survives only inside the
-frozen original specification Artifact and is ignored when creating source
-ratings. Formal novel triage is materialized only from the bound independent
-review, and it does not qualify a model build, bundle, or export.
+- all four rights fields;
+- `may_store_full_text: true`;
+- a rights basis other than `UNKNOWN`;
+- `may_send_to_external_model: true`.
 
-## Commands
+Source quality is independent of rights and access. `OFFICIAL + COMPLETE` maps
+to Tier A; `PUBLISHED_EDITION` or `USER_VERIFIED_COPY` plus `COMPLETE` maps to
+Tier B. All other combinations map to Tier D. A/B permits `event-facts`; D is
+`lead-only` and creates no SceneWindows or model calls.
 
-Ingest and mechanically parse without model calls:
+## Ingestion
 
-```text
-xhnovel-pipeline ingest-novel examples/novel-direct.json \
-  --work-dir .runtime/novels/demo
+Ingestion writes source bytes to a content-addressed store and records discovery,
+fetch receipts, parsed documents, and segments. Checkpoints are integrity-bound
+to the input specification and adapter build.
+
+Important parsing rules:
+
+- TXT content before the first numbered heading is retained as
+  `FRONTMATTER`, not silently dropped.
+- Physical single-newline TXT paragraphs remain separately addressable.
+- TXT locators point to original decoded-text character offsets and line
+  selectors.
+- HTML locators retain the actual source node name instead of pretending every
+  block is a paragraph.
+- EPUB spine items are classified. Frontmatter and navigation items are
+  retained as `IGNORED`; an unnumbered item does not abort the book.
+- Unknown chapter numbers produce an ordering warning unless a real
+  contradiction, duplicate, or gap violates strict ordering.
+
+The ingestion run has a stable logical identity. Reusing a completed checkpoint
+does not create a second run merely because cached work was reused.
+
+## Frozen lineage and classification
+
+The workflow creates one deterministic `TriageAssessment` per ready narrative
+chapter, then freezes a `CollectionSnapshot` whose retrieval, artifact, triage,
+request, and `NovelIngestionRun` closure is validated exactly. The resulting
+`EvidenceBundle` includes selected, duplicate, and ignored chapter IDs.
+
+The primary workflow makes no fixed per-chapter Collector/Reviewer calls.
+Collection review types remain available only as isolated rubric-bound utility
+contracts; their task surface is limited to `TRIAGE` and `CHAPTER_IDENTITY`.
+
+## Query-sensitive overlapping Scene Scout
+
+The user's `discovery_brief` is included in every model input and its hash is
+bound to the run. Changing the brief changes the request and build lineage.
+
+Eligible normalized segment text is concatenated in chapter and source order,
+then divided into windows with these hard invariants:
+
+- target length: 8,000 to 12,000 Unicode characters;
+- overlap: 15% to 20%;
+- default: 10,000 characters with 1,800-character overlap;
+- exact full JSON request byte limit, including instructions and schema;
+- no use of Tier D / `lead-only` text.
+
+Every returned candidate cites exact source spans. Each observation field has a
+status (`KNOWN`, `UNKNOWN`, or `CONFLICTING`), values, and its own supporting
+spans. `UNKNOWN` has empty values and support. Conflicting observations set the
+candidate to `NEEDS_ADJUDICATION`; processing of other windows continues.
+
+Duplicate candidates from overlapping windows are merged using source-span and
+actor/action/target evidence, then ordered by chapter ordinal, segment ordinal,
+and exact span start. The merge record exposes local-overlap and work-order
+reduction stages. There is no whole-book model analysis call.
+
+## Concurrency, failure, and accounting
+
+Scene calls use a bounded thread pool (`max_workers` defaults to 8 and is capped
+at 64). A checkpoint is atomically rewritten after each completed future.
+Failures are isolated: all other submitted windows finish, the checkpoint is
+marked `PARTIAL`, and the command exits with `E-SCENE-PARTIAL`.
+
+On the next run, successful windows are loaded from CAS and only incomplete or
+failed windows are submitted again. Attempt ordinals and `retry_of` chains span
+the interruption.
+
+Each attempt has an immutable `ModelAttempt` receipt containing:
+
+- the exact request and optional response artifact IDs;
+- HTTP status and provider response ID;
+- `SUCCEEDED`, `RETRYABLE`, `FAILED`, `REFUSED`, or `REJECTED` status;
+- error code/message;
+- input, output, and total token observations when supplied by the provider.
+
+The run aggregates token usage and counts attempts with unknown usage. Estimated
+cost remains `null` unless a separately versioned pricing source is available;
+the pipeline does not invent prices.
+
+## Outputs and replay
+
+Successful research outputs are stored under
+`research/<scene_scout_run_id>/`:
+
+- `catalog.json`;
+- `scene-scout-run.json`;
+- `scene-merge-run.json`;
+- `scene-candidates.json`;
+- `evidence-export.json`;
+- `run-summary.json`.
+
+Output files are immutable. Validation reconstructs windows, requests, model
+outputs, attempt chains, usage totals, merge results, exact candidates, and the
+artifact-manifest closure. Model-backed exports are always `UNQUALIFIED` and
+`DEGRADED`; changing that flag to `FULL` is rejected.
+
+Commands:
+
+```powershell
+xhnovel-pipeline ingest-novel spec.json --work-dir .runtime/ingest
+xhnovel-pipeline research-novel spec.json `
+  --scout-model <model-snapshot> --work-dir .runtime/research
+xhnovel-pipeline validate scene <catalog.json> --store <objects-dir>
+xhnovel-pipeline validate all <catalog.json> --store <objects-dir>
 ```
 
-Validate the emitted catalog against its CAS (replace `<NING-ID>` with the ID
-printed by ingestion):
+`research-famous-novel` first performs a bounded Wikipedia OpenSearch title
+relevance aggregation and resolves the first matching entry in the supplied
+`source_catalog`. This is not a measurement of sales or popularity and does not
+locate licensed full text automatically.
 
-```text
-xhnovel-pipeline validate novel \
-  .runtime/novels/demo/ingestions/<NING-ID>/catalog.json \
-  --store .runtime/novels/demo/objects
-```
+## Portability and distribution
 
-Run collection review, plot extraction, cross-chapter analysis, and export:
-
-```text
-export OPENAI_API_KEY=...
-xhnovel-pipeline research-novel examples/novel-direct.json \
-  --collector-model <small-model-snapshot> \
-  --reviewer-model <large-model-snapshot> \
-  --extractor-model <extractor-model-snapshot> \
-  --analyst-model <analyst-model-snapshot> \
-  --work-dir .runtime/novel-research/demo
-```
-
-Collector and reviewer model identifiers must differ. For logical model calls
-that complete and pass local validation, the exact model identifier, request
-bytes, final successful response bytes, prompt, parameters, and frozen inputs
-are retained in the CAS. API credentials are sent only as request headers and
-are not written to artifacts.
-
-The experimental v0.1 model path does not yet retain HTTP-error, refusal,
-invalid-JSON, or invalid-schema responses as immutable failed runs. The client
-also retries selected transient HTTP statuses automatically (up to three
-attempts by default), but only the final successful response is retained; the
-intermediate retry responses have no run record or `retry_of` lineage. Model-
-backed novel exports therefore declare `auditability=DEGRADED`, even when the
-command succeeds. `UNQUALIFIED` describes model/build assurance and does not
-remove this audit-history limitation.
-
-The current experimental review stage is deliberately conservative and not
-cost-optimized: each ready chapter triggers two blind `CHAPTER_IDENTITY` calls
-and two blind `TRIAGE` calls (collector plus reviewer), followed by batched plot
-extraction and one whole-run analysis call. Check the ready chapter count and
-model pricing before using `research-novel` on a full book; `ingest-novel`
-performs no model calls and is the safe first pass.
-
-## Automatic famous-novel workflow
-
-`research-famous-novel` ranks candidates inside a declared provider/query/page
-window, then selects the highest-ranked candidate that has exactly one matching
-entry in `source_catalog`:
-
-First copy the example and replace its placeholder EPUB path and example site
-with sources you are authorized to access. The checked-in file is a
-configuration template, not a runnable promise that those placeholder sources
-exist.
-
-```text
-xhnovel-pipeline research-famous-novel /path/to/famous-novel-research.json \
-  --collector-model <small-model-snapshot> \
-  --reviewer-model <large-model-snapshot> \
-  --work-dir .runtime/famous-novel-research/demo
-```
-
-`source_catalog` is deliberate. A ranking result identifies a work; it does not
-prove that a search-result URL is the novel text or that it is an allowed input.
-Entries match by exact `candidate_id` or normalized `candidate_titles` and carry
-the concrete TXT, EPUB, directory, or site source configuration. Ambiguous
-matches and missing sources fail closed.
-
-The resulting `NovelSourceResolution` binds:
-
-- ranking run and candidate rank;
-- the complete declared source catalog Artifact;
-- the selected ingestion specification Artifact and hash;
-- the final ResearchRequest, Snapshot, Bundle, analysis, and export.
-
-## Outputs and recovery
-
-Chapter bytes, provider responses, model exchanges, policy files, checkpoints,
-and manifests are content-addressed under the selected work directory. The
-ingestion checkpoint is updated after every completed chapter. To resume, rerun
-the same command with the same resolved specification and `--work-dir`. The
-pipeline verifies the checkpoint and prior CAS objects and fetches only
-unfinished chapters. A changed input specification, changed source bytes where
-the adapter can bind the complete source, changed adapter build, corrupt CAS, or
-corrupt checkpoint fails closed. Completed immutable run outputs are preserved;
-a resumed run is a distinct `NovelIngestionRun` rather than an in-place rewrite.
-
-SITE transport attempts are also retained before an ingestion run can finish.
-Each index or chapter request writes an immutable receipt under
-`site-attempts/`; failed attempts additionally write
-`failures/<RET-ID>/failure-manifest.json` and retain any bounded response body
-available from the transport. Retrying the same stage in the same work directory
-links the new receipt to the prior one with `retry_of`. A successful final
-catalog materializes that attempt history and its raw artifacts so Snapshot,
-export-manifest, and garbage-collection live-set validation preserve the full
-ingestion closure. Under `research-novel`, these records live inside its
-ingestion work subdirectory rather than beside the final model outputs.
-
-That recovery contract currently applies to ingestion only. Collection review,
-plot extraction, and plot analysis do not have failed model-run checkpoints or
-retry lineage; rerunning the command repeats those model stages and must not be
-treated as a resumable, fully audited model run.
-
-Use an explicit, durable work directory for any run that may need recovery. The
-default directory is convenient for experiments but is derived from the spec
-file name, so two different specs with the same name can collide. Do not use
-`/tmp` as the only location for evidence intended to support an export.
-
-Duplicate normalized chapter content is retained as lineage but excluded from
-the extraction Bundle. Missing, duplicated, or decreasing declared chapter
-numbers produce `WARNING`, or `FAILED` when `strict_order` is true.
-
-The chapter-identity gate is deliberately narrower than an official edition
-lookup. A deterministic check derives a chapter number from the first frozen
-body segment and compares it with the discovered declared number (or discovery
-ordinal when no declared number exists). The two model reviewers see only that
-body-heading observation and the frozen segments; they are not shown the
-discovered title or ordinal. A match therefore proves internal discovery/body
-consistency only. It does not prove that the upstream site, directory, or EPUB
-used the publisher's canonical chapter identity.
-
-Successfully completed model request batches are replayed against frozen
-Segment text. Claims must be exactly reproducible from the retained successful
-extractor responses. Alias groups, event groups, timeline, and importance
-scores must likewise replay from the retained successful analysis response and
-policy. This success-path replay does not reconstruct unretained failed calls or
-automatic-retry intermediates. Output files are immutable; conflicting reruns
-do not overwrite them.
-
-## Current boundary
-
-The implemented live ranking provider is Chinese Wikipedia OpenSearch. Ranking
-means reciprocal-rank fusion over the recorded window, not a universal measure
-of fame. Static sites requiring browser execution are unsupported. A full-book
-analysis must fit the configured analysis context limit; oversized analysis
-fails explicitly instead of silently dropping claims.
-
-## Exit status
-
-- `0`: the requested command completed. `ingest-novel` may still report
-  `status=PARTIAL` with a warning; inspect the emitted record before downstream
-  use.
-- `1`: a configuration, validation, access, provider, model, integrity, or
-  immutable-output error prevented completion.
-- `2`: `ingest-novel` completed an auditable record with `status=FAILED` (for
-  example strict chapter-order failure). `argparse` also uses `2` for invalid
-  command-line syntax and prints a `usage:` message.
-
-Model-backed novel exports remain explicitly `UNQUALIFIED` and
-`auditability=DEGRADED`. A successful exit means the experimental workflow and
-its success-path validators completed; it is not ExtractorBuild qualification,
-bundle verification, or proof that every failed/automatic-retry model exchange
-was retained.
-
-## Repository validation
-
-Run the standalone boundary and regression suite with:
-
-```text
-python -m compileall -q src tests
-python -m pytest
-```
-
-`tests/test_standalone_boundary.py` fails if a retired G0-G12 module or contract
-is restored, a relative import is missing, or the policy manifest expands beyond
-the three standalone runtime policies.
+Work-directory locking uses `fcntl` on POSIX and `msvcrt` on Windows. Runtime
+contracts, policies, prompts, and schemas are included in the wheel under
+`xhnovel_pipeline_data`; `repo_root()` resolves either a source checkout or an
+installed distribution. CI runs pytest on Linux and Windows and performs a
+clean wheel-install/CLI/resource smoke test on both platforms.

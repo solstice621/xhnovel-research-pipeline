@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import fcntl
 import json
 import os
 import pathlib
@@ -42,6 +41,7 @@ _CHAPTER_REF_FIELDS = {
     "source_locator",
     "media_type",
     "declared_number",
+    "chapter_kind",
     "adapter_data",
     "derived_from_provenance",
 }
@@ -104,10 +104,12 @@ def _exclusive_work_dir(work_dir: pathlib.Path):
         handle = lock_path.open("a+b")
     except OSError as exc:
         raise ValidationError("E-NOVEL-WORKDIR-LOCK", f"cannot open work-dir lock {lock_path}") from exc
+    locked = False
     try:
         try:
-            fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError as exc:
+            _lock_file_handle(handle)
+            locked = True
+        except OSError as exc:
             raise ValidationError(
                 "E-NOVEL-WORKDIR-LOCKED",
                 f"another novel ingestion is already using {work_dir}",
@@ -115,9 +117,43 @@ def _exclusive_work_dir(work_dir: pathlib.Path):
         yield
     finally:
         try:
-            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+            if locked:
+                _unlock_file_handle(handle)
         finally:
             handle.close()
+
+
+def _lock_file_handle(handle: Any) -> None:
+    """Acquire one non-blocking process lock without importing a Unix-only module."""
+    if os.name == "nt":
+        import msvcrt
+
+        # msvcrt locks a byte range.  Keep a stable byte in the lock file so the
+        # same implementation works for a newly-created, initially empty file.
+        handle.seek(0, os.SEEK_END)
+        if handle.tell() == 0:
+            handle.write(b"\0")
+            handle.flush()
+        handle.seek(0)
+        msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+        return
+
+    import fcntl
+
+    fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+
+
+def _unlock_file_handle(handle: Any) -> None:
+    if os.name == "nt":
+        import msvcrt
+
+        handle.seek(0)
+        msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+        return
+
+    import fcntl
+
+    fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
 
 
 def _checkpoint_integrity_hash(state: dict[str, Any]) -> str:
@@ -804,9 +840,8 @@ def _order_validation(chapters: list[dict[str, Any]], *, strict: bool) -> dict[s
     missing_numbers: list[int] = []
     numbered = [(item["chapter_id"], item.get("declared_number")) for item in ready]
     present = [(chapter_id, number) for chapter_id, number in numbered if number is not None]
-    # Discovery order cannot prove declared chapter order when any number is
-    # unknown. Strict validation must fail closed instead of filtering those
-    # chapters out and reporting a false PASS.
+    # Unknown numbering remains visible as an uncertainty, but does not reject
+    # otherwise valid prologues, extras, or EPUB spine items.
     has_unknown_numbers = len(present) != len(ready)
     for index in range(1, len(present)):
         if int(present[index][1]) <= int(present[index - 1][1]):
@@ -825,9 +860,10 @@ def _order_validation(chapters: list[dict[str, Any]], *, strict: bool) -> dict[s
         for lower, upper in zip(unique_numbers, unique_numbers[1:]):
             missing_numbers.extend(range(lower + 1, upper))
     duplicate_ids = [item["chapter_id"] for item in chapters if item["status"] == "DUPLICATE"]
-    has_issue = bool(has_unknown_numbers or out_of_order or missing_numbers or duplicate_ids)
+    hard_issue = bool(out_of_order or missing_numbers or duplicate_ids)
+    has_issue = bool(has_unknown_numbers or hard_issue)
     return {
-        "status": "FAIL" if strict and has_issue else "WARNING" if has_issue else "PASS",
+        "status": "FAIL" if strict and hard_issue else "WARNING" if has_issue else "PASS",
         "out_of_order_chapter_ids": out_of_order,
         "missing_declared_numbers": missing_numbers,
         "duplicate_chapter_ids": duplicate_ids,
@@ -835,7 +871,11 @@ def _order_validation(chapters: list[dict[str, Any]], *, strict: bool) -> dict[s
 
 
 def _catalog_json(catalog: Catalog) -> dict[str, list[dict[str, Any]]]:
-    return {kind: values for kind, values in catalog.by_type.items() if values}
+    return {
+        kind: sorted(values, key=lambda value: object_hash(value, omit=()))
+        for kind, values in catalog.by_type.items()
+        if values
+    }
 
 
 def novel_ingestion_artifact_ids(
@@ -1308,7 +1348,8 @@ def _run_novel_ingestion_unlocked(
             _write_checkpoint(checkpoint_path, state)
             raise
 
-    state["finished_at"] = now
+    state.setdefault("finished_at", now)
+    state.setdefault("final_resumed_from_checkpoint", resumed)
     state["site_attempt_receipt_ids"] = attempt_journal.receipt_ids if attempt_journal else []
     state.pop("last_error", None)
     _write_checkpoint(checkpoint_path, state)
@@ -1323,7 +1364,7 @@ def _run_novel_ingestion_unlocked(
             input_spec_artifact_id,
             media_type="application/json",
             byte_length=len(input_spec_bytes),
-            created_at=now,
+            created_at=state["started_at"],
         ),
     )
     provenance_ids = []
@@ -1344,7 +1385,7 @@ def _run_novel_ingestion_unlocked(
             checkpoint_artifact_id,
             media_type="application/json",
             byte_length=len(checkpoint_bytes),
-            created_at=now,
+            created_at=state["finished_at"],
         ),
     )
     discovery_artifact_id = state["discovery_artifact_id"]
@@ -1518,7 +1559,8 @@ def _run_novel_ingestion_unlocked(
             {"segment_hashes": [segment["normalized_text_hash"] for segment in parsed["segments"]]},
             omit=(),
         )
-        previous_chapter_id = normalized_seen.get(normalized_content_hash)
+        ignored = ref.chapter_kind in {"FRONTMATTER", "NAVIGATION"}
+        previous_chapter_id = None if ignored else normalized_seen.get(normalized_content_hash)
         chapter_identity = {
             "work_id": work_record["work_id"],
             "chapter_key": ref.chapter_key,
@@ -1526,8 +1568,8 @@ def _run_novel_ingestion_unlocked(
             "artifact_id": artifact_id,
         }
         chapter_id = derived_id("NovelChapter", chapter_identity)
-        status = "DUPLICATE" if previous_chapter_id else "READY"
-        if not previous_chapter_id:
+        status = "IGNORED" if ignored else "DUPLICATE" if previous_chapter_id else "READY"
+        if not ignored and not previous_chapter_id:
             normalized_seen[normalized_content_hash] = chapter_id
         if not any(item["document_id"] == document_id for item in catalog.all("ParsedDocument")):
             catalog.add("ParsedDocument", parsed["document"])
@@ -1559,6 +1601,14 @@ def _run_novel_ingestion_unlocked(
             "chapter_key": ref.chapter_key,
             "ordinal": ref.ordinal,
             "declared_number": ref.declared_number,
+            "chapter_kind": ref.chapter_kind,
+            "identity_confidence": (
+                "HIGH"
+                if ref.declared_number is not None
+                else "MEDIUM"
+                if ref.chapter_kind not in {"UNKNOWN", "FRONTMATTER", "NAVIGATION"}
+                else "UNKNOWN"
+            ),
             "title": ref.title,
             "source_locator": result["final_locator"],
             "source_id": source_id,
@@ -1581,14 +1631,15 @@ def _run_novel_ingestion_unlocked(
     chapter_ids = [item["chapter_id"] for item in chapters]
     ready_ids = [item["chapter_id"] for item in chapters if item["status"] == "READY"]
     duplicate_ids = [item["chapter_id"] for item in chapters if item["status"] == "DUPLICATE"]
+    ignored_ids = [item["chapter_id"] for item in chapters if item["status"] == "IGNORED"]
     run_identity = {
         "work_id": work_record["work_id"],
         "input_spec_hash": input_spec_hash,
         "adapter_build_id": adapter_build_id,
         "chapter_ids": chapter_ids,
+        "ignored_chapter_ids": ignored_ids,
         "checkpoint_hash": checkpoint_hash,
         "strict_order": strict_order,
-        "resumed_from_checkpoint": resumed,
     }
     ingestion_run = {
         "schema_version": SCHEMA_VERSION,
@@ -1600,15 +1651,16 @@ def _run_novel_ingestion_unlocked(
         "chapter_ids": chapter_ids,
         "ready_chapter_ids": ready_ids,
         "duplicate_chapter_ids": duplicate_ids,
+        "ignored_chapter_ids": ignored_ids,
         "provenance_artifact_ids": provenance_ids,
         "checkpoint_hash": checkpoint_hash,
         "checkpoint_artifact_id": checkpoint_artifact_id,
         "order_validation": order_validation,
         "strict_order": strict_order,
-        "resumed_from_checkpoint": resumed,
+        "resumed_from_checkpoint": state["final_resumed_from_checkpoint"],
         "status": run_status,
         "started_at": state["started_at"],
-        "finished_at": now,
+        "finished_at": state["finished_at"],
         "retry_of": None,
     }
     catalog.add("NovelIngestionRun", ingestion_run)
@@ -1693,6 +1745,11 @@ def validate_novel_ingestion(catalog: Catalog, store: ArtifactStore) -> None:
             original = catalog.get("NovelChapter", chapter["duplicate_of"])
             if original["normalized_content_hash"] != chapter["normalized_content_hash"]:
                 raise ValidationError("E-DUPLICATE", f"{chapter['chapter_id']} duplicate hash mismatch")
+        if chapter["status"] == "IGNORED" and chapter["chapter_kind"] not in {
+            "FRONTMATTER",
+            "NAVIGATION",
+        }:
+            raise ValidationError("E-CHAPTER-KIND", "only frontmatter/navigation may be ignored")
     for run in catalog.all("NovelIngestionRun"):
         work = catalog.get("NovelWork", run["work_id"])
         work_chapters = [
@@ -1723,12 +1780,18 @@ def validate_novel_ingestion(catalog: Catalog, store: ArtifactStore) -> None:
             input_spec,
             checkpoint,
         )
-        if sorted_ids(run["ready_chapter_ids"] + run["duplicate_chapter_ids"]) != sorted_ids(run["chapter_ids"]):
+        if sorted_ids(
+            run["ready_chapter_ids"]
+            + run["duplicate_chapter_ids"]
+            + run["ignored_chapter_ids"]
+        ) != sorted_ids(run["chapter_ids"]):
             raise ValidationError("E-LINEAGE", f"{run['ingestion_run_id']} chapter partition mismatch")
         if run["ready_chapter_ids"] != [
             item["chapter_id"] for item in work_chapters if item["status"] == "READY"
         ] or run["duplicate_chapter_ids"] != [
             item["chapter_id"] for item in work_chapters if item["status"] == "DUPLICATE"
+        ] or run["ignored_chapter_ids"] != [
+            item["chapter_id"] for item in work_chapters if item["status"] == "IGNORED"
         ]:
             raise ValidationError("E-LINEAGE", f"{run['ingestion_run_id']} chapter status partition changed")
         expected_order = _order_validation(work_chapters, strict=run["strict_order"])
@@ -1742,9 +1805,9 @@ def validate_novel_ingestion(catalog: Catalog, store: ArtifactStore) -> None:
             "input_spec_hash": run["input_spec_hash"],
             "adapter_build_id": run["adapter_build_id"],
             "chapter_ids": run["chapter_ids"],
+            "ignored_chapter_ids": run["ignored_chapter_ids"],
             "checkpoint_hash": run["checkpoint_hash"],
             "strict_order": run["strict_order"],
-            "resumed_from_checkpoint": run["resumed_from_checkpoint"],
         }
         if run["ingestion_run_id"] != derived_id("NovelIngestionRun", identity):
             raise ValidationError("E-ID-BIND", f"{run['ingestion_run_id']} does not match ingestion content")

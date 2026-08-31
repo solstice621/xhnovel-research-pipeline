@@ -50,8 +50,10 @@ class _TextExtractor(HTMLParser):
         self.title = ""
         self._capture_title = False
         self._skip = 0
-        self.blocks: list[str] = []
+        self.blocks: list[tuple[str, str]] = []
         self._buf: list[str] = []
+        self._selector: str | None = None
+        self._tag_counts: dict[str, int] = {}
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if self._skip or tag in SKIP_TAGS or _is_ad_attrs(attrs):
@@ -62,6 +64,8 @@ class _TextExtractor(HTMLParser):
             self._capture_title = True
         if tag in {"p", "h1", "h2", "h3", "li", "div", "article"}:
             self._flush()
+            self._tag_counts[tag] = self._tag_counts.get(tag, 0) + 1
+            self._selector = f"{tag}:nth-of-type({self._tag_counts[tag]})"
 
     def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if self._skip or tag in SKIP_TAGS or _is_ad_attrs(attrs):
@@ -77,6 +81,7 @@ class _TextExtractor(HTMLParser):
             self._capture_title = False
         if tag in {"p", "h1", "h2", "h3", "li", "article"}:
             self._flush()
+            self._selector = None
 
     def handle_data(self, data: str) -> None:
         if self._skip:
@@ -90,7 +95,8 @@ class _TextExtractor(HTMLParser):
         text = normalize_text("".join(self._buf))
         self._buf = []
         if text:
-            self.blocks.append(text)
+            selector = self._selector or f"text-node:nth-of-type({len(self.blocks) + 1})"
+            self.blocks.append((selector, text))
 
 
 def normalize_text(text: str) -> str:
@@ -140,7 +146,7 @@ def parse_html(artifact_id: str, html: bytes, *, document_id: str) -> dict[str, 
         found = re.search(r"<title\b[^>]*>(.*?)</title>", raw, flags=re.IGNORECASE | re.DOTALL)
         title = normalize_text(found.group(1) if found else "")
     segments = []
-    for i, block in enumerate(extractor.blocks):
+    for i, (selector, block) in enumerate(extractor.blocks):
         segments.append(
             {
                 "schema_version": SCHEMA_VERSION,
@@ -151,7 +157,12 @@ def parse_html(artifact_id: str, html: bytes, *, document_id: str) -> dict[str, 
                 "segment_type": "paragraph",
                 "normalized_text": block,
                 "normalized_text_hash": text_hash(block),
-                "source_locator": {"kind": "html", "selector": f"p:nth-of-type({i+1})", "start": 0, "end": len(block)},
+                "source_locator": {
+                    "kind": "html",
+                    "selector": selector,
+                    "start": 0,
+                    "end": len(block),
+                },
             }
         )
     document = {
@@ -295,10 +306,14 @@ def parse_text(
     encoding: str = "auto",
 ) -> dict[str, Any]:
     raw, detected_encoding = decode_text(data, encoding)
-    blocks = [normalize_text(block) for block in re.split(r"(?:\r?\n){2,}", raw)]
-    blocks = [block for block in blocks if block]
+    blocks: list[tuple[int, int, int, str]] = []
+    for match in re.finditer(r"[^\r\n]+", raw):
+        block = normalize_text(match.group(0))
+        if block:
+            line_number = raw.count("\n", 0, match.start()) + 1
+            blocks.append((line_number, match.start(), match.end(), block))
     if not blocks and normalize_text(raw):
-        blocks = [normalize_text(raw)]
+        blocks = [(1, 0, len(raw), normalize_text(raw))]
     segments = [
         {
             "schema_version": SCHEMA_VERSION,
@@ -307,13 +322,13 @@ def parse_text(
             "parent_segment_id": None,
             "ordinal": index,
             "segment_type": "paragraph",
-            "normalized_text": block,
-            "normalized_text_hash": text_hash(block),
+            "normalized_text": block[3],
+            "normalized_text_hash": text_hash(block[3]),
             "source_locator": {
                 "kind": "text",
-                "selector": f"paragraph:{index + 1}",
-                "start": 0,
-                "end": len(block),
+                "selector": f"line:{block[0]}",
+                "start": block[1],
+                "end": block[2],
             },
         }
         for index, block in enumerate(blocks)
@@ -323,7 +338,7 @@ def parse_text(
         "document_id": document_id,
         "input_artifact_id": artifact_id,
         "parser_build_id": TEXT_PARSER_BUILD_ID,
-        "title": blocks[0][:80] if blocks else "",
+        "title": blocks[0][3][:80] if blocks else "",
         "language": "zh",
         "structure_hash": "sha256:" + "0" * 64,
     }

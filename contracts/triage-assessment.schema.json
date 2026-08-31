@@ -8,14 +8,16 @@
     "assessment_id",
     "retrieval_id",
     "tier",
-    "access_legitimacy",
+    "technical_access",
+    "rights",
+    "source_quality",
     "assessor_build_id",
     "policy_hash",
     "assessed_at"
   ],
   "properties": {
     "schema_version": {
-      "const": "0.1-draft-frozen"
+      "const": "0.2-draft"
     },
     "assessment_id": {
       "type": "string",
@@ -33,14 +35,49 @@
         "D"
       ]
     },
-    "access_legitimacy": {
-      "enum": [
-        "UNKNOWN",
-        "AUTHORIZED",
-        "UNAUTHORIZED_REPRINT",
-        "PUBLIC",
-        "RESTRICTED"
-      ]
+    "technical_access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "succeeded"],
+      "properties": {
+        "method": {"enum": ["LOCAL_FILE", "ANONYMOUS_HTTP"]},
+        "succeeded": {"const": true}
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis",
+        "may_store_full_text",
+        "may_send_to_external_model",
+        "may_export_excerpts"
+      ],
+      "properties": {
+        "basis": {
+          "enum": [
+            "USER_AUTHORIZED_LOCAL_COPY",
+            "PUBLIC_DOMAIN",
+            "LICENSED",
+            "FAIR_USE_RESEARCH",
+            "UNKNOWN"
+          ]
+        },
+        "may_store_full_text": {"type": "boolean"},
+        "may_send_to_external_model": {"type": "boolean"},
+        "may_export_excerpts": {"type": "boolean"}
+      }
+    },
+    "source_quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edition_status", "textual_completeness"],
+      "properties": {
+        "edition_status": {
+          "enum": ["OFFICIAL", "PUBLISHED_EDITION", "USER_VERIFIED_COPY", "UNOFFICIAL_COPY", "UNKNOWN"]
+        },
+        "textual_completeness": {"enum": ["COMPLETE", "PARTIAL", "UNKNOWN"]}
+      }
     },
     "suspected_reprint": {
       "type": "boolean"

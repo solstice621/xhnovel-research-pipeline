@@ -1,5 +1,5 @@
-schema_version: "0.1-draft-frozen"
+schema_version: "0.2-draft"
 documents:
-  - policies/collection-quality-v1.yaml
   - policies/novel-fame-ranking-v1.yaml
-  - policies/plot-analysis-v1.yaml
+  - policies/novel-source-rights-v1.yaml
+  - policies/scene-discovery-v1.yaml

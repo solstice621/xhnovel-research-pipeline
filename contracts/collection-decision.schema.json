@@ -10,6 +10,8 @@
     "subject_ids",
     "input_artifact_ids",
     "input_manifest_hash",
+    "rubric_id",
+    "rubric_artifact_id",
     "assessor_role",
     "assessor_build_id",
     "output_artifact_id",
@@ -20,7 +22,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "0.1-draft-frozen"
+      "const": "0.2-draft"
     },
     "decision_id": {
       "type": "string",
@@ -28,11 +30,8 @@
     },
     "task": {
       "enum": [
-        "RELEVANCE",
         "TRIAGE",
-        "ORIGIN",
-        "CHAPTER_IDENTITY",
-        "STOP"
+        "CHAPTER_IDENTITY"
       ]
     },
     "subject_ids": {
@@ -54,6 +53,14 @@
       }
     },
     "input_manifest_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "rubric_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rubric_artifact_id": {
       "type": "string",
       "pattern": "^sha256:[0-9a-f]{64}$"
     },
@@ -89,7 +96,11 @@
       "required": [
         "endpoint",
         "max_input_chars",
-        "structured_output"
+        "structured_output",
+        "task",
+        "rubric_id",
+        "rubric_hash",
+        "task_schema_hash"
       ],
       "properties": {
         "endpoint": {
@@ -102,6 +113,21 @@
         },
         "structured_output": {
           "const": true
+        },
+        "task": {
+          "enum": ["TRIAGE", "CHAPTER_IDENTITY"]
+        },
+        "rubric_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rubric_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "task_schema_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
         }
       }
     },
@@ -115,9 +141,7 @@
             "SELECTED",
             "REJECTED",
             "LEAD_ONLY",
-            "QUARANTINED",
-            "CONTINUE",
-            "STOP"
+            "QUARANTINED"
           ]
         },
         "tier": {
@@ -126,23 +150,6 @@
             "B",
             "C",
             "D"
-          ]
-        },
-        "access_legitimacy": {
-          "enum": [
-            "UNKNOWN",
-            "AUTHORIZED",
-            "UNAUTHORIZED_REPRINT",
-            "PUBLIC",
-            "RESTRICTED"
-          ]
-        },
-        "origin_relation": {
-          "enum": [
-            "SAME_ORIGIN",
-            "LIKELY_SAME_ORIGIN",
-            "INDEPENDENT",
-            "UNKNOWN"
           ]
         },
         "identity_status": {

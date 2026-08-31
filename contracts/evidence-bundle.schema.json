@@ -19,7 +19,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "0.1-draft-frozen"
+      "const": "0.2-draft"
     },
     "bundle_id": {
       "type": "string",
@@ -90,6 +90,14 @@
           },
           "uniqueItems": true
         },
+        "ignored_chapter_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CHP-[A-Z0-9][A-Z0-9._:-]{1,}$"
+          },
+          "uniqueItems": true
+        },
         "collection_review_ids": {
           "type": "array",
           "items": {
@@ -98,7 +106,7 @@
           },
           "uniqueItems": true
         },
-        "quality_gate_result": {
+        "review_completion_result": {
           "enum": [
             "PASS",
             "INCONCLUSIVE"

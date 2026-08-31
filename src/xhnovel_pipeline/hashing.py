@@ -66,7 +66,7 @@ def collection_snapshot_hash(snapshot: dict[str, Any]) -> str:
     for key in ("collection_decision_ids", "collection_review_ids"):
         if key in snapshot:
             payload[key] = sorted_ids(snapshot[key])
-    for key in ("quality_policy_artifact_id", "quality_gate"):
+    for key in ("review_policy_artifact_id", "review_completion_gate"):
         if key in snapshot:
             payload[key] = snapshot[key]
     return object_hash(payload, omit=())

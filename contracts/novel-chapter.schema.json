@@ -10,6 +10,8 @@
     "chapter_key",
     "ordinal",
     "declared_number",
+    "chapter_kind",
+    "identity_confidence",
     "title",
     "source_locator",
     "source_id",
@@ -24,7 +26,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "0.1-draft-frozen"
+      "const": "0.2-draft"
     },
     "chapter_id": {
       "type": "string",
@@ -49,6 +51,10 @@
       ],
       "minimum": 0
     },
+    "chapter_kind": {
+      "enum": ["MAIN", "PROLOGUE", "EPILOGUE", "EXTRA", "FRONTMATTER", "NAVIGATION", "UNKNOWN"]
+    },
+    "identity_confidence": {"enum": ["HIGH", "MEDIUM", "UNKNOWN"]},
     "title": {
       "type": "string",
       "minLength": 1
@@ -92,7 +98,8 @@
     "status": {
       "enum": [
         "READY",
-        "DUPLICATE"
+        "DUPLICATE",
+        "IGNORED"
       ]
     },
     "duplicate_of": {

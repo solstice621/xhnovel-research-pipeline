@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import json
 from typing import Any, Iterable
 
@@ -13,22 +14,139 @@ from .store import ArtifactStore
 
 
 NOVEL_TRIAGE_MATERIALIZER_BUILD_ID = "novel-triage-review-materializer-v1"
+NOVEL_SOURCE_CLASSIFIER_BUILD_ID = "novel-source-classifier-v1"
 CHAPTER_IDENTITY_SCOPE = "DISCOVERY_ORDER_VS_BODY_HEADING_V1"
 _LOCAL_NOVEL_PLATFORMS = {"novel:txt", "novel:epub", "novel:directory"}
+RIGHTS_BASES = {
+    "USER_AUTHORIZED_LOCAL_COPY",
+    "PUBLIC_DOMAIN",
+    "LICENSED",
+    "FAIR_USE_RESEARCH",
+    "UNKNOWN",
+}
+RIGHTS_FIELDS = {
+    "basis",
+    "may_store_full_text",
+    "may_send_to_external_model",
+    "may_export_excerpts",
+}
+SOURCE_QUALITY_FIELDS = {"edition_status", "textual_completeness"}
+EDITION_STATUSES = {
+    "OFFICIAL",
+    "PUBLISHED_EDITION",
+    "USER_VERIFIED_COPY",
+    "UNOFFICIAL_COPY",
+    "UNKNOWN",
+}
+TEXTUAL_COMPLETENESS = {"COMPLETE", "PARTIAL", "UNKNOWN"}
 
 
-def novel_access_legitimacy(catalog: Catalog, retrieval: dict[str, Any]) -> str:
+def declared_rights(
+    spec: dict[str, Any],
+    *,
+    require_storage: bool = False,
+    require_external_model: bool = False,
+) -> dict[str, Any]:
+    rights = spec.get("rights")
+    if not isinstance(rights, dict) or set(rights) != RIGHTS_FIELDS:
+        raise ValidationError(
+            "E-RIGHTS",
+            "rights must explicitly contain basis, may_store_full_text, "
+            "may_send_to_external_model and may_export_excerpts",
+        )
+    if rights.get("basis") not in RIGHTS_BASES:
+        raise ValidationError("E-RIGHTS", "rights.basis is not recognized")
+    for field in RIGHTS_FIELDS - {"basis"}:
+        if not isinstance(rights.get(field), bool):
+            raise ValidationError("E-RIGHTS", f"rights.{field} must be boolean")
+    if require_storage and not rights["may_store_full_text"]:
+        raise ValidationError("E-RIGHTS-STORAGE", "rights do not permit storing full text")
+    if require_external_model and (
+        rights["basis"] == "UNKNOWN" or not rights["may_send_to_external_model"]
+    ):
+        raise ValidationError(
+            "E-RIGHTS-EXTERNAL-MODEL",
+            "an explicit non-UNKNOWN rights basis and external-model permission are required",
+        )
+    return copy.deepcopy(rights)
+
+
+def declared_source_quality(spec: dict[str, Any]) -> dict[str, str]:
+    value = spec.get("source_quality")
+    if value is None:
+        return {"edition_status": "UNKNOWN", "textual_completeness": "UNKNOWN"}
+    if not isinstance(value, dict) or set(value) != SOURCE_QUALITY_FIELDS:
+        raise ValidationError(
+            "E-SOURCE-QUALITY",
+            "source_quality must contain exactly edition_status and textual_completeness",
+        )
+    if value.get("edition_status") not in EDITION_STATUSES:
+        raise ValidationError("E-SOURCE-QUALITY", "source_quality.edition_status is not recognized")
+    if value.get("textual_completeness") not in TEXTUAL_COMPLETENESS:
+        raise ValidationError(
+            "E-SOURCE-QUALITY", "source_quality.textual_completeness is not recognized"
+        )
+    return copy.deepcopy(value)
+
+
+def deterministic_triage_assessment(
+    catalog: Catalog,
+    retrieval: dict[str, Any],
+    *,
+    rights: dict[str, Any],
+    source_quality: dict[str, str],
+    policy_hash: str,
+    assessed_at: str,
+) -> dict[str, Any]:
+    edition = source_quality["edition_status"]
+    completeness = source_quality["textual_completeness"]
+    if completeness == "COMPLETE" and edition == "OFFICIAL":
+        tier = "A"
+    elif completeness == "COMPLETE" and edition in {
+        "PUBLISHED_EDITION",
+        "USER_VERIFIED_COPY",
+    }:
+        tier = "B"
+    else:
+        tier = "D"
+    allowed_uses = ["event-facts"] if tier in {"A", "B"} else ["lead-only"]
+    record = {
+        "schema_version": SCHEMA_VERSION,
+        "retrieval_id": retrieval["retrieval_id"],
+        "tier": tier,
+        "technical_access": novel_technical_access(catalog, retrieval),
+        "rights": copy.deepcopy(rights),
+        "source_quality": copy.deepcopy(source_quality),
+        "allowed_uses": allowed_uses,
+        "selection_decision": "selected",
+        "decision_reason": (
+            "deterministic source classification from declared edition status and "
+            "textual completeness"
+        ),
+        "assessor_build_id": NOVEL_SOURCE_CLASSIFIER_BUILD_ID,
+        "policy_hash": policy_hash,
+        "assessed_at": assessed_at,
+    }
+    return {**record, "assessment_id": derived_id("TriageAssessment", record)}
+
+
+def novel_technical_access(catalog: Catalog, retrieval: dict[str, Any]) -> dict[str, Any]:
     source = catalog.get("Source", retrieval["source_id"])
     platform_id = str(source.get("platform_id") or "").casefold()
     if platform_id == "novel:site":
         if retrieval.get("http_status") != 200 or retrieval.get("status") != "FETCHED":
             raise ValidationError(
                 "E-NOVEL-TRIAGE-BIND",
-                f"{retrieval['retrieval_id']} cannot claim PUBLIC access without a successful anonymous fetch",
+                f"{retrieval['retrieval_id']} lacks a successful anonymous fetch observation",
             )
-        return "PUBLIC"
+        return {"method": "ANONYMOUS_HTTP", "succeeded": True}
     if platform_id in _LOCAL_NOVEL_PLATFORMS:
-        return "UNKNOWN"
+        if retrieval.get("status") != "FETCHED":
+            raise ValidationError(
+                "E-NOVEL-TRIAGE-BIND",
+                f"{retrieval['retrieval_id']} lacks a successful local-read observation",
+            )
+        return {"method": "LOCAL_FILE", "succeeded": True}
     raise ValidationError(
         "E-NOVEL-TRIAGE-BIND",
         f"{retrieval['retrieval_id']} has unsupported full-text platform {platform_id!r}",
@@ -132,12 +250,21 @@ def validate_bound_chapter_identity_review(
             f"{review['review_id']} is not a resolved identity review for {chapter_id}",
         )
     input_ids = collector.get("input_artifact_ids")
-    if input_ids != reviewer.get("input_artifact_ids") or not isinstance(input_ids, list) or len(input_ids) != 1:
+    content_input_ids = (
+        [artifact_id for artifact_id in input_ids if artifact_id != collector.get("rubric_artifact_id")]
+        if isinstance(input_ids, list)
+        else []
+    )
+    if (
+        input_ids != reviewer.get("input_artifact_ids")
+        or collector.get("rubric_artifact_id") != reviewer.get("rubric_artifact_id")
+        or len(content_input_ids) != 1
+    ):
         raise ValidationError(
             "E-CHAPTER-IDENTITY-BIND",
             f"{review['review_id']} does not bind one shared identity input",
         )
-    raw = store.get(input_ids[0])
+    raw = store.get(content_input_ids[0])
     try:
         stored_input = json.loads(raw.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
@@ -158,6 +285,8 @@ def reviewed_triage_assessment(
     retrieval: dict[str, Any],
     review: dict[str, Any],
     *,
+    rights: dict[str, Any],
+    source_quality: dict[str, str] | None = None,
     policy_hash: str,
     assessed_at: str,
 ) -> dict[str, Any]:
@@ -193,7 +322,12 @@ def reviewed_triage_assessment(
         "schema_version": SCHEMA_VERSION,
         "retrieval_id": retrieval_id,
         "tier": tier,
-        "access_legitimacy": novel_access_legitimacy(catalog, retrieval),
+        "technical_access": novel_technical_access(catalog, retrieval),
+        "rights": copy.deepcopy(rights),
+        "source_quality": copy.deepcopy(
+            source_quality
+            or {"edition_status": "UNKNOWN", "textual_completeness": "UNKNOWN"}
+        ),
         "allowed_uses": allowed_uses,
         "selection_decision": "selected",
         "decision_reason": f"materialized from independent TRIAGE review {review['review_id']}",

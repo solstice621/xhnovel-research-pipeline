@@ -2,836 +2,517 @@ from __future__ import annotations
 
 import copy
 import json
+from collections import Counter
+from threading import Lock
 
 import pytest
 
-from xhnovel_pipeline.canonical import canonical_dumps
-from xhnovel_pipeline.runtime import TEST_NOW as NOW
 from xhnovel_pipeline.errors import ValidationError
 from xhnovel_pipeline.hashing import object_hash
-from xhnovel_pipeline.artifact_closure import live_artifact_ids
 from xhnovel_pipeline.ids import derived_id
 from xhnovel_pipeline.model_api import OpenAIResponsesClient
-from xhnovel_pipeline.model_collection import OpenAICollectionAssessor
-from xhnovel_pipeline.novel_workflow import (
-    _make_unqualified_export,
-    _write_immutable_outputs,
-    run_famous_novel_research,
-    run_novel_research,
-)
+from xhnovel_pipeline.novel_ingest import run_novel_ingestion
+from xhnovel_pipeline.novel_workflow import run_novel_research
 from xhnovel_pipeline.paths import repo_root
-from xhnovel_pipeline.plot_analysis import run_plot_analysis, validate_plot_analysis
-from xhnovel_pipeline.plot_extraction import (
-    run_model_plot_extraction,
-    validate_model_plot_extractions,
-)
-from xhnovel_pipeline.validate import validate_all, validate_evidence, validate_export
+from xhnovel_pipeline.runtime import TEST_NOW as NOW
+from xhnovel_pipeline.validate import validate_all, validate_collection, validate_export
 
 
-def _response(value, response_id):
-    return json.dumps(
-        {
-            "id": response_id,
-            "output": [
-                {
-                    "type": "message",
-                    "content": [{"type": "output_text", "text": json.dumps(value, ensure_ascii=False)}],
-                }
-            ],
-        },
-        ensure_ascii=False,
-    ).encode("utf-8")
+RIGHTS = {
+    "basis": "USER_AUTHORIZED_LOCAL_COPY",
+    "may_store_full_text": True,
+    "may_send_to_external_model": True,
+    "may_export_excerpts": False,
+}
+SOURCE_QUALITY = {
+    "edition_status": "USER_VERIFIED_COPY",
+    "textual_completeness": "COMPLETE",
+}
 
 
-def _store_json_artifact(result, value):
-    data = canonical_dumps(value)
-    artifact_id = result["store"].put(data)
-    if artifact_id not in result["catalog"].ids("Artifact"):
-        result["catalog"].add(
-            "Artifact",
+def _response(value, response_id="scene-response", *, usage=None):
+    payload = {
+        "id": response_id,
+        "output": [
             {
-                "schema_version": result["bundle"]["schema_version"],
-                "artifact_id": artifact_id,
-                "media_type": "application/json",
-                "byte_length": len(data),
-                "retention_policy": "retention-v1",
-                "durability_status": "LOCAL",
-                "created_at": NOW,
-            },
-        )
-    return artifact_id
-
-
-def _collection_transport(role):
-    def transport(url, headers, body, timeout):
-        request = json.loads(body)
-        model_input = json.loads(request["input"])
-        artifact = json.loads(model_input["artifacts"][0]["untrusted_text"])
-        if model_input["task"] == "TRIAGE":
-            assert "evidence" not in artifact
-            value = {
-                "outcome": {
-                    "disposition": "SELECTED",
-                    "tier": "B",
-                    "access_legitimacy": "AUTHORIZED",
-                },
-                "confidence": "HIGH",
-                "basis": ["chapter text and source metadata support collection"],
+                "type": "message",
+                "content": [
+                    {
+                        "type": "output_text",
+                        "text": json.dumps(value, ensure_ascii=False),
+                    }
+                ],
             }
-            return 200, {}, _response(value, f"{role}-triage-{artifact['chapter']['ordinal']}")
-        assert "chapter_key" not in artifact
-        assert "document_title" not in artifact
-        observation = artifact["body_heading_observation"]
-        observed_title = artifact["segments"][0]["text"] if artifact["segments"] else ""
-        disposition = "MATCH" if observation["text"] == observed_title else "MISMATCH"
-        value = {
-            "outcome": {"identity_status": disposition},
-            "confidence": "HIGH",
-            "basis": ["the body-heading observation agrees with the frozen segment"],
-        }
-        return 200, {}, _response(value, f"{role}-{observation['declared_number']}")
+        ],
+    }
+    if usage is not None:
+        payload["usage"] = usage
+    return json.dumps(payload, ensure_ascii=False).encode("utf-8")
+
+
+def _unknown():
+    return {"status": "UNKNOWN", "values": [], "support_spans": []}
+
+
+def _candidate(span, *, conflicting=False):
+    source_span = {
+        "segment_id": span["segment_id"],
+        "start": span["start"],
+        "end": span["end"],
+    }
+    action = {
+        "status": "CONFLICTING" if conflicting else "KNOWN",
+        "values": ["触发", "解除"] if conflicting else ["触发"],
+        "support_spans": [source_span],
+    }
+    return {
+        "summary": "林舟触发天门机关",
+        "source_spans": [source_span],
+        "actors": {
+            "status": "KNOWN",
+            "values": ["林舟"],
+            "support_spans": [source_span],
+        },
+        "action": action,
+        "target": {
+            "status": "KNOWN",
+            "values": ["天门机关"],
+            "support_spans": [source_span],
+        },
+        "precondition": _unknown(),
+        "state_transition": _unknown(),
+        "external_response": _unknown(),
+        "immediate_feedback": _unknown(),
+        "new_affordances": _unknown(),
+        "persistence": _unknown(),
+        "mechanic_pressure_point": _unknown(),
+    }
+
+
+def _empty_transport(url, headers, body, timeout):
+    model_input = json.loads(json.loads(body)["input"])
+    ordinal = model_input["window"]["ordinal"]
+    return 200, {}, _response({"candidates": []}, f"empty-{ordinal}")
+
+
+def _marker_transport(marker="林舟触发天门机关", *, conflicting=False):
+    def transport(url, headers, body, timeout):
+        model_input = json.loads(json.loads(body)["input"])
+        candidates = []
+        for span in model_input["window"]["source_spans"]:
+            offset = span["untrusted_text"].find(marker)
+            if offset < 0:
+                continue
+            exact = {
+                "segment_id": span["segment_id"],
+                "start": span["start"] + offset,
+                "end": span["start"] + offset + len(marker),
+            }
+            candidates.append(_candidate(exact, conflicting=conflicting))
+        ordinal = model_input["window"]["ordinal"]
+        return (
+            200,
+            {},
+            _response(
+                {"candidates": candidates},
+                f"scene-{ordinal}",
+                usage={"input_tokens": 10, "output_tokens": 5, "total_tokens": 15},
+            ),
+        )
 
     return transport
 
 
-def _extraction_transport(url, headers, body, timeout):
-    request = json.loads(body)
-    model_input = json.loads(request["input"])
-    first_by_document = {}
-    for segment in model_input["segments"]:
-        first_by_document.setdefault(segment["document_id"], segment)
-    events = []
-    for index, segment in enumerate(first_by_document.values(), start=1):
-        events.append(
-            {
-                "statement": f"林舟完成阶段事件{index}",
-                "segment_ids": [segment["segment_id"]],
-                "actors": ["林舟", "少年"],
-                "action": "进入山门" if index == 1 else "拜师",
-                "target": "修行道路",
-                "precondition": "此前尚未入门" if index == 1 else "已经进入山门",
-                "state_transition": "成为弟子" if index == 2 else "进入宗门",
-                "timeline": [f"阶段{index}"],
-                "conflicts": [],
-                "immediate_feedback": "身份发生变化",
-                "new_affordances": ["可以修行"],
-                "persistence": "持续到后续章节",
-            }
-        )
-    return 200, {}, _response({"events": events}, "extract-response")
-
-
-def _analysis_transport(url, headers, body, timeout):
-    request = json.loads(body)
-    model_input = json.loads(request["input"])
-    claim_ids = [claim["claim_id"] for claim in model_input["claims"]]
-    value = {
-        "alias_groups": [
-            {"canonical_name": "林舟", "aliases": ["林舟", "少年"], "claim_ids": claim_ids}
-        ],
-        "event_groups": [
-            {"group_key": "入门事件", "summary": "林舟入门并拜师", "claim_ids": claim_ids}
-        ],
-        "importance": [
-            {
-                "claim_id": claim_id,
-                "causal_impact": 5,
-                "character_change": 4,
-                "world_state_change": 3,
-                "setup_payoff": 4,
-                "rationale": "改变后续修行路径",
-            }
-            for claim_id in claim_ids
-        ],
+def _spec(source_path, *, brief="寻找改变角色可行动作空间的场景", quality=None, scout=None):
+    return {
+        "source": {"kind": "txt", "path": str(source_path), "title": "测试仙途"},
+        "rights": dict(RIGHTS),
+        "source_quality": copy.deepcopy(quality or SOURCE_QUALITY),
+        "request": {"discovery_brief": brief},
+        "limits": {"max_chapters": 10, "max_bytes": 2_000_000},
+        "scene_scout": scout or {"window_chars": 10_000, "overlap_chars": 1_800},
+        "strict_order": False,
     }
-    return 200, {}, _response(value, "analysis-response")
 
 
-def _run_direct_workflow(tmp_path):
-    chapters = tmp_path / "chapters"
-    chapters.mkdir()
-    (chapters / "第1章 入山.txt").write_text(
-        "第1章 入山\n\n林舟以少年身份进入山门。",
-        encoding="utf-8",
-    )
-    (chapters / "第2章 拜师.txt").write_text(
-        "第2章 拜师\n\n林舟拜长老为师，成为正式弟子。",
-        encoding="utf-8",
-    )
-    spec = {
-        "source": {"kind": "directory", "path": str(chapters), "title": "测试仙途"},
-        "evidence": {"tier": "A", "access_legitimacy": "AUTHORIZED"},
-        "limits": {"max_chapters": 10, "max_bytes": 100_000},
-        "strict_order": True,
-    }
-    collector_client = OpenAIResponsesClient(
-        model="small-model-snapshot",
+def _client(transport, *, max_attempts=1):
+    return OpenAIResponsesClient(
+        model="scene-scout-model-snapshot",
         api_key="test-key",
-        transport=_collection_transport("collector"),
-    )
-    reviewer_client = OpenAIResponsesClient(
-        model="large-model-snapshot",
-        api_key="test-key",
-        transport=_collection_transport("reviewer"),
-    )
-    extractor_client = OpenAIResponsesClient(
-        model="extractor-model-snapshot",
-        api_key="test-key",
-        transport=_extraction_transport,
-    )
-    analyst_client = OpenAIResponsesClient(
-        model="analyst-model-snapshot",
-        api_key="test-key",
-        transport=_analysis_transport,
+        max_attempts=max_attempts,
+        transport=transport,
     )
 
+
+def _run(tmp_path, *, text="第一章 天门\n林舟触发天门机关，山路随之开启。", transport=None, spec_mutator=None):
+    source = tmp_path / "book.txt"
+    source.write_text(text, encoding="utf-8")
+    spec = _spec(source)
+    if spec_mutator:
+        spec_mutator(spec)
     return run_novel_research(
         spec,
         tmp_path / "run",
-        collector=OpenAICollectionAssessor(collector_client, role="COLLECTOR"),
-        reviewer=OpenAICollectionAssessor(reviewer_client, role="REVIEWER"),
-        extractor_client=extractor_client,
-        analyst_client=analyst_client,
+        extractor_client=_client(transport or _marker_transport()),
         repo_root=repo_root(),
         now=NOW,
     )
 
 
-def test_one_click_novel_research_produces_reviewed_bundle_claims_and_analysis(tmp_path):
-    result = _run_direct_workflow(tmp_path)
+def test_one_click_workflow_exports_only_draft_unverified_scene_candidates(tmp_path):
+    result = _run(tmp_path)
 
-    assert result["snapshot"]["quality_gate"]["result"] == "PASS"
-    assert result["bundle"]["selection_manifest"]["quality_gate_result"] == "PASS"
-    assert len(result["extraction"]["claims"]) == 2
-    assert result["analysis"]["event_groups"][0]["cross_chapter"] is True
-    assert [item["sequence"] for item in result["analysis"]["timeline"]] == [1, 2]
-    claims_by_id = {claim["claim_id"]: claim for claim in result["extraction"]["claims"]}
-    assert [
-        claims_by_id[item["claim_id"]]["profile_payload"]["action"]
-        for item in result["analysis"]["timeline"]
-    ] == ["进入山门", "拜师"]
-    assert result["analysis"]["alias_groups"][0]["canonical_name"] == "林舟"
-    assert result["analysis"]["key_events"][0]["score"] > 0
-    assert result["export"]["assurance"]["level"] == "UNQUALIFIED"
-    assert result["export"]["assurance"]["auditability"] == "DEGRADED"
-    assert (result["work_dir"] / "run-summary.json").is_file()
-    summary = json.loads((result["work_dir"] / "run-summary.json").read_text(encoding="utf-8"))
-    assert summary["auditability"] == "DEGRADED"
-    assert (result["work_dir"] / "plot-analysis.json").is_file()
-    assert (result["work_dir"] / "evidence-export.json").is_file()
+    assert len(result["scout"]["candidates"]) == 1
+    candidate = result["scout"]["candidates"][0]
+    assert candidate["status"] == "DRAFT"
+    assert candidate["verification"] == "UNVERIFIED"
+    assert candidate["adjudication_status"] == "NOT_REQUIRED"
+    assert result["export"]["scene_candidates"] == [candidate]
+    assert result["export"]["scene_discovery"]["candidate_count"] == 1
+    assert result["catalog"].all("Claim") == []
+    assert result["catalog"].all("ExtractionRun") == []
+    assert result["catalog"].all("PlotAnalysis") == []
+    assert result["catalog"].all("CollectionDecision") == []
+    assert result["catalog"].all("CollectionReview") == []
+    assert (result["work_dir"] / "scene-scout-run.json").is_file()
+    assert (result["work_dir"] / "scene-merge-run.json").is_file()
+    assert (result["work_dir"] / "scene-candidates.json").is_file()
+    assert not (result["work_dir"] / "plot-analysis.json").exists()
+    validate_all(result["catalog"], result["store"])
 
 
-def test_model_backed_novel_export_cannot_claim_full_auditability(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    export = result["export"]
-    export["assurance"]["auditability"] = "FULL"
-    export_identity = {
-        key: value for key, value in export.items() if key not in {"export_id", "export_hash"}
-    }
-    export["export_id"] = derived_id("EvidenceExport", export_identity)
-    export["export_hash"] = object_hash(export, omit=("export_hash",))
+def test_discovery_brief_is_bound_into_every_model_request(tmp_path):
+    first_dir = tmp_path / "first"
+    second_dir = tmp_path / "second"
+    first_dir.mkdir()
+    second_dir.mkdir()
+    first = _run(first_dir, transport=_empty_transport)
 
-    with pytest.raises(ValidationError) as exc:
-        validate_export(result["catalog"], result["store"])
+    def change_brief(spec):
+        spec["request"]["discovery_brief"] = "只寻找制度压力造成的能力变化"
 
-    assert exc.value.code == "E-AUDITABILITY"
-
-
-def test_degraded_novel_export_rejects_missing_local_manifest_artifact(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    artifact_id = result["export"]["artifact_manifest"][0]["artifact_id"]
-    result["store"].delete_for_test(artifact_id)
-
-    with pytest.raises(ValidationError) as exc:
-        validate_export(result["catalog"], result["store"])
-
-    assert exc.value.code == "E-ARTIFACT-MISSING"
+    second = _run(second_dir, transport=_empty_transport, spec_mutator=change_brief)
+    first_ids = first["scout"]["run"]["model_request_artifact_ids"]
+    second_ids = second["scout"]["run"]["model_request_artifact_ids"]
+    assert first_ids != second_ids
+    for artifact_id in second_ids:
+        request = json.loads(second["store"].get(artifact_id).decode("utf-8"))
+        model_input = json.loads(request["input"])
+        assert model_input["discovery_brief"] == "只寻找制度压力造成的能力变化"
 
 
-def test_degraded_novel_export_rejects_corrupt_manifest_artifact(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    artifact_id = result["export"]["artifact_manifest"][0]["artifact_id"]
-    result["store"]._path(artifact_id).write_bytes(b"corrupt-cas-bytes")
+def test_snapshot_rejects_a_different_valid_ingestion_run(tmp_path):
+    first_dir = tmp_path / "first"
+    first_dir.mkdir()
+    result = _run(first_dir, transport=_empty_transport)
+    other_source = tmp_path / "other.txt"
+    other_source.write_text("第一章 异本\n完全不同的正文。", encoding="utf-8")
+    other = run_novel_ingestion(
+        {"source": {"kind": "txt", "path": str(other_source)}, "strict_order": False},
+        tmp_path / "other-ingestion",
+        repo_root=repo_root(),
+        now=NOW,
+        catalog=result["catalog"],
+        store=result["store"],
+    )
+    result["snapshot"]["ingestion_run_id"] = other["ingestion"]["ingestion_run_id"]
 
-    with pytest.raises(ValidationError) as exc:
-        validate_export(result["catalog"], result["store"])
-
-    assert exc.value.code == "E-ARTIFACT-CORRUPT"
+    with pytest.raises(ValidationError, match="E-SNAPSHOT-INGESTION-LINEAGE"):
+        validate_collection(result["catalog"], result["store"])
 
 
-def test_degraded_novel_export_rejects_manifest_length_not_matching_cas(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    item = result["export"]["artifact_manifest"][0]
-    artifact = result["catalog"].get("Artifact", item["artifact_id"])
-    item["byte_length"] += 1
-    artifact["byte_length"] += 1
-    export_identity = {
-        key: value
-        for key, value in result["export"].items()
-        if key not in {"export_id", "export_hash"}
-    }
-    result["export"]["export_id"] = derived_id("EvidenceExport", export_identity)
-    result["export"]["export_hash"] = object_hash(
-        result["export"], omit=("export_hash",)
+def test_overlap_windows_merge_the_same_exact_source_span_once(tmp_path):
+    marker = "林舟触发天门机关"
+    body = "甲" * 9_000 + marker + "乙" * 10_000
+    result = _run(
+        tmp_path,
+        text=f"第一章 天门\n{body}",
+        transport=_marker_transport(marker),
     )
 
-    with pytest.raises(ValidationError) as exc:
-        validate_export(result["catalog"], result["store"])
-
-    assert exc.value.code == "E-HASH-MISMATCH"
-
-
-def test_full_export_and_gc_live_set_cover_ingestion_checkpoint_cas_closure(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    ingestion = result["ingestion"]
-    checkpoint = json.loads(
-        result["store"].get(ingestion["checkpoint_artifact_id"]).decode("utf-8")
-    )
-    closure = {
-        checkpoint["discovery_artifact_id"],
-        *(completion["receipt_artifact_id"] for completion in checkpoint["completed"].values()),
-        *(checkpoint.get("site_attempt_receipt_ids") or []),
-    }
-    for receipt_id in checkpoint.get("site_attempt_receipt_ids") or []:
-        receipt = json.loads(result["store"].get(receipt_id).decode("utf-8"))
-        if receipt["raw_artifact_id"]:
-            closure.add(receipt["raw_artifact_id"])
-
-    manifest_ids = {item["artifact_id"] for item in result["export"]["artifact_manifest"]}
-    catalog_data = {
-        kind: records for kind, records in result["catalog"].by_type.items() if records
-    }
-    assert closure <= manifest_ids
-    assert closure <= live_artifact_ids(catalog_data)
+    assert len(result["scout"]["windows"]) == 3
+    assert result["scout"]["merge_run"]["input_candidate_count"] == 2
+    assert len(result["scout"]["candidates"]) == 1
+    candidate = result["scout"]["candidates"][0]
+    assert len(candidate["window_ids"]) == 2
+    span = candidate["source_spans"][0]
+    segment = result["catalog"].get("Segment", span["segment_id"])
+    assert segment["normalized_text"][span["start"] : span["end"]] == marker
 
 
-def test_chapter_identity_review_hides_internal_key_and_compares_content(tmp_path):
-    result = _run_direct_workflow(tmp_path)
+def test_overlapping_scout_disagreement_is_persisted_for_adjudication(tmp_path):
+    marker = "林舟触发天门机关"
 
-    for decision in result["catalog"].all("CollectionDecision"):
-        if decision["task"] != "CHAPTER_IDENTITY":
-            continue
-        chapter = result["catalog"].get("NovelChapter", decision["subject_ids"][0])
-        review_input = json.loads(
-            result["store"].get(decision["input_artifact_ids"][0]).decode("utf-8")
-        )
+    def transport(url, headers, body, timeout):
+        model_input = json.loads(json.loads(body)["input"])
+        ordinal = model_input["window"]["ordinal"]
+        candidates = []
+        for span in model_input["window"]["source_spans"]:
+            offset = span["untrusted_text"].find(marker)
+            if offset < 0:
+                continue
+            exact = {
+                "segment_id": span["segment_id"],
+                "start": span["start"] + offset,
+                "end": span["start"] + offset + len(marker),
+            }
+            candidate = _candidate(exact)
+            candidate["action"]["values"] = ["触发" if ordinal == 1 else "解除"]
+            candidates.append(candidate)
+        return 200, {}, _response({"candidates": candidates}, f"disagree-{ordinal}")
 
-        assert "chapter_key" not in review_input
-        assert "document_title" not in review_input
-        assert "discovered_title" not in review_input
-        assert "discovered_ordinal" not in review_input
-        assert review_input["identity_scope"] == "DISCOVERY_ORDER_VS_BODY_HEADING_V1"
-        assert review_input["body_heading_observation"] == {
-            "segment_id": chapter["segment_ids"][0],
-            "text": review_input["segments"][0]["text"],
-            "declared_number": chapter["declared_number"],
-        }
-        assert decision["outcome"]["identity_status"] == "MATCH"
-
-
-def test_chapter_identity_review_rejects_wrong_chapter_content(tmp_path):
-    chapters = tmp_path / "chapters"
-    chapters.mkdir()
-    (chapters / "第1章 入山.txt").write_text(
-        "第2章 拜师\n\n这不是目录所声称的章节。",
-        encoding="utf-8",
-    )
-    spec = {
-        "source": {"kind": "directory", "path": str(chapters), "title": "错章夹具"},
-        "evidence": {"tier": "A", "access_legitimacy": "AUTHORIZED"},
-        "limits": {"max_chapters": 10, "max_bytes": 100_000},
-        "strict_order": True,
-    }
-
-    with pytest.raises(ValidationError, match="E-CHAPTER-IDENTITY"):
-        run_novel_research(
-            spec,
-            tmp_path / "run",
-            collector=OpenAICollectionAssessor(
-                OpenAIResponsesClient(
-                    model="small-model-snapshot",
-                    api_key="test-key",
-                    transport=_collection_transport("collector"),
-                ),
-                role="COLLECTOR",
-            ),
-            reviewer=OpenAICollectionAssessor(
-                OpenAIResponsesClient(
-                    model="large-model-snapshot",
-                    api_key="test-key",
-                    transport=_collection_transport("reviewer"),
-                ),
-                role="REVIEWER",
-            ),
-            extractor_client=OpenAIResponsesClient(
-                model="unused-extractor", api_key="test-key", transport=_extraction_transport
-            ),
-            analyst_client=OpenAIResponsesClient(
-                model="unused-analyst", api_key="test-key", transport=_analysis_transport
-            ),
-            repo_root=repo_root(),
-            now=NOW,
-        )
-
-
-def test_plot_claims_cannot_diverge_from_stored_model_response(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    claim = result["catalog"].all("Claim")[0]
-    claim["statement"] = "伪造的情节"
-    claim["claim_id"] = derived_id("Claim", {key: value for key, value in claim.items() if key != "claim_id"})
-
-    with pytest.raises(ValidationError, match="E-MODEL-REPLAY"):
-        validate_model_plot_extractions(result["catalog"], result["store"])
-
-
-def test_plot_analysis_cannot_diverge_from_stored_model_response(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    analysis = result["analysis"]
-    analysis["event_groups"][0]["summary"] = "伪造的跨章总结"
-    analysis["analysis_id"] = derived_id(
-        "PlotAnalysis", {key: value for key, value in analysis.items() if key != "analysis_id"}
+    result = _run(
+        tmp_path,
+        text=f"第一章 天门\n{'甲' * 9_000}{marker}{'乙' * 10_000}",
+        transport=transport,
     )
 
-    with pytest.raises(ValidationError, match="E-PLOT-REPLAY"):
-        validate_plot_analysis(result["catalog"], result["store"])
+    candidate = result["scout"]["candidates"][0]
+    assert candidate["action"]["status"] == "CONFLICTING"
+    assert candidate["action"]["values"] == ["解除", "触发"]
+    assert candidate["adjudication_status"] == "NEEDS_ADJUDICATION"
 
 
-def test_export_scene_facts_are_bound_to_plot_analysis(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    export = result["export"]
-    export["scene_facts"]["event_groups"][0]["summary"] = "伪造的导出总结"
-    identity = {key: value for key, value in export.items() if key not in {"export_id", "export_hash"}}
-    export["export_id"] = derived_id("EvidenceExport", identity)
-    export["export_hash"] = object_hash(export, omit=("export_hash",))
+def test_zero_candidates_is_a_successful_legal_result(tmp_path):
+    result = _run(tmp_path, transport=_empty_transport)
 
-    with pytest.raises(ValidationError, match="E-PLOT-BIND"):
-        validate_export(result["catalog"], result["store"])
+    assert result["scout"]["run"]["status"] == "SUCCEEDED"
+    assert result["scout"]["merge_run"]["input_candidate_count"] == 0
+    assert result["scout"]["candidates"] == []
+    assert result["export"]["scene_candidates"] == []
 
 
-def test_plot_extraction_rejects_duplicate_bundle_segment_before_model_call(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    bundle = copy.deepcopy(result["bundle"])
-    bundle["segment_ids"].append(bundle["segment_ids"][0])
+def test_completed_research_rerun_is_idempotent_and_makes_no_model_call(tmp_path):
+    source = tmp_path / "book.txt"
+    source.write_text("第一章 天门\n正文。", encoding="utf-8")
+    spec = _spec(source)
     calls = 0
 
     def transport(url, headers, body, timeout):
         nonlocal calls
         calls += 1
-        return _extraction_transport(url, headers, body, timeout)
+        return 200, {}, _response({"candidates": []}, "stable-response")
 
-    with pytest.raises(ValidationError, match="E-PLOT-LINEAGE"):
-        run_model_plot_extraction(
-            result["catalog"],
-            result["store"],
-            bundle,
-            client=OpenAIResponsesClient(
-                model="duplicate-segment-extractor",
-                api_key="test-key",
-                transport=transport,
-            ),
+    work_dir = tmp_path / "run"
+    first = run_novel_research(
+        spec,
+        work_dir,
+        extractor_client=_client(transport),
+        repo_root=repo_root(),
+        now=NOW,
+    )
+    second = run_novel_research(
+        spec,
+        work_dir,
+        extractor_client=_client(transport),
+        repo_root=repo_root(),
+        now="2026-08-30T00:00:00Z",
+    )
+
+    assert calls == 1
+    assert second["scout"]["run"] == first["scout"]["run"]
+    assert second["export"] == first["export"]
+    assert second["work_dir"] == first["work_dir"]
+
+
+def test_lead_only_tier_creates_no_windows_or_model_calls(tmp_path):
+    calls = 0
+
+    def forbidden_transport(url, headers, body, timeout):
+        nonlocal calls
+        calls += 1
+        raise AssertionError("lead-only text must not be sent to the model")
+
+    def downgrade(spec):
+        spec["source_quality"] = {
+            "edition_status": "UNOFFICIAL_COPY",
+            "textual_completeness": "PARTIAL",
+        }
+
+    result = _run(tmp_path, transport=forbidden_transport, spec_mutator=downgrade)
+
+    assert calls == 0
+    assert result["scout"]["windows"] == []
+    assert result["scout"]["run"]["model_attempt_ids"] == []
+    assert result["scout"]["candidates"] == []
+
+
+def test_rights_gate_blocks_external_model_before_ingestion_or_transport(tmp_path):
+    source = tmp_path / "book.txt"
+    source.write_text("第一章 天门\n正文。", encoding="utf-8")
+    spec = _spec(source)
+    spec["rights"]["may_send_to_external_model"] = False
+    calls = 0
+
+    def transport(url, headers, body, timeout):
+        nonlocal calls
+        calls += 1
+        return 200, {}, _response({"candidates": []})
+
+    with pytest.raises(ValidationError, match="E-RIGHTS-EXTERNAL-MODEL"):
+        run_novel_research(
+            spec,
+            tmp_path / "run",
+            extractor_client=_client(transport),
             repo_root=repo_root(),
             now=NOW,
         )
     assert calls == 0
+    assert not (tmp_path / "run" / "ingestion").exists()
 
 
-def test_plot_extraction_rejects_empty_model_event_set(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-
-    def transport(url, headers, body, timeout):
-        return 200, {}, _response({"events": []}, "empty-extraction-response")
-
-    with pytest.raises(ValidationError, match="E-PLOT-EMPTY"):
-        run_model_plot_extraction(
-            result["catalog"],
-            result["store"],
-            result["bundle"],
-            client=OpenAIResponsesClient(
-                model="empty-event-extractor",
-                api_key="test-key",
-                transport=transport,
-            ),
-            repo_root=repo_root(),
-            now=NOW,
-        )
-
-
-def test_plot_extraction_rejects_duplicate_model_events(tmp_path):
-    result = _run_direct_workflow(tmp_path)
+def test_retry_attempts_and_usage_are_immutable_and_replayable(tmp_path, monkeypatch):
+    monkeypatch.setattr("xhnovel_pipeline.model_api.time.sleep", lambda _: None)
+    calls = 0
 
     def transport(url, headers, body, timeout):
-        status, response_headers, response_bytes = _extraction_transport(
-            url, headers, body, timeout
-        )
-        response = json.loads(response_bytes)
-        value = json.loads(response["output"][0]["content"][0]["text"])
-        value["events"].append(copy.deepcopy(value["events"][0]))
-        return status, response_headers, _response(value, "duplicate-extraction-response")
-
-    with pytest.raises(ValidationError, match="E-PLOT-DUPLICATE"):
-        run_model_plot_extraction(
-            result["catalog"],
-            result["store"],
-            result["bundle"],
-            client=OpenAIResponsesClient(
-                model="duplicate-event-extractor",
-                api_key="test-key",
-                transport=transport,
-            ),
-            repo_root=repo_root(),
-            now=NOW,
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return 429, {}, b'{"error":"busy"}'
+        return 200, {}, _response(
+            {"candidates": []},
+            "retry-success",
+            usage={"input_tokens": 12, "output_tokens": 3, "total_tokens": 15},
         )
 
-
-def test_plot_extraction_replay_rejects_unrecorded_request_capability(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    run = result["extraction"]["run"]
-    old_id = run["model_request_artifact_ids"][0]
-    request = json.loads(result["store"].get(old_id).decode("utf-8"))
-    request["tools"] = []
-    new_id = _store_json_artifact(result, request)
-    run["model_request_artifact_ids"][0] = new_id
-    run["input_manifest"]["tool_input_hashes"][0] = new_id
-
-    with pytest.raises(ValidationError) as exc:
-        validate_model_plot_extractions(result["catalog"], result["store"])
-    assert exc.value.code == "E-MODEL-REPLAY"
-
-
-def test_plot_analysis_rejects_cross_work_before_model_call(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    original_work = result["catalog"].all("NovelWork")[0]
-    foreign_work = copy.deepcopy(original_work)
-    foreign_work["work_id"] = "NWK-FOREIGN-WORK"
-    result["catalog"].add("NovelWork", foreign_work)
-    called = False
-
-    def transport(url, headers, body, timeout):
-        nonlocal called
-        called = True
-        return _analysis_transport(url, headers, body, timeout)
-
-    with pytest.raises(ValidationError, match="E-PLOT-LINEAGE"):
-        run_plot_analysis(
-            result["catalog"],
-            result["store"],
-            work_id=foreign_work["work_id"],
-            extraction_run_id=result["extraction"]["run"]["extraction_run_id"],
-            client=OpenAIResponsesClient(
-                model="cross-work-analyst",
-                api_key="test-key",
-                transport=transport,
-            ),
-            repo_root=repo_root(),
-            created_at=NOW,
-        )
-    assert called is False
-
-
-def test_plot_analysis_must_cover_every_active_claim_from_its_extraction(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    foreign = copy.deepcopy(result["extraction"]["claims"][0])
-    foreign["statement"] = "同一次抽取中被分析遗漏的事实"
-    foreign["claim_id"] = derived_id(
-        "Claim", {key: value for key, value in foreign.items() if key != "claim_id"}
-    )
-    result["catalog"].add("Claim", foreign)
-
-    with pytest.raises(ValidationError) as exc:
-        validate_plot_analysis(result["catalog"], result["store"])
-    assert exc.value.code == "E-PLOT-LINEAGE"
-
-
-def test_plot_analysis_replay_rejects_unrecorded_request_capability(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    analysis = result["analysis"]
-    request = json.loads(
-        result["store"].get(analysis["model_request_artifact_id"]).decode("utf-8")
-    )
-    request["tools"] = []
-    analysis["model_request_artifact_id"] = _store_json_artifact(result, request)
-    analysis["analysis_id"] = derived_id(
-        "PlotAnalysis", {key: value for key, value in analysis.items() if key != "analysis_id"}
-    )
-
-    with pytest.raises(ValidationError) as exc:
-        validate_plot_analysis(result["catalog"], result["store"])
-    assert exc.value.code == "E-PLOT-REPLAY"
-
-
-def test_novel_export_excludes_foreign_active_claims_in_reused_catalog(tmp_path):
-    result = _run_direct_workflow(tmp_path)
-    foreign = copy.deepcopy(result["extraction"]["claims"][0])
-    foreign["extraction_run_id"] = "ERUN-FOREIGN-ACTIVE"
-    foreign["statement"] = "来自其他批次的活跃事实"
-    foreign["claim_id"] = derived_id(
-        "Claim", {key: value for key, value in foreign.items() if key != "claim_id"}
-    )
-    result["catalog"].add("Claim", foreign)
-    result["catalog"].by_type["EvidenceExport"].clear()
-
-    export = _make_unqualified_export(
-        result["catalog"],
-        result["bundle"],
-        result["extraction"],
-        result["analysis"],
+    source = tmp_path / "book.txt"
+    source.write_text("第一章 天门\n正文。", encoding="utf-8")
+    result = run_novel_research(
+        _spec(source),
+        tmp_path / "run",
+        extractor_client=_client(transport, max_attempts=2),
         repo_root=repo_root(),
         now=NOW,
     )
 
-    assert [claim["claim_id"] for claim in export["claims"]] == sorted(
-        result["analysis"]["claim_ids"]
-    )
-    validate_export(result["catalog"], result["store"])
-
-
-def test_reused_catalog_keeps_each_novel_export_bound_to_its_own_run(tmp_path):
-    first_root = tmp_path / "first"
-    first_root.mkdir()
-    first = _run_direct_workflow(first_root)
-    chapters = tmp_path / "second-chapters"
-    chapters.mkdir()
-    (chapters / "第1章 下山.txt").write_text(
-        "第1章 下山\n\n林舟离开山门。", encoding="utf-8"
-    )
-    spec = {
-        "source": {"kind": "directory", "path": str(chapters), "title": "测试仙途续篇"},
-        "limits": {"max_chapters": 10, "max_bytes": 100_000},
-        "strict_order": True,
+    attempts = result["catalog"].all("ModelAttempt")
+    assert [item["status"] for item in attempts] == ["RETRYABLE", "SUCCEEDED"]
+    assert attempts[1]["retry_of"] == attempts[0]["attempt_id"]
+    assert attempts[0]["response_artifact_id"] is not None
+    assert result["scout"]["run"]["usage_ledger"] == {
+        "input_tokens": 12,
+        "output_tokens": 3,
+        "total_tokens": 15,
+        "attempts_with_unknown_usage": 1,
+        "estimated_cost_microusd": None,
     }
+    validate_all(result["catalog"], result["store"])
 
-    second = run_novel_research(
+
+def test_conflicting_observation_requires_adjudication(tmp_path):
+    result = _run(tmp_path, transport=_marker_transport(conflicting=True))
+    assert result["scout"]["candidates"][0]["adjudication_status"] == "NEEDS_ADJUDICATION"
+
+
+def test_resume_1000_windows_calls_only_the_one_incomplete_window(
+    tmp_path, monkeypatch
+):
+    import xhnovel_pipeline.scene_scout as scene_scout
+
+    original_builder = scene_scout.build_scene_windows
+
+    def thousand_windows(
+        catalog,
+        bundle,
+        *,
+        request_id,
+        window_chars=10_000,
+        overlap_chars=1_800,
+    ):
+        base = original_builder(
+            catalog,
+            bundle,
+            request_id=request_id,
+            window_chars=window_chars,
+            overlap_chars=overlap_chars,
+        )[0]
+        windows = []
+        for ordinal in range(1, 1_001):
+            identity = {
+                "request_id": request_id,
+                "bundle_id": bundle["bundle_id"],
+                "ordinal": ordinal,
+                "source_spans": copy.deepcopy(base["source_spans"]),
+                "window_chars": window_chars,
+                "overlap_chars": overlap_chars,
+            }
+            window_hash = object_hash(identity, omit=())
+            windows.append(
+                {
+                    "schema_version": base["schema_version"],
+                    "window_id": derived_id("SceneWindow", {"window_hash": window_hash}),
+                    **identity,
+                    "text_length": base["text_length"],
+                    "window_hash": window_hash,
+                }
+            )
+        return windows
+
+    monkeypatch.setattr(scene_scout, "build_scene_windows", thousand_windows)
+    counts = Counter()
+    lock = Lock()
+
+    def transport(url, headers, body, timeout):
+        model_input = json.loads(json.loads(body)["input"])
+        ordinal = model_input["window"]["ordinal"]
+        with lock:
+            counts[ordinal] += 1
+            call_number = counts[ordinal]
+        if ordinal == 900 and call_number == 1:
+            return 500, {}, b'{"error":"fixture failure"}'
+        return 200, {}, _response({"candidates": []}, f"window-{ordinal}-{call_number}")
+
+    source = tmp_path / "book.txt"
+    source.write_text("第一章 天门\n正文。", encoding="utf-8")
+    spec = _spec(source, scout={"window_chars": 10_000, "overlap_chars": 1_800, "max_workers": 8})
+    work_dir = tmp_path / "run"
+    with pytest.raises(ValidationError, match="E-SCENE-PARTIAL"):
+        run_novel_research(
+            spec,
+            work_dir,
+            extractor_client=_client(transport),
+            repo_root=repo_root(),
+            now=NOW,
+        )
+
+    assert len(counts) == 1_000
+    assert counts[900] == 1
+    result = run_novel_research(
         spec,
-        tmp_path / "second-run",
-        collector=OpenAICollectionAssessor(
-            OpenAIResponsesClient(
-                model="small-model-snapshot",
-                api_key="test-key",
-                transport=_collection_transport("collector"),
-            ),
-            role="COLLECTOR",
-        ),
-        reviewer=OpenAICollectionAssessor(
-            OpenAIResponsesClient(
-                model="large-model-snapshot",
-                api_key="test-key",
-                transport=_collection_transport("reviewer"),
-            ),
-            role="REVIEWER",
-        ),
-        extractor_client=OpenAIResponsesClient(
-            model="extractor-model-snapshot",
-            api_key="test-key",
-            transport=_extraction_transport,
-        ),
-        analyst_client=OpenAIResponsesClient(
-            model="analyst-model-snapshot",
-            api_key="test-key",
-            transport=_analysis_transport,
-        ),
+        work_dir,
+        extractor_client=_client(transport),
         repo_root=repo_root(),
         now=NOW,
-        catalog=first["catalog"],
-        store=first["store"],
     )
 
-    exports = second["catalog"].all("EvidenceExport")
-    assert len(exports) == 2
-    assert [
-        {claim["extraction_run_id"] for claim in export["claims"]}
-        for export in exports
-    ] == [
-        {first["extraction"]["run"]["extraction_run_id"]},
-        {second["extraction"]["run"]["extraction_run_id"]},
+    assert all(counts[index] == 1 for index in range(1, 900))
+    assert counts[900] == 2
+    assert all(counts[index] == 1 for index in range(901, 1_001))
+    assert result["scout"]["run"]["resumed_from_checkpoint"] is True
+    attempts_900 = [
+        item
+        for item in result["catalog"].all("ModelAttempt")
+        if item["subject_id"] == result["scout"]["windows"][899]["window_id"]
     ]
-    second_manifest_ids = {
-        item["artifact_id"] for item in second["export"]["artifact_manifest"]
-    }
-    assert not set(first["bundle"]["artifact_ids"]) & second_manifest_ids
-    validate_all(second["catalog"], second["store"])
+    assert [item["status"] for item in attempts_900] == ["FAILED", "SUCCEEDED"]
 
 
-def test_output_conflict_is_detected_before_writing_any_missing_sibling(tmp_path):
-    output_dir = tmp_path / "research-output"
-    output_dir.mkdir()
-    (output_dir / "plot-analysis.json").write_bytes(b"tampered")
+def test_tampered_scene_candidate_fails_replay_validation(tmp_path):
+    result = _run(tmp_path)
+    result["scout"]["candidates"][0]["summary"] = "伪造场景"
 
-    with pytest.raises(ValidationError, match="E-IMMUTABLE-OUTPUT"):
-        _write_immutable_outputs(
-            output_dir,
-            {
-                "catalog.json": b"new catalog",
-                "plot-analysis.json": b"expected analysis",
-            },
-        )
-
-    assert not (output_dir / "catalog.json").exists()
-    assert (output_dir / "plot-analysis.json").read_bytes() == b"tampered"
+    with pytest.raises(ValidationError, match="E-(SCENE-REPLAY|ID-BIND)"):
+        validate_all(result["catalog"], result["store"])
 
 
-class _RankingProvider:
-    provider_id = "one-click-ranking-fixture"
-    provider_build_id = "one-click-ranking-fixture-v1"
+def test_export_cannot_upgrade_model_backed_auditability_to_full(tmp_path):
+    result = _run(tmp_path)
+    export = result["export"]
+    export["assurance"]["auditability"] = "FULL"
+    identity = {key: value for key, value in export.items() if key not in {"export_id", "export_hash"}}
+    export["export_id"] = derived_id("EvidenceExport", identity)
+    export["export_hash"] = object_hash(export, omit=("export_hash",))
 
-    def search(self, query, params):
-        return {
-            "hits": [
-                {"rank": 1, "title": "无本地材料", "url": "https://example.test/missing"},
-                {"rank": 2, "title": "测试仙途", "url": "https://example.test/test"},
-            ],
-        }
-
-
-def test_famous_novel_workflow_ranks_resolves_and_binds_source_before_research(tmp_path):
-    chapters = tmp_path / "chapters"
-    chapters.mkdir()
-    (chapters / "第1章 入山.txt").write_text("第1章 入山\n\n林舟进入山门。", encoding="utf-8")
-    (chapters / "第2章 拜师.txt").write_text("第2章 拜师\n\n林舟拜长老为师。", encoding="utf-8")
-    spec = {
-        "genre": "仙侠",
-        "ranking": {"queries": ["仙侠代表作"], "pages_per_query": 1, "limit": 10},
-        "defaults": {
-            "evidence": {"tier": "A", "access_legitimacy": "AUTHORIZED"},
-            "limits": {"max_chapters": 10, "max_bytes": 100_000},
-            "strict_order": True,
-        },
-        "source_catalog": [
-            {
-                "candidate_titles": ["《测试仙途》"],
-                "source": {"kind": "directory", "path": str(chapters)},
-            }
-        ],
-    }
-    result = run_famous_novel_research(
-        spec,
-        tmp_path / "run",
-        providers=[_RankingProvider()],
-        collector=OpenAICollectionAssessor(
-            OpenAIResponsesClient(
-                model="small-model-snapshot",
-                api_key="test-key",
-                transport=_collection_transport("collector"),
-            ),
-            role="COLLECTOR",
-        ),
-        reviewer=OpenAICollectionAssessor(
-            OpenAIResponsesClient(
-                model="large-model-snapshot",
-                api_key="test-key",
-                transport=_collection_transport("reviewer"),
-            ),
-            role="REVIEWER",
-        ),
-        extractor_client=OpenAIResponsesClient(
-            model="extractor-model-snapshot", api_key="test-key", transport=_extraction_transport
-        ),
-        analyst_client=OpenAIResponsesClient(
-            model="analyst-model-snapshot", api_key="test-key", transport=_analysis_transport
-        ),
-        repo_root=repo_root(),
-        now=NOW,
-    )
-
-    selection = result["export"]["origin_request"]["search_constraints"]["novel_selection"]
-    assert result["source_resolution"]["candidate_rank"] == 2
-    assert selection["resolution_id"] == result["source_resolution"]["resolution_id"]
-    assert selection["source_spec_hash"] == result["ingestion"]["input_spec_hash"]
-    validate_all(result["catalog"], result["store"])
-
-    request = result["catalog"].get("ResearchRequest", result["bundle"]["request_id"])
-    request["search_constraints"]["novel_selection"]["candidate_rank"] = 1
-    with pytest.raises(ValidationError, match="E-NOVEL-SOURCE-BIND"):
-        validate_evidence(result["catalog"], result["store"])
-
-
-def test_famous_site_workflow_exports_ranking_and_fetch_attempt_raw_closure(tmp_path):
-    spec = {
-        "genre": "仙侠",
-        "ranking": {"queries": ["仙侠代表作"], "pages_per_query": 1, "limit": 10},
-        "defaults": {
-            "evidence": {"tier": "A", "access_legitimacy": "AUTHORIZED"},
-            "limits": {"max_chapters": 10, "max_bytes": 100_000},
-            "strict_order": True,
-        },
-        "source_catalog": [
-            {
-                "candidate_titles": ["《测试仙途》"],
-                "source": {
-                    "kind": "site",
-                    "index_url": "https://novel.example/index",
-                    "chapter_url_pattern": r"/chapter/\d+$",
-                },
-            }
-        ],
-    }
-
-    class Fetcher:
-        def fetch(self, url):
-            pages = {
-                "https://novel.example/index": (
-                    '<a href="/chapter/1">第1章 入山</a>'
-                    '<a href="/chapter/2">第2章 拜师</a>'
-                ).encode(),
-                "https://novel.example/chapter/1": (
-                    "<html><body><h1>第1章 入山</h1><p>林舟进入山门。</p></body></html>"
-                ).encode(),
-                "https://novel.example/chapter/2": (
-                    "<html><body><h1>第2章 拜师</h1><p>林舟拜长老为师。</p></body></html>"
-                ).encode(),
-            }
-            return pages[url], "text/html; charset=utf-8", 200, url
-
-    result = run_famous_novel_research(
-        spec,
-        tmp_path / "run",
-        providers=[_RankingProvider()],
-        collector=OpenAICollectionAssessor(
-            OpenAIResponsesClient(
-                model="small-model-snapshot",
-                api_key="test-key",
-                transport=_collection_transport("collector"),
-            ),
-            role="COLLECTOR",
-        ),
-        reviewer=OpenAICollectionAssessor(
-            OpenAIResponsesClient(
-                model="large-model-snapshot",
-                api_key="test-key",
-                transport=_collection_transport("reviewer"),
-            ),
-            role="REVIEWER",
-        ),
-        extractor_client=OpenAIResponsesClient(
-            model="extractor-model-snapshot", api_key="test-key", transport=_extraction_transport
-        ),
-        analyst_client=OpenAIResponsesClient(
-            model="analyst-model-snapshot", api_key="test-key", transport=_analysis_transport
-        ),
-        repo_root=repo_root(),
-        now=NOW,
-        fetcher=Fetcher(),
-    )
-
-    expected = {
-        window["raw_response_artifact_id"]
-        for window in result["ranking"]["provider_windows"]
-        if window["raw_response_artifact_id"]
-    }
-    checkpoint = json.loads(
-        result["store"].get(result["ingestion"]["checkpoint_artifact_id"]).decode("utf-8")
-    )
-    expected.update(checkpoint["site_attempt_receipt_ids"])
-    for receipt_artifact_id in checkpoint["site_attempt_receipt_ids"]:
-        receipt = json.loads(result["store"].get(receipt_artifact_id).decode("utf-8"))
-        if receipt["raw_artifact_id"]:
-            expected.add(receipt["raw_artifact_id"])
-
-    manifest_ids = {
-        item["artifact_id"] for item in result["export"]["artifact_manifest"]
-    }
-    catalog_data = {
-        kind: records for kind, records in result["catalog"].by_type.items() if records
-    }
-    assert expected <= manifest_ids
-    assert expected <= live_artifact_ids(catalog_data)
-    validate_all(result["catalog"], result["store"])
+    with pytest.raises(ValidationError, match="E-AUDITABILITY"):
+        validate_export(result["catalog"], result["store"])

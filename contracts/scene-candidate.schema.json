@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/scene-candidate.schema.json",
+  "$defs": {
+    "source_span": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segment_id", "start", "end"],
+      "properties": {
+        "segment_id": {"type": "string", "pattern": "^SEG-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 1}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "values", "support_spans"],
+      "properties": {
+        "status": {"enum": ["KNOWN", "UNKNOWN", "CONFLICTING"]},
+        "values": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "support_spans": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/source_span"}}
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scene_candidate_id",
+    "scene_scout_run_id",
+    "scene_merge_run_id",
+    "request_id",
+    "bundle_id",
+    "status",
+    "verification",
+    "adjudication_status",
+    "summary",
+    "source_spans",
+    "window_ids",
+    "source_order",
+    "actors",
+    "action",
+    "target",
+    "precondition",
+    "state_transition",
+    "external_response",
+    "immediate_feedback",
+    "new_affordances",
+    "persistence",
+    "mechanic_pressure_point"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.2-draft"},
+    "scene_candidate_id": {"type": "string", "pattern": "^SCN-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "scene_scout_run_id": {"type": "string", "pattern": "^SSRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "scene_merge_run_id": {"type": "string", "pattern": "^SMRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "request_id": {"type": "string", "pattern": "^REQ-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "bundle_id": {"type": "string", "pattern": "^BND-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "status": {"const": "DRAFT"},
+    "verification": {"const": "UNVERIFIED"},
+    "adjudication_status": {"enum": ["NOT_REQUIRED", "NEEDS_ADJUDICATION", "RESOLVED"]},
+    "summary": {"type": "string", "minLength": 1},
+    "source_spans": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/source_span"}},
+    "window_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^SWIN-[A-Z0-9][A-Z0-9._:-]{1,}$"}
+    },
+    "source_order": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chapter_id", "chapter_ordinal", "document_id", "segment_id", "segment_ordinal", "start"],
+      "properties": {
+        "chapter_id": {"type": "string", "pattern": "^CHP-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+        "chapter_ordinal": {"type": "integer", "minimum": 1},
+        "document_id": {"type": "string", "pattern": "^DOC-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+        "segment_id": {"type": "string", "pattern": "^SEG-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+        "segment_ordinal": {"type": "integer", "minimum": 0},
+        "start": {"type": "integer", "minimum": 0}
+      }
+    },
+    "actors": {"$ref": "#/$defs/observation"},
+    "action": {"$ref": "#/$defs/observation"},
+    "target": {"$ref": "#/$defs/observation"},
+    "precondition": {"$ref": "#/$defs/observation"},
+    "state_transition": {"$ref": "#/$defs/observation"},
+    "external_response": {"$ref": "#/$defs/observation"},
+    "immediate_feedback": {"$ref": "#/$defs/observation"},
+    "new_affordances": {"$ref": "#/$defs/observation"},
+    "persistence": {"$ref": "#/$defs/observation"},
+    "mechanic_pressure_point": {"$ref": "#/$defs/observation"}
+  }
+}

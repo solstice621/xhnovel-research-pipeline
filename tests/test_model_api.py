@@ -14,6 +14,7 @@ from xhnovel_pipeline.collection_quality import (
 )
 from xhnovel_pipeline.runtime import TEST_NOW as NOW
 from xhnovel_pipeline.errors import ValidationError
+from xhnovel_pipeline.hashing import artifact_id_for
 from xhnovel_pipeline.ids import derived_id
 from xhnovel_pipeline.model_api import MAX_MODEL_RESPONSE_BYTES, OpenAIResponsesClient
 from xhnovel_pipeline.model_collection import OpenAICollectionAssessor
@@ -44,7 +45,7 @@ def _add_text_artifact(catalog, store, text):
     catalog.add(
         "Artifact",
         {
-            "schema_version": "0.1-draft-frozen",
+            "schema_version": "0.2-draft",
             "artifact_id": artifact_id,
             "media_type": "text/plain",
             "byte_length": len(data),
@@ -270,7 +271,7 @@ def test_responses_client_rejects_redirect_without_following():
 
 def test_live_assessor_path_preserves_requests_and_responses_as_artifacts(tmp_path):
     outcome = {
-        "outcome": {"disposition": "SELECTED", "tier": "B", "access_legitimacy": "PUBLIC"},
+        "outcome": {"disposition": "SELECTED", "tier": "B"},
         "confidence": "HIGH",
         "basis": ["the frozen artifact identifies the requested novel"],
     }
@@ -324,7 +325,6 @@ def test_live_assessor_rejects_task_foreign_outcome_fields_before_persistence(tm
         "outcome": {
             "disposition": "SELECTED",
             "tier": "B",
-            "access_legitimacy": "PUBLIC",
             "origin_relation": "INDEPENDENT",
         },
         "confidence": "HIGH",
@@ -365,12 +365,12 @@ def test_live_assessor_rejects_task_foreign_outcome_fields_before_persistence(tm
     assert exc.value.code == "E-MODEL-OUTPUT"
     assert catalog.all("CollectionDecision") == []
     assert catalog.all("CollectionReview") == []
-    assert len(catalog.all("Artifact")) == 1
+    assert len(catalog.all("Artifact")) == 2
 
 
 def test_live_review_rejects_same_model_hidden_by_role_specific_build_ids(tmp_path):
     outcome = {
-        "outcome": {"disposition": "SELECTED", "tier": "B", "access_legitimacy": "PUBLIC"},
+        "outcome": {"disposition": "SELECTED", "tier": "B"},
         "confidence": "HIGH",
         "basis": ["the frozen artifact identifies the requested novel"],
     }
@@ -418,7 +418,7 @@ def test_live_review_rejects_same_model_hidden_by_role_specific_build_ids(tmp_pa
 
 def test_live_decision_cannot_diverge_from_provider_response(tmp_path):
     outcome = {
-        "outcome": {"disposition": "SELECTED", "tier": "B", "access_legitimacy": "PUBLIC"},
+        "outcome": {"disposition": "SELECTED", "tier": "B"},
         "confidence": "HIGH",
         "basis": ["frozen input supports selection"],
     }
@@ -463,7 +463,11 @@ def test_live_decision_cannot_diverge_from_provider_response(tmp_path):
 
 def test_collection_assessor_rejects_oversize_input():
     calls = []
-    value = {"outcome": {"disposition": "STOP"}, "confidence": "LOW", "basis": ["x"]}
+    value = {
+        "outcome": {"disposition": "SELECTED", "tier": "D"},
+        "confidence": "LOW",
+        "basis": ["x"],
+    }
     assessor = OpenAICollectionAssessor(
         OpenAIResponsesClient(
             model="model", api_key="key", transport=_transport_for(value, calls)
@@ -472,10 +476,14 @@ def test_collection_assessor_rejects_oversize_input():
         max_input_chars=3,
     )
     with pytest.raises(ValidationError) as exc:
+        rubric = b"x"
         assessor.assess(
-            task="STOP",
+            task="TRIAGE",
             subject_ids=["CAM-X"],
             artifacts={"sha256:" + "a" * 64: b"too long"},
+            rubric_id="test-rubric",
+            rubric_artifact_id=artifact_id_for(rubric),
+            rubric_bytes=rubric,
         )
     assert exc.value.code == "E-MODEL-CONTEXT"
     assert not calls

@@ -1,4 +1,4 @@
-schema_version: "0.1-draft-frozen"
+schema_version: "0.2-draft"
 id: novel-fame-ranking-v1
 method: reciprocal_rank_fusion
 rrf_k: 60

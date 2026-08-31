@@ -50,9 +50,19 @@ def test_text_adapter_splits_chapters_and_parses_chinese_numbers(tmp_path):
 
     discovery = adapter.discover()
 
-    assert [chapter.title for chapter in discovery.chapters] == ["第一章 入山", "第二章 拜师"]
-    assert [chapter.declared_number for chapter in discovery.chapters] == [1, 2]
-    assert adapter.fetch_chapter(discovery.chapters[0])[0].startswith("第一章".encode())
+    assert [chapter.title for chapter in discovery.chapters] == [
+        "前置内容",
+        "第一章 入山",
+        "第二章 拜师",
+    ]
+    assert [chapter.chapter_kind for chapter in discovery.chapters] == [
+        "FRONTMATTER",
+        "MAIN",
+        "MAIN",
+    ]
+    assert [chapter.declared_number for chapter in discovery.chapters] == [None, 1, 2]
+    assert adapter.fetch_chapter(discovery.chapters[0])[0] == "序言".encode()
+    assert adapter.fetch_chapter(discovery.chapters[1])[0].startswith("第一章".encode())
     assert chapter_number("第一百零二章 风起") == 102
     assert chapter_number("第万章 非法章号") is None
 
@@ -165,6 +175,9 @@ def test_static_site_adapter_follows_index_pagination_and_deduplicates_links():
     pages = {
         "https://novel.example/index": (
             b'<a href="/chapter/1">\xe7\xac\xac\xe4\xb8\x80\xe7\xab\xa0</a>'
+            b'<a href="mailto:editor@example.com">mail</a>'
+            b'<a href="javascript:void(0)">script</a>'
+            b'<a href="">empty</a>'
             b'<a rel="next" href="/index?page=2">next</a>',
             "text/html",
         ),
@@ -240,3 +253,20 @@ def test_static_site_adapter_refuses_cross_origin_chapters():
     with pytest.raises(ValidationError) as exc:
         adapter.discover()
     assert exc.value.code == "E-NOVEL-SCOPE"
+
+
+@pytest.mark.parametrize(
+    "pattern",
+    [r"(?:/chapter/)+$", r"(/chapter/+)+$", r"/chapter/(\\1)+$"],
+)
+def test_static_site_adapter_rejects_complex_user_regex(pattern):
+    with pytest.raises(ValidationError) as exc:
+        StaticNovelSiteAdapter(
+            {
+                "kind": "site",
+                "index_url": "https://novel.example/index",
+                "chapter_url_pattern": pattern,
+            }
+        )
+
+    assert exc.value.code == "E-NOVEL-SPEC"

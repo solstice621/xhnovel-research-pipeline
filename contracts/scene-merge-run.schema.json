@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/scene-merge-run.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "merge_run_id",
+    "scene_scout_run_id",
+    "algorithm_id",
+    "input_candidate_hashes",
+    "input_candidate_count",
+    "stages",
+    "output_candidate_ids",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.2-draft"},
+    "merge_run_id": {"type": "string", "pattern": "^SMRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "scene_scout_run_id": {"type": "string", "pattern": "^SSRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "algorithm_id": {"const": "source-span-action-chain-v1"},
+    "input_candidate_hashes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+    },
+    "input_candidate_count": {"type": "integer", "minimum": 0},
+    "stages": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stage", "input_count", "output_count"],
+          "properties": {
+            "stage": {"const": "LOCAL_OVERLAP_MERGE"},
+            "input_count": {"type": "integer", "minimum": 0},
+            "output_count": {"type": "integer", "minimum": 0}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stage", "input_count", "output_count"],
+          "properties": {
+            "stage": {"const": "WORK_ORDER_REDUCTION"},
+            "input_count": {"type": "integer", "minimum": 0},
+            "output_count": {"type": "integer", "minimum": 0}
+          }
+        }
+      ],
+      "items": false
+    },
+    "output_candidate_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^SCN-[A-Z0-9][A-Z0-9._:-]{1,}$"}
+    },
+    "status": {"const": "SUCCEEDED"}
+  }
+}

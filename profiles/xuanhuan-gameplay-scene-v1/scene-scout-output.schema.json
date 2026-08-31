@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/profiles/xuanhuan-gameplay-scene-v1/scene-scout-output.schema.json",
+  "$defs": {
+    "source_span": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segment_id", "start", "end"],
+      "properties": {
+        "segment_id": {"type": "string", "minLength": 1},
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 1}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "values", "support_spans"],
+      "properties": {
+        "status": {"enum": ["KNOWN", "UNKNOWN", "CONFLICTING"]},
+        "values": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "support_spans": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/source_span"}
+        }
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["candidates"],
+  "properties": {
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "summary",
+          "source_spans",
+          "actors",
+          "action",
+          "target",
+          "precondition",
+          "state_transition",
+          "external_response",
+          "immediate_feedback",
+          "new_affordances",
+          "persistence",
+          "mechanic_pressure_point"
+        ],
+        "properties": {
+          "summary": {"type": "string", "minLength": 1},
+          "source_spans": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"$ref": "#/$defs/source_span"}
+          },
+          "actors": {"$ref": "#/$defs/observation"},
+          "action": {"$ref": "#/$defs/observation"},
+          "target": {"$ref": "#/$defs/observation"},
+          "precondition": {"$ref": "#/$defs/observation"},
+          "state_transition": {"$ref": "#/$defs/observation"},
+          "external_response": {"$ref": "#/$defs/observation"},
+          "immediate_feedback": {"$ref": "#/$defs/observation"},
+          "new_affordances": {"$ref": "#/$defs/observation"},
+          "persistence": {"$ref": "#/$defs/observation"},
+          "mechanic_pressure_point": {"$ref": "#/$defs/observation"}
+        }
+      }
+    }
+  }
+}

@@ -16,7 +16,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "0.1-draft-frozen"
+      "const": "0.2-draft"
     },
     "snapshot_id": {
       "type": "string",
@@ -67,11 +67,11 @@
       },
       "uniqueItems": true
     },
-    "quality_policy_artifact_id": {
+    "review_policy_artifact_id": {
       "type": "string",
       "pattern": "^sha256:[0-9a-f]{64}$"
     },
-    "quality_gate": {
+    "review_completion_gate": {
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -142,15 +142,15 @@
     }
   },
   "dependentRequired": {
-    "quality_gate": [
+    "review_completion_gate": [
       "collection_decision_ids",
       "collection_review_ids",
-      "quality_policy_artifact_id"
+      "review_policy_artifact_id"
     ],
     "collection_decision_ids": [
       "collection_review_ids",
-      "quality_policy_artifact_id",
-      "quality_gate"
+      "review_policy_artifact_id",
+      "review_completion_gate"
     ]
   }
 }

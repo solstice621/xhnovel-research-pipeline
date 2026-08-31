@@ -57,6 +57,37 @@ def _write_epub(path, *, second_body="长老收他为徒。"):
         )
 
 
+def _write_epub_with_frontmatter(path):
+    container = """<?xml version="1.0"?>
+<container xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
+  <rootfiles><rootfile full-path="OEBPS/content.opf"/></rootfiles>
+</container>"""
+    opf = """<?xml version="1.0"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>结构测试</dc:title></metadata>
+  <manifest>
+    <item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="prologue" href="prologue.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c1" href="c1.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c2" href="c2.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine>
+    <itemref idref="cover"/><itemref idref="nav"/><itemref idref="prologue"/>
+    <itemref idref="c1"/><itemref idref="c2"/>
+  </spine>
+</package>"""
+    with zipfile.ZipFile(path, "w") as archive:
+        archive.writestr("mimetype", "application/epub+zip")
+        archive.writestr("META-INF/container.xml", container)
+        archive.writestr("OEBPS/content.opf", opf)
+        archive.writestr("OEBPS/cover.xhtml", "<html><body><h1>版权页</h1></body></html>")
+        archive.writestr("OEBPS/nav.xhtml", "<html><body><h1>目录</h1></body></html>")
+        archive.writestr("OEBPS/prologue.xhtml", "<html><body><h1>序章</h1><p>山门初现。</p></body></html>")
+        archive.writestr("OEBPS/c1.xhtml", "<html><body><h1>第一章 入山</h1><p>少年入山。</p></body></html>")
+        archive.writestr("OEBPS/c2.xhtml", "<html><body><h1>第二章 拜师</h1><p>长老收徒。</p></body></html>")
+
+
 def _interrupt_local_ingestion(monkeypatch, adapter_type, spec, work_dir):
     original_fetch = adapter_type.fetch_chapter
     calls = 0
@@ -111,7 +142,7 @@ def test_ingest_strict_order_reports_missing_chapter(tmp_path):
     assert result["ingestion"]["order_validation"]["missing_declared_numbers"] == [2]
 
 
-def test_strict_order_does_not_pass_when_a_chapter_number_is_unknown():
+def test_strict_order_is_warning_when_a_chapter_number_is_unknown():
     chapters = [
         {"chapter_id": "CHP-ONE", "status": "READY", "declared_number": 1},
         {"chapter_id": "CHP-UNKNOWN", "status": "READY", "declared_number": None},
@@ -119,7 +150,7 @@ def test_strict_order_does_not_pass_when_a_chapter_number_is_unknown():
 
     result = novel_ingest._order_validation(chapters, strict=True)
 
-    assert result["status"] == "FAIL"
+    assert result["status"] == "WARNING"
 
 
 def test_strict_order_does_not_claim_order_when_all_numbers_are_unknown():
@@ -130,7 +161,7 @@ def test_strict_order_does_not_claim_order_when_all_numbers_are_unknown():
 
     result = novel_ingest._order_validation(chapters, strict=True)
 
-    assert result["status"] == "FAIL"
+    assert result["status"] == "WARNING"
 
 
 def test_order_validation_rejects_unbounded_declared_number_gap(monkeypatch):
@@ -228,6 +259,37 @@ def test_epub_fetch_rejects_member_changed_after_discovery(tmp_path):
     assert exc.value.code == "E-NOVEL-SOURCE-CHANGED"
 
 
+def test_epub_frontmatter_and_navigation_are_retained_but_ignored(tmp_path):
+    source = tmp_path / "structured.epub"
+    _write_epub_with_frontmatter(source)
+
+    result = run_novel_ingestion(
+        {"source": {"kind": "epub", "path": str(source)}, "strict_order": True},
+        tmp_path / "run",
+        repo_root=repo_root(),
+        now=NOW,
+    )
+
+    assert [chapter["chapter_kind"] for chapter in result["chapters"]] == [
+        "FRONTMATTER",
+        "NAVIGATION",
+        "PROLOGUE",
+        "MAIN",
+        "MAIN",
+    ]
+    assert [chapter["status"] for chapter in result["chapters"]] == [
+        "IGNORED",
+        "IGNORED",
+        "READY",
+        "READY",
+        "READY",
+    ]
+    assert len(result["ingestion"]["ignored_chapter_ids"]) == 2
+    assert result["ingestion"]["status"] == "PARTIAL"
+    assert all(chapter["segment_ids"] for chapter in result["chapters"])
+    validate_novel_ingestion(result["catalog"], result["store"])
+
+
 def test_site_ingest_resumes_after_interrupted_chapter_without_refetching_completed(tmp_path):
     spec = _site_spec()
     calls: list[str] = []
@@ -255,7 +317,9 @@ def test_site_ingest_resumes_after_interrupted_chapter_without_refetching_comple
             now=NOW,
         )
 
-    checkpoint = json.loads((tmp_path / "run" / "ingestion-checkpoint.json").read_text())
+    checkpoint = json.loads(
+        (tmp_path / "run" / "ingestion-checkpoint.json").read_text(encoding="utf-8")
+    )
     assert len(checkpoint["completed"]) == 1
 
     resumed_calls: list[str] = []
@@ -312,7 +376,7 @@ def test_checkpoint_rejects_changed_spec(tmp_path):
     assert exc.value.code == "E-CHECKPOINT-INPUT"
 
 
-def test_completed_same_second_rerun_has_distinct_identity_and_immutable_output(tmp_path):
+def test_completed_rerun_reuses_logical_identity_and_immutable_output(tmp_path):
     source = tmp_path / "chapters"
     source.mkdir()
     (source / "001.txt").write_text("第一章\n\n正文。", encoding="utf-8")
@@ -320,11 +384,16 @@ def test_completed_same_second_rerun_has_distinct_identity_and_immutable_output(
     work_dir = tmp_path / "run"
 
     first = run_novel_ingestion(spec, work_dir, repo_root=repo_root(), now=NOW)
-    second = run_novel_ingestion(spec, work_dir, repo_root=repo_root(), now=NOW)
+    second = run_novel_ingestion(
+        spec,
+        work_dir,
+        repo_root=repo_root(),
+        now="2026-08-30T00:00:00Z",
+    )
 
     assert first["ingestion"]["resumed_from_checkpoint"] is False
-    assert second["ingestion"]["resumed_from_checkpoint"] is True
-    assert first["ingestion"]["ingestion_run_id"] != second["ingestion"]["ingestion_run_id"]
+    assert second["ingestion"]["resumed_from_checkpoint"] is False
+    assert first["ingestion"]["ingestion_run_id"] == second["ingestion"]["ingestion_run_id"]
     assert first["work_dir"].is_dir()
     assert second["work_dir"].is_dir()
 

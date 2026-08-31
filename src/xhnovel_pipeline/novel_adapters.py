@@ -18,11 +18,15 @@ from .http_fetch import HttpFetcher
 from .parse import decode_html, decode_text, normalize_text
 from .urls import canonicalize_url
 
-DEFAULT_CHAPTER_PATTERN = r"(?m)^\s*(第\s*[0-9零〇一二两三四五六七八九十百千万]+\s*[章节回]\s*[^\r\n]*)$"
+DEFAULT_CHAPTER_PATTERN = (
+    r"(?m)^[^\S\r\n]*(第\s*[0-9零〇一二两三四五六七八九十百千万]+"
+    r"\s*[章节回][^\r\n]*)\r?$"
+)
 SUPPORTED_DIRECTORY_SUFFIXES = {".txt", ".html", ".htm", ".xhtml"}
 MAX_EPUB_MEMBER_BYTES = 10_000_000
 MAX_EPUB_TOTAL_BYTES = 200_000_000
 MAX_SITE_INDEX_BYTES = 50_000_000
+MAX_SITE_LINK_CHARS = 8_192
 _ADAPTER_BUILD_SOURCE_NAMES = (
     "novel_adapters.py",
     "novel_ingest.py",
@@ -158,6 +162,7 @@ class ChapterRef:
     source_locator: str
     media_type: str
     declared_number: int | None = None
+    chapter_kind: str = "UNKNOWN"
     adapter_data: dict[str, Any] = field(default_factory=dict)
     derived_from_provenance: bool = False
 
@@ -169,6 +174,7 @@ class ChapterRef:
             "source_locator": self.source_locator,
             "media_type": self.media_type,
             "declared_number": self.declared_number,
+            "chapter_kind": self.chapter_kind,
             "adapter_data": self.adapter_data,
             "derived_from_provenance": self.derived_from_provenance,
         }
@@ -182,6 +188,7 @@ class ChapterRef:
             source_locator=value["source_locator"],
             media_type=value["media_type"],
             declared_number=value.get("declared_number"),
+            chapter_kind=value.get("chapter_kind", "UNKNOWN"),
             adapter_data=dict(value.get("adapter_data") or {}),
             derived_from_provenance=bool(value.get("derived_from_provenance", False)),
         )
@@ -242,6 +249,33 @@ def chapter_number(title: str) -> int | None:
     return _chinese_integer(match.group(1)) if match else None
 
 
+def classify_chapter_kind(
+    title: str,
+    declared_number: int | None,
+    *,
+    properties: set[str] | None = None,
+) -> str:
+    normalized = normalize_text(title).casefold()
+    properties = properties or set()
+    if "nav" in properties or re.search(r"(?:^|[-_])(nav|toc)(?:$|[-_])", normalized):
+        return "NAVIGATION"
+    if declared_number is not None:
+        return "MAIN"
+    if re.search(r"(?:序章|楔子|引子|prologue)", normalized, flags=re.IGNORECASE):
+        return "PROLOGUE"
+    if re.search(r"(?:尾声|epilogue)", normalized, flags=re.IGNORECASE):
+        return "EPILOGUE"
+    if re.search(r"(?:番外|后记|後記|附录|附錄|extra|appendix)", normalized, flags=re.IGNORECASE):
+        return "EXTRA"
+    if re.search(
+        r"(?:封面|版权|版權|目录|目錄|书名页|書名頁|title.?page|copyright|cover)",
+        normalized,
+        flags=re.IGNORECASE,
+    ):
+        return "FRONTMATTER"
+    return "UNKNOWN"
+
+
 def _directory_chapter_number(title: str) -> int | None:
     declared = chapter_number(title)
     if declared is not None:
@@ -294,17 +328,26 @@ class TextNovelAdapter:
                     "E-NOVEL-LIMIT",
                     f"chapter count exceeds {self.max_chapters}",
                 )
-        sections: list[tuple[str, str]] = []
+        sections: list[tuple[str, str, str]] = []
         if matches:
+            preface = text[: matches[0].start()].strip()
+            if preface:
+                sections.append(("前置内容", preface, "FRONTMATTER"))
             for index, match in enumerate(matches):
                 title = normalize_text(match.group(1) if match.lastindex else match.group(0))
                 end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
                 body = text[match.end():end].strip()
-                sections.append((title, f"{title}\n\n{body}".strip()))
+                declared = chapter_number(title)
+                sections.append(
+                    (title, f"{title}\n\n{body}".strip(), classify_chapter_kind(title, declared))
+                )
         else:
-            sections.append((str(self.spec.get("title") or self.path.stem), text.strip()))
+            title = str(self.spec.get("title") or self.path.stem)
+            sections.append((title, text.strip(), classify_chapter_kind(title, chapter_number(title))))
+        if len(sections) > self.max_chapters:
+            raise ValidationError("E-NOVEL-LIMIT", f"chapter count exceeds {self.max_chapters}")
         chapters = []
-        for ordinal, (title, body) in enumerate(sections, start=1):
+        for ordinal, (title, body, chapter_kind) in enumerate(sections, start=1):
             key = _chapter_key(ordinal, title)
             self._payloads[key] = body.encode("utf-8")
             chapters.append(
@@ -315,6 +358,7 @@ class TextNovelAdapter:
                     source_locator=f"{self.path.as_uri()}#chapter={ordinal}",
                     media_type="text/plain",
                     declared_number=chapter_number(title),
+                    chapter_kind=chapter_kind,
                     adapter_data={"ordinal": ordinal},
                     derived_from_provenance=True,
                 )
@@ -406,6 +450,9 @@ class DirectoryNovelAdapter:
                     source_locator=resolved_path.as_uri(),
                     media_type=media_type,
                     declared_number=_directory_chapter_number(title),
+                    chapter_kind=classify_chapter_kind(
+                        title, _directory_chapter_number(title)
+                    ),
                     adapter_data={
                         "path": str(resolved_path),
                         "expected_artifact_id": expected_artifact_id,
@@ -571,6 +618,8 @@ class EpubNovelAdapter:
                 except KeyError as exc:
                     raise ValidationError("E-EPUB", f"missing spine member {member!r}") from exc
                 title = _extract_html_title(page) or pathlib.PurePosixPath(member).stem
+                declared_number = chapter_number(title)
+                item_properties = set(item.attrib.get("properties", "").split())
                 ordinal = len(chapters) + 1
                 key = _chapter_key(ordinal, item_id or title)
                 self._member_by_key[key] = member
@@ -581,7 +630,12 @@ class EpubNovelAdapter:
                         title=title,
                         source_locator=f"epub:{self.path.as_uri()}!/{member}",
                         media_type="application/xhtml+xml",
-                        declared_number=chapter_number(title),
+                        declared_number=declared_number,
+                        chapter_kind=classify_chapter_kind(
+                            title,
+                            declared_number,
+                            properties=item_properties,
+                        ),
                         adapter_data={
                             "member": member,
                             "expected_artifact_id": artifact_id_for(page),
@@ -693,6 +747,33 @@ def _canonical_site_url(url: str, *, spec_field: bool = False) -> str:
         raise ValidationError(code, f"invalid site URL {url!r}") from exc
 
 
+def _compile_site_url_pattern(value: Any, field: str) -> re.Pattern[str]:
+    if not isinstance(value, str) or not value or len(value) > 500:
+        raise ValidationError("E-NOVEL-SPEC", f"{field} must be a non-empty bounded string")
+    # URL matching intentionally accepts a small regular-expression subset.
+    # Disallow grouping, lookarounds and backreferences so nested-repeat ReDoS
+    # shapes cannot enter the crawler's per-link hot path.
+    if "(?" in value or re.search(r"(?<!\\)[()]|\\[1-9]", value):
+        raise ValidationError("E-NOVEL-SPEC", f"unsafe {field}")
+    try:
+        return re.compile(value)
+    except re.error as exc:
+        raise ValidationError("E-NOVEL-SPEC", f"invalid {field}: {exc}") from exc
+
+
+def _page_link_url(base_url: str, href: str) -> str | None:
+    href = href.strip()
+    if not href or len(href) > MAX_SITE_LINK_CHARS or href.startswith("#"):
+        return None
+    try:
+        joined = urljoin(base_url, href)
+        if urlparse(joined).scheme.casefold() not in {"http", "https"}:
+            return None
+        return _canonical_site_url(joined)
+    except (ValidationError, ValueError):
+        return None
+
+
 class StaticNovelSiteAdapter:
     adapter_name = "novel-static-site-v1"
 
@@ -717,22 +798,17 @@ class StaticNovelSiteAdapter:
         if not isinstance(index_url, str) or not index_url.strip():
             raise ValidationError("E-NOVEL-SPEC", "site adapter requires a non-empty index_url")
         self.index_url = _canonical_site_url(index_url, spec_field=True)
-        pattern_text = spec.get("chapter_url_pattern")
-        if not isinstance(pattern_text, str):
-            raise ValidationError("E-NOVEL-SPEC", "chapter_url_pattern must be a string")
-        if not pattern_text or len(pattern_text) > 500:
-            raise ValidationError("E-NOVEL-SPEC", "site adapter requires a bounded chapter_url_pattern")
-        try:
-            self.chapter_pattern = re.compile(pattern_text)
-        except re.error as exc:
-            raise ValidationError("E-NOVEL-SPEC", f"invalid chapter_url_pattern: {exc}") from exc
+        self.chapter_pattern = _compile_site_url_pattern(
+            spec.get("chapter_url_pattern"), "chapter_url_pattern"
+        )
         next_pattern = spec.get("next_index_url_pattern")
         if next_pattern is not None and not isinstance(next_pattern, str):
             raise ValidationError("E-NOVEL-SPEC", "next_index_url_pattern must be a string")
-        try:
-            self.next_pattern = re.compile(next_pattern) if next_pattern else None
-        except re.error as exc:
-            raise ValidationError("E-NOVEL-SPEC", f"invalid next_index_url_pattern: {exc}") from exc
+        self.next_pattern = (
+            _compile_site_url_pattern(next_pattern, "next_index_url_pattern")
+            if next_pattern
+            else None
+        )
         self.allow_external_chapters = _boolean_option(spec, "allow_external_chapters")
         self.max_index_pages = _integer_limit(
             spec,
@@ -866,7 +942,9 @@ class StaticNovelSiteAdapter:
                 parser = _LinkParser()
                 parser.feed(decode_html(raw))
                 for href, label, rels in parser.links:
-                    candidate = _canonical_site_url(urljoin(final_url, href))
+                    candidate = _page_link_url(final_url, href)
+                    if candidate is None:
+                        continue
                     if self.chapter_pattern.search(candidate):
                         if not self._allowed_chapter_url(candidate):
                             raise ValidationError(
@@ -937,6 +1015,7 @@ class StaticNovelSiteAdapter:
                     source_locator=url,
                     media_type="text/html",
                     declared_number=chapter_number(title),
+                    chapter_kind=classify_chapter_kind(title, chapter_number(title)),
                     adapter_data={"url": url},
                 )
             )
