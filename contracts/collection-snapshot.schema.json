@@ -6,13 +6,11 @@
   "required": [
     "schema_version",
     "snapshot_id",
-    "campaign_id",
-    "search_run_ids",
-    "hit_ids",
+    "request_id",
+    "ingestion_run_id",
     "retrieval_ids",
     "artifact_ids",
     "triage_assessment_ids",
-    "origin_assessment_ids",
     "snapshot_hash",
     "frozen_at"
   ],
@@ -24,23 +22,13 @@
       "type": "string",
       "pattern": "^SNP-[A-Z0-9][A-Z0-9._:-]{1,}$"
     },
-    "campaign_id": {
+    "request_id": {
       "type": "string",
-      "pattern": "^CAM-[A-Z0-9][A-Z0-9._:-]{1,}$"
+      "pattern": "^REQ-[A-Z0-9][A-Z0-9._:-]{1,}$"
     },
-    "search_run_ids": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^SRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"
-      }
-    },
-    "hit_ids": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^HIT-[A-Z0-9][A-Z0-9._:-]{1,}$"
-      }
+    "ingestion_run_id": {
+      "type": "string",
+      "pattern": "^NING-[A-Z0-9][A-Z0-9._:-]{1,}$"
     },
     "retrieval_ids": {
       "type": "array",
@@ -61,13 +49,6 @@
       "items": {
         "type": "string",
         "pattern": "^TRI-[A-Z0-9][A-Z0-9._:-]{1,}$"
-      }
-    },
-    "origin_assessment_ids": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^ORI-[A-Z0-9][A-Z0-9._:-]{1,}$"
       }
     },
     "collection_decision_ids": {

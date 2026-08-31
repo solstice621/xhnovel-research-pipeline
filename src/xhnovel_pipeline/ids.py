@@ -8,14 +8,10 @@ from .hashing import object_hash
 
 PREFIXES = {
     "ResearchRequest": "REQ-",
-    "SearchCampaign": "CAM-",
-    "QuerySpec": "QRY-",
-    "SearchRun": "SRUN-",
-    "DiscoveryHit": "HIT-",
+    "NovelRankingHit": "NRH-",
     "Source": "SRC-",
     "Retrieval": "RET-",
     "TriageAssessment": "TRI-",
-    "OriginAssessment": "ORI-",
     "CollectionDecision": "CDEC-",
     "CollectionReview": "CRV-",
     "NovelWork": "NWK-",
@@ -32,8 +28,6 @@ PREFIXES = {
     "ExtractionRun": "ERUN-",
     "Claim": "CLM-",
     "ExtractorBuild": "BLD-",
-    "QualificationRun": "QRUN-",
-    "AssuranceRecord": "ASR-",
     "EvidenceExport": "EXP-",
 }
 

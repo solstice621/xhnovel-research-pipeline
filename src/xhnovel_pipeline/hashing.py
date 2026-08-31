@@ -57,13 +57,11 @@ def sorted_ids(values: Iterable[str]) -> list[str]:
 
 def collection_snapshot_hash(snapshot: dict[str, Any]) -> str:
     payload = {
-        "campaign_id": snapshot["campaign_id"],
-        "search_run_ids": sorted_ids(snapshot["search_run_ids"]),
-        "hit_ids": sorted_ids(snapshot["hit_ids"]),
+        "request_id": snapshot["request_id"],
+        "ingestion_run_id": snapshot["ingestion_run_id"],
         "retrieval_ids": sorted_ids(snapshot["retrieval_ids"]),
         "artifact_ids": sorted_ids(snapshot["artifact_ids"]),
         "triage_assessment_ids": sorted_ids(snapshot["triage_assessment_ids"]),
-        "origin_assessment_ids": sorted_ids(snapshot["origin_assessment_ids"]),
     }
     for key in ("collection_decision_ids", "collection_review_ids"):
         if key in snapshot:

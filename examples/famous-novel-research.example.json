@@ -1,0 +1,43 @@
+{
+  "genre": "玄幻",
+  "ranking": {
+    "queries": [
+      "最著名的玄幻小说",
+      "玄幻经典小说",
+      "玄幻小说代表作"
+    ],
+    "pages_per_query": 1,
+    "limit": 10
+  },
+  "defaults": {
+    "limits": {
+      "max_chapters": 5000,
+      "max_bytes": 500000000
+    },
+    "strict_order": true
+  },
+  "source_catalog": [
+    {
+      "candidate_titles": [
+        "凡人修仙传"
+      ],
+      "source": {
+        "kind": "epub",
+        "path": "/absolute/path/to/authorized/fanren.epub"
+      }
+    },
+    {
+      "candidate_titles": [
+        "斗破苍穹"
+      ],
+      "source": {
+        "kind": "site",
+        "index_url": "https://authorized.example/books/doupo/index.html",
+        "chapter_url_pattern": "/books/doupo/chapters/[0-9]+\\.html$",
+        "next_index_url_pattern": "[?&]page=[0-9]+$",
+        "max_index_pages": 100,
+        "max_chapters": 5000
+      }
+    }
+  ]
+}

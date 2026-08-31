@@ -7,14 +7,9 @@ from .ids import PREFIXES
 
 ID_FIELDS = {
     "ResearchRequest": "request_id",
-    "SearchCampaign": "campaign_id",
-    "QuerySpec": "query_id",
-    "SearchRun": "search_run_id",
-    "DiscoveryHit": "hit_id",
     "Source": "source_id",
     "Retrieval": "retrieval_id",
     "TriageAssessment": "assessment_id",
-    "OriginAssessment": "assessment_id",
     "CollectionDecision": "decision_id",
     "CollectionReview": "review_id",
     "NovelWork": "work_id",
@@ -31,12 +26,9 @@ ID_FIELDS = {
     "ExtractionRun": "extraction_run_id",
     "Claim": "claim_id",
     "ExtractorBuild": "extractor_build_id",
-    "QualificationRun": "qualification_run_id",
     "EvidenceExport": "export_id",
     "Artifact": "artifact_id",
     "RetrievalArtifact": None,
-    "ArtifactReplicaStatus": None,
-    "AssuranceRecord": None,
 }
 
 
@@ -45,8 +37,6 @@ class Catalog:
         self.by_type: dict[str, list[dict[str, Any]]] = {kind: [] for kind in PREFIXES}
         self.by_type["RetrievalArtifact"] = []
         self.by_type["Artifact"] = []
-        self.by_type["ArtifactReplicaStatus"] = []
-        self.by_type["AssuranceRecord"] = []
         self.frozen_bundle_ids: set[str] = set()
 
     def add(self, kind: str, obj: dict[str, Any]) -> dict[str, Any]:

@@ -17,17 +17,11 @@ PROFILE_SCHEMA_BY_ID = {
 
 SCHEMA_BY_TYPE = {
     "ResearchRequest": "research-request.schema.json",
-    "SearchCampaign": "search-campaign.schema.json",
-    "QuerySpec": "query-spec.schema.json",
-    "SearchRun": "search-run.schema.json",
-    "DiscoveryHit": "discovery-hit.schema.json",
     "Source": "source.schema.json",
     "Retrieval": "retrieval.schema.json",
     "RetrievalArtifact": "retrieval-artifact.schema.json",
     "Artifact": "artifact.schema.json",
-    "ArtifactReplicaStatus": "artifact-replica-status.schema.json",
     "TriageAssessment": "triage-assessment.schema.json",
-    "OriginAssessment": "origin-assessment.schema.json",
     "CollectionDecision": "collection-decision.schema.json",
     "CollectionReview": "collection-review.schema.json",
     "NovelWork": "novel-work.schema.json",
@@ -44,8 +38,6 @@ SCHEMA_BY_TYPE = {
     "ExtractionRun": "extraction-run.schema.json",
     "Claim": "claim.schema.json",
     "ExtractorBuild": "extractor-build.schema.json",
-    "QualificationRun": "qualification.schema.json",
-    "AssuranceRecord": "assurance-record.schema.json",
     "EvidenceExport": "exports/xuanhuan-evidence-v1.schema.json",
 }
 

@@ -80,7 +80,7 @@ class WikipediaRankingProvider:
             hits.append(
                 {
                     "hit_id": derived_id(
-                        "DiscoveryHit",
+                        "NovelRankingHit",
                         {"query": query_text, "page": page, "rank": rank, "url": result_url},
                     ),
                     "rank": rank,

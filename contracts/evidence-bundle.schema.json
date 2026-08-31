@@ -71,36 +71,9 @@
         "pattern": "^TRI-[A-Z0-9][A-Z0-9._:-]{1,}$"
       }
     },
-    "origin_assessment_ids": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^ORI-[A-Z0-9][A-Z0-9._:-]{1,}$"
-      }
-    },
     "selection_manifest": {
       "type": "object",
-      "required": [
-        "selected_hit_ids",
-        "rejected_hit_ids"
-      ],
       "properties": {
-        "selected_hit_ids": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "pattern": "^HIT-[A-Z0-9][A-Z0-9._:-]{1,}$"
-          },
-          "uniqueItems": true
-        },
-        "rejected_hit_ids": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "pattern": "^HIT-[A-Z0-9][A-Z0-9._:-]{1,}$"
-          },
-          "uniqueItems": true
-        },
         "selected_chapter_ids": {
           "type": "array",
           "items": {

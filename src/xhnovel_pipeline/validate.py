@@ -56,14 +56,9 @@ def validate_typed(kind: str, obj: dict[str, Any]) -> None:
 def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) -> None:
     for kind in (
         "ResearchRequest",
-        "SearchCampaign",
-        "QuerySpec",
-        "SearchRun",
-        "DiscoveryHit",
         "Source",
         "Retrieval",
         "TriageAssessment",
-        "OriginAssessment",
         "CollectionDecision",
         "CollectionReview",
         "CollectionSnapshot",
@@ -71,53 +66,6 @@ def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) ->
     ):
         for obj in catalog.all(kind):
             validate_typed(kind, obj)
-
-    for campaign in catalog.all("SearchCampaign"):
-        catalog.get("ResearchRequest", campaign["request_id"])
-        if campaign["status"] not in {"DRAFT", "RUNNING"} and not campaign.get("stop_reason"):
-            raise ValidationError("E-STOP-REASON", f"{campaign['campaign_id']} terminal without stop_reason")
-
-    for query in catalog.all("QuerySpec"):
-        catalog.get("SearchCampaign", query["campaign_id"])
-        for hid in query.get("derived_from_hit_ids") or []:
-            catalog.get("DiscoveryHit", hid)
-
-    for run in catalog.all("SearchRun"):
-        catalog.get("QuerySpec", run["query_id"])
-        seen_run_ids = {run["search_run_id"]}
-        retry_of = run.get("retry_of")
-        while retry_of:
-            if retry_of in seen_run_ids:
-                raise ValidationError("E-RETRY-LINEAGE", f"{run['search_run_id']} has a retry cycle")
-            seen_run_ids.add(retry_of)
-            previous = catalog.get("SearchRun", retry_of)
-            if previous["query_id"] != run["query_id"] or previous["provider_id"] != run["provider_id"]:
-                raise ValidationError("E-RETRY-LINEAGE", f"{run['search_run_id']} retries another search")
-            if previous["status"] != "FAILED":
-                raise ValidationError("E-RETRY-LINEAGE", f"{run['search_run_id']} predecessor was not FAILED")
-            retry_of = previous.get("retry_of")
-        if run.get("raw_response_artifact_id"):
-            _require_hash(run["raw_response_artifact_id"], run["search_run_id"])
-            catalog.get("Artifact", run["raw_response_artifact_id"])
-            if store and not store.exists(run["raw_response_artifact_id"]):
-                raise ValidationError("E-ARTIFACT-MISSING", f"{run['search_run_id']} raw response missing")
-        if run.get("result_set_hash"):
-            hits = [h for h in catalog.all("DiscoveryHit") if h["search_run_id"] == run["search_run_id"]]
-            payload = [
-                {"rank": h["rank"], "url": h["url"], "snippet": h["snippet"], "hit_id": h["hit_id"]}
-                for h in sorted(hits, key=lambda h: h["rank"])
-            ]
-            expected = object_hash({"hits": payload}, omit=())
-            if run["result_set_hash"] != expected:
-                raise ValidationError("E-HASH-MISMATCH", f"{run['search_run_id']} result_set_hash mismatch")
-
-    ranks: dict[str, set[int]] = {}
-    for hit in catalog.all("DiscoveryHit"):
-        catalog.get("SearchRun", hit["search_run_id"])
-        ranks.setdefault(hit["search_run_id"], set())
-        if hit["rank"] in ranks[hit["search_run_id"]]:
-            raise ValidationError("E-HIT-RANK", f"duplicate rank {hit['rank']} in {hit['search_run_id']}")
-        ranks[hit["search_run_id"]].add(hit["rank"])
 
     for retrieval in catalog.all("Retrieval"):
         catalog.get("Source", retrieval["source_id"])
@@ -136,7 +84,10 @@ def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) ->
                 raise ValidationError("E-RETRY-LINEAGE", f"{retrieval['retrieval_id']} predecessor was not FAILED")
             retry_of = previous.get("retry_of")
         if retrieval.get("discovery_hit_id"):
-            catalog.get("DiscoveryHit", retrieval["discovery_hit_id"])
+            raise ValidationError(
+                "E-UNSUPPORTED-RECORD",
+                "standalone novel retrievals cannot bind retired discovery-hit records",
+            )
         if retrieval.get("triage_assessment_id"):
             triage = catalog.get("TriageAssessment", retrieval["triage_assessment_id"])
             if triage["retrieval_id"] != retrieval["retrieval_id"]:
@@ -173,28 +124,12 @@ def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) ->
             raise ValidationError("E-SNIPPET-TIER", f"{triage['assessment_id']} snippet must be Tier D")
 
     for snapshot in catalog.all("CollectionSnapshot"):
-        campaign = catalog.get("SearchCampaign", snapshot["campaign_id"])
-        snapshot_run_ids = set(snapshot["search_run_ids"])
-        snapshot_hit_ids = set(snapshot["hit_ids"])
+        catalog.get("ResearchRequest", snapshot["request_id"])
+        catalog.get("NovelIngestionRun", snapshot["ingestion_run_id"])
         snapshot_retrieval_ids = set(snapshot["retrieval_ids"])
         snapshot_artifact_ids = set(snapshot["artifact_ids"])
-        for run_id in snapshot["search_run_ids"]:
-            run = catalog.get("SearchRun", run_id)
-            query = catalog.get("QuerySpec", run["query_id"])
-            if query["campaign_id"] != campaign["campaign_id"]:
-                raise ValidationError("E-LINEAGE", f"{run_id} is outside snapshot campaign")
-            raw_artifact_id = run.get("raw_response_artifact_id")
-            if raw_artifact_id and raw_artifact_id not in snapshot_artifact_ids:
-                raise ValidationError("E-OUT-OF-SNAPSHOT", f"{run_id} raw response missing from snapshot")
-        for hit_id in snapshot["hit_ids"]:
-            hit = catalog.get("DiscoveryHit", hit_id)
-            if hit["search_run_id"] not in snapshot_run_ids:
-                raise ValidationError("E-OUT-OF-SNAPSHOT", f"{hit_id} search run missing from snapshot")
         for rid in snapshot["retrieval_ids"]:
             retrieval = catalog.get("Retrieval", rid)
-            hit_id = retrieval.get("discovery_hit_id")
-            if hit_id and hit_id not in snapshot_hit_ids:
-                raise ValidationError("E-OUT-OF-SNAPSHOT", f"{rid} discovery hit missing from snapshot")
             linked_artifacts = {
                 link["artifact_id"]
                 for link in catalog.all("RetrievalArtifact")
@@ -210,14 +145,6 @@ def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) ->
             assessment = catalog.get("TriageAssessment", assessment_id)
             if assessment["retrieval_id"] not in snapshot_retrieval_ids:
                 raise ValidationError("E-OUT-OF-SNAPSHOT", f"{assessment_id} retrieval missing from snapshot")
-        for assessment_id in snapshot["origin_assessment_ids"]:
-            assessment = catalog.get("OriginAssessment", assessment_id)
-            snapshot_source_ids = {
-                catalog.get("Retrieval", retrieval_id)["source_id"]
-                for retrieval_id in snapshot_retrieval_ids
-            }
-            if {assessment["source_a"], assessment["source_b"]} - snapshot_source_ids:
-                raise ValidationError("E-OUT-OF-SNAPSHOT", f"{assessment_id} sources missing from snapshot")
         if "quality_gate" in snapshot:
             decision_ids = set(snapshot["collection_decision_ids"])
             review_ids = set(snapshot["collection_review_ids"])
@@ -261,25 +188,6 @@ def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) ->
         # collection layer must not contain claims
         if catalog.all("Claim") and snapshot.get("contains_claims"):
             raise ValidationError("E-COLLECTION-CLAIM", "collection snapshot must not contain claims")
-
-    terminal_reasons = {
-        "COMPLETED": {"coverage_reached"},
-        "EXHAUSTED": {"provider_exhausted", "no_new_source"},
-        "BUDGET_STOPPED": {"budget_exhausted"},
-        "FAILED": {"failed"},
-        "CANCELLED": {"manual_stop"},
-    }
-    for campaign in catalog.all("SearchCampaign"):
-        if campaign["status"] in terminal_reasons and campaign.get("stop_reason") not in terminal_reasons[campaign["status"]]:
-            raise ValidationError("E-STOP-REASON", f"{campaign['campaign_id']} status/reason mismatch")
-        if campaign.get("stop_reason") == "coverage_reached":
-            raise ValidationError(
-                "E-STOP-REASON",
-                "standalone novel ingestion does not claim open-web coverage",
-            )
-
-    if any("claim_id" in obj for obj in catalog.all("SearchCampaign")):
-        raise ValidationError("E-COLLECTION-CLAIM", "campaign must not produce claims")
 
     validate_collection_quality_records(catalog, store)
 
@@ -451,29 +359,12 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
         snapshots = []
         for snapshot_id in bundle["collection_snapshot_ids"]:
             snapshot = catalog.get("CollectionSnapshot", snapshot_id)
-            campaign = catalog.get("SearchCampaign", snapshot["campaign_id"])
-            if campaign["request_id"] != bundle["request_id"]:
+            if snapshot["request_id"] != bundle["request_id"]:
                 raise ValidationError("E-REQUEST-BIND", f"{snapshot_id} belongs to another request")
             snapshots.append(snapshot)
         snapshot_retrieval_ids = {ident for snapshot in snapshots for ident in snapshot["retrieval_ids"]}
         snapshot_artifact_ids = {ident for snapshot in snapshots for ident in snapshot["artifact_ids"]}
         snapshot_triage_ids = {ident for snapshot in snapshots for ident in snapshot["triage_assessment_ids"]}
-        snapshot_origin_ids = {ident for snapshot in snapshots for ident in snapshot["origin_assessment_ids"]}
-        snapshot_hit_ids = {ident for snapshot in snapshots for ident in snapshot["hit_ids"]}
-        selected_ids = bundle["selection_manifest"].get("selected_hit_ids")
-        rejected_ids = bundle["selection_manifest"].get("rejected_hit_ids")
-        if not isinstance(selected_ids, list) or not isinstance(rejected_ids, list):
-            raise ValidationError("E-SELECTION-MANIFEST", f"{bundle['bundle_id']} missing hit decisions")
-        if len(selected_ids) != len(set(selected_ids)) or len(rejected_ids) != len(set(rejected_ids)):
-            raise ValidationError("E-SELECTION-MANIFEST", f"{bundle['bundle_id']} has duplicate hit decisions")
-        expected_selected = {
-            hit_id
-            for hit_id in snapshot_hit_ids
-            if catalog.get("DiscoveryHit", hit_id)["selection_status"] == "SELECTED"
-        }
-        expected_rejected = snapshot_hit_ids - expected_selected
-        if set(selected_ids) != expected_selected or set(rejected_ids) != expected_rejected:
-            raise ValidationError("E-SELECTION-MANIFEST", f"{bundle['bundle_id']} hit decisions do not match snapshots")
         quality_snapshots = [snapshot for snapshot in snapshots if "quality_gate" in snapshot]
         bound_review_ids = sorted_ids(
             review_id
@@ -520,9 +411,6 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
                 )
         for retrieval_id in bundle.get("retrieval_ids") or []:
             retrieval = catalog.get("Retrieval", retrieval_id)
-            hit_id = retrieval.get("discovery_hit_id")
-            if hit_id and hit_id not in expected_selected:
-                raise ValidationError("E-SELECTION-MANIFEST", f"{retrieval_id} comes from an unselected hit")
             if retrieval.get("access_kind") == "full_text_chapter":
                 triage_id = retrieval.get("triage_assessment_id")
                 if not triage_id or triage_id not in set(bundle.get("triage_assessment_ids") or []):
@@ -550,8 +438,6 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
             raise ValidationError("E-OUT-OF-SNAPSHOT", f"{bundle['bundle_id']} cites artifact outside snapshots")
         if set(bundle.get("triage_assessment_ids") or []) - snapshot_triage_ids:
             raise ValidationError("E-OUT-OF-SNAPSHOT", f"{bundle['bundle_id']} cites triage outside snapshots")
-        if set(bundle.get("origin_assessment_ids") or []) - snapshot_origin_ids:
-            raise ValidationError("E-OUT-OF-SNAPSHOT", f"{bundle['bundle_id']} cites origin outside snapshots")
         for document_id in bundle["document_ids"]:
             document = catalog.get("ParsedDocument", document_id)
             if document["input_artifact_id"] not in bundle.get("artifact_ids", []):
@@ -564,10 +450,6 @@ def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> N
             catalog.get("Retrieval", rid)
         for assessment_id in bundle.get("triage_assessment_ids") or []:
             assessment = catalog.get("TriageAssessment", assessment_id)
-            if assessment["policy_hash"] != bundle["policy_bundle_hash"]:
-                raise ValidationError("E-POLICY-HASH", f"{assessment_id} policy differs from bundle")
-        for assessment_id in bundle.get("origin_assessment_ids") or []:
-            assessment = catalog.get("OriginAssessment", assessment_id)
             if assessment["policy_hash"] != bundle["policy_bundle_hash"]:
                 raise ValidationError("E-POLICY-HASH", f"{assessment_id} policy differs from bundle")
         for aid in bundle.get("artifact_ids") or []:
@@ -660,23 +542,16 @@ def bundle_hash(catalog: Catalog, bundle: dict[str, Any]) -> str:
         return [catalog.get(kind, ident) for ident in sorted_ids(ids)]
 
     snapshots = records("CollectionSnapshot", bundle["collection_snapshot_ids"])
-    campaign_ids = {snapshot["campaign_id"] for snapshot in snapshots}
-    search_run_ids = {run_id for snapshot in snapshots for run_id in snapshot["search_run_ids"]}
-    hit_ids = {hit_id for snapshot in snapshots for hit_id in snapshot["hit_ids"]}
     snapshot_retrieval_ids = {rid for snapshot in snapshots for rid in snapshot["retrieval_ids"]}
     snapshot_artifact_ids = {aid for snapshot in snapshots for aid in snapshot["artifact_ids"]}
     snapshot_triage_ids = {aid for snapshot in snapshots for aid in snapshot["triage_assessment_ids"]}
-    snapshot_origin_ids = {aid for snapshot in snapshots for aid in snapshot["origin_assessment_ids"]}
     snapshot_decision_ids = {
         ident for snapshot in snapshots for ident in snapshot.get("collection_decision_ids", [])
     }
     snapshot_review_ids = {
         ident for snapshot in snapshots for ident in snapshot.get("collection_review_ids", [])
     }
-    campaigns = records("SearchCampaign", list(campaign_ids))
-    search_runs = records("SearchRun", list(search_run_ids))
-    query_ids = {run["query_id"] for run in search_runs}
-    request_ids = {bundle["request_id"], *(campaign["request_id"] for campaign in campaigns)}
+    request_ids = {bundle["request_id"], *(snapshot["request_id"] for snapshot in snapshots)}
     segments = records("Segment", bundle["segment_ids"])
     for seg in segments:
         if seg["normalized_text_hash"] != text_hash(seg["normalized_text"]):
@@ -704,22 +579,13 @@ def bundle_hash(catalog: Catalog, bundle: dict[str, Any]) -> str:
         key=lambda parse: parse["parse_run_id"],
     )
     triage = records("TriageAssessment", bundle.get("triage_assessment_ids") or [])
-    origins = records("OriginAssessment", bundle.get("origin_assessment_ids") or [])
     snapshot_retrievals = records("Retrieval", list(snapshot_retrieval_ids))
-    snapshot_origins = records("OriginAssessment", list(snapshot_origin_ids))
     source_ids = {r["source_id"] for r in [*retrievals, *snapshot_retrievals]}
-    for origin in [*origins, *snapshot_origins]:
-        source_ids.update((origin["source_a"], origin["source_b"]))
     payload = {
         "requests": records("ResearchRequest", list(request_ids)),
-        "campaigns": campaigns,
-        "query_specs": records("QuerySpec", list(query_ids)),
-        "search_runs": search_runs,
-        "discovery_hits": records("DiscoveryHit", list(hit_ids)),
         "snapshot_retrievals": snapshot_retrievals,
         "snapshot_artifacts": records("Artifact", list(snapshot_artifact_ids)),
         "snapshot_triage_assessments": records("TriageAssessment", list(snapshot_triage_ids)),
-        "snapshot_origin_assessments": snapshot_origins,
         "collection_decisions": records("CollectionDecision", list(snapshot_decision_ids)),
         "collection_reviews": records("CollectionReview", list(snapshot_review_ids)),
         "collection_snapshots": snapshots,
@@ -731,7 +597,6 @@ def bundle_hash(catalog: Catalog, bundle: dict[str, Any]) -> str:
         "documents": documents,
         "segments": segments,
         "triage_assessments": triage,
-        "origin_assessments": origins,
         "profile_id": bundle["profile_id"],
         "policy_bundle_hash": bundle["policy_bundle_hash"],
         "selection_manifest": bundle["selection_manifest"],

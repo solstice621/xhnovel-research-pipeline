@@ -144,25 +144,6 @@ def prepare_novel_evidence_bundle(
     validate_schema("ResearchRequest", request)
     catalog.add("ResearchRequest", request)
     policy_hash = policy_bundle_hash(repo_root)
-    campaign_input = {
-        "request_id": request["request_id"],
-        "planner_build_id": ingestion["adapter_build_id"],
-        "coverage_goals": ["ingest every discovered chapter"],
-        "budget": request["budget"],
-        "iterations": 1,
-        "stop_policy_hash": object_hash(
-            {"stop": "adapter exhausted after every discovered chapter is fetched"}, omit=()
-        ),
-        "status": "EXHAUSTED",
-        "stop_reason": "provider_exhausted",
-        "created_at": now,
-    }
-    campaign = {
-        "schema_version": SCHEMA_VERSION,
-        "campaign_id": derived_id("SearchCampaign", campaign_input),
-        **campaign_input,
-    }
-    catalog.add("SearchCampaign", campaign)
     required_decisions = []
     rubric_artifact_id = None
     ingestion_chapters = [
@@ -295,16 +276,14 @@ def prepare_novel_evidence_bundle(
     base_snapshot = {
         "schema_version": SCHEMA_VERSION,
         "snapshot_id": "SNP-PENDING",
-        "campaign_id": campaign["campaign_id"],
-        "search_run_ids": [],
-        "hit_ids": [],
+        "request_id": request["request_id"],
+        "ingestion_run_id": ingestion["ingestion_run_id"],
         "retrieval_ids": sorted_ids(ready_retrieval_ids),
         "artifact_ids": sorted_ids(snapshot_artifact_ids),
         "triage_assessment_ids": sorted_ids(
             catalog.get("Retrieval", chapter["retrieval_id"])["triage_assessment_id"]
             for chapter in ready_chapters
         ),
-        "origin_assessment_ids": [],
         "snapshot_hash": "sha256:" + "0" * 64,
         "frozen_at": now,
         "supersedes": None,
@@ -331,8 +310,6 @@ def prepare_novel_evidence_bundle(
         for retrieval_id in ready_retrieval_ids
     ]
     selection_manifest = {
-        "selected_hit_ids": [],
-        "rejected_hit_ids": [],
         "selected_chapter_ids": ingestion["ready_chapter_ids"],
         "duplicate_chapter_ids": ingestion["duplicate_chapter_ids"],
         "collection_review_ids": list(reviewed_snapshot["collection_review_ids"]),
@@ -347,7 +324,6 @@ def prepare_novel_evidence_bundle(
         retrieval_ids=ready_retrieval_ids,
         artifact_ids=sorted_ids(set(ready_artifact_ids)),
         triage_assessment_ids=ready_triage_ids,
-        origin_assessment_ids=[],
         selection_manifest=selection_manifest,
         profile_id=PROFILE_ID,
         policy_bundle_hash=policy_hash,
