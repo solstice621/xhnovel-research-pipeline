@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/claim.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "claim_id",
+    "extraction_run_id",
+    "kind",
+    "status",
+    "grade",
+    "statement",
+    "profile_schema",
+    "profile_payload",
+    "support"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-draft-frozen"
+    },
+    "claim_id": {
+      "type": "string",
+      "pattern": "^CLM-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "extraction_run_id": {
+      "type": "string",
+      "pattern": "^ERUN-[A-Z0-9][A-Z0-9._:-]{1,}$"
+    },
+    "kind": {
+      "enum": [
+        "ORIGINAL_FACT",
+        "RECEPTION"
+      ]
+    },
+    "status": {
+      "enum": [
+        "ACTIVE",
+        "SUPERSEDED",
+        "ARCHIVED"
+      ]
+    },
+    "grade": {
+      "enum": [
+        "CONFIRMED",
+        "SUPPORTED",
+        "INFERRED",
+        "UNKNOWN",
+        "CONFLICTING"
+      ]
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_schema": {
+      "type": "string"
+    },
+    "profile_payload": {
+      "type": "object"
+    },
+    "support": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "retrieval_id",
+          "artifact_id",
+          "segment_id",
+          "normalized_text_hash"
+        ],
+        "properties": {
+          "retrieval_id": {
+            "type": "string",
+            "pattern": "^RET-[A-Z0-9][A-Z0-9._:-]{1,}$"
+          },
+          "artifact_id": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "segment_id": {
+            "type": "string",
+            "pattern": "^SEG-[A-Z0-9][A-Z0-9._:-]{1,}$"
+          },
+          "normalized_text_hash": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}
