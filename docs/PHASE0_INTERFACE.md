@@ -2,16 +2,19 @@
 
 ## Status
 
-**Design baseline (A″) — not yet implemented, one narrow re-review pending before
+**Design baseline (A‴) — not yet implemented, one narrow re-review pending before
 "frozen".** This document is the contract that the Phase 0 exploration layer and the
 existing evidence compiler must satisfy. It was reviewed against the current source
 tree; every claim it makes about existing code was verified against the tree at
 `eaf281a` (file:line evidence is inlined below). A′ (`7e5203c`) established the
-baseline and absorbed the first review's nine decisions; A″ (this revision) fixes
-five interface contradictions found in A′ (WorkRef identity collision, incomplete
-rebuild closure, unenforceable receipts, impossible byte-for-byte gate, over-broad
-normalizer test). Implementation proceeds
-`A′ → A″ (this doc) → P0-C1 → P0-C2 → P0-A → P0-B → P0-D → P0-E`.
+baseline and absorbed the first review's nine decisions; A″ (`7521302`) fixed five
+interface contradictions; A‴ (this revision) fixes three residual contradictions —
+two of them introduced by A″ itself: (1) `frozen_at` was described as excluded but the
+hash formulas did not `omit` it, and `handoff_id` omitted `build_request_artifact_id`
+(same-id/different-bytes collision); (2) `execute-handoff` had no state for the legal
+agent-files `WAITING_FOR_AGENT` pass; (3) the validator adversarial test demanded
+identical failure for inputs that are legal under `RUNTIME_COMPAT`. Implementation
+proceeds `A′ → A″ → A‴ (this doc) → P0-C1 → P0-C2 → P0-A → P0-B → P0-D → P0-E`.
 
 Nothing here lands on the `agent-files` executor branch. Phase 0 is a separate epic
 and must **not** block the xuanhuan experiments: a hand-written Novel Spec plus a
@@ -278,14 +281,27 @@ cover Phase 0's new self-hash fields — `hashing.py:11-18`, so they would other
 hash into themselves):
 
 ```text
-brief_hash   = object_hash(brief,   omit=("brief_hash",))
-lead_hash    = object_hash(lead,    omit=("lead_hash",))
+brief_hash   = object_hash(brief,   omit=("brief_hash", "frozen_at"))
+lead_hash    = object_hash(lead,    omit=("lead_hash", "frozen_at"))
 handoff_hash = object_hash(handoff, omit=("handoff_hash",))
 
 lead_id     = derived_id("ResearchLead",   {brief_id, work_claim, scene_hint, lead_sources})   # excludes frozen_at
 handoff_id  = derived_id("EvidenceHandoff", {brief_id, motivating_lead_ids(sorted), work_ref_id,
-                                             source_ref_id, expected_input_spec_hash})          # excludes requested_at
+                                             source_ref_id, expected_input_spec_hash,
+                                             build_request_artifact_id})
 ```
+
+`frozen_at` is explicitly in the `omit` set for `brief_hash`/`lead_hash` (and absent
+from the id payloads), so two records identical except for their record time share a
+semantic hash and an id — the exact-file bytes are still bound by the CAS
+`artifact_id`. `handoff_id` **includes `build_request_artifact_id`**: without it, two
+builds with identical semantic inputs but different `requested_at` would produce the
+same `handoff_id` yet different `handoff_hash`/bytes — one `EHO-*` mapping to two
+immutable contents. Including it means a given build request rebuilds one Handoff, a
+new build request yields a new `handoff_id`, and same-execution dedup still runs off
+`expected_input_spec_hash`. (`handoff_hash` retains `requested_at` because it hashes
+the literal stored object; the id does not, because identity flows through the
+build-request artifact.)
 
 **Time is content-bound, not self-reported.** A validator that must rebuild
 byte-identical output cannot invent a timestamp. So the builder takes a content-bound
@@ -293,7 +309,8 @@ byte-identical output cannot invent a timestamp. So the builder takes a content-
 (`build_request_artifact_id`), and the Handoff carries `requested_at` copied verbatim
 from it — there is no separately-minted `created_at`. Replay reads `requested_at`
 from the build request, reproducing the same bytes. (`frozen_at` on Brief/Leads is
-likewise excluded from every id and hash, so it never affects identity or replay.)
+`omit`'d from their semantic hashes and absent from their id payloads, so it never
+affects identity or replay.)
 
 ---
 
@@ -565,21 +582,56 @@ directly, have ingestion fail on a corrupt EPUB, never call
 
 So P0-E freezes an **authoritative execution entry point** that wraps (never
 replaces) the native path — `xhnovel-pipeline execute-handoff handoff.json`
-(`execute_evidence_handoff()`):
+(`execute_evidence_handoff()`). It must model the agent-files two-pass control flow,
+because agent-files is the primary executor and its **first** pass legally returns
+`exit 3 / WAITING_FOR_AGENT` (`AgentResponsesPending`, caught before any failure
+handler — `cli.py:328`), which is neither success nor failure:
 
 ```text
 validate the Handoff (deterministic replay)
-→ atomically write an immutable STARTED attempt marker BEFORE calling the compiler
+→ atomically write / resume an immutable STARTED attempt marker BEFORE calling the compiler
 → call the existing run_novel_research / research-novel path unchanged
-→ on success: verify full lineage, write a terminal SUCCEEDED receipt
-→ on failure: capture the native error code, write a terminal FAILED receipt
+→ exit 3 (AgentResponsesPending): record WAITING_FOR_AGENT on the attempt; NO terminal receipt
+→ success: verify full lineage, write a terminal SUCCEEDED receipt
+→ native failure: capture the native error code, write a terminal FAILED receipt
 ```
 
-The STARTED marker is what closes the gap. A marker with **no** terminal receipt is
-`INTERRUPTED / INCOMPLETE` — it must not be silently reclassified as `FAILED` or as
-`prepared_not_executed`. **The experiment denominator is reconstructed from the
-immutable attempt markers, not from an execution agent's self-report of "which
-Handoffs I tried."**
+The attempt is a small state machine:
+
+```text
+STARTED
+   ↓
+WAITING_FOR_AGENT        # legal, non-terminal (agent-files pass 1)
+   ↓
+SUCCEEDED | FAILED       # terminal
+
+STARTED with NO WAITING and NO terminal event  → INTERRUPTED / INCOMPLETE
+```
+
+Only a STARTED attempt that recorded neither a WAITING event nor a terminal receipt
+is `INTERRUPTED` (a crash/kill) — a legitimately-pending agent-files attempt is
+`WAITING_FOR_AGENT`, never misread as INTERRUPTED or `prepared_not_executed`. The
+agent-files flow is therefore two `execute-handoff` calls, not two bare `research-novel`
+calls:
+
+```bash
+xhnovel-pipeline execute-handoff handoff.json --executor agent-files --work-dir W
+# exit 3; attempt state = WAITING_FOR_AGENT
+# ... host agent writes answers ...
+xhnovel-pipeline execute-handoff handoff.json --executor agent-files --work-dir W
+# resumes the SAME attempt (co-located checkpoint); on success writes SUCCEEDED
+```
+
+Rules: the second identical `execute-handoff` **resumes the same attempt** (it does
+not open a second STARTED); `AgentResponsesPending` never writes a FAILED terminal
+receipt; direct `research-novel` remains a valid lower-level capability but a run not
+launched through `execute-handoff` is **not** a receipt-managed attempted Handoff and
+must not be counted as one. A real retry after a terminal FAILED opens a **new**
+attempt with its own `attempt_id` / `attempt_ordinal`, so a Handoff's attempt history
+is unambiguous.
+
+**The experiment denominator is reconstructed from the immutable attempt markers, not
+from an execution agent's self-report of "which Handoffs I tried."**
 
 ```json
 // success
@@ -600,10 +652,13 @@ Rule:
 ```text
 A Handoff may exist unexecuted (prepared_not_executed, no STARTED marker).
 Once execute-handoff writes a STARTED marker, that attempt is permanent:
-  STARTED + terminal receipt  → SUCCEEDED / FAILED
-  STARTED + no terminal       → INTERRUPTED / INCOMPLETE (never silently dropped)
+  STARTED → WAITING_FOR_AGENT       → (resume) → SUCCEEDED / FAILED   (agent-files two-pass)
+  STARTED                           → SUCCEEDED / FAILED              (API, single pass)
+  STARTED + no WAITING + no terminal → INTERRUPTED / INCOMPLETE       (crash/kill, never dropped)
+A real retry after FAILED opens a NEW attempt (attempt_id / attempt_ordinal).
 Any Handoff counted as attempted / processed / converted / supported / included in an
-experiment denominator or result is counted from its immutable marker, not self-report.
+experiment denominator or result is counted from its immutable marker, not self-report;
+a run launched via bare research-novel (not execute-handoff) is not a receipt-managed attempt.
 ```
 
 ---
@@ -699,25 +754,38 @@ tests/{test_phase0_contracts,test_phase0_handoff,test_phase0_integration}.py
   but exec key changes. Any general-punctuation normalization is a separate change that
   extends `normalize_work_title()` and is evaluated for collisions against existing
   ranking/source matching.
-- **Validator reuse** — the same illegal spec must fail the same way at
-  `research-novel` preflight and at `prepare-handoff` (illegal source kind,
-  nonexistent local path, UNKNOWN rights, `may_send_to_external_model=false`, PARTIAL
-  quality, missing explicit brief, illegal window size/overlap, post-path-resolution
-  hash).
+- **Validator — shared-invalid parity** — inputs illegal under *both* purposes fail
+  the same way (same primitive, same core error code) at `research-novel` preflight and
+  at `prepare-handoff`: unsupported source kind, malformed rights shape, UNKNOWN rights
+  with external-model execution, `may_send_to_external_model=false`, illegal `limits`
+  types, illegal `scene_scout` field types, illegal window size/overlap. This tests the
+  shared validation logic — **not** that the two entry points fail at the same moment or
+  produce the same work-dir side effects (P0-C2 is a static preflight; the runtime
+  validates some of this later).
+- **Validator — Handoff-only strictness** — inputs legal under `RUNTIME_COMPAT` but
+  rejected under `EVIDENCE_HANDOFF`: a missing explicit `discovery_brief`
+  (`RUNTIME_COMPAT` → existing default; `EVIDENCE_HANDOFF` → REJECT); PARTIAL / Tier D
+  source quality (`RUNTIME_COMPAT` → lead-only, no event-fact windows;
+  `EVIDENCE_HANDOFF` → REJECT).
 - **Builder replay** — mutate any byte of a stored Handoff → `validate_evidence_handoff`
   rejects; regenerate from the content-bound build request + Brief + Leads +
   SourceDeclaration → byte-identical (including `requested_at`, read from the build
   request). A referenced `*_artifact_id` whose `artifact_id_for(store.get(id)) != id`
   → reject.
 - **Receipt / marker enforcement** — `execute-handoff` writes an immutable STARTED
-  marker before invoking the compiler; a STARTED marker with no terminal receipt reads
-  as INTERRUPTED (never silently `prepared_not_executed` or `FAILED`); a Handoff
-  counted in results whose attempt is not backed by a marker → invalid. The denominator
-  is rebuilt from markers, not self-report.
+  marker before invoking the compiler; a legitimate agent-files pass-1 exit 3 records
+  `WAITING_FOR_AGENT` (non-terminal, NOT INTERRUPTED) and the second call resumes the
+  same attempt; only STARTED with neither a WAITING event nor a terminal receipt reads
+  as INTERRUPTED (never silently `prepared_not_executed` or `FAILED`); a Handoff counted
+  in results whose attempt is not backed by a marker → invalid. The denominator is
+  rebuilt from markers, not self-report.
 - **Full vertical slice** — Brief → 3 Leads → 1 Handoff → generated novel-spec →
-  `research-novel --executor agent-files` → exit 3 → answers → exit 0 → `validate all`
-  → `verify_handoff_execution`, ending with
-  `handoff.expected_input_spec_hash == ingestion.input_spec_hash`.
+  `execute-handoff --executor agent-files` → exit 3 (attempt = WAITING_FOR_AGENT) →
+  answers → same `execute-handoff` resumes the attempt → exit 0 → `validate all` →
+  terminal SUCCEEDED receipt, ending with
+  `handoff.expected_input_spec_hash == ingestion.input_spec_hash`. (The slice goes
+  through `execute-handoff`, never bare `research-novel`, so the attempt is
+  marker-managed.)
 
 ---
 
@@ -725,8 +793,9 @@ tests/{test_phase0_contracts,test_phase0_handoff,test_phase0_integration}.py
 
 - **A′ (`7e5203c`)** — design baseline; absorbed the first review's nine decisions.
   Docs-only.
-- **A″ (this revision)** — fixes the five interface contradictions (see below).
-  Docs-only; one narrow re-review, then "frozen".
+- **A″ (`7521302`)** — fixed five interface contradictions. Docs-only.
+- **A‴ (this revision)** — fixes three residual contradictions (see below). Docs-only;
+  one narrow re-review, then "frozen".
 - **P0-C1** — extract validation primitives, call sites unchanged; parity acceptance
   (format/error-semantics/side-effects/normalized-semantic parity, build-bound IDs
   expected to change — see the two-substage section).
@@ -772,14 +841,13 @@ Added by A″:
     structured `{namespace, value}`.
 11. **Full rebuild closure is frozen**: a Phase 0 `ArtifactStore` CAS at
     `.runtime/exploration/<run-id>/objects/`; a `SourceDeclaration` contract as a
-    content-bound builder input; exact formulas `brief_hash/lead_hash/handoff_hash =
-    object_hash(x, omit=(its-own-hash,))` and `lead_id/handoff_id = derived_id(...)`
-    excluding `frozen_at`/`requested_at`; and a content-bound `HandoffBuildRequest`
-    carrying `requested_at` so replay reproduces the same bytes (no separately-minted
-    `created_at`).
+    content-bound builder input; a content-bound `HandoffBuildRequest` carrying
+    `requested_at` so replay reproduces the same bytes (no separately-minted
+    `created_at`). Exact hash/ID formulas are pinned in the replay section (A‴ item 16).
 12. **Attempts are enforced by an authoritative `execute-handoff` wrapper** that writes
-    an immutable STARTED marker before calling the compiler; STARTED-without-terminal =
-    INTERRUPTED; the experiment denominator is rebuilt from markers.
+    an immutable STARTED marker before calling the compiler; the attempt state machine
+    (A‴ item 17) distinguishes legal agent-files `WAITING_FOR_AGENT` from a crash; the
+    experiment denominator is rebuilt from markers.
 13. **P0-C1 acceptance is parity, not cross-commit byte-for-byte** — adding/editing a
     module changes `source_tree_hash` and every build-bound id/path by design; only the
     pure primitives' function-level output is compared byte-for-byte.
@@ -789,6 +857,28 @@ Added by A″:
 15. **`additionalProperties:false` forbids evidence-like *fields* only.** "Lead prose
     must not assert the scene is proven by the text" is semantic discipline
     (Skill/reviewer/lint), not a schema guarantee.
+
+Added by A‴:
+
+16. **`frozen_at` is `omit`'d from `brief_hash`/`lead_hash` and absent from all id
+    payloads** (the narrative and the formulas now agree); **`handoff_id` includes
+    `build_request_artifact_id`**, so a given build request rebuilds one Handoff and a
+    new request yields a new id — no single `EHO-*` maps to two immutable contents.
+    Same-execution dedup still runs off `expected_input_spec_hash`.
+17. **`execute-handoff` models the agent-files two-pass state machine**
+    `STARTED → WAITING_FOR_AGENT → SUCCEEDED|FAILED`. A legal pass-1 exit 3 is
+    `WAITING_FOR_AGENT` (non-terminal); the second identical call resumes the same
+    attempt (co-located checkpoint), not a new STARTED; `AgentResponsesPending` never
+    writes FAILED; only STARTED with no WAITING and no terminal is INTERRUPTED. A retry
+    after FAILED opens a new `attempt_id`/`attempt_ordinal`. Bare `research-novel` is a
+    valid capability but is not a receipt-managed attempt; the vertical slice goes
+    through `execute-handoff`.
+18. **Validator adversarial tests split by purpose.** Shared-invalid inputs fail the
+    same way under both `RUNTIME_COMPAT` and `EVIDENCE_HANDOFF` (shared primitive, same
+    core error code — but not necessarily at the same moment or with the same side
+    effects). Handoff-only strictness (missing explicit `discovery_brief`; PARTIAL /
+    Tier D quality) is legal under `RUNTIME_COMPAT` (default brief; lead-only) and
+    rejected only under `EVIDENCE_HANDOFF`.
 
 ## Relationship to other docs
 
