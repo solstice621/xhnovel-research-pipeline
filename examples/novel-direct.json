@@ -15,6 +15,9 @@
     "edition_status": "USER_VERIFIED_COPY",
     "textual_completeness": "COMPLETE"
   },
+  "request": {
+    "discovery_brief": "寻找对象控制变化及其后续行动空间"
+  },
   "limits": {
     "max_chapters": 20,
     "max_bytes": 1000000

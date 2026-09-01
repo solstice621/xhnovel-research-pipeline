@@ -39,10 +39,35 @@ Quick start:
 ```powershell
 python -m pip install -e ".[dev]"
 xhnovel-pipeline ingest-novel examples/novel-direct.json --work-dir .runtime/demo
-xhnovel-pipeline research-novel examples/novel-direct.json `
-  --scout-model <model-snapshot> --work-dir .runtime/demo-research
 python -m pytest
 ```
+
+Scene discovery runs through one of two native executors.
+
+**API executor** — an OpenAI-compatible model answers:
+
+```powershell
+xhnovel-pipeline research-novel examples/novel-direct.json `
+  --scout-model <model-snapshot> --work-dir .runtime/demo-research
+```
+
+**Agent-files executor** — the host code agent (Cursor, Claude Code, Codex)
+answers native tasks; no model API key. It is a two-pass flow: the first run
+materializes tasks and exits with code **3 = `WAITING_FOR_AGENT` (not a failure)**;
+you fill in one JSON answer per task, then rerun the identical command to complete:
+
+```powershell
+xhnovel-pipeline research-novel examples/novel-direct.json `
+  --executor agent-files --work-dir .runtime/demo-research
+# exit 3: answer each task under .runtime/demo-research/scene-scout/agent-files/tasks/
+xhnovel-pipeline research-novel examples/novel-direct.json `
+  --executor agent-files --work-dir .runtime/demo-research
+```
+
+See [skills/xhnovel-agent-files/SKILL.md](skills/xhnovel-agent-files/SKILL.md) for
+the host-agent operating contract and
+[docs/AGENT_EXECUTION.md](docs/AGENT_EXECUTION.md) for worker sandboxing.
+
 
 ## Running experiments
 
