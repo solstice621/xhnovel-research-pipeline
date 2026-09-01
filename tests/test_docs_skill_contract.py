@@ -11,13 +11,20 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
+import sys
 
 import pytest
 
 from xhnovel_pipeline.paths import repo_root
 
 ROOT = repo_root()
-SKILL = ROOT / "skills" / "xhnovel-agent-files" / "SKILL.md"
+SKILL_REL = ("skills", "xhnovel-agent-files", "SKILL.md")
+# Canonical source (Codex/Cursor discover .agents/skills); the .claude mirror is a
+# byte-identical projection produced by scripts/sync_skills.py.
+SKILL = ROOT.joinpath(".agents", *SKILL_REL)
+SKILL_MIRROR = ROOT.joinpath(".claude", *SKILL_REL)
+OLD_TOP_LEVEL_SKILL = ROOT.joinpath(*SKILL_REL)
 README = ROOT / "README.md"
 PROTOCOL = ROOT / "docs" / "EXPERIMENT_PROTOCOL.md"
 AGENT_EXEC = ROOT / "docs" / "AGENT_EXECUTION.md"
@@ -33,6 +40,49 @@ def _real_flags() -> set[str]:
 def _real_subcommands() -> set[str]:
     text = (ROOT / "src" / "xhnovel_pipeline" / "cli.py").read_text(encoding="utf-8")
     return set(re.findall(r'add_parser\(\s*"([a-z0-9-]+)"', text))
+
+
+def _frontmatter(path) -> dict[str, str]:
+    text = path.read_text(encoding="utf-8")
+    m = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
+    assert m, f"{path} has no YAML frontmatter"
+    fields = {}
+    for line in m.group(1).splitlines():
+        if ":" in line:
+            key, _, value = line.partition(":")
+            fields[key.strip()] = value.strip()
+    return fields
+
+
+# ---------------------------------------------------------------------------
+# Skill discovery layout: canonical in .agents, byte-identical mirror in .claude,
+# no stale top-level copy, frontmatter name matches the skill directory.
+# ---------------------------------------------------------------------------
+def test_skill_lives_in_host_discovery_dirs_and_mirror_is_identical():
+    assert SKILL.is_file(), f"canonical Skill missing: {SKILL}"
+    assert SKILL_MIRROR.is_file(), f"Claude mirror missing: {SKILL_MIRROR}"
+    assert SKILL.read_bytes() == SKILL_MIRROR.read_bytes(), (
+        "Skill mirror drifted from canonical; run: python scripts/sync_skills.py"
+    )
+    assert not OLD_TOP_LEVEL_SKILL.exists(), (
+        f"stale non-discoverable top-level Skill still present: {OLD_TOP_LEVEL_SKILL}"
+    )
+
+
+def test_skill_frontmatter_name_matches_directory():
+    fm = _frontmatter(SKILL)
+    assert fm.get("name") == "xhnovel-agent-files" == SKILL.parent.name
+    assert fm.get("description", "").strip()
+
+
+def test_sync_skills_check_passes():
+    result = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "sync_skills.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
 
 
 def test_skill_and_readme_reference_only_real_flags():

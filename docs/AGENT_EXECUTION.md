@@ -3,7 +3,7 @@
 This document defines the operating discipline for a host code agent (Cursor,
 Claude Code, Codex, or any orchestrator) that completes xhnovel Scene Scout tasks
 in `--executor agent-files` mode. See
-[`skills/xhnovel-agent-files/SKILL.md`](../skills/xhnovel-agent-files/SKILL.md)
+[`.agents/skills/xhnovel-agent-files/SKILL.md`](../.agents/skills/xhnovel-agent-files/SKILL.md)
 for the command flow; this document is about *how the worker behaves*, not *which
 command to run*.
 

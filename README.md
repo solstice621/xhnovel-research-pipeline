@@ -64,7 +64,7 @@ xhnovel-pipeline research-novel examples/novel-direct.json `
   --executor agent-files --work-dir .runtime/demo-research
 ```
 
-See [skills/xhnovel-agent-files/SKILL.md](skills/xhnovel-agent-files/SKILL.md) for
+See [.agents/skills/xhnovel-agent-files/SKILL.md](.agents/skills/xhnovel-agent-files/SKILL.md) for
 the host-agent operating contract and
 [docs/AGENT_EXECUTION.md](docs/AGENT_EXECUTION.md) for worker sandboxing.
 
