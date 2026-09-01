@@ -2,11 +2,16 @@
 
 ## Status
 
-**Design frozen — not yet implemented.** This document is the contract that the
-Phase 0 exploration layer and the existing evidence compiler must satisfy. It was
-reviewed against the current source tree; every claim it makes about existing code
-was verified at freeze time (file:line evidence is inlined below). Implementation
-proceeds `A′ (this doc) → P0-C1 → P0-C2 → P0-A → P0-B → P0-D → P0-E`.
+**Design baseline (A″) — not yet implemented, one narrow re-review pending before
+"frozen".** This document is the contract that the Phase 0 exploration layer and the
+existing evidence compiler must satisfy. It was reviewed against the current source
+tree; every claim it makes about existing code was verified against the tree at
+`eaf281a` (file:line evidence is inlined below). A′ (`7e5203c`) established the
+baseline and absorbed the first review's nine decisions; A″ (this revision) fixes
+five interface contradictions found in A′ (WorkRef identity collision, incomplete
+rebuild closure, unenforceable receipts, impossible byte-for-byte gate, over-broad
+normalizer test). Implementation proceeds
+`A′ → A″ (this doc) → P0-C1 → P0-C2 → P0-A → P0-B → P0-D → P0-E`.
 
 Nothing here lands on the `agent-files` executor branch. Phase 0 is a separate epic
 and must **not** block the xuanhuan experiments: a hand-written Novel Spec plus a
@@ -58,6 +63,9 @@ These are what Phase 0 builds on. Each was confirmed against the tree at `eaf281
 | External-model egress requires `basis != "UNKNOWN"` AND `may_send_to_external_model == True` (`E-RIGHTS-EXTERNAL-MODEL`); storage gated separately by `may_store_full_text` (`E-RIGHTS-STORAGE`) | `novel_assessment.py:63-71` |
 | Deterministic source-quality tiers: `COMPLETE+OFFICIAL→A`; `COMPLETE+(PUBLISHED_EDITION\|USER_VERIFIED_COPY)→B`; else `D` (lead-only). Tier `C` exists only in the separate reviewer path | `novel_assessment.py:197-206`; `377-432` |
 | `discovery_brief` is sourced from `spec.request` with a **Chinese default** if absent | `novel_workflow.py:131-133` |
+| Scene Scout build identity binds `source_tree_hash = build_source_hash(root)`, which hashes `pyproject.toml`, `requirements.lock`, **all `src/xhnovel_pipeline/*.py`**, and the profile files; `source_tree_hash` and `repository_commit` are `BUILD_IDENTITY_FIELDS` | `build_identity.py:9-18,21-38`; `scene_scout.py:828-829` |
+| `object_hash(obj, omit=SELF_HASH_FIELDS)` — the default omit set is `{bundle_hash, snapshot_hash, export_hash, result_set_hash, output_hash, structure_hash}`; any **other** self-hash field must be passed explicitly to `omit=` | `hashing.py:11-18,48-51` |
+| `artifact_id_for(data) == "sha256:" + sha256(data)` — the exact predicate for verifying a content-addressed id against fetched bytes | `hashing.py:25-26` |
 
 Two names in earlier drafts do **not** exist in the code and are therefore new
 Phase 0 fields, not descriptions of the current tree: `effective_spec_hash`,
@@ -164,15 +172,22 @@ It does **not** answer whether the scene actually occurs or what the world-state
 }
 ```
 
-Hard constraints (enforce structurally with `additionalProperties: false`, not with
-prompt reminders):
+Hard constraints — two layers, because a JSON Schema cannot police natural language:
+
+*Structural (schema-enforced, `additionalProperties: false`):*
 
 ```text
 assurance == UNVERIFIED_LEAD
 lead_sources[*].role == LEAD_ONLY
-MUST NOT contain: source_spans, segment_id, KNOWN, CONFLICTING,
-                  SceneCandidate, MechanismCandidate, "原文已经证明…"
+MUST NOT contain the fields: source_spans, segment_id, KNOWN, CONFLICTING,
+                             SceneCandidate, MechanismCandidate
 ```
+
+*Semantic (discipline, enforced by the Skill / reviewer / a semantic lint — NOT by
+the schema):* Lead prose (e.g. `scene_hint.summary`) must not state a scene as
+already proven by the novel text ("原文已经证明…"). A schema can forbid evidence-like
+*fields*; it cannot reliably detect a semantically-equivalent assertion in free text.
+Do not claim this is a JSON-Schema guarantee.
 
 `lead_id` derives from `{brief_id, work_claim, scene_hint, lead_sources}`, excluding
 `frozen_at`, so the same discovery always yields the same id even if re-run later.
@@ -204,6 +219,7 @@ text already meet every condition to run the existing Evidence Compiler?" It is
   "novel_spec": {"path": "novel-spec.json", "raw_artifact_id": "sha256:...",
                  "expected_input_spec_hash": "sha256:..."},
   "builder": {"build_id": "phase0-handoff-builder-v1",
+              "build_request_artifact_id": "sha256:...",
               "exploration_brief_artifact_id": "sha256:...",
               "research_lead_artifact_ids": ["sha256:..."],
               "source_declaration_artifact_id": "sha256:..."},
@@ -211,8 +227,8 @@ text already meet every condition to run the existing Evidence Compiler?" It is
                 "may_store_full_text": true, "may_send_to_external_model": true,
                 "source_quality_tier": "B", "discovery_brief_hash": "sha256:..."},
   "contains_evidence": false,
-  "handoff_hash": "sha256:...",
-  "created_at": "<iso8601>"
+  "requested_at": "<iso8601, copied verbatim from the build request>",
+  "handoff_hash": "sha256:..."
 }
 ```
 
@@ -231,14 +247,53 @@ authoritative rule is:
 > `validate_evidence_handoff()` deterministically **replays** that constructor from
 > content-bound inputs and compares the result byte-for-byte to the stored Handoff.
 
-`validate_evidence_handoff()` must: read the Brief, all Leads, and the
-SourceDeclaration (by their `*_artifact_id`); re-resolve WorkRef and SourceRef;
-re-group `motivating_lead_ids`; re-derive rights/quality readiness; regenerate the
-Novel Spec; re-run `load_novel_spec`; recompute `expected_input_spec_hash`;
-reconstruct the whole `EvidenceHandoff`; and exact-compare to what is on disk. Any
-difference is rejected. If a human hand-writes byte-identical output, that is fine —
-it satisfies every rebuild invariant. What matters is reconstructibility from
-content-bound inputs, not who pressed the keys.
+`validate_evidence_handoff()` must: read the build request, the Brief, all Leads,
+and the SourceDeclaration (by their `*_artifact_id`); re-resolve WorkRef and
+SourceRef; re-group `motivating_lead_ids`; re-derive rights/quality readiness;
+regenerate the Novel Spec; re-run `load_novel_spec`; recompute
+`expected_input_spec_hash`; reconstruct the whole `EvidenceHandoff`; and exact-compare
+to what is on disk. Any difference is rejected. If a human hand-writes byte-identical
+output, that is fine — it satisfies every rebuild invariant. What matters is
+reconstructibility from content-bound inputs, not who pressed the keys.
+
+For that promise to hold, three things must be frozen — none were pinned in A′:
+
+**(a) Phase 0 CAS + artifact verification.** Phase 0 uses the existing
+`ArtifactStore` rooted at `.runtime/exploration/<run-id>/objects/` as its **own**
+content-addressed store, kept out of the core `Catalog`. Every `*_artifact_id` a
+Handoff references is resolved with `store.get(id)` and verified with
+`artifact_id_for(bytes) == id` (`hashing.py:25`). A validator that trusts a
+same-named file in the work dir instead makes `*_artifact_id` decorative; that is
+forbidden.
+
+**(b) A `SourceDeclaration` contract** (`contracts/source-declaration.schema.json`,
+a content-bound builder input) supplying everything WorkRef/SourceRef/rights/quality
+resolution needs: the work resolution declaration (basis-specific identity payload),
+the source spec, rights, source quality, resolution basis, and a user-confirmation
+artifact where applicable. rights/quality/work mapping are derived **from this
+declaration**, never guessed by the builder.
+
+**(c) Exact hash/ID formulas** (because `object_hash`'s default `omit` does **not**
+cover Phase 0's new self-hash fields — `hashing.py:11-18`, so they would otherwise
+hash into themselves):
+
+```text
+brief_hash   = object_hash(brief,   omit=("brief_hash",))
+lead_hash    = object_hash(lead,    omit=("lead_hash",))
+handoff_hash = object_hash(handoff, omit=("handoff_hash",))
+
+lead_id     = derived_id("ResearchLead",   {brief_id, work_claim, scene_hint, lead_sources})   # excludes frozen_at
+handoff_id  = derived_id("EvidenceHandoff", {brief_id, motivating_lead_ids(sorted), work_ref_id,
+                                             source_ref_id, expected_input_spec_hash})          # excludes requested_at
+```
+
+**Time is content-bound, not self-reported.** A validator that must rebuild
+byte-identical output cannot invent a timestamp. So the builder takes a content-bound
+`HandoffBuildRequest` (with `requested_at`) as an input artifact
+(`build_request_artifact_id`), and the Handoff carries `requested_at` copied verbatim
+from it — there is no separately-minted `created_at`. Replay reads `requested_at`
+from the build request, reproducing the same bytes. (`frozen_at` on Brief/Leads is
+likewise excluded from every id and hash, so it never affects identity or replay.)
 
 ---
 
@@ -309,19 +364,42 @@ rather than re-scanning.
 
 ### `WorkRef` — bibliographic identity ("which literary work?")
 
-Minimal fields: `work_ref_id, canonical_title, normalized_title, author,
+Descriptive fields: `work_ref_id, canonical_title, normalized_title, author,
 normalized_author, language, aliases, external_ids, resolution_basis`.
 
-READY requires at least one of: normalized title + normalized author; a stable
-external id; or a user-confirmed explicit mapping. Title-only with unknown author is
-`AMBIGUOUS`, not READY. Use discrete `resolution_basis` values
-(`TITLE_AUTHOR | STABLE_EXTERNAL_ID | USER_CONFIRMED`), not a numeric confidence.
+READY requires at least one of three resolution bases. **The identity payload is a
+discriminated union keyed by `basis` — the three bases must not all collapse into a
+`hash(title, author, language)`, or two distinct works resolved by external id would
+collide.** Concretely, two different works both with `author = null` but
+`external_id = qidian:1001` vs `qidian:2002` would otherwise share one `work_ref_id`
+and get their Leads merged into one Handoff. So:
 
-`work_ref_id` derives from `{normalized_title, normalized_author, language}`;
-`aliases` do not participate in the primary id (they may be added later without
-changing work identity, though they do change the full Handoff hash). Title
-normalization **reuses `normalize_work_title()`** (`ranking.py:19`); Phase 0 must not
-implement a second normalizer.
+```json
+{"basis": "TITLE_AUTHOR", "normalized_title": "...", "normalized_author": "...", "language": "zh"}
+```
+```json
+{"basis": "STABLE_EXTERNAL_ID", "namespace": "qidian", "external_id": "1001"}
+```
+```json
+{"basis": "USER_CONFIRMED", "confirmation_artifact_id": "sha256:..."}
+```
+
+Then `work_ref_id = derived_id("WorkRef", work_identity)` over exactly the
+basis-specific payload. `canonical_title`, `author`, and `aliases` remain descriptive
+metadata but never force a non-TITLE_AUTHOR identity to degrade into a title/author
+hash. `external_ids` is a list of structured `{namespace, value}` objects, not a
+free-form array. Title-only with unknown author (and no external id / confirmation)
+is `AMBIGUOUS`, not READY. Use discrete `resolution_basis` values, not a numeric
+confidence.
+
+`work_ref_id` for the `TITLE_AUTHOR` basis derives from `{normalized_title,
+normalized_author, language}`; `aliases` do not participate in any basis's primary id
+(they may be added later without changing work identity, though they do change the
+full Handoff hash). Title normalization **reuses `normalize_work_title()`**
+(`ranking.py:19`) and is limited to what that function actually does (see the
+adversarial test note); Phase 0 must not add a second normalizer. `normalized_author`
+uses a minimal frozen author normalization: strip + collapse internal whitespace
+only (no punctuation/alias folding); anything richer is a separate, evaluated change.
 
 `WorkRef` is **not** the downstream `NovelWork`. `NovelWork.work_id`
 (`novel_ingest.py:1435`) additionally includes source kind + locator + adapter build
@@ -388,10 +466,33 @@ validated_discovery_request(...)
 
 Migration rule: whatever was validated before ingestion stays before ingestion;
 scene_scout shape stays post-ingestion; window numeric bounds stay in
-`build_scene_windows`. Acceptance locks: success CLI stdout unchanged; error codes
-unchanged; error priority unchanged; work-dir side effects unchanged; API executor
-unchanged; agent-files two-pass unchanged; checkpoint/replay unchanged. This is the
-only step that may honestly be called "no behavior change."
+`build_scene_windows`.
+
+**Acceptance — parity, NOT byte-for-byte across commits.** A cross-commit
+byte-identical gate is *impossible* here and must not be written: `source_tree_hash =
+build_source_hash(root)` hashes every `src/xhnovel_pipeline/*.py`
+(`build_identity.py:21-38`), and it is a `BUILD_IDENTITY_FIELDS` member
+(`build_identity.py:9-18`). Adding `novel_spec.py` — or editing any module — changes
+`source_tree_hash`, which cascades to `ExtractorBuild` id → checkpoint identity/path
+→ `SceneScoutRun` id → `SceneCandidate` id → the research output directory → the
+`scene-candidates.json` path printed on the CLI's last line. **P0-C1 is expected to
+produce new build/run/checkpoint/candidate identities; that is normal build lineage,
+not a regression.** So acceptance locks:
+
+```text
+- CLI arguments and output FORMAT unchanged (line count, prefixes, field roles);
+- error codes unchanged; error priority/order unchanged;
+- work-dir side effects produced before a failure unchanged;
+- re-running within the SAME new commit is deterministic;
+- API and agent-files two-pass control flow unchanged;
+- business semantics and validation verdicts unchanged;
+- when comparing artifacts, EXCLUDE the expected-to-change
+  repository_commit / source_tree_hash / build-bound IDs / derived paths.
+```
+
+Only the **function-level** output of the pure validation primitives is a fair
+byte-for-byte comparison (same input dict → same result/error), and that is where the
+"no behavior change" claim genuinely applies.
 
 **P0-C2 — compose the strict Phase 0 preflight from the same primitives.**
 
@@ -416,7 +517,8 @@ flags.
 @dataclass(frozen=True)
 class ValidatedDirectResearchSpec:
     effective_spec: dict
-    expected_input_spec_hash: str
+    resolved_spec_hash: str   # core-neutral name; P0-C2 maps this to the
+                              # Handoff's expected_input_spec_hash
     source_kind: str
     normalized_source_spec: dict
     rights: dict
@@ -454,7 +556,30 @@ compiler. It does not promise the EPUB is intact, the site is reachable, chapter
 parsing works, or ingestion completes.
 
 An `EvidenceHandoffExecutionReceipt` is a **mandatory** artifact for every Handoff
-that is actually attempted, including failures.
+that is actually attempted, including failures. But a *policy* that "every attempt
+must emit a receipt" cannot enforce itself: an operator can run `research-novel`
+directly, have ingestion fail on a corrupt EPUB, never call
+`verify_handoff_execution`, delete the work-dir, and report the Handoff as
+`prepared_not_executed` — the failed Lead silently leaves the experiment denominator
+(selection bias). A crash or kill mid-run has the same gap.
+
+So P0-E freezes an **authoritative execution entry point** that wraps (never
+replaces) the native path — `xhnovel-pipeline execute-handoff handoff.json`
+(`execute_evidence_handoff()`):
+
+```text
+validate the Handoff (deterministic replay)
+→ atomically write an immutable STARTED attempt marker BEFORE calling the compiler
+→ call the existing run_novel_research / research-novel path unchanged
+→ on success: verify full lineage, write a terminal SUCCEEDED receipt
+→ on failure: capture the native error code, write a terminal FAILED receipt
+```
+
+The STARTED marker is what closes the gap. A marker with **no** terminal receipt is
+`INTERRUPTED / INCOMPLETE` — it must not be silently reclassified as `FAILED` or as
+`prepared_not_executed`. **The experiment denominator is reconstructed from the
+immutable attempt markers, not from an execution agent's self-report of "which
+Handoffs I tried."**
 
 ```json
 // success
@@ -473,10 +598,12 @@ that is actually attempted, including failures.
 Rule:
 
 ```text
-A Handoff may exist unexecuted (prepared_not_executed).
-But any Lead/Handoff counted as attempted / processed / converted / supported /
-included in an experiment denominator or result MUST have an execution receipt.
-A Handoff with no receipt is prepared_not_executed and must not enter results.
+A Handoff may exist unexecuted (prepared_not_executed, no STARTED marker).
+Once execute-handoff writes a STARTED marker, that attempt is permanent:
+  STARTED + terminal receipt  → SUCCEEDED / FAILED
+  STARTED + no terminal       → INTERRUPTED / INCOMPLETE (never silently dropped)
+Any Handoff counted as attempted / processed / converted / supported / included in an
+experiment denominator or result is counted from its immutable marker, not self-report.
 ```
 
 ---
@@ -522,20 +649,26 @@ exploration material, and complicate rights/export semantics. Phase 0 uses
 
 ```text
 .runtime/exploration/<run-id>/
+  objects/                       # Phase 0 CAS (ArtifactStore), NOT the core Catalog
   brief.json
+  build-requests/HBR-*.json      # content-bound HandoffBuildRequest (carries requested_at)
+  source-declarations/SDL-*.json
   leads/RLD-*.json
   reports/{exploration-report,blocked-by-rights,ambiguous-work}.json
   handoffs/EHO-*/{handoff,novel-spec,validation-receipt}.json
-  executions/EHO-*/handoff-execution-receipt.json
+  executions/EHO-*/{started-marker,handoff-execution-receipt}.json
 
 contracts/
-  phase0-defs.schema.json        # WorkRef, SourceRef, LeadSource, LocationHint
+  phase0-defs.schema.json        # WorkRef, SourceRef, LeadSource, LocationHint, work-identity union
   exploration-brief.schema.json
+  handoff-build-request.schema.json
+  source-declaration.schema.json
   research-lead.schema.json
   evidence-handoff.schema.json
   evidence-handoff-execution-receipt.schema.json
 
 src/xhnovel_pipeline/{novel_spec.py, phase0_handoff.py}
+# CLI: xhnovel-pipeline execute-handoff <handoff.json>  (authoritative attempt entry point)
 docs/PHASE0_INTERFACE.md
 tests/{test_phase0_contracts,test_phase0_handoff,test_phase0_integration}.py
 ```
@@ -554,17 +687,33 @@ tests/{test_phase0_contracts,test_phase0_handoff,test_phase0_integration}.py
 - **N:1 grouping** — 3 Leads + same WorkRef + same SourceRef + same brief → 1 Handoff
   → 1 spec → 1 exec key; same source + different brief → 2; same work + different
   source → 2; different works → never merged.
-- **Identity** — whitespace/punctuation title diff → same WorkRef; same title +
-  different author → different WorkRef; title-only → AMBIGUOUS; adapter option change
-  → SourceRef changes; rights/brief change → SourceRef unchanged but exec key changes.
+- **Identity** — a title differing only by the transforms `normalize_work_title()`
+  actually applies (leading/trailing whitespace, `《》` wrapping, a Wikipedia suffix,
+  a `(小说|网络小说|作品)` suffix, collapsed internal whitespace) → same WorkRef.
+  **Do not assert that general punctuation is folded** — the existing normalizer does
+  not remove it, so `斗破·苍穹 ≠ 斗破苍穹`; asserting otherwise would force a second
+  normalizer. Same title + different author → different WorkRef; two works sharing a
+  title with `author=null` but different `{namespace, external_id}` → different WorkRef
+  (identity is the discriminated union, not a title/author hash); title-only → AMBIGUOUS;
+  adapter option change → SourceRef changes; rights/brief change → SourceRef unchanged
+  but exec key changes. Any general-punctuation normalization is a separate change that
+  extends `normalize_work_title()` and is evaluated for collisions against existing
+  ranking/source matching.
 - **Validator reuse** — the same illegal spec must fail the same way at
   `research-novel` preflight and at `prepare-handoff` (illegal source kind,
   nonexistent local path, UNKNOWN rights, `may_send_to_external_model=false`, PARTIAL
   quality, missing explicit brief, illegal window size/overlap, post-path-resolution
   hash).
 - **Builder replay** — mutate any byte of a stored Handoff → `validate_evidence_handoff`
-  rejects; regenerate from frozen inputs → byte-identical.
-- **Receipt enforcement** — a Handoff counted in results without a receipt → invalid.
+  rejects; regenerate from the content-bound build request + Brief + Leads +
+  SourceDeclaration → byte-identical (including `requested_at`, read from the build
+  request). A referenced `*_artifact_id` whose `artifact_id_for(store.get(id)) != id`
+  → reject.
+- **Receipt / marker enforcement** — `execute-handoff` writes an immutable STARTED
+  marker before invoking the compiler; a STARTED marker with no terminal receipt reads
+  as INTERRUPTED (never silently `prepared_not_executed` or `FAILED`); a Handoff
+  counted in results whose attempt is not backed by a marker → invalid. The denominator
+  is rebuilt from markers, not self-report.
 - **Full vertical slice** — Brief → 3 Leads → 1 Handoff → generated novel-spec →
   `research-novel --executor agent-files` → exit 3 → answers → exit 0 → `validate all`
   → `verify_handoff_execution`, ending with
@@ -574,21 +723,29 @@ tests/{test_phase0_contracts,test_phase0_handoff,test_phase0_integration}.py
 
 ## Phased implementation and acceptance
 
-- **A′ (this document)** — design errata + freeze. Docs-only. ✔ when the 9 freeze
-  decisions below are captured.
-- **P0-C1** — extract validation primitives, call sites unchanged; behavior byte-for-byte
-  unchanged (stdout, error codes/priority, side effects, API + agent-files, replay).
+- **A′ (`7e5203c`)** — design baseline; absorbed the first review's nine decisions.
+  Docs-only.
+- **A″ (this revision)** — fixes the five interface contradictions (see below).
+  Docs-only; one narrow re-review, then "frozen".
+- **P0-C1** — extract validation primitives, call sites unchanged; parity acceptance
+  (format/error-semantics/side-effects/normalized-semantic parity, build-bound IDs
+  expected to change — see the two-substage section).
 - **P0-C2** — `validate_direct_research_spec(purpose=EVIDENCE_HANDOFF)` composed from
   the same primitives.
-- **P0-A** — schemas (ExplorationBrief, ResearchLead, EvidenceHandoff,
-  HandoffExecutionReceipt) with the frozen naming.
-- **P0-B** — WorkRef/SourceRef identity, deterministic N→1 grouping (reuse
-  `normalize_work_title`, replay the `source_spec_hash → input_spec_hash` pattern).
-- **P0-D** — builder + `validate_evidence_handoff` replay; location-hint negative
-  tests; rights/quality readiness.
-- **P0-E** — `verify_handoff_execution` closure + mandatory receipts + `validate all`.
+- **P0-A** — schemas (ExplorationBrief, HandoffBuildRequest, SourceDeclaration,
+  ResearchLead, EvidenceHandoff, HandoffExecutionReceipt, and the work-identity
+  discriminated union) with the frozen naming and exact hash/ID formulas.
+- **P0-B** — WorkRef/SourceRef identity (discriminated-union work identity), deterministic
+  N→1 grouping (reuse `normalize_work_title`, replay the `source_spec_hash →
+  input_spec_hash` pattern).
+- **P0-D** — builder + `validate_evidence_handoff` replay (Phase 0 CAS + artifact
+  verification); location-hint negative tests; rights/quality readiness.
+- **P0-E** — `verify_handoff_execution` closure + authoritative `execute-handoff`
+  wrapper with the pre-call STARTED marker + mandatory terminal receipts + `validate all`.
 
-## The 9 frozen freeze decisions
+## Freeze decisions
+
+From A′ (unchanged):
 
 1. `effective_spec_hash` → renamed `expected_input_spec_hash`; it is a **new** Phase 0
    field, not an existing one.
@@ -599,14 +756,39 @@ tests/{test_phase0_contracts,test_phase0_handoff,test_phase0_integration}.py
 4. All location hints are `LEAD_ONLY`; `SOURCE_STATED` is **not** gold either.
 5. Candidate Evidence Review is Lead/hint-blind and frozen first; Lead Adjudication
    runs only afterward. Lead→Candidate rate is `lead_resolution_rate`, not `recall`.
-6. "Builder-only writer" is not a security guarantee; the Handoff must be
-   deterministically rebuildable from content-bound Brief/Leads/SourceDeclaration and
-   exact-compared.
+6. Handoff trust = deterministic rebuild from content-bound inputs and exact-compare,
+   not a "builder-only writer" claim.
 7. `READY_FOR_XHNOVEL` means preflight readiness only, not content binding.
-8. Every actually-attempted Handoff emits a `SUCCEEDED` or `FAILED` execution
-   receipt; no receipt ⇒ not counted in experiment results.
+8. Every actually-attempted Handoff has an immutable STARTED marker and a terminal
+   receipt; results are counted from markers, not self-report.
 9. Phase 0 is a separate epic on its own branch; it does not block the xuanhuan
    experiments (hand-written specs run today) and does not enter the core Catalog.
+
+Added by A″:
+
+10. **WorkRef identity is a discriminated union keyed by `basis`**
+    (TITLE_AUTHOR / STABLE_EXTERNAL_ID{namespace,value} / USER_CONFIRMED{confirmation_artifact_id});
+    the bases must not collapse into one title/author hash. `external_ids` are
+    structured `{namespace, value}`.
+11. **Full rebuild closure is frozen**: a Phase 0 `ArtifactStore` CAS at
+    `.runtime/exploration/<run-id>/objects/`; a `SourceDeclaration` contract as a
+    content-bound builder input; exact formulas `brief_hash/lead_hash/handoff_hash =
+    object_hash(x, omit=(its-own-hash,))` and `lead_id/handoff_id = derived_id(...)`
+    excluding `frozen_at`/`requested_at`; and a content-bound `HandoffBuildRequest`
+    carrying `requested_at` so replay reproduces the same bytes (no separately-minted
+    `created_at`).
+12. **Attempts are enforced by an authoritative `execute-handoff` wrapper** that writes
+    an immutable STARTED marker before calling the compiler; STARTED-without-terminal =
+    INTERRUPTED; the experiment denominator is rebuilt from markers.
+13. **P0-C1 acceptance is parity, not cross-commit byte-for-byte** — adding/editing a
+    module changes `source_tree_hash` and every build-bound id/path by design; only the
+    pure primitives' function-level output is compared byte-for-byte.
+14. **Title normalization is limited to what `normalize_work_title()` actually does**
+    (no general punctuation folding); `normalized_author` = strip + collapse whitespace.
+    Any richer normalization is a separate, collision-evaluated change.
+15. **`additionalProperties:false` forbids evidence-like *fields* only.** "Lead prose
+    must not assert the scene is proven by the text" is semantic discipline
+    (Skill/reviewer/lint), not a schema guarantee.
 
 ## Relationship to other docs
 
