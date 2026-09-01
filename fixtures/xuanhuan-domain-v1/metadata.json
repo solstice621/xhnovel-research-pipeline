@@ -27,6 +27,12 @@
   "provenance": {
     "kind": "original_experimental_fiction",
     "commercial_source": false,
-    "notes": "Original Chinese xuanhuan prose authored for the xuanhuan-domain-v1 stress test. Not copied from any commercial novel. Authorized for local storage and external-model Scene Scout."
+    "notes": "Original Chinese xuanhuan prose authored for the xuanhuan-domain-v1 stress test. Not copied from any commercial novel. Authorized for local storage and external-model Scene Scout.",
+    "native_window_probe": {
+      "window_chars": 10000,
+      "overlap_chars": 1800,
+      "window_count": 10,
+      "cjk_ideographs": 72534
+    }
   }
 }
