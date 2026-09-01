@@ -44,6 +44,16 @@ xhnovel-pipeline research-novel examples/novel-direct.json `
 python -m pytest
 ```
 
+## Running experiments
+
+If an AI agent or human is evaluating the pipeline, read
+[docs/EXPERIMENT_PROTOCOL.md](docs/EXPERIMENT_PROTOCOL.md) before running the
+experiment. Primary evidence generation must use the native xhnovel workflow;
+custom scripts may analyze native outputs but must not replace SceneWindows,
+model request construction, validation, merging, replay, or SceneCandidate
+generation. Multi-agent experiments should keep corpus creation, gold annotation,
+pipeline execution, evaluation, and adversarial review explicitly separated.
+
 The runtime prompt and structured-output schema are the exact files under
 `profiles/xuanhuan-gameplay-scene-v1/`; their bytes are bound into the model
 build identity. See [docs/NOVEL_WORKFLOW.md](docs/NOVEL_WORKFLOW.md) for the
