@@ -30,6 +30,7 @@ from .novel_selection import (
     validate_source_resolutions,
     write_source_resolution,
 )
+from .novel_spec import check_scene_scout_options
 from .policies import policy_bundle_hash
 from .ranking import run_fame_ranking, validate_fame_ranking, write_ranking_result
 from .scene_scout import (
@@ -399,14 +400,7 @@ def run_novel_research(
         selection_context=selection_context,
     )
     scene_options = spec.get("scene_scout") or {}
-    if not isinstance(scene_options, dict) or set(scene_options) - {
-        "window_chars",
-        "overlap_chars",
-        "max_input_chars",
-        "max_request_bytes",
-        "max_workers",
-    }:
-        raise ValidationError("E-SCENE-CONFIG", "scene_scout options are invalid")
+    check_scene_scout_options(scene_options)
     scout = run_scene_scout(
         catalog,
         store,
