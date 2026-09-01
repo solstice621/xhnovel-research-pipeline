@@ -255,6 +255,15 @@ def test_agent_locate_unknown_window_and_empty_quote(tmp_path):
     assert "E-AGENT-LOCATE" in empty.stderr
 
 
+def _span(segment_id, start, text):
+    return {
+        "segment_id": segment_id,
+        "start": start,
+        "end": start + len(text),
+        "untrusted_text": text,
+    }
+
+
 def test_locate_quote_helper_offsets_and_boundaries():
     task = {
         "protocol": AGENT_FILES_PROTOCOL,
@@ -262,8 +271,8 @@ def test_locate_quote_helper_offsets_and_boundaries():
         "input": {
             "window": {
                 "source_spans": [
-                    {"segment_id": "S", "start": 100, "untrusted_text": "林舟触发天门机关林舟"},
-                    {"segment_id": "S", "start": 200, "untrusted_text": "B后半段"},
+                    _span("S", 100, "林舟触发天门机关林舟"),
+                    _span("S", 200, "B后半段"),
                 ]
             }
         },
@@ -275,6 +284,29 @@ def test_locate_quote_helper_offsets_and_boundaries():
     ]
     # a quote straddling the span boundary is never stitched
     assert locate_quote_in_task(task, "机关B") == []
+
+
+def test_locate_quote_helper_returns_overlapping_occurrences():
+    task = {
+        "protocol": AGENT_FILES_PROTOCOL,
+        "window_id": "SWIN-x",
+        "input": {"window": {"source_spans": [_span("S", 10, "aaa")]}},
+    }
+    assert locate_quote_in_task(task, "aa") == [
+        {"segment_id": "S", "start": 10, "end": 12},
+        {"segment_id": "S", "start": 11, "end": 13},
+    ]
+
+
+def test_locate_quote_helper_rejects_malformed_span():
+    task = {
+        "protocol": AGENT_FILES_PROTOCOL,
+        "window_id": "SWIN-x",
+        # untrusted_text length disagrees with end - start
+        "input": {"window": {"source_spans": [{"segment_id": "S", "start": 0, "end": 5, "untrusted_text": "ab"}]}},
+    }
+    with pytest.raises(ValidationError, match="E-AGENT-LOCATE"):
+        locate_quote_in_task(task, "a")
     with pytest.raises(ValidationError, match="E-AGENT-LOCATE"):
         locate_quote_in_task(task, "")
     with pytest.raises(ValidationError, match="E-AGENT-LOCATE"):
@@ -315,4 +347,84 @@ def test_agent_files_invalid_citation_is_partial_then_recovers(tmp_path):
     good = _run_cli(*args)
     assert good.returncode == 0, good.stderr
     assert good.stdout.startswith("OK: discovered ")
+
+
+# ---------------------------------------------------------------------------
+# research-famous-novel must reject agent-files before any ranking/network work
+# ---------------------------------------------------------------------------
+def test_famous_novel_rejects_agent_files_before_ranking(tmp_path):
+    spec_path = tmp_path / "famous.json"
+    spec_path.write_text(
+        json.dumps(
+            {
+                "genre": "玄幻",
+                "source_catalog": [
+                    {"candidate_titles": ["测试作品"], "source": {"kind": "txt", "path": "missing.txt"}}
+                ],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    work_dir = tmp_path / "work"
+    completed = _run_cli(
+        "research-famous-novel",
+        str(spec_path),
+        "--executor",
+        "agent-files",
+        "--work-dir",
+        str(work_dir),
+    )
+    assert completed.returncode == 1, completed.stderr
+    assert "E-AGENT-EXECUTOR-UNSUPPORTED" in completed.stderr
+    # rejected before ranking/provider/network work: no run directory materialized
+    assert not work_dir.exists()
+
+
+# ---------------------------------------------------------------------------
+# API success output stays byte-compatible (two lines, no token-usage line)
+# ---------------------------------------------------------------------------
+def test_api_executor_success_output_is_byte_compatible(tmp_path, monkeypatch, capsys):
+    import test_novel_workflow as wf
+    from xhnovel_pipeline import cli
+    from xhnovel_pipeline.model_api import OpenAIResponsesClient
+    from xhnovel_pipeline.runtime import TEST_NOW
+
+    marker = "林舟触发天门机关"
+    source = tmp_path / "book.txt"
+    source.write_text(f"第一章 天门\n{marker}，山路随之开启。", encoding="utf-8")
+    spec = _spec(source)
+    spec_path = tmp_path / "spec.json"
+    spec_path.write_text(json.dumps(spec, ensure_ascii=False), encoding="utf-8")
+    work_dir = tmp_path / "work"
+
+    def _fake_client(*, model):
+        return OpenAIResponsesClient(
+            model=model,
+            api_key="test-key",
+            max_attempts=1,
+            transport=wf._marker_transport(marker),
+        )
+
+    monkeypatch.setattr(cli, "OpenAIResponsesClient", _fake_client)
+    monkeypatch.setattr(cli, "utc_now", lambda: TEST_NOW)
+
+    code = cli.main(
+        [
+            "research-novel",
+            str(spec_path),
+            "--scout-model",
+            "scene-scout-model-snapshot",
+            "--work-dir",
+            str(work_dir),
+        ]
+    )
+    assert code == 0
+    out_lines = capsys.readouterr().out.strip().splitlines()
+    # exactly two lines, unchanged from the pre-Stage-3 contract: banner + path
+    assert len(out_lines) == 2, out_lines
+    assert out_lines[0].startswith("OK: discovered ")
+    assert out_lines[1].endswith("scene-candidates.json")
+    assert not any("Token usage" in line for line in out_lines)
+
 

@@ -152,10 +152,11 @@ def locate_quote_in_task(task: dict[str, Any], quote: str) -> list[dict[str, Any
 
     Reads only the task packet's own ``untrusted_text`` slices — no catalog, store,
     or original source access. Every source span is searched independently for exact
-    (non-overlapping) substring occurrences; a quote that straddles a window boundary
-    is not stitched across spans and simply yields no match. Each returned offset is
-    segment-absolute (``span.start + local_index``), matching the citation contract
-    enforced by ``_validate_scout_output``. An empty result is legal.
+    substring occurrences, including overlapping ones (each valid start index is
+    returned); a quote that straddles a window boundary is not stitched across spans
+    and simply yields no match. Each returned offset is segment-absolute
+    (``span.start + local_index``), matching the citation contract enforced by
+    ``_validate_scout_output``. An empty result is legal.
     """
     if not isinstance(quote, str) or not quote:
         raise ValidationError("E-AGENT-LOCATE", "locate requires a non-empty quote")
@@ -171,8 +172,19 @@ def locate_quote_in_task(task: dict[str, Any], quote: str) -> list[dict[str, Any
             raise ValidationError("E-AGENT-LOCATE", "task source span is malformed")
         segment_id = span.get("segment_id")
         base = span.get("start")
+        end = span.get("end")
         text = span.get("untrusted_text")
-        if not isinstance(segment_id, str) or not isinstance(base, int) or not isinstance(text, str):
+        if (
+            not isinstance(segment_id, str)
+            or not isinstance(base, int)
+            or isinstance(base, bool)
+            or not isinstance(end, int)
+            or isinstance(end, bool)
+            or not isinstance(text, str)
+            or base < 0
+            or base >= end
+            or len(text) != end - base
+        ):
             raise ValidationError("E-AGENT-LOCATE", "task source span is malformed")
         search_from = 0
         while True:
@@ -186,7 +198,8 @@ def locate_quote_in_task(task: dict[str, Any], quote: str) -> list[dict[str, Any
                     "end": base + index + len(quote),
                 }
             )
-            search_from = index + len(quote)
+            # Advance by one to surface overlapping occurrences (e.g. "aa" in "aaa").
+            search_from = index + 1
     return matches
 
 

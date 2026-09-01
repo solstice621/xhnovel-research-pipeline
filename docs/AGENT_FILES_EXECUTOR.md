@@ -233,10 +233,16 @@ Acceptance:
 
 Delivered:
 
-- `--executor {api,agent-files}` on `research-novel`/`research-famous-novel`
-  (default `api`, keeping existing invocations byte-compatible); `--scout-model`
-  required only in API mode and rejected in agent-files mode; `--agent-model-label`
-  (audit-only, default `host-code-agent`) for `ExtractorBuild.model`;
+- `--executor {api,agent-files}` on `research-novel` (default `api`, keeping
+  existing invocations byte-compatible); `--scout-model` required only in API mode
+  and rejected in agent-files mode; `--agent-model-label` (audit-only, default
+  `host-code-agent`) for `ExtractorBuild.model`. `research-famous-novel` accepts the
+  flag for symmetry but rejects `--executor agent-files` before any ranking/provider
+  work (`E-AGENT-EXECUTOR-UNSUPPORTED`): its workflow re-runs ranking + source
+  resolution on every call, so a second identical command would derive fresh
+  ranking/resolution/request/window identities and never consume the first pass's
+  answers. Persisting and restoring the selection lineage is deferred (out of Stage
+  3 scope); until then agent-files is a direct-`research-novel`-only capability;
 - the agent-files executor root is `<work-dir>/scene-scout/agent-files`, co-located
   with the Scene Scout checkpoint, so two identical commands resume with no CLI
   state;
@@ -265,13 +271,18 @@ Delivered:
 Tests (`tests/test_agent_files_cli.py`):
 
 - API is default and requires `--scout-model`; agent-files rejects `--scout-model`;
-- pending → exit 3 with a stable, source-free, deterministically-ordered manifest;
+- API success output stays byte-compatible (exactly two lines, no token-usage line);
+- `research-famous-novel --executor agent-files` is rejected before ranking/network
+  and creates no run directory;
+- pending → exit 3 with a stable, source-free, deterministically-ordered manifest
+  whose paths are POSIX-style on every OS;
 - two-pass E2E without `OPENAI_API_KEY`: exit 3 → fill answers → identical command
   exits 0 → final catalog passes `validate all` in a fresh process;
 - task tamper → exit 1 with `E-AGENT-TASK-TAMPER` (not `E-SCENE-PARTIAL`, not
   waiting); out-of-window citation → exit 1 `E-SCENE-PARTIAL`, recovers on correction;
-- locator: unique, repeated, missing, empty, unknown-window, cross-span-boundary,
-  and Chinese multi-byte offsets.
+- locator: unique, repeated, overlapping, missing, empty, unknown-window,
+  cross-span-boundary, malformed-span, and Chinese multi-byte offsets (JSON stdout
+  is ASCII-escaped so Windows code pages cannot fail to encode it).
 
 Acceptance:
 

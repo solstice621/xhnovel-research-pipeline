@@ -52,10 +52,19 @@ def _catalog_from_json(path: pathlib.Path) -> Catalog:
 
 
 def _rel(path: pathlib.Path, base: pathlib.Path) -> str:
+    # POSIX separators keep the machine-readable manifest identical on Windows.
     try:
-        return str(path.relative_to(base))
+        return path.relative_to(base).as_posix()
     except ValueError:
-        return str(path)
+        return path.as_posix()
+
+
+def _json_stdout(value: object) -> str:
+    # ensure_ascii=True escapes non-ASCII so stdout never depends on the terminal
+    # code page (Windows cp1252 would otherwise fail to encode Chinese text).
+    body = json.dumps(value, ensure_ascii=True, indent=2)
+    print(body)
+    return body
 
 
 def _agent_files_dir(work_dir: pathlib.Path) -> pathlib.Path:
@@ -88,7 +97,7 @@ def _emit_pending_manifest(exc: AgentResponsesPending, work_dir: pathlib.Path | 
             for item in exc.pending
         ],
     }
-    body = json.dumps(manifest, ensure_ascii=False, indent=2)
+    body = json.dumps(manifest, ensure_ascii=True, indent=2)
     print(
         f"WAITING_FOR_AGENT: {exc.pending_count} SceneWindow answer(s) are pending",
         file=sys.stderr,
@@ -241,17 +250,13 @@ def main(argv: list[str] | None = None) -> int:
             if task.get("window_id") != args.window:
                 raise PipelineError("E-AGENT-LOCATE", "task packet window_id differs from --window")
             matches = locate_quote_in_task(task, args.quote)
-            print(
-                json.dumps(
-                    {
-                        "window_id": args.window,
-                        "quote": args.quote,
-                        "match_count": len(matches),
-                        "matches": matches,
-                    },
-                    ensure_ascii=False,
-                    indent=2,
-                )
+            _json_stdout(
+                {
+                    "window_id": args.window,
+                    "quote": args.quote,
+                    "match_count": len(matches),
+                    "matches": matches,
+                }
             )
             return 0
 
@@ -259,6 +264,17 @@ def main(argv: list[str] | None = None) -> int:
         if args.cmd == "research-famous-novel":
             # Fail on local selection/ranking input before credential lookup or network setup.
             validated_famous_novel_spec(spec)
+            if args.executor == "agent-files":
+                # The famous workflow re-runs ranking + source resolution on every
+                # call, so a second identical command would derive fresh
+                # ranking/resolution/request/window identities and never consume the
+                # first pass's answers. Refuse before any provider/network work until
+                # a persisted selection snapshot exists (out of Stage 3 scope).
+                raise PipelineError(
+                    "E-AGENT-EXECUTOR-UNSUPPORTED",
+                    "research-famous-novel does not support --executor agent-files; "
+                    "use research-novel with a resolved local spec",
+                )
         if args.cmd == "research-novel":
             work_dir = args.work_dir or (root / ".runtime" / "novel-research" / args.spec.stem)
         else:
@@ -297,17 +313,16 @@ def main(argv: list[str] | None = None) -> int:
             )
         if args.executor == "agent-files":
             _write_agent_pending_manifest_complete(work_dir)
-        usage = result["scout"]["run"]["usage_ledger"]
-        unknown = usage.get("attempts_with_unknown_usage", 0)
-        if unknown:
-            usage_line = f"Token usage: unknown for {unknown} host-agent attempt(s)"
-        else:
-            usage_line = f"Token usage: {usage['total_tokens']} total tokens"
         print(
             f"OK: discovered {len(result['scout']['candidates'])} draft scene candidates "
             f"({result['export']['assurance']['level']})"
         )
-        print(usage_line)
+        if args.executor == "agent-files":
+            # Agent attempts have no token accounting; surface that honestly. The API
+            # success output stays byte-identical to the pre-Stage-3 two-line form.
+            usage = result["scout"]["run"]["usage_ledger"]
+            unknown = usage.get("attempts_with_unknown_usage", 0)
+            print(f"Token usage: unknown for {unknown} host-agent attempt(s)")
         print(result["work_dir"] / "scene-candidates.json")
         return 0
     except AgentResponsesPending as exc:
