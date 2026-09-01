@@ -19,7 +19,7 @@ PY = sys.executable
 CANDIDATE_SUMMARY = "林舟触发天门机关"
 
 
-def _cli(*args: str) -> subprocess.CompletedProcess[str]:
+def _cli(*args: str, cwd: Path | None = None) -> subprocess.CompletedProcess[str]:
     env = dict(os.environ)
     env.pop("OPENAI_API_KEY", None)
     return subprocess.run(
@@ -28,6 +28,7 @@ def _cli(*args: str) -> subprocess.CompletedProcess[str]:
         capture_output=True,
         text=True,
         env=env,
+        cwd=str(cwd) if cwd is not None else None,
     )
 
 
@@ -66,10 +67,13 @@ def _answer(task_path: Path) -> None:
 def main() -> int:
     with tempfile.TemporaryDirectory() as raw:
         tmp = Path(raw)
-        # Run entirely outside the source checkout so profile/contract resolution
-        # is proven to come from the installed package data, not the cwd. repo_root()
-        # must resolve to the installed data dir, never a parent of the source tree.
-        os.chdir(tmp)
+        # Every child runs with cwd=tmp so profile/contract resolution is proven to
+        # come from the installed package data, not the cwd. We deliberately do NOT
+        # os.chdir() this process: leaving the interpreter's cwd inside `tmp` makes
+        # TemporaryDirectory cleanup fail on Windows (WinError 32). repo_root() must
+        # resolve to the installed data dir, never a parent of the source tree — and
+        # that guarantee holds only when the wheel venv itself lives outside the
+        # checkout (see .github/workflows/ci.yml, which builds it under RUNNER_TEMP).
         probe = subprocess.run(
             [
                 PY,
@@ -80,7 +84,7 @@ def main() -> int:
             check=True,
             capture_output=True,
             text=True,
-            cwd=tmp,
+            cwd=str(tmp),
         )
         root_line, pkg_line = probe.stdout.strip().splitlines()[:2]
         resolved = Path(root_line).resolve()
@@ -133,7 +137,7 @@ def main() -> int:
             str(work_dir),
         ]
 
-        first = _cli(*args)
+        first = _cli(*args, cwd=tmp)
         assert first.returncode == 3, f"pass1 expected exit 3, got {first.returncode}: {first.stderr}"
 
         tasks_dir = work_dir / "scene-scout" / "agent-files" / "tasks"
@@ -142,14 +146,14 @@ def main() -> int:
         for task_path in tasks:
             _answer(task_path)
 
-        second = _cli(*args)
+        second = _cli(*args, cwd=tmp)
         assert second.returncode == 0, f"pass2 expected exit 0, got {second.returncode}: {second.stderr}"
         assert "Token usage: unknown for" in second.stdout, second.stdout
 
         candidates_path = second.stdout.strip().splitlines()[-1]
         catalog_path = os.path.join(os.path.dirname(candidates_path), "catalog.json")
         store_dir = next(work_dir.rglob("objects"))
-        validate = _cli("validate", "all", catalog_path, "--store", str(store_dir))
+        validate = _cli("validate", "all", catalog_path, "--store", str(store_dir), cwd=tmp)
         assert validate.returncode == 0, f"validate failed: {validate.stderr}"
 
     print("OK: agent-files two-pass wheel smoke")

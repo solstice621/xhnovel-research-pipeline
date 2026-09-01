@@ -63,7 +63,7 @@ cli.py
   -> prepare_novel_evidence_bundle()
   -> run_scene_scout()
   -> build_scene_windows()
-  -> provider model call
+  -> native executor response (API provider call OR agent-files task/answer)
   -> _validate_scout_output()
   -> merge_scene_candidates()
   -> EvidenceExport
