@@ -7,6 +7,13 @@ import sys
 
 from .catalog import Catalog
 from .errors import PipelineError, ValidationError
+from .agent_files import (
+    AGENT_FILES_PROTOCOL,
+    AgentFileExecutor,
+    AgentResponsesPending,
+    _safe_file_stem,
+    locate_quote_in_task,
+)
 from .model_api import OpenAIResponsesClient
 from .novel_ingest import load_novel_spec, run_novel_ingestion, validate_novel_ingestion
 from .novel_selection import validate_source_resolutions
@@ -19,7 +26,7 @@ from .paths import repo_root
 from .ranking import run_fame_ranking, validate_fame_ranking, write_ranking_result
 from .ranking_provider import WikipediaRankingProvider
 from .runtime import utc_now
-from .scene_scout import validate_scene_scouts
+from .scene_scout import _atomic_write, validate_scene_scouts
 from .store import ArtifactStore
 from .validate import validate_all, validate_evidence, validate_export
 
@@ -42,6 +49,64 @@ def _catalog_from_json(path: pathlib.Path) -> Catalog:
                 raise ValidationError("E-CATALOG-RECORD", f"{kind} record must be an object")
             catalog.add(kind, record)
     return catalog
+
+
+def _rel(path: pathlib.Path, base: pathlib.Path) -> str:
+    try:
+        return str(path.relative_to(base))
+    except ValueError:
+        return str(path)
+
+
+def _agent_files_dir(work_dir: pathlib.Path) -> pathlib.Path:
+    return work_dir / "scene-scout" / "agent-files"
+
+
+def _emit_pending_manifest(exc: AgentResponsesPending, work_dir: pathlib.Path | None) -> int:
+    """Report WAITING_FOR_AGENT: human line to stderr, stable JSON to stdout, exit 3.
+
+    The pending manifest is a regenerable operational view (also written to
+    ``pending.json``), never an audit source of truth. It carries window ids and
+    task/answer paths only — no source text and no task packet body.
+    """
+    # tasks_dir is <work_dir>/scene-scout/agent-files/tasks; recover work_dir from it
+    # so the manifest never depends on a caller local that may be unbound on error.
+    base = work_dir if work_dir is not None else exc.tasks_dir.parents[2]
+    manifest = {
+        "status": "WAITING_FOR_AGENT",
+        "exit_code": 3,
+        "executor": "agent-files",
+        "pending_count": exc.pending_count,
+        "tasks_dir": _rel(exc.tasks_dir, base),
+        "answers_dir": _rel(exc.answers_dir, base),
+        "pending": [
+            {
+                "window_id": item.window_id,
+                "task": _rel(item.task_path, base),
+                "answer": _rel(item.answer_path, base),
+            }
+            for item in exc.pending
+        ],
+    }
+    body = json.dumps(manifest, ensure_ascii=False, indent=2)
+    print(
+        f"WAITING_FOR_AGENT: {exc.pending_count} SceneWindow answer(s) are pending",
+        file=sys.stderr,
+    )
+    print(body)
+    manifest_path = _agent_files_dir(base) / "pending.json"
+    _atomic_write(manifest_path, (body + "\n").encode("utf-8"))
+    return 3
+
+
+def _write_agent_pending_manifest_complete(work_dir: pathlib.Path) -> None:
+    manifest_path = _agent_files_dir(work_dir) / "pending.json"
+    body = json.dumps(
+        {"status": "COMPLETE", "pending_count": 0, "pending": []},
+        ensure_ascii=False,
+        indent=2,
+    )
+    _atomic_write(manifest_path, (body + "\n").encode("utf-8"))
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -69,19 +134,29 @@ def _parser() -> argparse.ArgumentParser:
 
     research = sub.add_parser("research-novel")
     research.add_argument("spec", type=pathlib.Path)
+    research.add_argument("--executor", choices=["api", "agent-files"], default="api")
     research.add_argument("--scout-model", default=None)
+    research.add_argument("--agent-model-label", default="host-code-agent")
     research.add_argument("--work-dir", type=pathlib.Path, default=None)
 
     famous = sub.add_parser("research-famous-novel")
     famous.add_argument("spec", type=pathlib.Path)
+    famous.add_argument("--executor", choices=["api", "agent-files"], default="api")
     famous.add_argument("--scout-model", default=None)
+    famous.add_argument("--agent-model-label", default="host-code-agent")
     famous.add_argument("--work-dir", type=pathlib.Path, default=None)
+
+    locate = sub.add_parser("agent-locate")
+    locate.add_argument("--work-dir", type=pathlib.Path, required=True)
+    locate.add_argument("--window", required=True)
+    locate.add_argument("--quote", required=True)
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     root = repo_root()
+    work_dir: pathlib.Path | None = None
     try:
         if args.cmd == "validate":
             catalog = _catalog_from_json(args.catalog)
@@ -150,16 +225,60 @@ def main(argv: list[str] | None = None) -> int:
             print(output_dir / "ranking.json")
             return 0
 
+        if args.cmd == "agent-locate":
+            if not args.quote:
+                raise PipelineError("E-AGENT-LOCATE", "locate requires a non-empty quote")
+            tasks_dir = args.work_dir / "scene-scout" / "agent-files" / "tasks"
+            task_path = tasks_dir / f"{_safe_file_stem(args.window)}.json"
+            if not task_path.is_file():
+                raise PipelineError("E-AGENT-LOCATE", f"unknown window under {tasks_dir}")
+            try:
+                task = json.loads(task_path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+                raise PipelineError("E-AGENT-LOCATE", f"task packet is invalid: {task_path}") from exc
+            if not isinstance(task, dict) or task.get("protocol") != AGENT_FILES_PROTOCOL:
+                raise PipelineError("E-AGENT-LOCATE", "task packet protocol is not recognized")
+            if task.get("window_id") != args.window:
+                raise PipelineError("E-AGENT-LOCATE", "task packet window_id differs from --window")
+            matches = locate_quote_in_task(task, args.quote)
+            print(
+                json.dumps(
+                    {
+                        "window_id": args.window,
+                        "quote": args.quote,
+                        "match_count": len(matches),
+                        "matches": matches,
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+            return 0
+
         spec = load_novel_spec(args.spec)
         if args.cmd == "research-famous-novel":
             # Fail on local selection/ranking input before credential lookup or network setup.
             validated_famous_novel_spec(spec)
-        scout_model = args.scout_model
-        if not scout_model:
-            raise PipelineError("E-MODEL-CONFIG", "--scout-model is required")
-        extractor = OpenAIResponsesClient(model=scout_model)
         if args.cmd == "research-novel":
             work_dir = args.work_dir or (root / ".runtime" / "novel-research" / args.spec.stem)
+        else:
+            work_dir = args.work_dir or (
+                root / ".runtime" / "famous-novel-research" / args.spec.stem
+            )
+        if args.executor == "api":
+            if not args.scout_model:
+                raise PipelineError("E-MODEL-CONFIG", "--scout-model is required for --executor api")
+            extractor = OpenAIResponsesClient(model=args.scout_model)
+        else:
+            if args.scout_model:
+                raise PipelineError(
+                    "E-MODEL-CONFIG", "--scout-model is not allowed for --executor agent-files"
+                )
+            extractor = AgentFileExecutor(
+                work_dir / "scene-scout" / "agent-files",
+                model_label=args.agent_model_label,
+            )
+        if args.cmd == "research-novel":
             result = run_novel_research(
                 spec,
                 work_dir,
@@ -168,9 +287,6 @@ def main(argv: list[str] | None = None) -> int:
                 now=utc_now(),
             )
         else:
-            work_dir = args.work_dir or (
-                root / ".runtime" / "famous-novel-research" / args.spec.stem
-            )
             result = run_famous_novel_research(
                 spec,
                 work_dir,
@@ -179,12 +295,23 @@ def main(argv: list[str] | None = None) -> int:
                 repo_root=root,
                 now=utc_now(),
             )
+        if args.executor == "agent-files":
+            _write_agent_pending_manifest_complete(work_dir)
+        usage = result["scout"]["run"]["usage_ledger"]
+        unknown = usage.get("attempts_with_unknown_usage", 0)
+        if unknown:
+            usage_line = f"Token usage: unknown for {unknown} host-agent attempt(s)"
+        else:
+            usage_line = f"Token usage: {usage['total_tokens']} total tokens"
         print(
             f"OK: discovered {len(result['scout']['candidates'])} draft scene candidates "
             f"({result['export']['assurance']['level']})"
         )
+        print(usage_line)
         print(result["work_dir"] / "scene-candidates.json")
         return 0
+    except AgentResponsesPending as exc:
+        return _emit_pending_manifest(exc, work_dir)
     except (PipelineError, OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
         return 1

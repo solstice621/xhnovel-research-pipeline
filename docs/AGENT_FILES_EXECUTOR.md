@@ -182,7 +182,7 @@ The host agent, not xhnovel, decides which occurrence is semantically intended.
 
 ## Implementation stages and acceptance gates
 
-### Stage 1 — Executor boundary and file adapter
+### Stage 1 — Executor boundary and file adapter (DONE)
 
 Changes:
 
@@ -205,7 +205,7 @@ Acceptance:
 - complete unit suite passes on Linux and Windows;
 - no production SceneCandidate path changes yet.
 
-### Stage 2 — Native Scene Scout integration and replay
+### Stage 2 — Native Scene Scout integration and replay (DONE)
 
 Changes:
 
@@ -229,26 +229,56 @@ Acceptance:
 - agent-files integration tests pass;
 - GitHub Actions succeeds on Linux and Windows.
 
-### Stage 3 — CLI, exact locator, and two-pass workflow
+### Stage 3 — CLI, exact locator, and two-pass workflow (DONE)
 
-Changes:
+Delivered:
 
-- add `--executor {api,agent-files}`;
-- require `--scout-model` only in API mode;
-- print a stable `WAITING_FOR_AGENT` result for pending tasks;
-- add exact quote locator command.
+- `--executor {api,agent-files}` on `research-novel`/`research-famous-novel`
+  (default `api`, keeping existing invocations byte-compatible); `--scout-model`
+  required only in API mode and rejected in agent-files mode; `--agent-model-label`
+  (audit-only, default `host-code-agent`) for `ExtractorBuild.model`;
+- the agent-files executor root is `<work-dir>/scene-scout/agent-files`, co-located
+  with the Scene Scout checkpoint, so two identical commands resume with no CLI
+  state;
+- **exit-code contract**: `0` complete, `1` config/validation/integrity/run error,
+  `2` existing FAILED-ingestion semantics, `3` `WAITING_FOR_AGENT` (legal but
+  incomplete). `AgentResponsesPending` is caught before the generic handler;
+- on exit 3, `research-novel` owns the pending manifest — a one-line stderr summary
+  plus a stable JSON object on stdout (`status`, `exit_code`, `executor`,
+  `pending_count`, `tasks_dir`, `answers_dir`, `pending[{window_id, task, answer}]`),
+  paths relative to `--work-dir`, carrying no source text and no task packet body.
+  The same object is written to `<agent-files>/pending.json` as a regenerable
+  operational view (never an audit source); a completed run overwrites it with
+  `{"status":"COMPLETE","pending_count":0,"pending":[]}`;
+- `agent-locate --work-dir --window --quote` converts an exact source quote to
+  absolute segment offsets. It reads only the window's task JSON (`untrusted_text`),
+  never the catalog/store, so it needs no rights gate. Exact substring only — no
+  fuzzy/Unicode-normalize/typo-fix, no cross-span stitching; every occurrence is
+  returned; a no-match is `matches: []` with exit `0`; empty quote / unknown window
+  / protocol or window-id mismatch are exit `1` (`E-AGENT-LOCATE`);
+- integrity failures (`E-AGENT-TASK-TAMPER`, `E-ARTIFACT-CORRUPT`,
+  `E-SCENE-CHECKPOINT`) hard-abort the run with their native code instead of being
+  demoted to `E-SCENE-PARTIAL` (`scene_scout.INTEGRITY_HARD_ABORT_CODES`);
+- unknown host-agent token usage is shown as
+  `Token usage: unknown for N host-agent attempt(s)`, never `0` tokens.
 
-Tests:
+Tests (`tests/test_agent_files_cli.py`):
 
-- first CLI pass succeeds as waiting without `OPENAI_API_KEY`;
-- answers can be filled and the identical CLI command completes;
-- final catalog passes `validate all` in a fresh process;
-- locator handles unique, repeated, missing, empty, and partial-window quotes.
+- API is default and requires `--scout-model`; agent-files rejects `--scout-model`;
+- pending → exit 3 with a stable, source-free, deterministically-ordered manifest;
+- two-pass E2E without `OPENAI_API_KEY`: exit 3 → fill answers → identical command
+  exits 0 → final catalog passes `validate all` in a fresh process;
+- task tamper → exit 1 with `E-AGENT-TASK-TAMPER` (not `E-SCENE-PARTIAL`, not
+  waiting); out-of-window citation → exit 1 `E-SCENE-PARTIAL`, recovers on correction;
+- locator: unique, repeated, missing, empty, unknown-window, cross-span-boundary,
+  and Chinese multi-byte offsets.
 
 Acceptance:
 
-- clean-wheel CLI smoke covers agent-files mode;
-- two-pass end-to-end test passes on Linux and Windows.
+- clean-wheel CLI smoke runs the agent-files two-pass flow and fresh-process
+  validation (`scripts/agent_files_wheel_smoke.py`, wired into CI on Linux and
+  Windows);
+- full suite green.
 
 ### Stage 4 — Skill and operating documentation
 

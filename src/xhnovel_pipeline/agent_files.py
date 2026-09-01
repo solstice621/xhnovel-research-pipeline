@@ -147,6 +147,49 @@ def decode_agent_answer(response_bytes: bytes) -> dict[str, Any]:
     return value
 
 
+def locate_quote_in_task(task: dict[str, Any], quote: str) -> list[dict[str, Any]]:
+    """Resolve an exact source quote to absolute segment offsets within one task.
+
+    Reads only the task packet's own ``untrusted_text`` slices — no catalog, store,
+    or original source access. Every source span is searched independently for exact
+    (non-overlapping) substring occurrences; a quote that straddles a window boundary
+    is not stitched across spans and simply yields no match. Each returned offset is
+    segment-absolute (``span.start + local_index``), matching the citation contract
+    enforced by ``_validate_scout_output``. An empty result is legal.
+    """
+    if not isinstance(quote, str) or not quote:
+        raise ValidationError("E-AGENT-LOCATE", "locate requires a non-empty quote")
+    if task.get("protocol") != AGENT_FILES_PROTOCOL:
+        raise ValidationError("E-AGENT-LOCATE", "task packet protocol is not recognized")
+    window = task.get("input", {}).get("window") if isinstance(task.get("input"), dict) else None
+    spans = window.get("source_spans") if isinstance(window, dict) else None
+    if not isinstance(spans, list):
+        raise ValidationError("E-AGENT-LOCATE", "task packet has no source spans")
+    matches: list[dict[str, Any]] = []
+    for span in spans:
+        if not isinstance(span, dict):
+            raise ValidationError("E-AGENT-LOCATE", "task source span is malformed")
+        segment_id = span.get("segment_id")
+        base = span.get("start")
+        text = span.get("untrusted_text")
+        if not isinstance(segment_id, str) or not isinstance(base, int) or not isinstance(text, str):
+            raise ValidationError("E-AGENT-LOCATE", "task source span is malformed")
+        search_from = 0
+        while True:
+            index = text.find(quote, search_from)
+            if index < 0:
+                break
+            matches.append(
+                {
+                    "segment_id": segment_id,
+                    "start": base + index,
+                    "end": base + index + len(quote),
+                }
+            )
+            search_from = index + len(quote)
+    return matches
+
+
 def _write_immutable(path: pathlib.Path, data: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists():

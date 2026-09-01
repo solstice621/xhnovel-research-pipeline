@@ -28,8 +28,10 @@ jobs:
             wheel-smoke/Scripts/python -m pip install dist/*.whl
             wheel-smoke/Scripts/python -c "from xhnovel_pipeline.paths import repo_root; root=repo_root(); assert (root/'contracts').is_dir(); assert (root/'profiles').is_dir()"
             wheel-smoke/Scripts/xhnovel-pipeline --help
+            wheel-smoke/Scripts/python scripts/agent_files_wheel_smoke.py
           else
             wheel-smoke/bin/python -m pip install dist/*.whl
             wheel-smoke/bin/python -c "from xhnovel_pipeline.paths import repo_root; root=repo_root(); assert (root/'contracts').is_dir(); assert (root/'profiles').is_dir()"
             wheel-smoke/bin/xhnovel-pipeline --help
+            wheel-smoke/bin/python scripts/agent_files_wheel_smoke.py
           fi

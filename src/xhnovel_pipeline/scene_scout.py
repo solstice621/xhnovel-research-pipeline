@@ -63,6 +63,13 @@ OBSERVATION_FIELDS = (
 SCOUT_CHECKPOINT_VERSION = "scene-scout-checkpoint-v1"
 CHECKPOINT_INTEGRITY_FIELD = "integrity_hash"
 WORK_DIR_LOCK_NAME = ".scene-scout.lock"
+# Integrity failures are never a recoverable per-window model failure: a tampered
+# task, a corrupt artifact, or a broken checkpoint means the run directory itself
+# can no longer be trusted, so abort the whole run with the native code instead of
+# demoting it to E-SCENE-PARTIAL.
+INTEGRITY_HARD_ABORT_CODES = frozenset(
+    {"E-AGENT-TASK-TAMPER", "E-ARTIFACT-CORRUPT", "E-SCENE-CHECKPOINT"}
+)
 
 
 def _atomic_write(path: pathlib.Path, data: bytes) -> None:
@@ -1020,6 +1027,8 @@ def _run_scene_scout_locked(
                         "error_message": str(exc),
                     }
                 except Exception as exc:
+                    if getattr(exc, "code", None) in INTEGRITY_HARD_ABORT_CODES:
+                        raise
                     state["failures"][window_id] = {
                         "error_code": getattr(exc, "code", "E-SCENE-WORKER"),
                         "error_message": str(exc),
@@ -1031,6 +1040,8 @@ def _run_scene_scout_locked(
                             catalog, call.value, output_schema=output_schema, window=window
                         )
                     except Exception as exc:
+                        if getattr(exc, "code", None) in INTEGRITY_HARD_ABORT_CODES:
+                            raise
                         last = traces[-1]
                         traces = (
                             *traces[:-1],
