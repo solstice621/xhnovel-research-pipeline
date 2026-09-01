@@ -37,6 +37,11 @@ from .model_api import (
     _response_output_text,
 )
 from .novel_assessment import resolve_validated_bundle_ingestion
+from .novel_spec import (
+    check_scene_concurrency,
+    check_scene_config_values,
+    check_scene_window_params,
+)
 from .runtime import repository_commit
 from .schema import validate_schema
 from .store import ArtifactStore
@@ -410,10 +415,7 @@ def build_scene_windows(
     window_chars: int = DEFAULT_WINDOW_CHARS,
     overlap_chars: int = DEFAULT_OVERLAP_CHARS,
 ) -> list[dict[str, Any]]:
-    if not 8_000 <= window_chars <= 12_000:
-        raise ValidationError("E-SCENE-WINDOW", "window_chars must be between 8000 and 12000")
-    if not 0.15 <= overlap_chars / window_chars <= 0.20:
-        raise ValidationError("E-SCENE-WINDOW", "overlap must be between 15% and 20%")
+    check_scene_window_params(window_chars=window_chars, overlap_chars=overlap_chars)
     chapter_by_segment, _ = bundle_chapter_index(catalog, bundle)
     segments = _ordered_segments(catalog, bundle, chapter_by_segment)
     positions: list[tuple[dict[str, Any], int, int]] = []
@@ -883,14 +885,11 @@ def _run_scene_scout_locked(
         bundle,
         require_external_model=True,
     )
-    if not isinstance(max_workers, int) or isinstance(max_workers, bool) or not 1 <= max_workers <= 64:
-        raise ValidationError("E-SCENE-CONCURRENCY", "max_workers must be between 1 and 64")
-    for field, value in (
-        ("max_input_chars", max_input_chars),
-        ("max_request_bytes", max_request_bytes),
-    ):
-        if not isinstance(value, int) or isinstance(value, bool) or value < 1:
-            raise ValidationError("E-SCENE-CONFIG", f"{field} must be a positive integer")
+    check_scene_concurrency(max_workers)
+    check_scene_config_values(
+        max_input_chars=max_input_chars,
+        max_request_bytes=max_request_bytes,
+    )
     request = catalog.get("ResearchRequest", bundle["request_id"])
     discovery_brief = request["discovery_brief"]
     prompt, prompt_bytes, output_schema, schema_bytes = _load_profile(repo_root)
