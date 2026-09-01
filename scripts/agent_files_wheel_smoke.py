@@ -66,6 +66,41 @@ def _answer(task_path: Path) -> None:
 def main() -> int:
     with tempfile.TemporaryDirectory() as raw:
         tmp = Path(raw)
+        # Run entirely outside the source checkout so profile/contract resolution
+        # is proven to come from the installed package data, not the cwd. repo_root()
+        # must resolve to the installed data dir, never a parent of the source tree.
+        os.chdir(tmp)
+        probe = subprocess.run(
+            [
+                PY,
+                "-c",
+                "import xhnovel_pipeline as p; from xhnovel_pipeline.paths import repo_root; "
+                "print(repo_root()); print(p.__file__)",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+            cwd=tmp,
+        )
+        root_line, pkg_line = probe.stdout.strip().splitlines()[:2]
+        resolved = Path(root_line).resolve()
+        pkg_file = Path(pkg_line).resolve()
+        assert (resolved / "contracts").is_dir(), f"no contracts under {resolved}"
+        assert (resolved / "profiles").is_dir(), f"no profiles under {resolved}"
+        # Only a real wheel/site-packages install proves cwd-independent data
+        # resolution. An editable install legitimately points repo_root() back at
+        # the source checkout, so the strict guard applies only when the imported
+        # package does NOT live under this repo's src/ tree.
+        source_pkg = Path(__file__).resolve().parents[1] / "src" / "xhnovel_pipeline"
+        source_pkg = source_pkg.resolve()
+        is_editable = source_pkg == pkg_file.parent or source_pkg in pkg_file.parents
+        if not is_editable:
+            checkout = source_pkg.parents[1]
+            assert resolved != checkout and checkout not in resolved.parents, (
+                f"repo_root() resolved into the source checkout ({resolved}) from a "
+                "non-editable install; wheel install must resolve package data "
+                "independently of cwd"
+            )
         (tmp / "book.txt").write_text(
             "第一章 天门\n林舟触发天门机关，山路随之开启。", encoding="utf-8"
         )

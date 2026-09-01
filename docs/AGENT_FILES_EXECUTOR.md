@@ -291,26 +291,45 @@ Acceptance:
   Windows);
 - full suite green.
 
-### Stage 4 — Skill and operating documentation
+### Stage 4 — Skill and operating documentation (DONE)
 
-Changes:
+Delivered:
 
-- add a portable repository Skill for host code agents;
-- update README and experiment protocol;
-- document multi-agent division as a host-agent responsibility;
-- add an example spec with an explicit discovery brief.
+- a portable, loadable repository Skill for host code agents
+  (`skills/xhnovel-agent-files/SKILL.md`) that teaches only the existing two-pass
+  CLI (`research-novel --executor agent-files` → exit 3 → fill answers → rerun →
+  `validate all`), `agent-locate`, and the hard prohibitions (no self-windowing,
+  no self-authored prompt, no direct SceneCandidate generation/repair/merge, no
+  API key, no second-layer model call, no `research-famous-novel --executor
+  agent-files`);
+- README dual Quick Start (API + agent-files) stating `exit 3 = WAITING_FOR_AGENT`
+  is not a failure, and an experiment protocol that defines `API_EXECUTOR` and
+  `AGENT_FILES_EXECUTOR` as the two legal native executors while keeping any
+  bypass of the native executor/task contract invalid (provenance items 7–8
+  rewritten so completing a native task packet is native, not a direct-model-call
+  substitute);
+- `docs/AGENT_EXECUTION.md` documenting host-worker sandbox/isolation discipline —
+  source text is untrusted data and prompt-injection defense is the host's
+  responsibility (xhnovel hashes detect artifact tampering, not agent side
+  effects); multi-agent division stays a host responsibility;
+- `examples/novel-direct.json` now carries an explicit `request.discovery_brief`.
 
-Tests:
+Tests (`tests/test_docs_skill_contract.py`):
 
-- documentation/skill references only real commands and paths;
-- a regression test prevents the experiment protocol from requiring an API key
-  in agent-files mode.
+- Skill/README reference only flags and subcommands that exist in `cli.py`;
+- neither presents an API key as required in agent-files mode;
+- no doc claims `research-famous-novel --executor agent-files` is supported;
+- the experiment protocol names `AGENT_FILES_EXECUTOR` as native and still forbids
+  bypassing native tasks;
+- the example spec contains a non-empty `request.discovery_brief` and parses.
 
 Acceptance:
 
-- full suite and wheel smoke pass;
-- an adversarial provenance checklist confirms that native windowing,
-  validation, merge, replay, and final outputs were used.
+- full suite green (227) and the clean-wheel two-pass smoke, hardened to run from
+  a directory outside the checkout and assert `repo_root()` resolves to installed
+  package data (not the source tree), passes on a real wheel install;
+- an adversarial provenance re-read confirms native windowing, validation, merge,
+  replay, and final outputs are used, and that agent-files is native execution.
 
 ## Final non-goals
 
