@@ -37,6 +37,15 @@ SCHEMA_BY_TYPE = {
     "ModelAttempt": "model-attempt.schema.json",
     "ExtractorBuild": "extractor-build.schema.json",
     "EvidenceExport": "exports/xuanhuan-evidence-v1.schema.json",
+    # Phase 0 records are standalone contracts. They deliberately do not enter
+    # Catalog.ID_FIELDS or the core EvidenceBundle closure.
+    "ExplorationBrief": "exploration-brief.schema.json",
+    "ResearchLead": "research-lead.schema.json",
+    "HandoffBuildRequest": "handoff-build-request.schema.json",
+    "SourceDeclaration": "source-declaration.schema.json",
+    "EvidenceHandoff": "evidence-handoff.schema.json",
+    "HandoffAttemptEvent": "handoff-attempt-event.schema.json",
+    "EvidenceHandoffExecutionReceipt": "evidence-handoff-execution-receipt.schema.json",
 }
 
 
@@ -45,7 +54,10 @@ def _registry(contracts: pathlib.Path) -> Registry:
     for path in sorted(contracts.rglob("*.schema.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         uri = data.get("$id") or path.resolve().as_uri()
-        registry = registry.with_resource(uri, Resource.from_contents(data, default_specification=DRAFT202012))
+        registry = registry.with_resource(
+            uri,
+            Resource.from_contents(data, default_specification=DRAFT202012),
+        )
     return registry
 
 

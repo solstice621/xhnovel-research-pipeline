@@ -31,6 +31,19 @@ PREFIXES = {
     "ModelAttempt": "MAT-",
     "ExtractorBuild": "BLD-",
     "EvidenceExport": "EXP-",
+    # Standalone Phase 0 records. Adding prefixes does not add these kinds to
+    # Catalog.ID_FIELDS; they remain outside the core evidence catalog.
+    "ExplorationBrief": "XBR-",
+    "ResearchLead": "RLD-",
+    "LeadSource": "LDS-",
+    "WorkRef": "WREF-",
+    "SourceRef": "SREF-",
+    "HandoffBuildRequest": "HBR-",
+    "SourceDeclaration": "SDL-",
+    "EvidenceHandoff": "EHO-",
+    "HandoffAttempt": "HAT-",
+    "HandoffAttemptEvent": "HEV-",
+    "EvidenceHandoffExecutionReceipt": "HER-",
 }
 
 ID_RE = re.compile(r"^[A-Z]{2,5}-[A-Z0-9][A-Z0-9._:-]{1,}$")
