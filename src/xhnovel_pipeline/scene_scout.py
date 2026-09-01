@@ -23,7 +23,7 @@ from .agent_files import (
 from .build_identity import BUILD_IDENTITY_FIELDS, build_source_hash
 from .canonical import canonical_dumps
 from .catalog import Catalog
-from .constants import PROFILE_ID, SCHEMA_VERSION
+from .constants import MODEL_EXECUTOR_BUILD_ID, PROFILE_ID, SCHEMA_VERSION
 from .errors import ValidationError
 from .hashing import artifact_id_for, object_hash, sorted_ids
 from .ids import derived_id
@@ -1327,7 +1327,7 @@ def validate_scene_scouts(
         executor_kind = parameters.get("executor_kind")
         response_format = parameters.get("response_format")
         expected_executor_build = {
-            API_EXECUTOR_KIND: (OPENAI_RESPONSES_FORMAT, "openai-responses-v1"),
+            API_EXECUTOR_KIND: (OPENAI_RESPONSES_FORMAT, MODEL_EXECUTOR_BUILD_ID),
             AGENT_FILES_EXECUTOR_KIND: (
                 AGENT_FILES_RESPONSE_FORMAT,
                 AGENT_FILES_EXECUTOR_BUILD_ID,
