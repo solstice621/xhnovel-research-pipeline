@@ -23,6 +23,7 @@ from .novel_workflow import (
     validated_famous_novel_spec,
 )
 from .paths import repo_root
+from .phase0_builder import prepare_handoff_from_input, validate_evidence_handoff
 from .ranking import run_fame_ranking, validate_fame_ranking, write_ranking_result
 from .ranking_provider import WikipediaRankingProvider
 from .runtime import utc_now
@@ -52,7 +53,6 @@ def _catalog_from_json(path: pathlib.Path) -> Catalog:
 
 
 def _rel(path: pathlib.Path, base: pathlib.Path) -> str:
-    # POSIX separators keep the machine-readable manifest identical on Windows.
     try:
         return path.relative_to(base).as_posix()
     except ValueError:
@@ -60,8 +60,6 @@ def _rel(path: pathlib.Path, base: pathlib.Path) -> str:
 
 
 def _json_stdout(value: object) -> str:
-    # ensure_ascii=True escapes non-ASCII so stdout never depends on the terminal
-    # code page (Windows cp1252 would otherwise fail to encode Chinese text).
     body = json.dumps(value, ensure_ascii=True, indent=2)
     print(body)
     return body
@@ -72,14 +70,7 @@ def _agent_files_dir(work_dir: pathlib.Path) -> pathlib.Path:
 
 
 def _emit_pending_manifest(exc: AgentResponsesPending, work_dir: pathlib.Path | None) -> int:
-    """Report WAITING_FOR_AGENT: human line to stderr, stable JSON to stdout, exit 3.
-
-    The pending manifest is a regenerable operational view (also written to
-    ``pending.json``), never an audit source of truth. It carries window ids and
-    task/answer paths only — no source text and no task packet body.
-    """
-    # tasks_dir is <work_dir>/scene-scout/agent-files/tasks; recover work_dir from it
-    # so the manifest never depends on a caller local that may be unbound on error.
+    """Report WAITING_FOR_AGENT as stable machine JSON and exit 3."""
     base = work_dir if work_dir is not None else exc.tasks_dir.parents[2]
     manifest = {
         "status": "WAITING_FOR_AGENT",
@@ -155,6 +146,14 @@ def _parser() -> argparse.ArgumentParser:
     famous.add_argument("--agent-model-label", default="host-code-agent")
     famous.add_argument("--work-dir", type=pathlib.Path, default=None)
 
+    prepare = sub.add_parser("prepare-handoff")
+    prepare.add_argument("input", type=pathlib.Path)
+    prepare.add_argument("--work-dir", type=pathlib.Path, default=None)
+
+    handoff_validate = sub.add_parser("validate-handoff")
+    handoff_validate.add_argument("handoff", type=pathlib.Path)
+    handoff_validate.add_argument("--phase0-root", type=pathlib.Path, default=None)
+
     locate = sub.add_parser("agent-locate")
     locate.add_argument("--work-dir", type=pathlib.Path, required=True)
     locate.add_argument("--window", required=True)
@@ -186,6 +185,21 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 validate_all(catalog, store)
             print(f"OK: validate {args.target}")
+            return 0
+
+        if args.cmd == "prepare-handoff":
+            work_dir = args.work_dir or (root / ".runtime" / "exploration" / args.input.stem)
+            prepared = prepare_handoff_from_input(args.input, work_dir)
+            print(f"OK: prepared evidence handoff {prepared.handoff['handoff_id']}")
+            print(prepared.handoff_path)
+            return 0
+
+        if args.cmd == "validate-handoff":
+            handoff = validate_evidence_handoff(
+                args.handoff,
+                phase0_root=args.phase0_root,
+            )
+            print(f"OK: validate handoff {handoff['handoff_id']}")
             return 0
 
         if args.cmd == "ingest-novel":
@@ -262,14 +276,8 @@ def main(argv: list[str] | None = None) -> int:
 
         spec = load_novel_spec(args.spec)
         if args.cmd == "research-famous-novel":
-            # Fail on local selection/ranking input before credential lookup or network setup.
             validated_famous_novel_spec(spec)
             if args.executor == "agent-files":
-                # The famous workflow re-runs ranking + source resolution on every
-                # call, so a second identical command would derive fresh
-                # ranking/resolution/request/window identities and never consume the
-                # first pass's answers. Refuse before any provider/network work until
-                # a persisted selection snapshot exists (out of Stage 3 scope).
                 raise PipelineError(
                     "E-AGENT-EXECUTOR-UNSUPPORTED",
                     "research-famous-novel does not support --executor agent-files; "
@@ -318,8 +326,6 @@ def main(argv: list[str] | None = None) -> int:
             f"({result['export']['assurance']['level']})"
         )
         if args.executor == "agent-files":
-            # Agent attempts have no token accounting; surface that honestly. The API
-            # success output stays byte-identical to the pre-Stage-3 two-line form.
             usage = result["scout"]["run"]["usage_ledger"]
             unknown = usage.get("attempts_with_unknown_usage", 0)
             print(f"Token usage: unknown for {unknown} host-agent attempt(s)")
