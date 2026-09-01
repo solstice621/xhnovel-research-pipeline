@@ -20,6 +20,7 @@ from .model_api import (
 AGENT_FILES_PROTOCOL = "xhnovel-agent-files-v1"
 AGENT_FILES_EXECUTOR_KIND = "AGENT_FILES"
 AGENT_FILES_RESPONSE_FORMAT = "RAW_JSON"
+AGENT_FILES_EXECUTOR_BUILD_ID = "agent-files-v1"
 
 _AGENT_README = """# xhnovel agent-files tasks
 
@@ -57,6 +58,23 @@ class AgentResponsePending(PipelineError):
         super().__init__(
             "E-AGENT-RESPONSE-PENDING",
             f"{window_id} awaits {answer_path}; task is {task_path}",
+        )
+
+
+class AgentResponsesPending(PipelineError):
+    "Aggregate all native SceneWindows awaiting host-agent answers."
+
+    def __init__(self, pending: list[AgentResponsePending]) -> None:
+        ordered = tuple(sorted(pending, key=lambda item: item.window_id))
+        if not ordered:
+            raise ValueError("AgentResponsesPending requires at least one task")
+        self.pending = ordered
+        self.pending_count = len(ordered)
+        self.tasks_dir = ordered[0].task_path.parent
+        self.answers_dir = ordered[0].answer_path.parent
+        super().__init__(
+            "E-AGENT-RESPONSES-PENDING",
+            f"{self.pending_count} SceneWindow answer(s) are pending under {self.tasks_dir}",
         )
 
 
@@ -157,6 +175,7 @@ class AgentFileExecutor:
     """Thin file adapter; host code agents produce answers outside this process."""
 
     executor_kind = AGENT_FILES_EXECUTOR_KIND
+    executor_build_id = AGENT_FILES_EXECUTOR_BUILD_ID
     response_format = AGENT_FILES_RESPONSE_FORMAT
     endpoint = "agent-files"
     timeout = 0.0

@@ -6,10 +6,11 @@ import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
-from typing import Any, Callable
+from typing import Any, Callable, Protocol
 from urllib.parse import urlparse
 
 from .canonical import canonical_dumps
+from .constants import MODEL_EXECUTOR_BUILD_ID
 from .errors import ValidationError
 from .hashing import object_hash
 
@@ -18,6 +19,37 @@ RETRYABLE_STATUSES = {429, 500, 502, 503, 504}
 MAX_MODEL_RESPONSE_BYTES = 4_000_000
 
 Transport = Callable[[str, dict[str, str], bytes, float], tuple[int, dict[str, str], bytes]]
+
+API_EXECUTOR_KIND = "API"
+OPENAI_RESPONSES_FORMAT = "OPENAI_RESPONSES"
+
+
+class SceneScoutExecutor(Protocol):
+    model: str
+    endpoint: str
+    timeout: float
+    max_attempts: int
+    executor_kind: str
+    response_format: str
+    executor_build_id: str
+
+    def json_request_bytes(
+        self,
+        *,
+        instructions: str,
+        input_value: dict[str, Any],
+        schema_name: str,
+        schema: dict[str, Any],
+    ) -> bytes: ...
+
+    def generate_json(
+        self,
+        *,
+        instructions: str,
+        input_value: dict[str, Any],
+        schema_name: str,
+        schema: dict[str, Any],
+    ) -> "ModelCallResult": ...
 
 
 class _NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -93,6 +125,10 @@ def _response_usage(response: Any) -> dict[str, int | None]:
 
 
 class OpenAIResponsesClient:
+    executor_kind = API_EXECUTOR_KIND
+    response_format = OPENAI_RESPONSES_FORMAT
+    executor_build_id = MODEL_EXECUTOR_BUILD_ID
+
     def __init__(
         self,
         *,

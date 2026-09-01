@@ -12,7 +12,7 @@ from .runtime import repository_commit
 from .errors import ValidationError
 from .hashing import collection_snapshot_hash, object_hash, sorted_ids
 from .ids import derived_id
-from .model_api import OpenAIResponsesClient
+from .model_api import SceneScoutExecutor
 from .novel_assessment import (
     declared_rights,
     declared_source_quality,
@@ -369,7 +369,7 @@ def run_novel_research(
     spec: dict[str, Any],
     work_dir: pathlib.Path,
     *,
-    extractor_client: OpenAIResponsesClient,
+    extractor_client: SceneScoutExecutor,
     repo_root: pathlib.Path,
     now: str,
     fetcher: Any | None = None,
@@ -481,7 +481,7 @@ def run_famous_novel_research(
     work_dir: pathlib.Path,
     *,
     providers: list[Any],
-    extractor_client: OpenAIResponsesClient,
+    extractor_client: SceneScoutExecutor,
     repo_root: pathlib.Path,
     now: str,
     fetcher: Any | None = None,

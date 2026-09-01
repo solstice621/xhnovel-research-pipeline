@@ -10,18 +10,30 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
+from .agent_files import (
+    AGENT_FILES_EXECUTOR_BUILD_ID,
+    AGENT_FILES_EXECUTOR_KIND,
+    AGENT_FILES_RESPONSE_FORMAT,
+    AgentResponsePending,
+    AgentResponsesPending,
+    agent_task_bytes,
+    decode_agent_answer,
+)
+
 from .build_identity import BUILD_IDENTITY_FIELDS, build_source_hash
 from .canonical import canonical_dumps
 from .catalog import Catalog
-from .constants import MODEL_EXECUTOR_BUILD_ID, PROFILE_ID, SCHEMA_VERSION
+from .constants import PROFILE_ID, SCHEMA_VERSION
 from .errors import ValidationError
 from .hashing import artifact_id_for, object_hash, sorted_ids
 from .ids import derived_id
 from .model_api import (
+    API_EXECUTOR_KIND,
+    OPENAI_RESPONSES_FORMAT,
     ModelAttemptTrace,
     ModelCallError,
     ModelCallResult,
-    OpenAIResponsesClient,
+    SceneScoutExecutor,
     _response_output_text,
 )
 from .novel_assessment import resolve_validated_bundle_ingestion
@@ -478,6 +490,24 @@ def _window_input(
     }
 
 
+def _decode_executor_output(response_format: str, response_bytes: bytes) -> dict[str, Any]:
+    if response_format == AGENT_FILES_RESPONSE_FORMAT:
+        return decode_agent_answer(response_bytes)
+    if response_format == OPENAI_RESPONSES_FORMAT:
+        try:
+            response = json.loads(response_bytes.decode("utf-8"))
+            output = json.loads(_response_output_text(response))
+        except (UnicodeDecodeError, json.JSONDecodeError, TypeError) as exc:
+            raise ValidationError("E-MODEL-RESPONSE", "stored model response is invalid") from exc
+        if not isinstance(output, dict):
+            raise ValidationError("E-MODEL-OUTPUT", "model output must be an object")
+        return output
+    raise ValidationError(
+        "E-SCENE-EXECUTOR",
+        f"unsupported Scene Scout response format {response_format!r}",
+    )
+
+
 def _span_key(span: dict[str, Any]) -> tuple[str, int, int]:
     return span["segment_id"], int(span["start"]), int(span["end"])
 
@@ -775,7 +805,7 @@ def merge_scene_candidates(
 
 
 def make_scout_build(
-    client: OpenAIResponsesClient,
+    client: SceneScoutExecutor,
     *,
     repo_root: pathlib.Path,
     created_at: str,
@@ -793,6 +823,8 @@ def make_scout_build(
         "model": client.model,
         "prompt_template_hash": artifact_id_for(prompt_bytes),
         "parameters": {
+            "executor_kind": client.executor_kind,
+            "response_format": client.response_format,
             "endpoint": client.endpoint,
             "timeout_seconds": format(client.timeout, ".17g"),
             "max_attempts": client.max_attempts,
@@ -805,7 +837,7 @@ def make_scout_build(
             "output_schema_hash": artifact_id_for(schema_bytes),
         },
         "profile_version": PROFILE_ID,
-        "executor_build_id": MODEL_EXECUTOR_BUILD_ID,
+        "executor_build_id": client.executor_build_id,
         "tool_policy_hash": object_hash({"tools": []}, omit=()),
     }
     return {
@@ -824,7 +856,7 @@ def _run_scene_scout_locked(
     store: ArtifactStore,
     bundle: dict[str, Any],
     *,
-    client: OpenAIResponsesClient,
+    client: SceneScoutExecutor,
     repo_root: pathlib.Path,
     created_at: str,
     window_chars: int = DEFAULT_WINDOW_CHARS,
@@ -962,6 +994,7 @@ def _run_scene_scout_locked(
         )
 
     pending = [window for window in windows if window["window_id"] not in state["completed"]]
+    pending_responses: dict[str, AgentResponsePending] = {}
     if pending:
         with ThreadPoolExecutor(max_workers=min(max_workers, len(pending))) as executor:
             futures = {executor.submit(invoke, window): window for window in pending}
@@ -970,6 +1003,8 @@ def _run_scene_scout_locked(
                 window_id = window["window_id"]
                 try:
                     call = future.result()
+                except AgentResponsePending as exc:
+                    pending_responses[window_id] = exc
                 except ModelCallError as exc:
                     _persist_model_attempts(
                         catalog,
@@ -1056,6 +1091,10 @@ def _run_scene_scout_locked(
             f"{len(state['failures'])} scene window(s) failed; first {first_window_id}: "
             f"{failure['error_code']}",
         )
+    if pending_responses:
+        state["status"] = "WAITING_FOR_AGENT"
+        write_checkpoint()
+        raise AgentResponsesPending(list(pending_responses.values()))
 
     receipt_by_attempt_id: dict[str, str] = {}
     for receipt_artifact_id in state["attempt_record_artifact_ids"]:
@@ -1121,11 +1160,14 @@ def _run_scene_scout_locked(
         for window in windows
     ]
     raw_candidates: list[dict[str, Any]] = []
+    response_format = build["parameters"]["response_format"]
     for window, response_artifact_id in zip(windows, response_artifact_ids):
         try:
-            stored_response = json.loads(store.get(response_artifact_id).decode("utf-8"))
-            output_value = json.loads(_response_output_text(stored_response))
-        except (UnicodeDecodeError, json.JSONDecodeError, TypeError) as exc:
+            output_value = _decode_executor_output(
+                response_format,
+                store.get(response_artifact_id),
+            )
+        except ValidationError as exc:
             raise ValidationError("E-SCENE-CHECKPOINT", "completed response is invalid") from exc
         for candidate in _validate_scout_output(
             catalog, output_value, output_schema=output_schema, window=window
@@ -1190,7 +1232,7 @@ def run_scene_scout(
     store: ArtifactStore,
     bundle: dict[str, Any],
     *,
-    client: OpenAIResponsesClient,
+    client: SceneScoutExecutor,
     repo_root: pathlib.Path,
     created_at: str,
     window_chars: int = DEFAULT_WINDOW_CHARS,
@@ -1271,8 +1313,20 @@ def validate_scene_scouts(
         request = catalog.get("ResearchRequest", run["request_id"])
         build = catalog.get("ExtractorBuild", run["extractor_build_id"])
         parameters = build["parameters"]
+        executor_kind = parameters.get("executor_kind")
+        response_format = parameters.get("response_format")
+        expected_executor_build = {
+            API_EXECUTOR_KIND: (OPENAI_RESPONSES_FORMAT, "openai-responses-v1"),
+            AGENT_FILES_EXECUTOR_KIND: (
+                AGENT_FILES_RESPONSE_FORMAT,
+                AGENT_FILES_EXECUTOR_BUILD_ID,
+            ),
+        }.get(executor_kind)
         if (
-            run["bundle_hash"] != bundle["bundle_hash"]
+            expected_executor_build is None
+            or response_format != expected_executor_build[0]
+            or build["executor_build_id"] != expected_executor_build[1]
+            or run["bundle_hash"] != bundle["bundle_hash"]
             or run["request_id"] != bundle["request_id"]
             or run["discovery_brief_hash"]
             != object_hash({"discovery_brief": request["discovery_brief"]}, omit=())
@@ -1392,32 +1446,63 @@ def validate_scene_scouts(
             for artifact_id in (request_artifact_id, response_artifact_id):
                 catalog.get("Artifact", artifact_id)
                 store.verify(artifact_id)
-            try:
-                stored_request = json.loads(store.get(request_artifact_id).decode("utf-8"))
-                stored_response = json.loads(store.get(response_artifact_id).decode("utf-8"))
-                input_value = json.loads(stored_request["input"])
-                output_value = json.loads(_response_output_text(stored_response))
-            except (UnicodeDecodeError, json.JSONDecodeError, KeyError, TypeError) as exc:
-                raise ValidationError("E-SCENE-REPLAY", "stored scene exchange is invalid") from exc
+            request_bytes = store.get(request_artifact_id)
+            response_bytes = store.get(response_artifact_id)
             expected_input = _window_input(
                 catalog, window, discovery_brief=request["discovery_brief"]
             )
-            if (
-                set(stored_request) != {"model", "instructions", "input", "text", "store"}
-                or stored_request["model"] != build["model"]
-                or stored_request["instructions"] != prompt
-                or stored_request["store"] is not False
-                or stored_request["input"] != canonical_dumps(expected_input).decode("utf-8")
-                or input_value != expected_input
-                or stored_request["text"]["format"]
-                != {
-                    "type": "json_schema",
-                    "name": "xuanhuan_scene_candidates",
-                    "strict": True,
-                    "schema": output_schema,
-                }
-            ):
-                raise ValidationError("E-SCENE-REPLAY", "stored scene request differs")
+            try:
+                if response_format == OPENAI_RESPONSES_FORMAT:
+                    stored_request = json.loads(request_bytes.decode("utf-8"))
+                    input_value = json.loads(stored_request["input"])
+                    if (
+                        set(stored_request)
+                        != {"model", "instructions", "input", "text", "store"}
+                        or stored_request["model"] != build["model"]
+                        or stored_request["instructions"] != prompt
+                        or stored_request["store"] is not False
+                        or stored_request["input"]
+                        != canonical_dumps(expected_input).decode("utf-8")
+                        or input_value != expected_input
+                        or stored_request["text"]["format"]
+                        != {
+                            "type": "json_schema",
+                            "name": "xuanhuan_scene_candidates",
+                            "strict": True,
+                            "schema": output_schema,
+                        }
+                    ):
+                        raise ValidationError(
+                            "E-SCENE-REPLAY", "stored scene request differs"
+                        )
+                elif response_format == AGENT_FILES_RESPONSE_FORMAT:
+                    expected_request = agent_task_bytes(
+                        instructions=prompt,
+                        input_value=expected_input,
+                        schema_name="xuanhuan_scene_candidates",
+                        schema=output_schema,
+                    )
+                    if request_bytes != expected_request:
+                        raise ValidationError(
+                            "E-SCENE-REPLAY", "stored agent task differs"
+                        )
+                else:
+                    raise ValidationError(
+                        "E-SCENE-REPLAY", "unknown Scene Scout response format"
+                    )
+                output_value = _decode_executor_output(response_format, response_bytes)
+            except (
+                UnicodeDecodeError,
+                json.JSONDecodeError,
+                KeyError,
+                TypeError,
+                ValidationError,
+            ) as exc:
+                if isinstance(exc, ValidationError) and exc.code == "E-SCENE-REPLAY":
+                    raise
+                raise ValidationError(
+                    "E-SCENE-REPLAY", "stored scene exchange is invalid"
+                ) from exc
             for candidate in _validate_scout_output(
                 catalog, output_value, output_schema=output_schema, window=window
             ):
