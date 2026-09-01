@@ -2,19 +2,17 @@
 
 ## Status
 
-**Design baseline (A‴) — not yet implemented, one narrow re-review pending before
-"frozen".** This document is the contract that the Phase 0 exploration layer and the
-existing evidence compiler must satisfy. It was reviewed against the current source
-tree; every claim it makes about existing code was verified against the tree at
-`eaf281a` (file:line evidence is inlined below). A′ (`7e5203c`) established the
-baseline and absorbed the first review's nine decisions; A″ (`7521302`) fixed five
-interface contradictions; A‴ (this revision) fixes three residual contradictions —
-two of them introduced by A″ itself: (1) `frozen_at` was described as excluded but the
-hash formulas did not `omit` it, and `handoff_id` omitted `build_request_artifact_id`
-(same-id/different-bytes collision); (2) `execute-handoff` had no state for the legal
-agent-files `WAITING_FOR_AGENT` pass; (3) the validator adversarial test demanded
-identical failure for inputs that are legal under `RUNTIME_COMPAT`. Implementation
-proceeds `A′ → A″ → A‴ (this doc) → P0-C1 → P0-C2 → P0-A → P0-B → P0-D → P0-E`.
+**Design frozen.** This document is the contract that the Phase 0 exploration layer
+and the existing evidence compiler must satisfy. It was reviewed against the current
+source tree over four rounds; every claim it makes about existing code was verified
+against the tree at `eaf281a` (file:line evidence is inlined below). A′ (`7e5203c`)
+established the baseline and absorbed the first review's nine decisions; A″ (`7521302`)
+fixed five interface contradictions; A‴ (`7081111`) fixed three residual contradictions;
+A⁗ (this revision) aligned the terminal-receipt invariant with the attempt state
+machine (a terminal receipt is mandatory iff the attempt reaches SUCCEEDED/FAILED;
+WAITING and INTERRUPTED are legal marker-backed states with no terminal receipt).
+Implementation proceeds
+`A′ → A″ → A‴ → A⁗ (frozen) → P0-C1 → P0-C2 → P0-A → P0-B → P0-D → P0-E`.
 
 Nothing here lands on the `agent-files` executor branch. Phase 0 is a separate epic
 and must **not** block the xuanhuan experiments: a hand-written Novel Spec plus a
@@ -565,17 +563,27 @@ receipt (below) that does **not** enter the core Catalog.
 
 ---
 
-## Execution receipts (load-bearing, mandatory for every attempted Handoff)
+## Execution attempts and receipts (load-bearing; every attempt is marker-backed)
 
 `EvidenceHandoff valid ≠ evidence compilation succeeded`. `READY_FOR_XHNOVEL` means
 only that a static/local preflight judged the spec eligible to *attempt* the
 compiler. It does not promise the EPUB is intact, the site is reachable, chapter
 parsing works, or ingestion completes.
 
-An `EvidenceHandoffExecutionReceipt` is a **mandatory** artifact for every Handoff
-that is actually attempted, including failures. But a *policy* that "every attempt
-must emit a receipt" cannot enforce itself: an operator can run `research-novel`
-directly, have ingestion fail on a corrupt EPUB, never call
+The state invariant is:
+
+```text
+Every attempted Handoff has an immutable STARTED marker.
+A terminal EvidenceHandoffExecutionReceipt is mandatory IF AND ONLY IF the attempt
+  reaches SUCCEEDED or FAILED.
+WAITING_FOR_AGENT is a legal non-terminal state with NO terminal receipt.
+INTERRUPTED / INCOMPLETE is reconstructed from an incomplete attempt history and also
+  has NO terminal receipt; it must never be silently reclassified as FAILED or
+  prepared_not_executed.
+```
+
+But a *policy* that "every attempt emits a receipt" cannot enforce itself: an operator
+can run `research-novel` directly, have ingestion fail on a corrupt EPUB, never call
 `verify_handoff_execution`, delete the work-dir, and report the Handoff as
 `prepared_not_executed` — the failed Lead silently leaves the experiment denominator
 (selection bias). A crash or kill mid-run has the same gap.
@@ -794,8 +802,9 @@ tests/{test_phase0_contracts,test_phase0_handoff,test_phase0_integration}.py
 - **A′ (`7e5203c`)** — design baseline; absorbed the first review's nine decisions.
   Docs-only.
 - **A″ (`7521302`)** — fixed five interface contradictions. Docs-only.
-- **A‴ (this revision)** — fixes three residual contradictions (see below). Docs-only;
-  one narrow re-review, then "frozen".
+- **A‴ (`7081111`)** — fixed three residual contradictions. Docs-only.
+- **A⁗ (this revision)** — aligned the terminal-receipt invariant with the attempt
+  state machine; status → **frozen**. Docs-only.
 - **P0-C1** — extract validation primitives, call sites unchanged; parity acceptance
   (format/error-semantics/side-effects/normalized-semantic parity, build-bound IDs
   expected to change — see the two-substage section).
@@ -810,7 +819,8 @@ tests/{test_phase0_contracts,test_phase0_handoff,test_phase0_integration}.py
 - **P0-D** — builder + `validate_evidence_handoff` replay (Phase 0 CAS + artifact
   verification); location-hint negative tests; rights/quality readiness.
 - **P0-E** — `verify_handoff_execution` closure + authoritative `execute-handoff`
-  wrapper with the pre-call STARTED marker + mandatory terminal receipts + `validate all`.
+  wrapper: pre-call STARTED marker + WAITING resume semantics + mandatory terminal
+  receipts for SUCCEEDED/FAILED attempts + `validate all`.
 
 ## Freeze decisions
 
@@ -828,8 +838,10 @@ From A′ (unchanged):
 6. Handoff trust = deterministic rebuild from content-bound inputs and exact-compare,
    not a "builder-only writer" claim.
 7. `READY_FOR_XHNOVEL` means preflight readiness only, not content binding.
-8. Every actually-attempted Handoff has an immutable STARTED marker and a terminal
-   receipt; results are counted from markers, not self-report.
+8. Every actually-attempted Handoff has an immutable STARTED marker. Every attempt
+   reaching SUCCEEDED or FAILED has a terminal receipt; WAITING and INTERRUPTED remain
+   marker-backed non-terminal states with no terminal receipt. Results and denominators
+   are reconstructed from attempt history, not self-report.
 9. Phase 0 is a separate epic on its own branch; it does not block the xuanhuan
    experiments (hand-written specs run today) and does not enter the core Catalog.
 
