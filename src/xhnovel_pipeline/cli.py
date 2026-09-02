@@ -53,6 +53,7 @@ def _catalog_from_json(path: pathlib.Path) -> Catalog:
 
 
 def _rel(path: pathlib.Path, base: pathlib.Path) -> str:
+    # POSIX separators keep the machine-readable manifest identical on Windows.
     try:
         return path.relative_to(base).as_posix()
     except ValueError:
@@ -60,6 +61,8 @@ def _rel(path: pathlib.Path, base: pathlib.Path) -> str:
 
 
 def _json_stdout(value: object) -> str:
+    # ensure_ascii=True escapes non-ASCII so stdout never depends on the terminal
+    # code page (Windows cp1252 would otherwise fail to encode Chinese text).
     body = json.dumps(value, ensure_ascii=True, indent=2)
     print(body)
     return body
@@ -70,7 +73,14 @@ def _agent_files_dir(work_dir: pathlib.Path) -> pathlib.Path:
 
 
 def _emit_pending_manifest(exc: AgentResponsesPending, work_dir: pathlib.Path | None) -> int:
-    """Report WAITING_FOR_AGENT as stable machine JSON and exit 3."""
+    """Report WAITING_FOR_AGENT: human line to stderr, stable JSON to stdout, exit 3.
+
+    The pending manifest is a regenerable operational view (also written to
+    ``pending.json``), never an audit source of truth. It carries window ids and
+    task/answer paths only — no source text and no task packet body.
+    """
+    # tasks_dir is <work_dir>/scene-scout/agent-files/tasks; recover work_dir from it
+    # so the manifest never depends on a caller local that may be unbound on error.
     base = work_dir if work_dir is not None else exc.tasks_dir.parents[2]
     manifest = {
         "status": "WAITING_FOR_AGENT",
@@ -276,8 +286,14 @@ def main(argv: list[str] | None = None) -> int:
 
         spec = load_novel_spec(args.spec)
         if args.cmd == "research-famous-novel":
+            # Fail on local selection/ranking input before credential lookup or network setup.
             validated_famous_novel_spec(spec)
             if args.executor == "agent-files":
+                # The famous workflow re-runs ranking + source resolution on every
+                # call, so a second identical command would derive fresh
+                # ranking/resolution/request/window identities and never consume the
+                # first pass's answers. Refuse before any provider/network work until
+                # a persisted selection snapshot exists (out of Stage 3 scope).
                 raise PipelineError(
                     "E-AGENT-EXECUTOR-UNSUPPORTED",
                     "research-famous-novel does not support --executor agent-files; "
@@ -326,6 +342,8 @@ def main(argv: list[str] | None = None) -> int:
             f"({result['export']['assurance']['level']})"
         )
         if args.executor == "agent-files":
+            # Agent attempts have no token accounting; surface that honestly. The API
+            # success output stays byte-identical to the pre-Stage-3 two-line form.
             usage = result["scout"]["run"]["usage_ledger"]
             unknown = usage.get("attempts_with_unknown_usage", 0)
             print(f"Token usage: unknown for {unknown} host-agent attempt(s)")

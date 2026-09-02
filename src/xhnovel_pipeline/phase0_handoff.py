@@ -60,6 +60,46 @@ def _nonempty(value: Any, *, code: str, message: str) -> str:
     return value.strip()
 
 
+def _require_fields(
+    value: dict[str, Any],
+    *,
+    required: set[str],
+    optional: set[str] | None = None,
+    code: str,
+    label: str,
+) -> None:
+    fields = set(value)
+    allowed = required | (optional or set())
+    if not required <= fields or not fields <= allowed:
+        raise ValidationError(code, f"{label} has an invalid field set")
+
+
+def _phase0_object_hash(
+    value: dict[str, Any],
+    *,
+    omit: tuple[str, ...],
+    code: str,
+    label: str,
+) -> str:
+    try:
+        return object_hash(value, omit=omit)
+    except (TypeError, ValueError) as exc:
+        raise ValidationError(code, f"{label} is not canonical JSON") from exc
+
+
+def _phase0_derived_id(
+    kind: str,
+    value: dict[str, Any],
+    *,
+    code: str,
+    label: str,
+) -> str:
+    try:
+        return derived_id(kind, value)
+    except (TypeError, ValueError) as exc:
+        raise ValidationError(code, f"{label} is not canonical JSON") from exc
+
+
 def _sorted_strings(values: Any, *, code: str, field: str) -> list[str]:
     if not isinstance(values, list) or any(
         not isinstance(item, str) or not item.strip() for item in values
@@ -229,6 +269,53 @@ def work_ref_from_declaration(declaration: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _bind_source_metadata(
+    source: dict[str, Any],
+    work: dict[str, Any],
+    *,
+    require_canonical: bool,
+) -> dict[str, Any]:
+    if not isinstance(source, dict):
+        raise ValidationError("E-PHASE0-SOURCE", "source must be an object")
+    result = copy.deepcopy(source)
+    expected = {
+        "title": work["canonical_title"],
+        "author": work["author"],
+        "language": work["language"],
+    }
+    for field, expected_value in expected.items():
+        if field not in result:
+            continue
+        raw_value = result[field]
+        if field == "author":
+            if raw_value is not None and (
+                not isinstance(raw_value, str) or not raw_value.strip()
+            ):
+                raise ValidationError(
+                    "E-PHASE0-SOURCE-BIND",
+                    "source author must be null or non-empty",
+                )
+            normalized = normalize_author(raw_value)
+        else:
+            normalized = _nonempty(
+                raw_value,
+                code="E-PHASE0-SOURCE-BIND",
+                message=f"source {field} must be non-empty",
+            )
+        if normalized != expected_value:
+            raise ValidationError(
+                "E-PHASE0-SOURCE-BIND",
+                f"source {field} conflicts with resolved work metadata",
+            )
+        if require_canonical and raw_value != expected_value:
+            raise ValidationError(
+                "E-PHASE0-SOURCE-BIND",
+                f"source {field} is not canonical",
+            )
+        result[field] = expected_value
+    return result
+
+
 def source_ref_from_validated(
     declaration: dict[str, Any],
     validated: ValidatedDirectResearchSpec,
@@ -241,7 +328,11 @@ def source_ref_from_validated(
             "work reference differs from the source declaration",
         )
     source = copy.deepcopy(validated.normalized_source_spec)
-    expected_source = copy.deepcopy(declaration["source"])
+    expected_source = _bind_source_metadata(
+        declaration["source"],
+        work_ref,
+        require_canonical=True,
+    )
     raw_declared_kind = str(expected_source.get("kind", "")).casefold()
     try:
         expected_source["kind"] = _SUPPORTED_SOURCE_KIND[raw_declared_kind]
@@ -351,14 +442,24 @@ def make_exploration_brief(
             "E-PHASE0-BRIEF",
             "evidence_discovery_brief must be non-empty",
         )
-    brief_id = derived_id("ExplorationBrief", base)
+    brief_id = _phase0_derived_id(
+        "ExplorationBrief",
+        base,
+        code="E-PHASE0-BRIEF",
+        label="exploration brief",
+    )
     record = {
         **base,
         "brief_id": brief_id,
         "brief_hash": "sha256:" + "0" * 64,
         "frozen_at": frozen_at,
     }
-    record["brief_hash"] = object_hash(record, omit=("brief_hash", "frozen_at"))
+    record["brief_hash"] = _phase0_object_hash(
+        record,
+        omit=("brief_hash", "frozen_at"),
+        code="E-PHASE0-BRIEF",
+        label="exploration brief",
+    )
     validate_schema("ExplorationBrief", record)
     return record
 
@@ -366,6 +467,13 @@ def make_exploration_brief(
 def _canonical_lead_source(source: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(source, dict):
         raise ValidationError("E-PHASE0-LEAD", "lead source must be an object")
+    _require_fields(
+        source,
+        required={"source_kind", "locator", "supports"},
+        optional={"title", "publisher"},
+        code="E-PHASE0-LEAD",
+        label="lead source",
+    )
     payload: dict[str, Any] = {
         "source_kind": _nonempty(
             source.get("source_kind"),
@@ -386,13 +494,35 @@ def _canonical_lead_source(source: dict[str, Any]) -> dict[str, Any]:
     }
     for field in ("title", "publisher"):
         value = source.get(field)
-        payload[field] = value.strip() if isinstance(value, str) and value.strip() else None
-    return {"lead_source_id": derived_id("LeadSource", payload), **payload}
+        if value is None:
+            payload[field] = None
+        elif not isinstance(value, str) or not value.strip():
+            raise ValidationError(
+                "E-PHASE0-LEAD",
+                f"lead source {field} must be null or a non-empty string",
+            )
+        else:
+            payload[field] = value.strip()
+    return {
+        "lead_source_id": _phase0_derived_id(
+            "LeadSource",
+            payload,
+            code="E-PHASE0-LEAD",
+            label="lead source",
+        ),
+        **payload,
+    }
 
 
 def _canonical_work_claim(value: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ValidationError("E-PHASE0-LEAD", "work_claim must be an object")
+    _require_fields(
+        value,
+        required={"title", "author", "language", "aliases"},
+        code="E-PHASE0-LEAD",
+        label="work_claim",
+    )
     title = _nonempty(
         value.get("title"),
         code="E-PHASE0-LEAD",
@@ -423,22 +553,53 @@ def make_research_lead(
     lead_sources: list[dict[str, Any]],
     frozen_at: str,
 ) -> dict[str, Any]:
+    if not isinstance(lead_sources, list):
+        raise ValidationError("E-PHASE0-LEAD", "lead_sources must be an array")
     sources = sorted(
         (_canonical_lead_source(item) for item in lead_sources),
         key=lambda item: item["lead_source_id"],
     )
     source_ids = {item["lead_source_id"] for item in sources}
+    location_source_ids = {
+        item["lead_source_id"]
+        for item in sources
+        if "LOCATION_HINT" in item["supports"]
+    }
     if not isinstance(scene_hint, dict):
         raise ValidationError("E-PHASE0-LEAD", "scene_hint must be an object")
+    _require_fields(
+        scene_hint,
+        required={"summary", "why_relevant", "interaction_tags", "location_hints"},
+        code="E-PHASE0-LEAD",
+        label="scene_hint",
+    )
+    raw_hints = scene_hint["location_hints"]
+    if not isinstance(raw_hints, list):
+        raise ValidationError("E-PHASE0-LEAD", "location_hints must be an array")
     hints = []
-    for raw in scene_hint.get("location_hints", []):
+    for raw in raw_hints:
         if not isinstance(raw, dict):
             raise ValidationError("E-PHASE0-LEAD", "location hint must be an object")
-        refs = sorted(set(raw.get("lead_source_ids") or []))
+        _require_fields(
+            raw,
+            required={"kind", "value", "basis", "lead_source_ids"},
+            code="E-PHASE0-LEAD",
+            label="location hint",
+        )
+        refs = _sorted_strings(
+            raw.get("lead_source_ids"),
+            code="E-PHASE0-LEAD",
+            field="location_hint.lead_source_ids",
+        )
         if not refs or not set(refs) <= source_ids:
             raise ValidationError(
                 "E-PHASE0-LEAD",
                 "location hint must reference lead sources in the same lead",
+            )
+        if not set(refs) <= location_source_ids:
+            raise ValidationError(
+                "E-PHASE0-LEAD",
+                "location hint must reference sources declaring LOCATION_HINT support",
             )
         hints.append(
             {
@@ -485,7 +646,12 @@ def make_research_lead(
         "scene_hint": canonical_hint,
         "lead_sources": sources,
     }
-    lead_id = derived_id("ResearchLead", identity)
+    lead_id = _phase0_derived_id(
+        "ResearchLead",
+        identity,
+        code="E-PHASE0-LEAD",
+        label="research lead",
+    )
     record = {
         "schema_version": SCHEMA_VERSION,
         "lead_id": lead_id,
@@ -494,7 +660,12 @@ def make_research_lead(
         "lead_hash": "sha256:" + "0" * 64,
         "frozen_at": frozen_at,
     }
-    record["lead_hash"] = object_hash(record, omit=("lead_hash", "frozen_at"))
+    record["lead_hash"] = _phase0_object_hash(
+        record,
+        omit=("lead_hash", "frozen_at"),
+        code="E-PHASE0-LEAD",
+        label="research lead",
+    )
     validate_schema("ResearchLead", record)
     return record
 
@@ -506,9 +677,19 @@ def validate_research_lead(lead: dict[str, Any]) -> dict[str, Any]:
         if source["lead_source_id"] != derived_id("LeadSource", payload):
             raise ValidationError("E-PHASE0-LEAD-BIND", "lead source identity changed")
     source_ids = {source["lead_source_id"] for source in lead["lead_sources"]}
+    location_source_ids = {
+        source["lead_source_id"]
+        for source in lead["lead_sources"]
+        if "LOCATION_HINT" in source["supports"]
+    }
     for hint in lead["scene_hint"]["location_hints"]:
         if not set(hint["lead_source_ids"]) <= source_ids:
             raise ValidationError("E-PHASE0-LEAD-BIND", "location hint references another lead")
+        if not set(hint["lead_source_ids"]) <= location_source_ids:
+            raise ValidationError(
+                "E-PHASE0-LEAD-BIND",
+                "location hint source does not declare LOCATION_HINT support",
+            )
     identity = {
         "brief_id": lead["brief_id"],
         "work_claim": lead["work_claim"],
@@ -533,6 +714,21 @@ def make_source_declaration(
     declared_at: str,
 ) -> dict[str, Any]:
     work_copy = copy.deepcopy(work)
+    if not isinstance(work_copy, dict):
+        raise ValidationError("E-PHASE0-WORK", "work must be an object")
+    _require_fields(
+        work_copy,
+        required={
+            "identity",
+            "canonical_title",
+            "author",
+            "language",
+            "aliases",
+            "external_ids",
+        },
+        code="E-PHASE0-WORK",
+        label="work",
+    )
     identity = _canonical_work_identity(work_copy, require_canonical=False)
     canonical_work = {
         "identity": identity,
@@ -572,6 +768,11 @@ def make_source_declaration(
                 "local source declaration path must be absolute",
             )
         source_copy["path"] = str(path.resolve())
+    source_copy = _bind_source_metadata(
+        source_copy,
+        canonical_work,
+        require_canonical=False,
+    )
     base = {
         "schema_version": SCHEMA_VERSION,
         "work": canonical_work,
@@ -584,8 +785,18 @@ def make_source_declaration(
             message="edition_label must be non-empty",
         ),
     }
-    declaration_hash = object_hash(base, omit=())
-    declaration_id = derived_id("SourceDeclaration", {"declaration_hash": declaration_hash})
+    declaration_hash = _phase0_object_hash(
+        base,
+        omit=(),
+        code="E-PHASE0-SOURCE",
+        label="source declaration",
+    )
+    declaration_id = _phase0_derived_id(
+        "SourceDeclaration",
+        {"declaration_hash": declaration_hash},
+        code="E-PHASE0-SOURCE",
+        label="source declaration",
+    )
     record = {
         **base,
         "source_declaration_id": declaration_id,
@@ -598,7 +809,12 @@ def make_source_declaration(
 
 def validate_source_declaration(declaration: dict[str, Any]) -> dict[str, Any]:
     validate_schema("SourceDeclaration", declaration)
-    work_ref_from_declaration(declaration)
+    work_ref = work_ref_from_declaration(declaration)
+    _bind_source_metadata(
+        declaration["source"],
+        work_ref,
+        require_canonical=True,
+    )
     payload = {
         key: copy.deepcopy(value)
         for key, value in declaration.items()

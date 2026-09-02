@@ -10,16 +10,14 @@ from __future__ import annotations
 
 import copy
 import json
-import os
 import pathlib
-import tempfile
 from dataclasses import dataclass
 from typing import Any, Callable
 
 from .canonical import canonical_dumps
 from .constants import SCHEMA_VERSION
 from .errors import ValidationError
-from .hashing import artifact_id_for, object_hash
+from .hashing import artifact_id_for, is_real_sha256, object_hash
 from .ids import derived_id
 from .novel_spec import (
     SpecValidationPurpose,
@@ -60,6 +58,7 @@ class PreparedHandoff:
     phase0_root: pathlib.Path
     handoff_path: pathlib.Path
     novel_spec_path: pathlib.Path
+    validation_receipt_path: pathlib.Path
     handoff_artifact_id: str
     build_request_artifact_id: str
     handoff: dict[str, Any]
@@ -72,21 +71,14 @@ def _json_bytes(value: Any) -> bytes:
     )
 
 
-def _atomic_write(path: pathlib.Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    fd, tmp_name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
+def _build_request_hash(value: dict[str, Any]) -> str:
     try:
-        with os.fdopen(fd, "wb") as handle:
-            handle.write(data)
-            handle.flush()
-            os.fsync(handle.fileno())
-        os.replace(tmp_name, path)
-    except Exception:
-        try:
-            os.unlink(tmp_name)
-        except OSError:
-            pass
-        raise
+        return object_hash(value, omit=())
+    except (TypeError, ValueError) as exc:
+        raise ValidationError(
+            "E-PHASE0-BUILD-REQUEST",
+            "handoff build request is not canonical JSON",
+        ) from exc
 
 
 def _write_immutable(path: pathlib.Path, data: bytes) -> None:
@@ -136,12 +128,22 @@ def read_phase0_record(
     artifact_id: str,
     kind: str,
 ) -> dict[str, Any]:
+    if (
+        not isinstance(artifact_id, str)
+        or not artifact_id.startswith("sha256:")
+        or not is_real_sha256(artifact_id)
+    ):
+        raise ValidationError("E-PHASE0-CAS", f"{kind} artifact id is invalid")
     raw = store.get(artifact_id)
     try:
         value = json.loads(raw.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ValidationError("E-PHASE0-CAS", f"{kind} artifact is not JSON") from exc
-    if not isinstance(value, dict) or raw != canonical_dumps(value):
+    try:
+        canonical = canonical_dumps(value)
+    except (TypeError, ValueError) as exc:
+        raise ValidationError("E-PHASE0-CAS", f"{kind} artifact is not canonical JSON") from exc
+    if not isinstance(value, dict) or raw != canonical:
         raise ValidationError("E-PHASE0-CAS", f"{kind} artifact is not canonical JSON")
     return _record_validator(kind)(value)
 
@@ -167,13 +169,20 @@ def make_handoff_build_request(
         "execution_profile": PHASE0_EXECUTION_PROFILE,
         "requested_at": requested_at,
     }
-    build_request_hash = object_hash(base, omit=())
-    record = {
-        **base,
-        "build_request_id": derived_id(
+    build_request_hash = _build_request_hash(base)
+    try:
+        build_request_id = derived_id(
             "HandoffBuildRequest",
             {"build_request_hash": build_request_hash},
-        ),
+        )
+    except (TypeError, ValueError) as exc:
+        raise ValidationError(
+            "E-PHASE0-BUILD-REQUEST",
+            "handoff build request is not canonical JSON",
+        ) from exc
+    record = {
+        **base,
+        "build_request_id": build_request_id,
         "build_request_hash": build_request_hash,
     }
     validate_schema("HandoffBuildRequest", record)
@@ -273,6 +282,30 @@ def _validate_handoff_record(handoff: dict[str, Any]) -> dict[str, Any]:
             "motivating lead ids are not canonically ordered",
         )
     return copy.deepcopy(handoff)
+
+
+def _validation_receipt(
+    handoff: dict[str, Any],
+    *,
+    handoff_artifact_id: str,
+) -> dict[str, Any]:
+    """Return a regenerable validation output, never an authority for validity."""
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "receipt_kind": "PHASE0_HANDOFF_VALIDATION",
+        "validation_method": "DETERMINISTIC_REPLAY",
+        "status": "PASS",
+        "handoff_id": handoff["handoff_id"],
+        "handoff_hash": handoff["handoff_hash"],
+        "handoff_artifact_id": handoff_artifact_id,
+        "build_request_artifact_id": handoff["builder"][
+            "build_request_artifact_id"
+        ],
+        "novel_spec_raw_artifact_id": handoff["novel_spec"]["raw_artifact_id"],
+        "expected_input_spec_hash": handoff["novel_spec"][
+            "expected_input_spec_hash"
+        ],
+    }
 
 
 def rebuild_evidence_handoff(
@@ -393,15 +426,26 @@ def prepare_evidence_handoff(
     output_dir = root / "handoffs" / handoff["handoff_id"]
     handoff_path = output_dir / "handoff.json"
     novel_spec_path = output_dir / "novel-spec.json"
+    validation_receipt_path = output_dir / "validation-receipt.json"
     _write_immutable(handoff_path, _json_bytes(handoff))
     _write_immutable(novel_spec_path, novel_spec_bytes)
     validated = validate_evidence_handoff(handoff_path, phase0_root=root)
     if validated != handoff:
         raise ValidationError("E-PHASE0-HANDOFF-REPLAY", "stored handoff replay changed")
+    _write_immutable(
+        validation_receipt_path,
+        _json_bytes(
+            _validation_receipt(
+                handoff,
+                handoff_artifact_id=handoff_artifact_id,
+            )
+        ),
+    )
     return PreparedHandoff(
         phase0_root=root,
         handoff_path=handoff_path,
         novel_spec_path=novel_spec_path,
+        validation_receipt_path=validation_receipt_path,
         handoff_artifact_id=handoff_artifact_id,
         build_request_artifact_id=request_artifact_id,
         handoff=handoff,
@@ -502,6 +546,13 @@ def _seal_lead(value: dict[str, Any], brief_id: str) -> dict[str, Any]:
             "lead draft must contain work_claim, scene_hint, lead_sources, frozen_at",
         )
     scene_hint = copy.deepcopy(value["scene_hint"])
+    if not isinstance(scene_hint, dict):
+        raise ValidationError("E-PHASE0-LEAD", "scene_hint must be an object")
+    raw_hints = scene_hint.get("location_hints")
+    if not isinstance(raw_hints, list):
+        raise ValidationError("E-PHASE0-LEAD", "location_hints must be an array")
+    if any(not isinstance(hint, dict) for hint in raw_hints):
+        raise ValidationError("E-PHASE0-LEAD", "location hint must be an object")
     preliminary = make_research_lead(
         brief_id=brief_id,
         work_claim=value["work_claim"],
@@ -509,12 +560,19 @@ def _seal_lead(value: dict[str, Any], brief_id: str) -> dict[str, Any]:
         lead_sources=value["lead_sources"],
         frozen_at=value["frozen_at"],
     )
-    source_ids = sorted(
-        source["lead_source_id"] for source in preliminary["lead_sources"]
+    location_source_ids = sorted(
+        source["lead_source_id"]
+        for source in preliminary["lead_sources"]
+        if "LOCATION_HINT" in source["supports"]
     )
-    for hint in scene_hint.get("location_hints", []):
+    for hint in raw_hints:
         if "lead_source_ids" not in hint:
-            hint["lead_source_ids"] = source_ids
+            if not location_source_ids:
+                raise ValidationError(
+                    "E-PHASE0-LEAD",
+                    "location hint has no source declaring LOCATION_HINT support",
+                )
+            hint["lead_source_ids"] = location_source_ids
     return make_research_lead(
         brief_id=brief_id,
         work_claim=value["work_claim"],
