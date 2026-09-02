@@ -604,6 +604,14 @@ validate the Handoff (deterministic replay)
 → native failure: capture the native error code, write a terminal FAILED receipt
 ```
 
+The validated execution input is captured from the Phase 0 `ArtifactStore` through
+`EvidenceHandoff.novel_spec.raw_artifact_id` before the native compiler is called.
+The visible `novel-spec.json` remains an exact-match audit copy, but the execution
+boundary must never reopen it as authority after validation.  This prevents a
+visible-file replacement from changing source, rights, or discovery brief before
+agent-file materialization or external-model transport; post-run hash closure is not
+a substitute for this pre-egress binding.
+
 The attempt is a small state machine:
 
 ```text
