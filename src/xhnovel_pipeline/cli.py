@@ -24,6 +24,7 @@ from .novel_workflow import (
 )
 from .paths import repo_root
 from .phase0_builder import prepare_handoff_from_input, validate_evidence_handoff
+from .phase0_execution import execute_evidence_handoff
 from .ranking import run_fame_ranking, validate_fame_ranking, write_ranking_result
 from .ranking_provider import WikipediaRankingProvider
 from .runtime import utc_now
@@ -164,6 +165,16 @@ def _parser() -> argparse.ArgumentParser:
     handoff_validate.add_argument("handoff", type=pathlib.Path)
     handoff_validate.add_argument("--phase0-root", type=pathlib.Path, default=None)
 
+    execute_handoff = sub.add_parser("execute-handoff")
+    execute_handoff.add_argument("handoff", type=pathlib.Path)
+    execute_handoff.add_argument(
+        "--executor", choices=["api", "agent-files"], default="api"
+    )
+    execute_handoff.add_argument("--scout-model", default=None)
+    execute_handoff.add_argument("--agent-model-label", default="host-code-agent")
+    execute_handoff.add_argument("--work-dir", type=pathlib.Path, required=True)
+    execute_handoff.add_argument("--retry", action="store_true")
+
     locate = sub.add_parser("agent-locate")
     locate.add_argument("--work-dir", type=pathlib.Path, required=True)
     locate.add_argument("--window", required=True)
@@ -210,6 +221,41 @@ def main(argv: list[str] | None = None) -> int:
                 phase0_root=args.phase0_root,
             )
             print(f"OK: validate handoff {handoff['handoff_id']}")
+            return 0
+
+        if args.cmd == "execute-handoff":
+            work_dir = args.work_dir
+            if args.executor == "api":
+                if not args.scout_model:
+                    raise PipelineError(
+                        "E-MODEL-CONFIG",
+                        "--scout-model is required for --executor api",
+                    )
+                extractor_factory = lambda: OpenAIResponsesClient(model=args.scout_model)
+            else:
+                if args.scout_model:
+                    raise PipelineError(
+                        "E-MODEL-CONFIG",
+                        "--scout-model is not allowed for --executor agent-files",
+                    )
+                extractor_factory = lambda: AgentFileExecutor(
+                    work_dir / "scene-scout" / "agent-files",
+                    model_label=args.agent_model_label,
+                )
+            executed = execute_evidence_handoff(
+                args.handoff,
+                work_dir,
+                executor=args.executor,
+                extractor_factory=extractor_factory,
+                repo_root=root,
+                now=utc_now(),
+                retry=args.retry,
+            )
+            print(
+                f"OK: executed evidence handoff {executed.receipt['handoff_id']} "
+                f"attempt={executed.attempt_id} status={executed.status}"
+            )
+            print(executed.receipt_path)
             return 0
 
         if args.cmd == "ingest-novel":
