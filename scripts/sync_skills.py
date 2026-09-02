@@ -1,10 +1,9 @@
-"""Project the canonical host-agent Skill to every host-discovery directory.
+"""Project canonical host-agent Skills to every host-discovery directory.
 
-`.agents/skills/xhnovel-agent-files/SKILL.md` is the single editable source
-(discovered by Codex and Cursor). `.claude/skills/xhnovel-agent-files/SKILL.md`
-is a byte-identical generated mirror (discovered by Claude Code). Both hosts must
-see the exact same operating contract — the projection is a deterministic byte
-copy, never a template.
+`.agents/skills/*/SKILL.md` files are the editable sources discovered by Codex and
+Cursor. `.claude/skills/*/SKILL.md` files are byte-identical generated mirrors
+discovered by Claude Code. Every host must see the same operating contracts — the
+projection is a deterministic byte copy, never a template.
 
 Usage:
     python scripts/sync_skills.py            # write mirrors from canonical
@@ -17,25 +16,33 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-SKILL_REL = Path("skills") / "xhnovel-agent-files" / "SKILL.md"
-CANONICAL = REPO / ".agents" / SKILL_REL
-MIRRORS = [REPO / ".claude" / SKILL_REL]
+CANONICAL_ROOT = REPO / ".agents" / "skills"
+MIRROR_ROOTS = [REPO / ".claude" / "skills"]
 
 
-def _canonical_bytes() -> bytes:
-    if not CANONICAL.is_file():
-        raise SystemExit(f"canonical Skill missing: {CANONICAL}")
-    return CANONICAL.read_bytes()
+def _canonical_skills() -> list[Path]:
+    skills = sorted(CANONICAL_ROOT.glob("*/SKILL.md"))
+    if not skills:
+        raise SystemExit(f"no canonical Skills found under {CANONICAL_ROOT}")
+    return skills
 
 
 def check() -> int:
-    canonical = _canonical_bytes()
     drift = []
-    for mirror in MIRRORS:
-        if not mirror.is_file():
-            drift.append(f"missing mirror: {mirror}")
-        elif mirror.read_bytes() != canonical:
-            drift.append(f"out of sync: {mirror}")
+    canonicals = _canonical_skills()
+    expected_relatives = {path.relative_to(CANONICAL_ROOT) for path in canonicals}
+    for canonical in canonicals:
+        relative = canonical.relative_to(CANONICAL_ROOT)
+        for mirror_root in MIRROR_ROOTS:
+            mirror = mirror_root / relative
+            if not mirror.is_file():
+                drift.append(f"missing mirror: {mirror}")
+            elif mirror.read_bytes() != canonical.read_bytes():
+                drift.append(f"out of sync: {mirror}")
+    for mirror_root in MIRROR_ROOTS:
+        for mirror in sorted(mirror_root.glob("*/SKILL.md")):
+            if mirror.relative_to(mirror_root) not in expected_relatives:
+                drift.append(f"mirror has no canonical Skill: {mirror}")
     if drift:
         for line in drift:
             print(line, file=sys.stderr)
@@ -45,11 +52,13 @@ def check() -> int:
 
 
 def sync() -> int:
-    canonical = _canonical_bytes()
-    for mirror in MIRRORS:
-        mirror.parent.mkdir(parents=True, exist_ok=True)
-        mirror.write_bytes(canonical)
-        print(f"wrote {mirror.relative_to(REPO)}")
+    for canonical in _canonical_skills():
+        relative = canonical.relative_to(CANONICAL_ROOT)
+        for mirror_root in MIRROR_ROOTS:
+            mirror = mirror_root / relative
+            mirror.parent.mkdir(parents=True, exist_ok=True)
+            mirror.write_bytes(canonical.read_bytes())
+            print(f"wrote {mirror.relative_to(REPO)}")
     return 0
 
 
