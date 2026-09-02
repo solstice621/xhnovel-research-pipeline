@@ -620,6 +620,47 @@ def test_success_receipt_validates_in_a_fresh_process(tmp_path):
     assert completed.receipt_path.is_file()
 
 
+def test_success_receipt_replay_rejects_unknown_empty_catalog_kind(tmp_path):
+    prepared = _prepare(tmp_path)
+    work_dir = tmp_path / "strict-replay-work"
+    completed = _complete_agent_execution(prepared, work_dir)
+    catalog_path = (
+        work_dir
+        / "research"
+        / completed.receipt["scene_scout_run_id"]
+        / "catalog.json"
+    )
+    catalog_json = json.loads(catalog_path.read_text(encoding="utf-8"))
+    catalog_json["UnknownInjectedKind"] = []
+    catalog_path.write_text(
+        json.dumps(catalog_json, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValidationError, match="E-CATALOG-KIND"):
+        cli._catalog_from_json(catalog_path)
+    public_validation = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "xhnovel_pipeline.cli",
+            "validate",
+            "all",
+            str(catalog_path),
+            "--store",
+            str(work_dir / "ingestion" / "objects"),
+        ],
+        cwd=repo_root(),
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert public_validation.returncode == 1
+    assert "E-CATALOG-KIND" in public_validation.stderr
+    with pytest.raises(ValidationError, match="E-CATALOG-KIND"):
+        validate_handoff_execution_history(prepared.handoff_path)
+
+
 def test_execution_lock_rejects_concurrent_entry_on_the_current_platform(tmp_path):
     prepared = _prepare(tmp_path)
     work_dir = tmp_path / "locked-work"

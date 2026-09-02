@@ -507,16 +507,11 @@ def _catalog_from_json(path: pathlib.Path) -> Catalog:
         ) from exc
     if not isinstance(value, dict):
         raise ValidationError("E-HANDOFF-EXECUTION-CATALOG", "catalog must be an object")
-    catalog = Catalog()
-    for kind, records in value.items():
-        if not isinstance(records, list):
-            raise ValidationError(
-                "E-HANDOFF-EXECUTION-CATALOG",
-                f"catalog {kind} must be an array",
-            )
-        for record in records:
-            catalog.add(kind, record)
-    return catalog
+    return Catalog.from_mapping(
+        value,
+        array_error_code="E-HANDOFF-EXECUTION-CATALOG",
+        array_label="catalog {kind}",
+    )
 
 
 def _one(records: list[dict[str, Any]], *, label: str) -> dict[str, Any]:
