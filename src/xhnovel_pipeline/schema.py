@@ -46,6 +46,14 @@ SCHEMA_BY_TYPE = {
     "EvidenceHandoff": "evidence-handoff.schema.json",
     "HandoffAttemptEvent": "handoff-attempt-event.schema.json",
     "EvidenceHandoffExecutionReceipt": "evidence-handoff-execution-receipt.schema.json",
+    # Phase -1 planning records are standalone and deliberately stay out of Catalog.
+    "ResearchIntake": "research-intake.schema.json",
+    "NeutralPlanningInput": "neutral-planning-input.schema.json",
+    "NeutralPlanningExecution": "neutral-planning-execution.schema.json",
+    "NeutralResearchFrame": "neutral-research-frame.schema.json",
+    "ExplorationPlan": "exploration-plan.schema.json",
+    "ExplorationPlanCompileRequest": "exploration-plan-compile-request.schema.json",
+    "PlanningCompilationReceipt": "planning-compilation-receipt.schema.json",
 }
 
 

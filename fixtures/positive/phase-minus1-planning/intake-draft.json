@@ -1,0 +1,29 @@
+{
+  "explicit_scope": {
+    "genres": {
+      "exclude": [
+        "西方奇幻"
+      ],
+      "include": [
+        "玄幻",
+        "仙侠"
+      ]
+    },
+    "scope_origin": "USER_EXPLICIT"
+  },
+  "frozen_at": "2026-09-02T00:00:00Z",
+  "neutral_goal_origin": "USER_CONFIRMED_SUMMARY",
+  "neutral_goal_text": "研究玄幻与仙侠作品中物品争夺如何改变控制、使用权限与后续行动空间。",
+  "seeds": [
+    {
+      "bucket": "works",
+      "provenance": [
+        {
+          "origin": "USER_SUPPLIED"
+        }
+      ],
+      "value": "《斗破苍穹》"
+    }
+  ],
+  "user_goal_verbatim": "我想先看看《斗破苍穹》里的物品争夺，再研究玄幻中的通用互动机制。"
+}

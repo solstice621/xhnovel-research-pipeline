@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/neutral-planning-execution.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "execution_id", "record_kind", "neutral_input_artifact_id", "neutral_frame_artifact_id", "host", "isolation_claim", "assurance", "execution_hash", "recorded_at"],
+  "properties": {
+    "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+    "execution_id": {"$ref": "phase0-defs.schema.json#/$defs/npe_id"},
+    "record_kind": {"const": "NEUTRAL_PLANNING_EXECUTION"},
+    "neutral_input_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "neutral_frame_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "host": {"type": "string", "minLength": 1},
+    "isolation_claim": {"enum": ["FRESH_SUBAGENT_NO_SEED_PAYLOAD", "HOST_ISOLATION_UNAVAILABLE", "CONTEXT_NOT_ISOLATED", "OPERATOR_DID_NOT_ATTEST"]},
+    "assurance": {"enum": ["HOST_ISOLATED_ATTESTED", "NOT_PROVEN"]},
+    "execution_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "recorded_at": {"$ref": "defs.schema.json#/$defs/iso_datetime"}
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "assurance": {"const": "HOST_ISOLATED_ATTESTED"},
+        "isolation_claim": {"const": "FRESH_SUBAGENT_NO_SEED_PAYLOAD"}
+      }
+    },
+    {
+      "properties": {
+        "assurance": {"const": "NOT_PROVEN"},
+        "isolation_claim": {"enum": ["HOST_ISOLATION_UNAVAILABLE", "CONTEXT_NOT_ISOLATED", "OPERATOR_DID_NOT_ATTEST"]}
+      }
+    }
+  ]
+}

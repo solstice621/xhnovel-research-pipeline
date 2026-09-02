@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/exploration-plan-compile-request.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "intake_artifact_id", "neutral_frame_artifact_id", "neutral_execution_artifact_id", "strategy", "compiled_at"],
+  "properties": {
+    "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+    "intake_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "neutral_frame_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "neutral_execution_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "strategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exploration_seeds", "diversity"],
+      "properties": {
+        "exploration_seeds": {"type": "array", "items": {"$ref": "phase0-defs.schema.json#/$defs/planning_seed_draft"}},
+        "diversity": {"$ref": "phase0-defs.schema.json#/$defs/diversity"}
+      }
+    },
+    "compiled_at": {"$ref": "defs.schema.json#/$defs/iso_datetime"}
+  }
+}

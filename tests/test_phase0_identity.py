@@ -8,6 +8,7 @@ import pytest
 from xhnovel_pipeline.canonical import canonical_dumps
 from xhnovel_pipeline.errors import ValidationError
 from xhnovel_pipeline.hashing import object_hash
+from xhnovel_pipeline.ids import derived_id
 from xhnovel_pipeline.novel_spec import SpecValidationPurpose, validate_direct_research_spec
 from xhnovel_pipeline.phase0_handoff import (
     group_leads_for_source,
@@ -21,6 +22,7 @@ from xhnovel_pipeline.phase0_handoff import (
     validate_source_declaration,
     work_ref_from_declaration,
 )
+from xhnovel_pipeline.phase0_planning import normalize_seed_value
 
 NOW = "2026-09-01T00:00:00Z"
 LATER = "2026-09-02T00:00:00Z"
@@ -31,6 +33,15 @@ RIGHTS = {
     "may_export_excerpts": False,
 }
 QUALITY = {"edition_status": "USER_VERIFIED_COPY", "textual_completeness": "COMPLETE"}
+
+
+def test_phase_minus1_work_seed_identity_reuses_frozen_title_normalization():
+    decorated = normalize_seed_value("works", "《测试仙途》（网络小说）")
+    plain = normalize_seed_value("works", "测试仙途")
+    assert decorated == plain == "测试仙途"
+    first = derived_id("Seed", {"bucket": "works", "normalized_value": decorated})
+    second = derived_id("Seed", {"bucket": "works", "normalized_value": plain})
+    assert first == second
 
 
 def _brief(*, text="寻找对象控制变化。", frozen_at=NOW):

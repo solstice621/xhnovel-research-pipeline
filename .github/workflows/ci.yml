@@ -33,6 +33,8 @@ jobs:
           VENV="$RUNNER_TEMP/xhnovel-wheel-smoke"
           SMOKE="$GITHUB_WORKSPACE/scripts/agent_files_wheel_smoke.py"
           PHASE0_SMOKE="$GITHUB_WORKSPACE/scripts/phase0_vertical_slice_wheel_smoke.py"
+          PHASE_MINUS1_SMOKE="$GITHUB_WORKSPACE/scripts/phase_minus1_wheel_smoke.py"
+          PHASE_MINUS1_FIXTURE="$GITHUB_WORKSPACE/fixtures/positive/phase-minus1-planning"
           PHASE0_FIXTURE="$GITHUB_WORKSPACE/fixtures/positive/phase0-vertical-slice"
           PHASE0_OUTPUT="$RUNNER_TEMP/xhnovel-phase0-vertical-slice"
           WHEEL=$(ls "$GITHUB_WORKSPACE"/dist/*.whl)
@@ -46,6 +48,9 @@ jobs:
           "$BIN/python" -c "from xhnovel_pipeline.paths import repo_root; root=repo_root(); assert (root/'contracts').is_dir(); assert (root/'profiles').is_dir()"
           "$BIN/xhnovel-pipeline" --help
           "$BIN/python" "$SMOKE"
+          "$BIN/python" "$PHASE_MINUS1_SMOKE" \
+            --fixture-root "$PHASE_MINUS1_FIXTURE" \
+            --require-wheel
           "$BIN/python" "$PHASE0_SMOKE" \
             --fixture-root "$PHASE0_FIXTURE" \
             --output-root "$PHASE0_OUTPUT" \

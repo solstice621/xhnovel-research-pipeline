@@ -1,0 +1,41 @@
+{
+  "diversity": {
+    "max_initial_leads_per_work": 2,
+    "min_interaction_families": 3,
+    "min_works": 4
+  },
+  "exploration_seeds": [
+    {
+      "bucket": "works",
+      "provenance": [
+        {
+          "origin": "USER_SUPPLIED"
+        }
+      ],
+      "seed_id": "SD-54886B5F54570C92E5D0",
+      "surface_forms": [
+        "《斗破苍穹》"
+      ],
+      "value": "斗破苍穹"
+    },
+    {
+      "bucket": "interaction_families",
+      "provenance": [
+        {
+          "derived_from": [
+            {
+              "kind": "INTAKE_SEED",
+              "seed_id": "SD-54886B5F54570C92E5D0"
+            },
+            {
+              "frame_id": "NRF-691DD5CE73C82E788B68",
+              "kind": "NEUTRAL_FRAME"
+            }
+          ],
+          "origin": "PLANNER_DERIVED"
+        }
+      ],
+      "value": "物品控制权争夺"
+    }
+  ]
+}

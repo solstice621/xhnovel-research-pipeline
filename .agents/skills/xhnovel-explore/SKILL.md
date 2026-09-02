@@ -36,22 +36,28 @@ running a new exploration. The frozen trust boundary remains
 
 ## Workflow
 
-1. **Freeze the question.** Create one ExplorationBrief with a neutral evidence
-   discovery brief and explicit scope before selecting works or scenes.
-2. **Explore openly.** Use the host's search and research tools to find notable
+0. **Consume the sealed planning outputs.** For a Phase -1 planned run, load
+   `exploration-brief.json` as the formal Brief and `exploration-plan.json` as
+   host-only search strategy. Use the Plan's `exploration_seeds` and `diversity` to
+   steer search, but never copy them into the Brief, Leads' claimed evidence, or
+   Scene Scout input. Treat `scope.avoid` as a hard host exploration exclusion;
+   this is not machine-verified because Leads carry no trusted genre
+   classification. A legacy already-sealed Phase 0 Brief remains valid, but it
+   cannot claim Phase -1 planning lineage without the matching receipt and Plan.
+1. **Explore openly.** Use the host's search and research tools to find notable
    works and concrete, falsifiable scene hypotheses. Preserve raw locators and
    label every external source `role = LEAD_ONLY`.
-3. **Build Leads.** Record bibliographic work claims, a hypothesis-framed scene
+2. **Build Leads.** Record bibliographic work claims, a hypothesis-framed scene
    summary, relevance, interaction tags, and source-backed location hints. Do not
    say the novel text has proved anything.
-4. **Select for diversity.** Deduplicate the explicit Lead set and prefer distinct
+3. **Select for diversity.** Deduplicate the explicit Lead set and prefer distinct
    works and interaction families. Do not discard incompatible work/source
    identities merely to force one group.
-5. **Resolve a source.** Admit only a concrete source with an explicit rights basis,
+4. **Resolve a source.** Admit only a concrete source with an explicit rights basis,
    storage/model permissions, and Tier A/B source-quality declarations. If no such
    source is available, retain the Lead as `UNRESOLVED` or `BLOCKED_BY_RIGHTS` and
    do not download or execute unknown-rights commercial full text.
-6. **Prepare through the product boundary.** Put the Brief, compatible Leads,
+5. **Prepare through the product boundary.** Put the sealed Brief, compatible Leads,
    SourceDeclaration, and `requested_at` into the preparation input, then run:
 
    ```bash
@@ -60,6 +66,19 @@ running a new exploration. The frozen trust boundary remains
 
    Never compute IDs/hashes or hand-write the final Handoff. The builder owns CAS,
    grouping, preflight, ordinary Novel Spec projection, and deterministic replay.
+6. **Close Phase -1 → Phase 0 lineage.** For a planned run, validate the receipt
+   against the prepared Handoff before semantic execution:
+
+   ```bash
+   xhnovel-pipeline validate-planning-handoff \
+     <planning-dir>/planning-compilation-receipt.json <handoff.json> \
+     --planning-root <planning-dir> --phase0-root <exploration-dir>
+   ```
+
+   This fixed-build replay proves that the Handoff's formal Brief is the
+   deterministic compile of the referenced intake and Plan. It does not prove that
+   the host's Leads actually followed the Plan's seeds/diversity; preserve the
+   search log and review that adherence as host-audited strategy execution.
 7. **Execute through the authoritative wrapper.** For host-agent semantic judgment:
 
    ```bash
@@ -71,7 +90,8 @@ running a new exploration. The frozen trust boundary remains
    [`docs/AGENT_EXECUTION.md`](../../../docs/AGENT_EXECUTION.md), then rerun the
    identical `execute-handoff` command. A terminal failure requires explicit
    `--retry`; never erase or overwrite the earlier attempt.
-8. **Validate and report.** Require the SUCCEEDED receipt, exact
+8. **Validate and report.** Require the planning closure (when applicable), the
+   SUCCEEDED receipt, exact
    `expected_input_spec_hash` closure, fresh-process `validate all`, and preserved
    Phase 0/core artifacts before reporting evidence results. Report blocked and
    unresolved Leads alongside attempted Leads so they cannot disappear from the
@@ -89,6 +109,8 @@ Do not:
   merge/replay logic;
 - bypass `prepare-handoff` or `execute-handoff` with a hand-built Handoff or a bare
   compiler invocation for a receipt-managed experiment;
+- claim that `PlanningCompilationReceipt` proves host adherence to strategy seeds
+  or diversity targets;
 - look for or use an `OPENAI_API_KEY` in the agent-files flow;
 - call a second model API to answer native tasks;
 - add a crawler, search-provider runtime, scheduler, queue, lease, or worker registry
@@ -103,7 +125,8 @@ remains a deterministic compiler and does not manage those workers.
 
 ## Audit outputs
 
-Preserve the frozen Brief, raw search/Lead inputs, SourceDeclarations, Phase 0 CAS,
+Preserve the intake, neutral input/frame/execution, Plan, frozen Brief, planning
+receipt/manifest/CAS, raw search/Lead inputs, SourceDeclarations, Phase 0 CAS,
 build requests, Handoffs, validation outputs, STARTED/WAITING markers, terminal
 receipts, core catalog/store, and final exploration report. Never place generated
 runtime state into source control unless it is an intentional test fixture.

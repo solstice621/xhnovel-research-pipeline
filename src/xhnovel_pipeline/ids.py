@@ -44,6 +44,15 @@ PREFIXES = {
     "HandoffAttempt": "HAT-",
     "HandoffAttemptEvent": "HEV-",
     "EvidenceHandoffExecutionReceipt": "HER-",
+    # Standalone Phase -1 records; still excluded from Catalog.ID_FIELDS.
+    "ResearchIntake": "RIN-",
+    "NeutralPlanningInput": "NPI-",
+    "NeutralPlanningExecution": "NPE-",
+    "NeutralResearchFrame": "NRF-",
+    "ExplorationPlan": "XPL-",
+    "PlanningCompilationReceipt": "PCR-",
+    "Seed": "SD-",
+    "PlanningCompilerBuild": "PCB-",
 }
 
 ID_RE = re.compile(r"^[A-Z]{2,5}-[A-Z0-9][A-Z0-9._:-]{1,}$")

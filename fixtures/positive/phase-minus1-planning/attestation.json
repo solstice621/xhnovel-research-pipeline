@@ -1,0 +1,5 @@
+{
+  "assurance": "HOST_ISOLATED_ATTESTED",
+  "host": "fixture-isolated-host-subagent",
+  "isolation_claim": "FRESH_SUBAGENT_NO_SEED_PAYLOAD"
+}

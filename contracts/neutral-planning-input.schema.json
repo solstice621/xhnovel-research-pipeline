@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/neutral-planning-input.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "neutral_input_id", "neutral_goal_text", "explicit_scope"],
+  "properties": {
+    "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+    "neutral_input_id": {"$ref": "phase0-defs.schema.json#/$defs/npi_id"},
+    "neutral_goal_text": {"type": "string", "minLength": 1},
+    "explicit_scope": {"$ref": "phase0-defs.schema.json#/$defs/explicit_scope"}
+  }
+}
