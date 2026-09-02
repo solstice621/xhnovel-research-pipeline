@@ -24,9 +24,9 @@ from .errors import PipelineError, SchemaError, ValidationError
 from .hashing import object_hash
 from .ids import derived_id
 from .model_api import API_EXECUTOR_KIND
-from .novel_ingest import _lock_file_handle, _unlock_file_handle, load_novel_spec
+from .novel_ingest import _lock_file_handle, _unlock_file_handle
 from .novel_workflow import run_novel_research
-from .phase0_builder import validate_evidence_handoff
+from .phase0_builder import resolve_validated_handoff_input, validate_evidence_handoff
 from .schema import validate_schema
 from .store import ArtifactStore
 from .validate import validate_all
@@ -507,16 +507,11 @@ def _catalog_from_json(path: pathlib.Path) -> Catalog:
         ) from exc
     if not isinstance(value, dict):
         raise ValidationError("E-HANDOFF-EXECUTION-CATALOG", "catalog must be an object")
-    catalog = Catalog()
-    for kind, records in value.items():
-        if not isinstance(records, list):
-            raise ValidationError(
-                "E-HANDOFF-EXECUTION-CATALOG",
-                f"catalog {kind} must be an array",
-            )
-        for record in records:
-            catalog.add(kind, record)
-    return catalog
+    return Catalog.from_mapping(
+        value,
+        array_error_code="E-HANDOFF-EXECUTION-CATALOG",
+        array_label="catalog {kind}",
+    )
 
 
 def _one(records: list[dict[str, Any]], *, label: str) -> dict[str, Any]:
@@ -732,7 +727,9 @@ def execute_evidence_handoff(
         raise ValidationError("E-HANDOFF-RETRY", "retry must be a boolean")
     path = pathlib.Path(handoff_path).resolve()
     root = _phase0_root_for_handoff(path, phase0_root)
-    handoff = validate_evidence_handoff(path, phase0_root=root)
+    validated_input = resolve_validated_handoff_input(path, phase0_root=root)
+    handoff = validated_input.handoff
+    execution_spec = validated_input.execution_spec
     resolved_work_dir = pathlib.Path(work_dir).expanduser().resolve()
     work_dir_text = str(resolved_work_dir)
     execution_dir = _execution_dir(root, handoff["handoff_id"])
@@ -843,7 +840,7 @@ def execute_evidence_handoff(
             extractor = extractor_factory()
             _check_executor_client(executor, extractor)
             native_result = run_novel_research(
-                load_novel_spec(path.parent / handoff["novel_spec"]["path"]),
+                copy.deepcopy(execution_spec),
                 resolved_work_dir,
                 extractor_client=extractor,
                 repo_root=pathlib.Path(repo_root),

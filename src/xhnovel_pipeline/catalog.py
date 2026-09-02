@@ -38,6 +38,40 @@ class Catalog:
         self.by_type: dict[str, list[dict[str, Any]]] = {kind: [] for kind in ID_FIELDS}
         self.frozen_bundle_ids: set[str] = set()
 
+    @classmethod
+    def from_mapping(
+        cls,
+        data: Any,
+        *,
+        array_error_code: str = "E-CATALOG-RECORD",
+        array_label: str = "catalog {kind} value",
+    ) -> "Catalog":
+        """Build a strict Catalog from a decoded JSON object.
+
+        Unknown kinds are rejected before their value shape is inspected, including
+        the otherwise-easy-to-drop ``UnknownKind: []`` case.  Callers may retain a
+        context-specific error code/label for known kinds whose values are not
+        arrays, while sharing the load-bearing kind and record validation.
+        """
+
+        if not isinstance(data, dict):
+            raise ValidationError("E-CATALOG-RECORD", "catalog root must be an object")
+        catalog = cls()
+        for kind, records in data.items():
+            if kind not in ID_FIELDS:
+                raise ValidationError(
+                    "E-CATALOG-KIND",
+                    f"unknown catalog record type {kind!r}",
+                )
+            if not isinstance(records, list):
+                raise ValidationError(
+                    array_error_code,
+                    f"{array_label.format(kind=kind)} must be an array",
+                )
+            for record in records:
+                catalog.add(kind, record)
+        return catalog
+
     def add(self, kind: str, obj: dict[str, Any]) -> dict[str, Any]:
         if kind not in ID_FIELDS:
             raise ValidationError("E-CATALOG-KIND", f"unknown catalog record type {kind!r}")

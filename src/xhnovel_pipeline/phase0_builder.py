@@ -22,7 +22,6 @@ from .ids import derived_id
 from .novel_spec import (
     SpecValidationPurpose,
     ValidatedDirectResearchSpec,
-    load_validated_direct_research_spec,
     validate_direct_research_spec,
 )
 from .phase0_handoff import (
@@ -63,6 +62,14 @@ class PreparedHandoff:
     build_request_artifact_id: str
     handoff: dict[str, Any]
     novel_spec: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class ValidatedHandoffInput:
+    """A replay-validated Handoff and its CAS-bound in-memory execution spec."""
+
+    handoff: dict[str, Any]
+    execution_spec: dict[str, Any]
 
 
 def _json_bytes(value: Any) -> bytes:
@@ -453,11 +460,19 @@ def prepare_evidence_handoff(
     )
 
 
-def validate_evidence_handoff(
+def resolve_validated_handoff_input(
     handoff_path: pathlib.Path,
     *,
     phase0_root: pathlib.Path | None = None,
-) -> dict[str, Any]:
+) -> ValidatedHandoffInput:
+    """Replay a Handoff and capture the exact CAS-bound Novel Spec for execution.
+
+    The visible ``novel-spec.json`` remains an audit copy and must still match the
+    Phase 0 CAS at validation time.  It is deliberately not parsed for execution:
+    callers receive the already-validated in-memory value decoded from
+    ``raw_artifact_id`` so a later visible-file replacement cannot change semantic
+    input or model egress.
+    """
     path = pathlib.Path(handoff_path)
     root = pathlib.Path(phase0_root) if phase0_root is not None else path.parents[2]
     raw = path.read_bytes()
@@ -497,11 +512,27 @@ def validate_evidence_handoff(
     stored_spec = store.get(handoff["novel_spec"]["raw_artifact_id"])
     if stored_spec != novel_spec_bytes:
         raise ValidationError("E-PHASE0-SPEC-BIND", "stored novel spec bytes changed")
+    try:
+        artifact_spec = json.loads(stored_spec.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValidationError(
+            "E-PHASE0-SPEC-BIND",
+            "stored novel spec is not canonical JSON",
+        ) from exc
+    if (
+        not isinstance(artifact_spec, dict)
+        or stored_spec != _json_bytes(artifact_spec)
+        or artifact_spec != novel_spec
+    ):
+        raise ValidationError(
+            "E-PHASE0-SPEC-BIND",
+            "stored novel spec differs from deterministic replay",
+        )
     novel_spec_path = path.parent / "novel-spec.json"
-    if not novel_spec_path.is_file() or novel_spec_path.read_bytes() != novel_spec_bytes:
+    if not novel_spec_path.is_file() or novel_spec_path.read_bytes() != stored_spec:
         raise ValidationError("E-PHASE0-SPEC-BIND", "visible novel spec differs from CAS")
-    validated_spec = load_validated_direct_research_spec(
-        novel_spec_path,
+    validated_spec = validate_direct_research_spec(
+        artifact_spec,
         purpose=SpecValidationPurpose.EVIDENCE_HANDOFF,
     )
     if (
@@ -513,7 +544,23 @@ def validate_evidence_handoff(
             "E-PHASE0-SPEC-BIND",
             "novel spec no longer reproduces the expected input hash",
         )
-    return handoff
+    return ValidatedHandoffInput(
+        handoff=copy.deepcopy(handoff),
+        execution_spec=copy.deepcopy(validated_spec.effective_spec),
+    )
+
+
+def validate_evidence_handoff(
+    handoff_path: pathlib.Path,
+    *,
+    phase0_root: pathlib.Path | None = None,
+) -> dict[str, Any]:
+    """Validate and replay a Handoff while preserving the historical dict API."""
+
+    return resolve_validated_handoff_input(
+        handoff_path,
+        phase0_root=phase0_root,
+    ).handoff
 
 
 def _seal_brief(value: dict[str, Any]) -> dict[str, Any]:

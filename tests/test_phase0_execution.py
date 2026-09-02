@@ -93,6 +93,131 @@ def _complete_agent_execution(prepared, work_dir):
     )
 
 
+def _replace_visible_spec(prepared, *, source_path, discovery_brief):
+    visible = json.loads(prepared.novel_spec_path.read_text(encoding="utf-8"))
+    visible["source"]["path"] = str(source_path)
+    visible["request"]["discovery_brief"] = discovery_brief
+    prepared.novel_spec_path.write_text(
+        json.dumps(visible, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
+def test_agent_files_execution_uses_cas_spec_after_visible_copy_swap(tmp_path, monkeypatch):
+    prepared = _prepare(tmp_path)
+    work_dir = tmp_path / "cas-agent-work"
+    tainted_source = tmp_path / "tainted-agent.txt"
+    tainted_source.write_text(
+        "第一章 污染输入\nTHIS_TAINTED_SOURCE_MUST_NOT_REACH_A_TASK。",
+        encoding="utf-8",
+    )
+    tainted_brief = "THIS_TAINTED_BRIEF_MUST_NOT_REACH_A_TASK"
+    visible_bytes = prepared.novel_spec_path.read_bytes()
+    original_resolver = phase0_execution.resolve_validated_handoff_input
+
+    def resolve_then_swap(*args, **kwargs):
+        resolved = original_resolver(*args, **kwargs)
+        _replace_visible_spec(
+            prepared,
+            source_path=tainted_source,
+            discovery_brief=tainted_brief,
+        )
+        return resolved
+
+    monkeypatch.setattr(
+        phase0_execution,
+        "resolve_validated_handoff_input",
+        resolve_then_swap,
+    )
+    try:
+        with pytest.raises(AgentResponsesPending):
+            execute_evidence_handoff(
+                prepared.handoff_path,
+                work_dir,
+                executor="agent-files",
+                extractor_factory=_agent_factory(work_dir),
+                repo_root=repo_root(),
+                now=NOW,
+            )
+    finally:
+        prepared.novel_spec_path.write_bytes(visible_bytes)
+
+    task_paths = sorted(
+        (work_dir / "scene-scout" / "agent-files" / "tasks").glob("*.json")
+    )
+    assert task_paths
+    task_text = "\n".join(path.read_text(encoding="utf-8") for path in task_paths)
+    assert "THIS_TAINTED_SOURCE_MUST_NOT_REACH_A_TASK" not in task_text
+    assert tainted_brief not in task_text
+    assert "林舟触发天门机关" in task_text
+    assert prepared.novel_spec["request"]["discovery_brief"] in task_text
+    assert validate_handoff_execution_history(prepared.handoff_path)[0].state == (
+        "WAITING_FOR_AGENT"
+    )
+
+
+def test_api_execution_uses_cas_spec_before_transport_after_visible_copy_swap(
+    tmp_path,
+    monkeypatch,
+):
+    prepared = _prepare(tmp_path)
+    work_dir = tmp_path / "cas-api-work"
+    tainted_source = tmp_path / "tainted-api.txt"
+    tainted_source.write_text(
+        "第一章 污染外发\nTHIS_TAINTED_SOURCE_MUST_NOT_REACH_API_TRANSPORT。",
+        encoding="utf-8",
+    )
+    tainted_brief = "THIS_TAINTED_BRIEF_MUST_NOT_REACH_API_TRANSPORT"
+    visible_bytes = prepared.novel_spec_path.read_bytes()
+    original_resolver = phase0_execution.resolve_validated_handoff_input
+
+    def resolve_then_swap(*args, **kwargs):
+        resolved = original_resolver(*args, **kwargs)
+        _replace_visible_spec(
+            prepared,
+            source_path=tainted_source,
+            discovery_brief=tainted_brief,
+        )
+        return resolved
+
+    monkeypatch.setattr(
+        phase0_execution,
+        "resolve_validated_handoff_input",
+        resolve_then_swap,
+    )
+    model_inputs = []
+    delegate = _marker_transport()
+
+    def capture_transport(url, headers, body, timeout):
+        model_inputs.append(json.loads(json.loads(body)["input"]))
+        return delegate(url, headers, body, timeout)
+
+    try:
+        completed = execute_evidence_handoff(
+            prepared.handoff_path,
+            work_dir,
+            executor="api",
+            extractor_factory=lambda: _client(capture_transport),
+            repo_root=repo_root(),
+            now=NOW,
+        )
+    finally:
+        prepared.novel_spec_path.write_bytes(visible_bytes)
+
+    assert completed.status == "SUCCEEDED"
+    assert model_inputs
+    assert {item["discovery_brief"] for item in model_inputs} == {
+        prepared.novel_spec["request"]["discovery_brief"]
+    }
+    sent_text = "\n".join(
+        span["untrusted_text"]
+        for item in model_inputs
+        for span in item["window"]["source_spans"]
+    )
+    assert "THIS_TAINTED_SOURCE_MUST_NOT_REACH_API_TRANSPORT" not in sent_text
+    assert "林舟触发天门机关" in sent_text
+
+
 def test_agent_files_two_pass_resumes_same_attempt_and_success_is_idempotent(
     tmp_path,
     monkeypatch,
@@ -493,6 +618,47 @@ def test_success_receipt_validates_in_a_fresh_process(tmp_path):
     assert result.returncode == 0, result.stderr
     assert result.stdout.strip() == "SUCCEEDED"
     assert completed.receipt_path.is_file()
+
+
+def test_success_receipt_replay_rejects_unknown_empty_catalog_kind(tmp_path):
+    prepared = _prepare(tmp_path)
+    work_dir = tmp_path / "strict-replay-work"
+    completed = _complete_agent_execution(prepared, work_dir)
+    catalog_path = (
+        work_dir
+        / "research"
+        / completed.receipt["scene_scout_run_id"]
+        / "catalog.json"
+    )
+    catalog_json = json.loads(catalog_path.read_text(encoding="utf-8"))
+    catalog_json["UnknownInjectedKind"] = []
+    catalog_path.write_text(
+        json.dumps(catalog_json, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValidationError, match="E-CATALOG-KIND"):
+        cli._catalog_from_json(catalog_path)
+    public_validation = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "xhnovel_pipeline.cli",
+            "validate",
+            "all",
+            str(catalog_path),
+            "--store",
+            str(work_dir / "ingestion" / "objects"),
+        ],
+        cwd=repo_root(),
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert public_validation.returncode == 1
+    assert "E-CATALOG-KIND" in public_validation.stderr
+    with pytest.raises(ValidationError, match="E-CATALOG-KIND"):
+        validate_handoff_execution_history(prepared.handoff_path)
 
 
 def test_execution_lock_rejects_concurrent_entry_on_the_current_platform(tmp_path):

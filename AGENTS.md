@@ -146,9 +146,11 @@ contracts:
 Important architecture and operating documents include:
 
 - `docs/PHASE0_INTERFACE.md`
+- `docs/PHASE0_EXPLORATION.md`
 - `docs/EXPERIMENT_PROTOCOL.md`
 - `docs/AGENT_EXECUTION.md`
 - `docs/AGENT_FILES_EXECUTOR.md`
+- `.agents/skills/xhnovel-explore/SKILL.md`
 - `.agents/skills/xhnovel-agent-files/SKILL.md`
 
 If a task intentionally changes a frozen invariant, update the contract, architecture
@@ -247,7 +249,7 @@ evidence Catalog.
   Phase 0 CAS.
 - A Handoff must not contain copied location-hint text; only stable references to
   Lead/hint positions are allowed.
-- Any future execution wrapper must preserve the native `research-novel` semantics
+- The `execute-handoff` wrapper must preserve the native `research-novel` semantics
   and must record attempts rather than hiding failed or interrupted work.
 
 ## Core Evidence Compiler rules
