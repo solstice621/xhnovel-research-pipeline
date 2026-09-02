@@ -21,7 +21,7 @@ from .hashing import object_hash
 # Re-export the already-pure rights/source-quality validators so callers can reach
 # the whole Novel Spec validation surface through one module. Their definitions stay
 # in novel_assessment (which does not import this module); this is import-only sugar.
-from .novel_assessment import declared_rights, declared_source_quality
+from .novel_assessment import declared_rights, declared_source_quality, source_quality_tier
 
 __all__ = [
     "SpecValidationPurpose",
@@ -38,6 +38,7 @@ __all__ = [
     "check_scene_scout_options",
     "declared_rights",
     "declared_source_quality",
+    "source_quality_tier",
     "validate_direct_research_spec",
     "load_validated_direct_research_spec",
 ]
@@ -183,16 +184,6 @@ def check_scene_scout_options(options: Any) -> None:
         raise ValidationError("E-SCENE-CONFIG", "scene_scout options are invalid")
 
 
-def _quality_tier(source_quality: dict[str, str]) -> str:
-    edition = source_quality["edition_status"]
-    completeness = source_quality["textual_completeness"]
-    if completeness == "COMPLETE" and edition == "OFFICIAL":
-        return "A"
-    if completeness == "COMPLETE" and edition in {"PUBLISHED_EDITION", "USER_VERIFIED_COPY"}:
-        return "B"
-    return "D"
-
-
 def _normalized_source(
     source: dict[str, Any],
     *,
@@ -334,7 +325,7 @@ def validate_direct_research_spec(
         require_external_model=True,
     )
     source_quality = declared_source_quality(effective_spec)
-    tier = _quality_tier(source_quality)
+    tier = source_quality_tier(source_quality)
     if purpose is SpecValidationPurpose.EVIDENCE_HANDOFF and tier not in {"A", "B"}:
         raise ValidationError(
             "E-HANDOFF-QUALITY",

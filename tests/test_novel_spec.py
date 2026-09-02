@@ -216,6 +216,26 @@ def test_declared_source_quality_defaults_and_is_independent():
     assert spec == before
 
 
+@pytest.mark.parametrize(
+    ("source_quality", "expected"),
+    [
+        ({"edition_status": "OFFICIAL", "textual_completeness": "COMPLETE"}, "A"),
+        (
+            {"edition_status": "PUBLISHED_EDITION", "textual_completeness": "COMPLETE"},
+            "B",
+        ),
+        (
+            {"edition_status": "USER_VERIFIED_COPY", "textual_completeness": "COMPLETE"},
+            "B",
+        ),
+        ({"edition_status": "UNOFFICIAL_COPY", "textual_completeness": "COMPLETE"}, "D"),
+        ({"edition_status": "OFFICIAL", "textual_completeness": "PARTIAL"}, "D"),
+    ],
+)
+def test_source_quality_tier_is_shared_with_direct_preflight(source_quality, expected):
+    assert novel_spec.source_quality_tier(source_quality) == expected
+
+
 # ---------------------------------------------------------------------------
 # 3. Path resolution stays spec-dir-relative (not cwd-relative). This is the
 #    load-bearing precondition for the input-spec-hash / ingestion identity closure.
