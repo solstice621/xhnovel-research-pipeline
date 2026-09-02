@@ -84,8 +84,23 @@ def test_vertical_slice_crosses_public_cli_and_preserves_audit_bundle(tmp_path):
 
     assert (output_root / report["phase0"]["handoff_path"]).is_file()
     assert (output_root / report["execution"]["receipt_path"]).is_file()
-    assert (output_root / report["closure"]["catalog_path"]).is_file()
+    catalog_path = output_root / report["closure"]["catalog_path"]
+    assert catalog_path.is_file()
     assert (output_root / report["closure"]["store_path"]).is_dir()
     assert (output_root / "input" / "preparation-input.json").is_file()
     assert (output_root / "logs" / "04-execute-waiting.stdout.txt").is_file()
     assert (output_root / "logs" / "08-fresh-validate-all.stdout.txt").is_file()
+
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    segments = {item["segment_id"]: item["normalized_text"] for item in catalog["Segment"]}
+    key_candidate = next(
+        item for item in catalog["SceneCandidate"] if "阵钥" in item["summary"]
+    )
+    persistence = key_candidate["persistence"]
+    assert persistence["status"] == "KNOWN"
+    assert persistence["values"] == ["任务结束前持续"]
+    assert len(persistence["support_spans"]) == 1
+    support = persistence["support_spans"][0]
+    support_text = segments[support["segment_id"]][support["start"] : support["end"]]
+    assert "任务结束时" in support_text
+    assert "收回阵钥并解除誓印" in support_text

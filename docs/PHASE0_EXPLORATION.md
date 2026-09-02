@@ -247,6 +247,15 @@ Also preserve the raw search/Lead inputs, blocked/unresolved decisions, native t
 and answer files, core catalog/store, fresh validation output, and final report.
 Do not delete FAILED or INTERRUPTED attempts; they define the attempted denominator.
 
+When a Pilot result is cited as a review or release gate, a local ignored
+`.runtime` directory is not independently reviewable. Publish a sanitized audit
+bundle through the chosen review channel containing at least the final report,
+sealed ResearchLead records, per-Lead source disposition and reason, search
+plan/source manifest, validation and adversarial-review reports, and a SHA-256 file
+manifest. Exclude source full text, credentials, cookies, and any task/answer text
+that the declared rights do not permit reviewers to receive. Publication never
+promotes Lead material to evidence.
+
 ## Exploration report
 
 Report each Lead independently from execution state:
