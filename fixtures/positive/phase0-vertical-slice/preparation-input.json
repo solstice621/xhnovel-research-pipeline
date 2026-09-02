@@ -1,0 +1,165 @@
+{
+  "brief": {
+    "research_question": "寻找玄幻场景中物理控制、所有权、使用权限或禁制绑定发生分离，并改变角色后续行动空间的桥段。",
+    "evidence_discovery_brief": "寻找对象的持有、所有、使用许可或约束状态发生变化，并影响角色后续可执行行动的场景。",
+    "scope": {
+      "genres": [
+        "玄幻"
+      ],
+      "target_leads": 3,
+      "max_leads_per_work": 3,
+      "prefer": [
+        "异质控制关系"
+      ],
+      "avoid": [
+        "重复战斗夺宝"
+      ]
+    },
+    "frozen_at": "2026-09-02T00:00:00Z"
+  },
+  "leads": [
+    {
+      "work_claim": {
+        "title": "青岚令",
+        "author": "xhnovel 测试组",
+        "language": "zh",
+        "aliases": []
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY_SCENE_A：据称交接令牌后可能出现物理持有与所有权分离。",
+        "why_relevant": "LEAD_ONLY_REASON_A：可检验保管者是否获得使用权限。",
+        "interaction_tags": [
+          "custody",
+          "ownership",
+          "use_permission"
+        ],
+        "location_hints": [
+          {
+            "kind": "CHAPTER_TITLE",
+            "value": "LEAD_ONLY_LOCATION_A_DO_NOT_INJECT",
+            "basis": "AGENT_INFERRED"
+          }
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "OTHER",
+          "locator": "urn:xhnovel:lead-only:phase0-vertical-a",
+          "title": "Synthetic exploration lead A",
+          "publisher": "xhnovel fixture",
+          "supports": [
+            "WORK_IDENTITY",
+            "SCENE_EXISTENCE_HINT",
+            "LOCATION_HINT"
+          ]
+        }
+      ],
+      "frozen_at": "2026-09-02T00:00:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "《青岚令》",
+        "author": "xhnovel 测试组",
+        "language": "zh",
+        "aliases": []
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY_SCENE_B：据称解除部分禁制后可能只获得有限使用许可。",
+        "why_relevant": "LEAD_ONLY_REASON_B：可检验授权与所有权是否独立变化。",
+        "interaction_tags": [
+          "partial_authorization",
+          "prohibition",
+          "use_permission"
+        ],
+        "location_hints": [
+          {
+            "kind": "EVENT_PHRASE",
+            "value": "LEAD_ONLY_LOCATION_B_DO_NOT_INJECT",
+            "basis": "SOURCE_STATED"
+          }
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "OTHER",
+          "locator": "urn:xhnovel:lead-only:phase0-vertical-b",
+          "title": "Synthetic exploration lead B",
+          "publisher": "xhnovel fixture",
+          "supports": [
+            "WORK_IDENTITY",
+            "SCENE_EXISTENCE_HINT",
+            "LOCATION_HINT"
+          ]
+        }
+      ],
+      "frozen_at": "2026-09-02T00:00:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "青岚令（小说）",
+        "author": "xhnovel 测试组",
+        "language": "zh",
+        "aliases": []
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY_SCENE_C：据称阵钥保管与行动禁制可能同时存在。",
+        "why_relevant": "LEAD_ONLY_REASON_C：可检验对象能力与角色移动空间的分离。",
+        "interaction_tags": [
+          "delegation",
+          "mobility_constraint",
+          "temporary_custody"
+        ],
+        "location_hints": [
+          {
+            "kind": "CHARACTER",
+            "value": "LEAD_ONLY_LOCATION_C_DO_NOT_INJECT",
+            "basis": "AGENT_INFERRED"
+          }
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "OTHER",
+          "locator": "urn:xhnovel:lead-only:phase0-vertical-c",
+          "title": "Synthetic exploration lead C",
+          "publisher": "xhnovel fixture",
+          "supports": [
+            "WORK_IDENTITY",
+            "SCENE_EXISTENCE_HINT",
+            "LOCATION_HINT"
+          ]
+        }
+      ],
+      "frozen_at": "2026-09-02T00:00:00Z"
+    }
+  ],
+  "source_declaration": {
+    "work": {
+      "canonical_title": "青岚令",
+      "author": "xhnovel 测试组",
+      "language": "zh",
+      "aliases": [
+        "《青岚令》",
+        "青岚令（小说）"
+      ],
+      "external_ids": []
+    },
+    "source": {
+      "kind": "txt",
+      "path": "novel.txt"
+    },
+    "rights": {
+      "basis": "LICENSED",
+      "may_store_full_text": true,
+      "may_send_to_external_model": true,
+      "may_export_excerpts": true
+    },
+    "source_quality": {
+      "edition_status": "USER_VERIFIED_COPY",
+      "textual_completeness": "COMPLETE"
+    },
+    "edition_label": "Complete CC0 vertical-slice fixture",
+    "declared_at": "2026-09-02T00:00:00Z"
+  },
+  "requested_at": "2026-09-02T00:00:00Z"
+}
