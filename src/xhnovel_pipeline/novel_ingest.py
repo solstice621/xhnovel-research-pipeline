@@ -15,6 +15,14 @@ from .errors import ValidationError
 from .hashing import artifact_id_for, object_hash, sorted_ids
 from .ids import derived_id
 from .novel_adapters import ChapterRef, WorkMetadata, adapter_from_spec
+from .novel_spec import (
+    check_limits_object,
+    check_source_catalog,
+    check_source_object,
+    check_spec_object,
+    check_strict_order,
+    input_limit,
+)
 from .parse import parse_artifact, parser_build_id_for
 from .schema import validate_schema
 from .store import ArtifactStore
@@ -1154,14 +1162,9 @@ def load_novel_spec(path: pathlib.Path) -> dict[str, Any]:
         spec = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ValidationError("E-NOVEL-SPEC", f"cannot read novel spec {path}") from exc
-    if not isinstance(spec, dict):
-        raise ValidationError("E-NOVEL-SPEC", "novel spec must be an object")
+    check_spec_object(spec)
     source_catalog = spec.get("source_catalog")
-    if source_catalog is not None and not isinstance(source_catalog, list):
-        raise ValidationError(
-            "E-NOVEL-SOURCE-CATALOG",
-            "source_catalog must be an array",
-        )
+    check_source_catalog(source_catalog)
     sources = [spec.get("source")]
     for entry in source_catalog or []:
         if isinstance(entry, dict):
@@ -1172,22 +1175,6 @@ def load_novel_spec(path: pathlib.Path) -> dict[str, Any]:
             if not source_path.is_absolute():
                 source["path"] = str((path.parent / source_path).resolve())
     return spec
-
-
-def _input_limit(
-    limits: dict[str, Any],
-    field: str,
-    default: int,
-    *,
-    minimum: int,
-) -> int:
-    value = limits.get(field, default)
-    if not isinstance(value, int) or isinstance(value, bool) or value < minimum:
-        raise ValidationError(
-            "E-NOVEL-LIMIT",
-            f"limits.{field} must be an integer of at least {minimum}",
-        )
-    return value
 
 
 def run_novel_ingestion(
@@ -1223,19 +1210,15 @@ def _run_novel_ingestion_unlocked(
     catalog: Catalog | None = None,
     store: ArtifactStore | None = None,
 ) -> dict[str, Any]:
-    if not isinstance(spec, dict):
-        raise ValidationError("E-NOVEL-SPEC", "novel spec must be an object")
+    check_spec_object(spec)
     source_spec = spec.get("source")
-    if not isinstance(source_spec, dict):
-        raise ValidationError("E-NOVEL-SPEC", "source must be an object")
+    check_source_object(source_spec)
     limits = spec.get("limits", {})
-    if not isinstance(limits, dict):
-        raise ValidationError("E-NOVEL-LIMIT", "limits must be an object")
-    max_chapters = _input_limit(limits, "max_chapters", 100_000, minimum=1)
-    max_bytes = _input_limit(limits, "max_bytes", 500_000_000, minimum=0)
+    check_limits_object(limits)
+    max_chapters = input_limit(limits, "max_chapters", 100_000, minimum=1)
+    max_bytes = input_limit(limits, "max_bytes", 500_000_000, minimum=0)
     strict_order = spec.get("strict_order", False)
-    if not isinstance(strict_order, bool):
-        raise ValidationError("E-NOVEL-SPEC", "strict_order must be a boolean")
+    check_strict_order(strict_order)
     work_dir = pathlib.Path(work_dir)
     store = store or ArtifactStore(work_dir / "objects")
     source_kind = str(source_spec.get("kind", "")).casefold()

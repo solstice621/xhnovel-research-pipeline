@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/evidence-handoff-execution-receipt.schema.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "receipt_id",
+        "attempt_id",
+        "handoff_id",
+        "attempt_ordinal",
+        "status",
+        "executor",
+        "expected_input_spec_hash",
+        "actual_input_spec_hash",
+        "ingestion_run_id",
+        "request_id",
+        "bundle_id",
+        "scene_scout_run_id",
+        "merge_run_id",
+        "export_id",
+        "validate_all",
+        "recorded_at",
+        "receipt_hash"
+      ],
+      "properties": {
+        "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+        "receipt_id": {"$ref": "phase0-defs.schema.json#/$defs/her_id"},
+        "attempt_id": {"$ref": "phase0-defs.schema.json#/$defs/hat_id"},
+        "handoff_id": {"$ref": "phase0-defs.schema.json#/$defs/eho_id"},
+        "attempt_ordinal": {"type": "integer", "minimum": 1},
+        "status": {"const": "SUCCEEDED"},
+        "executor": {"enum": ["api", "agent-files"]},
+        "expected_input_spec_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+        "actual_input_spec_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+        "ingestion_run_id": {
+          "type": "string",
+          "pattern": "^NING-[A-Z0-9][A-Z0-9._:-]{1,}$"
+        },
+        "request_id": {
+          "type": "string",
+          "pattern": "^REQ-[A-Z0-9][A-Z0-9._:-]{1,}$"
+        },
+        "bundle_id": {
+          "type": "string",
+          "pattern": "^BND-[A-Z0-9][A-Z0-9._:-]{1,}$"
+        },
+        "scene_scout_run_id": {
+          "type": "string",
+          "pattern": "^SSRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"
+        },
+        "merge_run_id": {
+          "type": "string",
+          "pattern": "^SMRUN-[A-Z0-9][A-Z0-9._:-]{1,}$"
+        },
+        "export_id": {
+          "type": "string",
+          "pattern": "^EXP-[A-Z0-9][A-Z0-9._:-]{1,}$"
+        },
+        "validate_all": {"const": "PASS"},
+        "recorded_at": {"$ref": "defs.schema.json#/$defs/iso_datetime"},
+        "receipt_hash": {"$ref": "defs.schema.json#/$defs/sha256"}
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "receipt_id",
+        "attempt_id",
+        "handoff_id",
+        "attempt_ordinal",
+        "status",
+        "executor",
+        "expected_input_spec_hash",
+        "stage",
+        "error_code",
+        "error_message",
+        "recorded_at",
+        "receipt_hash"
+      ],
+      "properties": {
+        "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+        "receipt_id": {"$ref": "phase0-defs.schema.json#/$defs/her_id"},
+        "attempt_id": {"$ref": "phase0-defs.schema.json#/$defs/hat_id"},
+        "handoff_id": {"$ref": "phase0-defs.schema.json#/$defs/eho_id"},
+        "attempt_ordinal": {"type": "integer", "minimum": 1},
+        "status": {"const": "FAILED"},
+        "executor": {"enum": ["api", "agent-files"]},
+        "expected_input_spec_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+        "stage": {
+          "enum": [
+            "HANDOFF_VALIDATION",
+            "INGESTION",
+            "EVIDENCE_BUNDLE",
+            "SCENE_SCOUT",
+            "VALIDATION",
+            "UNKNOWN"
+          ]
+        },
+        "error_code": {"type": "string", "minLength": 1},
+        "error_message": {"type": "string", "minLength": 1},
+        "recorded_at": {"$ref": "defs.schema.json#/$defs/iso_datetime"},
+        "receipt_hash": {"$ref": "defs.schema.json#/$defs/sha256"}
+      }
+    }
+  ]
+}

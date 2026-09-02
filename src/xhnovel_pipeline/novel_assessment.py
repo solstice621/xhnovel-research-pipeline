@@ -183,6 +183,21 @@ def declared_source_quality(spec: dict[str, Any]) -> dict[str, str]:
     return copy.deepcopy(value)
 
 
+def source_quality_tier(source_quality: dict[str, str]) -> str:
+    """Classify a validated source-quality declaration for all runtime callers."""
+
+    edition = source_quality["edition_status"]
+    completeness = source_quality["textual_completeness"]
+    if completeness == "COMPLETE" and edition == "OFFICIAL":
+        return "A"
+    if completeness == "COMPLETE" and edition in {
+        "PUBLISHED_EDITION",
+        "USER_VERIFIED_COPY",
+    }:
+        return "B"
+    return "D"
+
+
 def deterministic_triage_assessment(
     catalog: Catalog,
     retrieval: dict[str, Any],
@@ -192,17 +207,7 @@ def deterministic_triage_assessment(
     policy_hash: str,
     assessed_at: str,
 ) -> dict[str, Any]:
-    edition = source_quality["edition_status"]
-    completeness = source_quality["textual_completeness"]
-    if completeness == "COMPLETE" and edition == "OFFICIAL":
-        tier = "A"
-    elif completeness == "COMPLETE" and edition in {
-        "PUBLISHED_EDITION",
-        "USER_VERIFIED_COPY",
-    }:
-        tier = "B"
-    else:
-        tier = "D"
+    tier = source_quality_tier(source_quality)
     allowed_uses = ["event-facts"] if tier in {"A", "B"} else ["lead-only"]
     record = {
         "schema_version": SCHEMA_VERSION,
