@@ -98,7 +98,11 @@ def _canonical_external_ids(values: Any) -> list[dict[str, str]]:
     return result
 
 
-def _canonical_work_identity(work: dict[str, Any]) -> dict[str, Any]:
+def _canonical_work_identity(
+    work: dict[str, Any],
+    *,
+    require_canonical: bool = True,
+) -> dict[str, Any]:
     identity = work.get("identity")
     if not isinstance(identity, dict):
         raise ValidationError("E-PHASE0-WORK", "work identity must be an object")
@@ -125,6 +129,27 @@ def _canonical_work_identity(work: dict[str, Any]) -> dict[str, Any]:
             "normalized_author": author,
             "language": language,
         }
+        supplied = {
+            "basis": "TITLE_AUTHOR",
+            "normalized_title": normalize_work_title(
+                _nonempty(
+                    identity.get("normalized_title"),
+                    code="E-PHASE0-WORK",
+                    message="TITLE_AUTHOR requires normalized_title",
+                )
+            ),
+            "normalized_author": normalize_author(identity.get("normalized_author")),
+            "language": _nonempty(
+                identity.get("language"),
+                code="E-PHASE0-WORK",
+                message="TITLE_AUTHOR requires language",
+            ),
+        }
+        if supplied["normalized_author"] is None:
+            raise ValidationError(
+                "E-PHASE0-WORK",
+                "TITLE_AUTHOR requires normalized_author",
+            )
     elif basis == "STABLE_EXTERNAL_ID":
         namespace = _nonempty(
             identity.get("namespace"),
@@ -141,6 +166,7 @@ def _canonical_work_identity(work: dict[str, Any]) -> dict[str, Any]:
             "namespace": namespace,
             "external_id": external_id,
         }
+        supplied = copy.deepcopy(expected)
         if {"namespace": namespace, "value": external_id} not in external_ids:
             raise ValidationError(
                 "E-PHASE0-WORK",
@@ -156,13 +182,19 @@ def _canonical_work_identity(work: dict[str, Any]) -> dict[str, Any]:
             "basis": "USER_CONFIRMED",
             "confirmation_artifact_id": confirmation,
         }
+        supplied = copy.deepcopy(expected)
     else:
         raise ValidationError("E-PHASE0-WORK", "work identity basis is not recognized")
 
-    if identity != expected:
+    if set(identity) != set(expected) or supplied != expected:
         raise ValidationError(
             "E-PHASE0-WORK",
-            "work identity differs from its normalized basis payload",
+            "work identity conflicts with its normalized basis payload",
+        )
+    if require_canonical and identity != expected:
+        raise ValidationError(
+            "E-PHASE0-WORK",
+            "work identity differs from its canonical basis payload",
         )
     return expected
 
@@ -203,6 +235,11 @@ def source_ref_from_validated(
     work_ref: dict[str, Any],
 ) -> dict[str, Any]:
     """Derive source identity from the path-resolved, adapter-validated source config."""
+    if work_ref != work_ref_from_declaration(declaration):
+        raise ValidationError(
+            "E-PHASE0-SOURCE-BIND",
+            "work reference differs from the source declaration",
+        )
     source = copy.deepcopy(validated.normalized_source_spec)
     expected_source = copy.deepcopy(declaration["source"])
     raw_declared_kind = str(expected_source.get("kind", "")).casefold()
@@ -496,7 +533,7 @@ def make_source_declaration(
     declared_at: str,
 ) -> dict[str, Any]:
     work_copy = copy.deepcopy(work)
-    identity = _canonical_work_identity(work_copy)
+    identity = _canonical_work_identity(work_copy, require_canonical=False)
     canonical_work = {
         "identity": identity,
         "canonical_title": str(work_copy["canonical_title"]).strip(),
@@ -628,6 +665,16 @@ def group_leads_for_source(
             raise ValidationError("E-PHASE0-GROUP", "lead belongs to another exploration brief")
         if not _lead_matches_work(lead, work_ref):
             raise ValidationError("E-PHASE0-GROUP", "lead work claim differs from resolved work")
+    claimed_authors = {
+        author
+        for lead in checked
+        if (author := normalize_author(lead["work_claim"].get("author"))) is not None
+    }
+    if len(claimed_authors) > 1:
+        raise ValidationError(
+            "E-PHASE0-GROUP",
+            "lead work claims contain conflicting authors",
+        )
     if validated_spec.discovery_brief != brief["evidence_discovery_brief"]:
         raise ValidationError(
             "E-PHASE0-GROUP",
