@@ -18,8 +18,22 @@ from .errors import ValidationError
 from .hashing import object_hash
 from .ids import derived_id
 from .novel_spec import ValidatedDirectResearchSpec
+from .phase0_common import (
+    nonempty,
+    phase0_derived_id,
+    phase0_object_hash,
+    require_fields,
+    sorted_strings,
+)
 from .ranking import normalize_work_title
 from .schema import validate_schema
+
+# Compatibility aliases for callers that imported the historical private helpers.
+_nonempty = nonempty
+_phase0_derived_id = phase0_derived_id
+_phase0_object_hash = phase0_object_hash
+_require_fields = require_fields
+_sorted_strings = sorted_strings
 
 _SUPPORTED_SOURCE_KIND = {
     "txt": "txt",
@@ -52,63 +66,6 @@ def normalize_author(value: str | None) -> str | None:
         raise ValidationError("E-PHASE0-WORK", "author must be a string or null")
     normalized = re.sub(r"\s+", " ", value).strip()
     return normalized or None
-
-
-def _nonempty(value: Any, *, code: str, message: str) -> str:
-    if not isinstance(value, str) or not value.strip():
-        raise ValidationError(code, message)
-    return value.strip()
-
-
-def _require_fields(
-    value: dict[str, Any],
-    *,
-    required: set[str],
-    optional: set[str] | None = None,
-    code: str,
-    label: str,
-) -> None:
-    fields = set(value)
-    allowed = required | (optional or set())
-    if not required <= fields or not fields <= allowed:
-        raise ValidationError(code, f"{label} has an invalid field set")
-
-
-def _phase0_object_hash(
-    value: dict[str, Any],
-    *,
-    omit: tuple[str, ...],
-    code: str,
-    label: str,
-) -> str:
-    try:
-        return object_hash(value, omit=omit)
-    except (TypeError, ValueError) as exc:
-        raise ValidationError(code, f"{label} is not canonical JSON") from exc
-
-
-def _phase0_derived_id(
-    kind: str,
-    value: dict[str, Any],
-    *,
-    code: str,
-    label: str,
-) -> str:
-    try:
-        return derived_id(kind, value)
-    except (TypeError, ValueError) as exc:
-        raise ValidationError(code, f"{label} is not canonical JSON") from exc
-
-
-def _sorted_strings(values: Any, *, code: str, field: str) -> list[str]:
-    if not isinstance(values, list) or any(
-        not isinstance(item, str) or not item.strip() for item in values
-    ):
-        raise ValidationError(code, f"{field} must be an array of non-empty strings")
-    normalized = sorted({item.strip() for item in values})
-    if len(normalized) != len(values):
-        raise ValidationError(code, f"{field} must contain unique values")
-    return normalized
 
 
 def _canonical_external_ids(values: Any) -> list[dict[str, str]]:

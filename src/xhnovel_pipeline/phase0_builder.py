@@ -24,6 +24,7 @@ from .novel_spec import (
     ValidatedDirectResearchSpec,
     validate_direct_research_spec,
 )
+from .phase0_common import write_immutable
 from .phase0_handoff import (
     HandoffGroup,
     group_leads_for_source,
@@ -39,6 +40,9 @@ from .phase0_handoff import (
 from .ranking import normalize_work_title
 from .schema import validate_schema
 from .store import ArtifactStore
+
+# Compatibility alias for callers that imported the historical private helper.
+_write_immutable = write_immutable
 
 PHASE0_HANDOFF_BUILDER_ID = "phase0-handoff-builder-v1"
 PHASE0_EXECUTION_PROFILE = "DIRECT_FULL_WORK_V1"
@@ -86,16 +90,6 @@ def _build_request_hash(value: dict[str, Any]) -> str:
             "E-PHASE0-BUILD-REQUEST",
             "handoff build request is not canonical JSON",
         ) from exc
-
-
-def _write_immutable(path: pathlib.Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        with path.open("xb") as handle:
-            handle.write(data)
-    except FileExistsError:
-        if path.read_bytes() != data:
-            raise ValidationError("E-IMMUTABLE-OUTPUT", f"refusing to overwrite {path}")
 
 
 def _read_json(path: pathlib.Path, *, label: str) -> dict[str, Any]:
