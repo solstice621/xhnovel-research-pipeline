@@ -5,7 +5,7 @@ import pytest
 from xhnovel_pipeline.catalog import Catalog, ID_FIELDS
 from xhnovel_pipeline.errors import SchemaError, ValidationError
 from xhnovel_pipeline.ids import PREFIXES, derived_id
-from xhnovel_pipeline.schema import validate_schema
+from xhnovel_pipeline.schema import validate_schema, validate_schema_resources
 
 HASH_A = "sha256:" + "a" * 64
 HASH_B = "sha256:" + "b" * 64
@@ -236,15 +236,92 @@ def test_phase0_valid_contracts(kind, factory):
     validate_schema(kind, factory())
 
 
-def test_research_lead_rejects_evidence_fields_and_non_lead_sources():
+def test_all_distributed_schema_references_resolve():
+    validate_schema_resources()
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "source_spans",
+        "segment_id",
+        "KNOWN",
+        "CONFLICTING",
+        "SceneCandidate",
+        "MechanismCandidate",
+    ],
+)
+def test_research_lead_rejects_evidence_fields(field):
     lead = _lead()
-    lead["source_spans"] = []
+    lead[field] = []
     with pytest.raises(SchemaError, match="E-SCHEMA"):
         validate_schema("ResearchLead", lead)
+
+
+def test_research_lead_rejects_non_lead_sources():
     lead = _lead()
     lead["lead_sources"][0]["role"] = "EVIDENCE"
     with pytest.raises(SchemaError, match="E-SCHEMA"):
         validate_schema("ResearchLead", lead)
+
+
+@pytest.mark.parametrize(
+    ("kind", "factory"),
+    [
+        ("ExplorationBrief", _brief),
+        ("ResearchLead", _lead),
+        ("HandoffBuildRequest", _build_request),
+        ("SourceDeclaration", _source_declaration),
+        ("EvidenceHandoff", _handoff),
+        ("HandoffAttemptEvent", _started_event),
+        ("EvidenceHandoffExecutionReceipt", _success_receipt),
+    ],
+)
+def test_phase0_contracts_reject_unknown_top_level_fields(kind, factory):
+    record = factory()
+    record["unexpected"] = True
+    with pytest.raises(SchemaError, match="E-SCHEMA"):
+        validate_schema(kind, record)
+
+
+def test_source_declaration_rejects_unknown_or_cross_adapter_options():
+    declaration = _source_declaration()
+    declaration["source"]["unknown_adapter_option"] = True
+    with pytest.raises(SchemaError, match="E-SCHEMA"):
+        validate_schema("SourceDeclaration", declaration)
+
+    declaration = _source_declaration()
+    declaration["source"]["recursive"] = True
+    with pytest.raises(SchemaError, match="E-SCHEMA"):
+        validate_schema("SourceDeclaration", declaration)
+
+
+@pytest.mark.parametrize(
+    "source",
+    [
+        {"kind": "txt", "path": "/tmp/book.txt", "encoding": "utf-8"},
+        {"kind": "directory", "path": "/tmp/book", "recursive": True},
+        {
+            "kind": "epub",
+            "path": "/tmp/book.epub",
+            "max_member_bytes": 10_000_000,
+            "max_total_bytes": 200_000_000,
+        },
+        {
+            "kind": "site",
+            "index_url": "https://example.invalid/index",
+            "chapter_url_pattern": "/chapter/[0-9]+$",
+            "next_index_url_pattern": "[?&]page=[0-9]+$",
+            "allow_external_chapters": False,
+            "max_index_pages": 10,
+            "max_index_bytes": 1_000_000,
+        },
+    ],
+)
+def test_source_declaration_accepts_each_adapter_shape(source):
+    declaration = _source_declaration()
+    declaration["source"] = source
+    validate_schema("SourceDeclaration", declaration)
 
 
 @pytest.mark.parametrize(
@@ -280,6 +357,39 @@ def test_handoff_is_ready_and_non_evidentiary_only():
         validate_schema("EvidenceHandoff", handoff)
 
 
+def test_handoff_rejects_copied_hint_text():
+    handoff = _handoff()
+    handoff["localization"]["hint_refs"][0]["text"] = "第327章"
+    with pytest.raises(SchemaError, match="E-SCHEMA"):
+        validate_schema("EvidenceHandoff", handoff)
+
+
+def test_phase0_hashes_reject_placeholders():
+    brief = _brief()
+    brief["brief_hash"] = "sha256:..."
+    with pytest.raises(SchemaError, match="E-SCHEMA"):
+        validate_schema("ExplorationBrief", brief)
+
+
+@pytest.mark.parametrize(
+    ("kind", "factory", "field"),
+    [
+        ("ExplorationBrief", _brief, "brief_id"),
+        ("ResearchLead", _lead, "lead_id"),
+        ("HandoffBuildRequest", _build_request, "build_request_id"),
+        ("SourceDeclaration", _source_declaration, "source_declaration_id"),
+        ("EvidenceHandoff", _handoff, "handoff_id"),
+        ("HandoffAttemptEvent", _started_event, "event_id"),
+        ("EvidenceHandoffExecutionReceipt", _success_receipt, "receipt_id"),
+    ],
+)
+def test_phase0_contracts_reject_wrong_id_prefixes(kind, factory, field):
+    record = factory()
+    record[field] = "BAD-IDENTIFIER"
+    with pytest.raises(SchemaError, match="E-SCHEMA"):
+        validate_schema(kind, record)
+
+
 def test_attempt_event_state_specific_shape():
     event = _started_event()
     event["state"] = "WAITING_FOR_AGENT"
@@ -310,6 +420,24 @@ def test_failed_receipt_is_a_terminal_contract():
         "receipt_hash": HASH_B,
     }
     validate_schema("EvidenceHandoffExecutionReceipt", receipt)
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "ingestion_run_id",
+        "request_id",
+        "bundle_id",
+        "scene_scout_run_id",
+        "merge_run_id",
+        "export_id",
+    ],
+)
+def test_success_receipt_rejects_prefix_only_downstream_ids(field):
+    receipt = _success_receipt()
+    receipt[field] = receipt[field].split("-", 1)[0] + "-"
+    with pytest.raises(SchemaError, match="E-SCHEMA"):
+        validate_schema("EvidenceHandoffExecutionReceipt", receipt)
 
 
 def test_phase0_kinds_stay_out_of_core_catalog():

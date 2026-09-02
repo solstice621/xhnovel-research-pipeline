@@ -91,6 +91,19 @@ def main() -> int:
         pkg_file = Path(pkg_line).resolve()
         assert (resolved / "contracts").is_dir(), f"no contracts under {resolved}"
         assert (resolved / "profiles").is_dir(), f"no profiles under {resolved}"
+        schema_probe = subprocess.run(
+            [
+                PY,
+                "-c",
+                "from xhnovel_pipeline.schema import validate_schema_resources; "
+                "validate_schema_resources(); print('schema refs ok')",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+            cwd=str(tmp),
+        )
+        assert schema_probe.stdout.strip() == "schema refs ok"
         # Only a real wheel/site-packages install proves cwd-independent data
         # resolution. An editable install legitimately points repo_root() back at
         # the source checkout, so the strict guard applies only when the imported

@@ -49,6 +49,18 @@ SCHEMA_BY_TYPE = {
 }
 
 
+def _schema_refs(value: Any):
+    if isinstance(value, dict):
+        ref = value.get("$ref")
+        if isinstance(ref, str):
+            yield ref
+        for child in value.values():
+            yield from _schema_refs(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from _schema_refs(child)
+
+
 def _registry(contracts: pathlib.Path) -> Registry:
     registry = Registry()
     for path in sorted(contracts.rglob("*.schema.json")):
@@ -59,6 +71,21 @@ def _registry(contracts: pathlib.Path) -> Registry:
             Resource.from_contents(data, default_specification=DRAFT202012),
         )
     return registry
+
+
+def validate_schema_resources(*, root: pathlib.Path | None = None) -> None:
+    """Parse every distributed schema and resolve every reference from its own base URI."""
+
+    root = root or repo_root()
+    contracts = root / "contracts"
+    registry = _registry(contracts)
+    for path in sorted(contracts.rglob("*.schema.json")):
+        schema = json.loads(path.read_text(encoding="utf-8"))
+        Draft202012Validator.check_schema(schema)
+        base_uri = schema.get("$id") or path.resolve().as_uri()
+        resolver = registry.resolver(base_uri=base_uri)
+        for ref in _schema_refs(schema):
+            resolver.lookup(ref)
 
 
 def validate_schema(kind: str, obj: dict[str, Any], *, root: pathlib.Path | None = None) -> None:

@@ -1,1 +1,120 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"https://xhnovel.local/contracts/source-declaration.schema.json","type":"object","additionalProperties":false,"required":["schema_version","source_declaration_id","work","source","rights","source_quality","edition_label","declaration_hash","declared_at"],"properties":{"schema_version":{"$ref":"defs.schema.json#/$defs/schema_version"},"source_declaration_id":{"$ref":"phase0-defs.schema.json#/$defs/sdl_id"},"work":{"type":"object","additionalProperties":false,"required":["identity","canonical_title","author","language","aliases","external_ids"],"properties":{"identity":{"$ref":"phase0-defs.schema.json#/$defs/work_identity"},"canonical_title":{"type":"string","minLength":1},"author":{"type":["string","null"]},"language":{"$ref":"phase0-defs.schema.json#/$defs/language"},"aliases":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},"external_ids":{"type":"array","items":{"$ref":"phase0-defs.schema.json#/$defs/external_id"},"uniqueItems":true}}},"source":{"type":"object","minProperties":1,"required":["kind"],"properties":{"kind":{"type":"string","minLength":1}}},"rights":{"$ref":"phase0-defs.schema.json#/$defs/rights"},"source_quality":{"$ref":"phase0-defs.schema.json#/$defs/source_quality"},"edition_label":{"type":"string","minLength":1},"declaration_hash":{"$ref":"defs.schema.json#/$defs/sha256"},"declared_at":{"$ref":"defs.schema.json#/$defs/iso_datetime"}}}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/source-declaration.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_declaration_id",
+    "work",
+    "source",
+    "rights",
+    "source_quality",
+    "edition_label",
+    "declaration_hash",
+    "declared_at"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+    "source_declaration_id": {"$ref": "phase0-defs.schema.json#/$defs/sdl_id"},
+    "work": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity",
+        "canonical_title",
+        "author",
+        "language",
+        "aliases",
+        "external_ids"
+      ],
+      "properties": {
+        "identity": {"$ref": "phase0-defs.schema.json#/$defs/work_identity"},
+        "canonical_title": {"type": "string", "minLength": 1},
+        "author": {"type": ["string", "null"], "minLength": 1},
+        "language": {"$ref": "phase0-defs.schema.json#/$defs/language"},
+        "aliases": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "external_ids": {
+          "type": "array",
+          "items": {"$ref": "phase0-defs.schema.json#/$defs/external_id"},
+          "uniqueItems": true
+        }
+      }
+    },
+    "source": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "path"],
+          "properties": {
+            "kind": {"const": "txt"},
+            "path": {"type": "string", "minLength": 1},
+            "title": {"type": "string", "minLength": 1},
+            "author": {"type": ["string", "null"], "minLength": 1},
+            "language": {"$ref": "phase0-defs.schema.json#/$defs/language"},
+            "max_chapters": {"type": "integer", "minimum": 1, "maximum": 100000},
+            "encoding": {"type": "string", "minLength": 1},
+            "chapter_pattern": {"type": "string", "minLength": 1, "maxLength": 500}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "path"],
+          "properties": {
+            "kind": {"enum": ["directory", "chapter-directory"]},
+            "path": {"type": "string", "minLength": 1},
+            "title": {"type": "string", "minLength": 1},
+            "author": {"type": ["string", "null"], "minLength": 1},
+            "language": {"$ref": "phase0-defs.schema.json#/$defs/language"},
+            "max_chapters": {"type": "integer", "minimum": 1, "maximum": 100000},
+            "recursive": {"type": "boolean"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "path"],
+          "properties": {
+            "kind": {"const": "epub"},
+            "path": {"type": "string", "minLength": 1},
+            "title": {"type": "string", "minLength": 1},
+            "author": {"type": ["string", "null"], "minLength": 1},
+            "language": {"$ref": "phase0-defs.schema.json#/$defs/language"},
+            "max_chapters": {"type": "integer", "minimum": 1, "maximum": 100000},
+            "max_member_bytes": {"type": "integer", "minimum": 1},
+            "max_total_bytes": {"type": "integer", "minimum": 1}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "index_url", "chapter_url_pattern"],
+          "properties": {
+            "kind": {"enum": ["site", "static-site"]},
+            "index_url": {"type": "string", "minLength": 1},
+            "chapter_url_pattern": {"type": "string", "minLength": 1, "maxLength": 500},
+            "next_index_url_pattern": {"type": "string", "minLength": 1, "maxLength": 500},
+            "allow_external_chapters": {"type": "boolean"},
+            "max_index_pages": {"type": "integer", "minimum": 1, "maximum": 1000},
+            "max_index_bytes": {"type": "integer", "minimum": 1, "maximum": 50000000},
+            "max_chapters": {"type": "integer", "minimum": 1, "maximum": 100000},
+            "title": {"type": "string", "minLength": 1},
+            "author": {"type": ["string", "null"], "minLength": 1},
+            "language": {"$ref": "phase0-defs.schema.json#/$defs/language"}
+          }
+        }
+      ]
+    },
+    "rights": {"$ref": "phase0-defs.schema.json#/$defs/rights"},
+    "source_quality": {"$ref": "phase0-defs.schema.json#/$defs/source_quality"},
+    "edition_label": {"type": "string", "minLength": 1},
+    "declaration_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "declared_at": {"$ref": "defs.schema.json#/$defs/iso_datetime"}
+  }
+}
