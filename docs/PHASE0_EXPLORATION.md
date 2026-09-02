@@ -8,6 +8,10 @@ open-web claims contaminate xhnovel's evidence contract.
 The normative interface remains [`PHASE0_INTERFACE.md`](PHASE0_INTERFACE.md).
 Machine validators and contracts take precedence if this operating guide drifts.
 
+Phase -1 is the auditable planning step immediately before Phase 0. Its host
+workflow is [`xhnovel-plan`](../.agents/skills/xhnovel-plan/SKILL.md); Phase 0
+search remains [`xhnovel-explore`](../.agents/skills/xhnovel-explore/SKILL.md).
+
 ## Purpose and boundary
 
 Phase 0 answers:
@@ -19,10 +23,16 @@ Phase 0 answers:
 It does not answer whether a suspected scene occurred. The trust domains remain:
 
 ```text
-open-web exploration
-  -> ExplorationBrief + ResearchLead[]       UNVERIFIED_LEAD / LEAD_ONLY
+ResearchIntake
+  -> seed-free NeutralPlanningInput
+  -> isolated neutral frame + host attestation
+  -> seed-aware ExplorationPlan
+  -> deterministic ExplorationBrief + replayable planning receipt
+open-web exploration guided by Plan seeds/diversity
+  -> ResearchLead[]                          UNVERIFIED_LEAD / LEAD_ONLY
   -> SourceDeclaration                      rights and quality declared separately
   -> prepare-handoff                        deterministic CAS-backed replay
+  -> validate-planning-handoff              fixed-build Brief-lineage replay
   -> ordinary novel-spec.json               hard interface
   -> execute-handoff                        marker-backed native compiler attempt
   -> SceneCandidate[]                       DRAFT / UNVERIFIED, exact source support
@@ -31,17 +41,83 @@ open-web exploration
 Phase 0 objects stay outside the core `Catalog`. Search pages and Lead prose never
 become source support.
 
-## Freeze the research input first
+## Phase -1: freeze planning before exploration
 
-Before selecting a work or scene, freeze one `ExplorationBrief` containing:
+New planned runs begin with a `ResearchIntake`, not a search result. It preserves
+the user's original words for audit while separating all formal-Brief inputs from
+work names and other seeds:
 
-- the gameplay research question;
-- a neutral `evidence_discovery_brief` describing what source-text interactions to
-  find;
-- explicit exploration scope and selection limits;
-- a record timestamp.
+```text
+ResearchIntake
+  { user_goal_verbatim,
+    neutral_goal_text,
+    neutral_goal_origin,
+    explicit_scope,
+    seeds }
+       |
+       | deterministic projection drops user_goal_verbatim, seeds, and intake_id
+       v
+NeutralPlanningInput
+  { neutral_input_id, neutral_goal_text, explicit_scope }
+```
 
-The brief must not be reverse-written from discoveries. Its
+The neutral worker receives only that projected object. It authors the
+`research_question`, `evidence_discovery_brief`, and `selection_budget`. The
+strategy worker runs only after the neutral frame is sealed; it receives the frame
+plus intake seeds and authors `exploration_seeds` and `diversity` only. It must not
+change or recommend a replacement budget.
+
+This two-worker boundary protects both textual and budget paths into the formal
+Brief. `compile-exploration-plan` reads only the embedded neutral frame and typed
+hard scope when it builds the `ExplorationBrief`; it never reads strategy seeds or
+diversity and never emits `scope.prefer`.
+
+Run the staged deterministic lifecycle:
+
+```bash
+xhnovel-pipeline seal-intake intake-draft.json --work-dir .runtime/planning/run-001
+# isolated neutral worker reads only neutral-planning-input.json
+xhnovel-pipeline seal-neutral-frame neutral-frame-draft.json \
+  --attestation attestation.json --work-dir .runtime/planning/run-001
+# strategy worker reads the sealed frame plus intake seeds
+xhnovel-pipeline compile-exploration-plan compile-request.json \
+  --work-dir .runtime/planning/run-001
+```
+
+The host workers produce drafts only. The commands own normalization, IDs, hashes,
+CAS storage, cross-record binding, deterministic Brief compilation, and the
+`PlanningCompilationReceipt`.
+
+### Honest provenance and isolation claims
+
+`neutral_goal_origin = USER_CONFIRMED_SUMMARY` and
+`scope_origin = USER_CONFIRMED` are host/operator-declared provenance. Machine
+validation proves the enum and content binding, not that a user actually confirmed
+the summary or scope. `USER_VERBATIM_NO_SEEDS` is narrower: the two goal strings
+must be byte-identical.
+
+Likewise, `seed_blindness_assurance = HOST_ISOLATED_ATTESTED` means a host attested
+that a fresh neutral worker saw only the seed-free projected payload. It is not
+cryptographic proof that a model was never influenced. When seed-free isolation
+cannot be honestly attested, use `NOT_PROVEN`; compilation still works, but the run
+must not claim seed-blind planning or rigorous A/B blinding.
+
+The sealed `ExplorationPlan` binds the specific `NeutralPlanningExecution` ID and
+derives its assurance from that record. Strategy workers cannot author the
+assurance themselves.
+
+### Machine-enforced versus host-enforced scope
+
+The compiler enforces typed genre include/exclude sets, a non-empty include set,
+disjoint include/exclude values, fixed budget bounds, and diversity-budget
+satisfiability. The compiled Brief maps `genres.include` to `scope.genres` and a
+non-empty `genres.exclude` to `scope.avoid`.
+
+`avoid` is a hard host exploration instruction. It is not machine-verified because
+ResearchLeads do not carry a trusted genre classification. Reports must distinguish
+that host enforcement from machine-enforced schema and lineage checks.
+
+The resulting Brief must not be reverse-written from discoveries. Its
 `evidence_discovery_brief` is projected verbatim into the ordinary Novel Spec and
 is the only Phase 0 prose allowed into `request.discovery_brief`.
 
@@ -52,9 +128,11 @@ project them into the Novel Spec or native Scene Scout tasks. Execution remains
 
 ## Explore for falsifiable Leads
 
-The host agent may use search engines, reference sites, reviews, discussions,
-rankings, and other open-world sources. Preserve enough raw context and locators to
-audit why a Lead was proposed, while assigning every such source:
+Use the sealed `exploration-brief.json` as the formal search question. Use the
+sealed Plan's seeds and diversity only to steer host search. The host agent may use
+search engines, reference sites, reviews, discussions, rankings, and other
+open-world sources. Preserve enough raw context and locators to audit why a Lead
+was proposed, while assigning every such source:
 
 ```text
 role = LEAD_ONLY
@@ -91,6 +169,11 @@ identity/source declarations. The builder resolves the frozen WorkRef/SourceRef
 identity basis and performs deterministic N-to-one grouping for compatible Leads.
 Prepare a separate build input for each incompatible work/source group.
 
+The planning receipt does not prove that resulting Leads followed the Plan's seeds
+or diversity. Preserve the search plan, source log, Lead dispositions, and a host
+review of strategy adherence. This host-audited claim is distinct from the formal
+Brief lineage proved by deterministic replay.
+
 ## Resolve source, rights, and quality independently
 
 A Lead can remain valuable even when no executable source exists. Treat these as
@@ -114,7 +197,9 @@ or `BLOCKED_BY_RIGHTS`. That is a valid exploration result, not a failed Pilot.
 
 ## Preparation input and Handoff
 
-The host provides a single preparation JSON object with these top-level fields:
+The host provides a single preparation JSON object with these top-level fields.
+For a planned run, `brief` is the sealed `exploration-brief.json`, not a rewritten
+draft:
 
 ```json
 {
@@ -157,6 +242,37 @@ working-directory JSON file.
 
 Never calculate Phase 0 IDs/hashes, write a final Handoff by hand, or put Phase 0
 records into the core Catalog.
+
+## Planning-to-Handoff closure
+
+After exploration produces Leads and `prepare-handoff` creates the Handoff, replay
+the complete Phase -1 lineage before semantic execution:
+
+```bash
+xhnovel-pipeline validate-planning-handoff \
+  .runtime/planning/run-001/planning-compilation-receipt.json \
+  .runtime/exploration/run-001/handoffs/EHO-.../handoff.json \
+  --planning-root .runtime/planning/run-001 \
+  --phase0-root .runtime/exploration/run-001
+```
+
+The validator:
+
+```text
+checks the fixed compiler_build_id
+-> re-reads ResearchIntake, NeutralPlanningInput, NeutralResearchFrame,
+   NeutralPlanningExecution, ExplorationPlan, and ExplorationBrief from CAS
+-> revalidates every cross-record binding and attestation-derived assurance
+-> recompiles the Brief
+-> exactly rebuilds the PlanningCompilationReceipt
+-> replay-validates the EvidenceHandoff
+-> matches its exploration_brief_artifact_id to the compiled Brief artifact
+```
+
+`E-PLANNING-BUILD-BIND` means replay is running under a different compiler build;
+reconstruct the receipt's recorded repository/package build rather than weakening
+the check. `E-PLANNING-RECEIPT-REPLAY` means the planning content does not close.
+`E-PLANNING-HANDOFF-CLOSURE` means the Handoff used another Brief.
 
 ## Authoritative execution
 
@@ -225,11 +341,25 @@ xhnovel-pipeline validate all <research-run>/catalog.json \
 Success receipts are also replayed from that final catalog/store when execution
 history is reopened.
 
+For a Phase -1 planned run, success reporting additionally requires a passing
+`validate-planning-handoff`. That closes formal Brief lineage only; host strategy
+adherence remains a separate reported state.
+
 ## Audit layout and preservation
 
 Keep the entire exploration run together:
 
 ```text
+.runtime/planning/<run-id>/
+  objects/
+  intake.json
+  neutral-planning-input.json
+  neutral-research-frame.json
+  neutral-planning-execution.json
+  exploration-plan.json
+  exploration-brief.json
+  planning-compilation-receipt.json
+  planning-manifest.json
 .runtime/exploration/<run-id>/
   objects/
   brief.json
@@ -278,10 +408,13 @@ or evidence rules and do not require any Lead to become executable.
 
 ## Host-managed parallel work
 
-A capable host may assign bounded roles such as work/scene explorer, diversity
-checker, Lead consolidator, and source resolver. Each worker receives only the
-minimum untrusted material needed for its role. The host remains responsible for
-authorization, isolation, and consolidation.
+A capable host may assign bounded roles such as the seed-blind neutral planner,
+seed-aware strategy planner, work/scene explorer, diversity checker, Lead
+consolidator, and source resolver. The neutral planner is special: it receives only
+`NeutralPlanningInput`, with no inherited seed-bearing context. Every other worker
+still receives only the minimum untrusted material needed for its role. The host
+remains responsible for authorization, honest isolation attestation, and
+consolidation.
 
 xhnovel must not gain a search runtime, crawler, scheduler, queue, lease mechanism,
 or worker registry as part of this workflow.

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/research-intake.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "intake_id", "user_goal_verbatim", "neutral_goal_text", "neutral_goal_origin", "explicit_scope", "seeds", "intake_hash", "frozen_at"],
+  "properties": {
+    "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+    "intake_id": {"$ref": "phase0-defs.schema.json#/$defs/rin_id"},
+    "user_goal_verbatim": {"type": "string", "minLength": 1},
+    "neutral_goal_text": {"type": "string", "minLength": 1},
+    "neutral_goal_origin": {"enum": ["USER_VERBATIM_NO_SEEDS", "USER_CONFIRMED_SUMMARY"]},
+    "explicit_scope": {"$ref": "phase0-defs.schema.json#/$defs/explicit_scope"},
+    "seeds": {"type": "array", "uniqueItems": true, "items": {"$ref": "phase0-defs.schema.json#/$defs/sealed_user_seed"}},
+    "intake_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "frozen_at": {"$ref": "defs.schema.json#/$defs/iso_datetime"}
+  }
+}

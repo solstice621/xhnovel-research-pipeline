@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/planning-compilation-receipt.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "receipt_id", "receipt_kind", "compiler_contract_version", "compiler_build_id",
+    "repository_commit", "source_tree_hash", "planning_contract_hash", "package_version", "rebuild_hint",
+    "intake_artifact_id", "neutral_input_artifact_id", "neutral_frame_artifact_id", "neutral_execution_artifact_id", "plan_artifact_id", "compiled_brief_artifact_id",
+    "intake_id", "intake_hash", "neutral_input_id", "neutral_frame_id", "neutral_frame_hash", "neutral_execution_id", "neutral_execution_hash",
+    "plan_id", "plan_hash", "compiled_brief_id", "compiled_brief_hash", "compiled_at", "receipt_hash"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+    "receipt_id": {"$ref": "phase0-defs.schema.json#/$defs/pcr_id"},
+    "receipt_kind": {"const": "PLANNING_COMPILATION"},
+    "compiler_contract_version": {"const": "phase-minus1-compiler-v1"},
+    "compiler_build_id": {"$ref": "phase0-defs.schema.json#/$defs/pcb_id"},
+    "repository_commit": {"type": "string", "pattern": "^(?:[0-9a-f]{40}|unknown-dev)$"},
+    "source_tree_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "planning_contract_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "package_version": {"type": "string", "minLength": 1},
+    "rebuild_hint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["build_command", "wheel_sha256"],
+      "properties": {
+        "build_command": {"const": "python -m build --wheel"},
+        "wheel_sha256": {"oneOf": [{"$ref": "defs.schema.json#/$defs/sha256"}, {"type": "null"}]}
+      }
+    },
+    "intake_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "neutral_input_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "neutral_frame_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "neutral_execution_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "plan_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "compiled_brief_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"},
+    "intake_id": {"$ref": "phase0-defs.schema.json#/$defs/rin_id"},
+    "intake_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "neutral_input_id": {"$ref": "phase0-defs.schema.json#/$defs/npi_id"},
+    "neutral_frame_id": {"$ref": "phase0-defs.schema.json#/$defs/nrf_id"},
+    "neutral_frame_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "neutral_execution_id": {"$ref": "phase0-defs.schema.json#/$defs/npe_id"},
+    "neutral_execution_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "plan_id": {"$ref": "phase0-defs.schema.json#/$defs/xpl_id"},
+    "plan_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "compiled_brief_id": {"$ref": "phase0-defs.schema.json#/$defs/xbr_id"},
+    "compiled_brief_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "compiled_at": {"$ref": "defs.schema.json#/$defs/iso_datetime"},
+    "receipt_hash": {"$ref": "defs.schema.json#/$defs/sha256"}
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "evidence_discovery_brief": "寻找物品的持有、控制、所有权或使用权限发生变化，并对角色后续行动空间产生可观察影响的场景。",
+  "frozen_at": "2026-09-02T00:00:00Z",
+  "neutral_input_id": "NPI-16129B534400549375A7",
+  "research_question": "物品争夺如何改变角色之间的控制关系、使用权限与后续行动空间？",
+  "selection_budget": {
+    "max_leads_per_work": 3,
+    "target_leads": 12
+  }
+}

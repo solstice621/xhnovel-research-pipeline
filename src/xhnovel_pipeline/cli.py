@@ -25,6 +25,12 @@ from .novel_workflow import (
 from .paths import repo_root
 from .phase0_builder import prepare_handoff_from_input, validate_evidence_handoff
 from .phase0_execution import execute_evidence_handoff
+from .phase0_planning import (
+    compile_exploration_plan_from_request,
+    seal_intake_from_draft,
+    seal_neutral_frame_from_drafts,
+    validate_planning_handoff,
+)
 from .ranking import run_fame_ranking, validate_fame_ranking, write_ranking_result
 from .ranking_provider import WikipediaRankingProvider
 from .runtime import utc_now
@@ -165,6 +171,31 @@ def _parser() -> argparse.ArgumentParser:
     execute_handoff.add_argument("--work-dir", type=pathlib.Path, required=True)
     execute_handoff.add_argument("--retry", action="store_true")
 
+    seal_intake = sub.add_parser("seal-intake")
+    seal_intake.add_argument("input", type=pathlib.Path)
+    seal_intake.add_argument("--work-dir", type=pathlib.Path, required=True)
+
+    seal_frame = sub.add_parser("seal-neutral-frame")
+    seal_frame.add_argument("input", type=pathlib.Path)
+    seal_frame.add_argument("--attestation", type=pathlib.Path, required=True)
+    seal_frame.add_argument("--work-dir", type=pathlib.Path, required=True)
+
+    compile_plan = sub.add_parser(
+        "compile-exploration-plan",
+        description=(
+            "validates and deterministically compiles sealed planning inputs into an "
+            "ExplorationPlan + ExplorationBrief; does not call a model or plan semantically"
+        ),
+    )
+    compile_plan.add_argument("input", type=pathlib.Path)
+    compile_plan.add_argument("--work-dir", type=pathlib.Path, required=True)
+
+    planning_validate = sub.add_parser("validate-planning-handoff")
+    planning_validate.add_argument("receipt", type=pathlib.Path)
+    planning_validate.add_argument("handoff", type=pathlib.Path)
+    planning_validate.add_argument("--planning-root", type=pathlib.Path, required=True)
+    planning_validate.add_argument("--phase0-root", type=pathlib.Path, required=True)
+
     locate = sub.add_parser("agent-locate")
     locate.add_argument("--work-dir", type=pathlib.Path, required=True)
     locate.add_argument("--window", required=True)
@@ -203,6 +234,46 @@ def main(argv: list[str] | None = None) -> int:
             prepared = prepare_handoff_from_input(args.input, work_dir)
             print(f"OK: prepared evidence handoff {prepared.handoff['handoff_id']}")
             print(prepared.handoff_path)
+            return 0
+
+        if args.cmd == "seal-intake":
+            work_dir = args.work_dir
+            sealed = seal_intake_from_draft(args.input, work_dir)
+            print(f"OK: sealed research intake {sealed.intake['intake_id']}")
+            print(sealed.neutral_input_path)
+            return 0
+
+        if args.cmd == "seal-neutral-frame":
+            work_dir = args.work_dir
+            sealed = seal_neutral_frame_from_drafts(
+                args.input,
+                args.attestation,
+                work_dir,
+            )
+            print(f"OK: sealed neutral research frame {sealed.neutral_frame['frame_id']}")
+            print(sealed.neutral_frame_path)
+            return 0
+
+        if args.cmd == "compile-exploration-plan":
+            work_dir = args.work_dir
+            compiled = compile_exploration_plan_from_request(
+                args.input,
+                work_dir,
+                repo_root=root,
+            )
+            print(f"OK: compiled exploration plan {compiled.plan['plan_id']}")
+            print(compiled.receipt_path)
+            return 0
+
+        if args.cmd == "validate-planning-handoff":
+            receipt = validate_planning_handoff(
+                args.receipt,
+                args.handoff,
+                planning_root=args.planning_root,
+                phase0_root=args.phase0_root,
+                repo_root=root,
+            )
+            print(f"OK: validate planning handoff {receipt['receipt_id']}")
             return 0
 
         if args.cmd == "validate-handoff":

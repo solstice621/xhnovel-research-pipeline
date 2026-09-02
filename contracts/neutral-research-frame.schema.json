@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/neutral-research-frame.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "frame_id", "intake_id", "neutral_input_id", "research_question", "evidence_discovery_brief", "selection_budget", "frame_hash", "frozen_at"],
+  "properties": {
+    "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+    "frame_id": {"$ref": "phase0-defs.schema.json#/$defs/nrf_id"},
+    "intake_id": {"$ref": "phase0-defs.schema.json#/$defs/rin_id"},
+    "neutral_input_id": {"$ref": "phase0-defs.schema.json#/$defs/npi_id"},
+    "research_question": {"type": "string", "minLength": 1},
+    "evidence_discovery_brief": {"type": "string", "minLength": 1},
+    "selection_budget": {"$ref": "phase0-defs.schema.json#/$defs/selection_budget"},
+    "frame_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "frozen_at": {"$ref": "defs.schema.json#/$defs/iso_datetime"}
+  }
+}

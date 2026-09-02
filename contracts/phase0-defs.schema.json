@@ -1,1 +1,266 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"https://xhnovel.local/contracts/phase0-defs.schema.json","$defs":{"xbr_id":{"type":"string","pattern":"^XBR-[A-Z0-9][A-Z0-9._:-]{1,}$"},"rld_id":{"type":"string","pattern":"^RLD-[A-Z0-9][A-Z0-9._:-]{1,}$"},"lds_id":{"type":"string","pattern":"^LDS-[A-Z0-9][A-Z0-9._:-]{1,}$"},"wref_id":{"type":"string","pattern":"^WREF-[A-Z0-9][A-Z0-9._:-]{1,}$"},"sref_id":{"type":"string","pattern":"^SREF-[A-Z0-9][A-Z0-9._:-]{1,}$"},"hbr_id":{"type":"string","pattern":"^HBR-[A-Z0-9][A-Z0-9._:-]{1,}$"},"sdl_id":{"type":"string","pattern":"^SDL-[A-Z0-9][A-Z0-9._:-]{1,}$"},"eho_id":{"type":"string","pattern":"^EHO-[A-Z0-9][A-Z0-9._:-]{1,}$"},"hat_id":{"type":"string","pattern":"^HAT-[A-Z0-9][A-Z0-9._:-]{1,}$"},"hev_id":{"type":"string","pattern":"^HEV-[A-Z0-9][A-Z0-9._:-]{1,}$"},"her_id":{"type":"string","pattern":"^HER-[A-Z0-9][A-Z0-9._:-]{1,}$"},"nonempty_string":{"type":"string","minLength":1},"language":{"type":"string","minLength":2,"maxLength":32},"external_id":{"type":"object","additionalProperties":false,"required":["namespace","value"],"properties":{"namespace":{"type":"string","minLength":1,"maxLength":100},"value":{"type":"string","minLength":1,"maxLength":500}}},"work_identity":{"oneOf":[{"type":"object","additionalProperties":false,"required":["basis","normalized_title","normalized_author","language"],"properties":{"basis":{"const":"TITLE_AUTHOR"},"normalized_title":{"type":"string","minLength":1},"normalized_author":{"type":"string","minLength":1},"language":{"$ref":"#/$defs/language"}}},{"type":"object","additionalProperties":false,"required":["basis","namespace","external_id"],"properties":{"basis":{"const":"STABLE_EXTERNAL_ID"},"namespace":{"type":"string","minLength":1,"maxLength":100},"external_id":{"type":"string","minLength":1,"maxLength":500}}},{"type":"object","additionalProperties":false,"required":["basis","confirmation_artifact_id"],"properties":{"basis":{"const":"USER_CONFIRMED"},"confirmation_artifact_id":{"$ref":"defs.schema.json#/$defs/artifact_id"}}}]},"work_claim":{"type":"object","additionalProperties":false,"required":["title","author","language","aliases"],"properties":{"title":{"type":"string","minLength":1},"author":{"type":["string","null"]},"language":{"$ref":"#/$defs/language"},"aliases":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true}}},"work_ref":{"type":"object","additionalProperties":false,"required":["work_ref_id","identity","canonical_title","normalized_title","author","normalized_author","language","aliases","external_ids","resolution_basis"],"properties":{"work_ref_id":{"$ref":"#/$defs/wref_id"},"identity":{"$ref":"#/$defs/work_identity"},"canonical_title":{"type":"string","minLength":1},"normalized_title":{"type":"string","minLength":1},"author":{"type":["string","null"]},"normalized_author":{"type":["string","null"]},"language":{"$ref":"#/$defs/language"},"aliases":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},"external_ids":{"type":"array","items":{"$ref":"#/$defs/external_id"},"uniqueItems":true},"resolution_basis":{"enum":["TITLE_AUTHOR","STABLE_EXTERNAL_ID","USER_CONFIRMED"]}}},"source_ref":{"type":"object","additionalProperties":false,"required":["source_ref_id","work_ref_id","kind","locator","source_config_hash","edition_label","content_binding"],"properties":{"source_ref_id":{"$ref":"#/$defs/sref_id"},"work_ref_id":{"$ref":"#/$defs/wref_id"},"kind":{"enum":["txt","epub","directory","site"]},"locator":{"type":"string","minLength":1},"source_config_hash":{"$ref":"defs.schema.json#/$defs/sha256"},"edition_label":{"type":"string","minLength":1},"content_binding":{"const":"DEFERRED_TO_INGESTION"}}},"rights":{"type":"object","additionalProperties":false,"required":["basis","may_store_full_text","may_send_to_external_model","may_export_excerpts"],"properties":{"basis":{"enum":["USER_AUTHORIZED_LOCAL_COPY","PUBLIC_DOMAIN","LICENSED","FAIR_USE_RESEARCH","UNKNOWN"]},"may_store_full_text":{"type":"boolean"},"may_send_to_external_model":{"type":"boolean"},"may_export_excerpts":{"type":"boolean"}}},"source_quality":{"type":"object","additionalProperties":false,"required":["edition_status","textual_completeness"],"properties":{"edition_status":{"enum":["OFFICIAL","PUBLISHED_EDITION","USER_VERIFIED_COPY","UNOFFICIAL_COPY","UNKNOWN"]},"textual_completeness":{"enum":["COMPLETE","PARTIAL","UNKNOWN"]}}},"lead_source":{"type":"object","additionalProperties":false,"required":["lead_source_id","source_kind","locator","role","supports"],"properties":{"lead_source_id":{"$ref":"#/$defs/lds_id"},"source_kind":{"enum":["SEARCH_RESULT","ENCYCLOPEDIA","REFERENCE","REVIEW","DISCUSSION","OTHER"]},"locator":{"type":"string","minLength":1},"title":{"type":["string","null"]},"publisher":{"type":["string","null"]},"role":{"const":"LEAD_ONLY"},"supports":{"type":"array","minItems":1,"uniqueItems":true,"items":{"enum":["WORK_IDENTITY","SCENE_EXISTENCE_HINT","LOCATION_HINT","PROMINENCE"]}}}},"location_hint":{"type":"object","additionalProperties":false,"required":["kind","value","basis","lead_source_ids"],"properties":{"kind":{"enum":["CHAPTER_NUMBER","CHAPTER_TITLE","EVENT_PHRASE","CHARACTER","PLACE","OBJECT","OTHER"]},"value":{"type":"string","minLength":1},"basis":{"enum":["SOURCE_STATED","AGENT_INFERRED"]},"lead_source_ids":{"type":"array","minItems":1,"uniqueItems":true,"items":{"$ref":"#/$defs/lds_id"}}}}}}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/phase0-defs.schema.json",
+  "$defs": {
+    "xbr_id": {"type": "string", "pattern": "^XBR-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "rld_id": {"type": "string", "pattern": "^RLD-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "lds_id": {"type": "string", "pattern": "^LDS-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "wref_id": {"type": "string", "pattern": "^WREF-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "sref_id": {"type": "string", "pattern": "^SREF-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "hbr_id": {"type": "string", "pattern": "^HBR-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "sdl_id": {"type": "string", "pattern": "^SDL-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "eho_id": {"type": "string", "pattern": "^EHO-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "hat_id": {"type": "string", "pattern": "^HAT-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "hev_id": {"type": "string", "pattern": "^HEV-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "her_id": {"type": "string", "pattern": "^HER-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "rin_id": {"type": "string", "pattern": "^RIN-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "npi_id": {"type": "string", "pattern": "^NPI-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "npe_id": {"type": "string", "pattern": "^NPE-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "nrf_id": {"type": "string", "pattern": "^NRF-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "xpl_id": {"type": "string", "pattern": "^XPL-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "pcr_id": {"type": "string", "pattern": "^PCR-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "pcb_id": {"type": "string", "pattern": "^PCB-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "seed_id": {"type": "string", "pattern": "^SD-[0-9A-F]{20}$"},
+    "nonempty_string": {"type": "string", "minLength": 1},
+    "language": {"type": "string", "minLength": 2, "maxLength": 32},
+    "explicit_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["genres", "scope_origin"],
+      "properties": {
+        "genres": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["include", "exclude"],
+          "properties": {
+            "include": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+            "exclude": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+          }
+        },
+        "scope_origin": {"enum": ["USER_EXPLICIT", "USER_CONFIRMED"]}
+      }
+    },
+    "selection_budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_leads", "max_leads_per_work"],
+      "properties": {
+        "target_leads": {"type": "integer", "minimum": 1, "maximum": 1000},
+        "max_leads_per_work": {"type": "integer", "minimum": 1, "maximum": 100}
+      }
+    },
+    "diversity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min_works", "min_interaction_families", "max_initial_leads_per_work"],
+      "properties": {
+        "min_works": {"type": "integer", "minimum": 1},
+        "min_interaction_families": {"type": "integer", "minimum": 1},
+        "max_initial_leads_per_work": {"type": "integer", "minimum": 1}
+      }
+    },
+    "seed_reference": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "seed_id"],
+          "properties": {"kind": {"const": "INTAKE_SEED"}, "seed_id": {"$ref": "#/$defs/seed_id"}}
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "frame_id"],
+          "properties": {"kind": {"const": "NEUTRAL_FRAME"}, "frame_id": {"$ref": "#/$defs/nrf_id"}}
+        }
+      ]
+    },
+    "user_seed_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin"],
+      "properties": {"origin": {"enum": ["USER_SUPPLIED", "USER_CONFIRMED"]}}
+    },
+    "planner_seed_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "derived_from"],
+      "properties": {
+        "origin": {"const": "PLANNER_DERIVED"},
+        "derived_from": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/seed_reference"}}
+      }
+    },
+    "seed_provenance": {
+      "oneOf": [
+        {"$ref": "#/$defs/user_seed_provenance"},
+        {"$ref": "#/$defs/planner_seed_provenance"}
+      ]
+    },
+    "sealed_user_seed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seed_id", "value", "bucket", "surface_forms", "provenance"],
+      "properties": {
+        "seed_id": {"$ref": "#/$defs/seed_id"},
+        "value": {"type": "string", "minLength": 1},
+        "bucket": {"enum": ["works", "concepts", "interaction_families"]},
+        "surface_forms": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "provenance": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/user_seed_provenance"}}
+      }
+    },
+    "sealed_planning_seed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seed_id", "value", "bucket", "surface_forms", "provenance"],
+      "properties": {
+        "seed_id": {"$ref": "#/$defs/seed_id"},
+        "value": {"type": "string", "minLength": 1},
+        "bucket": {"enum": ["works", "concepts", "interaction_families"]},
+        "surface_forms": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "provenance": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/seed_provenance"}}
+      }
+    },
+    "planning_seed_draft": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "bucket", "provenance"],
+      "properties": {
+        "seed_id": {"$ref": "#/$defs/seed_id"},
+        "value": {"type": "string", "minLength": 1},
+        "bucket": {"enum": ["works", "concepts", "interaction_families"]},
+        "surface_forms": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "provenance": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/seed_provenance"}}
+      }
+    },
+    "external_id": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["namespace", "value"],
+      "properties": {
+        "namespace": {"type": "string", "minLength": 1, "maxLength": 100},
+        "value": {"type": "string", "minLength": 1, "maxLength": 500}
+      }
+    },
+    "work_identity": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["basis", "normalized_title", "normalized_author", "language"],
+          "properties": {
+            "basis": {"const": "TITLE_AUTHOR"},
+            "normalized_title": {"type": "string", "minLength": 1},
+            "normalized_author": {"type": "string", "minLength": 1},
+            "language": {"$ref": "#/$defs/language"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["basis", "namespace", "external_id"],
+          "properties": {
+            "basis": {"const": "STABLE_EXTERNAL_ID"},
+            "namespace": {"type": "string", "minLength": 1, "maxLength": 100},
+            "external_id": {"type": "string", "minLength": 1, "maxLength": 500}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["basis", "confirmation_artifact_id"],
+          "properties": {
+            "basis": {"const": "USER_CONFIRMED"},
+            "confirmation_artifact_id": {"$ref": "defs.schema.json#/$defs/artifact_id"}
+          }
+        }
+      ]
+    },
+    "work_claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "author", "language", "aliases"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "author": {"type": ["string", "null"]},
+        "language": {"$ref": "#/$defs/language"},
+        "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "work_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["work_ref_id", "identity", "canonical_title", "normalized_title", "author", "normalized_author", "language", "aliases", "external_ids", "resolution_basis"],
+      "properties": {
+        "work_ref_id": {"$ref": "#/$defs/wref_id"},
+        "identity": {"$ref": "#/$defs/work_identity"},
+        "canonical_title": {"type": "string", "minLength": 1},
+        "normalized_title": {"type": "string", "minLength": 1},
+        "author": {"type": ["string", "null"]},
+        "normalized_author": {"type": ["string", "null"]},
+        "language": {"$ref": "#/$defs/language"},
+        "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "external_ids": {"type": "array", "items": {"$ref": "#/$defs/external_id"}, "uniqueItems": true},
+        "resolution_basis": {"enum": ["TITLE_AUTHOR", "STABLE_EXTERNAL_ID", "USER_CONFIRMED"]}
+      }
+    },
+    "source_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_ref_id", "work_ref_id", "kind", "locator", "source_config_hash", "edition_label", "content_binding"],
+      "properties": {
+        "source_ref_id": {"$ref": "#/$defs/sref_id"},
+        "work_ref_id": {"$ref": "#/$defs/wref_id"},
+        "kind": {"enum": ["txt", "epub", "directory", "site"]},
+        "locator": {"type": "string", "minLength": 1},
+        "source_config_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+        "edition_label": {"type": "string", "minLength": 1},
+        "content_binding": {"const": "DEFERRED_TO_INGESTION"}
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["basis", "may_store_full_text", "may_send_to_external_model", "may_export_excerpts"],
+      "properties": {
+        "basis": {"enum": ["USER_AUTHORIZED_LOCAL_COPY", "PUBLIC_DOMAIN", "LICENSED", "FAIR_USE_RESEARCH", "UNKNOWN"]},
+        "may_store_full_text": {"type": "boolean"},
+        "may_send_to_external_model": {"type": "boolean"},
+        "may_export_excerpts": {"type": "boolean"}
+      }
+    },
+    "source_quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edition_status", "textual_completeness"],
+      "properties": {
+        "edition_status": {"enum": ["OFFICIAL", "PUBLISHED_EDITION", "USER_VERIFIED_COPY", "UNOFFICIAL_COPY", "UNKNOWN"]},
+        "textual_completeness": {"enum": ["COMPLETE", "PARTIAL", "UNKNOWN"]}
+      }
+    },
+    "lead_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lead_source_id", "source_kind", "locator", "role", "supports"],
+      "properties": {
+        "lead_source_id": {"$ref": "#/$defs/lds_id"},
+        "source_kind": {"enum": ["SEARCH_RESULT", "ENCYCLOPEDIA", "REFERENCE", "REVIEW", "DISCUSSION", "OTHER"]},
+        "locator": {"type": "string", "minLength": 1},
+        "title": {"type": ["string", "null"]},
+        "publisher": {"type": ["string", "null"]},
+        "role": {"const": "LEAD_ONLY"},
+        "supports": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT", "PROMINENCE"]}}
+      }
+    },
+    "location_hint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value", "basis", "lead_source_ids"],
+      "properties": {
+        "kind": {"enum": ["CHAPTER_NUMBER", "CHAPTER_TITLE", "EVENT_PHRASE", "CHARACTER", "PLACE", "OBJECT", "OTHER"]},
+        "value": {"type": "string", "minLength": 1},
+        "basis": {"enum": ["SOURCE_STATED", "AGENT_INFERRED"]},
+        "lead_source_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/lds_id"}}
+      }
+    }
+  }
+}

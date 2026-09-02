@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/exploration-plan.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "plan_id", "intake_id", "neutral_frame", "neutral_execution_id", "explicit_scope", "exploration_seeds", "diversity", "seed_blindness_assurance", "plan_hash", "frozen_at"],
+  "properties": {
+    "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+    "plan_id": {"$ref": "phase0-defs.schema.json#/$defs/xpl_id"},
+    "intake_id": {"$ref": "phase0-defs.schema.json#/$defs/rin_id"},
+    "neutral_frame": {"$ref": "neutral-research-frame.schema.json"},
+    "neutral_execution_id": {"$ref": "phase0-defs.schema.json#/$defs/npe_id"},
+    "explicit_scope": {"$ref": "phase0-defs.schema.json#/$defs/explicit_scope"},
+    "exploration_seeds": {"type": "array", "uniqueItems": true, "items": {"$ref": "phase0-defs.schema.json#/$defs/sealed_planning_seed"}},
+    "diversity": {"$ref": "phase0-defs.schema.json#/$defs/diversity"},
+    "seed_blindness_assurance": {"enum": ["HOST_ISOLATED_ATTESTED", "NOT_PROVEN"]},
+    "plan_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "frozen_at": {"$ref": "defs.schema.json#/$defs/iso_datetime"}
+  }
+}

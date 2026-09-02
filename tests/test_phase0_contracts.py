@@ -220,6 +220,152 @@ def _success_receipt():
     }
 
 
+def _planning_seed():
+    return {
+        "seed_id": "SD-AAAAAAAAAAAAAAAAAAAA",
+        "value": "斗破苍穹",
+        "bucket": "works",
+        "surface_forms": ["《斗破苍穹》"],
+        "provenance": [{"origin": "USER_SUPPLIED"}],
+    }
+
+
+def _research_intake():
+    return {
+        "schema_version": "0.2-draft",
+        "intake_id": "RIN-INTAKE1",
+        "user_goal_verbatim": "先看《斗破苍穹》",
+        "neutral_goal_text": "研究玄幻作品中的物品争夺",
+        "neutral_goal_origin": "USER_CONFIRMED_SUMMARY",
+        "explicit_scope": {
+            "genres": {"include": ["玄幻"], "exclude": []},
+            "scope_origin": "USER_EXPLICIT",
+        },
+        "seeds": [_planning_seed()],
+        "intake_hash": HASH_A,
+        "frozen_at": NOW,
+    }
+
+
+def _neutral_input():
+    return {
+        "schema_version": "0.2-draft",
+        "neutral_input_id": "NPI-INPUT1",
+        "neutral_goal_text": "研究玄幻作品中的物品争夺",
+        "explicit_scope": {
+            "genres": {"include": ["玄幻"], "exclude": []},
+            "scope_origin": "USER_EXPLICIT",
+        },
+    }
+
+
+def _neutral_frame():
+    return {
+        "schema_version": "0.2-draft",
+        "frame_id": "NRF-FRAME1",
+        "intake_id": "RIN-INTAKE1",
+        "neutral_input_id": "NPI-INPUT1",
+        "research_question": "物品争夺如何改变控制关系？",
+        "evidence_discovery_brief": "寻找控制权变化。",
+        "selection_budget": {"target_leads": 12, "max_leads_per_work": 3},
+        "frame_hash": HASH_A,
+        "frozen_at": NOW,
+    }
+
+
+def _neutral_execution():
+    return {
+        "schema_version": "0.2-draft",
+        "execution_id": "NPE-EXECUTION1",
+        "record_kind": "NEUTRAL_PLANNING_EXECUTION",
+        "neutral_input_artifact_id": HASH_A,
+        "neutral_frame_artifact_id": HASH_B,
+        "host": "codex-host",
+        "isolation_claim": "FRESH_SUBAGENT_NO_SEED_PAYLOAD",
+        "assurance": "HOST_ISOLATED_ATTESTED",
+        "execution_hash": HASH_C,
+        "recorded_at": NOW,
+    }
+
+
+def _exploration_plan():
+    return {
+        "schema_version": "0.2-draft",
+        "plan_id": "XPL-PLAN1",
+        "intake_id": "RIN-INTAKE1",
+        "neutral_frame": _neutral_frame(),
+        "neutral_execution_id": "NPE-EXECUTION1",
+        "explicit_scope": {
+            "genres": {"include": ["玄幻"], "exclude": []},
+            "scope_origin": "USER_EXPLICIT",
+        },
+        "exploration_seeds": [_planning_seed()],
+        "diversity": {
+            "min_works": 4,
+            "min_interaction_families": 3,
+            "max_initial_leads_per_work": 2,
+        },
+        "seed_blindness_assurance": "HOST_ISOLATED_ATTESTED",
+        "plan_hash": HASH_A,
+        "frozen_at": NOW,
+    }
+
+
+def _compile_request():
+    return {
+        "schema_version": "0.2-draft",
+        "intake_artifact_id": HASH_A,
+        "neutral_frame_artifact_id": HASH_B,
+        "neutral_execution_artifact_id": HASH_C,
+        "strategy": {
+            "exploration_seeds": [_planning_seed()],
+            "diversity": {
+                "min_works": 4,
+                "min_interaction_families": 3,
+                "max_initial_leads_per_work": 2,
+            },
+        },
+        "compiled_at": NOW,
+    }
+
+
+def _planning_receipt():
+    return {
+        "schema_version": "0.2-draft",
+        "receipt_id": "PCR-RECEIPT1",
+        "receipt_kind": "PLANNING_COMPILATION",
+        "compiler_contract_version": "phase-minus1-compiler-v1",
+        "compiler_build_id": "PCB-BUILD1",
+        "repository_commit": "a" * 40,
+        "source_tree_hash": HASH_A,
+        "planning_contract_hash": HASH_B,
+        "package_version": "0.2.0.dev0",
+        "rebuild_hint": {
+            "build_command": "python -m build --wheel",
+            "wheel_sha256": None,
+        },
+        "intake_artifact_id": HASH_A,
+        "neutral_input_artifact_id": HASH_B,
+        "neutral_frame_artifact_id": HASH_C,
+        "neutral_execution_artifact_id": "sha256:" + "d" * 64,
+        "plan_artifact_id": "sha256:" + "e" * 64,
+        "compiled_brief_artifact_id": "sha256:" + "f" * 64,
+        "intake_id": "RIN-INTAKE1",
+        "intake_hash": HASH_A,
+        "neutral_input_id": "NPI-INPUT1",
+        "neutral_frame_id": "NRF-FRAME1",
+        "neutral_frame_hash": HASH_B,
+        "neutral_execution_id": "NPE-EXECUTION1",
+        "neutral_execution_hash": HASH_C,
+        "plan_id": "XPL-PLAN1",
+        "plan_hash": HASH_A,
+        "compiled_brief_id": "XBR-BRIEF1",
+        "compiled_brief_hash": HASH_B,
+        "compiled_at": NOW,
+        "receipt_hash": HASH_C,
+    }
+
+
 @pytest.mark.parametrize(
     ("kind", "factory"),
     [
@@ -230,6 +376,13 @@ def _success_receipt():
         ("EvidenceHandoff", _handoff),
         ("HandoffAttemptEvent", _started_event),
         ("EvidenceHandoffExecutionReceipt", _success_receipt),
+        ("ResearchIntake", _research_intake),
+        ("NeutralPlanningInput", _neutral_input),
+        ("NeutralPlanningExecution", _neutral_execution),
+        ("NeutralResearchFrame", _neutral_frame),
+        ("ExplorationPlan", _exploration_plan),
+        ("ExplorationPlanCompileRequest", _compile_request),
+        ("PlanningCompilationReceipt", _planning_receipt),
     ],
 )
 def test_phase0_valid_contracts(kind, factory):
@@ -275,6 +428,13 @@ def test_research_lead_rejects_non_lead_sources():
         ("EvidenceHandoff", _handoff),
         ("HandoffAttemptEvent", _started_event),
         ("EvidenceHandoffExecutionReceipt", _success_receipt),
+        ("ResearchIntake", _research_intake),
+        ("NeutralPlanningInput", _neutral_input),
+        ("NeutralPlanningExecution", _neutral_execution),
+        ("NeutralResearchFrame", _neutral_frame),
+        ("ExplorationPlan", _exploration_plan),
+        ("ExplorationPlanCompileRequest", _compile_request),
+        ("PlanningCompilationReceipt", _planning_receipt),
     ],
 )
 def test_phase0_contracts_reject_unknown_top_level_fields(kind, factory):
@@ -381,6 +541,13 @@ def test_phase0_hashes_reject_placeholders():
         ("EvidenceHandoff", _handoff, "handoff_id"),
         ("HandoffAttemptEvent", _started_event, "event_id"),
         ("EvidenceHandoffExecutionReceipt", _success_receipt, "receipt_id"),
+        ("ResearchIntake", _research_intake, "intake_id"),
+        ("NeutralPlanningInput", _neutral_input, "neutral_input_id"),
+        ("NeutralPlanningExecution", _neutral_execution, "execution_id"),
+        ("NeutralResearchFrame", _neutral_frame, "frame_id"),
+        ("ExplorationPlan", _exploration_plan, "plan_id"),
+        ("ExplorationPlanCompileRequest", _compile_request, "intake_artifact_id"),
+        ("PlanningCompilationReceipt", _planning_receipt, "receipt_id"),
     ],
 )
 def test_phase0_contracts_reject_wrong_id_prefixes(kind, factory, field):
@@ -441,9 +608,20 @@ def test_success_receipt_rejects_prefix_only_downstream_ids(field):
 
 
 def test_phase0_kinds_stay_out_of_core_catalog():
-    assert "ResearchLead" not in ID_FIELDS
-    with pytest.raises(ValidationError, match="E-CATALOG-KIND"):
-        Catalog().add("ResearchLead", _lead())
+    records = {
+        "ResearchLead": _lead(),
+        "ResearchIntake": _research_intake(),
+        "NeutralPlanningInput": _neutral_input(),
+        "NeutralPlanningExecution": _neutral_execution(),
+        "NeutralResearchFrame": _neutral_frame(),
+        "ExplorationPlan": _exploration_plan(),
+        "ExplorationPlanCompileRequest": _compile_request(),
+        "PlanningCompilationReceipt": _planning_receipt(),
+    }
+    for kind, record in records.items():
+        assert kind not in ID_FIELDS
+        with pytest.raises(ValidationError, match="E-CATALOG-KIND"):
+            Catalog().add(kind, record)
 
 
 @pytest.mark.parametrize(
@@ -460,6 +638,14 @@ def test_phase0_kinds_stay_out_of_core_catalog():
         ("HandoffAttempt", "HAT-"),
         ("HandoffAttemptEvent", "HEV-"),
         ("EvidenceHandoffExecutionReceipt", "HER-"),
+        ("ResearchIntake", "RIN-"),
+        ("NeutralPlanningInput", "NPI-"),
+        ("NeutralPlanningExecution", "NPE-"),
+        ("NeutralResearchFrame", "NRF-"),
+        ("ExplorationPlan", "XPL-"),
+        ("PlanningCompilationReceipt", "PCR-"),
+        ("Seed", "SD-"),
+        ("PlanningCompilerBuild", "PCB-"),
     ],
 )
 def test_phase0_id_prefixes_are_deterministic_but_not_catalog_kinds(kind, prefix):
