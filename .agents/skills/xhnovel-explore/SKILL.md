@@ -58,8 +58,11 @@ running a new exploration. The frozen trust boundary remains
    basis. Rights may be supplied inline on the SourceDeclaration, or omitted when a
    standing `operator-attestation.json` is already at the Phase 0 work root;
    `prepare-handoff` then auto-fills `rights` and binds `operator_attestation_id`.
-   That attestation must be authored by the operator; the host agent must not write
-   it. If no such source is available, retain the Lead as `UNRESOLVED` or
+   The operator may author it directly or explicitly authorize a host agent to
+   create and sign it on the operator's behalf. An agent must preserve the
+   principal, delegation scope, and its own identity in the attestation; it must
+   never infer or self-grant authorization. If no such source is available, retain
+   the Lead as `UNRESOLVED` or
    `BLOCKED_BY_RIGHTS` and do not download or execute unknown-rights commercial
    full text.
 5. **Prepare through the product boundary.** Put the sealed Brief, compatible Leads,
@@ -108,8 +111,8 @@ Do not:
 
 - promote web/search material directly into evidence;
 - infer rights from accessibility or download rights-unknown commercial full text;
-- write `operator-attestation.json` or otherwise attest rights on the operator's
-  behalf;
+- write `operator-attestation.json` without an explicit operator delegation, or
+  infer/self-grant rights from accessibility, prior runs, or project context;
 - copy Lead prose, character names, URLs, chapter guesses, expected events, or
   location hints into the discovery brief, native tasks, or candidates;
 - create custom windows, prompts, schemas, `SceneCandidate`s, citation repairs, or

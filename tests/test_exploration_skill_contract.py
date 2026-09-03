@@ -212,17 +212,20 @@ def test_exploration_is_host_managed_not_a_new_runtime():
         assert re.search(r"must not gain|does not manage|do not.+add", text, re.DOTALL)
 
 
-def test_standing_operator_attestation_is_operator_authored_not_agent_written():
+def test_standing_operator_attestation_requires_operator_authority():
     skill = SKILL.read_text(encoding="utf-8")
     docs = DOC.read_text(encoding="utf-8")
-    for text in (skill, docs):
+    interface = (ROOT / "docs" / "PHASE0_INTERFACE.md").read_text(encoding="utf-8")
+    for text in (skill, docs, interface):
         assert "operator-attestation.json" in text
         assert "operator_attestation_id" in text
+        assert "explicit" in text.casefold()
+        assert "delegat" in text.casefold()
+        assert "self-" in text.casefold() or "self " in text.casefold()
     step_four = skill.split("5. **Prepare through the product boundary.**", 1)[0]
     assert "4. **Resolve a source.**" in step_four
     assert "omit" in step_four.casefold()
-    assert "must not write" in skill.casefold()
-    assert "must not write" in docs.casefold()
+    assert "without an explicit operator delegation" in skill.casefold()
     assert "behavior is unchanged" in docs.casefold() or "fail-closes" in docs.casefold()
 
 

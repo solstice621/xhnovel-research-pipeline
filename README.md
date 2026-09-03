@@ -28,8 +28,9 @@ Rights and trust are explicit. Technical access never implies permission. The
 research command requires a declared non-`UNKNOWN` rights basis,
 `may_store_full_text: true`, and `may_send_to_external_model: true`.
 Phase 0 exploration may reuse one standing `operator-attestation.json` at the
-work root: the operator declares rights once, and `prepare-handoff` auto-applies
-them to each SourceDeclaration. Only source
+work root: the operator declares rights once, directly or through an explicitly
+authorized agent, and `prepare-handoff` auto-applies them to each
+SourceDeclaration. Only source
 quality classified as Tier A or B is eligible for event-scene discovery; Tier D
 content remains `lead-only` and is never sent to the Scene Scout.
 The send and export boundaries first validate the complete Bundle → Snapshot →

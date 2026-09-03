@@ -199,9 +199,11 @@ or `BLOCKED_BY_RIGHTS`. That is a valid exploration result, not a failed Pilot.
 
 The operator may place one standing `operator-attestation.json` at the Phase 0 work
 root (for example `.runtime/exploration/run-001/operator-attestation.json`). That
-file is an operator-authored rights basis. xhnovel never infers it from HTTP 200, a
-readable path, or a search snippet, and a host agent must not write it on the
-operator's behalf.
+file records an operator-authorized rights basis. The operator may author it
+directly or explicitly delegate creation and signature to a host agent. A delegated
+attestation must identify the principal operator, the acting agent, and the scope of
+the delegation. xhnovel never infers authorization from HTTP 200, a readable path,
+a search snippet, prior runs, or project context; an agent must not self-authorize.
 
 When the file is present and valid, `prepare-handoff`:
 
@@ -386,7 +388,7 @@ Keep the entire exploration run together:
   planning-compilation-receipt.json
   planning-manifest.json
 .runtime/exploration/<run-id>/
-  operator-attestation.json          # optional; operator-authored, never agent-written
+  operator-attestation.json          # optional; operator-authored or explicitly delegated
   operator-attestations/
   objects/
   brief.json

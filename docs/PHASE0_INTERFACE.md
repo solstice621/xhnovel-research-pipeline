@@ -274,8 +274,10 @@ the source spec, rights, source quality, resolution basis, and a user-confirmati
 artifact where applicable. rights/quality/work mapping are derived **from this
 declaration**, never guessed by the builder. `prepare-handoff` may apply a standing
 `operator-attestation.json` at the Phase 0 work root as the default rights
-declaration: it pre-fills a missing `rights` block and binds
-`operator_attestation_id`. Without that file, prepare still requires an explicit
+declaration: it may be authored by the operator or by an agent acting under an
+explicit, recorded operator delegation; it pre-fills a missing `rights` block and
+binds `operator_attestation_id`. The agent may not infer or self-grant that
+delegation. Without that file, prepare still requires an explicit
 rights object and fail-closes; the builder does not infer rights from accessibility.
 
 **(c) Exact hash/ID formulas** (because `object_hash`'s default `omit` does **not**
