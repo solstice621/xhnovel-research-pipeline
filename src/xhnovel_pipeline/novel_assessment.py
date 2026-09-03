@@ -15,7 +15,7 @@ from .store import ArtifactStore
 
 
 NOVEL_TRIAGE_MATERIALIZER_BUILD_ID = "novel-triage-review-materializer-v1"
-NOVEL_SOURCE_CLASSIFIER_BUILD_ID = "novel-source-classifier-v1"
+NOVEL_SOURCE_CLASSIFIER_BUILD_ID = "novel-source-classifier-v2"
 CHAPTER_IDENTITY_SCOPE = "DISCOVERY_ORDER_VS_BODY_HEADING_V1"
 _LOCAL_NOVEL_PLATFORMS = {"novel:txt", "novel:epub", "novel:directory"}
 RIGHTS_BASES = {
