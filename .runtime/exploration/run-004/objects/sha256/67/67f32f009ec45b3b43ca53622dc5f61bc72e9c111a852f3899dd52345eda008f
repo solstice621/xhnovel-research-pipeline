@@ -1,0 +1,35 @@
+{
+  "limits": {
+    "max_bytes": 500000000,
+    "max_chapters": 100000
+  },
+  "request": {
+    "discovery_brief": "在已冻结的玄幻源文中，寻找角色因非预先谋划的意外机缘而当场获得传承、宝物、功法、体质、指引，或因此处境骤变的场景。可观察标志包括：误入隐秘之地或遗存、危机中触发未知机缘、拾得非常规之物、遭遇残存意志或无名施助，并立即改变能力、资源或后续行动空间。须与事先约定的交易、任务报酬及常规修炼收获相区分；只采当场可见的机缘发生过程，不采事后转述或目录式罗列。",
+    "mode": "EXPLORE"
+  },
+  "rights": {
+    "basis": "FAIR_USE_RESEARCH",
+    "may_export_excerpts": false,
+    "may_send_to_external_model": true,
+    "may_store_full_text": true
+  },
+  "scene_scout": {
+    "max_input_chars": 20000,
+    "max_request_bytes": 2000000,
+    "max_workers": 8,
+    "overlap_chars": 1800,
+    "window_chars": 10000
+  },
+  "source": {
+    "author": "天蚕土豆",
+    "kind": "directory",
+    "language": "zh",
+    "path": "/workspace/.runtime/exploration/run-003/input/chapters",
+    "title": "斗破苍穹"
+  },
+  "source_quality": {
+    "edition_status": "UNKNOWN",
+    "textual_completeness": "COMPLETE"
+  },
+  "strict_order": false
+}

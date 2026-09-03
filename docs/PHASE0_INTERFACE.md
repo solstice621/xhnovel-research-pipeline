@@ -62,7 +62,7 @@ These are what Phase 0 builds on. Each was confirmed against the tree at `eaf281
 | An existing hash closure already compares `input_spec_hash` to a resolution's `source_spec_hash` | `validate.py:305-312` |
 | `Catalog` uses a fixed `ID_FIELDS` registry and fail-closes on unknown kinds (`E-CATALOG-KIND`) | `catalog.py:7-33,42-43,58-59,67-68,72-73` |
 | External-model egress requires `basis != "UNKNOWN"` AND `may_send_to_external_model == True` (`E-RIGHTS-EXTERNAL-MODEL`); storage gated separately by `may_store_full_text` (`E-RIGHTS-STORAGE`) | `novel_assessment.py:63-71` |
-| Deterministic source-quality tiers: `COMPLETE+OFFICIAL→A`; `COMPLETE+(PUBLISHED_EDITION\|USER_VERIFIED_COPY)→B`; else `D` (lead-only). Tier `C` exists only in the separate reviewer path | `novel_assessment.py:197-206`; `377-432` |
+| Deterministic source-quality tiers: `COMPLETE+OFFICIAL→A`; `COMPLETE+(PUBLISHED_EDITION\|USER_VERIFIED_COPY\|UNKNOWN)→B`; `UNOFFICIAL_COPY` or non-`COMPLETE` → `D` (lead-only). Unproven official status is `UNKNOWN` (eligible when complete); `UNOFFICIAL_COPY` is a positive unauthorized declaration. Tier `C` exists only in the separate reviewer path | `novel_assessment.py:186-206`; `390-445` |
 | `discovery_brief` is sourced from `spec.request` with a **Chinese default** if absent | `novel_workflow.py:131-133` |
 | Scene Scout build identity binds `source_tree_hash = build_source_hash(root)`, which hashes `pyproject.toml`, `requirements.lock`, **all `src/xhnovel_pipeline/*.py`**, and the profile files; `source_tree_hash` and `repository_commit` are `BUILD_IDENTITY_FIELDS` | `build_identity.py:9-18,21-38`; `scene_scout.py:828-829` |
 | `object_hash(obj, omit=SELF_HASH_FIELDS)` — the default omit set is `{bundle_hash, snapshot_hash, export_hash, result_set_hash, output_hash, structure_hash}`; any **other** self-hash field must be passed explicitly to `omit=` | `hashing.py:11-18,48-51` |
@@ -785,9 +785,9 @@ tests/{test_phase0_contracts,test_phase0_handoff,test_phase0_integration}.py
   validates some of this later).
 - **Validator — Handoff-only strictness** — inputs legal under `RUNTIME_COMPAT` but
   rejected under `EVIDENCE_HANDOFF`: a missing explicit `discovery_brief`
-  (`RUNTIME_COMPAT` → existing default; `EVIDENCE_HANDOFF` → REJECT); PARTIAL / Tier D
+  (`RUNTIME_COMPAT` → existing default; `EVIDENCE_HANDOFF` → REJECT); PARTIAL / `UNOFFICIAL_COPY` / Tier D
   source quality (`RUNTIME_COMPAT` → lead-only, no event-fact windows;
-  `EVIDENCE_HANDOFF` → REJECT).
+  `EVIDENCE_HANDOFF` → REJECT). `UNKNOWN+COMPLETE` is Tier B and is accepted.
 - **Builder replay** — mutate any byte of a stored Handoff → `validate_evidence_handoff`
   rejects; regenerate from the content-bound build request + Brief + Leads +
   SourceDeclaration → byte-identical (including `requested_at`, read from the build

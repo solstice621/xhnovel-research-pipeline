@@ -1,0 +1,45 @@
+{
+  "declaration_hash": "sha256:d8a965b31cd8dc80e2ee163d6987a5d200c3df6e9d74c82963feb476fe0075e5",
+  "declared_at": "2026-09-03T05:15:00Z",
+  "edition_label": "Reused run-003 local chapter directory (www.shubaobiquge.com/169709/ HTML catalog fetched 2026-09-03); official/licensed status unproven; not a new crawl; bound to sealed encounter Brief XBR-43C121A4ED04DCADE2F5 rather than run-003 ownership brief",
+  "operator_attestation_id": "OPA-89478E55445209B7F25B",
+  "rights": {
+    "basis": "FAIR_USE_RESEARCH",
+    "may_export_excerpts": false,
+    "may_send_to_external_model": true,
+    "may_store_full_text": true
+  },
+  "schema_version": "0.2-draft",
+  "source": {
+    "author": "天蚕土豆",
+    "kind": "directory",
+    "language": "zh",
+    "path": "/workspace/.runtime/exploration/run-003/input/chapters",
+    "title": "斗破苍穹"
+  },
+  "source_declaration_id": "SDL-ABC2A8AE30F8AF66B431",
+  "source_quality": {
+    "edition_status": "UNKNOWN",
+    "textual_completeness": "COMPLETE"
+  },
+  "work": {
+    "aliases": [
+      "Battle Through the Heavens",
+      "《斗破苍穹》"
+    ],
+    "author": "天蚕土豆",
+    "canonical_title": "斗破苍穹",
+    "external_ids": [
+      {
+        "namespace": "qidian",
+        "value": "1209977"
+      }
+    ],
+    "identity": {
+      "basis": "STABLE_EXTERNAL_ID",
+      "external_id": "1209977",
+      "namespace": "qidian"
+    },
+    "language": "zh"
+  }
+}

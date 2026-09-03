@@ -1,0 +1,550 @@
+{
+  "candidates": [
+    {
+      "summary": "抢夺斗圣骨骸时，萧炎抢到断臂残骸，趁凰轩、冰河尊者杀到，当场扳断三根刻字肋骨收入纳戒，把天阶斗技据为己有。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1142,
+          "end": 1160
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1162,
+          "end": 1177
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1114,
+          "end": 1130
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1224,
+          "end": 1256
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1335,
+          "end": 1351
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1011,
+          "end": 1030
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1283,
+          "end": 1299
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1301,
+          "end": 1310
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1192,
+          "end": 1209
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1422,
+          "end": 1439
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1481,
+          "end": 1495
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1440,
+          "end": 1455
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1403,
+          "end": 1416
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1142,
+            "end": 1160
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1162,
+            "end": 1177
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "抓住断臂骨骸后扳断三根刻字肋骨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1114,
+            "end": 1130
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1224,
+            "end": 1256
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "藏有奇异文字的三根肋骨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1224,
+            "end": 1256
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1335,
+            "end": 1351
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "骨骸左臂已被斩断抛飞",
+          "他已知道肚腹三肋藏有文字"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1011,
+            "end": 1030
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1114,
+            "end": 1130
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1224,
+            "end": 1256
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "三根肋骨被扳断入手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1283,
+            "end": 1299
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1301,
+            "end": 1310
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "摘星老鬼怒吼索要",
+          "凰轩与冰河尊者满脸杀气扑来"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1142,
+            "end": 1160
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1192,
+            "end": 1209
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "肋骨上布满蠕动的奇异文字",
+          "心脏因兴奋剧跳"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1335,
+            "end": 1351
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1422,
+            "end": 1439
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "天阶斗技归他所有，别人休想再夺回"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1481,
+            "end": 1495
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1440,
+            "end": 1455
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "肋骨被收入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1403,
+            "end": 1416
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1440,
+            "end": 1455
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "真功法藏在争抢中的骨骸特定肋骨上，必须在被围杀前当场扳断带走"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1224,
+            "end": 1256
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1192,
+            "end": 1209
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1403,
+            "end": 1416
+          }
+        ]
+      }
+    },
+    {
+      "summary": "萧炎抢到相对完好的斗圣右臂后用异火烘照，意外看见骨内液体，当场认出斗圣精髓，再吸来碎片筛选出四块有液体的骨骼收入纳戒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 134,
+          "end": 141
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 412,
+          "end": 424
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 169,
+          "end": 179
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 180,
+          "end": 193
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 432,
+          "end": 453
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 628,
+          "end": 659
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 11,
+          "end": 32
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 496,
+          "end": 518
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-001",
+          "start": 939,
+          "end": 955
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-001",
+          "start": 1417,
+          "end": 1434
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 521,
+          "end": 531
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 808,
+          "end": 846
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 273,
+          "end": 290
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 693,
+          "end": 720
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 556,
+          "end": 577
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 847,
+          "end": 861
+        },
+        {
+          "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+          "start": 862,
+          "end": 884
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 134,
+            "end": 141
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 412,
+            "end": 424
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "抢先抓住骨臂，以异火烘照并吸来碎片筛选"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 169,
+            "end": 179
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 180,
+            "end": 193
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 432,
+            "end": 453
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 628,
+            "end": 659
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "斗圣骨臂",
+          "含液体的骨骼碎片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 11,
+            "end": 32
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 496,
+            "end": 518
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "完整骨骸已被撕碎洒落",
+          "他打算先弄一块骨骸在手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-001",
+            "start": 939,
+            "end": 955
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-001",
+            "start": 1417,
+            "end": 1434
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "从骨臂中发现斗圣精髓，并选出四块有液体的碎片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 521,
+            "end": 531
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 808,
+            "end": 846
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "奔同一骨臂的强者知难而退",
+          "小医仙一行在半空护住萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 273,
+            "end": 290
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 693,
+            "end": 720
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "认出骨内液体是斗圣精髓，怀疑这才是摘星老鬼的任务目标"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 521,
+            "end": 531
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 556,
+            "end": 577
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "精髓骨骼日后可用，斗圣遗物皆是罕见宝贝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 847,
+            "end": 861
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 862,
+            "end": 884
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "四块含液体骨骼被收入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 808,
+            "end": 846
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "争抢碎骨时，只有用异火照透才能看见骨内精髓，外表与普通碎片无异"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 432,
+            "end": 453
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 496,
+            "end": 518
+          },
+          {
+            "segment_id": "SEG-1DAC6EFCA1139E533CB1-002",
+            "start": 521,
+            "end": 531
+          }
+        ]
+      }
+    }
+  ]
+}

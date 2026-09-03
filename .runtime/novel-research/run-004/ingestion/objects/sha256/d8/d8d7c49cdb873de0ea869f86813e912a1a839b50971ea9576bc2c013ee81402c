@@ -1,0 +1,93 @@
+{
+  "candidates": [
+    {
+      "summary": "疗伤洞中，小医仙当场告知萧炎落神涧内就有他急需的天毒蝎龙兽，萧炎由怔转喜，立即改定为伤愈后就地取核。",
+      "source_spans": [
+        {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 433, "end": 453},
+        {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 454, "end": 473},
+        {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 584, "end": 615},
+        {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 617, "end": 638},
+        {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 643, "end": 663},
+        {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 676, "end": 689},
+        {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 769, "end": 790},
+        {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 1181, "end": 1231}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["小医仙", "萧炎"],
+        "support_spans": [
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 584, "end": 615},
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 643, "end": 663}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["当场告知落神涧内可找到天毒蝎龙兽"],
+        "support_spans": [
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 584, "end": 615},
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 617, "end": 638}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["天毒蝎龙兽"],
+        "support_spans": [
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 617, "end": 638}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["萧炎正要在两三月内弄到天毒蝎龙兽魔核以控制厄难毒体"],
+        "support_spans": [
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 433, "end": 453},
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 454, "end": 473}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["萧炎得知落神涧内现有一头七阶、可化为人形的天毒蝎龙兽"],
+        "support_spans": [
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 617, "end": 638},
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 676, "end": 689}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["萧炎先怔住，随即狂喜并追问阶别与下落"],
+        "support_spans": [
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 643, "end": 663}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["脸庞猛然浮现狂喜之色"],
+        "support_spans": [
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 643, "end": 663}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["待小医仙伤愈后可就地对天毒蝎龙兽动手取核"],
+        "support_spans": [
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 1181, "end": 1231}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["该兽仍是落神涧一方霸主，可在涧内找到"],
+        "support_spans": [
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 617, "end": 638},
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 769, "end": 790}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["同伴当场给出目标现居地，把远期寻兽立刻收成近处可执行的取核行动"],
+        "support_spans": [
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 617, "end": 638},
+          {"segment_id": "SEG-1D0621672393FDF72206-002", "start": 1181, "end": 1231}
+        ]
+      }
+    }
+  ]
+}

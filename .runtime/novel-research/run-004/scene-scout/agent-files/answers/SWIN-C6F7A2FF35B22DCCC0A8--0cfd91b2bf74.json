@@ -1,0 +1,336 @@
+{
+  "candidates": [
+    {
+      "summary": "岩浆青莲莲心空无异火，少年险些空手离开；被喝止后用玉尺割下千年青莲台，并将十一粒地火莲子装瓶收入纳戒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 0,
+          "end": 24
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 1480,
+          "end": 1501
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 449,
+          "end": 466
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 591,
+          "end": 619
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 1395,
+          "end": 1424
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 1533,
+          "end": 1555
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 1111,
+          "end": 1124
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-001",
+          "start": 1486,
+          "end": 1533
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 1301,
+          "end": 1307
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 1417,
+          "end": 1452
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 630,
+          "end": 643
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 182,
+          "end": 231
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 1310,
+          "end": 1317
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 67,
+          "end": 96
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 1533,
+          "end": 1595
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 1627,
+          "end": 1666
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 1426,
+          "end": 1465
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 1511,
+          "end": 1519
+        },
+        {
+          "segment_id": "SEG-1FA457AE32023B53D764-001",
+          "start": 288,
+          "end": 308
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 0,
+            "end": 24
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 1480,
+            "end": 1501
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "用玉尺割下青莲，挑出十一粒地火莲子装进玉瓶"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 449,
+            "end": 466
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 591,
+            "end": 619
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 1395,
+            "end": 1424
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "青色莲台",
+          "地火莲子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 1533,
+            "end": 1555
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 1111,
+            "end": 1124
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "青莲莲心空无异火",
+          "正要空手离开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-001",
+            "start": 1486,
+            "end": 1533
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 1301,
+            "end": 1307
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 1417,
+            "end": 1452
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "青莲脱落被吸走",
+          "十一粒地火莲子装瓶后连同纳戒交还"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 591,
+            "end": 619
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 630,
+            "end": 643
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 1480,
+            "end": 1501
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "钢剑被青莲喷出的淡青火焰烧成铁汁",
+          "药老喝止离开并吸住扑上青莲的身形"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 182,
+            "end": 231
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 1310,
+            "end": 1317
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 67,
+            "end": 96
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "药老说明坐莲台可加快修炼、遇敌可释地火逃生",
+          "点出莲中共有十一粒地火莲子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 1533,
+            "end": 1595
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 1627,
+            "end": 1666
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 1111,
+            "end": 1124
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可坐青莲台修炼并在遇敌时释放地火逃生",
+          "持有地火莲子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 1533,
+            "end": 1595
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 1627,
+            "end": 1666
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 1111,
+            "end": 1124
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 1426,
+            "end": 1465
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "玉瓶装进纳戒交还，并嘱咐除修炼外少用青莲"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 1480,
+            "end": 1501
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 1426,
+            "end": 1465
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 1511,
+            "end": 1519
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "千年莲台几乎被当成无用之物丢弃，且凡铁沾之即化，必须用玉尺才能无损割取"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 1417,
+            "end": 1452
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 182,
+            "end": 231
+          },
+          {
+            "segment_id": "SEG-1FA457AE32023B53D764-001",
+            "start": 288,
+            "end": 308
+          }
+        ]
+      }
+    }
+  ]
+}

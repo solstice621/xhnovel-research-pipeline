@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.2-draft",
+  "intake_artifact_id": "sha256:81322124e66723bb8c5c8ed364c5518d1b3e0e38cc30a23ff21095ed544ec16d",
+  "neutral_frame_artifact_id": "sha256:589a6e381b73851fad1cc5902cb1bd65c255523e2c43b769b81ffd9be70d0297",
+  "neutral_execution_artifact_id": "sha256:bc375dbbb9a33767806df29e1265d7ca28ebba1289faa91f79db1dc06ff9c9e2",
+  "strategy": {
+    "exploration_seeds": [
+      {
+        "bucket": "interaction_families",
+        "value": "误入隐秘之地或遗存",
+        "provenance": [
+          {
+            "origin": "PLANNER_DERIVED",
+            "derived_from": [
+              {"kind": "NEUTRAL_FRAME", "frame_id": "NRF-912354EF965F18588F20"}
+            ]
+          }
+        ]
+      },
+      {
+        "bucket": "interaction_families",
+        "value": "危机中触发未知机缘",
+        "provenance": [
+          {
+            "origin": "PLANNER_DERIVED",
+            "derived_from": [
+              {"kind": "NEUTRAL_FRAME", "frame_id": "NRF-912354EF965F18588F20"}
+            ]
+          }
+        ]
+      },
+      {
+        "bucket": "interaction_families",
+        "value": "拾得非常规之物",
+        "provenance": [
+          {
+            "origin": "PLANNER_DERIVED",
+            "derived_from": [
+              {"kind": "NEUTRAL_FRAME", "frame_id": "NRF-912354EF965F18588F20"}
+            ]
+          }
+        ]
+      },
+      {
+        "bucket": "interaction_families",
+        "value": "遭遇残存意志或无名施助",
+        "provenance": [
+          {
+            "origin": "PLANNER_DERIVED",
+            "derived_from": [
+              {"kind": "NEUTRAL_FRAME", "frame_id": "NRF-912354EF965F18588F20"}
+            ]
+          }
+        ]
+      }
+    ],
+    "diversity": {
+      "min_works": 5,
+      "min_interaction_families": 4,
+      "max_initial_leads_per_work": 2
+    }
+  },
+  "compiled_at": "2026-09-03T03:05:00Z"
+}

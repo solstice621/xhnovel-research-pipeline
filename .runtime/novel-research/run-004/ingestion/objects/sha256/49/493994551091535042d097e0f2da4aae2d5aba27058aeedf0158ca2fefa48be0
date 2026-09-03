@@ -1,0 +1,550 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎以灵魂力量侵入十具地妖傀,因岁月磨灭了制造者印记而当场建立起控制并收入纳戒,紧闭石门随之开启。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+          "start": 1673,
+          "end": 1698
+        },
+        {
+          "segment_id": "SEG-D8D574434F024A660FBC-001",
+          "start": 165,
+          "end": 210
+        },
+        {
+          "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+          "start": 996,
+          "end": 1046
+        },
+        {
+          "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+          "start": 1699,
+          "end": 1715
+        },
+        {
+          "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+          "start": 1716,
+          "end": 1737
+        },
+        {
+          "segment_id": "SEG-D8D574434F024A660FBC-001",
+          "start": 410,
+          "end": 464
+        },
+        {
+          "segment_id": "SEG-D8D574434F024A660FBC-001",
+          "start": 15,
+          "end": 64
+        },
+        {
+          "segment_id": "SEG-D8D574434F024A660FBC-001",
+          "start": 81,
+          "end": 100
+        },
+        {
+          "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+          "start": 1110,
+          "end": 1129
+        },
+        {
+          "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+          "start": 1225,
+          "end": 1237
+        },
+        {
+          "segment_id": "SEG-D8D574434F024A660FBC-001",
+          "start": 693,
+          "end": 733
+        },
+        {
+          "segment_id": "SEG-D8D574434F024A660FBC-001",
+          "start": 997,
+          "end": 1025
+        },
+        {
+          "segment_id": "SEG-D8D574434F024A660FBC-001",
+          "start": 225,
+          "end": 251
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+            "start": 1673,
+            "end": 1698
+          },
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 165,
+            "end": 210
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以灵魂力量侵入地妖傀并收服"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+            "start": 996,
+            "end": 1046
+          },
+          {
+            "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+            "start": 1699,
+            "end": 1715
+          },
+          {
+            "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+            "start": 1716,
+            "end": 1737
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "十具地妖傀"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+            "start": 1716,
+            "end": 1737
+          },
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 410,
+            "end": 464
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "地妖傀体内已无制造者灵魂印记",
+          "萧炎本欲以灵魂印记控制这些傀儡"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 15,
+            "end": 64
+          },
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 81,
+            "end": 100
+          },
+          {
+            "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+            "start": 1110,
+            "end": 1129
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "十具傀儡被收入纳戒并由萧炎控制"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+            "start": 1716,
+            "end": 1737
+          },
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 165,
+            "end": 210
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "白发男子察觉其欲控制傀儡却未能阻止",
+          "石门在收服后自行开启"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+            "start": 1225,
+            "end": 1237
+          },
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 693,
+            "end": 733
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "收服顺利得出乎意料,被萧炎称为大机缘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 15,
+            "end": 64
+          },
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 997,
+            "end": 1025
+          },
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 410,
+            "end": 464
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "获得可抗衡二星斗尊的傀儡战力",
+          "石门开启后可进入遗迹内部"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 410,
+            "end": 464
+          },
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 693,
+            "end": 733
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "傀儡已收入纳戒并建立控制联系"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D2582EA3F6C250B7B37B-002",
+            "start": 1716,
+            "end": 1737
+          },
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 165,
+            "end": 210
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "岁月磨灭灵魂印记后,任意灵魂侵入即可控制,使原需死战的守护傀儡变成可直接据有的无主遗物"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 81,
+            "end": 100
+          },
+          {
+            "segment_id": "SEG-D8D574434F024A660FBC-001",
+            "start": 225,
+            "end": 251
+          }
+        ]
+      }
+    },
+    {
+      "summary": "紫研在取走魂婴果后被血脉呼唤牵引,萧炎一行改道森林深处,紫研触到虚无空间后现出打不破的兽灵罩。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+          "start": 1559,
+          "end": 1576
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-001",
+          "start": 211,
+          "end": 255
+        },
+        {
+          "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+          "start": 1486,
+          "end": 1526
+        },
+        {
+          "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+          "start": 1542,
+          "end": 1557
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-001",
+          "start": 257,
+          "end": 281
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-001",
+          "start": 941,
+          "end": 951
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-001",
+          "start": 980,
+          "end": 1014
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-001",
+          "start": 1209,
+          "end": 1248
+        },
+        {
+          "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+          "start": 1577,
+          "end": 1590
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-001",
+          "start": 1180,
+          "end": 1207
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-001",
+          "start": 1347,
+          "end": 1381
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-001",
+          "start": 1281,
+          "end": 1319
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "紫研",
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+            "start": 1559,
+            "end": 1576
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 211,
+            "end": 255
+          },
+          {
+            "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+            "start": 1486,
+            "end": 1526
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "循血脉呼唤深入并触摸兽灵罩"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+            "start": 1542,
+            "end": 1557
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 257,
+            "end": 281
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 941,
+            "end": 951
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 980,
+            "end": 1014
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "兽灵罩",
+          "血脉呼唤"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+            "start": 1542,
+            "end": 1557
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1209,
+            "end": 1248
+          },
+          {
+            "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+            "start": 1577,
+            "end": 1590
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "本已取走魂婴果准备离开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+            "start": 1486,
+            "end": 1526
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "发现隐藏兽灵罩并改道深入,不再立即离开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 257,
+            "end": 281
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 980,
+            "end": 1014
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1209,
+            "end": 1248
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "触摸半尺虚无时金光凭空成罩"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 980,
+            "end": 1014
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "罩内威压令人感到联手也打不破",
+          "罩上兼有太古虚龙与更纯净的天妖凰气息"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1180,
+            "end": 1207
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1347,
+            "end": 1381
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1281,
+            "end": 1319
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "获得接近并尝试开启同血脉兽灵罩的路径"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1209,
+            "end": 1248
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1281,
+            "end": 1319
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "兽灵罩仍横在面前"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1209,
+            "end": 1248
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1180,
+            "end": 1207
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "只有被血脉呼唤的人才能察觉并触到被林木遮掩的兽灵罩,把既定撤离改写成进入隐秘遗存"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+            "start": 1542,
+            "end": 1557
+          },
+          {
+            "segment_id": "SEG-AD4B9AAFC618769CCFEF-002",
+            "start": 1577,
+            "end": 1590
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 980,
+            "end": 1014
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1209,
+            "end": 1248
+          }
+        ]
+      }
+    }
+  ]
+}

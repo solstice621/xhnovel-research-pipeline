@@ -1,0 +1,415 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎在丹界平原千年地黄精留下的深坑中继续挖掘，取出地心玉母并剖出其中的地心魂髓收入纳戒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 140,
+          "end": 193
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 194,
+          "end": 236
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 289,
+          "end": 316
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 396,
+          "end": 425
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 507,
+          "end": 541
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 569,
+          "end": 596
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 653,
+          "end": 674
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 853,
+          "end": 867
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 893,
+          "end": 903
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 974,
+          "end": 1019
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 1020,
+          "end": 1044
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 1113,
+          "end": 1137
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 1164,
+          "end": 1188
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 1250,
+          "end": 1278
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 1304,
+          "end": 1331
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 1395,
+          "end": 1417
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 1480,
+          "end": 1504
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 1529,
+          "end": 1547
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-001",
+          "start": 1602,
+          "end": 1634
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-002",
+          "start": 121,
+          "end": 144
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-002",
+          "start": 149,
+          "end": 162
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-002",
+          "start": 246,
+          "end": 257
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-002",
+          "start": 258,
+          "end": 296
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-002",
+          "start": 380,
+          "end": 408
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-002",
+          "start": 456,
+          "end": 487
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-002",
+          "start": 504,
+          "end": 531
+        },
+        {
+          "segment_id": "SEG-D3DA5254839B6B226640-002",
+          "start": 684,
+          "end": 739
+        },
+        {
+          "segment_id": "SEG-E68E4DF0165A5333EF6A-002",
+          "start": 1406,
+          "end": 1447
+        },
+        {
+          "segment_id": "SEG-E68E4DF0165A5333EF6A-002",
+          "start": 1448,
+          "end": 1470
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1113,
+            "end": 1137
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 194,
+            "end": 236
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "挖掘深坑并剖开地心玉母"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 289,
+            "end": 316
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 653,
+            "end": 674
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1164,
+            "end": 1188
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1480,
+            "end": 1504
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1529,
+            "end": 1547
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "地心玉母",
+          "地心魂髓"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 893,
+            "end": 903
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1395,
+            "end": 1417
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 149,
+            "end": 162
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "千年地黄精已被取走且深坑仍在",
+          "古籍记载超百年地黄精必由其他天地灵物滋养"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E68E4DF0165A5333EF6A-002",
+            "start": 1406,
+            "end": 1447
+          },
+          {
+            "segment_id": "SEG-E68E4DF0165A5333EF6A-002",
+            "start": 1448,
+            "end": 1470
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 140,
+            "end": 193
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 194,
+            "end": 236
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎取得地心玉母与地心魂髓"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1164,
+            "end": 1188
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 456,
+            "end": 487
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 684,
+            "end": 739
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "地底露出地心玉母",
+          "剖开后核内出现地心魂髓"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 853,
+            "end": 867
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1304,
+            "end": 1331
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 121,
+            "end": 144
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 149,
+            "end": 162
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "吸入白雾后灵魂深处发出无声舒畅",
+          "突破灵境的把握立刻上升将近五成"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1602,
+            "end": 1634
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 380,
+            "end": 408
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可用地心玉母座垫镇压狂暴能量并降低走火入魔几率",
+          "调和后可用地心魂髓锻魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 974,
+            "end": 1019
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1020,
+            "end": 1044
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1250,
+            "end": 1278
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 246,
+            "end": 257
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 258,
+            "end": 296
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 504,
+            "end": 531
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "地心魂髓封入玉盒",
+          "余下地心玉母收入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 456,
+            "end": 487
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-002",
+            "start": 684,
+            "end": 739
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "可见药材之下另有未标示的嵌套灵物，需在表面收获后继续挖掘并剖核才会暴露"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 396,
+            "end": 425
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 507,
+            "end": 541
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 569,
+            "end": 596
+          },
+          {
+            "segment_id": "SEG-D3DA5254839B6B226640-001",
+            "start": 1395,
+            "end": 1417
+          }
+        ]
+      }
+    }
+  ]
+}

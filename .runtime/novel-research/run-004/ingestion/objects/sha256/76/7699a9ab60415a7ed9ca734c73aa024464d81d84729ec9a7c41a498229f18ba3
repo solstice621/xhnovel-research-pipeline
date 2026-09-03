@@ -1,0 +1,451 @@
+{
+  "candidates": [
+    {
+      "summary": "黄泉之底寻血晶无果时，萧炎循呼救挖出被锁的前任族长妖暝；对方答应魂印后吐出吞下的黄泉血晶，萧炎再以火针击碎机关将其救出。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "妖暝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-002",
+            "start": 337,
+            "end": 342
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-001",
+            "start": 279,
+            "end": 296
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎震散淤泥挖出被锁之人，设下魂印后接过血晶，再以火针击碎铁链机关"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+            "start": 1128,
+            "end": 1151
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 1227,
+            "end": 1256
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 13,
+            "end": 30
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 821,
+            "end": 843
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 899,
+            "end": 918
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "被锁于黄泉之底的干枯人妖暝",
+          "拳头大小的黄泉血晶"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+            "start": 1171,
+            "end": 1179
+          },
+          {
+            "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+            "start": 1180,
+            "end": 1193
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-001",
+            "start": 279,
+            "end": 296
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 1513,
+            "end": 1550
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "黄泉之底遍寻不见血晶",
+          "淤泥中传来呼救",
+          "萧炎不信任对方，要求下魂印才肯救"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+            "start": 567,
+            "end": 578
+          },
+          {
+            "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+            "start": 644,
+            "end": 656
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 633,
+            "end": 639
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 862,
+            "end": 884
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 255,
+            "end": 311
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "黄泉血晶入手并收入纳戒",
+          "铁链封印被破解，妖暝脱困"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 139,
+            "end": 148
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 960,
+            "end": 981
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-002",
+            "start": 179,
+            "end": 192
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-002",
+            "start": 661,
+            "end": 671
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "妖暝自报前任族长并答应魂印",
+          "吐出自己吞下的血晶并指引击碎机关"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-001",
+            "start": 279,
+            "end": 296
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 1092,
+            "end": 1123
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 1473,
+            "end": 1493
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 1513,
+            "end": 1550
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 255,
+            "end": 311
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "血晶入手瞬间冻住萧炎一条手臂",
+          "火针刺入圆球后铁链尽数断裂",
+          "魂印已可心念引爆"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 31,
+            "end": 56
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 57,
+            "end": 76
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 78,
+            "end": 100
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 960,
+            "end": 981
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 1335,
+            "end": 1368
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "黄泉血晶已入纳戒，可带走使用",
+          "心念可引爆魂印重创妖暝",
+          "妖暝承诺报仇后倾族相助"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 139,
+            "end": 148
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 1335,
+            "end": 1368
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-002",
+            "start": 363,
+            "end": 404
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "血晶已收入纳戒",
+          "魂印留在妖暝灵魂中",
+          "封印已破，妖暝已被救出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-001",
+            "start": 139,
+            "end": 148
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 1335,
+            "end": 1368
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-002",
+            "start": 661,
+            "end": 671
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-002",
+            "start": 349,
+            "end": 362
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "寻宝落空处突然挖出被镇的前任族长；对方把吞下的主材料交出来换取魂印与救援，当场改写材料有无和日后族群敌友"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+            "start": 567,
+            "end": 578
+          },
+          {
+            "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+            "start": 644,
+            "end": 656
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 1473,
+            "end": 1493
+          },
+          {
+            "segment_id": "SEG-05563C9E4FEB14E80143-002",
+            "start": 1513,
+            "end": 1550
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-002",
+            "start": 179,
+            "end": 192
+          },
+          {
+            "segment_id": "SEG-7C9807827496E82CE7BE-002",
+            "start": 363,
+            "end": 404
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-002",
+          "start": 337,
+          "end": 342
+        },
+        {
+          "segment_id": "SEG-05563C9E4FEB14E80143-001",
+          "start": 279,
+          "end": 296
+        },
+        {
+          "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+          "start": 1128,
+          "end": 1151
+        },
+        {
+          "segment_id": "SEG-05563C9E4FEB14E80143-002",
+          "start": 1227,
+          "end": 1256
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-001",
+          "start": 13,
+          "end": 30
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-001",
+          "start": 821,
+          "end": 843
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-001",
+          "start": 899,
+          "end": 918
+        },
+        {
+          "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+          "start": 1171,
+          "end": 1179
+        },
+        {
+          "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+          "start": 1180,
+          "end": 1193
+        },
+        {
+          "segment_id": "SEG-05563C9E4FEB14E80143-002",
+          "start": 1513,
+          "end": 1550
+        },
+        {
+          "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+          "start": 567,
+          "end": 578
+        },
+        {
+          "segment_id": "SEG-2F4F54E558532BEE9EDD-002",
+          "start": 644,
+          "end": 656
+        },
+        {
+          "segment_id": "SEG-05563C9E4FEB14E80143-002",
+          "start": 633,
+          "end": 639
+        },
+        {
+          "segment_id": "SEG-05563C9E4FEB14E80143-002",
+          "start": 862,
+          "end": 884
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-001",
+          "start": 255,
+          "end": 311
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-001",
+          "start": 139,
+          "end": 148
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-001",
+          "start": 960,
+          "end": 981
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-002",
+          "start": 179,
+          "end": 192
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-002",
+          "start": 661,
+          "end": 671
+        },
+        {
+          "segment_id": "SEG-05563C9E4FEB14E80143-002",
+          "start": 1092,
+          "end": 1123
+        },
+        {
+          "segment_id": "SEG-05563C9E4FEB14E80143-002",
+          "start": 1473,
+          "end": 1493
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-001",
+          "start": 31,
+          "end": 56
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-001",
+          "start": 57,
+          "end": 76
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-001",
+          "start": 78,
+          "end": 100
+        },
+        {
+          "segment_id": "SEG-05563C9E4FEB14E80143-002",
+          "start": 1335,
+          "end": 1368
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-002",
+          "start": 363,
+          "end": 404
+        },
+        {
+          "segment_id": "SEG-7C9807827496E82CE7BE-002",
+          "start": 349,
+          "end": 362
+        }
+      ]
+    }
+  ]
+}

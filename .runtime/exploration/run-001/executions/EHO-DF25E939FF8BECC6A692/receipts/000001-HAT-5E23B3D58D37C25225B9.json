@@ -1,0 +1,15 @@
+{
+  "attempt_id": "HAT-5E23B3D58D37C25225B9",
+  "attempt_ordinal": 1,
+  "error_code": "E-SCENE-SPAN",
+  "error_message": "E-SCENE-SPAN: scene candidate persistence support differs",
+  "executor": "agent-files",
+  "expected_input_spec_hash": "sha256:a87fd6b45f98ef8259358aed758af4c8fc01a3153b2e36e6b24590fbca4defb2",
+  "handoff_id": "EHO-DF25E939FF8BECC6A692",
+  "receipt_hash": "sha256:61f12f9aa038c81d502e1ea32391ea84b0bdef0d288cd95b505a02d0a052eb99",
+  "receipt_id": "HER-605B6F59F92E0E033840",
+  "recorded_at": "2026-09-03T01:01:33Z",
+  "schema_version": "0.2-draft",
+  "stage": "SCENE_SCOUT",
+  "status": "FAILED"
+}

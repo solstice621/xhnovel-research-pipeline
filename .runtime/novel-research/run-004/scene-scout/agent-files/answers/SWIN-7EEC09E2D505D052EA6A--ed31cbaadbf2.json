@@ -1,0 +1,243 @@
+{
+  "candidates": [
+    {
+      "summary": "少年用紫灵石砸开意外发现的伴生紫晶源,抢收流出的紫晶源装入玉瓶",
+      "source_spans": [
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1368,
+          "end": 1408
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1130,
+          "end": 1146
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1197,
+          "end": 1223
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1286,
+          "end": 1308
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1320,
+          "end": 1342
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1052,
+          "end": 1073
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1463,
+          "end": 1478
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1479,
+          "end": 1494
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1409,
+          "end": 1440
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1368,
+            "end": 1408
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1130,
+            "end": 1146
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "用紫灵石砸开伴生紫晶源并用玉瓶灌装紫色液体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1197,
+            "end": 1223
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1368,
+            "end": 1408
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "伴生紫晶源",
+          "紫晶源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1286,
+            "end": 1308
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1320,
+            "end": 1342
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "掌中已有尖锐紫灵石"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1052,
+            "end": 1073
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "紫晶源从破碎圆球中流出并被装进六个小玉瓶"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1286,
+            "end": 1308
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1463,
+            "end": 1478
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1479,
+            "end": 1494
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "圆球破碎后紫色液体流淌",
+          "药老催促立刻用玉瓶收集"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1286,
+            "end": 1308
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1320,
+            "end": 1342
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "外壳酷热而其中液体反常温凉",
+          "圆球虽大却只装出六个小玉瓶"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1409,
+            "end": 1440
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1463,
+            "end": 1478
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "持有装在玉瓶中的紫晶源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1463,
+            "end": 1478
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1479,
+            "end": 1494
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "紫晶源被装进玉瓶"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1479,
+            "end": 1494
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1463,
+            "end": 1478
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "砸开后液体迅速流散,必须当场抢收否则损失"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1286,
+            "end": 1308
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1320,
+            "end": 1342
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1368,
+            "end": 1408
+          }
+        ]
+      }
+    }
+  ]
+}

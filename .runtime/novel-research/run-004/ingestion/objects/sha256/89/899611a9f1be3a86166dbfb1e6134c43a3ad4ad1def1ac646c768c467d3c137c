@@ -1,0 +1,225 @@
+{
+  "candidates": [
+    {
+      "summary": "少年在坊市摊上受药老指点，将古旧黑铁片与魔晶一并买下，回家后得知其中封存玄阶低级斗技吸掌并决定改学它。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-A9C7B54EEA4B39D144F1-002",
+          "start": 592,
+          "end": 621
+        },
+        {
+          "segment_id": "SEG-A9C7B54EEA4B39D144F1-002",
+          "start": 710,
+          "end": 731
+        },
+        {
+          "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+          "start": 500,
+          "end": 512
+        },
+        {
+          "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+          "start": 525,
+          "end": 535
+        },
+        {
+          "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+          "start": 961,
+          "end": 1016
+        },
+        {
+          "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+          "start": 1268,
+          "end": 1276
+        },
+        {
+          "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+          "start": 1579,
+          "end": 1631
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9C7B54EEA4B39D144F1-002",
+            "start": 592,
+            "end": 621
+          },
+          {
+            "segment_id": "SEG-A9C7B54EEA4B39D144F1-002",
+            "start": 710,
+            "end": 731
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "将摊上古旧黑铁片与魔晶一并买下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 500,
+            "end": 512
+          },
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 525,
+            "end": 535
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "黑色铁片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9C7B54EEA4B39D144F1-002",
+            "start": 710,
+            "end": 731
+          },
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 500,
+            "end": 512
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "正在坊市购买木系魔核时，对摊上黑铁片生出感应"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9C7B54EEA4B39D144F1-002",
+            "start": 592,
+            "end": 621
+          },
+          {
+            "segment_id": "SEG-A9C7B54EEA4B39D144F1-002",
+            "start": 710,
+            "end": 731
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "获得铁片中封存的玄阶低级斗技吸掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 961,
+            "end": 1016
+          },
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 1268,
+            "end": 1276
+          },
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 1579,
+            "end": 1631
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "药老催买；摊贩把铁片当作便宜货一并出售"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9C7B54EEA4B39D144F1-002",
+            "start": 710,
+            "end": 731
+          },
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 525,
+            "end": 535
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "药老指出铁片内存有斗技，并报出吸掌为玄阶低级"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 961,
+            "end": 1016
+          },
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 1268,
+            "end": 1276
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可修炼铁片中封存的吸掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 1268,
+            "end": 1276
+          },
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 1579,
+            "end": 1631
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "斗技封存在黑铁片中，仅灵魂感知力过人者能感应"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 961,
+            "end": 1016
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "破烂铁片对普通人无价值，高灵魂感知才能发现其中封存斗技，故可被当作垃圾夹带买走"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 961,
+            "end": 1016
+          },
+          {
+            "segment_id": "SEG-681BF192DD4856CFFBEE-001",
+            "start": 500,
+            "end": 512
+          }
+        ]
+      }
+    }
+  ]
+}

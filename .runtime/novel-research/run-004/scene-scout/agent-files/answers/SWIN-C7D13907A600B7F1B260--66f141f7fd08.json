@@ -1,0 +1,293 @@
+{
+  "candidates": [
+    {
+      "summary": "菩提古树突然喷出二十多枚翠绿光点，众人认出是菩提子并抢夺；萧炎手掌一招，光点如受召唤躲开抓取，尽数汇入他掌心。他向古树道谢馈赠。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 899,
+          "end": 934
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 992,
+          "end": 1009
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1148,
+          "end": 1211
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1214,
+          "end": 1222
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1224,
+          "end": 1247
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 939,
+          "end": 943
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 980,
+          "end": 989
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1035,
+          "end": 1055
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 945,
+          "end": 958
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1058,
+          "end": 1060
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1099,
+          "end": 1119
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1250,
+          "end": 1267
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "菩提古树",
+          "魂玉等人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 899,
+            "end": 934
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 992,
+            "end": 1009
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1214,
+            "end": 1222
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "手掌一招收取光点",
+          "向菩提古树道谢馈赠"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1214,
+            "end": 1222
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1224,
+            "end": 1247
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "菩提子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 939,
+            "end": 943
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 980,
+            "end": 989
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1035,
+            "end": 1055
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "古树突然喷出翠绿光点悬浮在空间中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 899,
+            "end": 934
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "约二十多枚菩提子躲开他人抓取，尽数汇入萧炎掌心"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1035,
+            "end": 1055
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "古树喷出光点",
+          "光点如受召唤自行避开抢夺飞向萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 899,
+            "end": 934
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "众人震惊认出是菩提子并喊抢"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 939,
+            "end": 943
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 945,
+            "end": 958
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 980,
+            "end": 989
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1058,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1099,
+            "end": 1119
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎持有这批菩提子并可分配"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1250,
+            "end": 1267
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "菩提子已聚于萧炎掌心，他称之为古树馈赠"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1214,
+            "end": 1222
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1224,
+            "end": 1247
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗存喷出的宝物自行汇入被树选中者掌心，他人现场抢夺无法截取"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 899,
+            "end": 934
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1058,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎按毒丹之法用异火淬炼已有的菩提化体涎时，沉淀意外凝成菩提子脱落入手，使他获得感应菩提心的机缘并收进纳戒。",
+      "source_spans": [
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 18, "end": 51},
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 57, "end": 89},
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 161, "end": 189},
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 297, "end": 344},
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 449, "end": 460},
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 485, "end": 505},
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 507, "end": 516},
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 634, "end": 664},
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 736, "end": 761},
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 780, "end": 795},
+        {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 927, "end": 947}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎"],
+        "support_spans": [
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 18, "end": 51},
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 449, "end": 460}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["以异火煅烧包裹菩提化体涎"],
+        "support_spans": [
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 57, "end": 89},
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 297, "end": 344}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["菩提化体涎"],
+        "support_spans": [
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 57, "end": 89}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["菩提化体涎必须经过异火略微淬炼才能直接施展"],
+        "support_spans": [
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 161, "end": 189}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["沉淀凝成菩提子并从菩提化体涎中脱落，被萧炎抓入手中"],
+        "support_spans": [
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 449, "end": 460},
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 507, "end": 516},
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 634, "end": 664}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["煅烧中突然析出翠绿粉尘沉淀并凝成珠体脱落"],
+        "support_spans": [
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 297, "end": 344},
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 634, "end": 664}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["萧炎惊咦；珠体触感粗糙却有勃勃生机，并被认出是菩提子"],
+        "support_spans": [
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 297, "end": 344},
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 485, "end": 505},
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 507, "end": 516}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["持有菩提子后才有机会感应传说中的菩提心"],
+        "support_spans": [
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 736, "end": 761}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["菩提子被放入寒玉盒并收进纳戒"],
+        "support_spans": [
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 927, "end": 947}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["对已持有材料做预定淬炼时，无意析出更珍稀的菩提子"],
+        "support_spans": [
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 634, "end": 664},
+          {"segment_id": "SEG-98ADB90D4859CF4A240D-001", "start": 780, "end": 795}
+        ]
+      }
+    }
+  ]
+}

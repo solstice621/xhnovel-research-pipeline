@@ -1,0 +1,659 @@
+{
+  "candidates": [
+    {
+      "summary": "少年砸开伴生紫晶源装瓶收集紫晶源,并把石台上残留的紫晶源舔进腹中",
+      "source_spans": [
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1368,
+          "end": 1408
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1130,
+          "end": 1146
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1197,
+          "end": 1223
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1550,
+          "end": 1576
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1286,
+          "end": 1308
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1320,
+          "end": 1342
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1052,
+          "end": 1073
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1463,
+          "end": 1478
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1479,
+          "end": 1494
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1409,
+          "end": 1440
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1368,
+            "end": 1408
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1130,
+            "end": 1146
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "用紫灵石砸开伴生紫晶源、用玉瓶灌装,并舔食残留紫晶源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1197,
+            "end": 1223
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1368,
+            "end": 1408
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1550,
+            "end": 1576
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "伴生紫晶源",
+          "紫晶源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1286,
+            "end": 1308
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1320,
+            "end": 1342
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1550,
+            "end": 1576
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "掌中已有尖锐紫灵石"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1052,
+            "end": 1073
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "紫晶源被装进六个小玉瓶",
+          "残留紫晶源被舔进腹中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1463,
+            "end": 1478
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1479,
+            "end": 1494
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1550,
+            "end": 1576
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "圆球破碎后紫色液体流淌",
+          "药老催促立刻用玉瓶收集"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1286,
+            "end": 1308
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1320,
+            "end": 1342
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "外壳酷热而其中液体反常温凉",
+          "圆球虽大却只装出六个小玉瓶"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1409,
+            "end": 1440
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1463,
+            "end": 1478
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "持有瓶装紫晶源",
+          "部分紫晶源已入腹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1463,
+            "end": 1478
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1550,
+            "end": 1576
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "瓶中紫晶源仍在",
+          "入腹的紫晶源留在体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1479,
+            "end": 1494
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1550,
+            "end": 1576
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "砸开后液体迅速流散,洒落残留会被人直接吞入体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1286,
+            "end": 1308
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1320,
+            "end": 1342
+          },
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1550,
+            "end": 1576
+          }
+        ]
+      }
+    },
+    {
+      "summary": "逃命时腹中紫晶源突然爆发灼体加速,素裙女人灌入斗气炼化后将浅紫火焰压进气旋并扩大",
+      "source_spans": [
+        {
+          "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+          "start": 484,
+          "end": 498
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+          "start": 1016,
+          "end": 1051
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+          "start": 709,
+          "end": 723
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+          "start": 477,
+          "end": 501
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+          "start": 510,
+          "end": 537
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+          "start": 580,
+          "end": 604
+        },
+        {
+          "segment_id": "SEG-420D4BD4B77A2614428D-002",
+          "start": 1550,
+          "end": 1576
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+          "start": 869,
+          "end": 895
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+          "start": 896,
+          "end": 915
+        },
+        {
+          "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+          "start": 439,
+          "end": 465
+        },
+        {
+          "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+          "start": 616,
+          "end": 635
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+          "start": 676,
+          "end": 705
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+          "start": 849,
+          "end": 878
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+          "start": 898,
+          "end": 927
+        },
+        {
+          "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+          "start": 1617,
+          "end": 1634
+        },
+        {
+          "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+          "start": 1659,
+          "end": 1675
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+          "start": 724,
+          "end": 744
+        },
+        {
+          "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+          "start": 469,
+          "end": 482
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+          "start": 1357,
+          "end": 1383
+        },
+        {
+          "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+          "start": 641,
+          "end": 675
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "云芝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 484,
+            "end": 498
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 1016,
+            "end": 1051
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 709,
+            "end": 723
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "腹中紫晶源在逃命中自行爆发",
+          "云芝贴背灌入斗气并将浅紫火焰打入气旋"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 484,
+            "end": 498
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 1016,
+            "end": 1051
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 477,
+            "end": 501
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 510,
+            "end": 537
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "紫晶源",
+          "体内紫色能量",
+          "斗气气旋"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 484,
+            "end": 498
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 1016,
+            "end": 1051
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 510,
+            "end": 537
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 580,
+            "end": 604
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "刚把残留紫晶源添进肚中",
+          "正被追杀且身体发黑喷出热气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-420D4BD4B77A2614428D-002",
+            "start": 1550,
+            "end": 1576
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 869,
+            "end": 895
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 896,
+            "end": 915
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "热浪先带来精纯能量使速度暴涨",
+          "皮肤泛紫并被霸道能量灼体",
+          "浅紫火焰进入气旋后气旋扩至篮球大小",
+          "身体颜色回复且火属性斗气更雄浑"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 439,
+            "end": 465
+          },
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 616,
+            "end": 635
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 676,
+            "end": 705
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 849,
+            "end": 878
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 898,
+            "end": 927
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "两道剑罡从天而降切开拦路魔兽",
+          "云芝灌注风属斗气驱逐并炼化紫色能量,又在一旁压制气旋继续膨胀"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 1617,
+            "end": 1634
+          },
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 1659,
+            "end": 1675
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 1016,
+            "end": 1051
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 709,
+            "end": 723
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 724,
+            "end": 744
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "速度暴涨并暂时脱离狮口",
+          "皮肤发紫、身体发黑并喷出高温热气",
+          "气旋扩大时若无压制还会继续膨胀"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 439,
+            "end": 465
+          },
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 469,
+            "end": 482
+          },
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 616,
+            "end": 635
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 869,
+            "end": 895
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 896,
+            "end": 915
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 724,
+            "end": 744
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "气旋扩大后火属性斗气比以前更雄浑",
+          "血肉中留下淡紫色能量标记"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 849,
+            "end": 878
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 1357,
+            "end": 1383
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "炼化后的能量融入气旋并继续流转",
+          "紫色能量融入血肉处留下淡紫标记"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 641,
+            "end": 675
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 849,
+            "end": 878
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 1357,
+            "end": 1383
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "误食的高浓度能量会在危机中自行爆发,先加速后反噬,需外力炼化并限制突破幅度"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 439,
+            "end": 465
+          },
+          {
+            "segment_id": "SEG-D1FCB109425EF42FFD30-002",
+            "start": 616,
+            "end": 635
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-001",
+            "start": 1016,
+            "end": 1051
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 676,
+            "end": 705
+          },
+          {
+            "segment_id": "SEG-B3D98FE3C240AB9BB992-002",
+            "start": 724,
+            "end": 744
+          }
+        ]
+      }
+    }
+  ]
+}

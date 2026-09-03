@@ -1,0 +1,390 @@
+{
+  "candidates": [
+    {
+      "summary": "海波东被云督四人合力锁定、全城认定即将重伤之际,突如其来的雷霆清啸震散拳势,碧绿火焰人影瞬现其身前接手杀招,四人被一拳震退,米特尔家族由灭门边缘骤转。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 385,
+          "end": 439
+        },
+        {
+          "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+          "start": 202,
+          "end": 235
+        },
+        {
+          "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+          "start": 241,
+          "end": 265
+        },
+        {
+          "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+          "start": 120,
+          "end": 139
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 1438,
+          "end": 1442
+        },
+        {
+          "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+          "start": 1283,
+          "end": 1290
+        },
+        {
+          "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+          "start": 1436,
+          "end": 1452
+        },
+        {
+          "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+          "start": 1510,
+          "end": 1533
+        },
+        {
+          "segment_id": "SEG-988CC0792B45539632A1-002",
+          "start": 676,
+          "end": 685
+        },
+        {
+          "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+          "start": 981,
+          "end": 995
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 664,
+          "end": 687
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 61,
+          "end": 95
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 241,
+          "end": 264
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 780,
+          "end": 794
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 734,
+          "end": 745
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 1002,
+          "end": 1021
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 593,
+          "end": 616
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 96,
+          "end": 115
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 170,
+          "end": 181
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 520,
+          "end": 531
+        },
+        {
+          "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+          "start": 404,
+          "end": 431
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "碧绿火焰人影",
+          "海波东",
+          "云督四人",
+          "加老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 385,
+            "end": 439
+          },
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+            "start": 202,
+            "end": 235
+          },
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+            "start": 241,
+            "end": 265
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以清啸震散四人合力拳势并瞬现海波东身前硬接杀招"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+            "start": 120,
+            "end": 139
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 385,
+            "end": 439
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 1438,
+            "end": 1442
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "海波东",
+          "云督四人已锁定的合力杀招"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+            "start": 1283,
+            "end": 1290
+          },
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+            "start": 1436,
+            "end": 1452
+          },
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+            "start": 1510,
+            "end": 1533
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "四人合力锁定海波东且全城认定其将败亡",
+          "加老等旁观势力拒绝出手,所期待的奇迹并未发生"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+            "start": 1283,
+            "end": 1290
+          },
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+            "start": 1436,
+            "end": 1452
+          },
+          {
+            "segment_id": "SEG-988CC0792B45539632A1-002",
+            "start": 676,
+            "end": 685
+          },
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+            "start": 981,
+            "end": 995
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "笼罩全城的四人拳势土崩瓦解",
+          "对海波东的锁定被解开",
+          "云督四人被一拳震退"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+            "start": 202,
+            "end": 235
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 664,
+            "end": 687
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 61,
+            "end": 95
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 241,
+            "end": 264
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "云督等对突然出现者冷喝并加大全力一击",
+          "海波东提醒对方小心攻击",
+          "满城惊呼其托大"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 780,
+            "end": 794
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 734,
+            "end": 745
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 1002,
+            "end": 1021
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 593,
+            "end": 616
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "火焰人影后退卸力,云督四人倒飞十几丈且袖袍爆裂",
+          "满城鸦雀无声,围观者以人影为前来助海波东的神秘人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 61,
+            "end": 95
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 96,
+            "end": 115
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 170,
+            "end": 181
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 520,
+            "end": 531
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "海波东从被锁定的必死拳势中脱身",
+          "米特尔家族眼前的灭门杀招被打断"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 664,
+            "end": 687
+          },
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+            "start": 202,
+            "end": 235
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 385,
+            "end": 439
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "合力杀招已被打散,四人被震退但仍稳住身形"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 61,
+            "end": 95
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 96,
+            "end": 115
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 241,
+            "end": 264
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "在已锁定的合力杀招上,未具名外援先以啸声拆拳势再替身硬接,受益方并未召唤该援手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+            "start": 120,
+            "end": 139
+          },
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+            "start": 202,
+            "end": 235
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 664,
+            "end": 687
+          },
+          {
+            "segment_id": "SEG-988CC0792B45539632A1-002",
+            "start": 676,
+            "end": 685
+          },
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-002",
+            "start": 981,
+            "end": 995
+          },
+          {
+            "segment_id": "SEG-26174BDB6CDEEAC070F8-003",
+            "start": 404,
+            "end": 431
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "candidates": [
+    {
+      "summary": "暗杀后萧炎探查怀中纳戒，意外取出三兽蛮荒决白骨残卷；美杜莎递上另外两名慕兰长老的纳戒，他趁印记因持有者已死而失效搜出另两份，当场收齐三卷，自认出乎意料。",
+      "source_spans": [
+        {"segment_id": "SEG-590DA88839EBAE8C98B2-002", "start": 293, "end": 333},
+        {"segment_id": "SEG-590DA88839EBAE8C98B2-002", "start": 1355, "end": 1375},
+        {"segment_id": "SEG-590DA88839EBAE8C98B2-002", "start": 1363, "end": 1425},
+        {"segment_id": "SEG-590DA88839EBAE8C98B2-002", "start": 1426, "end": 1448},
+        {"segment_id": "SEG-590DA88839EBAE8C98B2-002", "start": 1450, "end": 1456},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 14, "end": 42},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 43, "end": 69},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 70, "end": 96},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 141, "end": 164},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 168, "end": 232},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 263, "end": 279},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 283, "end": 313},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 316, "end": 329},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 356, "end": 368},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 438, "end": 458},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 459, "end": 490},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 535, "end": 569},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 593, "end": 599},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 600, "end": 638},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 639, "end": 658},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 645, "end": 679}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "美杜莎"],
+        "support_spans": [
+          {"segment_id": "SEG-590DA88839EBAE8C98B2-002", "start": 1355, "end": 1375},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 141, "end": 164},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 263, "end": 279}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["萧炎取出怀中纳戒以灵魂力量探入并翻出白骨卷轴", "美杜莎从怀中取出另外两枚纳戒递给他", "萧炎灵魂探入两戒搜出另两卷并摊开研读"],
+        "support_spans": [
+          {"segment_id": "SEG-590DA88839EBAE8C98B2-002", "start": 1363, "end": 1425},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 263, "end": 279},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 438, "end": 458},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 535, "end": 569},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 600, "end": 638}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["三兽蛮荒决"],
+        "support_spans": [
+          {"segment_id": "SEG-590DA88839EBAE8C98B2-002", "start": 1426, "end": 1448},
+          {"segment_id": "SEG-590DA88839EBAE8C98B2-002", "start": 1450, "end": 1456},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 168, "end": 232},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 593, "end": 599}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["萧炎本就垂涎慕兰三老所修的三兽蛮荒决", "美杜莎已当众取下另外两名慕兰长老的纳戒", "慕兰三老皆已毙命，纳戒残存灵魂印记不堪一击"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 43, "end": 69},
+          {"segment_id": "SEG-590DA88839EBAE8C98B2-002", "start": 293, "end": 333},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 356, "end": 368},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 459, "end": 490}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["先得一份则无效的残卷", "另两卷被搜出，三卷一并收入纳戒"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 168, "end": 232},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 535, "end": 569},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 639, "end": 658}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["美杜莎把另外两名慕兰长老的纳戒递给他，嘱他寻找剩余两份", "她确认那两个老家伙也已解决"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 263, "end": 279},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 283, "end": 313},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 316, "end": 329},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 356, "end": 368}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["萧炎先难掩惊喜，称没想到能到手、是意外之喜", "见只是一份后皱眉遗憾", "搜齐后狂喜大笑，自认出乎意料"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 14, "end": 42},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 70, "end": 96},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 168, "end": 232},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 535, "end": 569},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 600, "end": 638},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 645, "end": 679}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["三份收齐后不再是得不到效果的残卷", "完整三卷已入纳戒，成为当场收获"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 168, "end": 232},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 645, "end": 679}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["三卷白骨卷轴被收入纳戒"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 639, "end": 658}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["功法分成三份，只得一份则没有效果", "须等持有者已死、纳戒灵魂印记不堪一击才能探入搜齐"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 168, "end": 232},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 459, "end": 490}
+        ]
+      }
+    },
+    {
+      "summary": "收齐三兽蛮荒决后，美杜莎又从纳戒取出从雁落天身上得来的金雁宗不传之秘金色卷轴递给萧炎；他惊讶摊开见天雁九行翼，得知此为飞行斗技制作方法，先收入纳戒保管，并答应凑齐高阶材料后先给她制作飞行翼。",
+      "source_spans": [
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 690, "end": 706},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 707, "end": 730},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 732, "end": 774},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 776, "end": 798},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 818, "end": 824},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 869, "end": 892},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 920, "end": 931},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 932, "end": 961},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1029, "end": 1060},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1092, "end": 1117},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1148, "end": 1165},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1319, "end": 1357},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1359, "end": 1375},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1383, "end": 1395},
+        {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1402, "end": 1438}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["美杜莎", "萧炎"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 690, "end": 706},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 707, "end": 730},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 776, "end": 798}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["美杜莎从纳戒取出金色卷轴递给萧炎", "萧炎惊讶接过并缓缓摊开"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 707, "end": 730},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 776, "end": 798}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["天雁九行翼"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 818, "end": 824},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1029, "end": 1060}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["卷轴从雁落天身上得来，算金雁宗不传之秘", "萧炎已是斗皇，寻常飞行斗技难比斗气双翼"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 732, "end": 774},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 869, "end": 892}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["金色卷轴转入萧炎之手并被收入纳戒保管"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 776, "end": 798},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1383, "end": 1395},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1402, "end": 1438}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["美杜莎说明这并非普通飞行斗技，而是飞行斗技的制作方法", "她承认用高阶材料制成对她有好处，寻常材料则效果不大"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 920, "end": 931},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1029, "end": 1060},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1319, "end": 1357},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1359, "end": 1375}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["萧炎有些惊讶地接过摊开", "他认为这卷轴价值不会低于三兽蛮荒决"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 776, "end": 798},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1148, "end": 1165}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["可先保管卷轴，待凑齐材料后制作对美杜莎有用的飞行翼"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1319, "end": 1357},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1402, "end": 1438}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["卷轴被收入纳戒，由萧炎先保管"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1383, "end": 1395},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1402, "end": 1438}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["此物是制作方法而非现成飞行斗技，且制作方法大多失传", "材料品阶决定对斗宗是否有效；寻常飞行斗技在斗皇阶已难比斗气双翼"],
+        "support_spans": [
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 869, "end": 892},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 932, "end": 961},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1029, "end": 1060},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1092, "end": 1117},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1319, "end": 1357},
+          {"segment_id": "SEG-DBF25CC0D61CD5589FE1-001", "start": 1359, "end": 1375}
+        ]
+      }
+    }
+  ]
+}

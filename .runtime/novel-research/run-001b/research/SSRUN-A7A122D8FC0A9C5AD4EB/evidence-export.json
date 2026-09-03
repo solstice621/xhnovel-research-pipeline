@@ -1,0 +1,556 @@
+{
+  "artifact_manifest": [
+    {
+      "artifact_id": "sha256:06cf7b87136f93a6b76d053db0bf36fae570087f70e5247ae483a3001c1bad31",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 359,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 231,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:0f2e1bbb30285813ea49a3d9f030f12725c9c8fe7d0fbf01252afd2b1204f487",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 612,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:22d46f5dd294dddc5ff2d7785034fcd96f4df2104c55074131c00a64381c581b",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 6424,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 294,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:7296e0387f63b1c7c6aa8d195400f35f024fa19e8b4ca9dfdefa311d74eabe04",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 917,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:74c7239c19d740ad1af678ccf266fd815923a1bea1fd52ab02d802bdd3e1dc12",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 354,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 838,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 264,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:a15577f43396c84dd625d2d4e485c171db7e2c37e7b905d86b0aec9a148d453b",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 2501,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:b1c441a7217f0a860ebbf1357dd67c31a6f71d305bf3c30ea9390d6537ea4d29",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 4747,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:bcf2ad80a4008470c49f11201af64c0c3461b718a117f7cf7dd710390a6fb6db",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 7943,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:c5c571f292d803be13fc07e7dd6d47822f48d5fe88ae106c9ee4e39a74629118",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 359,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 42,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:f154b88cf77bb840800e3807b837b1fd478049f25c432cf85712a19e28202461",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 1029,
+      "durability_status": "LOCAL"
+    },
+    {
+      "artifact_id": "sha256:f2df524e84b51bead360458f968db5343a8fbb195949959c8627a9f319a70188",
+      "availability": "WITHHELD_BY_RIGHTS",
+      "byte_length": 359,
+      "durability_status": "LOCAL"
+    }
+  ],
+  "assurance": {
+    "auditability": "DEGRADED",
+    "level": "UNQUALIFIED"
+  },
+  "bundle": {
+    "bundle_hash": "sha256:5872387fbbac1b6d53635b2d95d8b61e27851b6c1670f76b4738e13861f85d21",
+    "bundle_id": "BND-58ECE3B437B046DCC523"
+  },
+  "created_at": "2026-09-03T01:03:05Z",
+  "export_hash": "sha256:395f869dfa4f02479f8b089de81af524b63029465b910d8c51e1b71daf87100f",
+  "export_id": "EXP-C2D3513BE24AC0692067",
+  "origin_request": {
+    "budget": {
+      "max_bytes": 500000000,
+      "max_fetches": 100000,
+      "max_queries": 1
+    },
+    "created_at": "2026-09-03T01:03:05Z",
+    "discovery_brief": "寻找对象的持有、所有、使用许可或约束状态发生变化，并影响角色后续可执行行动的场景。",
+    "extraction_profile": "xuanhuan-gameplay-scene/v1",
+    "mode": "EXPLORE",
+    "origin": {
+      "commit": "a87fd6b45f98ef8259358aed758af4c8fc01a3153b2e36e6b24590fbca4defb2",
+      "repository": "local-novel-input"
+    },
+    "request_id": "REQ-3816CE90B35DB461AFBF",
+    "schema_version": "0.2-draft",
+    "search_constraints": {
+      "direct_novel_ingestion": true,
+      "input_kind": "txt",
+      "language": "zh"
+    },
+    "supersedes": null
+  },
+  "policies": {
+    "policy_bundle_hash": "sha256:44f9fd2adf1351c5e1eb3abd0bde654a1ff6f5818502b66bf1168fdb44e40d48"
+  },
+  "producer": {
+    "parser_build_id": "parser-set-286f8e9d6996629c6ad2",
+    "repository_commit": "956173039a0434e41892937d95737b1b2a976764",
+    "scene_scout_build_id": "BLD-CE01F02427A0482AE37A",
+    "source_classifier_build_id": "source-classifier-set-4c6923495d881b6fadcb"
+  },
+  "revocation": null,
+  "scene_candidates": [
+    {
+      "action": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "交付携带"
+        ]
+      },
+      "actors": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "林舟",
+          "苏澜"
+        ]
+      },
+      "adjudication_status": "NOT_REQUIRED",
+      "bundle_id": "BND-58ECE3B437B046DCC523",
+      "external_response": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "immediate_feedback": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "物理持有与所有权、使用权分离"
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "苏澜可携带令牌但不可催动"
+        ]
+      },
+      "persistence": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "precondition": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "scene_candidate_id": "SCN-8B221D4D09A0529E5237",
+      "scene_merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+      "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+      "schema_version": "0.2-draft",
+      "source_order": {
+        "chapter_id": "CHP-BD0322DC6B43D26035E4",
+        "chapter_ordinal": 2,
+        "document_id": "DOC-4C8CA6CA2F23282047AD",
+        "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+        "segment_ordinal": 1,
+        "start": 16
+      },
+      "source_spans": [
+        {
+          "end": 56,
+          "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+          "start": 16
+        }
+      ],
+      "state_transition": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "苏澜取得物理持有，所有权和使用权未转移"
+        ]
+      },
+      "status": "DRAFT",
+      "summary": "苏澜取得青铜令的物理持有，但所有权和使用权没有转移",
+      "target": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "青铜令"
+        ]
+      },
+      "verification": "UNVERIFIED",
+      "window_ids": [
+        "SWIN-FE5228AB30A96EAB2E5A"
+      ]
+    },
+    {
+      "action": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "解除第一重禁制并授权开启山门"
+        ]
+      },
+      "actors": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "苏澜",
+          "长老"
+        ]
+      },
+      "adjudication_status": "NOT_REQUIRED",
+      "bundle_id": "BND-58ECE3B437B046DCC523",
+      "external_response": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "immediate_feedback": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "部分授权与所有权分离"
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "苏澜可以开启山门"
+        ]
+      },
+      "persistence": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "苏澜守约"
+        ]
+      },
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "scene_candidate_id": "SCN-838DE556B9E060C16102",
+      "scene_merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+      "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+      "schema_version": "0.2-draft",
+      "source_order": {
+        "chapter_id": "CHP-C7352CF244AEDB301365",
+        "chapter_ordinal": 3,
+        "document_id": "DOC-8098B1124BB403AE80B9",
+        "segment_id": "SEG-8098B1124BB403AE80B9-001",
+        "segment_ordinal": 1,
+        "start": 24
+      },
+      "source_spans": [
+        {
+          "end": 62,
+          "segment_id": "SEG-8098B1124BB403AE80B9-001",
+          "start": 24
+        }
+      ],
+      "state_transition": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "苏澜获得有限使用权，所有权仍未转移"
+        ]
+      },
+      "status": "DRAFT",
+      "summary": "长老解除部分禁制并授予有限使用权，但未转移令牌所有权",
+      "target": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "青铜令"
+        ]
+      },
+      "verification": "UNVERIFIED",
+      "window_ids": [
+        "SWIN-FE5228AB30A96EAB2E5A"
+      ]
+    },
+    {
+      "action": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "暂交阵钥并施加誓印"
+        ]
+      },
+      "actors": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "林舟",
+          "谷主"
+        ]
+      },
+      "adjudication_status": "NOT_REQUIRED",
+      "bundle_id": "BND-58ECE3B437B046DCC523",
+      "external_response": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "immediate_feedback": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "对象能力与角色移动约束并存"
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "林舟可以开启库门但不能越过谷界"
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "任务结束前持续"
+        ]
+      },
+      "precondition": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "scene_candidate_id": "SCN-23DB402B9891C9D06FB2",
+      "scene_merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+      "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+      "schema_version": "0.2-draft",
+      "source_order": {
+        "chapter_id": "CHP-FD437BDBB5BEF07B0BB6",
+        "chapter_ordinal": 4,
+        "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+        "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+        "segment_ordinal": 1,
+        "start": 17
+      },
+      "source_spans": [
+        {
+          "end": 92,
+          "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+          "start": 17
+        }
+      ],
+      "state_transition": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "林舟获得开库能力并受到离谷禁制"
+        ]
+      },
+      "status": "DRAFT",
+      "summary": "林舟保管阵钥并获得开库能力，同时受誓印限制不能离谷",
+      "target": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "阵钥"
+        ]
+      },
+      "verification": "UNVERIFIED",
+      "window_ids": [
+        "SWIN-FE5228AB30A96EAB2E5A"
+      ]
+    }
+  ],
+  "scene_discovery": {
+    "candidate_count": 3,
+    "merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+    "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+    "window_count": 1
+  },
+  "schema_version": "0.2-draft"
+}

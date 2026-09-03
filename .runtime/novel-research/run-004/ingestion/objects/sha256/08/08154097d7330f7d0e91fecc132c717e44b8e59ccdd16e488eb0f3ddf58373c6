@@ -1,0 +1,335 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎灌能激活天都火印，在毒气破防入体下仍完成封印；厄难毒体被再度封住，小医仙吞尽毒雾并在数分钟内从四星破入五星斗宗，封印可支持两三年。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+          "start": 239,
+          "end": 251
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+          "start": 386,
+          "end": 397
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+          "start": 1581,
+          "end": 1601
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+          "start": 78,
+          "end": 93
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+          "start": 265,
+          "end": 276
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+          "start": 354,
+          "end": 372
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+          "start": 1402,
+          "end": 1426
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+          "start": 555,
+          "end": 569
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+          "start": 437,
+          "end": 459
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+          "start": 546,
+          "end": 572
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+          "start": 213,
+          "end": 227
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+          "start": 605,
+          "end": 640
+        },
+        {
+          "segment_id": "SEG-E7272755969AC9A3ED86-001",
+          "start": 1139,
+          "end": 1144
+        },
+        {
+          "segment_id": "SEG-E7272755969AC9A3ED86-001",
+          "start": 551,
+          "end": 559
+        },
+        {
+          "segment_id": "SEG-E7272755969AC9A3ED86-001",
+          "start": 568,
+          "end": 582
+        },
+        {
+          "segment_id": "SEG-E7272755969AC9A3ED86-001",
+          "start": 600,
+          "end": 619
+        },
+        {
+          "segment_id": "SEG-E7272755969AC9A3ED86-001",
+          "start": 560,
+          "end": 582
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "小医仙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 239,
+            "end": 251
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 386,
+            "end": 397
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "在封印阵型中心灌注能量，喝出天都火印并强行完成封印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+            "start": 1581,
+            "end": 1601
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 78,
+            "end": 93
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 265,
+            "end": 276
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "即将爆发的厄难毒体",
+          "天都火印封印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 354,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 78,
+            "end": 93
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "封印阵型已勾成，只需在中心灌注能量即可激活",
+          "萧炎正按脑海中的封印图施为"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+            "start": 1402,
+            "end": 1426
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+            "start": 1581,
+            "end": 1601
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+            "start": 555,
+            "end": 569
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "厄难毒体再度被封印",
+          "小医仙吞尽毒雾，数分钟内从四星突破到五星斗宗"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 354,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 437,
+            "end": 459
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 546,
+            "end": 572
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "封印将成时毒气破防钻进萧炎体内",
+          "小医仙睁眼吞尽满屋毒雾，气息大增"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 213,
+            "end": 227
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 239,
+            "end": 251
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 386,
+            "end": 397
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 437,
+            "end": 459
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "火痕没入身体，毒气停止外溢，肌肤恢复正常",
+          "小医仙实力精进，苏千惊呼其晋级"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 354,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 546,
+            "end": 572
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 605,
+            "end": 640
+          },
+          {
+            "segment_id": "SEG-E7272755969AC9A3ED86-001",
+            "start": 1139,
+            "end": 1144
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "厄难毒体被压制，按强度可支持两三年，足够去寻天毒蝎龙兽"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E7272755969AC9A3ED86-001",
+            "start": 551,
+            "end": 559
+          },
+          {
+            "segment_id": "SEG-E7272755969AC9A3ED86-001",
+            "start": 568,
+            "end": 582
+          },
+          {
+            "segment_id": "SEG-E7272755969AC9A3ED86-001",
+            "start": 600,
+            "end": 619
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "封印已成，可支持两三年"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E7272755969AC9A3ED86-001",
+            "start": 551,
+            "end": 559
+          },
+          {
+            "segment_id": "SEG-E7272755969AC9A3ED86-001",
+            "start": 560,
+            "end": 582
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "刚获的一次性火印封印必须在毒体反扑破防时当场灌能完成，危机既把施术者毒入体，又把爆发毒气转成毒体主人的晋阶补剂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 78,
+            "end": 93
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 213,
+            "end": 227
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 354,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 546,
+            "end": 572
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-002",
+            "start": 605,
+            "end": 640
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "candidates": [
+    {
+      "summary": "半昏迷中青莲地心火自行灌能并靠近纳灵；心神撞击使火尾触光点被吸入。事后验得四星斗师并可唤出掌心青火，旁证点明此非炼化常规涨级而是极度好运。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1266,
+          "end": 1293
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 796,
+          "end": 831
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1429,
+          "end": 1440
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1453,
+          "end": 1479
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 97,
+          "end": 130
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 770,
+          "end": 790
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 132,
+          "end": 186
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 268,
+          "end": 300
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-001",
+          "start": 240,
+          "end": 269
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 684,
+          "end": 712
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1570,
+          "end": 1589
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 32,
+          "end": 56
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-001",
+          "start": 1591,
+          "end": 1613
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 770,
+          "end": 831
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 888,
+          "end": 907
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1074,
+          "end": 1099
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1100,
+          "end": 1130
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1487,
+          "end": 1521
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 403,
+          "end": 418
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+          "start": 172,
+          "end": 180
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+          "start": 701,
+          "end": 721
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+          "start": 636,
+          "end": 672
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+          "start": 93,
+          "end": 112
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+          "start": 1281,
+          "end": 1289
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+          "start": 1312,
+          "end": 1339
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 63,
+          "end": 90
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 366,
+          "end": 402
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+          "start": 1483,
+          "end": 1494
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 306,
+          "end": 358
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+          "start": 286,
+          "end": 322
+        },
+        {
+          "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+          "start": 323,
+          "end": 337
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "青莲地心火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1266,
+            "end": 1293
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 796,
+            "end": 831
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "心神狠狠撞击倒退的青莲地心火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1429,
+            "end": 1440
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1453,
+            "end": 1479
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "纳灵所成的灰色光点"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 97,
+            "end": 130
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "处于半昏迷浑噩状态",
+          "药老已将纳灵弹入体内",
+          "把异火压进纳灵本是炼化最难一步，失败会反噬",
+          "炼化异火本身不具备直接提升等级的功能"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 770,
+            "end": 790
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 97,
+            "end": 130
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 132,
+            "end": 186
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 268,
+            "end": 300
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-001",
+            "start": 240,
+            "end": 269
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "气旋液体能量不少于百滴",
+          "火尾触到灰色光点后被纳灵全部收纳",
+          "气息达到四星斗师"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 684,
+            "end": 712
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1570,
+            "end": 1589
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 32,
+            "end": 56
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-001",
+            "start": 1591,
+            "end": 1613
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "半昏迷中火灵自行灌能修补并游向纳灵",
+          "有灵智的火灵忌惮纳灵欲离开",
+          "灰色光点爆发吸力将逃脱不及的异火吸入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 770,
+            "end": 831
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 888,
+            "end": 907
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1074,
+            "end": 1099
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1100,
+            "end": 1130
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 32,
+            "end": 56
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "撞击时脑中轰鸣剧痛",
+          "旁人点明此为机缘、幸运与极度好运，并非炼化自动涨级"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1487,
+            "end": 1521
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 403,
+            "end": 418
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 172,
+            "end": 180
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 701,
+            "end": 721
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 636,
+            "end": 672
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "气旋液体能量不少于百滴",
+          "实力达到四星斗师",
+          "可喝令青莲地心火现于掌心"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 684,
+            "end": 712
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-001",
+            "start": 1591,
+            "end": 1613
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 93,
+            "end": 112
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 1281,
+            "end": 1289
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 1312,
+            "end": 1339
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "异火收纳后体内陷入完全寂静",
+          "炼化最后一步以微小代价结束",
+          "当场宣称已拥有异火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 63,
+            "end": 90
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 366,
+            "end": 402
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 1483,
+            "end": 1494
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "半昏迷使火种自行靠近纳灵，本应最危险的强行驱赶因心神撞击尾触光点而无危险完成，额外涨级被点明不是炼化常规收益"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 306,
+            "end": 358
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 286,
+            "end": 322
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 323,
+            "end": 337
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 636,
+            "end": 672
+          },
+          {
+            "segment_id": "SEG-C012E1EBF86ABCC95348-002",
+            "start": 701,
+            "end": 721
+          }
+        ]
+      }
+    }
+  ]
+}

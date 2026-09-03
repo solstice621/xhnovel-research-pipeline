@@ -1,0 +1,347 @@
+{
+  "candidates": [
+    {
+      "summary": "苏澜取得青铜令的物理持有，但所有权和使用权没有转移",
+      "source_spans": [
+        {
+          "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+          "start": 16,
+          "end": 56
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "林舟",
+          "苏澜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16,
+            "end": 56
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "交付携带"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16,
+            "end": 56
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "青铜令"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16,
+            "end": 56
+          }
+        ]
+      },
+      "precondition": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "苏澜取得物理持有，所有权和使用权未转移"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16,
+            "end": 56
+          }
+        ]
+      },
+      "external_response": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "immediate_feedback": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "苏澜可携带令牌但不可催动"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16,
+            "end": 56
+          }
+        ]
+      },
+      "persistence": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "物理持有与所有权、使用权分离"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16,
+            "end": 56
+          }
+        ]
+      }
+    },
+    {
+      "summary": "长老解除部分禁制并授予有限使用权，但未转移令牌所有权",
+      "source_spans": [
+        {
+          "segment_id": "SEG-8098B1124BB403AE80B9-001",
+          "start": 24,
+          "end": 62
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "长老",
+          "苏澜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24,
+            "end": 62
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "解除第一重禁制并授权开启山门"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24,
+            "end": 62
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "青铜令"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24,
+            "end": 62
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "苏澜守约"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24,
+            "end": 62
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "苏澜获得有限使用权，所有权仍未转移"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24,
+            "end": 62
+          }
+        ]
+      },
+      "external_response": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "immediate_feedback": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "苏澜可以开启山门"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24,
+            "end": 62
+          }
+        ]
+      },
+      "persistence": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "部分授权与所有权分离"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24,
+            "end": 62
+          }
+        ]
+      }
+    },
+    {
+      "summary": "林舟保管阵钥并获得开库能力，同时受誓印限制不能离谷",
+      "source_spans": [
+        {
+          "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+          "start": 17,
+          "end": 92
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "谷主",
+          "林舟"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17,
+            "end": 92
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "暂交阵钥并施加誓印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17,
+            "end": 92
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "阵钥"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17,
+            "end": 92
+          }
+        ]
+      },
+      "precondition": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "林舟获得开库能力并受到离谷禁制"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17,
+            "end": 92
+          }
+        ]
+      },
+      "external_response": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "immediate_feedback": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "林舟可以开启库门但不能越过谷界"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17,
+            "end": 92
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "任务结束前持续"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17,
+            "end": 92
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "对象能力与角色移动约束并存"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17,
+            "end": 92
+          }
+        ]
+      }
+    }
+  ]
+}

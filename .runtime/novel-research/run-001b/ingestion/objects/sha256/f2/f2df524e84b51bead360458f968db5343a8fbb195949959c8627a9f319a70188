@@ -1,0 +1,9 @@
+{
+  "artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+  "byte_length": 294,
+  "chapter_key": "chapter-000004-第三章-誓印",
+  "final_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+  "http_status": null,
+  "media_type": "text/plain",
+  "retrieved_at": "2026-09-03T01:03:05Z"
+}

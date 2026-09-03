@@ -1,0 +1,381 @@
+{
+  "candidates": [
+    {
+      "summary": "出关后萧炎发现体内异火尽数消失，低喝“出来”，掌心粉火化为半尺火婴。确认这是六火融合后罕见化形的新生火灵；火婴亲昵蹭手，并当场凝聚佛怒火莲、连放十朵再融成比以往强数倍的毁灭火莲。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+          "start": 977,
+          "end": 980
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+          "start": 1109,
+          "end": 1124
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+          "start": 1209,
+          "end": 1226
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 639,
+          "end": 656
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+          "start": 1003,
+          "end": 1020
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+          "start": 802,
+          "end": 820
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 193,
+          "end": 221
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+          "start": 1571,
+          "end": 1604
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 708,
+          "end": 726
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 597,
+          "end": 623
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+          "start": 1174,
+          "end": 1192
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 832,
+          "end": 844
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 845,
+          "end": 852
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 1076,
+          "end": 1083
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 1351,
+          "end": 1359
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 1412,
+          "end": 1440
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 1442,
+          "end": 1454
+        },
+        {
+          "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+          "start": 97,
+          "end": 118
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "火婴",
+          "薰儿"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 977,
+            "end": 980
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 1109,
+            "end": 1124
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 1209,
+            "end": 1226
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 639,
+            "end": 656
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "低喝“出来”，把体内深处的新生异火唤至掌心"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 977,
+            "end": 980
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 1003,
+            "end": 1020
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 1109,
+            "end": 1124
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "炼化后从体内消失的融合异火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 802,
+            "end": 820
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 193,
+            "end": 221
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "体内原本随叫随到的异火尽数消失",
+          "世上还无人试过把六种异火融在一起会怎样"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 802,
+            "end": 820
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 1571,
+            "end": 1604
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 708,
+            "end": 726
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "消失的异火化为有灵智的半尺火婴",
+          "被认定为炼化净莲妖火后产生的新生异火火灵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 1109,
+            "end": 1124
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 193,
+            "end": 221
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 639,
+            "end": 656
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 597,
+            "end": 623
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "火婴抱住萧炎手掌不住蹭来蹭去",
+          "听他担心无法施展佛怒火莲后自行凝聚火莲"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 1174,
+            "end": 1192
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 832,
+            "end": 844
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 845,
+            "end": 852
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 708,
+            "end": 726
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎与薰儿目瞪口呆",
+          "火婴连凝十个佛怒火莲并融成威力强数倍的毁灭火莲",
+          "萧炎说这次真是捡到宝了"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 1209,
+            "end": 1226
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1076,
+            "end": 1083
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1351,
+            "end": 1359
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1412,
+            "end": 1440
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1442,
+            "end": 1454
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可用这火灵施展佛怒火莲乃至比以往更强的毁灭火莲，而不必再靠萧炎本人当场凝聚"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 845,
+            "end": 852
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1076,
+            "end": 1083
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1351,
+            "end": 1359
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1412,
+            "end": 1440
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1442,
+            "end": 1454
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "火婴就是体内新生异火，与萧炎有如同以往操控异火的奇异联系"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 193,
+            "end": 221
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 97,
+            "end": 118
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 639,
+            "end": 656
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "六种异火融合炼化后可意外化形为有灵智的火灵，把宿主本人都无法连放的火莲改写成火灵可独立、超量施展的战力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 1571,
+            "end": 1604
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 597,
+            "end": 623
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-001",
+            "start": 1109,
+            "end": 1124
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1076,
+            "end": 1083
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1351,
+            "end": 1359
+          },
+          {
+            "segment_id": "SEG-9AA4FD0C0277D24C940C-002",
+            "start": 1412,
+            "end": 1440
+          }
+        ]
+      }
+    }
+  ]
+}

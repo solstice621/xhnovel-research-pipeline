@@ -1,0 +1,108 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎在林海树浪中忽然被触动进入奇异状态,当场悟出浪潮般连绵的尺法雏形;药老以灵魂力量封锁四周,以免这机缘被外界打断。",
+      "source_spans": [
+        {"segment_id": "SEG-78B8A0211B006F081D9F-001", "start": 648, "end": 689},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-001", "start": 833, "end": 853},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-001", "start": 1077, "end": 1104},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-001", "start": 1112, "end": 1151},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 118, "end": 168},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 260, "end": 310},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 720, "end": 739},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 994, "end": 1033},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 1294, "end": 1320},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 1513, "end": 1541},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 43, "end": 62},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 112, "end": 144},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 172, "end": 222},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 239, "end": 265},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 267, "end": 317},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 318, "end": 334},
+        {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 418, "end": 505}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "药老"],
+        "support_spans": [
+          {"segment_id": "SEG-78B8A0211B006F081D9F-001", "start": 648, "end": 689},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 318, "end": 334}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["萧炎握出玄重尺,放弃主动挥尺,把动作交给树浪触发的灵光"],
+        "support_spans": [
+          {"segment_id": "SEG-78B8A0211B006F081D9F-001", "start": 1077, "end": 1104},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 994, "end": 1033}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["树浪触动的浪潮攻击意境", "当场成形的尺法"],
+        "support_spans": [
+          {"segment_id": "SEG-78B8A0211B006F081D9F-001", "start": 833, "end": 853},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-001", "start": 1112, "end": 1151},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 172, "end": 222}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["萧炎已有玄重尺但从未修习成套尺法", "林海安宁时滔天树浪触动他心间"],
+        "support_spans": [
+          {"segment_id": "SEG-78B8A0211B006F081D9F-001", "start": 648, "end": 689},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 1294, "end": 1320}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["从没有成套尺法变为当场掌握尺法雏形"],
+        "support_spans": [
+          {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 720, "end": 739},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 172, "end": 222}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["树浪席卷而过", "药老以灵魂力量封锁四周,不让意外打断这奇异状态"],
+        "support_spans": [
+          {"segment_id": "SEG-78B8A0211B006F081D9F-001", "start": 833, "end": 853},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 260, "end": 310}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["重尺劲风削断十余米外树顶", "挥尺轨迹与弧度如烙印留在脑海"],
+        "support_spans": [
+          {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 43, "end": 62},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 112, "end": 144}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["可用这套连绵尺法应敌,弥补招式粗糙的弱点", "日后磨练可创出属于自己的尺法斗技"],
+        "support_spans": [
+          {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 1513, "end": 1541},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 418, "end": 505}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["挥尺轨迹如烙印般留下", "尺法仍是雏形,需日后磨练才会成为助力"],
+        "support_spans": [
+          {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 112, "end": 144},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 172, "end": 222},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 239, "end": 265}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["这种奇异状态是修炼机缘,一旦被外界打断会造成终生遗憾,能否握牢全看当场抓住那抹灵光"],
+        "support_spans": [
+          {"segment_id": "SEG-78B8A0211B006F081D9F-002", "start": 118, "end": 168},
+          {"segment_id": "SEG-78B8A0211B006F081D9F-003", "start": 267, "end": 317}
+        ]
+      }
+    }
+  ]
+}

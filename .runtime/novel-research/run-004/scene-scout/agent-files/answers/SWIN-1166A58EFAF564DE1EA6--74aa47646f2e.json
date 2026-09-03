@@ -1,0 +1,305 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎震散二星斗圣火奴体表最后一道妖火后，按古图光团灵魂咒文在其额上刻画符文，隔离脑中火珠，火奴当场改受驱使如奴仆侍立。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 985,
+          "end": 1004
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-001",
+          "start": 605,
+          "end": 623
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 1386,
+          "end": 1418
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 770,
+          "end": 774
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 823,
+          "end": 847
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 952,
+          "end": 984
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 1078,
+          "end": 1103
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 1123,
+          "end": 1150
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 1172,
+          "end": 1199
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 1338,
+          "end": 1353
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 1420,
+          "end": 1431
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 1013,
+          "end": 1044
+        },
+        {
+          "segment_id": "SEG-94EB722FA89C8131B189-002",
+          "start": 1461,
+          "end": 1498
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "二星斗圣后期火奴"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 985,
+            "end": 1004
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-001",
+            "start": 605,
+            "end": 623
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1386,
+            "end": 1418
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "震散火奴体表最后一道妖火后，按光团灵魂咒文在其额上刻画符文"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 770,
+            "end": 774
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 823,
+            "end": 847
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 952,
+            "end": 984
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1078,
+            "end": 1103
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1123,
+            "end": 1150
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1172,
+            "end": 1199
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "实力大减的二星斗圣后期火奴"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-001",
+            "start": 605,
+            "end": 623
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1078,
+            "end": 1103
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1123,
+            "end": 1150
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "交手中火奴体表最后一道妖火被震散，速度与威力大减"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 823,
+            "end": 847
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 770,
+            "end": 774
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "符文隔离脑中火珠后，火奴改受萧炎心神驱使，垂臂如奴仆侍立"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1338,
+            "end": 1353
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1386,
+            "end": 1418
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1420,
+            "end": 1431
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "光团先前传来的灵魂咒文在火奴脑海隔离乳白色火珠，使其改受驱使"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 952,
+            "end": 984
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1338,
+            "end": 1353
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1386,
+            "end": 1418
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "心中多出感应，火奴安静垂臂站到身旁；他面露狂喜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1386,
+            "end": 1418
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1420,
+            "end": 1431
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "该火奴已可被心神驱使作战；若能如法控制其余火奴，麾下战力会暴涨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1386,
+            "end": 1418
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1013,
+            "end": 1044
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1461,
+            "end": 1498
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "火奴当下改受萧炎驱使，如奴仆侍立"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1386,
+            "end": 1418
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1420,
+            "end": 1431
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "本为敌方傀儡的斗圣火奴，可被古图光团咒文当场改写控制权，而非打死后掉落或预先掌握的收服技能"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 952,
+            "end": 984
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1338,
+            "end": 1353
+          },
+          {
+            "segment_id": "SEG-94EB722FA89C8131B189-002",
+            "start": 1420,
+            "end": 1431
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,495 @@
+{
+  "candidates": [
+    {
+      "summary": "毁灭火球失控将夷平内院,萧炎正要以鲜血手印拼命夺控、可能休养经年之际,两道毫无预兆的灰色身影浮现;其一瞥压下他体内暴动药力,随即撕裂空间将火球推进裂缝并修复空间,内院因此保住。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+          "start": 1582,
+          "end": 1600
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 13,
+          "end": 26
+        },
+        {
+          "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+          "start": 1371,
+          "end": 1448
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 423,
+          "end": 439
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-002",
+          "start": 313,
+          "end": 323
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-002",
+          "start": 1345,
+          "end": 1360
+        },
+        {
+          "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+          "start": 1303,
+          "end": 1325
+        },
+        {
+          "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+          "start": 1354,
+          "end": 1369
+        },
+        {
+          "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+          "start": 1466,
+          "end": 1480
+        },
+        {
+          "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+          "start": 1292,
+          "end": 1302
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 106,
+          "end": 122
+        },
+        {
+          "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+          "start": 1190,
+          "end": 1209
+        },
+        {
+          "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+          "start": 1059,
+          "end": 1092
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 197,
+          "end": 224
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 1023,
+          "end": 1065
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 1157,
+          "end": 1168
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 1422,
+          "end": 1449
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-002",
+          "start": 272,
+          "end": 299
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 160,
+          "end": 174
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 256,
+          "end": 290
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 752,
+          "end": 779
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 943,
+          "end": 984
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 530,
+          "end": 538
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 550,
+          "end": 577
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 58,
+          "end": 73
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 1085,
+          "end": 1101
+        },
+        {
+          "segment_id": "SEG-D0570912BEF5853B9083-001",
+          "start": 1401,
+          "end": 1421
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "两道灰色身影",
+          "苏千"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1582,
+            "end": 1600
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 13,
+            "end": 26
+          },
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1371,
+            "end": 1448
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 423,
+            "end": 439
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-002",
+            "start": 313,
+            "end": 323
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-002",
+            "start": 1345,
+            "end": 1360
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎吞下丹药喷血结印,试图再夺回失控火球",
+          "对突然出现的灰影厉声喝令离开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1303,
+            "end": 1325
+          },
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1354,
+            "end": 1369
+          },
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1466,
+            "end": 1480
+          },
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1292,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 106,
+            "end": 122
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "已失控、将夷平内院的毁灭火球",
+          "萧炎体内因强服药力而暴动的药力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1190,
+            "end": 1209
+          },
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1059,
+            "end": 1092
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 197,
+            "end": 224
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1023,
+            "end": 1065
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "火莲已脱控,火球爆发将使内院及周围百里不复存在",
+          "萧炎仍有夺回控制的办法,但代价可能是一年半载难以回复巅峰",
+          "他正变幻手印准备拼命"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1059,
+            "end": 1092
+          },
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1190,
+            "end": 1209
+          },
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1371,
+            "end": 1448
+          },
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1466,
+            "end": 1480
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "体内狂暴药力被远距一瞥压静",
+          "毁灭火球被推进空间裂缝,裂缝随即愈合",
+          "内院免于被火球夷平"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 197,
+            "end": 224
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1023,
+            "end": 1065
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1157,
+            "end": 1168
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1422,
+            "end": 1449
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-002",
+            "start": 272,
+            "end": 299
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "两道灰色人影毫无预兆浮现于火球旁",
+          "其一瞥即压制萧炎体内暴动药力",
+          "灰影结印撕裂空间,将火球推进裂缝并修复空间",
+          "苏千指认他们是非学院生死存亡绝不出手的守护者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 13,
+            "end": 26
+          },
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1582,
+            "end": 1600
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 160,
+            "end": 174
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 256,
+            "end": 290
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 752,
+            "end": 779
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 943,
+            "end": 984
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1023,
+            "end": 1065
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1157,
+            "end": 1168
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 530,
+            "end": 538
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 550,
+            "end": 577
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎变幻的手印一顿,骇然发现药力平静",
+          "火球被驱逐后天际高温骤降,他松了一大口气",
+          "苏千低呼这些老不死的总算肯出手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 58,
+            "end": 73
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 197,
+            "end": 224
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1085,
+            "end": 1101
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1401,
+            "end": 1421
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 423,
+            "end": 439
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "不必再以一年半载难回复巅峰的代价强行夺控火球",
+          "内院与学员因此保住"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1371,
+            "end": 1448
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-002",
+            "start": 272,
+            "end": 299
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1422,
+            "end": 1449
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "火球已被推进无尽空间裂缝且裂缝愈合",
+          "学院守护者以百老、千老之名现身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1023,
+            "end": 1065
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1157,
+            "end": 1168
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-002",
+            "start": 1345,
+            "end": 1360
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 530,
+            "end": 538
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "己方失控的毁灭技能将毁掉己方场地时,未被召唤的隐藏守护者才在生死线上出手",
+          "援助以远距一瞥镇压药力、把已脱控火球推进空间,而不是让施术者完成高代价回收"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 550,
+            "end": 577
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 13,
+            "end": 26
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 256,
+            "end": 290
+          },
+          {
+            "segment_id": "SEG-D0570912BEF5853B9083-001",
+            "start": 1023,
+            "end": 1065
+          },
+          {
+            "segment_id": "SEG-6FA4890EB20A4FE01ED1-002",
+            "start": 1371,
+            "end": 1448
+          }
+        ]
+      }
+    }
+  ]
+}

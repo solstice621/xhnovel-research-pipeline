@@ -1,0 +1,324 @@
+{
+  "candidates": [
+    {
+      "summary": "净莲妖圣与净莲妖火同归于尽后，薰儿指出岩浆海上的粉红脉络白莲；萧炎二人靠近时它不再攻击。确认残像已抹去其记忆灵智、留下纯净如婴儿的妖火本源，因空间通道消散无法离开，萧炎决定就地炼化。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1344,
+          "end": 1352
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1524,
+          "end": 1565
+        },
+        {
+          "segment_id": "SEG-3B86E95FC4597BD82099-001",
+          "start": 59,
+          "end": 95
+        },
+        {
+          "segment_id": "SEG-3B86E95FC4597BD82099-001",
+          "start": 202,
+          "end": 246
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1453,
+          "end": 1476
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1514,
+          "end": 1523
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1165,
+          "end": 1182
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 890,
+          "end": 907
+        },
+        {
+          "segment_id": "SEG-3B86E95FC4597BD82099-001",
+          "start": 729,
+          "end": 773
+        },
+        {
+          "segment_id": "SEG-3B86E95FC4597BD82099-001",
+          "start": 374,
+          "end": 409
+        },
+        {
+          "segment_id": "SEG-3B86E95FC4597BD82099-001",
+          "start": 137,
+          "end": 156
+        },
+        {
+          "segment_id": "SEG-3B86E95FC4597BD82099-001",
+          "start": 878,
+          "end": 902
+        },
+        {
+          "segment_id": "SEG-3B86E95FC4597BD82099-001",
+          "start": 627,
+          "end": 648
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1478,
+          "end": 1513
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "薰儿",
+          "净莲妖火本源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1344,
+            "end": 1352
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1524,
+            "end": 1565
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 59,
+            "end": 95
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 202,
+            "end": 246
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "循薰儿所指发现游动白莲，小心靠近停在数丈外"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1344,
+            "end": 1352
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1453,
+            "end": 1476
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 59,
+            "end": 95
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "岩浆海上留下的白色火焰莲花"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1453,
+            "end": 1476
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1514,
+            "end": 1523
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "净莲妖圣与净莲妖火已在爆炸中失去踪迹",
+          "空间通道消散，二人撕不开这片空间"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1165,
+            "end": 1182
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 890,
+            "end": 907
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 729,
+            "end": 773
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "暴戾妖火变成安静不攻击的婴儿般本源",
+          "争夺失败的局面转为可在封闭空间内炼化"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 202,
+            "end": 246
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 374,
+            "end": 409
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 137,
+            "end": 156
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 878,
+            "end": 902
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "火莲并不因二人靠近而发动攻击"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 137,
+            "end": 156
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎激动发抖并认出妖火本源",
+          "薰儿说净莲妖圣帮了他们一个大忙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1524,
+            "end": 1565
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1514,
+            "end": 1523
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 627,
+            "end": 648
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可在无法外出的妖火空间内尝试炼化这枚已无暴戾的本源，而不必带着它闯出中州"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 878,
+            "end": 902
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 729,
+            "end": 773
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 374,
+            "end": 409
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "纯净本源仍停在岩浆上，灵性仍在，只是被剥夺了不属于它的暴戾"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 374,
+            "end": 409
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 202,
+            "end": 246
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1453,
+            "end": 1476
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1478,
+            "end": 1513
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残像同归于尽不是把宝物销毁，而是当场把敌对神物改写成可接近的无暴戾本源，并因出口关闭把炼化场地锁在这片外人进不来的空间里"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 890,
+            "end": 907
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 374,
+            "end": 409
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 137,
+            "end": 156
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 878,
+            "end": 902
+          },
+          {
+            "segment_id": "SEG-3B86E95FC4597BD82099-001",
+            "start": 729,
+            "end": 773
+          }
+        ]
+      }
+    }
+  ]
+}

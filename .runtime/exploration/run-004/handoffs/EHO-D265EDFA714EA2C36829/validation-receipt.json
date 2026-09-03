@@ -1,0 +1,12 @@
+{
+  "build_request_artifact_id": "sha256:86c930c5b0e18b9db823c701c5819f90c2f1a3a3693e5e39996ce752c8277b70",
+  "expected_input_spec_hash": "sha256:9ff536b77c4fbe246955c110bc09c54710cf2b4ad68b558775de6bc3712326b4",
+  "handoff_artifact_id": "sha256:214b53a1b59c136c7638989c9bdb577e3b239fb290863b142610db6b0af9f493",
+  "handoff_hash": "sha256:a67dadca385cabb6abbafefb36611f7ec7a84b8454607069e95d3ba320a57e41",
+  "handoff_id": "EHO-D265EDFA714EA2C36829",
+  "novel_spec_raw_artifact_id": "sha256:67f32f009ec45b3b43ca53622dc5f61bc72e9c111a852f3899dd52345eda008f",
+  "receipt_kind": "PHASE0_HANDOFF_VALIDATION",
+  "schema_version": "0.2-draft",
+  "status": "PASS",
+  "validation_method": "DETERMINISTIC_REPLAY"
+}

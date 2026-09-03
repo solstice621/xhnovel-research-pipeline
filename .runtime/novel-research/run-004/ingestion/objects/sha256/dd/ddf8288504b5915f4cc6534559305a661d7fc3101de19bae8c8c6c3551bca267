@@ -1,0 +1,366 @@
+{
+  "candidates": [
+    {
+      "summary": "紫研用古龙之血在萧炎掌心种下龙印，并交给他一瓶可激活三千焱炎火体内旧印的血液，同时警告成功则他控制异火、失败则被异火控制。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 14,
+          "end": 88
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 385,
+          "end": 412
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 1,
+          "end": 10
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 133,
+          "end": 187
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 70,
+          "end": 87
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-001",
+          "start": 1028,
+          "end": 1047
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-001",
+          "start": 812,
+          "end": 828
+        },
+        {
+          "segment_id": "SEG-0F14A64DFACF0B3E92DE-002",
+          "start": 1215,
+          "end": 1253
+        },
+        {
+          "segment_id": "SEG-0F14A64DFACF0B3E92DE-002",
+          "start": 1280,
+          "end": 1291
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-001",
+          "start": 1481,
+          "end": 1499
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-001",
+          "start": 1521,
+          "end": 1531
+        },
+        {
+          "segment_id": "SEG-0F14A64DFACF0B3E92DE-002",
+          "start": 825,
+          "end": 838
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 721,
+          "end": 728
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 127,
+          "end": 130
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 90,
+          "end": 106
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 317,
+          "end": 350
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 206,
+          "end": 255
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 505,
+          "end": 522
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 531,
+          "end": 564
+        },
+        {
+          "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+          "start": 565,
+          "end": 608
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "紫研",
+          "萧炎",
+          "小医仙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 14,
+            "end": 88
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 385,
+            "end": 412
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "紫研在萧炎掌心种下龙印",
+          "把装有古龙之血的玉瓶交给萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 1,
+            "end": 10
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 14,
+            "end": 88
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 133,
+            "end": 187
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎的掌心",
+          "三千焱炎火体内的龙印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 1,
+            "end": 10
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 70,
+            "end": 87
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-001",
+            "start": 1028,
+            "end": 1047
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 133,
+            "end": 187
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "三千焱炎火是紫研一族豢养并被前辈留下龙印",
+          "萧炎答应每日炼制药材后依言伸出手掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-001",
+            "start": 812,
+            "end": 828
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-001",
+            "start": 1028,
+            "end": 1047
+          },
+          {
+            "segment_id": "SEG-0F14A64DFACF0B3E92DE-002",
+            "start": 1215,
+            "end": 1253
+          },
+          {
+            "segment_id": "SEG-0F14A64DFACF0B3E92DE-002",
+            "start": 1280,
+            "end": 1291
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-001",
+            "start": 1481,
+            "end": 1499
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-001",
+            "start": 1521,
+            "end": 1531
+          },
+          {
+            "segment_id": "SEG-0F14A64DFACF0B3E92DE-002",
+            "start": 825,
+            "end": 838
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "掌心被暗金血液凝成奇异符文并粘住",
+          "萧炎持有可涂在异火额头上的古龙之血"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 14,
+            "end": 88
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 133,
+            "end": 187
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 721,
+            "end": 728
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "紫研否认仅凭掌心龙印就能收服",
+          "紫研说明龙印相对性失败会被异火控制",
+          "小医仙指责不该拿如此严重的失败后果来试"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 127,
+            "end": 130
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 90,
+            "end": 106
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 317,
+            "end": 350
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 385,
+            "end": 412
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "暗金色血液在掌心流淌形成一个奇异符文"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 14,
+            "end": 88
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "进入星域后可将瓶中血液涂在三千焱炎火额头以激活其体内龙印",
+          "应等对方气力被耗后再用且不能轻易动用"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 133,
+            "end": 187
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 206,
+            "end": 255
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 505,
+            "end": 522
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "符文粘在萧炎掌心",
+          "玉瓶被收入纳戒",
+          "所种龙印取自沉睡长老因而比异火旧印更珍贵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 70,
+            "end": 87
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 721,
+            "end": 728
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 531,
+            "end": 564
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "相对性龙印把收服变成双向控制权争夺，失败则被异火控制",
+          "偷取的长老龙印级别高于异火体内旧印，成功率不对等"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 317,
+            "end": 350
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 531,
+            "end": 564
+          },
+          {
+            "segment_id": "SEG-442E5CCC9108A918DAC2-002",
+            "start": 565,
+            "end": 608
+          }
+        ]
+      }
+    }
+  ]
+}

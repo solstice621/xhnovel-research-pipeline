@@ -1,0 +1,2018 @@
+{
+  "Artifact": [
+    {
+      "artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "byte_length": 42,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "text/plain",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:0f2e1bbb30285813ea49a3d9f030f12725c9c8fe7d0fbf01252afd2b1204f487",
+      "byte_length": 612,
+      "created_at": "2026-09-03T01:03:26Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/vnd.xhnovel.model-attempt+json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:c5c571f292d803be13fc07e7dd6d47822f48d5fe88ae106c9ee4e39a74629118",
+      "byte_length": 359,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:06cf7b87136f93a6b76d053db0bf36fae570087f70e5247ae483a3001c1bad31",
+      "byte_length": 359,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:74c7239c19d740ad1af678ccf266fd815923a1bea1fd52ab02d802bdd3e1dc12",
+      "byte_length": 354,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:f154b88cf77bb840800e3807b837b1fd478049f25c432cf85712a19e28202461",
+      "byte_length": 1029,
+      "created_at": "2026-09-03T01:03:26Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/vnd.xhnovel.scene-scout-checkpoint+json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "byte_length": 264,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "text/plain",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "byte_length": 294,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "text/plain",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:f2df524e84b51bead360458f968db5343a8fbb195949959c8627a9f319a70188",
+      "byte_length": 359,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:a15577f43396c84dd625d2d4e485c171db7e2c37e7b905d86b0aec9a148d453b",
+      "byte_length": 2501,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:7296e0387f63b1c7c6aa8d195400f35f024fa19e8b4ca9dfdefa311d74eabe04",
+      "byte_length": 917,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "byte_length": 838,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "text/plain",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:22d46f5dd294dddc5ff2d7785034fcd96f4df2104c55074131c00a64381c581b",
+      "byte_length": 6424,
+      "created_at": "2026-09-03T01:03:26Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "byte_length": 231,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "text/plain",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:b1c441a7217f0a860ebbf1357dd67c31a6f71d305bf3c30ea9390d6537ea4d29",
+      "byte_length": 4747,
+      "created_at": "2026-09-03T01:03:05Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:bcf2ad80a4008470c49f11201af64c0c3461b718a117f7cf7dd710390a6fb6db",
+      "byte_length": 7943,
+      "created_at": "2026-09-03T01:03:26Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    }
+  ],
+  "CollectionSnapshot": [
+    {
+      "artifact_ids": [
+        "sha256:06cf7b87136f93a6b76d053db0bf36fae570087f70e5247ae483a3001c1bad31",
+        "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+        "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+        "sha256:7296e0387f63b1c7c6aa8d195400f35f024fa19e8b4ca9dfdefa311d74eabe04",
+        "sha256:74c7239c19d740ad1af678ccf266fd815923a1bea1fd52ab02d802bdd3e1dc12",
+        "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+        "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+        "sha256:a15577f43396c84dd625d2d4e485c171db7e2c37e7b905d86b0aec9a148d453b",
+        "sha256:b1c441a7217f0a860ebbf1357dd67c31a6f71d305bf3c30ea9390d6537ea4d29",
+        "sha256:c5c571f292d803be13fc07e7dd6d47822f48d5fe88ae106c9ee4e39a74629118",
+        "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+        "sha256:f2df524e84b51bead360458f968db5343a8fbb195949959c8627a9f319a70188"
+      ],
+      "frozen_at": "2026-09-03T01:03:05Z",
+      "ingestion_run_id": "NING-FDFEA19D694497775043",
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "retrieval_ids": [
+        "RET-94E914E52E09349F8052",
+        "RET-BBBE95FC80BAD155C56A",
+        "RET-E7C831F7274FB2155233"
+      ],
+      "schema_version": "0.2-draft",
+      "snapshot_hash": "sha256:bc9d34ad3076ce78bd892e1b0a7f7da261b616fdcba133bfa6b2b1d7e1c565c8",
+      "snapshot_id": "SNP-641B92CBAB6EB7073C7C",
+      "status": "FROZEN",
+      "supersedes": null,
+      "triage_assessment_ids": [
+        "TRI-040A7F780671B7F74D63",
+        "TRI-0BF7CE0A65DC9B7C2944",
+        "TRI-B0F906C72ACE67A7BA63"
+      ]
+    }
+  ],
+  "EvidenceBundle": [
+    {
+      "artifact_ids": [
+        "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+        "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+        "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864"
+      ],
+      "bundle_hash": "sha256:5872387fbbac1b6d53635b2d95d8b61e27851b6c1670f76b4738e13861f85d21",
+      "bundle_id": "BND-58ECE3B437B046DCC523",
+      "collection_snapshot_ids": [
+        "SNP-641B92CBAB6EB7073C7C"
+      ],
+      "document_ids": [
+        "DOC-4C8CA6CA2F23282047AD",
+        "DOC-8098B1124BB403AE80B9",
+        "DOC-3E8DBB0B7BF3829B4ADE"
+      ],
+      "frozen_at": "2026-09-03T01:03:05Z",
+      "policy_bundle_hash": "sha256:44f9fd2adf1351c5e1eb3abd0bde654a1ff6f5818502b66bf1168fdb44e40d48",
+      "profile_id": "xuanhuan-gameplay-scene/v1",
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "retrieval_ids": [
+        "RET-E7C831F7274FB2155233",
+        "RET-BBBE95FC80BAD155C56A",
+        "RET-94E914E52E09349F8052"
+      ],
+      "schema_version": "0.2-draft",
+      "segment_ids": [
+        "SEG-4C8CA6CA2F23282047AD-000",
+        "SEG-4C8CA6CA2F23282047AD-001",
+        "SEG-8098B1124BB403AE80B9-000",
+        "SEG-8098B1124BB403AE80B9-001",
+        "SEG-3E8DBB0B7BF3829B4ADE-000",
+        "SEG-3E8DBB0B7BF3829B4ADE-001"
+      ],
+      "selection_manifest": {
+        "duplicate_chapter_ids": [],
+        "ignored_chapter_ids": [
+          "CHP-46D04A8E85F178ABCD5E"
+        ],
+        "selected_chapter_ids": [
+          "CHP-BD0322DC6B43D26035E4",
+          "CHP-C7352CF244AEDB301365",
+          "CHP-FD437BDBB5BEF07B0BB6"
+        ]
+      },
+      "status": "FROZEN",
+      "supersedes": null,
+      "triage_assessment_ids": [
+        "TRI-0BF7CE0A65DC9B7C2944",
+        "TRI-B0F906C72ACE67A7BA63",
+        "TRI-040A7F780671B7F74D63"
+      ]
+    }
+  ],
+  "EvidenceExport": [
+    {
+      "artifact_manifest": [
+        {
+          "artifact_id": "sha256:06cf7b87136f93a6b76d053db0bf36fae570087f70e5247ae483a3001c1bad31",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 359,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 231,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:0f2e1bbb30285813ea49a3d9f030f12725c9c8fe7d0fbf01252afd2b1204f487",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 612,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:22d46f5dd294dddc5ff2d7785034fcd96f4df2104c55074131c00a64381c581b",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 6424,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 294,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:7296e0387f63b1c7c6aa8d195400f35f024fa19e8b4ca9dfdefa311d74eabe04",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 917,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:74c7239c19d740ad1af678ccf266fd815923a1bea1fd52ab02d802bdd3e1dc12",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 354,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 838,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 264,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:a15577f43396c84dd625d2d4e485c171db7e2c37e7b905d86b0aec9a148d453b",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 2501,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:b1c441a7217f0a860ebbf1357dd67c31a6f71d305bf3c30ea9390d6537ea4d29",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 4747,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:bcf2ad80a4008470c49f11201af64c0c3461b718a117f7cf7dd710390a6fb6db",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 7943,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:c5c571f292d803be13fc07e7dd6d47822f48d5fe88ae106c9ee4e39a74629118",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 359,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 42,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:f154b88cf77bb840800e3807b837b1fd478049f25c432cf85712a19e28202461",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 1029,
+          "durability_status": "LOCAL"
+        },
+        {
+          "artifact_id": "sha256:f2df524e84b51bead360458f968db5343a8fbb195949959c8627a9f319a70188",
+          "availability": "WITHHELD_BY_RIGHTS",
+          "byte_length": 359,
+          "durability_status": "LOCAL"
+        }
+      ],
+      "assurance": {
+        "auditability": "DEGRADED",
+        "level": "UNQUALIFIED"
+      },
+      "bundle": {
+        "bundle_hash": "sha256:5872387fbbac1b6d53635b2d95d8b61e27851b6c1670f76b4738e13861f85d21",
+        "bundle_id": "BND-58ECE3B437B046DCC523"
+      },
+      "created_at": "2026-09-03T01:03:05Z",
+      "export_hash": "sha256:395f869dfa4f02479f8b089de81af524b63029465b910d8c51e1b71daf87100f",
+      "export_id": "EXP-C2D3513BE24AC0692067",
+      "origin_request": {
+        "budget": {
+          "max_bytes": 500000000,
+          "max_fetches": 100000,
+          "max_queries": 1
+        },
+        "created_at": "2026-09-03T01:03:05Z",
+        "discovery_brief": "寻找对象的持有、所有、使用许可或约束状态发生变化，并影响角色后续可执行行动的场景。",
+        "extraction_profile": "xuanhuan-gameplay-scene/v1",
+        "mode": "EXPLORE",
+        "origin": {
+          "commit": "a87fd6b45f98ef8259358aed758af4c8fc01a3153b2e36e6b24590fbca4defb2",
+          "repository": "local-novel-input"
+        },
+        "request_id": "REQ-3816CE90B35DB461AFBF",
+        "schema_version": "0.2-draft",
+        "search_constraints": {
+          "direct_novel_ingestion": true,
+          "input_kind": "txt",
+          "language": "zh"
+        },
+        "supersedes": null
+      },
+      "policies": {
+        "policy_bundle_hash": "sha256:44f9fd2adf1351c5e1eb3abd0bde654a1ff6f5818502b66bf1168fdb44e40d48"
+      },
+      "producer": {
+        "parser_build_id": "parser-set-286f8e9d6996629c6ad2",
+        "repository_commit": "956173039a0434e41892937d95737b1b2a976764",
+        "scene_scout_build_id": "BLD-CE01F02427A0482AE37A",
+        "source_classifier_build_id": "source-classifier-set-4c6923495d881b6fadcb"
+      },
+      "revocation": null,
+      "scene_candidates": [
+        {
+          "action": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 56,
+                "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+                "start": 16
+              }
+            ],
+            "values": [
+              "交付携带"
+            ]
+          },
+          "actors": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 56,
+                "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+                "start": 16
+              }
+            ],
+            "values": [
+              "林舟",
+              "苏澜"
+            ]
+          },
+          "adjudication_status": "NOT_REQUIRED",
+          "bundle_id": "BND-58ECE3B437B046DCC523",
+          "external_response": {
+            "status": "UNKNOWN",
+            "support_spans": [],
+            "values": []
+          },
+          "immediate_feedback": {
+            "status": "UNKNOWN",
+            "support_spans": [],
+            "values": []
+          },
+          "mechanic_pressure_point": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 56,
+                "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+                "start": 16
+              }
+            ],
+            "values": [
+              "物理持有与所有权、使用权分离"
+            ]
+          },
+          "new_affordances": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 56,
+                "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+                "start": 16
+              }
+            ],
+            "values": [
+              "苏澜可携带令牌但不可催动"
+            ]
+          },
+          "persistence": {
+            "status": "UNKNOWN",
+            "support_spans": [],
+            "values": []
+          },
+          "precondition": {
+            "status": "UNKNOWN",
+            "support_spans": [],
+            "values": []
+          },
+          "request_id": "REQ-3816CE90B35DB461AFBF",
+          "scene_candidate_id": "SCN-8B221D4D09A0529E5237",
+          "scene_merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+          "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+          "schema_version": "0.2-draft",
+          "source_order": {
+            "chapter_id": "CHP-BD0322DC6B43D26035E4",
+            "chapter_ordinal": 2,
+            "document_id": "DOC-4C8CA6CA2F23282047AD",
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "segment_ordinal": 1,
+            "start": 16
+          },
+          "source_spans": [
+            {
+              "end": 56,
+              "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+              "start": 16
+            }
+          ],
+          "state_transition": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 56,
+                "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+                "start": 16
+              }
+            ],
+            "values": [
+              "苏澜取得物理持有，所有权和使用权未转移"
+            ]
+          },
+          "status": "DRAFT",
+          "summary": "苏澜取得青铜令的物理持有，但所有权和使用权没有转移",
+          "target": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 56,
+                "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+                "start": 16
+              }
+            ],
+            "values": [
+              "青铜令"
+            ]
+          },
+          "verification": "UNVERIFIED",
+          "window_ids": [
+            "SWIN-FE5228AB30A96EAB2E5A"
+          ]
+        },
+        {
+          "action": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 62,
+                "segment_id": "SEG-8098B1124BB403AE80B9-001",
+                "start": 24
+              }
+            ],
+            "values": [
+              "解除第一重禁制并授权开启山门"
+            ]
+          },
+          "actors": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 62,
+                "segment_id": "SEG-8098B1124BB403AE80B9-001",
+                "start": 24
+              }
+            ],
+            "values": [
+              "苏澜",
+              "长老"
+            ]
+          },
+          "adjudication_status": "NOT_REQUIRED",
+          "bundle_id": "BND-58ECE3B437B046DCC523",
+          "external_response": {
+            "status": "UNKNOWN",
+            "support_spans": [],
+            "values": []
+          },
+          "immediate_feedback": {
+            "status": "UNKNOWN",
+            "support_spans": [],
+            "values": []
+          },
+          "mechanic_pressure_point": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 62,
+                "segment_id": "SEG-8098B1124BB403AE80B9-001",
+                "start": 24
+              }
+            ],
+            "values": [
+              "部分授权与所有权分离"
+            ]
+          },
+          "new_affordances": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 62,
+                "segment_id": "SEG-8098B1124BB403AE80B9-001",
+                "start": 24
+              }
+            ],
+            "values": [
+              "苏澜可以开启山门"
+            ]
+          },
+          "persistence": {
+            "status": "UNKNOWN",
+            "support_spans": [],
+            "values": []
+          },
+          "precondition": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 62,
+                "segment_id": "SEG-8098B1124BB403AE80B9-001",
+                "start": 24
+              }
+            ],
+            "values": [
+              "苏澜守约"
+            ]
+          },
+          "request_id": "REQ-3816CE90B35DB461AFBF",
+          "scene_candidate_id": "SCN-838DE556B9E060C16102",
+          "scene_merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+          "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+          "schema_version": "0.2-draft",
+          "source_order": {
+            "chapter_id": "CHP-C7352CF244AEDB301365",
+            "chapter_ordinal": 3,
+            "document_id": "DOC-8098B1124BB403AE80B9",
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "segment_ordinal": 1,
+            "start": 24
+          },
+          "source_spans": [
+            {
+              "end": 62,
+              "segment_id": "SEG-8098B1124BB403AE80B9-001",
+              "start": 24
+            }
+          ],
+          "state_transition": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 62,
+                "segment_id": "SEG-8098B1124BB403AE80B9-001",
+                "start": 24
+              }
+            ],
+            "values": [
+              "苏澜获得有限使用权，所有权仍未转移"
+            ]
+          },
+          "status": "DRAFT",
+          "summary": "长老解除部分禁制并授予有限使用权，但未转移令牌所有权",
+          "target": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 62,
+                "segment_id": "SEG-8098B1124BB403AE80B9-001",
+                "start": 24
+              }
+            ],
+            "values": [
+              "青铜令"
+            ]
+          },
+          "verification": "UNVERIFIED",
+          "window_ids": [
+            "SWIN-FE5228AB30A96EAB2E5A"
+          ]
+        },
+        {
+          "action": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 92,
+                "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+                "start": 17
+              }
+            ],
+            "values": [
+              "暂交阵钥并施加誓印"
+            ]
+          },
+          "actors": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 92,
+                "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+                "start": 17
+              }
+            ],
+            "values": [
+              "林舟",
+              "谷主"
+            ]
+          },
+          "adjudication_status": "NOT_REQUIRED",
+          "bundle_id": "BND-58ECE3B437B046DCC523",
+          "external_response": {
+            "status": "UNKNOWN",
+            "support_spans": [],
+            "values": []
+          },
+          "immediate_feedback": {
+            "status": "UNKNOWN",
+            "support_spans": [],
+            "values": []
+          },
+          "mechanic_pressure_point": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 92,
+                "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+                "start": 17
+              }
+            ],
+            "values": [
+              "对象能力与角色移动约束并存"
+            ]
+          },
+          "new_affordances": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 92,
+                "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+                "start": 17
+              }
+            ],
+            "values": [
+              "林舟可以开启库门但不能越过谷界"
+            ]
+          },
+          "persistence": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 92,
+                "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+                "start": 17
+              }
+            ],
+            "values": [
+              "任务结束前持续"
+            ]
+          },
+          "precondition": {
+            "status": "UNKNOWN",
+            "support_spans": [],
+            "values": []
+          },
+          "request_id": "REQ-3816CE90B35DB461AFBF",
+          "scene_candidate_id": "SCN-23DB402B9891C9D06FB2",
+          "scene_merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+          "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+          "schema_version": "0.2-draft",
+          "source_order": {
+            "chapter_id": "CHP-FD437BDBB5BEF07B0BB6",
+            "chapter_ordinal": 4,
+            "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "segment_ordinal": 1,
+            "start": 17
+          },
+          "source_spans": [
+            {
+              "end": 92,
+              "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+              "start": 17
+            }
+          ],
+          "state_transition": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 92,
+                "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+                "start": 17
+              }
+            ],
+            "values": [
+              "林舟获得开库能力并受到离谷禁制"
+            ]
+          },
+          "status": "DRAFT",
+          "summary": "林舟保管阵钥并获得开库能力，同时受誓印限制不能离谷",
+          "target": {
+            "status": "KNOWN",
+            "support_spans": [
+              {
+                "end": 92,
+                "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+                "start": 17
+              }
+            ],
+            "values": [
+              "阵钥"
+            ]
+          },
+          "verification": "UNVERIFIED",
+          "window_ids": [
+            "SWIN-FE5228AB30A96EAB2E5A"
+          ]
+        }
+      ],
+      "scene_discovery": {
+        "candidate_count": 3,
+        "merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+        "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+        "window_count": 1
+      },
+      "schema_version": "0.2-draft"
+    }
+  ],
+  "ExtractorBuild": [
+    {
+      "created_at": "2026-09-03T01:03:05Z",
+      "executor_build_id": "agent-files-v1",
+      "extractor_build_id": "BLD-CE01F02427A0482AE37A",
+      "model": "host-code-agent",
+      "parameters": {
+        "endpoint": "agent-files",
+        "executor_kind": "AGENT_FILES",
+        "max_attempts": 1,
+        "max_input_chars": 20000,
+        "max_request_bytes": 2000000,
+        "max_workers": 8,
+        "output_schema_hash": "sha256:8cbe2ac69855e5f5f4bf28f0a67d5d8792fee995d2c13166a9607ec2f3a5170c",
+        "overlap_chars": 1800,
+        "response_format": "RAW_JSON",
+        "structured_output": true,
+        "timeout_seconds": "0",
+        "window_chars": 10000
+      },
+      "profile_version": "xuanhuan-gameplay-scene/v1",
+      "prompt_template_hash": "sha256:f64381e8e9cfdc3a3ddbbbc613cdb4b9fc2fb40767c3713e75cc81b82b4d38f9",
+      "repository_commit": "956173039a0434e41892937d95737b1b2a976764",
+      "schema_version": "0.2-draft",
+      "source_tree_hash": "sha256:f81a368ab1780e767a8560af9e5c3b04dfcbadce383d9d5a89e9d72ce80a6ff8",
+      "status": "UNQUALIFIED",
+      "tool_policy_hash": "sha256:fe2f3b4ef49492d81cb350fb689bf9f9dff6cfd1817d72d6ff9fe3350e3d5e6a"
+    }
+  ],
+  "ModelAttempt": [
+    {
+      "attempt_id": "MAT-FC27385A09BCB581BB94",
+      "attempt_ordinal": 1,
+      "error_code": null,
+      "error_message": null,
+      "http_status": null,
+      "operation": "SCENE_SCOUT",
+      "provider_response_id": null,
+      "recorded_at": "2026-09-03T01:03:26Z",
+      "request_artifact_id": "sha256:22d46f5dd294dddc5ff2d7785034fcd96f4df2104c55074131c00a64381c581b",
+      "response_artifact_id": "sha256:bcf2ad80a4008470c49f11201af64c0c3461b718a117f7cf7dd710390a6fb6db",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "status": "SUCCEEDED",
+      "subject_id": "SWIN-FE5228AB30A96EAB2E5A",
+      "usage": {
+        "estimated_cost_microusd": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+      }
+    }
+  ],
+  "NovelChapter": [
+    {
+      "artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "chapter_id": "CHP-BD0322DC6B43D26035E4",
+      "chapter_key": "chapter-000002-第一章-托令",
+      "chapter_kind": "MAIN",
+      "declared_number": 1,
+      "document_id": "DOC-4C8CA6CA2F23282047AD",
+      "duplicate_of": null,
+      "identity_confidence": "HIGH",
+      "media_type": "text/plain",
+      "normalized_content_hash": "sha256:8864377022becd8d62d6043c97bca082b7f9ae58fb885287712b055beda74ad2",
+      "ordinal": 2,
+      "retrieval_id": "RET-E7C831F7274FB2155233",
+      "schema_version": "0.2-draft",
+      "segment_ids": [
+        "SEG-4C8CA6CA2F23282047AD-000",
+        "SEG-4C8CA6CA2F23282047AD-001"
+      ],
+      "source_id": "SRC-445A2E0B1A7F23269770",
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+      "status": "READY",
+      "title": "第一章 托令",
+      "work_id": "NWK-17867764479A87681854"
+    },
+    {
+      "artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "chapter_id": "CHP-C7352CF244AEDB301365",
+      "chapter_key": "chapter-000003-第二章-解禁",
+      "chapter_kind": "MAIN",
+      "declared_number": 2,
+      "document_id": "DOC-8098B1124BB403AE80B9",
+      "duplicate_of": null,
+      "identity_confidence": "HIGH",
+      "media_type": "text/plain",
+      "normalized_content_hash": "sha256:e91fd0063b2dc53afe22569283266bd094fdae6c687389f1b3023573abd1a4ed",
+      "ordinal": 3,
+      "retrieval_id": "RET-BBBE95FC80BAD155C56A",
+      "schema_version": "0.2-draft",
+      "segment_ids": [
+        "SEG-8098B1124BB403AE80B9-000",
+        "SEG-8098B1124BB403AE80B9-001"
+      ],
+      "source_id": "SRC-A6019B30A7B934DB6A1B",
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+      "status": "READY",
+      "title": "第二章 解禁",
+      "work_id": "NWK-17867764479A87681854"
+    },
+    {
+      "artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "chapter_id": "CHP-46D04A8E85F178ABCD5E",
+      "chapter_key": "chapter-000001-前置内容",
+      "chapter_kind": "FRONTMATTER",
+      "declared_number": null,
+      "document_id": "DOC-5299EAF60EE147CAD058",
+      "duplicate_of": null,
+      "identity_confidence": "UNKNOWN",
+      "media_type": "text/plain",
+      "normalized_content_hash": "sha256:78eb6fb750e9aa08010f5aa4056f9d43b535e90b71f01a3a26dcd3391b30db1b",
+      "ordinal": 1,
+      "retrieval_id": "RET-7C3E2216968F73DBACE1",
+      "schema_version": "0.2-draft",
+      "segment_ids": [
+        "SEG-5299EAF60EE147CAD058-000",
+        "SEG-5299EAF60EE147CAD058-001"
+      ],
+      "source_id": "SRC-9DD5102CD450DF86B1A5",
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+      "status": "IGNORED",
+      "title": "前置内容",
+      "work_id": "NWK-17867764479A87681854"
+    },
+    {
+      "artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "chapter_id": "CHP-FD437BDBB5BEF07B0BB6",
+      "chapter_key": "chapter-000004-第三章-誓印",
+      "chapter_kind": "MAIN",
+      "declared_number": 3,
+      "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+      "duplicate_of": null,
+      "identity_confidence": "HIGH",
+      "media_type": "text/plain",
+      "normalized_content_hash": "sha256:398563b358329412d951b9ad500d3a691bb7a46ceaee84c085993e7908fab58b",
+      "ordinal": 4,
+      "retrieval_id": "RET-94E914E52E09349F8052",
+      "schema_version": "0.2-draft",
+      "segment_ids": [
+        "SEG-3E8DBB0B7BF3829B4ADE-000",
+        "SEG-3E8DBB0B7BF3829B4ADE-001"
+      ],
+      "source_id": "SRC-C8847EE9397B8944302D",
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+      "status": "READY",
+      "title": "第三章 誓印",
+      "work_id": "NWK-17867764479A87681854"
+    }
+  ],
+  "NovelIngestionRun": [
+    {
+      "adapter_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "chapter_ids": [
+        "CHP-46D04A8E85F178ABCD5E",
+        "CHP-BD0322DC6B43D26035E4",
+        "CHP-C7352CF244AEDB301365",
+        "CHP-FD437BDBB5BEF07B0BB6"
+      ],
+      "checkpoint_artifact_id": "sha256:b1c441a7217f0a860ebbf1357dd67c31a6f71d305bf3c30ea9390d6537ea4d29",
+      "checkpoint_hash": "sha256:c18cc1781df2d2ebb77afb389625323b0366e6dfcd30926e22a87c60b6ca2077",
+      "duplicate_chapter_ids": [],
+      "finished_at": "2026-09-03T01:03:05Z",
+      "ignored_chapter_ids": [
+        "CHP-46D04A8E85F178ABCD5E"
+      ],
+      "ingestion_run_id": "NING-FDFEA19D694497775043",
+      "input_spec_artifact_id": "sha256:7296e0387f63b1c7c6aa8d195400f35f024fa19e8b4ca9dfdefa311d74eabe04",
+      "input_spec_hash": "sha256:a87fd6b45f98ef8259358aed758af4c8fc01a3153b2e36e6b24590fbca4defb2",
+      "order_validation": {
+        "duplicate_chapter_ids": [],
+        "missing_declared_numbers": [],
+        "out_of_order_chapter_ids": [],
+        "status": "PASS"
+      },
+      "provenance_artifact_ids": [
+        "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39"
+      ],
+      "ready_chapter_ids": [
+        "CHP-BD0322DC6B43D26035E4",
+        "CHP-C7352CF244AEDB301365",
+        "CHP-FD437BDBB5BEF07B0BB6"
+      ],
+      "resumed_from_checkpoint": false,
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "started_at": "2026-09-03T01:03:05Z",
+      "status": "SUCCEEDED",
+      "strict_order": false,
+      "work_id": "NWK-17867764479A87681854"
+    }
+  ],
+  "NovelWork": [
+    {
+      "adapter_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "author": "xhnovel 测试组",
+      "created_at": "2026-09-03T01:03:05Z",
+      "language": "zh",
+      "schema_version": "0.2-draft",
+      "source_artifact_ids": [
+        "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39"
+      ],
+      "source_kind": "TXT",
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt",
+      "title": "青岚令",
+      "work_id": "NWK-17867764479A87681854"
+    }
+  ],
+  "ParseRun": [
+    {
+      "input_artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "output_document_id": "DOC-4C8CA6CA2F23282047AD",
+      "output_hash": "sha256:ee2f6dbc8bb7becd3cea229b042871de530ffd1df91aa1454d43bf085796f895",
+      "parameters": {
+        "media_type": "text/plain"
+      },
+      "parse_run_id": "PRUN-2CAA949B9AA7C832EC10",
+      "parser_build_id": "parser-text-v0.2",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "status": "SUCCEEDED",
+      "supersedes": null
+    },
+    {
+      "input_artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "output_document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+      "output_hash": "sha256:5902c0b49734fe37846d9a06c30dceadcd9099543dcb2660def0b8de9c814878",
+      "parameters": {
+        "media_type": "text/plain"
+      },
+      "parse_run_id": "PRUN-264BD39FA1E4A17992CA",
+      "parser_build_id": "parser-text-v0.2",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "status": "SUCCEEDED",
+      "supersedes": null
+    },
+    {
+      "input_artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "output_document_id": "DOC-5299EAF60EE147CAD058",
+      "output_hash": "sha256:58c545e55131ee526b119e272afb997a7e6bb1862c3de036ef44e62361b4f3ba",
+      "parameters": {
+        "media_type": "text/plain"
+      },
+      "parse_run_id": "PRUN-B345E2E86AF1CFFBF67E",
+      "parser_build_id": "parser-text-v0.2",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "status": "SUCCEEDED",
+      "supersedes": null
+    },
+    {
+      "input_artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "output_document_id": "DOC-8098B1124BB403AE80B9",
+      "output_hash": "sha256:a66759aa33b8e75d6f17f168cac9c482f092edeadc33ab36ea000866d4fc767d",
+      "parameters": {
+        "media_type": "text/plain"
+      },
+      "parse_run_id": "PRUN-571C14C939361C65A568",
+      "parser_build_id": "parser-text-v0.2",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "status": "SUCCEEDED",
+      "supersedes": null
+    }
+  ],
+  "ParsedDocument": [
+    {
+      "document_id": "DOC-4C8CA6CA2F23282047AD",
+      "input_artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "language": "zh",
+      "parser_build_id": "parser-text-v0.2",
+      "schema_version": "0.2-draft",
+      "structure_hash": "sha256:92cc2ffcc2073dffc2cd3cce1d41171355a87775ebbb8fdeb6da7969f4a7aa33",
+      "title": "第一章 托令"
+    },
+    {
+      "document_id": "DOC-8098B1124BB403AE80B9",
+      "input_artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "language": "zh",
+      "parser_build_id": "parser-text-v0.2",
+      "schema_version": "0.2-draft",
+      "structure_hash": "sha256:47db0b36454260fe96c2ae843b7fc4ade53486d691af8b2085963621580a28b1",
+      "title": "第二章 解禁"
+    },
+    {
+      "document_id": "DOC-5299EAF60EE147CAD058",
+      "input_artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "language": "zh",
+      "parser_build_id": "parser-text-v0.2",
+      "schema_version": "0.2-draft",
+      "structure_hash": "sha256:539856813fac510a2bbeea38fc5cc94e81101f7672305944cff1a042f1540f06",
+      "title": "《青岚令》"
+    },
+    {
+      "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+      "input_artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "language": "zh",
+      "parser_build_id": "parser-text-v0.2",
+      "schema_version": "0.2-draft",
+      "structure_hash": "sha256:7eaf89a3494ccd3fa48ba9a929d770d5550cd52e5bcc5ba76e4d0bd5d22e57b9",
+      "title": "第三章 誓印"
+    }
+  ],
+  "ResearchRequest": [
+    {
+      "budget": {
+        "max_bytes": 500000000,
+        "max_fetches": 100000,
+        "max_queries": 1
+      },
+      "created_at": "2026-09-03T01:03:05Z",
+      "discovery_brief": "寻找对象的持有、所有、使用许可或约束状态发生变化，并影响角色后续可执行行动的场景。",
+      "extraction_profile": "xuanhuan-gameplay-scene/v1",
+      "mode": "EXPLORE",
+      "origin": {
+        "commit": "a87fd6b45f98ef8259358aed758af4c8fc01a3153b2e36e6b24590fbca4defb2",
+        "repository": "local-novel-input"
+      },
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "schema_version": "0.2-draft",
+      "search_constraints": {
+        "direct_novel_ingestion": true,
+        "input_kind": "txt",
+        "language": "zh"
+      },
+      "supersedes": null
+    }
+  ],
+  "Retrieval": [
+    {
+      "access_kind": "full_text_chapter",
+      "content_type": "text/plain",
+      "fetcher_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "final_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+      "http_status": null,
+      "requested_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+      "retrieval_id": "RET-7C3E2216968F73DBACE1",
+      "retrieved_at": "2026-09-03T01:03:05Z",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-9DD5102CD450DF86B1A5",
+      "status": "FETCHED"
+    },
+    {
+      "access_kind": "full_text_chapter",
+      "content_type": "text/plain",
+      "fetcher_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "final_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+      "http_status": null,
+      "requested_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+      "retrieval_id": "RET-BBBE95FC80BAD155C56A",
+      "retrieved_at": "2026-09-03T01:03:05Z",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-A6019B30A7B934DB6A1B",
+      "status": "FETCHED",
+      "triage_assessment_id": "TRI-B0F906C72ACE67A7BA63"
+    },
+    {
+      "access_kind": "full_text_chapter",
+      "content_type": "text/plain",
+      "fetcher_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "final_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+      "http_status": null,
+      "requested_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+      "retrieval_id": "RET-E7C831F7274FB2155233",
+      "retrieved_at": "2026-09-03T01:03:05Z",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-445A2E0B1A7F23269770",
+      "status": "FETCHED",
+      "triage_assessment_id": "TRI-0BF7CE0A65DC9B7C2944"
+    },
+    {
+      "access_kind": "full_text_chapter",
+      "content_type": "text/plain",
+      "fetcher_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "final_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+      "http_status": null,
+      "requested_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+      "retrieval_id": "RET-94E914E52E09349F8052",
+      "retrieved_at": "2026-09-03T01:03:05Z",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-C8847EE9397B8944302D",
+      "status": "FETCHED",
+      "triage_assessment_id": "TRI-040A7F780671B7F74D63"
+    }
+  ],
+  "RetrievalArtifact": [
+    {
+      "artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retrieval_id": "RET-7C3E2216968F73DBACE1",
+      "role": "RAW_RESPONSE",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retrieval_id": "RET-E7C831F7274FB2155233",
+      "role": "RAW_RESPONSE",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retrieval_id": "RET-BBBE95FC80BAD155C56A",
+      "role": "RAW_RESPONSE",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retrieval_id": "RET-94E914E52E09349F8052",
+      "role": "RAW_RESPONSE",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    }
+  ],
+  "SceneCandidate": [
+    {
+      "action": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "交付携带"
+        ]
+      },
+      "actors": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "林舟",
+          "苏澜"
+        ]
+      },
+      "adjudication_status": "NOT_REQUIRED",
+      "bundle_id": "BND-58ECE3B437B046DCC523",
+      "external_response": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "immediate_feedback": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "物理持有与所有权、使用权分离"
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "苏澜可携带令牌但不可催动"
+        ]
+      },
+      "persistence": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "precondition": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "scene_candidate_id": "SCN-8B221D4D09A0529E5237",
+      "scene_merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+      "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+      "schema_version": "0.2-draft",
+      "source_order": {
+        "chapter_id": "CHP-BD0322DC6B43D26035E4",
+        "chapter_ordinal": 2,
+        "document_id": "DOC-4C8CA6CA2F23282047AD",
+        "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+        "segment_ordinal": 1,
+        "start": 16
+      },
+      "source_spans": [
+        {
+          "end": 56,
+          "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+          "start": 16
+        }
+      ],
+      "state_transition": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "苏澜取得物理持有，所有权和使用权未转移"
+        ]
+      },
+      "status": "DRAFT",
+      "summary": "苏澜取得青铜令的物理持有，但所有权和使用权没有转移",
+      "target": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 56,
+            "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+            "start": 16
+          }
+        ],
+        "values": [
+          "青铜令"
+        ]
+      },
+      "verification": "UNVERIFIED",
+      "window_ids": [
+        "SWIN-FE5228AB30A96EAB2E5A"
+      ]
+    },
+    {
+      "action": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "解除第一重禁制并授权开启山门"
+        ]
+      },
+      "actors": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "苏澜",
+          "长老"
+        ]
+      },
+      "adjudication_status": "NOT_REQUIRED",
+      "bundle_id": "BND-58ECE3B437B046DCC523",
+      "external_response": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "immediate_feedback": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "部分授权与所有权分离"
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "苏澜可以开启山门"
+        ]
+      },
+      "persistence": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "苏澜守约"
+        ]
+      },
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "scene_candidate_id": "SCN-838DE556B9E060C16102",
+      "scene_merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+      "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+      "schema_version": "0.2-draft",
+      "source_order": {
+        "chapter_id": "CHP-C7352CF244AEDB301365",
+        "chapter_ordinal": 3,
+        "document_id": "DOC-8098B1124BB403AE80B9",
+        "segment_id": "SEG-8098B1124BB403AE80B9-001",
+        "segment_ordinal": 1,
+        "start": 24
+      },
+      "source_spans": [
+        {
+          "end": 62,
+          "segment_id": "SEG-8098B1124BB403AE80B9-001",
+          "start": 24
+        }
+      ],
+      "state_transition": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "苏澜获得有限使用权，所有权仍未转移"
+        ]
+      },
+      "status": "DRAFT",
+      "summary": "长老解除部分禁制并授予有限使用权，但未转移令牌所有权",
+      "target": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 62,
+            "segment_id": "SEG-8098B1124BB403AE80B9-001",
+            "start": 24
+          }
+        ],
+        "values": [
+          "青铜令"
+        ]
+      },
+      "verification": "UNVERIFIED",
+      "window_ids": [
+        "SWIN-FE5228AB30A96EAB2E5A"
+      ]
+    },
+    {
+      "action": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "暂交阵钥并施加誓印"
+        ]
+      },
+      "actors": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "林舟",
+          "谷主"
+        ]
+      },
+      "adjudication_status": "NOT_REQUIRED",
+      "bundle_id": "BND-58ECE3B437B046DCC523",
+      "external_response": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "immediate_feedback": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "对象能力与角色移动约束并存"
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "林舟可以开启库门但不能越过谷界"
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "任务结束前持续"
+        ]
+      },
+      "precondition": {
+        "status": "UNKNOWN",
+        "support_spans": [],
+        "values": []
+      },
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "scene_candidate_id": "SCN-23DB402B9891C9D06FB2",
+      "scene_merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+      "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+      "schema_version": "0.2-draft",
+      "source_order": {
+        "chapter_id": "CHP-FD437BDBB5BEF07B0BB6",
+        "chapter_ordinal": 4,
+        "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+        "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+        "segment_ordinal": 1,
+        "start": 17
+      },
+      "source_spans": [
+        {
+          "end": 92,
+          "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+          "start": 17
+        }
+      ],
+      "state_transition": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "林舟获得开库能力并受到离谷禁制"
+        ]
+      },
+      "status": "DRAFT",
+      "summary": "林舟保管阵钥并获得开库能力，同时受誓印限制不能离谷",
+      "target": {
+        "status": "KNOWN",
+        "support_spans": [
+          {
+            "end": 92,
+            "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+            "start": 17
+          }
+        ],
+        "values": [
+          "阵钥"
+        ]
+      },
+      "verification": "UNVERIFIED",
+      "window_ids": [
+        "SWIN-FE5228AB30A96EAB2E5A"
+      ]
+    }
+  ],
+  "SceneMergeRun": [
+    {
+      "algorithm_id": "source-span-action-chain-v2",
+      "input_candidate_count": 3,
+      "input_candidate_hashes": [
+        "sha256:2f9300674e59e99c972e52e5c0c93ec780cc0228ff0dc389e37fe1e5004d62ee",
+        "sha256:9a481135ed4f735a8fe223c9a10b0d87d757d67d3fcc13e62f989e5f048f5f52",
+        "sha256:a67eda97efe166edbfff834ce4519cf2f679eecc1843b8dc3447ca5d25877203"
+      ],
+      "merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+      "output_candidate_ids": [
+        "SCN-8B221D4D09A0529E5237",
+        "SCN-838DE556B9E060C16102",
+        "SCN-23DB402B9891C9D06FB2"
+      ],
+      "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+      "schema_version": "0.2-draft",
+      "stages": [
+        {
+          "input_count": 3,
+          "output_count": 3,
+          "stage": "LOCAL_OVERLAP_MERGE"
+        },
+        {
+          "input_count": 3,
+          "output_count": 3,
+          "stage": "WORK_ORDER_REDUCTION"
+        }
+      ],
+      "status": "SUCCEEDED"
+    }
+  ],
+  "SceneScoutRun": [
+    {
+      "attempt_record_artifact_ids": [
+        "sha256:0f2e1bbb30285813ea49a3d9f030f12725c9c8fe7d0fbf01252afd2b1204f487"
+      ],
+      "bundle_hash": "sha256:5872387fbbac1b6d53635b2d95d8b61e27851b6c1670f76b4738e13861f85d21",
+      "bundle_id": "BND-58ECE3B437B046DCC523",
+      "checkpoint_artifact_id": "sha256:f154b88cf77bb840800e3807b837b1fd478049f25c432cf85712a19e28202461",
+      "checkpoint_hash": "sha256:f154b88cf77bb840800e3807b837b1fd478049f25c432cf85712a19e28202461",
+      "created_at": "2026-09-03T01:03:05Z",
+      "discovery_brief_hash": "sha256:64961098cf519b8e410cd3a3174c5664c886c67de70c0fa5e566753240a8ec1f",
+      "extractor_build_id": "BLD-CE01F02427A0482AE37A",
+      "model_attempt_ids": [
+        "MAT-FC27385A09BCB581BB94"
+      ],
+      "model_request_artifact_ids": [
+        "sha256:22d46f5dd294dddc5ff2d7785034fcd96f4df2104c55074131c00a64381c581b"
+      ],
+      "provider_response_artifact_ids": [
+        "sha256:bcf2ad80a4008470c49f11201af64c0c3461b718a117f7cf7dd710390a6fb6db"
+      ],
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "resumed_from_checkpoint": false,
+      "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+      "schema_version": "0.2-draft",
+      "status": "SUCCEEDED",
+      "usage_ledger": {
+        "attempts_with_unknown_usage": 1,
+        "estimated_cost_microusd": null,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "window_ids": [
+        "SWIN-FE5228AB30A96EAB2E5A"
+      ]
+    }
+  ],
+  "SceneWindow": [
+    {
+      "bundle_id": "BND-58ECE3B437B046DCC523",
+      "ordinal": 1,
+      "overlap_chars": 1800,
+      "request_id": "REQ-3816CE90B35DB461AFBF",
+      "schema_version": "0.2-draft",
+      "source_spans": [
+        {
+          "end": 6,
+          "normalized_text_hash": "sha256:eb9d20c53dc87e3a03f568de50cd8103ca59ff6450d2481d5d89314d7ccc893c",
+          "segment_id": "SEG-4C8CA6CA2F23282047AD-000",
+          "start": 0
+        },
+        {
+          "end": 71,
+          "normalized_text_hash": "sha256:b76fa7c5b744035a056347c12806c31549914b05c5abfde00175262e91c710ca",
+          "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+          "start": 0
+        },
+        {
+          "end": 6,
+          "normalized_text_hash": "sha256:a841f1219cc50f8abc1aeadbc228a853a5ea81538e2db2913699b0cf47a0c39a",
+          "segment_id": "SEG-8098B1124BB403AE80B9-000",
+          "start": 0
+        },
+        {
+          "end": 82,
+          "normalized_text_hash": "sha256:b56b413d799da4c839b7307598659a980717eb065e793f32cd2888ade7843601",
+          "segment_id": "SEG-8098B1124BB403AE80B9-001",
+          "start": 0
+        },
+        {
+          "end": 6,
+          "normalized_text_hash": "sha256:7d92636ec845869fe56dfb1427a7f9c47ddc7d688c3234fdbc2de4dfa32e1625",
+          "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-000",
+          "start": 0
+        },
+        {
+          "end": 92,
+          "normalized_text_hash": "sha256:cbc6208a205e2069e6f740c4cedf9fb2695ca66ea6418bd9c2adc14e49830023",
+          "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+          "start": 0
+        }
+      ],
+      "text_length": 263,
+      "window_chars": 10000,
+      "window_hash": "sha256:42541a5c6c42c3d13c0bb047287492357fd50ba111b4c0ffb7ec1c626fe720b7",
+      "window_id": "SWIN-FE5228AB30A96EAB2E5A"
+    }
+  ],
+  "Segment": [
+    {
+      "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+      "normalized_text": "入谷后,谷主需要有人搬运库中药材。谷主把阵钥暂交林舟保管,同时以誓印禁止他离开雾谷;林舟能开启库门,却不能借阵钥越过谷界。任务结束时,谷主收回阵钥并解除誓印,林舟才恢复离谷的行动空间。",
+      "normalized_text_hash": "sha256:cbc6208a205e2069e6f740c4cedf9fb2695ca66ea6418bd9c2adc14e49830023",
+      "ordinal": 1,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 100,
+        "kind": "text",
+        "selector": "line:3",
+        "start": 8
+      }
+    },
+    {
+      "document_id": "DOC-5299EAF60EE147CAD058",
+      "normalized_text": "作者:xhnovel 测试组",
+      "normalized_text_hash": "sha256:fea758207f074b34609f471a0a92852f7b9899dfb3cea62250a9fef556d4189a",
+      "ordinal": 1,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-5299EAF60EE147CAD058-001",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 20,
+        "kind": "text",
+        "selector": "line:2",
+        "start": 6
+      }
+    },
+    {
+      "document_id": "DOC-4C8CA6CA2F23282047AD",
+      "normalized_text": "青岚门命林舟护送青铜令前往雾谷。林舟把青铜令交给苏澜携带,苏澜因此实际持有令牌,但令牌仍属青岚门,她也无权催动。两人约定抵达谷口便由苏澜归还。",
+      "normalized_text_hash": "sha256:b76fa7c5b744035a056347c12806c31549914b05c5abfde00175262e91c710ca",
+      "ordinal": 1,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 79,
+        "kind": "text",
+        "selector": "line:3",
+        "start": 8
+      }
+    },
+    {
+      "document_id": "DOC-8098B1124BB403AE80B9",
+      "normalized_text": "谷口石门只认令牌许可,苏澜第一次举令时没有反应。长老确认她守约后解除第一重禁制,只授予开启山门的权限,令牌的所有权仍未转移。石门随即开启,她却依旧不能调动门内守阵。",
+      "normalized_text_hash": "sha256:b56b413d799da4c839b7307598659a980717eb065e793f32cd2888ade7843601",
+      "ordinal": 1,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-8098B1124BB403AE80B9-001",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 90,
+        "kind": "text",
+        "selector": "line:3",
+        "start": 8
+      }
+    },
+    {
+      "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+      "normalized_text": "第三章 誓印",
+      "normalized_text_hash": "sha256:7d92636ec845869fe56dfb1427a7f9c47ddc7d688c3234fdbc2de4dfa32e1625",
+      "ordinal": 0,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-000",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 6,
+        "kind": "text",
+        "selector": "line:1",
+        "start": 0
+      }
+    },
+    {
+      "document_id": "DOC-5299EAF60EE147CAD058",
+      "normalized_text": "《青岚令》",
+      "normalized_text_hash": "sha256:d4d0509a3fa8969c72f9577d93a42b5e4f15496d0ff1b6accb019ab411ac9a17",
+      "ordinal": 0,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-5299EAF60EE147CAD058-000",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 5,
+        "kind": "text",
+        "selector": "line:1",
+        "start": 0
+      }
+    },
+    {
+      "document_id": "DOC-8098B1124BB403AE80B9",
+      "normalized_text": "第二章 解禁",
+      "normalized_text_hash": "sha256:a841f1219cc50f8abc1aeadbc228a853a5ea81538e2db2913699b0cf47a0c39a",
+      "ordinal": 0,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-8098B1124BB403AE80B9-000",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 6,
+        "kind": "text",
+        "selector": "line:1",
+        "start": 0
+      }
+    },
+    {
+      "document_id": "DOC-4C8CA6CA2F23282047AD",
+      "normalized_text": "第一章 托令",
+      "normalized_text_hash": "sha256:eb9d20c53dc87e3a03f568de50cd8103ca59ff6450d2481d5d89314d7ccc893c",
+      "ordinal": 0,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-4C8CA6CA2F23282047AD-000",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 6,
+        "kind": "text",
+        "selector": "line:1",
+        "start": 0
+      }
+    }
+  ],
+  "Source": [
+    {
+      "author": "xhnovel 测试组",
+      "canonical_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+      "document_location": "chapter-000004-第三章-誓印",
+      "platform_id": "novel:txt",
+      "same_platform_as": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-C8847EE9397B8944302D",
+      "title": "第三章 誓印",
+      "work": "青岚令"
+    },
+    {
+      "author": "xhnovel 测试组",
+      "canonical_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+      "document_location": "chapter-000001-前置内容",
+      "platform_id": "novel:txt",
+      "same_platform_as": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-9DD5102CD450DF86B1A5",
+      "title": "前置内容",
+      "work": "青岚令"
+    },
+    {
+      "author": "xhnovel 测试组",
+      "canonical_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+      "document_location": "chapter-000003-第二章-解禁",
+      "platform_id": "novel:txt",
+      "same_platform_as": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-A6019B30A7B934DB6A1B",
+      "title": "第二章 解禁",
+      "work": "青岚令"
+    },
+    {
+      "author": "xhnovel 测试组",
+      "canonical_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+      "document_location": "chapter-000002-第一章-托令",
+      "platform_id": "novel:txt",
+      "same_platform_as": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-445A2E0B1A7F23269770",
+      "title": "第一章 托令",
+      "work": "青岚令"
+    }
+  ],
+  "TriageAssessment": [
+    {
+      "allowed_uses": [
+        "event-facts"
+      ],
+      "assessed_at": "2026-09-03T01:03:05Z",
+      "assessment_id": "TRI-040A7F780671B7F74D63",
+      "assessor_build_id": "novel-source-classifier-v1",
+      "decision_reason": "deterministic source classification from declared edition status and textual completeness",
+      "policy_hash": "sha256:44f9fd2adf1351c5e1eb3abd0bde654a1ff6f5818502b66bf1168fdb44e40d48",
+      "retrieval_id": "RET-94E914E52E09349F8052",
+      "rights": {
+        "basis": "FAIR_USE_RESEARCH",
+        "may_export_excerpts": false,
+        "may_send_to_external_model": true,
+        "may_store_full_text": true
+      },
+      "schema_version": "0.2-draft",
+      "selection_decision": "selected",
+      "source_quality": {
+        "edition_status": "USER_VERIFIED_COPY",
+        "textual_completeness": "COMPLETE"
+      },
+      "technical_access": {
+        "method": "LOCAL_FILE",
+        "succeeded": true
+      },
+      "tier": "B"
+    },
+    {
+      "allowed_uses": [
+        "event-facts"
+      ],
+      "assessed_at": "2026-09-03T01:03:05Z",
+      "assessment_id": "TRI-0BF7CE0A65DC9B7C2944",
+      "assessor_build_id": "novel-source-classifier-v1",
+      "decision_reason": "deterministic source classification from declared edition status and textual completeness",
+      "policy_hash": "sha256:44f9fd2adf1351c5e1eb3abd0bde654a1ff6f5818502b66bf1168fdb44e40d48",
+      "retrieval_id": "RET-E7C831F7274FB2155233",
+      "rights": {
+        "basis": "FAIR_USE_RESEARCH",
+        "may_export_excerpts": false,
+        "may_send_to_external_model": true,
+        "may_store_full_text": true
+      },
+      "schema_version": "0.2-draft",
+      "selection_decision": "selected",
+      "source_quality": {
+        "edition_status": "USER_VERIFIED_COPY",
+        "textual_completeness": "COMPLETE"
+      },
+      "technical_access": {
+        "method": "LOCAL_FILE",
+        "succeeded": true
+      },
+      "tier": "B"
+    },
+    {
+      "allowed_uses": [
+        "event-facts"
+      ],
+      "assessed_at": "2026-09-03T01:03:05Z",
+      "assessment_id": "TRI-B0F906C72ACE67A7BA63",
+      "assessor_build_id": "novel-source-classifier-v1",
+      "decision_reason": "deterministic source classification from declared edition status and textual completeness",
+      "policy_hash": "sha256:44f9fd2adf1351c5e1eb3abd0bde654a1ff6f5818502b66bf1168fdb44e40d48",
+      "retrieval_id": "RET-BBBE95FC80BAD155C56A",
+      "rights": {
+        "basis": "FAIR_USE_RESEARCH",
+        "may_export_excerpts": false,
+        "may_send_to_external_model": true,
+        "may_store_full_text": true
+      },
+      "schema_version": "0.2-draft",
+      "selection_decision": "selected",
+      "source_quality": {
+        "edition_status": "USER_VERIFIED_COPY",
+        "textual_completeness": "COMPLETE"
+      },
+      "technical_access": {
+        "method": "LOCAL_FILE",
+        "succeeded": true
+      },
+      "tier": "B"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎在雪魔天猿巢穴毛发下发现地底洞口并进入钟乳地底世界;药老指出凹槽乳液并非本体,萧炎用玉勺取出钟乳根部真正的地心淬体乳装入玉瓶。",
+      "source_spans": [
+        {"segment_id": "SEG-6AC5312378DAE5FF9E67-001", "start": 233, "end": 253},
+        {"segment_id": "SEG-6AC5312378DAE5FF9E67-001", "start": 699, "end": 711},
+        {"segment_id": "SEG-6AC5312378DAE5FF9E67-001", "start": 1561, "end": 1573},
+        {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 165, "end": 200},
+        {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 404, "end": 424},
+        {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 516, "end": 550},
+        {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 859, "end": 880},
+        {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 1088, "end": 1118},
+        {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 1522, "end": 1553},
+        {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 1570, "end": 1597},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-001", "start": 648, "end": 660},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 364, "end": 397},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 449, "end": 463},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 686, "end": 715},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 773, "end": 807},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1128, "end": 1178},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1254, "end": 1290},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1417, "end": 1496}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "药老"],
+        "support_spans": [
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 1088, "end": 1118},
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 1522, "end": 1553}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["拂开巢穴毛发、吸尽泥沙后跃入地底通道", "用玉勺舀取钟乳内真正的地心淬体乳"],
+        "support_spans": [
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 165, "end": 200},
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 516, "end": 550},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1128, "end": 1178}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["钟乳地底世界", "真正的地心淬体乳"],
+        "support_spans": [
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 859, "end": 880},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 449, "end": 463}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["萧炎正在谷中寻找地心淬体乳", "巢穴尽头山壁前未见其踪"],
+        "support_spans": [
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-001", "start": 233, "end": 253},
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-001", "start": 1561, "end": 1573}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["从寻宝未果变为真正的地心淬体乳到手"],
+        "support_spans": [
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-001", "start": 1561, "end": 1573},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1417, "end": 1496}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["毛发下露出地底洞口并通向钟乳世界", "钟乳根部另藏更珍稀本体,凹槽乳液只是稀释障眼物"],
+        "support_spans": [
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 404, "end": 424},
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 859, "end": 880},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-001", "start": 648, "end": 660},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 686, "end": 715}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["凹槽中乳白地心淬体乳出现在面前", "玉瓶中翡翠液体如活物自动流淌"],
+        "support_spans": [
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-002", "start": 1570, "end": 1597},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1417, "end": 1496}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["真正地心淬体乳精纯远超凹槽乳液", "该物有洗髓炼骨之效"],
+        "support_spans": [
+          {"segment_id": "SEG-6AC5312378DAE5FF9E67-001", "start": 699, "end": 711},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 364, "end": 397}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["翡翠液体装入玉瓶带走", "留下少量温养以免万年钟乳崩裂"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1254, "end": 1290},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1417, "end": 1496}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["真正地心淬体乳极脆弱,非温润玉器会毁成废液", "常人只会收走下方稀释物而漏掉本体"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 686, "end": 715},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 773, "end": 807}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+  "byte_length": 264,
+  "chapter_key": "chapter-000003-第二章-解禁",
+  "final_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+  "http_status": null,
+  "media_type": "text/plain",
+  "retrieved_at": "2026-09-03T01:03:05Z"
+}

@@ -1,0 +1,27 @@
+catalog chapters=1663
+resume skipped=1347 remaining=316
+wrote 1/316 last=1332 第一千两百九十五章 喜欢 bytes=8681
+FAIL 20/316 1355 第一千三百一十八章 天墓开启 ValidationError: E-UNREACHABLE: request failed for https://www.shubaobiquge.com/169709/4684033.html: _ssl.c:983: The handshake operation timed out
+wrote 25/316 last=1370 第一千三百三十三章 血刀圣者 bytes=8839
+FAIL 30/316 1361 第一千三百二十四章 九星能量体 ValidationError: E-UNREACHABLE: request failed for https://www.shubaobiquge.com/169709/4684039.html: _ssl.c:983: The handshake operation timed out
+wrote 50/316 last=1385 第一千三百四十七章 摊牌 bytes=7783
+FAIL 54/316 1392 第一千三百五十四章 小萧潇 ValidationError: E-UNREACHABLE: request failed for https://www.shubaobiquge.com/169709/4684070_2.html: _ssl.c:983: The handshake operation timed out
+FAIL 60/316 1395 第一千三百五十七章 一掌击杀! ValidationError: E-UNREACHABLE: request failed for https://www.shubaobiquge.com/169709/4684073.html: _ssl.c:983: The handshake operation timed out
+FAIL 72/316 1401 第一千三百六十三章 毒瘤 ValidationError: E-UNREACHABLE: request failed for https://www.shubaobiquge.com/169709/4684079_2.html: _ssl.c:983: The handshake operation timed out
+wrote 75/316 last=1427 第一千三百八十九章 九星斗尊! bytes=8871
+FAIL 77/316 1406 第一千三百六十八章  回星陨阁 ValidationError: E-UNREACHABLE: request failed for https://www.shubaobiquge.com/169709/4684084_2.html: _ssl.c:983: The handshake operation timed out
+wrote 100/316 last=1446 第一千四百零八章 对战半圣 bytes=8978
+FAIL 117/316 1451 第一千四百一十三章 大战来临 ValidationError: E-UNREACHABLE: request failed for https://www.shubaobiquge.com/169709/4684129_2.html: _ssl.c:983: The handshake operation timed out
+wrote 125/316 last=1471 第一千四百三十三章 九阴黄泉丹 bytes=9014
+wrote 150/316 last=1502 第一千四百六十二章 魂殿动静 bytes=8756
+FAIL 173/316 1492 第一千四百五十四章 解决 ValidationError: E-UNREACHABLE: request failed for https://www.shubaobiquge.com/169709/4684170_2.html: _ssl.c:983: The handshake operation timed out
+wrote 175/316 last=1526 第一千四百八十六章 反控 bytes=8677
+wrote 200/316 last=1551 第一千五百一十一章 最后一局 bytes=8651
+wrote 225/316 last=1573 第一千五百三十三章 聚灵 bytes=9421
+wrote 250/316 last=1602 第一千五百六十一章 魂族之秘 bytes=8672
+wrote 275/316 last=1627 第一千五百八十六章 破界 bytes=8947
+wrote 300/316 last=1652 第一千六百一十一章 失手 bytes=9143
+FAIL 305/316 1629 第一千五百八十八章 定计 ValidationError: E-UNREACHABLE: request failed for https://www.shubaobiquge.com/169709/4684382_2.html: _ssl.c:983: The handshake operation timed out
+wrote 316/316 last=1661 两年三个月,五百三十万。 bytes=1940
+done remaining_failures=9
+EXIT:2

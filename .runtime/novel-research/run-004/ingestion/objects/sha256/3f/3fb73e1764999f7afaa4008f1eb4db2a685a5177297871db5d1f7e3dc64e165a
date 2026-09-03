@@ -1,0 +1,124 @@
+{
+  "candidates": [
+    {
+      "summary": "小医仙封印魔毒斑时一丝毒线破符逃出，萧炎体内琉璃莲心火将这丝无支援的毒线炼尽，再按焚决吸收其中精纯斗气，当场由这意外碎片提升至二星斗皇巅峰。",
+      "source_spans": [
+        {"segment_id": "SEG-1776314290AF27866E96-002", "start": 998, "end": 1028},
+        {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1054, "end": 1087},
+        {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1161, "end": 1218},
+        {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1251, "end": 1264},
+        {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1298, "end": 1317},
+        {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1357, "end": 1403},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-001", "start": 50, "end": 67},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-001", "start": 211, "end": 226},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-001", "start": 655, "end": 704},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 169, "end": 190},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 270, "end": 317},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 483, "end": 508},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 908, "end": 921},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1069, "end": 1096},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1097, "end": 1109},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1460, "end": 1477},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1503, "end": 1543},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1639, "end": 1669},
+        {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1692, "end": 1704},
+        {"segment_id": "SEG-68231585065C672DDE92-001", "start": 145, "end": 159}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "小医仙"],
+        "support_spans": [
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1298, "end": 1317},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-001", "start": 50, "end": 67},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 908, "end": 921}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["萧炎以琉璃莲心火包裹并炼化逃窜魔毒斑线", "将炼净后的精纯斗气按焚决路线吸收"],
+        "support_spans": [
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1161, "end": 1218},
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1298, "end": 1317},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 483, "end": 508}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["逃窜的魔毒斑线", "毒线中所含精纯斗气"],
+        "support_spans": [
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 998, "end": 1028},
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1298, "end": 1317},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 169, "end": 190}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["小医仙刚用符文将魔毒斑本体封死", "萧炎已彻底炼化琉璃莲心火", "逃出的只是一丝没有后续支援的毒线"],
+        "support_spans": [
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1054, "end": 1087},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-001", "start": 50, "end": 67},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-001", "start": 211, "end": 226}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["毒线漆黑毒性被炼尽，留下可吸收的精纯斗气", "萧炎气息增强，实力提升至二星斗皇巅峰"],
+        "support_spans": [
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 169, "end": 190},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 270, "end": 317},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1069, "end": 1096},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1460, "end": 1477}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["魔毒斑在封印完成前射出细线突破最后一层符文", "被火包裹的毒线剧烈翻腾并逐渐褪去漆黑"],
+        "support_spans": [
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 998, "end": 1028},
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1161, "end": 1218},
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1251, "end": 1264},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 169, "end": 190}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["睁眼时强横气息掀起石池涛浪", "萧炎自报只到二星斗皇巅峰", "他承认提升一星已出意料"],
+        "support_spans": [
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1069, "end": 1096},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1097, "end": 1109},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1460, "end": 1477},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1639, "end": 1669}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["现有异火仍不能炼化整块魔毒斑，但逃窜毒线可炼", "他推测再融合一种异火才可能炼化整块魔毒斑", "小医仙指出日后炼化整块将使实力突飞猛进"],
+        "support_spans": [
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1357, "end": 1403},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-001", "start": 655, "end": 704},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1503, "end": 1543}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["胸口魔毒斑本体仍在", "小医仙的封毒符文使魔毒斑两年内不会爆发"],
+        "support_spans": [
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1054, "end": 1087},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1692, "end": 1704},
+          {"segment_id": "SEG-68231585065C672DDE92-001", "start": 145, "end": 159}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["封印过程中泄漏的诅咒碎片可被已有异火炼成即时战力，但魔毒斑整体仍不可炼，使一次医疗封印变成未计划的局部吞能与长期诅咒并存"],
+        "support_spans": [
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 998, "end": 1028},
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1161, "end": 1218},
+          {"segment_id": "SEG-1776314290AF27866E96-002", "start": 1357, "end": 1403},
+          {"segment_id": "SEG-82630DBAA6C63521CC56-002", "start": 1639, "end": 1669},
+          {"segment_id": "SEG-68231585065C672DDE92-001", "start": 145, "end": 159}
+        ]
+      }
+    }
+  ]
+}

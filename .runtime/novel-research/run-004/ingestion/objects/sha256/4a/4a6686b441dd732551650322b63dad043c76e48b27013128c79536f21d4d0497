@@ -1,0 +1,515 @@
+{
+  "candidates": [
+    {
+      "summary": "尾随陨落心炎潜入岩浆深处时，异火自行减速洒下火芒，岩浆托出透明光圈，圈中只有白骨和另一朵真正的陨落心炎，萧炎当场发现隐藏遗存。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 461,
+            "end": 485
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1062,
+            "end": 1077
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "跟随减速的陨落心炎打量被火芒照出的光圈"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 461,
+            "end": 485
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 711,
+            "end": 724
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "岩浆中浮现的透明光圈及其内骨骸与第二朵陨落心炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 764,
+            "end": 809
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1062,
+            "end": 1077
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1238,
+            "end": 1249
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎已冒险潜入岩浆并尾随不受控的陨落心炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6D32CE9399498BCAF724-002",
+            "start": 1546,
+            "end": 1558
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 596,
+            "end": 616
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 461,
+            "end": 485
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "死寂岩浆中现出隐藏光圈遗存，内有白骨与另一朵真正陨落心炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 764,
+            "end": 809
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1062,
+            "end": 1077
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1202,
+            "end": 1220
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1238,
+            "end": 1249
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "陨落心炎自行减速并倾洒火芒，岩浆蠕动托出透明光圈"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 461,
+            "end": 485
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 711,
+            "end": 724
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 764,
+            "end": 809
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎目瞪口呆，难以置信同一处竟有第二种陨落心炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1238,
+            "end": 1249
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1273,
+            "end": 1293
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可尝试接近光圈内的骨骸与第二朵陨落心炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1062,
+            "end": 1077
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1238,
+            "end": 1249
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "光圈遗存当场显现，第二朵陨落心炎仍在骨骸上"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 764,
+            "end": 809
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1108,
+            "end": 1121
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1202,
+            "end": 1220
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "已持有的异火可在未知深处自行定位并照出隐藏空间，使第二份同名异火与遗骸同时可见，却尚未完成拾取"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 711,
+            "end": 724
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 764,
+            "end": 809
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+            "start": 1238,
+            "end": 1249
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+          "start": 461,
+          "end": 485
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+          "start": 1062,
+          "end": 1077
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+          "start": 711,
+          "end": 724
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+          "start": 764,
+          "end": 809
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+          "start": 1238,
+          "end": 1249
+        },
+        {
+          "segment_id": "SEG-6D32CE9399498BCAF724-002",
+          "start": 1546,
+          "end": 1558
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+          "start": 596,
+          "end": 616
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+          "start": 1202,
+          "end": 1220
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+          "start": 1273,
+          "end": 1293
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-002",
+          "start": 1108,
+          "end": 1121
+        }
+      ]
+    },
+    {
+      "summary": "被火焰蜥蜴族群堵死退路时，萧炎以陨落心炎裹身撞入下方透明光罩，光罩随岩浆旋转消失，赶来的强者怒吼却无法追入。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "火焰蜥蜴人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1330,
+            "end": 1342
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1555,
+            "end": 1592
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "危机中咬牙窜向光罩，以陨落心炎裹身闯门"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1330,
+            "end": 1342
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1343,
+            "end": 1356
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1357,
+            "end": 1404
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "下方透明光罩"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1357,
+            "end": 1404
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "蜥蜴族群围堵且更强气息赶来，岩浆火球会被光罩弹回"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1132,
+            "end": 1156
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 285,
+            "end": 318
+          },
+          {
+            "segment_id": "SEG-DF287375A63BBCC85F56-002",
+            "start": 1484,
+            "end": 1504
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "持异火者无阻进入光罩，光罩随岩浆旋转消失，追兵无法跟入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1357,
+            "end": 1404
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1418,
+            "end": 1459
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1555,
+            "end": 1592
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "光罩对裹着陨落心炎的身体毫无阻碍，随后隐去；血红蜥蜴人怒吼却无计可施"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1357,
+            "end": 1404
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1418,
+            "end": 1459
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1555,
+            "end": 1592
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎进入后追兵只能望着消失处咆哮"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1418,
+            "end": 1459
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1555,
+            "end": 1592
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "获得对蜥蜴族群暂时不可见的光罩内藏身点"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1418,
+            "end": 1459
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1555,
+            "end": 1592
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "光罩连同萧炎从岩浆视野中消失"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1418,
+            "end": 1459
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中异火成为隐藏空间的通行证：持火可无阻进入并对追兵隐身，无火者无法定位已消失的光罩"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 285,
+            "end": 318
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1357,
+            "end": 1404
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1418,
+            "end": 1459
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1330,
+          "end": 1342
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1555,
+          "end": 1592
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1343,
+          "end": 1356
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1357,
+          "end": 1404
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1132,
+          "end": 1156
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 285,
+          "end": 318
+        },
+        {
+          "segment_id": "SEG-DF287375A63BBCC85F56-002",
+          "start": 1484,
+          "end": 1504
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1418,
+          "end": 1459
+        }
+      ]
+    }
+  ]
+}

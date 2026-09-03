@@ -1,0 +1,267 @@
+{
+  "candidates": [
+    {
+      "summary": "南龙王龙爪拍向脑袋的濒死瞬间，萧炎心脏中隐藏的奇异血脉自行涌出灌入血管，将已耗尽的力量瞬间灌回并强过巅峰。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+          "start": 1284,
+          "end": 1326
+        },
+        {
+          "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+          "start": 1405,
+          "end": 1424
+        },
+        {
+          "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+          "start": 1218,
+          "end": 1258
+        },
+        {
+          "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+          "start": 1356,
+          "end": 1392
+        },
+        {
+          "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+          "start": 1335,
+          "end": 1355
+        },
+        {
+          "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+          "start": 1022,
+          "end": 1059
+        },
+        {
+          "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+          "start": 1259,
+          "end": 1282
+        },
+        {
+          "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+          "start": 1425,
+          "end": 1464
+        },
+        {
+          "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+          "start": 1474,
+          "end": 1488
+        },
+        {
+          "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+          "start": 1498,
+          "end": 1508
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "南龙王"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1284,
+            "end": 1326
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1405,
+            "end": 1424
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1218,
+            "end": 1258
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "在南龙王龙爪拍向脑袋的死亡威胁下剧烈颤抖"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1284,
+            "end": 1326
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1218,
+            "end": 1258
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "隐藏在心脏之内的奇异血脉"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1356,
+            "end": 1392
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1335,
+            "end": 1355
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "体内被北龙王一掌轰得稀烂，力量消耗殆尽",
+          "南龙王龙爪拍向脑袋，拍中则爆成血雾"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1022,
+            "end": 1059
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1218,
+            "end": 1258
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1259,
+            "end": 1282
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1425,
+            "end": 1464
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "奇异血脉流入血管，耗尽的力量瞬间彻底回归且胜过巅峰"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1356,
+            "end": 1392
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1425,
+            "end": 1464
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "心脏突然急跳，隐藏血脉自行流淌汇入血管"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1335,
+            "end": 1355
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1356,
+            "end": 1392
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "突如其来的变故让萧炎一怔",
+          "猛的感觉到力量彻底回归"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1474,
+            "end": 1488
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1405,
+            "end": 1424
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1425,
+            "end": 1464
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "力量胜过巅峰，得以准备急忙闪避"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1425,
+            "end": 1464
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1498,
+            "end": 1508
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "消耗殆尽的力量彻底回归体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1425,
+            "end": 1464
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "致死威胁下体内隐藏血脉不经主动催动而自行灌注，使已耗尽战力瞬间超额恢复"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1284,
+            "end": 1326
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1356,
+            "end": 1392
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1425,
+            "end": 1464
+          },
+          {
+            "segment_id": "SEG-DA7DC6C296028B2715AE-002",
+            "start": 1474,
+            "end": 1488
+          }
+        ]
+      }
+    }
+  ]
+}

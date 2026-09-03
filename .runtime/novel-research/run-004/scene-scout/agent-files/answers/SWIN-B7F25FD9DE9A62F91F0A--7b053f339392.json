@@ -1,0 +1,412 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎将自爆时，掌上紫研龙印自行爆发，金龙破空将其包裹并压下自爆。烛坤砸下的紫金光印在巨龙头顶骤停崩溃，喊出孩子。紫研化形后与其握手，同源金光融合，古龙长老跪伏；她指向魂天帝，烛坤应允取其命。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+          "start": 1393,
+          "end": 1418
+        },
+        {
+          "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+          "start": 1212,
+          "end": 1244
+        },
+        {
+          "segment_id": "SEG-902F5CCEB0315535B2DC-001",
+          "start": 526,
+          "end": 534
+        },
+        {
+          "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+          "start": 1335,
+          "end": 1347
+        },
+        {
+          "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+          "start": 656,
+          "end": 696
+        },
+        {
+          "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+          "start": 1712,
+          "end": 1727
+        },
+        {
+          "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+          "start": 1739,
+          "end": 1749
+        },
+        {
+          "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+          "start": 905,
+          "end": 934
+        },
+        {
+          "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+          "start": 1549,
+          "end": 1560
+        },
+        {
+          "segment_id": "SEG-0E213A630A6BE5D96CDD-001",
+          "start": 1346,
+          "end": 1355
+        },
+        {
+          "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+          "start": 1027,
+          "end": 1037
+        },
+        {
+          "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+          "start": 1234,
+          "end": 1265
+        },
+        {
+          "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+          "start": 1564,
+          "end": 1609
+        },
+        {
+          "segment_id": "SEG-902F5CCEB0315535B2DC-001",
+          "start": 1202,
+          "end": 1223
+        },
+        {
+          "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+          "start": 1752,
+          "end": 1754
+        },
+        {
+          "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+          "start": 1614,
+          "end": 1619
+        },
+        {
+          "segment_id": "SEG-4CB57B4592F13980D6B7-001",
+          "start": 367,
+          "end": 404
+        },
+        {
+          "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+          "start": 727,
+          "end": 753
+        },
+        {
+          "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+          "start": 973,
+          "end": 1004
+        },
+        {
+          "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+          "start": 1165,
+          "end": 1175
+        },
+        {
+          "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+          "start": 1756,
+          "end": 1784
+        },
+        {
+          "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+          "start": 938,
+          "end": 971
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "紫研",
+          "烛坤"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1393,
+            "end": 1418
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1212,
+            "end": 1244
+          },
+          {
+            "segment_id": "SEG-902F5CCEB0315535B2DC-001",
+            "start": 526,
+            "end": 534
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "紫研龙印自行爆发，金龙包裹萧炎并压下自爆；紫研化形后与对方握手，并指向魂天帝要他动手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1212,
+            "end": 1244
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1393,
+            "end": 1418
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1335,
+            "end": 1347
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 656,
+            "end": 696
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 1712,
+            "end": 1727
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 1739,
+            "end": 1749
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "当头砸向萧炎的紫金光印",
+          "魂天帝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 905,
+            "end": 934
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1549,
+            "end": 1560
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 1712,
+            "end": 1727
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "神秘人正以光印要取萧炎性命，萧炎将自爆肉身；掌上留有紫研危急可感的龙印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-001",
+            "start": 1346,
+            "end": 1355
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 905,
+            "end": 934
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1027,
+            "end": 1037
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1234,
+            "end": 1265
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "金龙裹住萧炎后光印骤停崩溃；握手时同源金光融合，对方认女并应允斩杀魂天帝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1393,
+            "end": 1418
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1549,
+            "end": 1560
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1564,
+            "end": 1609
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 656,
+            "end": 696
+          },
+          {
+            "segment_id": "SEG-902F5CCEB0315535B2DC-001",
+            "start": 1202,
+            "end": 1223
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 1752,
+            "end": 1754
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "光印在巨龙头顶自行停住，神秘人喊出孩子并柔和下来；血脉金光融合令古龙长老跪伏"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1549,
+            "end": 1560
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1614,
+            "end": 1619
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-001",
+            "start": 367,
+            "end": 404
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 656,
+            "end": 696
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 727,
+            "end": 753
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎明白追杀是因体内古龙精血；紫研抽手自称孤儿；烛坤自报名并答应取魂天帝的命"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 973,
+            "end": 1004
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 1165,
+            "end": 1175
+          },
+          {
+            "segment_id": "SEG-902F5CCEB0315535B2DC-001",
+            "start": 526,
+            "end": 534
+          },
+          {
+            "segment_id": "SEG-902F5CCEB0315535B2DC-001",
+            "start": 1202,
+            "end": 1223
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 1756,
+            "end": 1784
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "追杀中止，烛坤转为听紫研之命，承诺对魂天帝出手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1549,
+            "end": 1560
+          },
+          {
+            "segment_id": "SEG-902F5CCEB0315535B2DC-001",
+            "start": 1202,
+            "end": 1223
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 1752,
+            "end": 1754
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "父女血脉被当场确认；烛坤改口相助并声明要取魂天帝的命"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 656,
+            "end": 696
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 938,
+            "end": 971
+          },
+          {
+            "segment_id": "SEG-902F5CCEB0315535B2DC-001",
+            "start": 1202,
+            "end": 1223
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗存守护者的必杀因认出金龙体内同源血脉而自行停手，敌对关系随血脉确认翻转为听命相助，并非交战或交易谈拢"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1549,
+            "end": 1560
+          },
+          {
+            "segment_id": "SEG-0E213A630A6BE5D96CDD-002",
+            "start": 1614,
+            "end": 1619
+          },
+          {
+            "segment_id": "SEG-4CB57B4592F13980D6B7-002",
+            "start": 656,
+            "end": 696
+          },
+          {
+            "segment_id": "SEG-902F5CCEB0315535B2DC-001",
+            "start": 1202,
+            "end": 1223
+          }
+        ]
+      }
+    }
+  ]
+}

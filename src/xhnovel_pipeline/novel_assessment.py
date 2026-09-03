@@ -184,18 +184,26 @@ def declared_source_quality(spec: dict[str, Any]) -> dict[str, str]:
 
 
 def source_quality_tier(source_quality: dict[str, str]) -> str:
-    """Classify a validated source-quality declaration for all runtime callers."""
+    """Classify a validated source-quality declaration for all runtime callers.
+
+    Completeness is about whether the frozen bytes are the whole work.
+    Edition status is about a positive legitimacy claim, not a license proof:
+
+    - ``COMPLETE`` + ``OFFICIAL`` → A
+    - ``COMPLETE`` + ``PUBLISHED_EDITION`` / ``USER_VERIFIED_COPY`` / ``UNKNOWN`` → B
+    - ``UNOFFICIAL_COPY`` → D even if complete (positively declared unauthorized)
+    - any non-``COMPLETE`` text → D
+    """
 
     edition = source_quality["edition_status"]
     completeness = source_quality["textual_completeness"]
-    if completeness == "COMPLETE" and edition == "OFFICIAL":
+    if completeness != "COMPLETE":
+        return "D"
+    if edition == "UNOFFICIAL_COPY":
+        return "D"
+    if edition == "OFFICIAL":
         return "A"
-    if completeness == "COMPLETE" and edition in {
-        "PUBLISHED_EDITION",
-        "USER_VERIFIED_COPY",
-    }:
-        return "B"
-    return "D"
+    return "B"
 
 
 def deterministic_triage_assessment(

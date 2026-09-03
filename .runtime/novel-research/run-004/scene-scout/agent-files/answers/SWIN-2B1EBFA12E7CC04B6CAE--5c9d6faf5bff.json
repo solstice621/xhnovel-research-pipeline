@@ -1,0 +1,532 @@
+{
+  "candidates": [
+    {
+      "summary": "围攻斗圣骨骸时，萧炎一掌震散肋骨血色，看见奇异文字，当场悟出十卷卷轴是诱饵、真天阶斗技藏在三根肋骨上。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+          "start": 1455,
+          "end": 1479
+        },
+        {
+          "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+          "start": 423,
+          "end": 438
+        },
+        {
+          "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+          "start": 1480,
+          "end": 1510
+        },
+        {
+          "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+          "start": 1492,
+          "end": 1510
+        },
+        {
+          "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+          "start": 1551,
+          "end": 1572
+        },
+        {
+          "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+          "start": 1252,
+          "end": 1280
+        },
+        {
+          "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+          "start": 1520,
+          "end": 1537
+        },
+        {
+          "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+          "start": 1580,
+          "end": 1597
+        },
+        {
+          "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+          "start": 1647,
+          "end": 1663
+        },
+        {
+          "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+          "start": 399,
+          "end": 422
+        },
+        {
+          "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+          "start": 58,
+          "end": 88
+        },
+        {
+          "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+          "start": 352,
+          "end": 367
+        },
+        {
+          "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+          "start": 439,
+          "end": 449
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1455,
+            "end": 1479
+          },
+          {
+            "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+            "start": 423,
+            "end": 438
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "掠近骨骸，以异火拍打后背肋骨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1455,
+            "end": 1479
+          },
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1480,
+            "end": 1510
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "斗圣骨骸后背变成玉白的肋骨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1492,
+            "end": 1510
+          },
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1551,
+            "end": 1572
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "五人正在联手围攻斗圣骨骸"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1252,
+            "end": 1280
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "震散血色后看见奇异文字，认定真天阶斗技写在三根肋骨上"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1520,
+            "end": 1537
+          },
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1580,
+            "end": 1597
+          },
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1647,
+            "end": 1663
+          },
+          {
+            "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+            "start": 399,
+            "end": 422
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "被击中的肋骨血色震散，露出奇异文字"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1520,
+            "end": 1537
+          },
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1580,
+            "end": 1597
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎当场怀疑这些文字就是天阶斗技，并悟出十卷卷轴是诱饵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1647,
+            "end": 1663
+          },
+          {
+            "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+            "start": 58,
+            "end": 88
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可在不被人察觉时针对三根刻字肋骨下手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+            "start": 352,
+            "end": 367
+          },
+          {
+            "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+            "start": 439,
+            "end": 449
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "他记下三根刻字肋骨后不敢声张，立即抽身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+            "start": 352,
+            "end": 367
+          },
+          {
+            "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+            "start": 423,
+            "end": 438
+          },
+          {
+            "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+            "start": 439,
+            "end": 449
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "真传承写在仍在搏杀的骨骸肋骨上，被血色掩盖，只有把血色打掉才能看见"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E7710971CD24E0D05A1B-001",
+            "start": 58,
+            "end": 88
+          },
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1520,
+            "end": 1537
+          },
+          {
+            "segment_id": "SEG-05069FCCBA44BC06AFFA-002",
+            "start": 1647,
+            "end": 1663
+          }
+        ]
+      }
+    },
+    {
+      "summary": "抢夺斗圣骨骸时，萧炎抢到断臂残骸，趁凰轩、冰河尊者杀到，当场扳断三根刻字肋骨收入纳戒，把天阶斗技据为己有。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1142,
+          "end": 1160
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1162,
+          "end": 1177
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1114,
+          "end": 1130
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1224,
+          "end": 1256
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1335,
+          "end": 1351
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1011,
+          "end": 1030
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1283,
+          "end": 1299
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1301,
+          "end": 1310
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1192,
+          "end": 1209
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1422,
+          "end": 1439
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1481,
+          "end": 1495
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1440,
+          "end": 1455
+        },
+        {
+          "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+          "start": 1403,
+          "end": 1416
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1142,
+            "end": 1160
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1162,
+            "end": 1177
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "抓住断臂骨骸后扳断三根刻字肋骨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1114,
+            "end": 1130
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1224,
+            "end": 1256
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "藏有奇异文字的三根肋骨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1224,
+            "end": 1256
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1335,
+            "end": 1351
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "骨骸左臂已被斩断抛飞",
+          "他已知道肚腹三肋藏有文字"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1011,
+            "end": 1030
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1114,
+            "end": 1130
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1224,
+            "end": 1256
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "三根肋骨被扳断入手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1283,
+            "end": 1299
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1301,
+            "end": 1310
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "摘星老鬼怒吼索要",
+          "凰轩与冰河尊者满脸杀气扑来"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1142,
+            "end": 1160
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1192,
+            "end": 1209
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "肋骨上布满蠕动的奇异文字",
+          "心脏因兴奋剧跳"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1335,
+            "end": 1351
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1422,
+            "end": 1439
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "天阶斗技归他所有，别人休想再夺回"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1481,
+            "end": 1495
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1440,
+            "end": 1455
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "肋骨被收入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1403,
+            "end": 1416
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1440,
+            "end": 1455
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "真功法藏在争抢中的骨骸特定肋骨上，必须在被围杀前当场扳断带走"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1224,
+            "end": 1256
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1192,
+            "end": 1209
+          },
+          {
+            "segment_id": "SEG-F665EE5A9719ABB273B5-002",
+            "start": 1403,
+            "end": 1416
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,817 @@
+{
+  "candidates": [
+    {
+      "summary": "众人打不开藏有帝之本源的石像、萧炎正要放弃时，小伊突然现身以净莲妖火射中石像心脏，石像裂出石洞并放出柔和光芒；光芒将雷赢、古元、烛坤等压跪，唯独罩住萧炎。烛坤称这东西选中了萧炎，古元等认定古帝传承已选择他。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 317,
+          "end": 358
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 404,
+          "end": 437
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 429,
+          "end": 437
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 566,
+          "end": 572
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 606,
+          "end": 624
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 733,
+          "end": 752
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 792,
+          "end": 804
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 839,
+          "end": 857
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 874,
+          "end": 897
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 998,
+          "end": 1018
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1042,
+          "end": 1068
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1088,
+          "end": 1113
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1151,
+          "end": 1171
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1233,
+          "end": 1248
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1257,
+          "end": 1288
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1296,
+          "end": 1312
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1434,
+          "end": 1454
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1493,
+          "end": 1507
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1530,
+          "end": 1534
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1550,
+          "end": 1561
+        },
+        {
+          "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+          "start": 1564,
+          "end": 1574
+        },
+        {
+          "segment_id": "SEG-C9CB80C080A70154057C-001",
+          "start": 211,
+          "end": 225
+        },
+        {
+          "segment_id": "SEG-C9CB80C080A70154057C-001",
+          "start": 318,
+          "end": 333
+        },
+        {
+          "segment_id": "SEG-C9CB80C080A70154057C-001",
+          "start": 338,
+          "end": 358
+        },
+        {
+          "segment_id": "SEG-C9CB80C080A70154057C-001",
+          "start": 480,
+          "end": 495
+        },
+        {
+          "segment_id": "SEG-C9CB80C080A70154057C-001",
+          "start": 512,
+          "end": 530
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "小伊",
+          "萧炎",
+          "古元",
+          "烛坤",
+          "雷赢",
+          "炎烬"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 429,
+            "end": 437
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 566,
+            "end": 572
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 606,
+            "end": 624
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1088,
+            "end": 1113
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1257,
+            "end": 1288
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "应允小伊试开石像",
+          "小伊升空以净莲妖火射向石像心脏"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 733,
+            "end": 752
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 792,
+            "end": 804
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 839,
+            "end": 857
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "古帝石像",
+          "帝之本源",
+          "古帝传承"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 998,
+            "end": 1018
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1530,
+            "end": 1534
+          },
+          {
+            "segment_id": "SEG-C9CB80C080A70154057C-001",
+            "start": 211,
+            "end": 225
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "石像有帝之本源庇护，古元烛坤亦无法打破",
+          "萧炎正打算放弃"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 317,
+            "end": 358
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 404,
+            "end": 437
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "石像胸口裂开石洞",
+          "柔和光芒改罩萧炎并选中他"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 874,
+            "end": 897
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 998,
+            "end": 1018
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1434,
+            "end": 1454
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1550,
+            "end": 1561
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "石像表面起波纹并裂开石洞",
+          "柔和光芒压跪众人后改罩萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 874,
+            "end": 897
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 998,
+            "end": 1018
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1042,
+            "end": 1068
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1088,
+            "end": 1113
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1151,
+            "end": 1171
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1233,
+            "end": 1248
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1434,
+            "end": 1454
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎不受威压、一脸茫然",
+          "烛坤称好运的小子被选中",
+          "古元等认作机缘并要他接受传承"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1257,
+            "end": 1288
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1296,
+            "end": 1312
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1493,
+            "end": 1507
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1550,
+            "end": 1561
+          },
+          {
+            "segment_id": "SEG-C9CB80C080A70154057C-001",
+            "start": 211,
+            "end": 225
+          },
+          {
+            "segment_id": "SEG-C9CB80C080A70154057C-001",
+            "start": 480,
+            "end": 495
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎可接受古帝传承",
+          "其余人已在光芒筛选中被剔除"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1564,
+            "end": 1574
+          },
+          {
+            "segment_id": "SEG-C9CB80C080A70154057C-001",
+            "start": 318,
+            "end": 333
+          },
+          {
+            "segment_id": "SEG-C9CB80C080A70154057C-001",
+            "start": 338,
+            "end": 358
+          },
+          {
+            "segment_id": "SEG-C9CB80C080A70154057C-001",
+            "start": 512,
+            "end": 530
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "选中结果当场被承认为机缘，众人要萧炎接受传承"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1550,
+            "end": 1561
+          },
+          {
+            "segment_id": "SEG-C9CB80C080A70154057C-001",
+            "start": 480,
+            "end": 495
+          },
+          {
+            "segment_id": "SEG-C9CB80C080A70154057C-001",
+            "start": 512,
+            "end": 530
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗存石像武力轰不破，却被火灵开缝，再以威压光芒按异火亲和自行选定传承者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 317,
+            "end": 358
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 839,
+            "end": 857
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1257,
+            "end": 1288
+          },
+          {
+            "segment_id": "SEG-5C6849E085A4B0F09EB2-002",
+            "start": 1550,
+            "end": 1561
+          },
+          {
+            "segment_id": "SEG-C9CB80C080A70154057C-001",
+            "start": 318,
+            "end": 333
+          }
+        ]
+      }
+    },
+    {
+      "summary": "萧炎踏入古帝石像胸口石洞，探测光芒不排斥他，环境变为异火海洋；陀舍古帝残存现身接见，称能到此处便最适合接受传承，屈指将火海凝成绚丽莲子，言吾之传承尽在此处。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 213,
+          "end": 249
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 251,
+          "end": 281
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 284,
+          "end": 293
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 314,
+          "end": 330
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 358,
+          "end": 372
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 452,
+          "end": 469
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 530,
+          "end": 548
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 550,
+          "end": 564
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 856,
+          "end": 881
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 1028,
+          "end": 1039
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 1094,
+          "end": 1105
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-001",
+          "start": 1148,
+          "end": 1164
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-002",
+          "start": 703,
+          "end": 709
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-002",
+          "start": 776,
+          "end": 820
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-002",
+          "start": 824,
+          "end": 830
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-002",
+          "start": 1557,
+          "end": 1583
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-002",
+          "start": 1586,
+          "end": 1609
+        },
+        {
+          "segment_id": "SEG-2B0AB939803DF9C37862-002",
+          "start": 1625,
+          "end": 1656
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 13,
+          "end": 45
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 203,
+          "end": 223
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "陀舍古帝",
+          "小伊"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 251,
+            "end": 281
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 314,
+            "end": 330
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 856,
+            "end": 881
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 1028,
+            "end": 1039
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 1094,
+            "end": 1105
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "迈进石洞",
+          "向古帝行礼并求相助"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 314,
+            "end": 330
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 1094,
+            "end": 1105
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 703,
+            "end": 709
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "古帝传承",
+          "绚丽莲子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 776,
+            "end": 820
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 1586,
+            "end": 1609
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 1625,
+            "end": 1656
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "石洞外光芒先前曾压垮古元与烛坤",
+          "小伊以净莲妖火包裹萧炎后他决意踏入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 213,
+            "end": 249
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 251,
+            "end": 281
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 284,
+            "end": 293
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "探测通过，周围化为异火海洋",
+          "火海被凝成拳头大小的绚丽莲子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 452,
+            "end": 469
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 530,
+            "end": 548
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 550,
+            "end": 564
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 1586,
+            "end": 1609
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "光芒探测全身却不排斥",
+          "古帝残存现身让坐并屈指凝出莲子",
+          "古帝声明能到此处者最适合接受传承"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 358,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 452,
+            "end": 469
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 856,
+            "end": 881
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 1148,
+            "end": 1164
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 776,
+            "end": 820
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 1557,
+            "end": 1583
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎认出这才是真正的陀舍古帝并称谢",
+          "望着悬浮莲子涌现激动之色"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 1028,
+            "end": 1039
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 824,
+            "end": 830
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 13,
+            "end": 45
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可领取莲子中的古帝传承，完成则可晋入斗帝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 776,
+            "end": 820
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 1625,
+            "end": 1656
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "古帝称传承尽在莲子，能否成帝看造化，并嘱心如磐石"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 1625,
+            "end": 1656
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 203,
+            "end": 223
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残存意志先探测再接见，把传承凝成可交付莲子，资格由能否进入遗存来裁定"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 358,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-001",
+            "start": 452,
+            "end": 469
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 776,
+            "end": 820
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 1586,
+            "end": 1609
+          },
+          {
+            "segment_id": "SEG-2B0AB939803DF9C37862-002",
+            "start": 1625,
+            "end": 1656
+          }
+        ]
+      }
+    }
+  ]
+}

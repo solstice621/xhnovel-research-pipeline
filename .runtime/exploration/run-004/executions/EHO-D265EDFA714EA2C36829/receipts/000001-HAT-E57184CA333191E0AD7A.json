@@ -1,0 +1,15 @@
+{
+  "attempt_id": "HAT-E57184CA333191E0AD7A",
+  "attempt_ordinal": 1,
+  "error_code": "E-SCENE-SPAN",
+  "error_message": "E-SCENE-SPAN: scene candidate immediate_feedback support differs",
+  "executor": "agent-files",
+  "expected_input_spec_hash": "sha256:9ff536b77c4fbe246955c110bc09c54710cf2b4ad68b558775de6bc3712326b4",
+  "handoff_id": "EHO-D265EDFA714EA2C36829",
+  "receipt_hash": "sha256:be5996cb63314e418f73ecec7a8661319d3c6df7d7a9561664817c5656750b07",
+  "receipt_id": "HER-396F3AB7AEE55EAF9B42",
+  "recorded_at": "2026-09-03T05:35:51Z",
+  "schema_version": "0.2-draft",
+  "stage": "SCENE_SCOUT",
+  "status": "FAILED"
+}

@@ -1,0 +1,490 @@
+{
+  "candidates": [
+    {
+      "summary": "魂殿黑袍人结镜锁院、抓向萧炎天灵盖时，屏障无征兆碎裂，星空降下浩瀚气息喝止魂殿撒野；黑袍人认出玄空子后逃离。萧炎散去正在融合的毁灭火莲暴退，苍老分神嘱他来丹塔并小心玄冥宗泄密。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "黑袍人",
+          "玄空子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 14,
+            "end": 30
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1495,
+            "end": 1518
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1520,
+            "end": 1524
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 92,
+            "end": 97
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1222,
+            "end": 1231
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "在结镜中糅合四种火焰并面对抓向天灵盖的杀招",
+          "变故后散去毁灭火莲暴退，向星空分神称谢"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1169,
+            "end": 1184
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1290,
+            "end": 1318
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 112,
+            "end": 140
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 141,
+            "end": 158
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1222,
+            "end": 1231
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "笼罩小院的灵魂结镜",
+          "正抓向天灵盖的黑袍人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-56EB431F723503033064-001",
+            "start": 848,
+            "end": 861
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1378,
+            "end": 1409
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1290,
+            "end": 1318
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "黑袍人已对小院施展灵魂结镜，使斗尊同伴一时难发觉",
+          "他正要下杀手抓向萧炎天灵盖，萧炎正在糅合四种火焰"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-56EB431F723503033064-001",
+            "start": 848,
+            "end": 861
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1169,
+            "end": 1184
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1187,
+            "end": 1191
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1290,
+            "end": 1318
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂屏障突然爆成碎片，星空浩瀚气息降临喝止",
+          "黑袍人认出玄空子后钻入扭曲空间逃走，萧炎从死线转为获分神震慑庇护"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1345,
+            "end": 1367
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1378,
+            "end": 1409
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1422,
+            "end": 1440
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1463,
+            "end": 1479
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1495,
+            "end": 1524
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 739,
+            "end": 744
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1053,
+            "end": 1081
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 112,
+            "end": 158
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "院落响起细微破碎声，无形屏障爆成灵魂碎片",
+          "星空席卷浩瀚气息，沧桑声宣布丹塔不容魂殿撒野",
+          "黑袍人骤变称玄空子，留下还会来取异火与功法后消失"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1345,
+            "end": 1367
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1378,
+            "end": 1409
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1422,
+            "end": 1440
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1463,
+            "end": 1479
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1495,
+            "end": 1524
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 990,
+            "end": 1004
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1053,
+            "end": 1081
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎一惊，心中略微一松，确认为丹塔的人",
+          "他急忙散去正在融合的毁灭火莲并暴退称谢"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 14,
+            "end": 30
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 92,
+            "end": 97
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 112,
+            "end": 140
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 141,
+            "end": 158
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1222,
+            "end": 1231
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 102,
+            "end": 108
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可前往丹塔以求安全",
+          "得知玄冥宗向此人透露了他的情报"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1311,
+            "end": 1329
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1405,
+            "end": 1430
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "分神本体未至，星光光影嘱过即消散",
+          "黑袍人已逃走并扬言迟早来取异火与功法"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1280,
+            "end": 1295
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1240,
+            "end": 1265
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1444,
+            "end": 1460
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 990,
+            "end": 1004
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1053,
+            "end": 1081
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "结镜锁死外援、杀招已至时，未求援的丹塔强者可隔空震碎屏障并点名喝止，使危机中的无名远距施助直接改写死局"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-56EB431F723503033064-001",
+            "start": 848,
+            "end": 861
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1345,
+            "end": 1367
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1378,
+            "end": 1409
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1463,
+            "end": 1479
+          },
+          {
+            "segment_id": "SEG-56EB431F723503033064-002",
+            "start": 1520,
+            "end": 1524
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 1280,
+            "end": 1295
+          },
+          {
+            "segment_id": "SEG-537468ADB8669CA52FC5-001",
+            "start": 739,
+            "end": 744
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 14,
+          "end": 30
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-002",
+          "start": 1495,
+          "end": 1518
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-002",
+          "start": 1520,
+          "end": 1524
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 92,
+          "end": 97
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 1222,
+          "end": 1231
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-002",
+          "start": 1169,
+          "end": 1184
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-002",
+          "start": 1290,
+          "end": 1318
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 112,
+          "end": 140
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 141,
+          "end": 158
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-001",
+          "start": 848,
+          "end": 861
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-002",
+          "start": 1378,
+          "end": 1409
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-002",
+          "start": 1187,
+          "end": 1191
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-002",
+          "start": 1345,
+          "end": 1367
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-002",
+          "start": 1422,
+          "end": 1440
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-002",
+          "start": 1463,
+          "end": 1479
+        },
+        {
+          "segment_id": "SEG-56EB431F723503033064-002",
+          "start": 1495,
+          "end": 1524
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 739,
+          "end": 744
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 1053,
+          "end": 1081
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 112,
+          "end": 158
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 990,
+          "end": 1004
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 102,
+          "end": 108
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 1311,
+          "end": 1329
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 1405,
+          "end": 1430
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 1280,
+          "end": 1295
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 1240,
+          "end": 1265
+        },
+        {
+          "segment_id": "SEG-537468ADB8669CA52FC5-001",
+          "start": 1444,
+          "end": 1460
+        }
+      ]
+    }
+  ]
+}

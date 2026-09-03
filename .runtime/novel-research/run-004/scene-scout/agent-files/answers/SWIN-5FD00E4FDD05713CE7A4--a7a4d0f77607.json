@@ -1,0 +1,338 @@
+{
+  "candidates": [
+    {
+      "summary": "被长老逼近而坠入林中时，雅妃突然捂嘴自报身份，塞来魔兽山脉地图，并称海老已拖住追兵。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 162,
+          "end": 196
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 345,
+          "end": 356
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 468,
+          "end": 472
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 521,
+          "end": 537
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 836,
+          "end": 852
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 329,
+          "end": 343
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 604,
+          "end": 626
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 538,
+          "end": 603
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 105,
+          "end": 129
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 262,
+          "end": 288
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 290,
+          "end": 294
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 694,
+          "end": 715
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-003",
+          "start": 127,
+          "end": 137
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 665,
+          "end": 686
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+          "start": 1376,
+          "end": 1391
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-003",
+          "start": 233,
+          "end": 263
+        },
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-003",
+          "start": 224,
+          "end": 232
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "雅妃",
+          "海老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 162,
+            "end": 196
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 345,
+            "end": 356
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 468,
+            "end": 472
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 521,
+            "end": 537
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 836,
+            "end": 852
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "贴身捂住嘴巴自报身份，从纳戒掏出地图塞进对方手中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 329,
+            "end": 343
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 345,
+            "end": 356
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 604,
+            "end": 626
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "魔兽山脉的地图"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 538,
+            "end": 603
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 604,
+            "end": 626
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "三名长老已逼近不到二十米",
+          "绝境中坠入林中，感知到数十道隐晦气息并以为中计"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 105,
+            "end": 129
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 162,
+            "end": 196
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 262,
+            "end": 288
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 290,
+            "end": 294
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "当场得到可借以离开加玛帝国的地图",
+          "三位长老被海老暂时拖住"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 521,
+            "end": 537
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 604,
+            "end": 626
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 694,
+            "end": 715
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "海老拖住三位长老",
+          "雅妃指明向南出林混入城市",
+          "影卫奉命截下扑来的飞行部队"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 521,
+            "end": 537
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 538,
+            "end": 603
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-003",
+            "start": 127,
+            "end": 137
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "认出雅妃后松口气",
+          "紧握手中地图",
+          "看见上空确有凶猛能量波动"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 468,
+            "end": 472
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 665,
+            "end": 686
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 694,
+            "end": 715
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可借地图向南出林混入城市以离开加玛帝国",
+          "白光被压回后可冲进黑暗树林继续逃"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 538,
+            "end": 603
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 1376,
+            "end": 1391
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-003",
+            "start": 233,
+            "end": 263
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "地图被收进纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-003",
+            "start": 224,
+            "end": 232
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "追杀死角落地时误认埋伏，实为熟人捂嘴后塞出地图，并由另一人在上空拖住追兵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 290,
+            "end": 294
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 345,
+            "end": 356
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 521,
+            "end": 537
+          },
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-002",
+            "start": 604,
+            "end": 626
+          }
+        ]
+      }
+    }
+  ]
+}

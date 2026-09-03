@@ -1,0 +1,797 @@
+{
+  "candidates": [
+    {
+      "summary": "天火尊者弃铜片而煅烧铜锈，萧炎以异火炼化绿球后得到五粒远古孕灵粉尘，被当场指认为远超所付药方的机缘。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "天火尊者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 609,
+            "end": 626
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 882,
+            "end": 902
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1403,
+            "end": 1435
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 67,
+            "end": 76
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "接过铜锈绿球，召唤碧绿异火将其席卷煅烧"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 855,
+            "end": 880
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 882,
+            "end": 902
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 917,
+            "end": 938
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "不起眼的绿色铜锈",
+          "煅烧析出的孕灵粉尘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 792,
+            "end": 817
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1403,
+            "end": 1435
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "天火尊者宣称真正秘密不在铜片而在铜锈，并要萧炎用异火煅烧"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 792,
+            "end": 817
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 818,
+            "end": 832
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 855,
+            "end": 880
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "铜球湮灭，五粒淡黄粉尘悬浮火焰中，被认定为远古孕灵粉尘且价值远超药方"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1227,
+            "end": 1263
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1403,
+            "end": 1435
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1453,
+            "end": 1483
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "异火煅烧使铜球融化并脱落灵性粉尘，铜球随即湮灭"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 917,
+            "end": 938
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1227,
+            "end": 1263
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "粉尘不在萧炎认知之中",
+          "天火尊者称信他没错、捡了天大便宜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1326,
+            "end": 1342
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1441,
+            "end": 1449
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1453,
+            "end": 1483
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "得到可炼八品及以上丹药的必需粉尘",
+          "若融入灵魂可孕育灵魂并增强灵气以趋向灵境"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 15,
+            "end": 25
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 116,
+            "end": 133
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 136,
+            "end": 180
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1227,
+            "end": 1263
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "五粒粉尘仍悬浮在火焰之内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1227,
+            "end": 1263
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "远古之物不按常理：被抛弃的铜锈才是宝藏，已有异火煅烧伪装层后才析出孕灵粉尘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 792,
+            "end": 817
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 818,
+            "end": 832
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1403,
+            "end": 1435
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1453,
+            "end": 1483
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 609,
+          "end": 626
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 882,
+          "end": 902
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1403,
+          "end": 1435
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 67,
+          "end": 76
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 855,
+          "end": 880
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 917,
+          "end": 938
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 792,
+          "end": 817
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 818,
+          "end": 832
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1227,
+          "end": 1263
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1453,
+          "end": 1483
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1326,
+          "end": 1342
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1441,
+          "end": 1449
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 15,
+          "end": 25
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 116,
+          "end": 133
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 136,
+          "end": 180
+        }
+      ]
+    },
+    {
+      "summary": "萧炎吸入一粒孕灵粉尘后灵气缓增；粉尘将尽时爆光传出远古强者残存低吟，留下不完整口诀；他按口诀修炼，未入先前奇异状态便感应到天地灵气，但口诀未授吸纳法门。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "远古强者残存声音"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1119,
+            "end": 1133
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1252,
+            "end": 1288
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 637,
+            "end": 665
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 670,
+            "end": 690
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 876,
+            "end": 894
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "招手吸入一粒孕灵粉尘入额",
+          "记下残存口诀并闭目念诵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1170,
+            "end": 1187
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1218,
+            "end": 1227
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1252,
+            "end": 1288
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1157,
+            "end": 1165
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1196,
+            "end": 1219
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "一粒孕灵粉尘",
+          "残存口诀「魂之极...闭守天灵...纳灵锻魂...」",
+          "天地间的灵气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1174,
+            "end": 1201
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 670,
+            "end": 690
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 981,
+            "end": 998
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1331,
+            "end": 1348
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "天火尊者与小医仙已退出房间，火焰中仍有粉尘",
+          "萧炎忍不住招手取用其中一粒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1089,
+            "end": 1117
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1119,
+            "end": 1133
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1170,
+            "end": 1187
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "粉尘入额后灵魂内灵气开始缓慢增涨",
+          "粉尘将尽爆光，残存苍老低吟留下不完整口诀后消散",
+          "按口诀修炼时房间空间波动，他未入奇异状态便感应到天地灵气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 24,
+            "end": 57
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 554,
+            "end": 587
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 637,
+            "end": 665
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 981,
+            "end": 998
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1254,
+            "end": 1277
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1331,
+            "end": 1348
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1438,
+            "end": 1448
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "粉尘化流光射入额头，天地异样气流渗入",
+          "将尽的粉尘突爆强光并传出模糊苍老低吟，重复三遍后消散",
+          "念诵口诀后平静空间泛起波动"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1252,
+            "end": 1288
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1501,
+            "end": 1537
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 554,
+            "end": 587
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 637,
+            "end": 665
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 692,
+            "end": 712
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 778,
+            "end": 805
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1254,
+            "end": 1277
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "入额时身体剧颤、灵魂隐痛，随后狂喜察觉灵气增长",
+          "他判断苍老之声是物体上的远古灵魂印记，口诀尚不完整",
+          "睁眼震惊，认定感应灵气是口诀所致"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 1292,
+            "end": 1318
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 24,
+            "end": 57
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 843,
+            "end": 865
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 876,
+            "end": 894
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 981,
+            "end": 998
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1331,
+            "end": 1348
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1438,
+            "end": 1448
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可在正常修炼状态下感应天地灵气",
+          "无名口诀只授感应、不授吸纳法门",
+          "余下四粒孕灵粉尘仍可动用"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D12BE316A49F7CC1C985-001",
+            "start": 672,
+            "end": 690
+          },
+          {
+            "segment_id": "SEG-D12BE316A49F7CC1C985-001",
+            "start": 1062,
+            "end": 1095
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1043,
+            "end": 1057
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1438,
+            "end": 1448
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "残存声音消散后口诀已被记下并可再念",
+          "余下四粒孕灵粉尘收入纳戒，因持续时间短而不敢轻易挥霍"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 778,
+            "end": 805
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1196,
+            "end": 1219
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1043,
+            "end": 1057
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "按说明吸收的消耗性粉尘在破裂瞬间突然放出远古残存低吟，把不完整口诀塞进宿主，使其绕过可遇不可求的感悟状态直接感应灵气，却仍锁死吸纳门路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 554,
+            "end": 587
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 637,
+            "end": 665
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 670,
+            "end": 690
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 876,
+            "end": 894
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 981,
+            "end": 998
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+            "start": 1331,
+            "end": 1348
+          },
+          {
+            "segment_id": "SEG-D12BE316A49F7CC1C985-001",
+            "start": 1062,
+            "end": 1095
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 1119,
+          "end": 1133
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 1252,
+          "end": 1288
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 637,
+          "end": 665
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 670,
+          "end": 690
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 876,
+          "end": 894
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 1170,
+          "end": 1187
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 1218,
+          "end": 1227
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 1157,
+          "end": 1165
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 1196,
+          "end": 1219
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 1174,
+          "end": 1201
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 981,
+          "end": 998
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 1331,
+          "end": 1348
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 1089,
+          "end": 1117
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 24,
+          "end": 57
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 554,
+          "end": 587
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 1254,
+          "end": 1277
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 1438,
+          "end": 1448
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 1501,
+          "end": 1537
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 692,
+          "end": 712
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 778,
+          "end": 805
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 1292,
+          "end": 1318
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 843,
+          "end": 865
+        },
+        {
+          "segment_id": "SEG-D12BE316A49F7CC1C985-001",
+          "start": 672,
+          "end": 690
+        },
+        {
+          "segment_id": "SEG-D12BE316A49F7CC1C985-001",
+          "start": 1062,
+          "end": 1095
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-002",
+          "start": 1043,
+          "end": 1057
+        }
+      ]
+    }
+  ]
+}

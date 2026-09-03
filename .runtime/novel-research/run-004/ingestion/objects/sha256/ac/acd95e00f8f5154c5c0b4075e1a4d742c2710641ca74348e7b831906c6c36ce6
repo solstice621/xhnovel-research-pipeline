@@ -1,0 +1,296 @@
+{
+  "candidates": [
+    {
+      "summary": "能量巨蛇偷袭咽喉时，神秘黑袍人忽然闪现击散巨蛇，随后又替少年剥离重尺上的蛇毒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 453,
+          "end": 465
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 140,
+          "end": 233
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 1313,
+          "end": 1355
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 1398,
+          "end": 1419
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 1256,
+          "end": 1269
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-001",
+          "start": 1145,
+          "end": 1190
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-001",
+          "start": 1252,
+          "end": 1309
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 372,
+          "end": 397
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 645,
+          "end": 714
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 1570,
+          "end": 1581
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 1596,
+          "end": 1602
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 478,
+          "end": 488
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 511,
+          "end": 522
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-002",
+          "start": 1436,
+          "end": 1463
+        },
+        {
+          "segment_id": "SEG-9AED4649E27966A19582-001",
+          "start": 1523,
+          "end": 1543
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "神秘黑袍人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 453,
+            "end": 465
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 140,
+            "end": 233
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "瞬移挡在身前挥袖击散能量巨蛇，并隔空取尺驱毒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 140,
+            "end": 233
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1313,
+            "end": 1355
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1398,
+            "end": 1419
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1256,
+            "end": 1269
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "偷袭而来的能量巨蛇",
+          "附在尺子上的蛇毒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-001",
+            "start": 1145,
+            "end": 1190
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1313,
+            "end": 1355
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "能量巨蛇自沙丘暴射咬向喉咙",
+          "周围强者救援动作迟缓"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-001",
+            "start": 1145,
+            "end": 1190
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-001",
+            "start": 1252,
+            "end": 1309
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "能量巨蛇被击散成虚无",
+          "免去被重伤",
+          "尺子上隐藏蛇毒被剥离"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 140,
+            "end": 233
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 372,
+            "end": 397
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1398,
+            "end": 1419
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "黑袍人破例救不相识少年令同伴诧异",
+          "众人议论其不仅救人还帮人驱毒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 645,
+            "end": 714
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1570,
+            "end": 1581
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1596,
+            "end": 1602
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "少年道谢",
+          "黑袍人点头"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 478,
+            "end": 488
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 511,
+            "end": 522
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可继续运尺而不被附尺蛇毒侵蚀体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1313,
+            "end": 1355
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1398,
+            "end": 1419
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "蛇毒已剥离，重尺插回面前沙丘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1436,
+            "end": 1463
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 1398,
+            "end": 1419
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中的无名施助并非约定报酬：旁人故意迟缓，淡漠黑袍人却破例救不相识者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-001",
+            "start": 1252,
+            "end": 1309
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-001",
+            "start": 1523,
+            "end": 1543
+          },
+          {
+            "segment_id": "SEG-9AED4649E27966A19582-002",
+            "start": 645,
+            "end": 714
+          }
+        ]
+      }
+    }
+  ]
+}

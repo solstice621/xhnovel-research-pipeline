@@ -211,6 +211,21 @@ def test_exploration_is_host_managed_not_a_new_runtime():
         assert re.search(r"must not gain|does not manage|do not.+add", text, re.DOTALL)
 
 
+def test_unproven_official_status_is_not_an_eligibility_filter():
+    skill = SKILL.read_text(encoding="utf-8")
+    docs = DOC.read_text(encoding="utf-8")
+    step_four = skill.split("5. **Prepare through the product boundary.**", 1)[0]
+    assert "4. **Resolve a source.**" in step_four
+    assert "edition_status=UNKNOWN" in step_four
+    assert "UNOFFICIAL_COPY" in step_four
+    assert "positively" in step_four.casefold()
+    assert "FAIR_USE_RESEARCH" in step_four
+    assert "declare `unofficial_copy` merely because official or licensed status is unproven" in skill.casefold()
+    assert "edition_status=UNKNOWN" in docs
+    assert "UNOFFICIAL_COPY" in docs
+    assert "positively established" in docs
+
+
 def test_real_pilot_targets_are_preserved_as_lead_quality_gates():
     text = DOC.read_text(encoding="utf-8")
     assert re.search(r"at least 12 qualified ResearchLeads", text)

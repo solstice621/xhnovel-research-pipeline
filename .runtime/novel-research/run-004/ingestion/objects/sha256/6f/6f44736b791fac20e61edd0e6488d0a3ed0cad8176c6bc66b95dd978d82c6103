@@ -1,0 +1,317 @@
+{
+  "candidates": [
+    {
+      "summary": "紫研指出蛮烤会蒸发枯皮中的魔核能量，萧炎按她所说滴入青红血液再以异火炙烤，青红云彩当场凝成魔核并被收入纳戒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-001",
+          "start": 1109,
+          "end": 1126
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-001",
+          "start": 1383,
+          "end": 1390
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-001",
+          "start": 791,
+          "end": 830
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-001",
+          "start": 1104,
+          "end": 1149
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-001",
+          "start": 1407,
+          "end": 1440
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-001",
+          "start": 565,
+          "end": 584
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-001",
+          "start": 98,
+          "end": 128
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-001",
+          "start": 587,
+          "end": 615
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-002",
+          "start": 1165,
+          "end": 1188
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-002",
+          "start": 1358,
+          "end": 1386
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-002",
+          "start": 1492,
+          "end": 1504
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-001",
+          "start": 1150,
+          "end": 1175
+        },
+        {
+          "segment_id": "SEG-899C36898869DC03A56A-001",
+          "start": 99,
+          "end": 109
+        },
+        {
+          "segment_id": "SEG-899C36898869DC03A56A-001",
+          "start": 112,
+          "end": 138
+        },
+        {
+          "segment_id": "SEG-FF83C272700B928C119C-002",
+          "start": 1424,
+          "end": 1443
+        },
+        {
+          "segment_id": "SEG-899C36898869DC03A56A-001",
+          "start": 384,
+          "end": 398
+        },
+        {
+          "segment_id": "SEG-899C36898869DC03A56A-001",
+          "start": 443,
+          "end": 455
+        },
+        {
+          "segment_id": "SEG-899C36898869DC03A56A-001",
+          "start": 617,
+          "end": 635
+        },
+        {
+          "segment_id": "SEG-899C36898869DC03A56A-001",
+          "start": 796,
+          "end": 810
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "紫研"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 1109,
+            "end": 1126
+          },
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 1383,
+            "end": 1390
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎将一滴青红血液滴上卷缩枯皮，再用异火炙烤"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 791,
+            "end": 830
+          },
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 1104,
+            "end": 1149
+          },
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 1407,
+            "end": 1440
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "魔兽枯皮中隐藏的魔核能量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 565,
+            "end": 584
+          },
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 98,
+            "end": 128
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "魔核能量隐藏在枯皮中",
+          "仅用异火蛮烤会令能量蒸发成废物"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 565,
+            "end": 584
+          },
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 587,
+            "end": 615
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "青红云彩被漩涡吸尽后凝成一枚青红不规则晶体魔核"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-002",
+            "start": 1165,
+            "end": 1188
+          },
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-002",
+            "start": 1358,
+            "end": 1386
+          },
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-002",
+            "start": 1492,
+            "end": 1504
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "血液迅速融入枯皮并使其变色蠕动、渗出青红雾气",
+          "凝成的魔核顺从吸力掠下悬浮于掌前"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 1150,
+            "end": 1175
+          },
+          {
+            "segment_id": "SEG-899C36898869DC03A56A-001",
+            "start": 99,
+            "end": 109
+          },
+          {
+            "segment_id": "SEG-899C36898869DC03A56A-001",
+            "start": 112,
+            "end": 138
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "晶体泄溢的光芒令周围空间略微扭曲"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-002",
+            "start": 1424,
+            "end": 1443
+          },
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-002",
+            "start": 1358,
+            "end": 1386
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎取得这枚高能魔核并可收存备用"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-899C36898869DC03A56A-001",
+            "start": 384,
+            "end": 398
+          },
+          {
+            "segment_id": "SEG-899C36898869DC03A56A-001",
+            "start": 443,
+            "end": 455
+          },
+          {
+            "segment_id": "SEG-899C36898869DC03A56A-001",
+            "start": 617,
+            "end": 635
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "魔核被移入玉盒再谨慎收入纳戒，并被嘱咐今夜之事不可外传"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-899C36898869DC03A56A-001",
+            "start": 384,
+            "end": 398
+          },
+          {
+            "segment_id": "SEG-899C36898869DC03A56A-001",
+            "start": 443,
+            "end": 455
+          },
+          {
+            "segment_id": "SEG-899C36898869DC03A56A-001",
+            "start": 796,
+            "end": 810
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "宝贝以常人难知的方式隐藏，魔核能量在枯皮中须用同体青红血液激活再煅烧才能凝核，蛮烤则会蒸发"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 98,
+            "end": 128
+          },
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 587,
+            "end": 615
+          },
+          {
+            "segment_id": "SEG-FF83C272700B928C119C-001",
+            "start": 791,
+            "end": 830
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,356 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎在灵魂空间催动龙印，趁三千焱炎火恐慌后退将其吸入掌心，再把失去神采的本源之火吞入体内，火海随即分流围绕，炼化仍需时日。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 193,
+          "end": 200
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-001",
+          "start": 999,
+          "end": 1021
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 107,
+          "end": 126
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-001",
+          "start": 764,
+          "end": 784
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-001",
+          "start": 1038,
+          "end": 1075
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-001",
+          "start": 1112,
+          "end": 1139
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 201,
+          "end": 222
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 292,
+          "end": 308
+        },
+        {
+          "segment_id": "SEG-62929A7AFEFC27AE1263-002",
+          "start": 1419,
+          "end": 1426
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-001",
+          "start": 1404,
+          "end": 1431
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 369,
+          "end": 385
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 575,
+          "end": 600
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 603,
+          "end": 625
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 224,
+          "end": 248
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 265,
+          "end": 290
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 322,
+          "end": 343
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-002",
+          "start": 426,
+          "end": 443
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-001",
+          "start": 991,
+          "end": 994
+        },
+        {
+          "segment_id": "SEG-59D18746674AEEDB1E51-001",
+          "start": 1179,
+          "end": 1207
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "三千焱炎火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 193,
+            "end": 200
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 999,
+            "end": 1021
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 107,
+            "end": 126
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎催动掌心龙印将灵魂空间中的三千焱炎火吸入龙印",
+          "将本源之火吞进体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 764,
+            "end": 784
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 1038,
+            "end": 1075
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 1112,
+            "end": 1139
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 201,
+            "end": 222
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "三千焱炎火的本源之火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 107,
+            "end": 126
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 292,
+            "end": 308
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂对峙中萧炎转为进攻而异火已虚弱恐慌",
+          "萧炎掌心有龙印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-62929A7AFEFC27AE1263-002",
+            "start": 1419,
+            "end": 1426
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 999,
+            "end": 1021
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 764,
+            "end": 784
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "三千焱炎火被吸入掌心龙印并失去神采",
+          "本源之火被吞入体内，萧炎几乎取得控制权"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 1112,
+            "end": 1139
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 1404,
+            "end": 1431
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 201,
+            "end": 222
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 292,
+            "end": 308
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 369,
+            "end": 385
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "异火在咆哮挣扎中被金光掠回龙印",
+          "星域紫黑火海靠近萧炎丈许后分流围绕如朝拜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 1038,
+            "end": 1075
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 999,
+            "end": 1021
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 575,
+            "end": 600
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 603,
+            "end": 625
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "本源入体后灼热蔓延，碧绿与紫黑火焰自毛孔喷发"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 224,
+            "end": 248
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 265,
+            "end": 290
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可将本源彻底炼化并与琉璃莲心火融合",
+          "近处火海不再扑向萧炎而是分流围绕"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 322,
+            "end": 343
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 575,
+            "end": 600
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 603,
+            "end": 625
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "本源之火已入体且几乎取得控制权",
+          "彻底炼化仍需花费不短时日"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 292,
+            "end": 308
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 369,
+            "end": 385
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-002",
+            "start": 426,
+            "end": 443
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂意志对峙中一旦恐慌后退即被判定失败并被龙印吸摄，胜负不单由力量比值决定"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 991,
+            "end": 994
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 999,
+            "end": 1021
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 1179,
+            "end": 1207
+          },
+          {
+            "segment_id": "SEG-59D18746674AEEDB1E51-001",
+            "start": 1112,
+            "end": 1139
+          }
+        ]
+      }
+    }
+  ]
+}

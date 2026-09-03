@@ -1,0 +1,871 @@
+{
+  "candidates": [
+    {
+      "summary": "四星火奴血斧当头劈下时，萧炎亮出萧族族纹挡在紫研古南海前，斧停；光团波动指引他拍上萧晨肩头，体内乳白色火焰消散，萧晨恢复神智并带路。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-001",
+          "start": 872,
+          "end": 882
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-001",
+          "start": 1102,
+          "end": 1112
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-001",
+          "start": 557,
+          "end": 602
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-001",
+          "start": 635,
+          "end": 653
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-001",
+          "start": 659,
+          "end": 678
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-002",
+          "start": 234,
+          "end": 257
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-002",
+          "start": 380,
+          "end": 442
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-001",
+          "start": 723,
+          "end": 735
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-002",
+          "start": 59,
+          "end": 74
+        },
+        {
+          "segment_id": "SEG-330A131472AD7D0D3EE1-002",
+          "start": 1424,
+          "end": 1452
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-001",
+          "start": 971,
+          "end": 982
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-002",
+          "start": 811,
+          "end": 815
+        },
+        {
+          "segment_id": "SEG-330A131472AD7D0D3EE1-002",
+          "start": 1408,
+          "end": 1422
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "萧晨",
+          "紫研",
+          "古南海"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 872,
+            "end": 882
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 1102,
+            "end": 1112
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 557,
+            "end": 602
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 635,
+            "end": 653
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "亮出萧族族纹挡在血斧下，并依光团波动拍上萧晨肩膀"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 659,
+            "end": 678
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 635,
+            "end": 653
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 234,
+            "end": 257
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 380,
+            "end": 442
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "当头劈下的血色巨斧",
+          "被净莲妖火控制的萧晨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 557,
+            "end": 602
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 723,
+            "end": 735
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 59,
+            "end": 74
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 380,
+            "end": 442
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "最后一关四星干瘦火奴以血斧压制紫研与古南海，正要当头劈下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 557,
+            "end": 602
+          },
+          {
+            "segment_id": "SEG-330A131472AD7D0D3EE1-002",
+            "start": 1424,
+            "end": 1452
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "血斧凝固停手，萧晨被血脉唤醒；体内乳白色火焰被拍肩驱散，转为带路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 723,
+            "end": 735
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 971,
+            "end": 982
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 380,
+            "end": 442
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 811,
+            "end": 815
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "干瘦火奴因族纹现出残存神智自问血脉；古图光团突发波动指引拍肩"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-330A131472AD7D0D3EE1-002",
+            "start": 1408,
+            "end": 1422
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 971,
+            "end": 982
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 234,
+            "end": 257
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 1102,
+            "end": 1112
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "斧在头顶半尺处猛然凝固；欲窜出的乳白色火焰徐徐消散"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 723,
+            "end": 735
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 380,
+            "end": 442
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "最后一关停战，可由恢复神智的萧晨带往妖火所在"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 811,
+            "end": 815
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 1102,
+            "end": 1112
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "萧晨答应带路，随后推开殿门领众人前行"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 811,
+            "end": 815
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "必杀因同族族纹与残存意志中止，随后未掌握的古图光团在失控瞬间给出拍肩解控，而非打赢四星守卫"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 723,
+            "end": 735
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-001",
+            "start": 659,
+            "end": 678
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 234,
+            "end": 257
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 380,
+            "end": 442
+          }
+        ]
+      }
+    },
+    {
+      "summary": "古图光团指示萧炎识破仍在梦魇天雾中，他令众人收起斗气并以精血绘破魇之符贴上虚空，幻境爆炸，众人醒来见岩浆海域。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 330,
+          "end": 341
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-001",
+          "start": 15,
+          "end": 31
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 377,
+          "end": 388
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-001",
+          "start": 946,
+          "end": 963
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 24,
+          "end": 57
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 342,
+          "end": 364
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 365,
+          "end": 375
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 321,
+          "end": 328
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-001",
+          "start": 125,
+          "end": 138
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 227,
+          "end": 242
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-002",
+          "start": 1260,
+          "end": 1294
+        },
+        {
+          "segment_id": "SEG-61B3EC07699E28776DAA-002",
+          "start": 1502,
+          "end": 1522
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-001",
+          "start": 1435,
+          "end": 1485
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 470,
+          "end": 498
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 555,
+          "end": 568
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 272,
+          "end": 291
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 805,
+          "end": 818
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 840,
+          "end": 862
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "幻境中的白袍男子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 330,
+            "end": 341
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-001",
+            "start": 15,
+            "end": 31
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 377,
+            "end": 388
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "依光团指示喝令收起斗气，并以精血绘破魇之符贴上虚空"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-001",
+            "start": 946,
+            "end": 963
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 24,
+            "end": 57
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 330,
+            "end": 341
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 342,
+            "end": 364
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 365,
+            "end": 375
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 321,
+            "end": 328
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "梦魇幻境",
+          "白袍男子的火焰长枪"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-001",
+            "start": 125,
+            "end": 138
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 321,
+            "end": 328
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 227,
+            "end": 242
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "众人已按布置走到祭坛，白袍男子要他们打败自己才给妖火本源，否则永留为火奴"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 1260,
+            "end": 1294
+          },
+          {
+            "segment_id": "SEG-61B3EC07699E28776DAA-002",
+            "start": 1502,
+            "end": 1522
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "从深陷梦魇天雾、按布置越陷越深，变为幻境爆炸、落入真实岩浆海域"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-001",
+            "start": 1435,
+            "end": 1485
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 470,
+            "end": 498
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 555,
+            "end": 568
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "火焰长枪轰中却消失，白袍身体现出虚幻并惊问他怎会破魇之符；空间爆炸"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 227,
+            "end": 242
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 272,
+            "end": 291
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 377,
+            "end": 388
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 470,
+            "end": 498
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "长枪消失、白袍体虚；空间砰然爆炸后眼前变为岩浆海域"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 227,
+            "end": 242
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 272,
+            "end": 291
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 470,
+            "end": 498
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 555,
+            "end": 568
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "脱离幻境，可面对真正的净莲妖火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 555,
+            "end": 568
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 805,
+            "end": 818
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 840,
+            "end": 862
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "醒来后确认净莲妖火没本事再造同等幻境，灵魂也轻松许多"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 805,
+            "end": 818
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 840,
+            "end": 862
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "幻境强弱取决于心中认定，未知破魇之符由休眠光团临时授出，无法用常规伤害或通关打赢来表达"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-001",
+            "start": 946,
+            "end": 963
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-001",
+            "start": 1435,
+            "end": 1485
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 377,
+            "end": 388
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 321,
+            "end": 328
+          }
+        ]
+      }
+    },
+    {
+      "summary": "幻境外萧晨再被净莲妖火控制，光团再传波动，萧炎在其额上画出无形咒纹，挣扎淡去，暂时隔绝控制。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 1208,
+          "end": 1284
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 941,
+          "end": 951
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 1325,
+          "end": 1342
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 1135,
+          "end": 1164
+        },
+        {
+          "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+          "start": 1286,
+          "end": 1323
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "萧晨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1208,
+            "end": 1284
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 941,
+            "end": 951
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1325,
+            "end": 1342
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "依光团波动以灵魂力量在萧晨额头勾画无形咒纹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1135,
+            "end": 1164
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1208,
+            "end": 1284
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "正被净莲妖火再次控制的萧晨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 941,
+            "end": 951
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1208,
+            "end": 1284
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "刚撕破幻境，萧晨再度低吼称净莲妖火又在控制他"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 941,
+            "end": 951
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1135,
+            "end": 1164
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "咒纹成形后挣扎淡去，萧晨暂时恢复正常"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1208,
+            "end": 1284
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1325,
+            "end": 1342
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1286,
+            "end": 1323
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "古图光团再次传出细微波动，给出隔绝控制的画符指引"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1135,
+            "end": 1164
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "额上咒纹成形，挣扎逐渐淡去"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1208,
+            "end": 1284
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "暂时隔绝净莲妖火对萧晨的控制，可将其作为战力；彻底抹除仍须先解决净莲妖火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1286,
+            "end": 1323
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1325,
+            "end": 1342
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "此印只能暂时隔绝控制，彻底抹除须先解决净莲妖火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1286,
+            "end": 1323
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "刚获自由的火奴立即被本体反控，解控法由休眠光团当场授出且只给暂时隔绝，而非玩家已掌握的净化技能"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 941,
+            "end": 951
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1135,
+            "end": 1164
+          },
+          {
+            "segment_id": "SEG-4C7933238453FD4F5CC3-002",
+            "start": 1286,
+            "end": 1323
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "candidates": [
+    {
+      "summary": "萧玄残魂突然提出另送一场造化：化天墓之魂助萧炎冲击帝境灵魂；随即自燃灵魂强抽天墓之魂的灵魂本源，丈许晶莹光圈被扯出，萧炎伸手触光即感灵魂贪婪。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "萧玄",
+          "天墓之魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-001",
+            "start": 28,
+            "end": 59
+          },
+          {
+            "segment_id": "SEG-FE9C259B09B16E811B57-002",
+            "start": 1265,
+            "end": 1298
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+            "start": 18,
+            "end": 30
+          },
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-001",
+            "start": 703,
+            "end": 734
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄宣告化天墓之魂助萧炎冲击帝境灵魂",
+          "自燃灵魂抽取天墓之魂的灵魂本源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FE9C259B09B16E811B57-002",
+            "start": 1265,
+            "end": 1298
+          },
+          {
+            "segment_id": "SEG-FE9C259B09B16E811B57-002",
+            "start": 1507,
+            "end": 1542
+          },
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-002",
+            "start": 1435,
+            "end": 1448
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 197,
+            "end": 216
+          },
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-002",
+            "start": 1450,
+            "end": 1486
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "天墓之魂的灵魂本源",
+          "萧炎的帝境灵魂突破"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 287,
+            "end": 317
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 406,
+            "end": 422
+          },
+          {
+            "segment_id": "SEG-FE9C259B09B16E811B57-002",
+            "start": 1507,
+            "end": 1542
+          },
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-001",
+            "start": 16,
+            "end": 26
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎灵魂停在天境大圆满，距帝境灵魂仅一步",
+          "萧玄只是残魂，无法出面对付魂族",
+          "天墓之魂几乎无人能感应，连古元等也不知晓"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-001",
+            "start": 286,
+            "end": 322
+          },
+          {
+            "segment_id": "SEG-FE9C259B09B16E811B57-002",
+            "start": 1265,
+            "end": 1298
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+            "start": 1168,
+            "end": 1191
+          },
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-001",
+            "start": 907,
+            "end": 944
+          },
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-001",
+            "start": 703,
+            "end": 734
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄灵魂自燃起焰",
+          "丈许晶莹光圈被从天墓之魂体内扯出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-002",
+            "start": 1450,
+            "end": 1486
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 287,
+            "end": 317
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "天墓之魂惊呼萧玄疯了并求饶讨价",
+          "天墓之魂被逼试图自燃灵魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+            "start": 18,
+            "end": 30
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+            "start": 423,
+            "end": 433
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 101,
+            "end": 120
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 785,
+            "end": 796
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎错愕不懂造化何意，听帝境灵魂时口干舌燥",
+          "伸手触光感到暖意，灵魂近乎贪婪呐喊"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FE9C259B09B16E811B57-002",
+            "start": 1300,
+            "end": 1335
+          },
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-001",
+            "start": 28,
+            "end": 59
+          },
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-001",
+            "start": 531,
+            "end": 540
+          },
+          {
+            "segment_id": "SEG-6028405B863526CE18FA-001",
+            "start": 737,
+            "end": 750
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 350,
+            "end": 404
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂本源已露出并可被萧炎感知接触",
+          "冲击帝境灵魂的造化正在当场兑现"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 350,
+            "end": 404
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 406,
+            "end": 422
+          },
+          {
+            "segment_id": "SEG-FE9C259B09B16E811B57-002",
+            "start": 1507,
+            "end": 1542
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "抽取尚未完成",
+          "萧玄以燃烧残魂为代价，事后将彻底消失"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 287,
+            "end": 317
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+            "start": 510,
+            "end": 526
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+            "start": 288,
+            "end": 309
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+            "start": 1168,
+            "end": 1191
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残存祖魂以自燃为代价抽取空间狱卒本源赠予后辈，能否晋入帝境灵魂全看造化，而非交易或修炼日程"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FE9C259B09B16E811B57-002",
+            "start": 1507,
+            "end": 1542
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+            "start": 510,
+            "end": 526
+          },
+          {
+            "segment_id": "SEG-FE9C259B09B16E811B57-002",
+            "start": 1265,
+            "end": 1298
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 350,
+            "end": 404
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-6028405B863526CE18FA-001",
+          "start": 16,
+          "end": 26
+        },
+        {
+          "segment_id": "SEG-6028405B863526CE18FA-001",
+          "start": 28,
+          "end": 59
+        },
+        {
+          "segment_id": "SEG-6028405B863526CE18FA-001",
+          "start": 286,
+          "end": 322
+        },
+        {
+          "segment_id": "SEG-6028405B863526CE18FA-001",
+          "start": 531,
+          "end": 540
+        },
+        {
+          "segment_id": "SEG-6028405B863526CE18FA-001",
+          "start": 703,
+          "end": 734
+        },
+        {
+          "segment_id": "SEG-6028405B863526CE18FA-001",
+          "start": 737,
+          "end": 750
+        },
+        {
+          "segment_id": "SEG-6028405B863526CE18FA-001",
+          "start": 907,
+          "end": 944
+        },
+        {
+          "segment_id": "SEG-6028405B863526CE18FA-002",
+          "start": 1435,
+          "end": 1448
+        },
+        {
+          "segment_id": "SEG-6028405B863526CE18FA-002",
+          "start": 1450,
+          "end": 1486
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+          "start": 18,
+          "end": 30
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+          "start": 288,
+          "end": 309
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+          "start": 423,
+          "end": 433
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+          "start": 510,
+          "end": 526
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-001",
+          "start": 1168,
+          "end": 1191
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+          "start": 101,
+          "end": 120
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+          "start": 197,
+          "end": 216
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+          "start": 287,
+          "end": 317
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+          "start": 350,
+          "end": 404
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+          "start": 406,
+          "end": 422
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+          "start": 785,
+          "end": 796
+        },
+        {
+          "segment_id": "SEG-FE9C259B09B16E811B57-002",
+          "start": 1265,
+          "end": 1298
+        },
+        {
+          "segment_id": "SEG-FE9C259B09B16E811B57-002",
+          "start": 1300,
+          "end": 1335
+        },
+        {
+          "segment_id": "SEG-FE9C259B09B16E811B57-002",
+          "start": 1507,
+          "end": 1542
+        }
+      ]
+    }
+  ]
+}

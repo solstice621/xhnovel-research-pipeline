@@ -1,0 +1,300 @@
+{
+  "candidates": [
+    {
+      "summary": "拒绝跟回后拦路一掌中途改成柔力推背，当场融化体内追踪痕迹，并放他离开加玛帝国。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-D97B8605A8C6D7C69A19-003",
+          "start": 473,
+          "end": 492
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+          "start": 88,
+          "end": 102
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+          "start": 702,
+          "end": 715
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+          "start": 1226,
+          "end": 1237
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+          "start": 1265,
+          "end": 1289
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+          "start": 44,
+          "end": 71
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+          "start": 1424,
+          "end": 1451
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+          "start": 1315,
+          "end": 1331
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+          "start": 1505,
+          "end": 1553
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+          "start": 121,
+          "end": 162
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+          "start": 533,
+          "end": 595
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+          "start": 599,
+          "end": 613
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+          "start": 6,
+          "end": 19
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+          "start": 107,
+          "end": 118
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+          "start": 1343,
+          "end": 1390
+        },
+        {
+          "segment_id": "SEG-F1509F0C2214656DFCB9-003",
+          "start": 96,
+          "end": 112
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "云韵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-003",
+            "start": 473,
+            "end": 492
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+            "start": 88,
+            "end": 102
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+            "start": 702,
+            "end": 715
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "拒绝跟回，转身让开拦路者大步向外走"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+            "start": 1226,
+            "end": 1237
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+            "start": 1265,
+            "end": 1289
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "体内云山所留能量痕迹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 44,
+            "end": 71
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "云韵拦在森林出口",
+          "自认若对方执意要杀则毫无反抗能力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D97B8605A8C6D7C69A19-003",
+            "start": 473,
+            "end": 492
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+            "start": 1424,
+            "end": 1451
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "体内追踪用的能量痕迹被当场融化"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 44,
+            "end": 71
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "袭背劲气中途转为柔力把他推开",
+          "令他离开加玛帝国且不要再回来",
+          "自述情感拦住抓捕理智才使那掌中途改变"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+            "start": 1315,
+            "end": 1331
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+            "start": 1505,
+            "end": 1553
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 121,
+            "end": 162
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 533,
+            "end": 595
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 599,
+            "end": 613
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "愕然睁眼",
+          "追问这是什么意思"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 6,
+            "end": 19
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 107,
+            "end": 118
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可在追踪痕迹已消的情况下离开加玛帝国"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 44,
+            "end": 71
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 121,
+            "end": 162
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 1343,
+            "end": 1390
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "能量痕迹已被融化",
+          "对方嘱咐离开后不要再回来"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 44,
+            "end": 71
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-003",
+            "start": 96,
+            "end": 112
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "杀招在击中前改成柔力，并精确融化体内追踪痕迹，抓捕义务被情感拦住"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-001",
+            "start": 1505,
+            "end": 1553
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 44,
+            "end": 71
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 533,
+            "end": 595
+          },
+          {
+            "segment_id": "SEG-F1509F0C2214656DFCB9-002",
+            "start": 599,
+            "end": 613
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "candidates": [
+    {
+      "summary": "山谷对峙将退时，黑袍人抛来解药玉瓶并当场把山谷还给萧炎；紫研中毒且萧炎自炼解毒丹无效，只得让她吞下该丹，紫红毒性片刻消退，随后谷中剧毒随其人离开而消散，萧炎得以在谷中安顿闭关。",
+      "source_spans": [
+        {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1240, "end": 1274},
+        {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1306, "end": 1319},
+        {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1321, "end": 1361},
+        {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1413, "end": 1432},
+        {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1434, "end": 1454},
+        {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1551, "end": 1559},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 263, "end": 275},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 439, "end": 464},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 491, "end": 511},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 629, "end": 640},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 640, "end": 657},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 724, "end": 746},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 750, "end": 777},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 849, "end": 861},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 887, "end": 898},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 963, "end": 1001},
+        {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 1002, "end": 1021},
+        {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 13, "end": 46},
+        {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 47, "end": 69},
+        {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 173, "end": 198}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "紫研", "美杜莎", "小医仙"],
+        "support_spans": [
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 887, "end": 898},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 1002, "end": 1021},
+          {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1551, "end": 1559},
+          {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1240, "end": 1274},
+          {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 13, "end": 46}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["黑袍人退出时扬手抛来一物", "萧炎隔空吸过玉瓶、倒出赤红丹药塞进紫研嘴中"],
+        "support_spans": [
+          {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1240, "end": 1274},
+          {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1413, "end": 1432},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 849, "end": 861},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 887, "end": 898}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["紫研体内之毒", "解药玉瓶", "山谷占有"],
+        "support_spans": [
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 263, "end": 275},
+          {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1306, "end": 1319},
+          {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1321, "end": 1361},
+          {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1434, "end": 1454}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["紫研中毒脸现紫红", "萧炎自炼解毒丹对毒气无效且毒气藏得极深", "不用这瓶则别无办法、中毒不可拖延"],
+        "support_spans": [
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 263, "end": 275},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 439, "end": 464},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 491, "end": 511},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 750, "end": 777}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["紫研脸上紫红片刻尽消", "黑袍人声明把山谷还给萧炎", "其人离开后谷中隐藏剧毒迅速消散"],
+        "support_spans": [
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 963, "end": 1001},
+          {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1434, "end": 1454},
+          {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 13, "end": 46}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["黑袍人声称此是能解小女孩体内之毒的解药", "黑袍人把山谷还给声称的原寻主", "丹药入体后紫红消退，谷中剧毒如受指挥消散"],
+        "support_spans": [
+          {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1321, "end": 1361},
+          {"segment_id": "SEG-C408513ABB6A28AE722F-002", "start": 1434, "end": 1454},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 963, "end": 1001},
+          {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 13, "end": 46}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["紫研脸上紫红以肉眼可见速度消失", "萧炎与美杜莎松了一口气", "欲在谷中闭关的萧炎暗自松气"],
+        "support_spans": [
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 963, "end": 1001},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 1002, "end": 1021},
+          {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 47, "end": 69}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["紫研毒性解除", "山谷剧毒消散后可在其中闭关安顿"],
+        "support_spans": [
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 963, "end": 1001},
+          {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 47, "end": 69},
+          {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 173, "end": 198}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["谷中隐藏剧毒已消散", "萧炎在小山谷安定下来并发传信鸟回帝都"],
+        "support_spans": [
+          {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 13, "end": 46},
+          {"segment_id": "SEG-8F93D0BDEE434C91EC53-001", "start": 173, "end": 198}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["自有解毒丹对这毒气无效时，是否敢吞来历不明者抛来的解药", "美杜莎质疑是否真是解药，萧炎只能凭旧识信任而不能验证"],
+        "support_spans": [
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 439, "end": 464},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 629, "end": 640},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 640, "end": 657},
+          {"segment_id": "SEG-C361A9838F456D00BC21-002", "start": 724, "end": 746}
+        ]
+      }
+    }
+  ]
+}

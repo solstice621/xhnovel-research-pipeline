@@ -1,0 +1,20 @@
+{
+  "actual_input_spec_hash": "sha256:9ff536b77c4fbe246955c110bc09c54710cf2b4ad68b558775de6bc3712326b4",
+  "attempt_id": "HAT-8C66677B25D8AD54279C",
+  "attempt_ordinal": 2,
+  "bundle_id": "BND-9889F0D83AD85718C676",
+  "executor": "agent-files",
+  "expected_input_spec_hash": "sha256:9ff536b77c4fbe246955c110bc09c54710cf2b4ad68b558775de6bc3712326b4",
+  "export_id": "EXP-3486A1B9158C78DADC4E",
+  "handoff_id": "EHO-D265EDFA714EA2C36829",
+  "ingestion_run_id": "NING-082F0DE349DC0FA7ED34",
+  "merge_run_id": "SMRUN-CDC93214481ACC08EAEF",
+  "receipt_hash": "sha256:abfb5f562c381277f577692a695c92dd6ab2b0fb7fd19ab677c851368e2b6236",
+  "receipt_id": "HER-92454B6A4348E3B4D5A3",
+  "recorded_at": "2026-09-03T05:51:30Z",
+  "request_id": "REQ-3C424D761372BBC97311",
+  "scene_scout_run_id": "SSRUN-C6CCB279B0D2D44B1FFC",
+  "schema_version": "0.2-draft",
+  "status": "SUCCEEDED",
+  "validate_all": "PASS"
+}

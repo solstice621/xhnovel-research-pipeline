@@ -1,0 +1,347 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎在万药山脉溪源嗅到丹灵浆，用水云果诱使玄水虎蛟醉倒后挖走石孔中的丹灵浆。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-14322043FA8544BB5C13-002",
+          "start": 363,
+          "end": 375
+        },
+        {
+          "segment_id": "SEG-14322043FA8544BB5C13-002",
+          "start": 377,
+          "end": 391
+        },
+        {
+          "segment_id": "SEG-14322043FA8544BB5C13-002",
+          "start": 392,
+          "end": 402
+        },
+        {
+          "segment_id": "SEG-14322043FA8544BB5C13-002",
+          "start": 403,
+          "end": 452
+        },
+        {
+          "segment_id": "SEG-14322043FA8544BB5C13-002",
+          "start": 467,
+          "end": 496
+        },
+        {
+          "segment_id": "SEG-14322043FA8544BB5C13-002",
+          "start": 636,
+          "end": 655
+        },
+        {
+          "segment_id": "SEG-14322043FA8544BB5C13-002",
+          "start": 674,
+          "end": 683
+        },
+        {
+          "segment_id": "SEG-14322043FA8544BB5C13-002",
+          "start": 1383,
+          "end": 1414
+        },
+        {
+          "segment_id": "SEG-14322043FA8544BB5C13-002",
+          "start": 1416,
+          "end": 1442
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-001",
+          "start": 71,
+          "end": 81
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-001",
+          "start": 272,
+          "end": 301
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-001",
+          "start": 328,
+          "end": 350
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-002",
+          "start": 294,
+          "end": 320
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-002",
+          "start": 340,
+          "end": 358
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-002",
+          "start": 512,
+          "end": 524
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-002",
+          "start": 525,
+          "end": 547
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-002",
+          "start": 609,
+          "end": 625
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-002",
+          "start": 628,
+          "end": 650
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-002",
+          "start": 651,
+          "end": 668
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-002",
+          "start": 677,
+          "end": 721
+        },
+        {
+          "segment_id": "SEG-73250833DFE56496CADE-002",
+          "start": 858,
+          "end": 879
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "玄水虎蛟"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 377,
+            "end": 391
+          },
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 1383,
+            "end": 1414
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 340,
+            "end": 358
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "诱开守护兽并挖取丹灵浆"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-001",
+            "start": 71,
+            "end": 81
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 609,
+            "end": 625
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 628,
+            "end": 650
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 651,
+            "end": 668
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "丹灵浆"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 363,
+            "end": 375
+          },
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 636,
+            "end": 655
+          },
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 674,
+            "end": 683
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "丹灵浆是调和地心魂髓所需主药材",
+          "守护者为隐匿的玄水虎蛟"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 403,
+            "end": 452
+          },
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 1383,
+            "end": 1414
+          },
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 1416,
+            "end": 1442
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "丹灵浆从石孔转入萧炎纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 651,
+            "end": 668
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 677,
+            "end": 721
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "玄水虎蛟吞食水云果后醉倒",
+          "稍后发出愤怒咆哮"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 294,
+            "end": 320
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 512,
+            "end": 524
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 525,
+            "end": 547
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 858,
+            "end": 879
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎惊喜确认遇见所需丹灵浆"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 392,
+            "end": 402
+          },
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 403,
+            "end": 452
+          },
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 467,
+            "end": 496
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "获得调和地心魂髓所需的一味主药材"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 403,
+            "end": 452
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 677,
+            "end": 721
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "盛着丹灵浆的石头放入寒玉盒子并收入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 677,
+            "end": 721
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "所需药材与隐匿守护兽同场，须用对口诱饵暂时放倒守护才能当场取走"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-14322043FA8544BB5C13-002",
+            "start": 1383,
+            "end": 1414
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-001",
+            "start": 272,
+            "end": 301
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-001",
+            "start": 328,
+            "end": 350
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 512,
+            "end": 524
+          },
+          {
+            "segment_id": "SEG-73250833DFE56496CADE-002",
+            "start": 651,
+            "end": 668
+          }
+        ]
+      }
+    }
+  ]
+}

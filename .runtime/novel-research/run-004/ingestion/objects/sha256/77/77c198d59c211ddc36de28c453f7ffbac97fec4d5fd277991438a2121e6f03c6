@@ -1,0 +1,447 @@
+{
+  "candidates": [
+    {
+      "summary": "青山镇佣兵被四品毒师绿雾逼到准备冲下城墙拼命时,天际温度骤升令毒雾如残雪消散,两道陌生身影闪至上空;在双方尚恐是对方援手之际亮出萧炎,当场将逃窜毒师烧成灰烬并以丹香救醒中毒者,围城绝境骤解。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 1053,
+          "end": 1077
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 864,
+          "end": 868
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 869,
+          "end": 887
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 840,
+          "end": 848
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 304,
+          "end": 325
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 694,
+          "end": 713
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 738,
+          "end": 767
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 788,
+          "end": 798
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 583,
+          "end": 614
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 1078,
+          "end": 1090
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 1223,
+          "end": 1240
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 489,
+          "end": 525
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 1012,
+          "end": 1033
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 1156,
+          "end": 1168
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 1292,
+          "end": 1319
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-001",
+          "start": 729,
+          "end": 746
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-001",
+          "start": 1026,
+          "end": 1036
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 338,
+          "end": 351
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 386,
+          "end": 404
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 435,
+          "end": 443
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 447,
+          "end": 479
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 529,
+          "end": 550
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 675,
+          "end": 684
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 1373,
+          "end": 1380
+        },
+        {
+          "segment_id": "SEG-6BB7FE2974225A29B599-002",
+          "start": 856,
+          "end": 860
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "严承",
+          "苓儿",
+          "灰袍老者",
+          "小女孩"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1053,
+            "end": 1077
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 864,
+            "end": 868
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 869,
+            "end": 887
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 840,
+            "end": 848
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 304,
+            "end": 325
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 694,
+            "end": 713
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 738,
+            "end": 767
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 788,
+            "end": 798
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "两道身影闪现小镇上空",
+          "萧炎以无形火焰击杀逃窜毒师",
+          "抛出丹药并以碧绿火焰催出丹香"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 583,
+            "end": 614
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1078,
+            "end": 1090
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1223,
+            "end": 1240
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "城墙上的绿色毒雾",
+          "逃窜的灰袍毒师",
+          "中毒昏迷的佣兵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 489,
+            "end": 525
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1012,
+            "end": 1033
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1156,
+            "end": 1168
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1292,
+            "end": 1319
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "青山镇被四品毒师围城且守军难敌",
+          "第二股毒雾升起后佣兵准备冲下拼命",
+          "众人认定横竖一死"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-001",
+            "start": 729,
+            "end": 746
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-001",
+            "start": 1026,
+            "end": 1036
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 304,
+            "end": 325
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 338,
+            "end": 351
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 386,
+            "end": 404
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 435,
+            "end": 443
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "绿色毒雾遇高温迅速消散",
+          "逃窜毒师化为灰烬",
+          "中毒佣兵咳嗽苏醒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 447,
+            "end": 479
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 489,
+            "end": 525
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1156,
+            "end": 1168
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1292,
+            "end": 1319
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "双方先茫然再担心来者是对方援手",
+          "严承认出萧盟主",
+          "灰袍毒师化雾逃窜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 529,
+            "end": 550
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 675,
+            "end": 684
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 864,
+            "end": 868
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 869,
+            "end": 887
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1012,
+            "end": 1033
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "毒雾如残雪遇沸油般消散",
+          "逃窜者未及惨叫即成灰烬",
+          "昏迷佣兵咳嗽醒来"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 489,
+            "end": 525
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1156,
+            "end": 1168
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1292,
+            "end": 1319
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "围城毒师被灭,守军得以存活并询问战况"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1156,
+            "end": 1168
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1292,
+            "end": 1319
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1373,
+            "end": 1380
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "十余名灰袍毒师已成灰烬",
+          "中毒佣兵已苏醒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1156,
+            "end": 1168
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 1292,
+            "end": 1319
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "绝境自杀冲锋前高温消雾的来者身份未知,双方都怕是对方援手",
+          "须在认出萧盟主前决定是否把突然出现的斗王当敌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 447,
+            "end": 479
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 529,
+            "end": 550
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 675,
+            "end": 684
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 856,
+            "end": 860
+          },
+          {
+            "segment_id": "SEG-6BB7FE2974225A29B599-002",
+            "start": 864,
+            "end": 868
+          }
+        ]
+      }
+    }
+  ]
+}

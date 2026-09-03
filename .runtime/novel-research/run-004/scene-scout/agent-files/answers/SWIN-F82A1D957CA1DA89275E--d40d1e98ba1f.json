@@ -1,0 +1,657 @@
+{
+  "candidates": [
+    {
+      "summary": "魂煞追杀中萧炎灵魂枯竭，药灵称自己体质特殊、血液能滋润灵魂并伸腕；萧炎咬腕吸血后，血液化为奇异能量涌上眉心，枯竭灵魂被血光包裹并比巅峰更充盈，他随即振翼继续逃向古族。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 174,
+          "end": 186
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 321,
+          "end": 329
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 386,
+          "end": 397
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 330,
+          "end": 344
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 350,
+          "end": 381
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 502,
+          "end": 540
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 219,
+          "end": 248
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 251,
+          "end": 268
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 280,
+          "end": 304
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 579,
+          "end": 616
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 620,
+          "end": 662
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 565,
+          "end": 578
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 676,
+          "end": 702
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 816,
+          "end": 836
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 993,
+          "end": 1016
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 1040,
+          "end": 1071
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药灵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 174,
+            "end": 186
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 321,
+            "end": 329
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 386,
+            "end": 397
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "药灵伸腕说明特殊体质之血可滋润灵魂",
+          "萧炎咬住药灵皓腕吸血"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 330,
+            "end": 344
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 350,
+            "end": 381
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 502,
+            "end": 540
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "药灵的特殊体质之血",
+          "萧炎已有些枯竭的灵魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 350,
+            "end": 381
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 219,
+            "end": 248
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "魂煞追杀途中萧炎灵魂连番削弱至枯竭，身体外伤重重且内部混乱"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 174,
+            "end": 186
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 219,
+            "end": 248
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 251,
+            "end": 268
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 280,
+            "end": 304
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "血液入体化为奇异能量涌上眉心，枯竭灵魂被淡淡血光包裹并变得比巅峰更充盈"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 579,
+            "end": 616
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 620,
+            "end": 662
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "药灵主动伸腕献血；其血入口后自行化为奇异能量扩散至眉心并包裹灵魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 330,
+            "end": 344
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 350,
+            "end": 381
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 579,
+            "end": 616
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 620,
+            "end": 662
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎打冷颤后面色迅速红润、双目明亮",
+          "药灵脸颊转为苍白"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 565,
+            "end": 578
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 676,
+            "end": 702
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 816,
+            "end": 836
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂比巅峰更充盈，得以振翼继续高速逃向古族"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 620,
+            "end": 662
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 676,
+            "end": 702
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 993,
+            "end": 1016
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1040,
+            "end": 1071
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "当场灵魂被血光包裹并充盈于巅峰之上；药灵因献血脸颊苍白"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 620,
+            "end": 662
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 676,
+            "end": 702
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 816,
+            "end": 836
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "追杀途中灵魂枯竭时，同伴未知特殊体质之血入口，当场把枯竭灵魂改写成血光包裹且比巅峰更充盈，难以用常规回复或事先交易表达这一步"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 350,
+            "end": 381
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 502,
+            "end": 540
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 620,
+            "end": 662
+          }
+        ]
+      }
+    },
+    {
+      "summary": "魂煞血芒劈下、萧炎正要动用九玄金雷反扑时，一道苍老身影突然现身虚空喝止；古道以半个古族之人拒交萧炎并接战，萧炎得以退到山峰盘坐炼化撑满身体的九品玄丹。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 1485,
+          "end": 1508
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 146,
+          "end": 153
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 157,
+          "end": 171
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 992,
+          "end": 1019
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 1509,
+          "end": 1528
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 1529,
+          "end": 1536
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 1539,
+          "end": 1563
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 254,
+          "end": 279
+        },
+        {
+          "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+          "start": 1373,
+          "end": 1410
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 203,
+          "end": 218
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 1232,
+          "end": 1253
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 738,
+          "end": 765
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 822,
+          "end": 844
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 868,
+          "end": 910
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 1020,
+          "end": 1061
+        },
+        {
+          "segment_id": "SEG-AAF7500DB260FA601713-001",
+          "start": 1142,
+          "end": 1176
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "古道",
+          "萧炎",
+          "魂煞",
+          "药灵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1485,
+            "end": 1508
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 146,
+            "end": 153
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 157,
+            "end": 171
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 992,
+            "end": 1019
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "苍老身影突然现身虚空喝止魂煞，拒绝把萧炎交出去并接战"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1509,
+            "end": 1528
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1529,
+            "end": 1536
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1539,
+            "end": 1563
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 254,
+            "end": 279
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "魂煞",
+          "魂煞劈向萧炎二人的杀招"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1539,
+            "end": 1563
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1373,
+            "end": 1410
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 203,
+            "end": 218
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "魂煞血芒劈向萧炎二人，萧炎正要动用九玄金雷做最后反扑"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1373,
+            "end": 1410
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1485,
+            "end": 1508
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "追杀被古道当场拦住，萧炎从必死对拼转为退到山峰盘坐炼化"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1509,
+            "end": 1528
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 254,
+            "end": 279
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 992,
+            "end": 1019
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 1232,
+            "end": 1253
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "魂煞先称只抓萧炎、与古族无关，被拒后挥出血色刀芒猛攻古道"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 157,
+            "end": 171
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 203,
+            "end": 218
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 738,
+            "end": 765
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "古道淡笑以棍影硬接刀芒；萧炎搂药灵后退落山盘坐"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 822,
+            "end": 844
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 868,
+            "end": 910
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 992,
+            "end": 1019
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "追杀被接住后，萧炎可凝聚心神盘坐，用火鼎炼化已将身体撑满的九品玄丹能量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 1020,
+            "end": 1061
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 1142,
+            "end": 1176
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 1232,
+            "end": 1253
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "古道与魂煞当场持续交手；萧炎处于可炼化、不再被截杀的窗口"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 868,
+            "end": 910
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 1232,
+            "end": 1253
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "即将动用底牌硬拼时，目的地长辈突然现身喝止并接战追杀者，把必死对拼改写成可盘坐炼化的窗口"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1485,
+            "end": 1508
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1509,
+            "end": 1528
+          },
+          {
+            "segment_id": "SEG-D5E5C0EE4A694966789D-002",
+            "start": 1539,
+            "end": 1563
+          },
+          {
+            "segment_id": "SEG-AAF7500DB260FA601713-001",
+            "start": 1232,
+            "end": 1253
+          }
+        ]
+      }
+    }
+  ]
+}

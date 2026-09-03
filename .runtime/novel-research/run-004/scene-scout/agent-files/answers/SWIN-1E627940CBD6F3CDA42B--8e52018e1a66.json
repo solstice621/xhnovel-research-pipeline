@@ -1,0 +1,368 @@
+{
+  "candidates": [
+    {
+      "summary": "困于护罩无法脱身时，不相识的黑袍斗皇凌影忽然现身震碎能量罩，并声明要毫发无损带走萧炎。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 826,
+          "end": 839
+        },
+        {
+          "segment_id": "SEG-51169D847B2D06A76BDA-001",
+          "start": 192,
+          "end": 200
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 1333,
+          "end": 1376
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 1289,
+          "end": 1332
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 1129,
+          "end": 1170
+        },
+        {
+          "segment_id": "SEG-51169D847B2D06A76BDA-002",
+          "start": 1512,
+          "end": 1524
+        },
+        {
+          "segment_id": "SEG-51169D847B2D06A76BDA-003",
+          "start": 149,
+          "end": 174
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 514,
+          "end": 561
+        },
+        {
+          "segment_id": "SEG-51169D847B2D06A76BDA-001",
+          "start": 541,
+          "end": 580
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-001",
+          "start": 1253,
+          "end": 1278
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-001",
+          "start": 1281,
+          "end": 1296
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 840,
+          "end": 881
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 1187,
+          "end": 1229
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 883,
+          "end": 887
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 1378,
+          "end": 1387
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 1415,
+          "end": 1429
+        },
+        {
+          "segment_id": "SEG-51169D847B2D06A76BDA-002",
+          "start": 855,
+          "end": 900
+        },
+        {
+          "segment_id": "SEG-51169D847B2D06A76BDA-002",
+          "start": 957,
+          "end": 980
+        },
+        {
+          "segment_id": "SEG-51169D847B2D06A76BDA-001",
+          "start": 1052,
+          "end": 1076
+        },
+        {
+          "segment_id": "SEG-51169D847B2D06A76BDA-001",
+          "start": 1107,
+          "end": 1120
+        },
+        {
+          "segment_id": "SEG-51169D847B2D06A76BDA-003",
+          "start": 283,
+          "end": 310
+        },
+        {
+          "segment_id": "SEG-51169D847B2D06A76BDA-002",
+          "start": 909,
+          "end": 939
+        },
+        {
+          "segment_id": "SEG-9D184AC7B5C30C771744-002",
+          "start": 999,
+          "end": 1038
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "凌影",
+          "云棱"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 826,
+            "end": 839
+          },
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-001",
+            "start": 192,
+            "end": 200
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 1333,
+            "end": 1376
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "黑袍人凭空现身并轰碎能量罩",
+          "拦住云棱攻击并要带走萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 1289,
+            "end": 1332
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 1129,
+            "end": 1170
+          },
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-002",
+            "start": 1512,
+            "end": 1524
+          },
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-003",
+            "start": 149,
+            "end": 174
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "困住众人的能量罩",
+          "要被带走护住的萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 514,
+            "end": 561
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 1129,
+            "end": 1170
+          },
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-001",
+            "start": 541,
+            "end": 580
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎砸罩只起涟漪",
+          "海波东说罩不破就带不走且分不出手护他"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 514,
+            "end": 561
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-001",
+            "start": 1253,
+            "end": 1278
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-001",
+            "start": 1281,
+            "end": 1296
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "连斗王都难破的能量罩被震裂后化为碎片",
+          "构筑护罩的执事喷血"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 840,
+            "end": 881
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 1129,
+            "end": 1170
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 1187,
+            "end": 1229
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "云棱喊不可能，在场强者脸色大变",
+          "众人断定又来一名斗皇援兵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 883,
+            "end": 887
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 1333,
+            "end": 1376
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 1378,
+            "end": 1387
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 1415,
+            "end": 1429
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎目瞪口呆",
+          "自称不识对方也不知为何相助"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 826,
+            "end": 839
+          },
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-002",
+            "start": 855,
+            "end": 900
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "能量罩已破可以撤离",
+          "场上已有两名斗皇相助，云岚宗暂难留人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-002",
+            "start": 957,
+            "end": 980
+          },
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-001",
+            "start": 1052,
+            "end": 1076
+          },
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-001",
+            "start": 1107,
+            "end": 1120
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "凌影受命今日毫发无损带走萧炎并当场拦敌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-001",
+            "start": 541,
+            "end": 580
+          },
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-002",
+            "start": 1512,
+            "end": 1524
+          },
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-003",
+            "start": 283,
+            "end": 310
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "不相识斗皇在困局中忽然破罩护人，当事人不知来由，并非事先约定的交易或任务报酬"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-002",
+            "start": 855,
+            "end": 900
+          },
+          {
+            "segment_id": "SEG-51169D847B2D06A76BDA-002",
+            "start": 909,
+            "end": 939
+          },
+          {
+            "segment_id": "SEG-9D184AC7B5C30C771744-002",
+            "start": 999,
+            "end": 1038
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,459 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎醒来发现肉体暴涨、皮肤下隐有紫金；烛离说明龙皇把一丝龙凰之力注入他体内并激活古龙精血。他按指引催动陌生力量，身上现出紫金龙鳞，得到可隐藏、一催即现的龙凰古甲。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "烛离长老",
+          "龙皇大人",
+          "黑擎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 400,
+            "end": 419
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1072,
+            "end": 1091
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 58,
+            "end": 74
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎按床坐起并催动体内陌生的龙凰之力",
+          "烛离长老让他凝神催动并当场指认龙凰古甲"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 400,
+            "end": 419
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1227,
+            "end": 1254
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1305,
+            "end": 1332
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1072,
+            "end": 1091
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1535,
+            "end": 1546
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎体内被注入的龙凰之力与古龙精血",
+          "覆盖身体的龙凰古甲"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1083,
+            "end": 1107
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1108,
+            "end": 1126
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1535,
+            "end": 1546
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1460,
+            "end": 1480
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎刚从昏迷中醒来，不知自己身在何处、身体为何变化",
+          "龙皇大人已将一丝龙凰之力注入其体内并激活所服古龙精血"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 400,
+            "end": 419
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 572,
+            "end": 579
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1023,
+            "end": 1033
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1083,
+            "end": 1107
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1108,
+            "end": 1126
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "肉体力量猛增，皮肤下现出紫金之色",
+          "催动后除头部外全身浮现紫金龙鳞，成为龙凰古甲",
+          "心神一动即可让鳞片隐入皮肤或再现"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 500,
+            "end": 519
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 552,
+            "end": 569
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 599,
+            "end": 621
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1434,
+            "end": 1456
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1535,
+            "end": 1546
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 317,
+            "end": 330
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 331,
+            "end": 351
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 272,
+            "end": 304
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "烛离长老说明这是龙皇所为，并让他催动查看",
+          "黑擎称龙凰古甲可硬接九天尊一拳也只是小伤"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1072,
+            "end": 1091
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1227,
+            "end": 1254
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 5,
+            "end": 14
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 31,
+            "end": 56
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 58,
+            "end": 74
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "床弦被按成粉末",
+          "身体除头外覆满紫金龙鳞，如甲衣坚不可摧",
+          "萧炎确认防御几乎飙升两三个档次"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 500,
+            "end": 519
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1434,
+            "end": 1456
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1460,
+            "end": 1480
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 178,
+            "end": 209
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "六星斗尊以下攻击基本不能伤他",
+          "龙凰古甲可隐藏于皮肤下，一催动立刻出现",
+          "即便硬接九天尊一拳也仅是小伤"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 210,
+            "end": 231
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 272,
+            "end": 304
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 31,
+            "end": 56
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1143,
+            "end": 1170
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "龙凰之力已在体内，肉体强度被大幅度强化",
+          "龙凰古甲平时藏于皮肤之下，可反复催动显现或隐藏"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1127,
+            "end": 1142
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1143,
+            "end": 1170
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 272,
+            "end": 304
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 331,
+            "end": 351
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "昏迷中被注入龙凰之力并激活古龙精血，醒来才发现可开关的龙凰古甲已在身上，不是修炼打卡或交易买来的防御层",
+          "最高等级龙鳞甲由他人无事先约定地写进肉体，一催即现、可隐可显"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1083,
+            "end": 1107
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1108,
+            "end": 1126
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1535,
+            "end": 1546
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+            "start": 272,
+            "end": 304
+          },
+          {
+            "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+            "start": 1305,
+            "end": 1332
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 400,
+          "end": 419
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1072,
+          "end": 1091
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+          "start": 58,
+          "end": 74
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1227,
+          "end": 1254
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1305,
+          "end": 1332
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1535,
+          "end": 1546
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1083,
+          "end": 1107
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1108,
+          "end": 1126
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1460,
+          "end": 1480
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 572,
+          "end": 579
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1023,
+          "end": 1033
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 500,
+          "end": 519
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 552,
+          "end": 569
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 599,
+          "end": 621
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1434,
+          "end": 1456
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+          "start": 317,
+          "end": 330
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+          "start": 331,
+          "end": 351
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+          "start": 272,
+          "end": 304
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+          "start": 5,
+          "end": 14
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+          "start": 31,
+          "end": 56
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+          "start": 178,
+          "end": 209
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-002",
+          "start": 210,
+          "end": 231
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1143,
+          "end": 1170
+        },
+        {
+          "segment_id": "SEG-1E937F03BE1E82BFD172-001",
+          "start": 1127,
+          "end": 1142
+        }
+      ]
+    }
+  ]
+}

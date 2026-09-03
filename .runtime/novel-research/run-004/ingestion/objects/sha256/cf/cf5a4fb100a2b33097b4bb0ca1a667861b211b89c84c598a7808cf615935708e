@@ -1,0 +1,335 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎因黑色珠子反噬斗气与生命力正欲收入纳戒时，小伊自行抢过珠子融进体内，挤碎反扑黑炎并抓虚空汲能，把斑驳能量分解成精纯斗气反馈给萧炎。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+          "start": 392,
+          "end": 401
+        },
+        {
+          "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+          "start": 1457,
+          "end": 1481
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 300,
+          "end": 319
+        },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 709,
+            "end": 726
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 731,
+            "end": 742
+          },
+        {
+          "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+          "start": 331,
+          "end": 348
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 202,
+          "end": 223
+        },
+        {
+          "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+          "start": 1433,
+          "end": 1446
+        },
+        {
+          "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+          "start": 1369,
+          "end": 1386
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 232,
+          "end": 240
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 408,
+          "end": 421
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 646,
+          "end": 671
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 434,
+          "end": 452
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 561,
+          "end": 587
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 840,
+          "end": 862
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 901,
+          "end": 924
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 954,
+          "end": 976
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 979,
+          "end": 994
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 1179,
+          "end": 1194
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 1285,
+          "end": 1312
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 1155,
+          "end": 1174
+        },
+        {
+          "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+          "start": 1389,
+          "end": 1406
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 1422,
+          "end": 1457
+        },
+        {
+          "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+          "start": 1356,
+          "end": 1372
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "小伊"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+            "start": 392,
+            "end": 401
+          },
+          {
+            "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+            "start": 1457,
+            "end": 1481
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "小伊将黑色珠子生生融进体内，并对着虚空抓出吞噬漩涡"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 300,
+            "end": 319
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 709,
+            "end": 726
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 731,
+            "end": 742
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "手掌上方悬浮的、蕴含吞噬之力的黑色珠子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+            "start": 331,
+            "end": 348
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 202,
+            "end": 223
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "珠子放在体内会吞噬斗气甚至生命力，萧炎正欲将其收入纳戒放弃"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+            "start": 1433,
+            "end": 1446
+          },
+          {
+            "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+            "start": 1369,
+            "end": 1386
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 232,
+            "end": 240
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "珠子被小伊炼化，额头莲印现出黑色纹路，小伊掌握吞噬汲能"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 408,
+            "end": 421
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 646,
+            "end": 671
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "一缕黑炎钻向小伊脑袋，被火网束缚并挤碎成光点融入其体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 434,
+            "end": 452
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 561,
+            "end": 587
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "斑驳天地能量被分解，精纯能量反馈进萧炎体内并被炼成斗气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 840,
+            "end": 862
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 901,
+            "end": 924
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 954,
+            "end": 976
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 979,
+            "end": 994
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "小伊可从天地汲能自行修炼，并经心神相连把精纯能量回馈萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 1179,
+            "end": 1194
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 1285,
+            "end": 1312
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "莲印上的黑色纹路留下，小伊比先前略强"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 646,
+            "end": 671
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 1155,
+            "end": 1174
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "常人无福消受的吞噬珠被同为异火的火灵自行吞纳后，可分解斑驳能量并回馈主人，炼化路径并无成法"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9E9D73304F3B5B201D2D-002",
+            "start": 1389,
+            "end": 1406
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 1422,
+            "end": 1457
+          },
+          {
+            "segment_id": "SEG-0DEDED0631DD7C7A76FC-001",
+            "start": 1356,
+            "end": 1372
+          }
+        ]
+      }
+    }
+  ]
+}

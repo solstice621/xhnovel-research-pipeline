@@ -1,0 +1,371 @@
+{
+  "candidates": [
+    {
+      "summary": "误入玄异寂静状态将尽时，山中虎啸传入耳中补上所缺虎威，当场与解析吼声融合，初步掌握狮虎碎金吟。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-001",
+          "start": 476,
+          "end": 552
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-001",
+          "start": 847,
+          "end": 881
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-001",
+          "start": 1336,
+          "end": 1361
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-001",
+          "start": 1421,
+          "end": 1465
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-001",
+          "start": 1488,
+          "end": 1518
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-001",
+          "start": 1540,
+          "end": 1562
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 0,
+          "end": 33
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 47,
+          "end": 67
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 101,
+          "end": 176
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 177,
+          "end": 210
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 320,
+          "end": 332
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 336,
+          "end": 357
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 408,
+          "end": 438
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 545,
+          "end": 556
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 593,
+          "end": 630
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 722,
+          "end": 746
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 749,
+          "end": 779
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 780,
+          "end": 807
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 813,
+          "end": 843
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 868,
+          "end": 884
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 927,
+          "end": 953
+        },
+        {
+          "segment_id": "SEG-2D2C92FE8CC087361262-002",
+          "start": 965,
+          "end": 1031
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 0,
+            "end": 33
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "将传入耳中的虎啸凝成银色波纹并与解析吼声融合",
+          "结印后暴吼出虎啸声波"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 101,
+            "end": 176
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 177,
+            "end": 210
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 320,
+            "end": 332
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 336,
+            "end": 357
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "狮虎碎金吟所缺的真正虎威"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-001",
+            "start": 1540,
+            "end": 1562
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 47,
+            "end": 67
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "苦练两日仍未领悟狮虎碎金吟，声波太弱不能对敌",
+          "误入玄异状态却仍觉吼声缺了什么"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-001",
+            "start": 476,
+            "end": 552
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-001",
+            "start": 847,
+            "end": 881
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-001",
+            "start": 1336,
+            "end": 1361
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 927,
+            "end": 953
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "虎啸波纹与解析吼声完美融合",
+          "当场吼出可用的狮虎碎金吟"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 177,
+            "end": 210
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 336,
+            "end": 357
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 722,
+            "end": 746
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "山中惊天虎啸在状态将散前传入并带虎威",
+          "周围野兽被虎啸威压瘫软",
+          "药老称其受天眷顾，并指出是借助寂静状态才将虎啸纳为己用"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-001",
+            "start": 1421,
+            "end": 1465
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-001",
+            "start": 1488,
+            "end": 1518
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-001",
+            "start": 1540,
+            "end": 1562
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 749,
+            "end": 779
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 813,
+            "end": 843
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 868,
+            "end": 884
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "湖面炸起七八丈浪花",
+          "近处低阶魔兽被声波震死",
+          "自认成功并感到威力很强"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 408,
+            "end": 438
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 545,
+            "end": 556
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 593,
+            "end": 630
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 722,
+            "end": 746
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可用狮虎碎金吟对敌，不再仅是无力声波"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-001",
+            "start": 476,
+            "end": 552
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 722,
+            "end": 746
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "仅初步掌握，威力约三四层，大成仍需时间磨练"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 965,
+            "end": 1031
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "无名山中虎啸在玄异状态将散的最后一瞬补上所缺虎威，非常规苦修所能安排的报酬"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-001",
+            "start": 1421,
+            "end": 1465
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 47,
+            "end": 67
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 749,
+            "end": 779
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 780,
+            "end": 807
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 813,
+            "end": 843
+          },
+          {
+            "segment_id": "SEG-2D2C92FE8CC087361262-002",
+            "start": 927,
+            "end": 953
+          }
+        ]
+      }
+    }
+  ]
+}

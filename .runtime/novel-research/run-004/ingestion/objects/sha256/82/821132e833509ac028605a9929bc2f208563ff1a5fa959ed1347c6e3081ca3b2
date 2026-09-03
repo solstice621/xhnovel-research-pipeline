@@ -1,0 +1,354 @@
+{
+  "candidates": [
+    {
+      "summary": "将被云山扣留的关头，吞天蟒体内强光涌出，美杜莎女王现身拦住其掌，随后获准带萧炎离开。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+          "start": 378,
+          "end": 403
+        },
+        {
+          "segment_id": "SEG-1F4EA797D3577AFF20AB-001",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-004",
+          "start": 1398,
+          "end": 1423
+        },
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+          "start": 731,
+          "end": 770
+        },
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+          "start": 835,
+          "end": 881
+        },
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+          "start": 405,
+          "end": 450
+        },
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+          "start": 609,
+          "end": 653
+        },
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+          "start": 712,
+          "end": 725
+        },
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+          "start": 882,
+          "end": 898
+        },
+        {
+          "segment_id": "SEG-1F4EA797D3577AFF20AB-001",
+          "start": 1287,
+          "end": 1320
+        },
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+          "start": 818,
+          "end": 834
+        },
+        {
+          "segment_id": "SEG-1F4EA797D3577AFF20AB-001",
+          "start": 73,
+          "end": 99
+        },
+        {
+          "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+          "start": 889,
+          "end": 894
+        },
+        {
+          "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+          "start": 895,
+          "end": 926
+        },
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+          "start": 929,
+          "end": 941
+        },
+        {
+          "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+          "start": 1087,
+          "end": 1116
+        },
+        {
+          "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+          "start": 113,
+          "end": 117
+        },
+        {
+          "segment_id": "SEG-1F4EA797D3577AFF20AB-003",
+          "start": 362,
+          "end": 381
+        },
+        {
+          "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+          "start": 1468,
+          "end": 1509
+        },
+        {
+          "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+          "start": 1110,
+          "end": 1131
+        },
+        {
+          "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+          "start": 236,
+          "end": 263
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "美杜莎女王",
+          "云山"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 378,
+            "end": 403
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-001",
+            "start": 65,
+            "end": 71
+          },
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-004",
+            "start": 1398,
+            "end": 1423
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "吞天蟒紧急仰天长鸣喷出强光",
+          "玉手探出拦住云山手掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 731,
+            "end": 770
+          },
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 835,
+            "end": 881
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "即将按住萧炎的云山"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 835,
+            "end": 881
+          },
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 405,
+            "end": 450
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎被制得动弹不得",
+          "云山要他留宗半年",
+          "内里那股庞大力量刚要涌出又退回，萧炎陷入绝望"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 378,
+            "end": 403
+          },
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 405,
+            "end": 450
+          },
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 609,
+            "end": 653
+          },
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 712,
+            "end": 725
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "云山的手掌被拦下，触掌震裂地面",
+          "云山借势退后"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 835,
+            "end": 881
+          },
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 882,
+            "end": 898
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-001",
+            "start": 1287,
+            "end": 1320
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "云山脸色骤变",
+          "场中有人惊呼美杜莎女王，众人发颤",
+          "云山改口准许带他走"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 818,
+            "end": 834
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-001",
+            "start": 65,
+            "end": 71
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-001",
+            "start": 73,
+            "end": 99
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+            "start": 889,
+            "end": 894
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+            "start": 895,
+            "end": 926
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "女王出言嘲云山",
+          "萧炎转头看见她的面容"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 929,
+            "end": 941
+          },
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 1087,
+            "end": 1116
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "女王要带他走，云山承认打不过并放行"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+            "start": 113,
+            "end": 117
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+            "start": 889,
+            "end": 894
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-003",
+            "start": 362,
+            "end": 381
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "两人获准离开，背影消失在石梯中",
+          "云山表示此事不再追根究底"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+            "start": 1468,
+            "end": 1509
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+            "start": 1110,
+            "end": 1131
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+            "start": 236,
+            "end": 263
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中残存意志放弃压制才现身拦下斗宗，并非持有者主动召唤或预先谋划的援助"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 731,
+            "end": 770
+          },
+          {
+            "segment_id": "SEG-1F4EA797D3577AFF20AB-002",
+            "start": 236,
+            "end": 263
+          },
+          {
+            "segment_id": "SEG-3ADFCCAC900E16E41AA0-005",
+            "start": 609,
+            "end": 653
+          }
+        ]
+      }
+    }
+  ]
+}

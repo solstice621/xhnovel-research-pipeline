@@ -1,0 +1,699 @@
+{
+  "candidates": [
+    {
+      "summary": "炼天古阵光柱对撞本可毁灭六星斗圣时，昏迷萧炎体表凝聚虚幻人影，光圈挡住冲击；丹塔老祖指认这是净莲妖圣残像。残像附体后喝“定”凝固光柱，夺走净莲妖火对大阵的控制，并打开逃生通道。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+          "start": 1263,
+          "end": 1279
+        },
+        {
+          "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+          "start": 1136,
+          "end": 1205
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+          "start": 391,
+          "end": 413
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+          "start": 556,
+          "end": 577
+        },
+        {
+          "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+          "start": 1024,
+          "end": 1060
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+          "start": 1213,
+          "end": 1222
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+          "start": 1223,
+          "end": 1259
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+          "start": 1423,
+          "end": 1441
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+          "start": 1519,
+          "end": 1543
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-002",
+          "start": 504,
+          "end": 550
+        },
+        {
+          "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+          "start": 602,
+          "end": 649
+        },
+        {
+          "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+          "start": 962,
+          "end": 989
+        },
+        {
+          "segment_id": "SEG-A20F9A7A359307A59E0A-001",
+          "start": 487,
+          "end": 513
+        },
+        {
+          "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+          "start": 1413,
+          "end": 1429
+        },
+        {
+          "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+          "start": 1343,
+          "end": 1373
+        },
+        {
+          "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+          "start": 873,
+          "end": 882
+        },
+        {
+          "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+          "start": 1449,
+          "end": 1494
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+          "start": 327,
+          "end": 363
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-002",
+          "start": 552,
+          "end": 578
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+          "start": 512,
+          "end": 535
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "净莲妖圣残像",
+          "萧炎",
+          "净莲妖火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1263,
+            "end": 1279
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1136,
+            "end": 1205
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 391,
+            "end": 413
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 556,
+            "end": 577
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "残像在昏迷萧炎体表凝聚并放出光圈挡住冲击",
+          "附体后一点“定”凝固光柱，夺走炼天古阵控制权并打开空间通道"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1136,
+            "end": 1205
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1024,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1213,
+            "end": 1222
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1223,
+            "end": 1259
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1423,
+            "end": 1441
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1519,
+            "end": 1543
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-002",
+            "start": 504,
+            "end": 550
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "炼天古阵的毁灭光柱与净莲妖火的阵控",
+          "将被炼化的众人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 602,
+            "end": 649
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1223,
+            "end": 1259
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1519,
+            "end": 1543
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 962,
+            "end": 989
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "炼天古阵两道光柱对撞，净莲妖火自以为无人能阻其脱困",
+          "萧炎已捂额痛苦、随后陷入昏迷"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 602,
+            "end": 649
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-001",
+            "start": 487,
+            "end": 513
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1136,
+            "end": 1205
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "本应被毁灭冲击杀死的众人未被重创",
+          "萧炎被残像附体，双瞳变成乳白色"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 962,
+            "end": 989
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1024,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1136,
+            "end": 1205
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1413,
+            "end": 1429
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1343,
+            "end": 1373
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "净莲妖火惊骇咆哮，质问净莲妖圣怎还活着"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 556,
+            "end": 577
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 873,
+            "end": 882
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "薄弱光圈挡住足以毁灭六星斗圣的冲击波",
+          "连魂魔老人都生出匍匐膜拜的灵魂压迫",
+          "丹塔老祖指认是残像而非净莲妖火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1024,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1449,
+            "end": 1494
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1263,
+            "end": 1279
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 391,
+            "end": 413
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 327,
+            "end": 363
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "残像可定住炼天古阵光柱并夺走控制权",
+          "可用大阵打开空间通道让人逃离即将爆炸的净莲妖火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1213,
+            "end": 1222
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1223,
+            "end": 1259
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1519,
+            "end": 1543
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-002",
+            "start": 504,
+            "end": 550
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-002",
+            "start": 552,
+            "end": 578
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "残像并非灵魂形态，暂时占据萧炎身体继续出手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 391,
+            "end": 413
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1136,
+            "end": 1205
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1413,
+            "end": 1429
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 512,
+            "end": 535
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中未召唤的残像从宿主体表自行凝聚，用宿主不知情的力量挡住本可毁灭六星斗圣的阵击，并当场夺走敌方自创大阵的控制权"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1136,
+            "end": 1205
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1024,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1223,
+            "end": 1259
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1519,
+            "end": 1543
+          },
+          {
+            "segment_id": "SEG-A20F9A7A359307A59E0A-002",
+            "start": 1343,
+            "end": 1373
+          }
+        ]
+      }
+    },
+    {
+      "summary": "净莲妖圣残像以炼天古阵剥离净莲妖火的记忆与灵智，随即与其同归于尽；爆炸后空荡的岩浆海上出现带粉红脉络的白色莲花，薰儿指给萧炎看，二人当场认出这是留下的妖火本源。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-001",
+          "start": 1129,
+          "end": 1137
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 890,
+          "end": 907
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1344,
+          "end": 1352
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1524,
+          "end": 1565
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-001",
+          "start": 1208,
+          "end": 1228
+        },
+        {
+          "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+          "start": 1519,
+          "end": 1543
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1165,
+          "end": 1182
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1453,
+          "end": 1476
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1514,
+          "end": 1523
+        },
+        {
+          "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+          "start": 1478,
+          "end": 1513
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "净莲妖圣残像",
+          "净莲妖火",
+          "萧炎",
+          "薰儿"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-001",
+            "start": 1129,
+            "end": 1137
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 890,
+            "end": 907
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1344,
+            "end": 1352
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1524,
+            "end": 1565
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以炼天古阵剥离妖莲中的血色雾气",
+          "随即与净莲妖火一同消散于天地之间"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-001",
+            "start": 1129,
+            "end": 1137
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-001",
+            "start": 1208,
+            "end": 1228
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 890,
+            "end": 907
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "净莲妖火的记忆与灵智及其本体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-001",
+            "start": 1129,
+            "end": 1137
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-001",
+            "start": 1208,
+            "end": 1228
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 890,
+            "end": 907
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "残像已掌控炼天古阵，正对妖莲施术"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-001",
+            "start": 1129,
+            "end": 1137
+          },
+          {
+            "segment_id": "SEG-4E29CD5A38796F2D9E18-001",
+            "start": 1519,
+            "end": 1543
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "净莲妖圣与净莲妖火尽数失去踪迹",
+          "岩浆海上留下正在游动的白色莲花，被指认为妖火本源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1165,
+            "end": 1182
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1453,
+            "end": 1476
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1514,
+            "end": 1523
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "薰儿惊喜叫萧炎去看下方莲花"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1344,
+            "end": 1352
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "血色雾气被逼离妖莲本体",
+          "萧炎看见乳白粉红莲花后激动得发抖"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-001",
+            "start": 1208,
+            "end": 1228
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1524,
+            "end": 1565
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1514,
+            "end": 1523
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "当场重新获得可见、可接近的妖火本源，而非二者同归于尽后的空无"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1453,
+            "end": 1476
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1514,
+            "end": 1523
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1524,
+            "end": 1565
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "莲花仍在岩浆海上游动，海域能量正源源不断涌向它"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1453,
+            "end": 1476
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1478,
+            "end": 1513
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残像可把自己与暴戾妖火一起抹掉，把敌对神物改写成当场留下的无主纯净本源，而不是同归于尽后资源归零"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 890,
+            "end": 907
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1165,
+            "end": 1182
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1453,
+            "end": 1476
+          },
+          {
+            "segment_id": "SEG-2031FF29A8B6217D57F2-002",
+            "start": 1514,
+            "end": 1523
+          }
+        ]
+      }
+    }
+  ]
+}

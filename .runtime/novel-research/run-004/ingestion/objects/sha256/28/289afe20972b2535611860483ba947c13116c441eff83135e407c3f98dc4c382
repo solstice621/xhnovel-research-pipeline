@@ -1,0 +1,9 @@
+{
+  "artifact_id": "sha256:5f29363298b91572eda8f53f6ad1cc166d6e54f3a705e7d54cfe60e301a1aaa4",
+  "byte_length": 8474,
+  "chapter_key": "chapter-001068-1068-txt",
+  "final_locator": "file:///workspace/.runtime/exploration/run-003/input/chapters/1068.txt",
+  "http_status": null,
+  "media_type": "text/plain",
+  "retrieved_at": "2026-09-03T03:10:25Z"
+}

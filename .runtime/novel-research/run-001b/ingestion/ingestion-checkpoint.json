@@ -1,0 +1,120 @@
+{
+  "adapter_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+  "chapter_refs": [
+    {
+      "adapter_data": {
+        "ordinal": 1
+      },
+      "chapter_key": "chapter-000001-前置内容",
+      "chapter_kind": "FRONTMATTER",
+      "declared_number": null,
+      "derived_from_provenance": true,
+      "media_type": "text/plain",
+      "ordinal": 1,
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+      "title": "前置内容"
+    },
+    {
+      "adapter_data": {
+        "ordinal": 2
+      },
+      "chapter_key": "chapter-000002-第一章-托令",
+      "chapter_kind": "MAIN",
+      "declared_number": 1,
+      "derived_from_provenance": true,
+      "media_type": "text/plain",
+      "ordinal": 2,
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+      "title": "第一章 托令"
+    },
+    {
+      "adapter_data": {
+        "ordinal": 3
+      },
+      "chapter_key": "chapter-000003-第二章-解禁",
+      "chapter_kind": "MAIN",
+      "declared_number": 2,
+      "derived_from_provenance": true,
+      "media_type": "text/plain",
+      "ordinal": 3,
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+      "title": "第二章 解禁"
+    },
+    {
+      "adapter_data": {
+        "ordinal": 4
+      },
+      "chapter_key": "chapter-000004-第三章-誓印",
+      "chapter_kind": "MAIN",
+      "declared_number": 3,
+      "derived_from_provenance": true,
+      "media_type": "text/plain",
+      "ordinal": 4,
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+      "title": "第三章 誓印"
+    }
+  ],
+  "completed": {
+    "chapter-000001-前置内容": {
+      "artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "byte_length": 42,
+      "final_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+      "http_status": null,
+      "media_type": "text/plain",
+      "receipt_artifact_id": "sha256:74c7239c19d740ad1af678ccf266fd815923a1bea1fd52ab02d802bdd3e1dc12",
+      "retrieved_at": "2026-09-03T01:03:05Z"
+    },
+    "chapter-000002-第一章-托令": {
+      "artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "byte_length": 231,
+      "final_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+      "http_status": null,
+      "media_type": "text/plain",
+      "receipt_artifact_id": "sha256:06cf7b87136f93a6b76d053db0bf36fae570087f70e5247ae483a3001c1bad31",
+      "retrieved_at": "2026-09-03T01:03:05Z"
+    },
+    "chapter-000003-第二章-解禁": {
+      "artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "byte_length": 264,
+      "final_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+      "http_status": null,
+      "media_type": "text/plain",
+      "receipt_artifact_id": "sha256:c5c571f292d803be13fc07e7dd6d47822f48d5fe88ae106c9ee4e39a74629118",
+      "retrieved_at": "2026-09-03T01:03:05Z"
+    },
+    "chapter-000004-第三章-誓印": {
+      "artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "byte_length": 294,
+      "final_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+      "http_status": null,
+      "media_type": "text/plain",
+      "receipt_artifact_id": "sha256:f2df524e84b51bead360458f968db5343a8fbb195949959c8627a9f319a70188",
+      "retrieved_at": "2026-09-03T01:03:05Z"
+    }
+  },
+  "discovery_artifact_id": "sha256:a15577f43396c84dd625d2d4e485c171db7e2c37e7b905d86b0aec9a148d453b",
+  "discovery_complete": true,
+  "final_resumed_from_checkpoint": false,
+  "finished_at": "2026-09-03T01:03:05Z",
+  "input_spec_hash": "sha256:a87fd6b45f98ef8259358aed758af4c8fc01a3153b2e36e6b24590fbca4defb2",
+  "integrity_hash": "sha256:0b67988b924c608e7e94164086d64bdf22398d08379625bc24181cb95031e663",
+  "provenance": [
+    {
+      "artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "byte_length": 838,
+      "created_at": "2026-09-03T01:03:05Z",
+      "locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt",
+      "media_type": "text/plain"
+    }
+  ],
+  "schema_version": "0.2-draft",
+  "site_attempt_receipt_ids": [],
+  "started_at": "2026-09-03T01:03:05Z",
+  "work": {
+    "author": "xhnovel 测试组",
+    "language": "zh",
+    "source_kind": "TXT",
+    "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt",
+    "title": "青岚令"
+  }
+}

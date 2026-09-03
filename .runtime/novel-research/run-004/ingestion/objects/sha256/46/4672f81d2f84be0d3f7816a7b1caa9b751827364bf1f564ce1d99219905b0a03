@@ -1,0 +1,266 @@
+{
+  "candidates": [
+    {
+      "summary": "血刀圣者杀招停在萧炎头顶，因认出萧族族纹、忌惮“那位”而收刀放行，并指引西向强者领域夹缝；萧炎一行依言而行，沿途避开更强能量体。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+          "start": 80,
+          "end": 114
+        },
+        {
+          "segment_id": "SEG-3DEC693843D54BD68A91-001",
+          "start": 887,
+          "end": 902
+        },
+        {
+          "segment_id": "SEG-3DEC693843D54BD68A91-002",
+          "start": 1437,
+          "end": 1477
+        },
+        {
+          "segment_id": "SEG-3DEC693843D54BD68A91-002",
+          "start": 1292,
+          "end": 1310
+        },
+        {
+          "segment_id": "SEG-3DEC693843D54BD68A91-002",
+          "start": 1479,
+          "end": 1493
+        },
+        {
+          "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+          "start": 20,
+          "end": 45
+        },
+        {
+          "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+          "start": 616,
+          "end": 658
+        },
+        {
+          "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+          "start": 678,
+          "end": 691
+        },
+        {
+          "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+          "start": 738,
+          "end": 798
+        },
+        {
+          "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+          "start": 576,
+          "end": 600
+        },
+        {
+          "segment_id": "SEG-758CABFCD6F03C7A3843-002",
+          "start": 373,
+          "end": 503
+        },
+        {
+          "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+          "start": 888,
+          "end": 941
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "血刀圣者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 80,
+            "end": 114
+          },
+          {
+            "segment_id": "SEG-3DEC693843D54BD68A91-001",
+            "start": 887,
+            "end": 902
+          },
+          {
+            "segment_id": "SEG-3DEC693843D54BD68A91-002",
+            "start": 1437,
+            "end": 1477
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎施展天火三玄变，眉心现出萧族族纹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3DEC693843D54BD68A91-002",
+            "start": 1292,
+            "end": 1310
+          },
+          {
+            "segment_id": "SEG-3DEC693843D54BD68A91-002",
+            "start": 1479,
+            "end": 1493
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "血刀圣者即将落下的杀招"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 20,
+            "end": 45
+          },
+          {
+            "segment_id": "SEG-3DEC693843D54BD68A91-002",
+            "start": 1437,
+            "end": 1477
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "鬼头大刀已至萧炎头顶半尺处"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 20,
+            "end": 45
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "半圣由追杀改为收刀放行，并给出避战西路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 616,
+            "end": 658
+          },
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 678,
+            "end": 691
+          },
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 738,
+            "end": 798
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "认出萧族族纹后眼露惊惧，因怕难逃那位杀手而停手指路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3DEC693843D54BD68A91-002",
+            "start": 1479,
+            "end": 1493
+          },
+          {
+            "segment_id": "SEG-3DEC693843D54BD68A91-002",
+            "start": 1437,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 576,
+            "end": 600
+          },
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 738,
+            "end": 798
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "大刀噶然而止",
+          "萧炎造化掌因此顿住"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 20,
+            "end": 45
+          },
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 80,
+            "end": 114
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可走强者领域夹缝，避开阻拦抵达目的地"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 738,
+            "end": 798
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "此后完全依照血刀圣者所说而行，夹缝中未遭阻拦"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-002",
+            "start": 373,
+            "end": 503
+          },
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 888,
+            "end": 941
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "必杀被残存半圣因族纹联想到更深存在而主动中止，并转为指路放行，而非被击败"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3DEC693843D54BD68A91-002",
+            "start": 1479,
+            "end": 1493
+          },
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 576,
+            "end": 600
+          },
+          {
+            "segment_id": "SEG-758CABFCD6F03C7A3843-001",
+            "start": 738,
+            "end": 798
+          }
+        ]
+      }
+    }
+  ]
+}

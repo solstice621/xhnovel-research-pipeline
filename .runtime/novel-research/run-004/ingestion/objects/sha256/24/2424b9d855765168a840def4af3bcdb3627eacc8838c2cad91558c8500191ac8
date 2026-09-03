@@ -1,0 +1,331 @@
+{
+  "candidates": [
+    {
+      "summary": "少年在地图店角落翻看失败品时拈起掉落的残破图片，认出寻净莲妖火的神秘路线；药老惊呼好运，店中白发老人却称残片不卖。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1456,
+          "end": 1467
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 388,
+          "end": 408
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 540,
+          "end": 550
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1420,
+          "end": 1436
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1475,
+          "end": 1508
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1615,
+          "end": 1636
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 172,
+          "end": 205
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1329,
+          "end": 1345
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1375,
+          "end": 1418
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 52,
+          "end": 78
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 419,
+          "end": 444
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 332,
+          "end": 381
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 1326,
+          "end": 1367
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 1488,
+          "end": 1500
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1637,
+          "end": 1658
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1683,
+          "end": 1714
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1739,
+          "end": 1755
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 476,
+          "end": 503
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 824,
+          "end": 845
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 1464,
+          "end": 1486
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 462,
+          "end": 475
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老",
+          "白发老者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1456,
+            "end": 1467
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 388,
+            "end": 408
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 540,
+            "end": 550
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "翻看失败地图并拈起掉落的残破图片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1420,
+            "end": 1436
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1475,
+            "end": 1508
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1615,
+            "end": 1636
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "巴掌大小的残破图片",
+          "寻净莲妖火的地图残片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1475,
+            "end": 1508
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 172,
+            "end": 205
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "在地图店角落失败品木架上翻看泛黄地图"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1329,
+            "end": 1345
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1375,
+            "end": 1418
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "当场得到一份神秘残破图片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 52,
+            "end": 78
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 419,
+            "end": 444
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "药老惊讶称其好运并点明与净莲妖火有缘",
+          "老人称残片为偶然所得且拒绝出售"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 332,
+            "end": 381
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 388,
+            "end": 408
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 1326,
+            "end": 1367
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 1488,
+            "end": 1500
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "心跳剧烈",
+          "认出熟悉神秘路线并喃喃果然是它"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1637,
+            "end": 1658
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1683,
+            "end": 1714
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1739,
+            "end": 1755
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可与纳戒中另一块地图对照",
+          "可向店主追问并试图买下残片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 476,
+            "end": 503
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 824,
+            "end": 845
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 1464,
+            "end": 1486
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "残片握在手中",
+          "药老称一年内已得两块神秘地图残片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 462,
+            "end": 475
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 419,
+            "end": 444
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残片混在失败品泛黄地图中看似废纸，需认得神秘路线才会停手拾起"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1375,
+            "end": 1418
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1683,
+            "end": 1714
+          }
+        ]
+      }
+    }
+  ]
+}

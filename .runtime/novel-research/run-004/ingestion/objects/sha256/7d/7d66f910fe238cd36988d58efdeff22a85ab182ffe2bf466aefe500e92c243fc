@@ -1,0 +1,421 @@
+{
+  "candidates": [
+    {
+      "summary": "萧玄将抽尽的天墓之魂灵魂本源弹给萧炎炼化；萧炎走进光圈鲸吞无主灵魂海，破关时千丈身影跪送消散的先祖，当场踏入帝境灵魂，并意外成为天墓主人、收存萧玄生命印记。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "萧玄"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 235,
+            "end": 252
+          },
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-002",
+            "start": 1589,
+            "end": 1599
+          },
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 70,
+            "end": 91
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 83,
+            "end": 101
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎受命走进灵魂本源光圈炼化吸收",
+          "破关后收取萧玄生命印记入眉心"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 53,
+            "end": 62
+          },
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 70,
+            "end": 91
+          },
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 302,
+            "end": 343
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 541,
+            "end": 569
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "天墓之魂的灵魂本源",
+          "帝境灵魂",
+          "萧玄的生命印记"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 863,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 912,
+            "end": 938
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 785,
+            "end": 792
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 279,
+            "end": 313
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂本源已被尽数从天墓之魂体内扯出且天墓之魂消散，海中灵魂之力成为无主之物",
+          "萧玄称所能做的只剩这些，能否突破全看造化"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 863,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 1194,
+            "end": 1213
+          },
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 912,
+            "end": 938
+          },
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 1366,
+            "end": 1410
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎走进光圈被光芒吞噬并炼化天墓之魂",
+          "破关时千丈身影涌现，萧玄残魂彻底虚化",
+          "萧炎灵魂踏入帝境并取得天墓绝对掌控权"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 302,
+            "end": 343
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 712,
+            "end": 736
+          },
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-002",
+            "start": 1617,
+            "end": 1650
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 83,
+            "end": 101
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 785,
+            "end": 792
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 1158,
+            "end": 1197
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄屈指把晶莹光圈弹给萧炎并在圈外以残魂守护等待破关",
+          "破关波动扩散时即将消散的萧玄露出欣慰"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 70,
+            "end": 91
+          },
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 425,
+            "end": 450
+          },
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-002",
+            "start": 1617,
+            "end": 1650
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎恭送先祖并单膝跪下",
+          "他察觉附带掌控天墓的赠予而诧异"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-002",
+            "start": 1589,
+            "end": 1599
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 122,
+            "end": 152
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 1305,
+            "end": 1326
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "帝境灵魂",
+          "可在任何地方开启天墓通道并决定他人能否进入",
+          "收存萧玄生命印记，日后或有复生可能"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 785,
+            "end": 792
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 1158,
+            "end": 1197
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 1203,
+            "end": 1237
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 1240,
+            "end": 1269
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 279,
+            "end": 313
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 541,
+            "end": 569
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄残魂已化为虚无，生命印记被帝境灵魂守卫",
+          "萧炎如同天墓主人，谁进谁出都由他说了算"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 83,
+            "end": 101
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 541,
+            "end": 569
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 1270,
+            "end": 1304
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残魂自燃换来的无主灵魂海须当场炼化才决定能否踏入帝境，附带的天墓主权并非事先约定的报酬"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+            "start": 1366,
+            "end": 1410
+          },
+          {
+            "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+            "start": 1043,
+            "end": 1061
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 1305,
+            "end": 1326
+          },
+          {
+            "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+            "start": 1158,
+            "end": 1197
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 83,
+          "end": 101
+        },
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 122,
+          "end": 152
+        },
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 279,
+          "end": 313
+        },
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 541,
+          "end": 569
+        },
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 712,
+          "end": 736
+        },
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 785,
+          "end": 792
+        },
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 1158,
+          "end": 1197
+        },
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 1203,
+          "end": 1237
+        },
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 1240,
+          "end": 1269
+        },
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 1270,
+          "end": 1304
+        },
+        {
+          "segment_id": "SEG-45FCBB44268A99C58EEB-001",
+          "start": 1305,
+          "end": 1326
+        },
+        {
+          "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+          "start": 53,
+          "end": 62
+        },
+        {
+          "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+          "start": 70,
+          "end": 91
+        },
+        {
+          "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+          "start": 235,
+          "end": 252
+        },
+        {
+          "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+          "start": 302,
+          "end": 343
+        },
+        {
+          "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+          "start": 425,
+          "end": 450
+        },
+        {
+          "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+          "start": 912,
+          "end": 938
+        },
+        {
+          "segment_id": "SEG-5B9608D7C952C37D3AF5-001",
+          "start": 1043,
+          "end": 1061
+        },
+        {
+          "segment_id": "SEG-5B9608D7C952C37D3AF5-002",
+          "start": 1589,
+          "end": 1599
+        },
+        {
+          "segment_id": "SEG-5B9608D7C952C37D3AF5-002",
+          "start": 1617,
+          "end": 1650
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+          "start": 863,
+          "end": 896
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+          "start": 1194,
+          "end": 1213
+        },
+        {
+          "segment_id": "SEG-97E209C70375DB1ACDBD-002",
+          "start": 1366,
+          "end": 1410
+        }
+      ]
+    }
+  ]
+}

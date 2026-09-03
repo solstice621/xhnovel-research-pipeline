@@ -1,0 +1,384 @@
+{
+  "candidates": [
+    {
+      "summary": "三长老力竭欲撤时，萧炎以灵魂力压得他们喷血倒飞，纳戒自动脱落飞入其手；他抹除印结搜出三卷与沈云那卷完全相同的银色卷轴，确认也是三千雷幻身残部，当场收入纳戒、未打开检验。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "长眉长老三人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 833,
+            "end": 849
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 638,
+            "end": 652
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以磅礴灵魂之力压退三长老并摄取他们脱落的纳戒",
+          "抹除印结后灵魂侵入搜索"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 565,
+            "end": 585
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 674,
+            "end": 707
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 833,
+            "end": 849
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 945,
+            "end": 974
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 976,
+            "end": 995
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "三长老手指上的纳戒",
+          "与沈云那卷相同的三千雷幻身银色卷轴"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 674,
+            "end": 707
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1003,
+            "end": 1017
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1036,
+            "end": 1057
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1087,
+            "end": 1104
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "三长老被逼出后大战力竭、气息萎靡",
+          "萧炎不愿空手而回",
+          "他手中已有从沈云处得到的一卷"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 427,
+            "end": 443
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 541,
+            "end": 551
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1036,
+            "end": 1057
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1113,
+            "end": 1132
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "三枚纳戒脱落飞向萧炎",
+          "搜出三卷与沈云那卷完全相同的银色卷轴"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 674,
+            "end": 707
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 833,
+            "end": 849
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1003,
+            "end": 1017
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1036,
+            "end": 1057
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "萎靡的三长老被灵魂力压得喷血倒飞",
+          "风长老见纳戒被夺大怒",
+          "长眉长老喝令先走，三人化为流光逃出天北城"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 638,
+            "end": 652
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 709,
+            "end": 726
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 753,
+            "end": 756
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 819,
+            "end": 832
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎说果然在这三个老家伙身上",
+          "他迫不及待想知道加上自己那一卷能否凑完整，但当场不测验"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1020,
+            "end": 1031
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1113,
+            "end": 1132
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1134,
+            "end": 1151
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1155,
+            "end": 1168
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "三卷已入手，可与先前那一卷合看是否完整",
+          "当场未打开检验"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1087,
+            "end": 1104
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1113,
+            "end": 1132
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1155,
+            "end": 1168
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1174,
+            "end": 1185
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "三卷银色卷轴已收入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1174,
+            "end": 1185
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "击退力竭长老时纳戒可被灵魂力当场剥离并抹印搜出与已有残卷相同的另外三份，但持有者仍能逃遁，残法是否因此凑齐不能在战场上验证"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 674,
+            "end": 707
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 945,
+            "end": 974
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1036,
+            "end": 1057
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1113,
+            "end": 1132
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 1155,
+            "end": 1168
+          },
+          {
+            "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+            "start": 819,
+            "end": 832
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 833,
+          "end": 849
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 638,
+          "end": 652
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 565,
+          "end": 585
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 674,
+          "end": 707
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 945,
+          "end": 974
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 976,
+          "end": 995
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 1003,
+          "end": 1017
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 1036,
+          "end": 1057
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 1087,
+          "end": 1104
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 427,
+          "end": 443
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 541,
+          "end": 551
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 1113,
+          "end": 1132
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 709,
+          "end": 726
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 753,
+          "end": 756
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 819,
+          "end": 832
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 1020,
+          "end": 1031
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 1174,
+          "end": 1185
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 1134,
+          "end": 1151
+        },
+        {
+          "segment_id": "SEG-EC03CC91E1D9E321C009-002",
+          "start": 1155,
+          "end": 1168
+        }
+      ]
+    }
+  ]
+}

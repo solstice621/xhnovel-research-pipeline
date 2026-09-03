@@ -1,0 +1,656 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎以陨落心炎裹身闯入透明光罩，扫描在触火后消散放行；光罩隐去，火焰蜥蜴强者无法定位，只得放弃离开。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "火焰蜥蜴人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1357,
+            "end": 1404
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1555,
+            "end": 1592
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以陨落心炎裹身窜入透明光罩"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1330,
+            "end": 1342
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1357,
+            "end": 1404
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "透明光罩内的遗存空间"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1357,
+            "end": 1404
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 85,
+            "end": 101
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "蜥蜴强者气息赶来，光罩可弹回岩浆火球"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1132,
+            "end": 1156
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 285,
+            "end": 318
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "扫描在接触陨落心炎后消散，萧炎顺利进入；光罩消失，蜥蜴人无法定位"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 13,
+            "end": 83
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 85,
+            "end": 101
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1418,
+            "end": 1459
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 543,
+            "end": 570
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "光罩扫描遇陨落心炎即散；蜥蜴人徘徊后放弃离开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 54,
+            "end": 83
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1596,
+            "end": 1620
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 543,
+            "end": 570
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "血红身影怒吼无计后只得离开，区域内再无痕迹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1555,
+            "end": 1592
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1596,
+            "end": 1620
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可在蜥蜴人无法察觉的光罩内接近神秘骨骸"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 543,
+            "end": 570
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 697,
+            "end": 716
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "光罩消失处毫无痕迹，外界已无法发现"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1418,
+            "end": 1459
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 543,
+            "end": 570
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "隐藏空间以异火为钥匙：扫描确认持火后放行并对外隐身，使追兵失去坐标"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 13,
+            "end": 83
+          },
+          {
+            "segment_id": "SEG-05012226FA0882182C87-002",
+            "start": 1357,
+            "end": 1404
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 543,
+            "end": 570
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1357,
+          "end": 1404
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1555,
+          "end": 1592
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1330,
+          "end": 1342
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-001",
+          "start": 85,
+          "end": 101
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1132,
+          "end": 1156
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 285,
+          "end": 318
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-001",
+          "start": 13,
+          "end": 83
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1418,
+          "end": 1459
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-001",
+          "start": 543,
+          "end": 570
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-001",
+          "start": 54,
+          "end": 83
+        },
+        {
+          "segment_id": "SEG-05012226FA0882182C87-002",
+          "start": 1596,
+          "end": 1620
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-001",
+          "start": 697,
+          "end": 716
+        }
+      ]
+    },
+    {
+      "summary": "萧炎近前欲捕幼生陨落心炎时，骸骨爆发白光化作曜天火残魂，凝固其身并抽走又归还异火；谈妥修复灵魂并加一年庇护后，他当场收下幼生陨落心炎、五轮离火法与斗尊骨骸。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "曜天火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 155,
+            "end": 189
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 1386,
+            "end": 1404
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "靠近骨骸欲捕幼生陨落心炎，随后接过卷轴并收下幼火、卷轴与骸骨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 134,
+            "end": 153
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-002",
+            "start": 954,
+            "end": 963
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 551,
+            "end": 580
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 844,
+            "end": 857
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 977,
+            "end": 992
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "骸骨残存意志及其幼生陨落心炎与五轮离火法"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 278,
+            "end": 302
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-002",
+            "start": 833,
+            "end": 852
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 551,
+            "end": 580
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎已进入光罩并走向神秘骨骸"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-001",
+            "start": 697,
+            "end": 716
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 134,
+            "end": 153
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "残魂现身凝固其身并抽走已炼化异火后归还；萧炎答应修复灵魂并加一年庇护，当场获得幼生陨落心炎、五轮离火法与斗尊骨骸"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 226,
+            "end": 243
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 597,
+            "end": 628
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-001",
+            "start": 190,
+            "end": 209
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 300,
+            "end": 317
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 551,
+            "end": 580
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 844,
+            "end": 857
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 977,
+            "end": 992
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "白光化作曜天火残魂，自称为陨落心炎上一任主人；以修复灵魂为条件先付五轮离火法，并抛出幼生异火、嘱收骨骸"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 278,
+            "end": 302
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 791,
+            "end": 806
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-002",
+            "start": 833,
+            "end": 852
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-002",
+            "start": 894,
+            "end": 912
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 551,
+            "end": 580
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 907,
+            "end": 941
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "身体被巨力凝固；幼火投入聚火壶后发出天焚炼气塔所需波动"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 226,
+            "end": 243
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 647,
+            "end": 656
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 726,
+            "end": 747
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可用幼生陨落心炎重开天焚炼气塔；可修习号称四异火可媲美天阶的五轮离火法；另得斗尊骨骸"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 726,
+            "end": 747
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-002",
+            "start": 1096,
+            "end": 1124
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 922,
+            "end": 941
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "幼火已入聚火壶，卷轴与骸骨已入纳戒；残魂仍在，并约定修复灵魂后庇护一年"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 647,
+            "end": 656
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 844,
+            "end": 857
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 977,
+            "end": 992
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 300,
+            "end": 317
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "骸骨残存意志可冻结近前者并凭前主人身份抽走已炼化异火，再以修复灵魂为条件当场交付幼生异火、控火法诀与骨骸"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 155,
+            "end": 189
+          },
+          {
+            "segment_id": "SEG-F94A584ED84087948873-002",
+            "start": 597,
+            "end": 628
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-002",
+            "start": 894,
+            "end": 912
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 551,
+            "end": 580
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-F94A584ED84087948873-002",
+          "start": 155,
+          "end": 189
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-002",
+          "start": 1386,
+          "end": 1404
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-002",
+          "start": 134,
+          "end": 153
+        },
+        {
+          "segment_id": "SEG-F44D427046DE5848EBAB-002",
+          "start": 954,
+          "end": 963
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 551,
+          "end": 580
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 844,
+          "end": 857
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 977,
+          "end": 992
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-002",
+          "start": 278,
+          "end": 302
+        },
+        {
+          "segment_id": "SEG-F44D427046DE5848EBAB-002",
+          "start": 833,
+          "end": 852
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-001",
+          "start": 697,
+          "end": 716
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-002",
+          "start": 226,
+          "end": 243
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-002",
+          "start": 597,
+          "end": 628
+        },
+        {
+          "segment_id": "SEG-F44D427046DE5848EBAB-001",
+          "start": 190,
+          "end": 209
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 300,
+          "end": 317
+        },
+        {
+          "segment_id": "SEG-F94A584ED84087948873-002",
+          "start": 791,
+          "end": 806
+        },
+        {
+          "segment_id": "SEG-F44D427046DE5848EBAB-002",
+          "start": 894,
+          "end": 912
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 907,
+          "end": 941
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 647,
+          "end": 656
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 726,
+          "end": 747
+        },
+        {
+          "segment_id": "SEG-F44D427046DE5848EBAB-002",
+          "start": 1096,
+          "end": 1124
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 922,
+          "end": 941
+        }
+      ]
+    }
+  ]
+}

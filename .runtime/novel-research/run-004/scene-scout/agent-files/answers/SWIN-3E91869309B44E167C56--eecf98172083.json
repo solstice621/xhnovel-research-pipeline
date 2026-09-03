@@ -1,0 +1,307 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎以灵魂力量靠近已射入眉心的外来光团，光团暴射白芒，穿透他的灵魂防御进入灵魂，留下无法撼动的停驻，并只传入“净莲妖圣”四字。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 265,
+          "end": 290
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 487,
+          "end": 509
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 925,
+          "end": 935
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 591,
+          "end": 608
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 664,
+          "end": 688
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 238,
+          "end": 264
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 609,
+          "end": 640
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 701,
+          "end": 753
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 754,
+          "end": 789
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 1228,
+          "end": 1253
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 1268,
+          "end": 1273
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 971,
+          "end": 1012
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-002",
+          "start": 521,
+          "end": 533
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 265,
+            "end": 290
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 487,
+            "end": 509
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 925,
+            "end": 935
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以灵魂力量靠近眉心光团",
+          "凝聚灵魂防御并试图包裹光团"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 487,
+            "end": 509
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 591,
+            "end": 608
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 664,
+            "end": 688
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "眉心外来光团",
+          "光团暴射的白芒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 238,
+            "end": 264
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 265,
+            "end": 290
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 609,
+            "end": 640
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "古图异物已在眉心形成拳头大小光团",
+          "这光团不属于萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 238,
+            "end": 264
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 265,
+            "end": 290
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "白芒穿透灵魂防御进入萧炎的灵魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 701,
+            "end": 753
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 754,
+            "end": 789
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "光团在被靠近包裹时白芒直射灵魂",
+          "白芒毫无阻碍地穿透灵魂防御"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 609,
+            "end": 640
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 664,
+            "end": 688
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 701,
+            "end": 753
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎身体僵硬并显出痛苦",
+          "接触后只收到四个字：净莲妖圣",
+          "光团停在眉心撼动不得、暂无进一步举动"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 754,
+            "end": 789
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 1228,
+            "end": 1253
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 1268,
+            "end": 1273
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 971,
+            "end": 1012
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "获知残存示名为净莲妖圣",
+          "异物暂不能主动驱使，只能静观其变"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 1228,
+            "end": 1253
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 1268,
+            "end": 1273
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 971,
+            "end": 1012
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-002",
+            "start": 521,
+            "end": 533
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "外来光团停驻眉心，灵魂力量无法撼动，也没有进一步举动"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 971,
+            "end": 1012
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "探查已植入体内的无名残存时，对方可无视灵魂防御直入灵魂并留下不可移除的信息异物"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 664,
+            "end": 688
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 701,
+            "end": 753
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 971,
+            "end": 1012
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 1268,
+            "end": 1273
+          }
+        ]
+      }
+    }
+  ]
+}

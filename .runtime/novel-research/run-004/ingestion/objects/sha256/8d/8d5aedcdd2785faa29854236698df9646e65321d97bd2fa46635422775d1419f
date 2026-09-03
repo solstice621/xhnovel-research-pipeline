@@ -1,0 +1,241 @@
+{
+  "candidates": [
+    {
+      "summary": "萧玄将炼成的远古虫皇衣抛给萧炎；萧炎滴入精血将其收入体内，心念一动便在体表幻化成黑衫，可常驻防备偷袭。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+          "start": 295,
+          "end": 312
+        },
+        {
+          "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+          "start": 326,
+          "end": 357
+        },
+        {
+          "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+          "start": 432,
+          "end": 448
+        },
+        {
+          "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+          "start": 516,
+          "end": 574
+        },
+        {
+          "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+          "start": 359,
+          "end": 430
+        },
+        {
+          "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+          "start": 637,
+          "end": 675
+        },
+        {
+          "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+          "start": 480,
+          "end": 503
+        },
+        {
+          "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+          "start": 712,
+          "end": 735
+        },
+        {
+          "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+          "start": 927,
+          "end": 952
+        },
+        {
+          "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+          "start": 858,
+          "end": 926
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄",
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 295,
+            "end": 312
+          },
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 326,
+            "end": 357
+          },
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 432,
+            "end": 448
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎接过黑芒，依言滴入精血将其融入掌心"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 432,
+            "end": 448
+          },
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 516,
+            "end": 574
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "远古虫皇衣"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 359,
+            "end": 430
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄手握淡淡黑芒，随手抛向萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 326,
+            "end": 357
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "虫皇衣融入体内，可在体表幻化成寻常衣衫"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 516,
+            "end": 574
+          },
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 637,
+            "end": 675
+          },
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 359,
+            "end": 430
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "滴入精血后黑芒蠕动如液体，顺手掌融入体内并遍布皮肤"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 480,
+            "end": 503
+          },
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 516,
+            "end": 574
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "心头一动黑芒聚成黑衫",
+          "布料柔软却极端坚实"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 637,
+            "end": 675
+          },
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 712,
+            "end": 735
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可随时防备袭击，意想不到的偷袭也能悄然化解"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 359,
+            "end": 430
+          },
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 927,
+            "end": 952
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "需持续消耗斗气，但对萧炎负担不大，故能一直存在于身体之上"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 858,
+            "end": 926
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "防御物收入体内后以心念幻化常驻体表，靠持续斗气维持而非一次穿戴"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 359,
+            "end": 430
+          },
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 637,
+            "end": 675
+          },
+          {
+            "segment_id": "SEG-CFBBA91B70F2DA2742C3-001",
+            "start": 858,
+            "end": 926
+          }
+        ]
+      }
+    }
+  ]
+}

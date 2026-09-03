@@ -1,0 +1,873 @@
+{
+  "candidates": [
+    {
+      "summary": "火灵蛇刺向胸口的危急中，青鳞尖叫，眼中绿点化为花朵并在双头印下绿花，蛇转为温顺；她醒来后唤出火灵蛇，并阻止再打，蛇已无攻击意图。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-7849B1C03D2B95127103-002",
+          "start": 1451,
+          "end": 1469
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 1239,
+          "end": 1255
+        },
+        {
+          "segment_id": "SEG-7849B1C03D2B95127103-002",
+          "start": 1495,
+          "end": 1511
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 47,
+          "end": 78
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 93,
+          "end": 123
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 1384,
+          "end": 1391
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 1397,
+          "end": 1400
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 1494,
+          "end": 1511
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 1422,
+          "end": 1449
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 325,
+          "end": 351
+        },
+        {
+          "segment_id": "SEG-7849B1C03D2B95127103-002",
+          "start": 1189,
+          "end": 1205
+        },
+        {
+          "segment_id": "SEG-7849B1C03D2B95127103-002",
+          "start": 1322,
+          "end": 1354
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 480,
+          "end": 533
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 1556,
+          "end": 1573
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 139,
+          "end": 174
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 418,
+          "end": 447
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 456,
+          "end": 475
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "青鳞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1451,
+            "end": 1469
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1239,
+            "end": 1255
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "危机中尖叫使瞳中绿点化为花朵并射出幽光",
+          "醒来后唤出火灵蛇并阻止再打"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1451,
+            "end": 1469
+          },
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1495,
+            "end": 1511
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 47,
+            "end": 78
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 93,
+            "end": 123
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1384,
+            "end": 1391
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1397,
+            "end": 1400
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1494,
+            "end": 1511
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1422,
+            "end": 1449
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "火灵蛇"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 93,
+            "end": 123
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 325,
+            "end": 351
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1422,
+            "end": 1449
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "火灵蛇蛇信对着胸口刺下，即将将其吞入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1189,
+            "end": 1205
+          },
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1322,
+            "end": 1354
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "绿色花朵被印刻在火灵蛇两个脑袋上",
+          "火灵蛇对她转为温顺",
+          "被唤出后不再有攻击意图"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 325,
+            "end": 351
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 480,
+            "end": 533
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1422,
+            "end": 1449
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1556,
+            "end": 1573
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "火灵蛇身体骤然僵硬、巨眼惊恐",
+          "注视她时凶狠转为温顺",
+          "应声从岩浆中游来且无攻击意图"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 139,
+            "end": 174
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 480,
+            "end": 533
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1422,
+            "end": 1449
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1556,
+            "end": 1573
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "青鳞倒下后醒来",
+          "火灵蛇傻顿在原地"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 418,
+            "end": 447
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 456,
+            "end": 475
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1239,
+            "end": 1255
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可唤出火灵蛇且它不再攻击"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1397,
+            "end": 1400
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1422,
+            "end": 1449
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1494,
+            "end": 1511
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1556,
+            "end": 1573
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "绿色花朵印刻留在蛇头上",
+          "唤出后仍无攻击意图"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 325,
+            "end": 351
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1556,
+            "end": 1573
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "濒死尖叫触发未知瞳术印记，使正在扑杀的魔兽当场改敌为驯并可被唤来，而不是击杀掉落或事先契约"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1451,
+            "end": 1469
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 325,
+            "end": 351
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 480,
+            "end": 533
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1397,
+            "end": 1400
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1494,
+            "end": 1511
+          }
+        ]
+      }
+    },
+    {
+      "summary": "青鳞称已与火灵蛇建立感应，蛇告知异火在岩浆之下；她下令带路后，人跃入炽热岩浆。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-18905F286671855DE42C-002",
+          "start": 739,
+          "end": 761
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-002",
+          "start": 1320,
+          "end": 1375
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-002",
+          "start": 1255,
+          "end": 1263
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-002",
+          "start": 1452,
+          "end": 1486
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-002",
+          "start": 721,
+          "end": 738
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-002",
+          "start": 848,
+          "end": 858
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-002",
+          "start": 56,
+          "end": 83
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 1494,
+          "end": 1511
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-002",
+          "start": 954,
+          "end": 989
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-002",
+          "start": 990,
+          "end": 1011
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "青鳞",
+          "萧炎",
+          "火灵蛇"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 739,
+            "end": 761
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 1320,
+            "end": 1375
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "下令让火灵蛇在岩浆下带路后跃入岩浆"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 1255,
+            "end": 1263
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 1452,
+            "end": 1486
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "岩浆之下的异火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 721,
+            "end": 738
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 848,
+            "end": 858
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "青鳞称已与火灵蛇建立奇怪联系并能感应其意念",
+          "火灵蛇已不再攻击"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 56,
+            "end": 83
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 1494,
+            "end": 1511
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "得知异火在岩浆下面",
+          "人跃入炽热岩浆"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 848,
+            "end": 858
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 1452,
+            "end": 1486
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "火灵蛇不愿但仍在强制联系下钻进岩浆带路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 1320,
+            "end": 1375
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "药老恍然：异火感觉被地穴熔浆遮掩"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 954,
+            "end": 989
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 990,
+            "end": 1011
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可由火灵蛇在岩浆之下带路寻找异火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 1255,
+            "end": 1263
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 1320,
+            "end": 1375
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "强制联系仍能驱使火灵蛇带路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 1320,
+            "end": 1375
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机印记形成的单向联系把敌对守卫变成向导，当场指出异火在岩浆下，而不是地图标记或击杀掉落"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 56,
+            "end": 83
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 848,
+            "end": 858
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-002",
+            "start": 1320,
+            "end": 1375
+          }
+        ]
+      }
+    },
+    {
+      "summary": "火灵蛇将人甩到它面前，眼前青色莲花莲心空空；药老从莲台取出七彩蛇鳞丢出，接住后判明有人捷足先登。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 143,
+          "end": 156
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 724,
+          "end": 738
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 431,
+          "end": 472
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 627,
+          "end": 643
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 644,
+          "end": 675
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 560,
+          "end": 570
+        },
+        {
+          "segment_id": "SEG-933A0E8ADE7DB3DA681F-002",
+          "start": 1383,
+          "end": 1407
+        },
+        {
+          "segment_id": "SEG-933A0E8ADE7DB3DA681F-002",
+          "start": 1527,
+          "end": 1541
+        },
+        {
+          "segment_id": "SEG-933A0E8ADE7DB3DA681F-002",
+          "start": 1626,
+          "end": 1640
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-001",
+          "start": 1520,
+          "end": 1533
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-001",
+          "start": 1534,
+          "end": 1552
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 614,
+          "end": 626
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 740,
+          "end": 773
+        },
+        {
+          "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+          "start": 808,
+          "end": 814
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "药老",
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 143,
+            "end": 156
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 724,
+            "end": 738
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "从莲台摄出七彩蛇鳞并丢给对方接住"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 431,
+            "end": 472
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 627,
+            "end": 643
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 644,
+            "end": 675
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "七彩蛇鳞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 560,
+            "end": 570
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 627,
+            "end": 643
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "火灵蛇尾巴缠腰并将人甩到它面前",
+          "眼前有青色莲花且莲心空空"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-933A0E8ADE7DB3DA681F-002",
+            "start": 1383,
+            "end": 1407
+          },
+          {
+            "segment_id": "SEG-933A0E8ADE7DB3DA681F-002",
+            "start": 1527,
+            "end": 1541
+          },
+          {
+            "segment_id": "SEG-933A0E8ADE7DB3DA681F-002",
+            "start": 1626,
+            "end": 1640
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-001",
+            "start": 1520,
+            "end": 1533
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-001",
+            "start": 1534,
+            "end": 1552
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "鳞片从莲台转入手中",
+          "判明有人捷足先登取走异火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 644,
+            "end": 675
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 614,
+            "end": 626
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "药老识别鳞片为美杜莎女王所有的七彩蛇鳞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 740,
+            "end": 773
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 808,
+            "end": 814
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "入手冰凉并有阴寒气息侵入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 644,
+            "end": 675
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "持有指向取走者身份的鳞片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 724,
+            "end": 738
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 740,
+            "end": 773
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "鳞片被紧握在手中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 724,
+            "end": 738
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗存核心已空，当场拾得的是捷足先登者留下的信物，而不是异火本体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-001",
+            "start": 1520,
+            "end": 1533
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 614,
+            "end": 626
+          },
+          {
+            "segment_id": "SEG-CCA7E8E2A966877B422E-002",
+            "start": 560,
+            "end": 570
+          }
+        ]
+      }
+    }
+  ]
+}

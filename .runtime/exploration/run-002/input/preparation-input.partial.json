@@ -1,0 +1,189 @@
+{
+  "brief": {
+    "research_question": "寻找玄幻场景中物理控制、所有权、使用权限或禁制绑定发生分离，并改变角色后续行动空间的桥段。",
+    "evidence_discovery_brief": "寻找对象的持有、所有、使用许可或约束状态发生变化，并影响角色后续可执行行动的场景。",
+    "scope": {
+      "genres": [
+        "玄幻"
+      ],
+      "target_leads": 3,
+      "max_leads_per_work": 3,
+      "prefer": [
+        "异质控制关系"
+      ],
+      "avoid": [
+        "重复战斗夺宝"
+      ]
+    },
+    "frozen_at": "2026-09-03T01:21:00Z"
+  },
+  "leads": [
+    {
+      "work_claim": {
+        "title": "斗破苍穹",
+        "author": "天蚕土豆",
+        "language": "zh",
+        "aliases": [
+          "《斗破苍穹》",
+          "Battle Through the Heavens"
+        ]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称主角母亲遗物戒指中可能寄宿另一灵魂，并在持有期间吸取斗气数年；可检验物理持有、内部占用与使用权是否分离。",
+        "why_relevant": "LEAD_ONLY：若属实，持有者未必控制戒指内的行动者，且自身修炼能力可能被占用。",
+        "interaction_tags": [
+          "custody",
+          "internal_occupancy",
+          "use_permission"
+        ],
+        "location_hints": [
+          {
+            "kind": "CHAPTER_TITLE",
+            "value": "第九章 药老！",
+            "basis": "SOURCE_STATED"
+          },
+          {
+            "kind": "CHARACTER",
+            "value": "药老",
+            "basis": "SOURCE_STATED"
+          }
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://zh.wikipedia.org/wiki/%E9%AC%A5%E7%A0%B4%E8%92%BC%E7%A9%B9",
+          "title": "斗破苍穹 - 维基百科",
+          "publisher": "Wikimedia",
+          "supports": [
+            "WORK_IDENTITY",
+            "SCENE_EXISTENCE_HINT",
+            "LOCATION_HINT"
+          ]
+        },
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E6%96%97%E7%A0%B4%E8%8B%8D%E7%A9%B9/54134",
+          "title": "斗破苍穹 - 百度百科",
+          "publisher": "Baidu",
+          "supports": [
+            "WORK_IDENTITY",
+            "SCENE_EXISTENCE_HINT",
+            "LOCATION_HINT"
+          ]
+        }
+      ],
+      "frozen_at": "2026-09-03T01:21:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "《斗破苍穹》",
+        "author": "天蚕土豆",
+        "language": "zh",
+        "aliases": [
+          "斗破苍穹"
+        ]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称沙漠中可能出现多方争夺地心异火，主角或在冲突中取得火焰；可检验争夺中的持有转移是否伴随使用权。",
+        "why_relevant": "LEAD_ONLY：多方争夺下的对象转移，可压力测试所有权、持有与催动权限是否同步变化。",
+        "interaction_tags": [
+          "contested_possession",
+          "ownership",
+          "use_permission"
+        ],
+        "location_hints": [
+          {
+            "kind": "EVENT_PHRASE",
+            "value": "青莲地心火",
+            "basis": "SOURCE_STATED"
+          }
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://zh.wikipedia.org/wiki/%E9%AC%A5%E7%A0%B4%E8%92%BC%E7%A9%B9",
+          "title": "斗破苍穹 - 维基百科",
+          "publisher": "Wikimedia",
+          "supports": [
+            "WORK_IDENTITY",
+            "SCENE_EXISTENCE_HINT",
+            "LOCATION_HINT"
+          ]
+        }
+      ],
+      "frozen_at": "2026-09-03T01:21:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "斗破苍穹",
+        "author": "天蚕土豆",
+        "language": "zh",
+        "aliases": []
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：词条称骨炎戒可能同时是信物与凭证，出示后可获得庇护或职位；可检验对象作为授权凭据与所有权是否分离。",
+        "why_relevant": "LEAD_ONLY：凭据型对象可检验委托、身份绑定与物理持有的组合。",
+        "interaction_tags": [
+          "delegation",
+          "credential",
+          "custody"
+        ],
+        "location_hints": [
+          {
+            "kind": "OBJECT",
+            "value": "骨炎戒",
+            "basis": "SOURCE_STATED"
+          }
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E9%AA%A8%E7%82%8E%E6%88%92/66998640",
+          "title": "骨炎戒 - 百度百科",
+          "publisher": "Baidu",
+          "supports": [
+            "WORK_IDENTITY",
+            "SCENE_EXISTENCE_HINT",
+            "LOCATION_HINT"
+          ]
+        }
+      ],
+      "frozen_at": "2026-09-03T01:21:00Z"
+    }
+  ],
+  "source_declaration": {
+    "work": {
+      "canonical_title": "斗破苍穹",
+      "author": "天蚕土豆",
+      "language": "zh",
+      "aliases": [
+        "《斗破苍穹》",
+        "Battle Through the Heavens"
+      ],
+      "external_ids": [
+        {
+          "namespace": "qidian",
+          "value": "1209977"
+        }
+      ]
+    },
+    "source": {
+      "kind": "site",
+      "index_url": "https://wuxia.bookresource.qq.com/book/1209977/",
+      "chapter_url_pattern": "/chapter/1209977/[0-9]+/",
+      "title": "斗破苍穹",
+      "author": "天蚕土豆",
+      "language": "zh"
+    },
+    "source_quality": {
+      "edition_status": "OFFICIAL",
+      "textual_completeness": "PARTIAL"
+    },
+    "edition_label": "起点中文网 bookresource.qq.com 官方阅读页（VIP 章节不可全文抓取）",
+    "declared_at": "2026-09-03T01:21:00Z"
+  },
+  "requested_at": "2026-09-03T01:21:00Z"
+}

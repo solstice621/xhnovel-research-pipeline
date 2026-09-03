@@ -1,0 +1,289 @@
+{
+  "candidates": [
+    {
+      "summary": "冰尊者驱使黑龙扑杀、萧炎毁灭火莲尚未凝实之际，两道苍老身影破空击溃杀招，青衣薰儿现身喝止，叶城战局骤变。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "冰尊者",
+          "萧炎",
+          "两道苍老身影",
+          "薰儿"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1386,
+            "end": 1444
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1445,
+            "end": 1466
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1621,
+            "end": 1662
+          },
+          {
+            "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+            "start": 261,
+            "end": 268
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "冰尊者挥手再凝黑龙扑杀萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1386,
+            "end": 1444
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1386,
+            "end": 1444
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1445,
+            "end": 1466
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "黑龙已凶猛扑至",
+          "萧炎掌心毁灭火莲仍略虚幻"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1467,
+            "end": 1506
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1579,
+            "end": 1599
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "黑龙被击溃",
+          "薰儿现身，萧炎毁灭火莲散去"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1621,
+            "end": 1662
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1670,
+            "end": 1696
+          },
+          {
+            "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+            "start": 261,
+            "end": 268
+          },
+          {
+            "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+            "start": 114,
+            "end": 164
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "两道苍老身影袖袍挥动将黑龙生生击溃",
+          "青衣倩影随轻柔之声现身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1621,
+            "end": 1662
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1670,
+            "end": 1696
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1697,
+            "end": 1720
+          },
+          {
+            "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+            "start": 409,
+            "end": 421
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "薰儿声言伤萧炎则冰河谷不保",
+          "冰河因突变更色",
+          "萧炎认出薰儿并散去毁灭火莲"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1721,
+            "end": 1742
+          },
+          {
+            "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+            "start": 323,
+            "end": 350
+          },
+          {
+            "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+            "start": 261,
+            "end": 268
+          },
+          {
+            "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+            "start": 114,
+            "end": 164
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎不再必须以未凝实的毁灭火莲硬抗杀招"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+            "start": 114,
+            "end": 164
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1621,
+            "end": 1662
+          }
+        ]
+      },
+      "persistence": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "杀招已至而底牌火莲尚未凝实的空档，未被当场召唤的外援破空插入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1467,
+            "end": 1506
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1579,
+            "end": 1599
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1621,
+            "end": 1662
+          },
+          {
+            "segment_id": "SEG-92821183342DA9FFFCC4-002",
+            "start": 1721,
+            "end": 1742
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-92821183342DA9FFFCC4-002",
+          "start": 1386,
+          "end": 1444
+        },
+        {
+          "segment_id": "SEG-92821183342DA9FFFCC4-002",
+          "start": 1445,
+          "end": 1466
+        },
+        {
+          "segment_id": "SEG-92821183342DA9FFFCC4-002",
+          "start": 1621,
+          "end": 1662
+        },
+        {
+          "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+          "start": 261,
+          "end": 268
+        },
+        {
+          "segment_id": "SEG-92821183342DA9FFFCC4-002",
+          "start": 1467,
+          "end": 1506
+        },
+        {
+          "segment_id": "SEG-92821183342DA9FFFCC4-002",
+          "start": 1579,
+          "end": 1599
+        },
+        {
+          "segment_id": "SEG-92821183342DA9FFFCC4-002",
+          "start": 1670,
+          "end": 1696
+        },
+        {
+          "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+          "start": 114,
+          "end": 164
+        },
+        {
+          "segment_id": "SEG-92821183342DA9FFFCC4-002",
+          "start": 1697,
+          "end": 1720
+        },
+        {
+          "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+          "start": 409,
+          "end": 421
+        },
+        {
+          "segment_id": "SEG-92821183342DA9FFFCC4-002",
+          "start": 1721,
+          "end": 1742
+        },
+        {
+          "segment_id": "SEG-A9F2F18D8647B86BD7F1-001",
+          "start": 323,
+          "end": 350
+        }
+      ]
+    }
+  ]
+}

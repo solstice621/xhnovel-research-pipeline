@@ -1,0 +1,119 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎在云山两道残影前后夹击、佛怒火莲后遗症发作而陷入必死黑暗时，体内药老残存意志突然出声接管，磅礴能量自无底处暴涌，双眸变为一青一白，当场震碎两道分身残影，实力暴涨数阶，从无路可逃转为能与斗宗对峙并宣称可离去。",
+      "source_spans": [
+        {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 718, "end": 761},
+        {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 806, "end": 820},
+        {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 858, "end": 881},
+        {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 900, "end": 942},
+        {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 943, "end": 963},
+        {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 964, "end": 1005},
+        {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 1007, "end": 1020},
+        {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 1022, "end": 1060},
+        {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 1084, "end": 1108},
+        {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 98, "end": 120},
+        {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 130, "end": 183},
+        {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 546, "end": 564},
+        {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 567, "end": 595},
+        {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 1241, "end": 1261},
+        {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 1377, "end": 1395},
+        {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 1486, "end": 1511},
+        {"segment_id": "SEG-FE1A478CD508E09B23D1-002", "start": 19, "end": 36},
+        {"segment_id": "SEG-EEC2C1F8AB9542A7A79C-002", "start": 543, "end": 556},
+        {"segment_id": "SEG-EEC2C1F8AB9542A7A79C-002", "start": 1297, "end": 1309}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "药老"],
+        "support_spans": [
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 858, "end": 881},
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 1007, "end": 1020},
+          {"segment_id": "SEG-EEC2C1F8AB9542A7A79C-002", "start": 543, "end": 556}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["药老在萧炎濒死黑暗中出声接管身体并爆发隐藏力量"],
+        "support_spans": [
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 900, "end": 942},
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 943, "end": 963},
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 1007, "end": 1020},
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 1022, "end": 1060},
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 546, "end": 564}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["萧炎濒死的身体与处境", "云山的两道分身残影"],
+        "support_spans": [
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 718, "end": 761},
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 130, "end": 183}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["萧炎刚施展佛怒火莲后遗症发作", "被云山两道残影前后夹成气劲牢笼而无躲避之法", "本人已认死并向老师致歉"],
+        "support_spans": [
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 718, "end": 761},
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 806, "end": 820},
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 858, "end": 881}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["从即将被砸死、意识陷入黑暗转为药老接管、双眸一青一白、能量暴涌、残影爆裂、实力暴涨数阶"],
+        "support_spans": [
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 964, "end": 1005},
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 1084, "end": 1108},
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 130, "end": 183},
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 567, "end": 595}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["两道残影凝固后轰然爆裂", "海波东惊呼这家伙终于能使用隐藏力量", "云山指出这股力量并不真正属于萧炎"],
+        "support_spans": [
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 130, "end": 183},
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 546, "end": 564},
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 1377, "end": 1395}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["熟悉声音让绝望之心注满生机与活力", "双眸骤然睁开变为一青一白", "磅礴劲气以萧炎为中心暴涌"],
+        "support_spans": [
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 964, "end": 1005},
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 1084, "end": 1108},
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 98, "end": 120}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["能以暴涨后的力量与云山对峙并宣称可离去", "这股力量能听其如臂指挥"],
+        "support_spans": [
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 1241, "end": 1261},
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 1486, "end": 1511}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["云山断言这股外物提升不能长久保持", "药老自言出现时间也不多了"],
+        "support_spans": [
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-002", "start": 19, "end": 36},
+          {"segment_id": "SEG-EEC2C1F8AB9542A7A79C-002", "start": 1297, "end": 1309}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["濒死黑暗中体内残存意志自动出声接管，而非角色主动祭出已有道具；力量归属与时限由灵魂状态决定，并非宿主本人稳定战力"],
+        "support_spans": [
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 943, "end": 963},
+          {"segment_id": "SEG-11BE42411EAC83662250-003", "start": 1007, "end": 1020},
+          {"segment_id": "SEG-FE1A478CD508E09B23D1-001", "start": 1377, "end": 1395},
+          {"segment_id": "SEG-EEC2C1F8AB9542A7A79C-002", "start": 1297, "end": 1309}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎轰碎通往天墓第三层的最后一层翡翠晶壁时，意外发现并抓住一枚状若虫茧的淡红物体，来不及查看便收入纳戒；冲出后远古噬虫自杀性追出并在光幕外化为粉末，他怀疑与刚抓到的东西有关。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-A916512FABE18F471121-001",
+          "start": 335,
+          "end": 414
+        },
+        {
+          "segment_id": "SEG-A916512FABE18F471121-001",
+          "start": 14,
+          "end": 58
+        },
+        {
+          "segment_id": "SEG-EE0EB76CA586A117B09D-002",
+          "start": 1790,
+          "end": 1834
+        },
+        {
+          "segment_id": "SEG-EE0EB76CA586A117B09D-002",
+          "start": 1748,
+          "end": 1786
+        },
+        {
+          "segment_id": "SEG-A916512FABE18F471121-001",
+          "start": 948,
+          "end": 960
+        },
+        {
+          "segment_id": "SEG-A916512FABE18F471121-001",
+          "start": 1013,
+          "end": 1076
+        },
+        {
+          "segment_id": "SEG-EE0EB76CA586A117B09D-002",
+          "start": 1741,
+          "end": 1746
+        },
+        {
+          "segment_id": "SEG-A916512FABE18F471121-001",
+          "start": 1377,
+          "end": 1397
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 335,
+            "end": 414
+          },
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 14,
+            "end": 58
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "朝前四射的晶屑中一抓，将温凉如玉之物收进纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 335,
+            "end": 414
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "拳头大小、通体淡红、状若虫茧的原形物体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EE0EB76CA586A117B09D-002",
+            "start": 1790,
+            "end": 1834
+          },
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 14,
+            "end": 58
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "火龙即将与翡翠晶壁碰撞",
+          "没有太多时间拖延"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EE0EB76CA586A117B09D-002",
+            "start": 1748,
+            "end": 1786
+          },
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 14,
+            "end": 58
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "未知虫茧落入萧炎手中并被收进纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 335,
+            "end": 414
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "远古噬虫追出能量晶壁后化为白色粉末"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 948,
+            "end": 960
+          },
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 1013,
+            "end": 1076
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "咦?这是?",
+          "物体温凉如玉，来不及查看"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EE0EB76CA586A117B09D-002",
+            "start": 1741,
+            "end": 1746
+          },
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 335,
+            "end": 414
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "纳戒中多了一件尚未辨认的虫茧状物"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 335,
+            "end": 414
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "直接将其收进纳戒之中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 335,
+            "end": 414
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "突围时顺手拾取未知虫茧，随后噬虫在光幕外无预警自爆，因果仅被当事人怀疑"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 335,
+            "end": 414
+          },
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 1013,
+            "end": 1076
+          },
+          {
+            "segment_id": "SEG-A916512FABE18F471121-001",
+            "start": 1377,
+            "end": 1397
+          }
+        ]
+      }
+    }
+  ]
+}

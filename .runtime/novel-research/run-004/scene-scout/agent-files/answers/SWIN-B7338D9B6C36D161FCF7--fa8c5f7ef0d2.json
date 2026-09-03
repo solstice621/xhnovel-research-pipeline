@@ -1,0 +1,126 @@
+{
+  "candidates": [
+    {
+      "summary": "蝎毕岩在败势中假作自爆，喷出漆黑血芒却出人意料拐向萧炎；黑芒撕开自动护体的碧绿斗气后如液体没入皮肤，留下沿穴位蔓延的拇指魔毒斑，当场把胜局变成无法自探、难以解开的延迟致死植入。",
+      "source_spans": [
+        {"segment_id": "SEG-23063F28712F6402812D-002", "start": 724, "end": 743},
+        {"segment_id": "SEG-23063F28712F6402812D-002", "start": 892, "end": 901},
+        {"segment_id": "SEG-23063F28712F6402812D-002", "start": 1130, "end": 1154},
+        {"segment_id": "SEG-23063F28712F6402812D-002", "start": 1385, "end": 1415},
+        {"segment_id": "SEG-23063F28712F6402812D-002", "start": 1416, "end": 1440},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 93, "end": 127},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 193, "end": 219},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 278, "end": 302},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 359, "end": 380},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 420, "end": 441},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 509, "end": 515},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 628, "end": 650},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 665, "end": 693},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 961, "end": 982},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1014, "end": 1060},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1075, "end": 1122},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1139, "end": 1172},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1226, "end": 1249},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1358, "end": 1378},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1459, "end": 1470},
+        {"segment_id": "SEG-371EAC78DF24454A2A78-002", "start": 4, "end": 29}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["蝎毕岩", "萧炎", "小医仙", "美杜莎"],
+        "support_spans": [
+          {"segment_id": "SEG-23063F28712F6402812D-002", "start": 1416, "end": 1440},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 509, "end": 515},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 665, "end": 693}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["蝎毕岩喷出漆黑血芒并拐向萧炎", "黑芒侵入萧炎体内留下黑斑"],
+        "support_spans": [
+          {"segment_id": "SEG-23063F28712F6402812D-002", "start": 1130, "end": 1154},
+          {"segment_id": "SEG-23063F28712F6402812D-002", "start": 1385, "end": 1415},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 278, "end": 302},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 359, "end": 380}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["萧炎", "萧炎的身体"],
+        "support_spans": [
+          {"segment_id": "SEG-23063F28712F6402812D-002", "start": 1416, "end": 1440},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 278, "end": 302}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["蝎毕岩已败并扬言要对方付出血的代价", "萧炎护体斗气在紧急时刻自动破体而出"],
+        "support_spans": [
+          {"segment_id": "SEG-23063F28712F6402812D-002", "start": 724, "end": 743},
+          {"segment_id": "SEG-23063F28712F6402812D-002", "start": 892, "end": 901},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 93, "end": 127},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 628, "end": 650}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["黑芒没入皮肤形成拇指魔毒斑并沿穴位经脉蔓延黑线", "施术者毕生斗气将随之散去"],
+        "support_spans": [
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 278, "end": 302},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 359, "end": 380},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 420, "end": 441},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 961, "end": 982},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1139, "end": 1172}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["碧绿护体斗气被黑芒迅速撕开消散", "黑斑无法被萧炎心神在体内定位"],
+        "support_spans": [
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 193, "end": 219},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1226, "end": 1249}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["胸膛留下拇指黑斑并飞快蔓延毒线", "小医仙指认此为魔毒斑并说明中招者经脉将溃烂死去"],
+        "support_spans": [
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 359, "end": 380},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 420, "end": 441},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 961, "end": 982},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1014, "end": 1060},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1075, "end": 1122}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["萧炎无法靠自身心神找到或清除魔毒斑", "小医仙表示斗宗所下魔毒斑她也极为棘手", "美杜莎转向蝎毕岩索要解药"],
+        "support_spans": [
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1226, "end": 1249},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1358, "end": 1378},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1459, "end": 1470}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["魔毒斑留在体内并持续释放毒线", "蝎毕岩称施展后自己也活不久"],
+        "support_spans": [
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 420, "end": 441},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1014, "end": 1060},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-002", "start": 4, "end": 29}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["濒死敌手的最后一击会改锁定到非主目标，把已结束的胜局变成无法自我探明、当场难解的延迟致死植入"],
+        "support_spans": [
+          {"segment_id": "SEG-23063F28712F6402812D-002", "start": 1385, "end": 1415},
+          {"segment_id": "SEG-23063F28712F6402812D-002", "start": 1416, "end": 1440},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1075, "end": 1122},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1226, "end": 1249},
+          {"segment_id": "SEG-371EAC78DF24454A2A78-001", "start": 1358, "end": 1378}
+        ]
+      }
+    }
+  ]
+}

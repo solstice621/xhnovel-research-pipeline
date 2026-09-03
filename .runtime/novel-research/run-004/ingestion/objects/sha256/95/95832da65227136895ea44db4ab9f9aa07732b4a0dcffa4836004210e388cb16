@@ -1,0 +1,742 @@
+{
+  "candidates": [
+    {
+      "summary": "两人进入前人遗留山洞石室后，在花坛发现冰灵焰草；经分成约定，当场连土装入玉瓶收入纳戒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 519,
+          "end": 548
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 702,
+          "end": 730
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 782,
+          "end": 820
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 332,
+          "end": 346
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 153,
+          "end": 160
+        },
+        {
+          "segment_id": "SEG-D75CD7F6152CEFF2DF22-002",
+          "start": 1357,
+          "end": 1368
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-001",
+          "start": 1146,
+          "end": 1169
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-001",
+          "start": 1486,
+          "end": 1506
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-001",
+          "start": 1507,
+          "end": 1523
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 827,
+          "end": 838
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 550,
+          "end": 570
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 664,
+          "end": 700
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 459,
+          "end": 481
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 357,
+          "end": 381
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 966,
+          "end": 997
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "小医仙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 519,
+            "end": 548
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 702,
+            "end": 730
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "挖取冰灵焰草连同泥土放进玉瓶"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 782,
+            "end": 820
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "冰灵焰草"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 332,
+            "end": 346
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 153,
+            "end": 160
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "进入前人所遗留的山洞石室",
+          "石室角落泥土花坛种有药草"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D75CD7F6152CEFF2DF22-002",
+            "start": 1357,
+            "end": 1368
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-001",
+            "start": 1146,
+            "end": 1169
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-001",
+            "start": 1486,
+            "end": 1506
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-001",
+            "start": 1507,
+            "end": 1523
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "冰灵焰草被装入玉瓶并收进纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 827,
+            "end": 838
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "小医仙先不满其索要最珍贵药草",
+          "随后接受冰灵焰草归对方、其余药草她取三分之二的分成"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 550,
+            "end": 570
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 664,
+            "end": 700
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 702,
+            "end": 730
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "意外收获的快感让取走人满心欢喜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 459,
+            "end": 481
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "得到炼制血莲丹所缺的必备药草"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 357,
+            "end": 381
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "药草连土封入玉瓶并收入纳戒带走"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 782,
+            "end": 820
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 827,
+            "end": 838
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "误入遗存后对当场可见的最珍稀草药进行分成谈判，而不是击杀掉落或商店购买"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 664,
+            "end": 700
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 966,
+            "end": 997
+          }
+        ]
+      }
+    },
+    {
+      "summary": "取钥匙时拉断枯骨手臂，发现骨缝中藏着古朴卷轴，趁同伴移植药草时偷偷掏出丢进纳戒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 1513,
+          "end": 1546
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 1588,
+          "end": 1623
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 1624,
+          "end": 1644
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 1566,
+          "end": 1587
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 1489,
+          "end": 1512
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 1588,
+          "end": 1609
+        },
+        {
+          "segment_id": "SEG-06BC8B96683CB35024C6-002",
+          "start": 1645,
+          "end": 1659
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1513,
+            "end": 1546
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "从枯骨骨臂缝隙掏出卷轴并丢进纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1588,
+            "end": 1623
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1624,
+            "end": 1644
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "隐藏在骨骼缝隙中的小巧卷轴"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1566,
+            "end": 1587
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "手中枯骨重量不对",
+          "同伴正在移植药草"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1489,
+            "end": 1512
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1513,
+            "end": 1546
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "卷轴从枯骨转入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1624,
+            "end": 1644
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "枯骨缝隙中藏有古朴卷轴"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1566,
+            "end": 1587
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "见到卷轴咽下唾沫",
+          "得手后松了一口气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1588,
+            "end": 1609
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1645,
+            "end": 1659
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "额外持有来源隐蔽、当场未展开的遗物"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1566,
+            "end": 1587
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1624,
+            "end": 1644
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "卷轴被闪电般丢进纳戒带走"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1624,
+            "end": 1644
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "同伴在场时从遗骸夹层私取物品，持有与知情当场不同步"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1513,
+            "end": 1546
+          },
+          {
+            "segment_id": "SEG-06BC8B96683CB35024C6-002",
+            "start": 1624,
+            "end": 1644
+          }
+        ]
+      }
+    },
+    {
+      "summary": "用枯骨钥匙打开石盒：小医仙取得七彩毒经，萧炎取得玄阶高级飞行斗技鹰之翼，双方按所需分配。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+          "start": 917,
+          "end": 967
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+          "start": 980,
+          "end": 1011
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+          "start": 904,
+          "end": 918
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+          "start": 362,
+          "end": 378
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+          "start": 969,
+          "end": 979
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+          "start": 995,
+          "end": 1000
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+          "start": 409,
+          "end": 422
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+          "start": 1219,
+          "end": 1227
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+          "start": 1102,
+          "end": 1150
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+          "start": 465,
+          "end": 477
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+          "start": 1028,
+          "end": 1047
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+          "start": 554,
+          "end": 573
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+          "start": 894,
+          "end": 916
+        },
+        {
+          "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+          "start": 1013,
+          "end": 1021
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "小医仙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 917,
+            "end": 967
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 980,
+            "end": 1011
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "打开石盒取出卷轴并按所需分配"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+            "start": 904,
+            "end": 918
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 362,
+            "end": 378
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 969,
+            "end": 979
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "七彩毒经",
+          "玄阶高级飞行斗技:鹰之翼"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+            "start": 904,
+            "end": 918
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+            "start": 995,
+            "end": 1000
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 409,
+            "end": 422
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "石盒以枯骨上的钥匙开启",
+          "双方处于同伴寻宝关系"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 362,
+            "end": 378
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 917,
+            "end": 967
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "毒经交还并归小医仙",
+          "飞行斗技卷轴归萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+            "start": 1219,
+            "end": 1227
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 917,
+            "end": 967
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 980,
+            "end": 1011
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "小医仙声明毒经不能被抢",
+          "小医仙无奈点头认可飞行斗技归对方"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+            "start": 1102,
+            "end": 1150
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 980,
+            "end": 1011
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "确认是最罕见的飞行斗技",
+          "夜里收获让取走人笑开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 465,
+            "end": 477
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 1028,
+            "end": 1047
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "持有能让人在天空飞行的捷径斗技",
+          "小医仙持有配置毒药的典籍"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 554,
+            "end": 573
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 894,
+            "end": 916
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+            "start": 904,
+            "end": 918
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "飞行斗技卷轴被当场握持分配带走",
+          "毒经被交还持有"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 917,
+            "end": 967
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-001",
+            "start": 1219,
+            "end": 1227
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗存多盒开箱后按各持所需分配，而不是均分、先到先得或强制独吞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 1013,
+            "end": 1021
+          },
+          {
+            "segment_id": "SEG-B7E5A3DB0CFD4D500BDA-002",
+            "start": 980,
+            "end": 1011
+          }
+        ]
+      }
+    }
+  ]
+}

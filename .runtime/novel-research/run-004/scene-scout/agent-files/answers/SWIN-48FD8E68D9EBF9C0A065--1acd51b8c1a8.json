@@ -1,0 +1,419 @@
+{
+  "candidates": [
+    {
+      "summary": "陀舍古帝将火焰莲子弹入萧炎天灵盖。无穷传承之力撑爆其肉身；灵魂忆起心如磐石、一念尚存便可不灭，血雾再凝成更强肉体。随后在凝聚与爆炸间循环，一年内无数次自爆再生以适应传承之力。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 203,
+          "end": 223
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 226,
+          "end": 239
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 252,
+          "end": 282
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 291,
+          "end": 307
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 336,
+          "end": 359
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 360,
+          "end": 380
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 417,
+          "end": 449
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 626,
+          "end": 642
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 672,
+          "end": 686
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 724,
+          "end": 751
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 755,
+          "end": 782
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 800,
+          "end": 812
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 1007,
+          "end": 1024
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 1125,
+          "end": 1139
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 1338,
+          "end": 1385
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 1410,
+          "end": 1434
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+          "start": 1437,
+          "end": 1464
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+          "start": 1,
+          "end": 10
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+          "start": 86,
+          "end": 114
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+          "start": 140,
+          "end": 164
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+          "start": 184,
+          "end": 205
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+          "start": 206,
+          "end": 214
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+          "start": 252,
+          "end": 266
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+          "start": 351,
+          "end": 367
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+          "start": 374,
+          "end": 389
+        },
+        {
+          "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+          "start": 439,
+          "end": 470
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "陀舍古帝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 226,
+            "end": 239
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 291,
+            "end": 307
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 626,
+            "end": 642
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "凝定心神承受莲子入体",
+          "紧守一念使血雾再凝肉体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 291,
+            "end": 307
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 1125,
+            "end": 1139
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 1,
+            "end": 10
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "火焰莲子",
+          "古帝传承之力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 252,
+            "end": 282
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 360,
+            "end": 380
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 755,
+            "end": 782
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "古帝声明传承需心如磐石、一念尚存便可不灭",
+          "莲子已悬浮在萧炎天灵盖上"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 203,
+            "end": 223
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 252,
+            "end": 282
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "莲子穿透头皮落入脑中",
+          "肉身被传承之力撑爆",
+          "血雾再凝成更强肉体并进入爆炸与凝聚循环"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 360,
+            "end": 380
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 755,
+            "end": 782
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 1338,
+            "end": 1385
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 140,
+            "end": 164
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "莲子自行降落并灌入无穷能量",
+          "传承之力反复撑爆肉身，古帝称此时才是传承开始"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 336,
+            "end": 359
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 360,
+            "end": 380
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 417,
+            "end": 449
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 755,
+            "end": 782
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 800,
+            "end": 812
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "身体剧颤、双眼爆炸",
+          "再凝肉体明显更强",
+          "陀舍古帝点头称其悟性不低"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 672,
+            "end": 686
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 724,
+            "end": 751
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 1410,
+            "end": 1434
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 184,
+            "end": 205
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 206,
+            "end": 214
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可在毁灭中再造更强肉体以继续适应传承之力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 1437,
+            "end": 1464
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 86,
+            "end": 114
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 439,
+            "end": 470
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "自爆与再生周而复始，天墓一年中经历无数次循环",
+          "陀舍古帝称自己的使命快到头了"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 140,
+            "end": 164
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 252,
+            "end": 266
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 351,
+            "end": 367
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 374,
+            "end": 389
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "传承不能一次灌入：肉身必先被撑爆，只有一念不灭使血雾重生更强体，循环适应而非直接升级"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 755,
+            "end": 782
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 1007,
+            "end": 1024
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 1125,
+            "end": 1139
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 1338,
+            "end": 1385
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-001",
+            "start": 1437,
+            "end": 1464
+          },
+          {
+            "segment_id": "SEG-6B4DDFE7C591C75BAB98-002",
+            "start": 140,
+            "end": 164
+          }
+        ]
+      }
+    }
+  ]
+}

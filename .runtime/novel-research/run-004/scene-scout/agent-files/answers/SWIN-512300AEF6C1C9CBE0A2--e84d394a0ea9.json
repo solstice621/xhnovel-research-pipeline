@@ -1,0 +1,321 @@
+{
+  "candidates": [
+    {
+      "summary": "少年在地图店角落翻看失败品时，一张巴掌大残破图片掉出；认出熟悉神秘路线后当场拈起，药老惊呼此为寻净莲妖火的地图残片。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1456,
+          "end": 1467
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 388,
+          "end": 408
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1420,
+          "end": 1436
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1475,
+          "end": 1508
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1615,
+          "end": 1636
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 172,
+          "end": 205
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 418,
+          "end": 436
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1329,
+          "end": 1345
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1375,
+          "end": 1418
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 52,
+          "end": 78
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 419,
+          "end": 444
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 332,
+          "end": 381
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 540,
+          "end": 550
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 912,
+          "end": 939
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1637,
+          "end": 1658
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1683,
+          "end": 1714
+        },
+        {
+          "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+          "start": 1739,
+          "end": 1755
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 476,
+          "end": 503
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 824,
+          "end": 845
+        },
+        {
+          "segment_id": "SEG-C202F8CA8C246150701A-001",
+          "start": 462,
+          "end": 475
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1456,
+            "end": 1467
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 388,
+            "end": 408
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "翻看失败地图并拈起掉落的残破图片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1420,
+            "end": 1436
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1475,
+            "end": 1508
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1615,
+            "end": 1636
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "巴掌大小的残破图片",
+          "寻净莲妖火的地图残片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1475,
+            "end": 1508
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 172,
+            "end": 205
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "本为购买沙漠地图而来",
+          "在店铺角落失败品木架上翻看泛黄地图"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 418,
+            "end": 436
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1329,
+            "end": 1345
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1375,
+            "end": 1418
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "当场得到一份神秘残破图片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 52,
+            "end": 78
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 419,
+            "end": 444
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "药老惊讶称其好运并点明与净莲妖火有缘",
+          "白发老人抬头察看他手中残片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 332,
+            "end": 381
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 388,
+            "end": 408
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 540,
+            "end": 550
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 912,
+            "end": 939
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "心跳剧烈",
+          "认出熟悉神秘路线并喃喃果然是它"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1637,
+            "end": 1658
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1683,
+            "end": 1714
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1739,
+            "end": 1755
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可与纳戒中另一块地图对照",
+          "可向店主追问是否还有同类残片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 476,
+            "end": 503
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 824,
+            "end": 845
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "残片握在手中",
+          "药老称一年内已得两块神秘地图残片"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 462,
+            "end": 475
+          },
+          {
+            "segment_id": "SEG-C202F8CA8C246150701A-001",
+            "start": 419,
+            "end": 444
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残片混在失败品泛黄地图中看似废纸，需认得神秘路线才会停手拾起"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1375,
+            "end": 1418
+          },
+          {
+            "segment_id": "SEG-2A133DA6586CCFF17A65-002",
+            "start": 1683,
+            "end": 1714
+          }
+        ]
+      }
+    }
+  ]
+}

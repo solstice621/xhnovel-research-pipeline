@@ -1,0 +1,359 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎首次踏进天焚炼气塔时体内突现无形火焰，药老当场辨认为近在咫尺的陨落心炎投射分体，并指引他撤去青莲地心火、以斗气穿火淬炼；斗晶随即略有精进，且得知异火本体就在塔中。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-11127EDCA5C8D2849236-003",
+          "start": 678,
+          "end": 701
+        },
+        {
+          "segment_id": "SEG-11127EDCA5C8D2849236-003",
+          "start": 759,
+          "end": 795
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+          "start": 230,
+          "end": 251
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+          "start": 398,
+          "end": 417
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+          "start": 634,
+          "end": 678
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+          "start": 1195,
+          "end": 1251
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+          "start": 1311,
+          "end": 1318
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+          "start": 1578,
+          "end": 1621
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 127,
+          "end": 161
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 180,
+          "end": 209
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 380,
+          "end": 415
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 440,
+          "end": 481
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 647,
+          "end": 659
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 749,
+          "end": 787
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 895,
+          "end": 922
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 988,
+          "end": 1053
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 1105,
+          "end": 1146
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 1249,
+          "end": 1268
+        },
+        {
+          "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+          "start": 1465,
+          "end": 1511
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "药老"],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+            "start": 1195,
+            "end": 1251
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎重踏进入天焚炼气塔大门",
+          "萧炎依药老吩咐撤去青莲地心火并以斗气穿过体内无形火焰"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-11127EDCA5C8D2849236-003",
+            "start": 678,
+            "end": 701
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 380,
+            "end": 415
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 440,
+            "end": 481
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 647,
+            "end": 659
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["体内突现的无形火焰", "陨落心炎投射分体"],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+            "start": 398,
+            "end": 417
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+            "start": 1578,
+            "end": 1621
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["萧炎首次进入天焚炼气塔且没有丝毫防备"],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+            "start": 230,
+            "end": 251
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "无形火焰莫名出现在萧炎体内",
+          "穿过火焰的斗气被压缩近一倍且更为凝实有力",
+          "斗晶隐隐变大",
+          "药老判明陨落心炎就在天焚炼气塔中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+            "start": 398,
+            "end": 417
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 180,
+            "end": 209
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 749,
+            "end": 787
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 895,
+            "end": 922
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 1249,
+            "end": 1268
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "无形火焰在体内散发高温灼痛经脉骨骼肌肉",
+          "药老先认作陨落心炎再纠正为靠近本体形成的投射分体",
+          "弱小分体在净化数股斗气后无声消散"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+            "start": 634,
+            "end": 678
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+            "start": 1311,
+            "end": 1318
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+            "start": 1578,
+            "end": 1621
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 127,
+            "end": 161
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 988,
+            "end": 1053
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "脸庞瞬间变得火炭般通红",
+          "斗气体积缩小近一倍但爆发力更大",
+          "拇指大小的斗晶隐隐略大一点"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-11127EDCA5C8D2849236-003",
+            "start": 759,
+            "end": 795
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 749,
+            "end": 787
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 895,
+            "end": 922
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 1249,
+            "end": 1268
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可用投射分体淬炼压缩斗气",
+          "明确可在天焚炼气塔中追寻陨落心炎本体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 180,
+            "end": 209
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 749,
+            "end": 787
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 1465,
+            "end": 1511
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "投射分体随即消散且净化能量很少",
+          "斗晶略大的精进留下",
+          "陨落心炎在塔中的判断持续并促使萧炎立誓夺取"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 988,
+            "end": 1053
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 1105,
+            "end": 1146
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 1249,
+            "end": 1268
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 1465,
+            "end": 1511
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "踏入塔门使无形心火像早已存在于体内般自行显现，同一簇投射既灼伤经脉又可淬炼斗气，并暴露本体就在近处"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-11127EDCA5C8D2849236-003",
+            "start": 678,
+            "end": 701
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+            "start": 398,
+            "end": 417
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-001",
+            "start": 634,
+            "end": 678
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 127,
+            "end": 161
+          },
+          {
+            "segment_id": "SEG-7EF72A27EDB4BB72115B-002",
+            "start": 749,
+            "end": 787
+          }
+        ]
+      }
+    }
+  ]
+}

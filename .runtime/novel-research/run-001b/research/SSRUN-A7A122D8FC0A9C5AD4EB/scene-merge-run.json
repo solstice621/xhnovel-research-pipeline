@@ -1,0 +1,30 @@
+{
+  "algorithm_id": "source-span-action-chain-v2",
+  "input_candidate_count": 3,
+  "input_candidate_hashes": [
+    "sha256:2f9300674e59e99c972e52e5c0c93ec780cc0228ff0dc389e37fe1e5004d62ee",
+    "sha256:9a481135ed4f735a8fe223c9a10b0d87d757d67d3fcc13e62f989e5f048f5f52",
+    "sha256:a67eda97efe166edbfff834ce4519cf2f679eecc1843b8dc3447ca5d25877203"
+  ],
+  "merge_run_id": "SMRUN-79C6166DABFD9DD01E09",
+  "output_candidate_ids": [
+    "SCN-8B221D4D09A0529E5237",
+    "SCN-838DE556B9E060C16102",
+    "SCN-23DB402B9891C9D06FB2"
+  ],
+  "scene_scout_run_id": "SSRUN-A7A122D8FC0A9C5AD4EB",
+  "schema_version": "0.2-draft",
+  "stages": [
+    {
+      "input_count": 3,
+      "output_count": 3,
+      "stage": "LOCAL_OVERLAP_MERGE"
+    },
+    {
+      "input_count": 3,
+      "output_count": 3,
+      "stage": "WORK_ORDER_REDUCTION"
+    }
+  ],
+  "status": "SUCCEEDED"
+}

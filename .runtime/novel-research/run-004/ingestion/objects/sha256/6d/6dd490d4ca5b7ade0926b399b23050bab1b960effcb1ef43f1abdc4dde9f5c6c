@@ -1,0 +1,321 @@
+{
+  "candidates": [
+    {
+      "summary": "神秘生物以光印当头砸向无古玉的萧炎时，他被击伤喷出的鲜血沾上光印，蒸发后留下金色血液。光印在距头顶数丈处骤停，他趁机化流光逃出空间；血液滴入巨眼后对方狂喜，称有孩子的味道，随即被空间牢笼挡住，怒骂陀舍古帝。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 579,
+          "end": 601
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 973,
+          "end": 998
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 1111,
+          "end": 1126
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 1127,
+          "end": 1164
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 842,
+          "end": 870
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-001",
+          "start": 1172,
+          "end": 1178
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 778,
+          "end": 800
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 914,
+          "end": 954
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 1030,
+          "end": 1053
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 1168,
+          "end": 1192
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 1092,
+          "end": 1103
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 1244,
+          "end": 1261
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 1277,
+          "end": 1301
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 1304,
+          "end": 1317
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 1381,
+          "end": 1409
+        },
+        {
+          "segment_id": "SEG-B7B00E9BB37D12556833-002",
+          "start": 1429,
+          "end": 1440
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "神秘生物"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 579,
+            "end": 601
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 973,
+            "end": 998
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "被光印击伤喷血后，趁光印停滞化流光冲出空间"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 579,
+            "end": 601
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1111,
+            "end": 1126
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1127,
+            "end": 1164
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "当头砸下的光印",
+          "神秘生物"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 842,
+            "end": 870
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 973,
+            "end": 998
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "无古玉被当作闯墓者追杀，本身只是七星斗圣"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-001",
+            "start": 1172,
+            "end": 1178
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 778,
+            "end": 800
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 842,
+            "end": 870
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "伤口鲜血蒸发后留下金色血液，光印在头顶数丈处骤停，追击中止"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 914,
+            "end": 954
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1030,
+            "end": 1053
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1168,
+            "end": 1192
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "神秘生物因金色血液身体一抖，光印自行停滞并改去追击"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 973,
+            "end": 998
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1030,
+            "end": 1053
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1168,
+            "end": 1192
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎一怔后逃出；金色血液滴入巨眼，对方涌现狂喜并喊出孩子的味道"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1092,
+            "end": 1103
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1244,
+            "end": 1261
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1277,
+            "end": 1301
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1304,
+            "end": 1317
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "得以逃出该隐藏空间；守护者被空间牢笼挡住无法追出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1127,
+            "end": 1164
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1168,
+            "end": 1192
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1381,
+            "end": 1409
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "金色血液已入巨眼；神秘生物仍被困在空间中怒骂陀舍古帝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1244,
+            "end": 1261
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1381,
+            "end": 1409
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1429,
+            "end": 1440
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "必杀光印因沾上目标伤口中自行析出的金色血液而停手，血脉气味被认成孩子，并非出示古玉或主动献祭"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-001",
+            "start": 1172,
+            "end": 1178
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 914,
+            "end": 954
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1030,
+            "end": 1053
+          },
+          {
+            "segment_id": "SEG-B7B00E9BB37D12556833-002",
+            "start": 1304,
+            "end": 1317
+          }
+        ]
+      }
+    }
+  ]
+}

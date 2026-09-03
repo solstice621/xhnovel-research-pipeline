@@ -1,0 +1,72 @@
+{
+  "assurance": "UNVERIFIED_LEAD",
+  "brief_id": "XBR-43C121A4ED04DCADE2F5",
+  "frozen_at": "2026-09-03T05:15:00Z",
+  "lead_hash": "sha256:64af5259ded42062e640dd7fc6788d97b70ead26af972514cbf6ce493cf1ecd7",
+  "lead_id": "RLD-D136E73F9B2AEEF508D9",
+  "lead_sources": [
+    {
+      "lead_source_id": "LDS-3B467B9FE784EB92C21C",
+      "locator": "https://zh.wikipedia.org/wiki/%E9%AC%A5%E7%A0%B4%E8%92%BC%E7%A9%B9",
+      "publisher": "Wikimedia",
+      "role": "LEAD_ONLY",
+      "source_kind": "ENCYCLOPEDIA",
+      "supports": [
+        "LOCATION_HINT",
+        "SCENE_EXISTENCE_HINT",
+        "WORK_IDENTITY"
+      ],
+      "title": "斗破苍穹 - 维基百科"
+    },
+    {
+      "lead_source_id": "LDS-D62498463B6DCD53E61A",
+      "locator": "https://baike.baidu.com/item/%E8%8D%AF%E5%B0%98/11056743",
+      "publisher": "Baidu",
+      "role": "LEAD_ONLY",
+      "source_kind": "ENCYCLOPEDIA",
+      "supports": [
+        "LOCATION_HINT",
+        "SCENE_EXISTENCE_HINT",
+        "WORK_IDENTITY"
+      ],
+      "title": "药尘 - 百度百科"
+    }
+  ],
+  "scene_hint": {
+    "interaction_tags": [
+      "危机中触发未知机缘",
+      "遭遇残存意志或无名施助"
+    ],
+    "location_hints": [
+      {
+        "basis": "AGENT_INFERRED",
+        "kind": "CHAPTER_TITLE",
+        "lead_source_ids": [
+          "LDS-3B467B9FE784EB92C21C",
+          "LDS-D62498463B6DCD53E61A"
+        ],
+        "value": "第九章 药老!"
+      },
+      {
+        "basis": "SOURCE_STATED",
+        "kind": "CHARACTER",
+        "lead_source_ids": [
+          "LDS-3B467B9FE784EB92C21C",
+          "LDS-D62498463B6DCD53E61A"
+        ],
+        "value": "药尘"
+      }
+    ],
+    "summary": "LEAD_ONLY：百科称沉睡灵魂可能在吸收斗气后苏醒，主角随即拜师并可能当场获得可进化功法；可检验残存意志施助是否立即改变能力与后续行动空间。",
+    "why_relevant": "LEAD_ONLY：若属实，这是遭遇残存意志并当场获得传承/功法的假设，需与事后转述或目录罗列相区分。"
+  },
+  "schema_version": "0.2-draft",
+  "work_claim": {
+    "aliases": [
+      "《斗破苍穹》"
+    ],
+    "author": "天蚕土豆",
+    "language": "zh",
+    "title": "斗破苍穹"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "assurance": "UNVERIFIED_LEAD",
+  "brief_id": "XBR-8759B67E1C11A23A9AF5",
+  "frozen_at": "2026-09-03T01:57:00Z",
+  "lead_hash": "sha256:657e28caa8ea3320b1882c883b49043d5e52648e4c39d510efa4ac1f12ca03e6",
+  "lead_id": "RLD-7A45C9C885C4E8DEB9B4",
+  "lead_sources": [
+    {
+      "lead_source_id": "LDS-3B467B9FE784EB92C21C",
+      "locator": "https://zh.wikipedia.org/wiki/%E9%AC%A5%E7%A0%B4%E8%92%BC%E7%A9%B9",
+      "publisher": "Wikimedia",
+      "role": "LEAD_ONLY",
+      "source_kind": "ENCYCLOPEDIA",
+      "supports": [
+        "LOCATION_HINT",
+        "SCENE_EXISTENCE_HINT",
+        "WORK_IDENTITY"
+      ],
+      "title": "斗破苍穹 - 维基百科"
+    },
+    {
+      "lead_source_id": "LDS-EE362155B5FB70A1D31D",
+      "locator": "https://baike.baidu.com/item/%E6%96%97%E7%A0%B4%E8%8B%8D%E7%A9%B9/54134",
+      "publisher": "Baidu",
+      "role": "LEAD_ONLY",
+      "source_kind": "ENCYCLOPEDIA",
+      "supports": [
+        "LOCATION_HINT",
+        "SCENE_EXISTENCE_HINT",
+        "WORK_IDENTITY"
+      ],
+      "title": "斗破苍穹 - 百度百科"
+    }
+  ],
+  "scene_hint": {
+    "interaction_tags": [
+      "custody",
+      "internal_occupancy",
+      "use_permission"
+    ],
+    "location_hints": [
+      {
+        "basis": "SOURCE_STATED",
+        "kind": "CHAPTER_TITLE",
+        "lead_source_ids": [
+          "LDS-3B467B9FE784EB92C21C",
+          "LDS-EE362155B5FB70A1D31D"
+        ],
+        "value": "第九章 药老！"
+      },
+      {
+        "basis": "SOURCE_STATED",
+        "kind": "CHARACTER",
+        "lead_source_ids": [
+          "LDS-3B467B9FE784EB92C21C",
+          "LDS-EE362155B5FB70A1D31D"
+        ],
+        "value": "药老"
+      }
+    ],
+    "summary": "LEAD_ONLY：百科称主角母亲遗物戒指中可能寄宿另一灵魂，并在持有期间吸取斗气数年；可检验物理持有、内部占用与使用权是否分离。",
+    "why_relevant": "LEAD_ONLY：若属实，持有者未必控制戒指内的行动者，且自身修炼能力可能被占用。"
+  },
+  "schema_version": "0.2-draft",
+  "work_claim": {
+    "aliases": [
+      "Battle Through the Heavens",
+      "《斗破苍穹》"
+    ],
+    "author": "天蚕土豆",
+    "language": "zh",
+    "title": "斗破苍穹"
+  }
+}

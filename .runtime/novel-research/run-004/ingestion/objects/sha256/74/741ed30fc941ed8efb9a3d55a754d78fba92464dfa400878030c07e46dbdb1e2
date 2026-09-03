@@ -1,0 +1,571 @@
+{
+  "candidates": [
+    {
+      "summary": "按卷轴修习鹰之翼时，翼中无意识的紫云雕残魂发动灵魂攻击；守住心神后紫黑光芒窜入体内拉出支脉，醒来背上现出可灌斗气的鹰翼纹身。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+          "start": 1210,
+          "end": 1246
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+          "start": 1259,
+          "end": 1289
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+          "start": 1376,
+          "end": 1388
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+          "start": 166,
+          "end": 183
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+          "start": 1007,
+          "end": 1047
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+          "start": 240,
+          "end": 265
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+          "start": 524,
+          "end": 546
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+          "start": 1146,
+          "end": 1174
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+          "start": 229,
+          "end": 243
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+          "start": 380,
+          "end": 405
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+          "start": 465,
+          "end": 489
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 128,
+          "end": 151
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 211,
+          "end": 240
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+          "start": 1503,
+          "end": 1532
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+          "start": 31,
+          "end": 63
+        },
+        {
+          "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+          "start": 662,
+          "end": 674
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 304,
+          "end": 344
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 399,
+          "end": 435
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 455,
+          "end": 490
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 575,
+          "end": 610
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 622,
+          "end": 637
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "紫云雕残魂",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 1210,
+            "end": 1246
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 1259,
+            "end": 1289
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 1376,
+            "end": 1388
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "双掌轻压卷轴双翼按程序修习飞行斗技"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 1210,
+            "end": 1246
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "鹰翼/紫云翼飞行斗技"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 166,
+            "end": 183
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "卷轴写明翼中灵魂可能攻击，抵御则可续修否则应放弃",
+          "斗技仅能一人修行",
+          "翼中是毫无意识的残魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 1007,
+            "end": 1047
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 240,
+            "end": 265
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 524,
+            "end": 546
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 1146,
+            "end": 1174
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂试炼通过后获得修炼资格",
+          "紫黑光芒窜入体内拉出两条支脉",
+          "卷轴图文消失，背上出现黑色鹰翼纹身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+            "start": 229,
+            "end": 243
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+            "start": 380,
+            "end": 405
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+            "start": 465,
+            "end": 489
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 128,
+            "end": 151
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 211,
+            "end": 240
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "暴虐鹰魂以尖利鸣叫冲击神智",
+          "失败则会沦为只知杀戮的野兽"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 1259,
+            "end": 1289
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 1503,
+            "end": 1532
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂较量后紫云雕落败",
+          "经脉撕扯剧痛导致昏迷"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+            "start": 31,
+            "end": 63
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+            "start": 662,
+            "end": 674
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "灌入斗气可使纹身化为实质鹰翼并产生浮力",
+          "以当前实力熟练后也只能短距离滑翔"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 304,
+            "end": 344
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 399,
+            "end": 435
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 455,
+            "end": 490
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "停止输入斗气后鹰翼贴背成纹身",
+          "空白卷轴被收起"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 575,
+            "end": 610
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 622,
+            "end": 637
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残魂试炼失败须放弃修炼；成功则功法从仅能一人修行的卷轴迁入身体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 1007,
+            "end": 1047
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-002",
+            "start": 240,
+            "end": 265
+          },
+          {
+            "segment_id": "SEG-3E405B2ADCB4C79463DB-003",
+            "start": 380,
+            "end": 405
+          }
+        ]
+      }
+    },
+    {
+      "summary": "摊开从枯骨缝隙取出的古朴卷轴，药老指认皮纸为寻找净莲妖火的残缺地图，当场得到指引但无法定位。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 644,
+          "end": 662
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 907,
+          "end": 930
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 692,
+          "end": 722
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 941,
+          "end": 955
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 1246,
+          "end": 1260
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 1551,
+          "end": 1571
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 1364,
+          "end": 1382
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+          "start": 1384,
+          "end": 1398
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-002",
+          "start": 1,
+          "end": 28
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-002",
+          "start": 64,
+          "end": 84
+        },
+        {
+          "segment_id": "SEG-18D88FFBE7E8E619DBEA-002",
+          "start": 118,
+          "end": 136
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 644,
+            "end": 662
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 907,
+            "end": 930
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "从纳戒取出古朴卷轴并摊开辨认"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 644,
+            "end": 662
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 692,
+            "end": 722
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "绘有黑莲的残缺地图"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 941,
+            "end": 955
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 1246,
+            "end": 1260
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "卷轴曾被前人藏在骨头缝隙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 692,
+            "end": 722
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "不明卷轴被指认为寻找净莲妖火的残图"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 1246,
+            "end": 1260
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 1551,
+            "end": 1571
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "药老凝重指认这是异火榜第三的净莲妖火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 1364,
+            "end": 1382
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 1384,
+            "end": 1398
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "因只是残图、信息模糊而无法找到感到惋惜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-002",
+            "start": 1,
+            "end": 28
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "得知净莲妖火残图线索",
+          "凭当前残图仍不能定位，需另寻其他残图"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-002",
+            "start": 64,
+            "end": 84
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-002",
+            "start": 118,
+            "end": 136
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "残图作为已持有卷轴上的远期指引被留下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 644,
+            "end": 662
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-002",
+            "start": 64,
+            "end": 84
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗物鉴定把来源隐蔽的拾取物变成不完整指引，而非当场可用的功法或坐标"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 941,
+            "end": 955
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-001",
+            "start": 1551,
+            "end": 1571
+          },
+          {
+            "segment_id": "SEG-18D88FFBE7E8E619DBEA-002",
+            "start": 1,
+            "end": 28
+          }
+        ]
+      }
+    }
+  ]
+}

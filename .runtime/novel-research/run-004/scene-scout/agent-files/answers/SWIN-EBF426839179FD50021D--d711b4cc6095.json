@@ -1,0 +1,360 @@
+{
+  "candidates": [
+    {
+      "summary": "血洗人殿后萧炎忽感废墟深处异动，掘出百万灵魂所凝的灵魂本源光团；一语化去怨恨后将其收入纳戒，药老指明炼化可达灵魂天境大圆满。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+          "start": 1332,
+          "end": 1359
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 0,
+          "end": 24
+        },
+        {
+          "segment_id": "SEG-25BEA54C626202E2DA89-001",
+          "start": 47,
+          "end": 82
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+          "start": 1243,
+          "end": 1282
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 1277,
+          "end": 1291
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 1292,
+          "end": 1308
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 1310,
+          "end": 1320
+        },
+        {
+          "segment_id": "SEG-25BEA54C626202E2DA89-001",
+          "start": 113,
+          "end": 132
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+          "start": 1361,
+          "end": 1383
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 1,
+          "end": 7
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+          "start": 1238,
+          "end": 1249
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 241,
+          "end": 265
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 186,
+          "end": 205
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 1480,
+          "end": 1506
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 1325,
+          "end": 1350
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 1178,
+          "end": 1206
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+          "start": 1488,
+          "end": 1522
+        },
+        {
+          "segment_id": "SEG-25BEA54C626202E2DA89-001",
+          "start": 18,
+          "end": 42
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 1148,
+          "end": 1177
+        },
+        {
+          "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+          "start": 1207,
+          "end": 1225
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+            "start": 1332,
+            "end": 1359
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 0,
+            "end": 24
+          },
+          {
+            "segment_id": "SEG-25BEA54C626202E2DA89-001",
+            "start": 47,
+            "end": 82
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "心头一动后挖掘废墟，震断锁链，抚光团立誓报仇，再收入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+            "start": 1243,
+            "end": 1282
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+            "start": 1332,
+            "end": 1359
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1277,
+            "end": 1291
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1292,
+            "end": 1308
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1310,
+            "end": 1320
+          },
+          {
+            "segment_id": "SEG-25BEA54C626202E2DA89-001",
+            "start": 113,
+            "end": 132
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂本源光团"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+            "start": 1361,
+            "end": 1383
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 0,
+            "end": 24
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1,
+            "end": 7
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "刚欲转身离开人殿废墟",
+          "魂殿副殿主忙于逃命，未带走这最重要之物"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+            "start": 1238,
+            "end": 1249
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 241,
+            "end": 265
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "掘出并取走百万灵魂所凝的灵魂本源",
+          "报仇誓言化去光团中隐藏的负面情绪",
+          "灵魂光团收入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+            "start": 1361,
+            "end": 1383
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 186,
+            "end": 205
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1480,
+            "end": 1506
+          },
+          {
+            "segment_id": "SEG-25BEA54C626202E2DA89-001",
+            "start": 113,
+            "end": 132
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "光团释放淡淡光泽并化去隐藏怨恨",
+          "药老指认此为灵魂本源并说明可炼化"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1325,
+            "end": 1350
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1480,
+            "end": 1506
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 0,
+            "end": 24
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1178,
+            "end": 1206
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "感觉到极端可怕且极为纯净的灵魂波动",
+          "药老称天地灵物有缘者得之，与这灵魂本源契合"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+            "start": 1488,
+            "end": 1522
+          },
+          {
+            "segment_id": "SEG-25BEA54C626202E2DA89-001",
+            "start": 18,
+            "end": 42
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "炼化吸收可达灵魂天境大圆满，利于争夺净莲妖火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1148,
+            "end": 1177
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1178,
+            "end": 1206
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1207,
+            "end": 1225
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "将这灵魂光团收入纳戒之中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-25BEA54C626202E2DA89-001",
+            "start": 113,
+            "end": 132
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "搜刮废墟时才偶然感应到副殿主未及带走的灵魂本源，且需报仇誓言化解怨恨才能安全收取"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-001",
+            "start": 1243,
+            "end": 1282
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 241,
+            "end": 265
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1310,
+            "end": 1320
+          },
+          {
+            "segment_id": "SEG-F1F6B3256E33BEC97BFD-002",
+            "start": 1480,
+            "end": 1506
+          },
+          {
+            "segment_id": "SEG-25BEA54C626202E2DA89-001",
+            "start": 18,
+            "end": 42
+          }
+        ]
+      }
+    }
+  ]
+}
