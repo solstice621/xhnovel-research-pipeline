@@ -1,9 +1,9 @@
 # GEOGRAPHY_SPIKE.md
 
-status: **EXPERIMENT PROPOSAL — architecture-discovery spike**  
-target repository: `xhnovel-research-pipeline`  
-development base: current `main`, never the run-004 snapshot branch  
-related architecture: `docs/GENERIC_EXTRACTION_ARCHITECTURE.md`
+- status: **EXPERIMENT PROPOSAL — architecture-discovery spike**
+- target repository: `xhnovel-research-pipeline`
+- development base: current `main`, never the run-004 snapshot branch
+- related architecture: `docs/GENERIC_EXTRACTION_ARCHITECTURE.md`
 
 ---
 
