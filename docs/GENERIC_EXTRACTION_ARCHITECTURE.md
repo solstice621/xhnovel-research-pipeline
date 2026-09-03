@@ -1,7 +1,7 @@
 # Generic Novel Extraction Architecture A0.1
 
 status: **PROPOSAL — not a frozen runtime contract**  
-based-on: `xhnovel-research-pipeline main@864307e`  
+based-on: `xhnovel-research-pipeline main@646d8d5`  
 scope: v0.1 generic extraction seam and the migration path from the current Scene Scout  
 supersedes: the earlier platform-scale A0 draft, not the current production workflow
 

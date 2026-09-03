@@ -26,7 +26,11 @@ from xhnovel_pipeline.novel_workflow import _request_from_spec
 from xhnovel_pipeline.paths import repo_root
 from xhnovel_pipeline.policies import policy_bundle_hash
 from xhnovel_pipeline.runtime import TEST_NOW as NOW
-from xhnovel_pipeline.scene_scout import merge_scene_candidates, run_scene_scout
+from xhnovel_pipeline.scene_scout import (
+    OBSERVATION_FIELDS,
+    merge_scene_candidates,
+    run_scene_scout,
+)
 from xhnovel_pipeline.validate import (
     validate_all,
     validate_collection,
@@ -834,6 +838,55 @@ def test_wide_candidate_does_not_transitively_bridge_separate_events(tmp_path):
     assert merge_run["stages"][0]["output_count"] == 2
     assert merge_run["stages"][1]["output_count"] == 2
     assert len(merged) == 2
+
+
+def test_merged_adjacent_spans_keep_observation_support_closed(tmp_path):
+    result = _run(
+        tmp_path,
+        text="第一章 天门\n" + "甲" * 80,
+        transport=_empty_transport,
+    )
+    chapter = result["catalog"].get(
+        "NovelChapter", result["ingestion"]["ready_chapter_ids"][0]
+    )
+    segment = max(
+        (result["catalog"].get("Segment", segment_id) for segment_id in chapter["segment_ids"]),
+        key=lambda item: len(item["normalized_text"]),
+    )
+    segment_id = segment["segment_id"]
+    left = {"segment_id": segment_id, "start": 0, "end": 12}
+    right = {"segment_id": segment_id, "start": 10, "end": 24}
+    feedback = {"segment_id": segment_id, "start": 0, "end": 5}
+
+    first = _raw_candidate([left], "ADJ-A")
+    first["immediate_feedback"] = {
+        "status": "KNOWN",
+        "values": ["机关轻响"],
+        "support_spans": [dict(feedback)],
+    }
+    first["source_spans"] = [dict(left), dict(feedback)]
+    second = _raw_candidate([right], "ADJ-B")
+
+    _, merged = merge_scene_candidates(
+        result["catalog"],
+        [first, second],
+        request_id=result["bundle"]["request_id"],
+        bundle_id=result["bundle"]["bundle_id"],
+        scout_run_id="SSRUN-TEST-ADJ-CLOSE",
+    )
+
+    assert len(merged) == 1
+    candidate = merged[0]
+    span_keys = {
+        (span["segment_id"], span["start"], span["end"])
+        for span in candidate["source_spans"]
+    }
+    for field in OBSERVATION_FIELDS:
+        support_keys = {
+            (span["segment_id"], span["start"], span["end"])
+            for span in candidate[field]["support_spans"]
+        }
+        assert support_keys <= span_keys
 
 
 def test_retry_attempts_and_usage_are_immutable_and_replayable(tmp_path, monkeypatch):

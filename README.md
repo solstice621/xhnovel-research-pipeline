@@ -20,9 +20,10 @@ TXT / directory / EPUB / bounded static site
 
 Scene Scout output is not a verified fact or a formal claim. Every known or
 conflicting field must cite an exact normalized-text `(segment_id, start, end)`
-span; conflicting fields carry at least two values. Unknown observations have
-no values or support. Conflicts become `NEEDS_ADJUDICATION`. A successful run
-may contain zero candidates.
+span; conflicting fields carry at least two values. Merged candidates retain each
+observation's exact support span even when their broader scene spans coalesce.
+Unknown observations have no values or support. Conflicts become
+`NEEDS_ADJUDICATION`. A successful run may contain zero candidates.
 
 Rights and trust are explicit. Technical access never implies permission. The
 research command requires a declared non-`UNKNOWN` rights basis,
@@ -31,9 +32,13 @@ Phase 0 exploration may reuse one standing `operator-attestation.json` at the
 work root: the operator declares rights once, directly or through an explicitly
 authorized agent, and `prepare-handoff` auto-applies them to each
 SourceDeclaration. Delegation must be explicit and recorded; the acting agent
-cannot infer or self-grant it. Only source quality classified as Tier A or B is
-eligible for event-scene discovery; Tier D content remains `lead-only` and is
-never sent to the Scene Scout.
+cannot infer or self-grant it. Source quality is independent: `COMPLETE` plus
+`OFFICIAL` is Tier A; `COMPLETE` plus `PUBLISHED_EDITION`,
+`USER_VERIFIED_COPY`, or `UNKNOWN` is Tier B. `UNOFFICIAL_COPY` and incomplete
+text remain Tier D / lead-only. These semantics are identified as
+`novel-source-classifier-v2` in generated assessments. A publisher licence is
+not required merely to classify an otherwise complete source whose official
+status is unproven.
 The send and export boundaries first validate the complete Bundle → Snapshot →
 Ingestion lineage, including induced members and deterministic triage, then
 re-resolve rights from the immutable ingestion spec. Export manifests mark the
