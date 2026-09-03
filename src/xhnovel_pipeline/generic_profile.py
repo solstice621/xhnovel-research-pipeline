@@ -132,23 +132,30 @@ def _iter_refs(value: Any) -> Iterable[str]:
             yield from _iter_refs(child)
 
 
-def _iter_property_names(value: Any) -> Iterable[str]:
-    if isinstance(value, dict):
-        properties = value.get("properties")
-        if isinstance(properties, dict):
-            yield from properties
-        for key, child in value.items():
-            if key != "properties":
-                yield from _iter_property_names(child)
-    elif isinstance(value, list):
-        for child in value:
-            yield from _iter_property_names(child)
+def _iter_top_level_property_names(schema: Any) -> Iterable[str]:
+    """Yield only fields that can appear at the payload object's top level.
+
+    Composition keywords may define alternate top-level object shapes. Nested
+    object properties are domain data and must not be rejected merely because a
+    nested field happens to share a core-envelope name.
+    """
+
+    if not isinstance(schema, dict):
+        return
+    properties = schema.get("properties")
+    if isinstance(properties, dict):
+        yield from properties
+    for keyword in ("oneOf", "anyOf", "allOf"):
+        branches = schema.get(keyword)
+        if isinstance(branches, list):
+            for branch in branches:
+                yield from _iter_top_level_property_names(branch)
 
 
 def _validate_payload_schema(schema: dict[str, Any]) -> None:
     try:
         Draft202012Validator.check_schema(schema)
-    except Exception as exc:
+    except Exception as exc:  # jsonschema exposes several concrete exceptions
         raise ValidationError("E-PROFILE-SCHEMA", "payload schema is not valid JSON Schema") from exc
     for ref in _iter_refs(schema):
         if not ref.startswith("#"):
@@ -156,7 +163,7 @@ def _validate_payload_schema(schema: dict[str, Any]) -> None:
                 "E-PROFILE-SCHEMA-REF",
                 f"payload schema reference must remain internal to the file: {ref!r}",
             )
-    reserved = sorted(_RESERVED_PAYLOAD_FIELDS.intersection(_iter_property_names(schema)))
+    reserved = sorted(_RESERVED_PAYLOAD_FIELDS.intersection(_iter_top_level_property_names(schema)))
     if reserved:
         raise ValidationError(
             "E-PROFILE-RESERVED",
@@ -177,6 +184,7 @@ def _validate_manifest(manifest: dict[str, Any], *, root: pathlib.Path) -> None:
 
 def _file_entry(path: str, data: bytes) -> dict[str, str]:
     return {"path": path, "artifact_id": artifact_id_for(data)}
+
 
 
 def profile_package_hash_from_assets(
@@ -203,7 +211,6 @@ def profile_package_hash_from_assets(
         },
         omit=(),
     )
-
 
 def load_extraction_profile(
     profile_ref: str,
@@ -295,6 +302,15 @@ def load_extraction_profile(
     )
 
 
+def _embedded_payload_schema(profile: ExtractionProfile) -> dict[str, Any]:
+    """Return the payload schema in a provider-friendly embedded form."""
+
+    schema = copy.deepcopy(profile.payload_schema)
+    schema.pop("$schema", None)
+    schema.pop("$id", None)
+    return schema
+
+
 def output_schema_for(profile: ExtractionProfile) -> dict[str, Any]:
     maximum = int(profile.limits["max_records_per_unit"])
     return {
@@ -311,7 +327,7 @@ def output_schema_for(profile: ExtractionProfile) -> dict[str, Any]:
                     "additionalProperties": False,
                     "required": ["payload", "evidence_bindings"],
                     "properties": {
-                        "payload": copy.deepcopy(profile.payload_schema),
+                        "payload": _embedded_payload_schema(profile),
                         "evidence_bindings": {
                             "type": "array",
                             "minItems": 1,
@@ -349,6 +365,7 @@ def output_schema_for(profile: ExtractionProfile) -> dict[str, Any]:
             }
         },
     }
+
 
 
 def extraction_assets(profile: ExtractionProfile) -> list[tuple[str, bytes, str]]:
