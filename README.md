@@ -30,9 +30,10 @@ research command requires a declared non-`UNKNOWN` rights basis,
 Phase 0 exploration may reuse one standing `operator-attestation.json` at the
 work root: the operator declares rights once, directly or through an explicitly
 authorized agent, and `prepare-handoff` auto-applies them to each
-SourceDeclaration. Only source
-quality classified as Tier A or B is eligible for event-scene discovery; Tier D
-content remains `lead-only` and is never sent to the Scene Scout.
+SourceDeclaration. Delegation must be explicit and recorded; the acting agent
+cannot infer or self-grant it. Only source quality classified as Tier A or B is
+eligible for event-scene discovery; Tier D content remains `lead-only` and is
+never sent to the Scene Scout.
 The send and export boundaries first validate the complete Bundle → Snapshot →
 Ingestion lineage, including induced members and deterministic triage, then
 re-resolve rights from the immutable ingestion spec. Export manifests mark the
