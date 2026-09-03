@@ -51,3 +51,7 @@ xhnovel_pipeline = ["py.typed"]
   "profiles/generic/race-mention-v1/*.json",
   "profiles/generic/race-mention-v1/*.md",
 ]
+"xhnovel_pipeline_data/profiles/generic/secret-realm-v1" = [
+  "profiles/generic/secret-realm-v1/*.json",
+  "profiles/generic/secret-realm-v1/*.md",
+]
