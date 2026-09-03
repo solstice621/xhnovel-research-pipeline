@@ -186,14 +186,24 @@ separate facts:
 | May full text be stored? | explicit `may_store_full_text` declaration |
 | May text be sent to the semantic executor? | explicit `may_send_to_external_model` declaration |
 | What is the rights basis? | user-authorized copy, public domain, licensed, fair-use research, unknown |
-| Is source quality eligible? | Tier A/B for Handoff; Tier D remains Lead-only |
+| Is source quality eligible? | `COMPLETE` plus anything except positively declared `UNOFFICIAL_COPY` is A/B; incomplete text and `UNOFFICIAL_COPY` remain D / Lead-only |
 
 Technical access is not rights evidence. A successful HTTP response, a readable
 local file, or a search snippet does not authorize storage or model egress.
 
-Do not download a rights-unknown commercial full text. If the host cannot establish
-a concrete source plus all required declarations, report the Lead as `UNRESOLVED`
-or `BLOCKED_BY_RIGHTS`. That is a valid exploration result, not a failed Pilot.
+Do not require a publisher licence or `OFFICIAL` proof to admit a source.
+`edition_status=UNKNOWN` with `textual_completeness=COMPLETE` is Tier B:
+unproven official status is not a filter. Declare `UNOFFICIAL_COPY` only when
+unauthorized or infringing status is positively established; that remains Tier D
+even if the text looks complete. Incomplete text (`PARTIAL` or unknown
+completeness) remains Tier D regardless of edition status.
+
+`rights.basis` is a separate fact. External-model execution still requires a
+non-`UNKNOWN` basis such as `FAIR_USE_RESEARCH`; that is an operator claim, not
+a publisher licence. Do not download text whose rights basis is `UNKNOWN`. If
+the host cannot establish a concrete source plus the required rights and
+completeness declarations, report the Lead as `UNRESOLVED` or
+`BLOCKED_BY_RIGHTS`. That is a valid exploration result, not a failed Pilot.
 
 ## Preparation input and Handoff
 

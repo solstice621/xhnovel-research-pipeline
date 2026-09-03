@@ -228,8 +228,10 @@ def test_declared_source_quality_defaults_and_is_independent():
             {"edition_status": "USER_VERIFIED_COPY", "textual_completeness": "COMPLETE"},
             "B",
         ),
+        ({"edition_status": "UNKNOWN", "textual_completeness": "COMPLETE"}, "B"),
         ({"edition_status": "UNOFFICIAL_COPY", "textual_completeness": "COMPLETE"}, "D"),
         ({"edition_status": "OFFICIAL", "textual_completeness": "PARTIAL"}, "D"),
+        ({"edition_status": "UNKNOWN", "textual_completeness": "UNKNOWN"}, "D"),
     ],
 )
 def test_source_quality_tier_is_shared_with_direct_preflight(source_quality, expected):

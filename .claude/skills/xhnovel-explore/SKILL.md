@@ -53,10 +53,18 @@ running a new exploration. The frozen trust boundary remains
 3. **Select for diversity.** Deduplicate the explicit Lead set and prefer distinct
    works and interaction families. Do not discard incompatible work/source
    identities merely to force one group.
-4. **Resolve a source.** Admit only a concrete source with an explicit rights basis,
-   storage/model permissions, and Tier A/B source-quality declarations. If no such
-   source is available, retain the Lead as `UNRESOLVED` or `BLOCKED_BY_RIGHTS` and
-   do not download or execute unknown-rights commercial full text.
+4. **Resolve a source.** Admit a concrete source when storage/model permissions
+   are declared, `textual_completeness` is `COMPLETE`, `edition_status` is not
+   `UNOFFICIAL_COPY`, and rights have a non-`UNKNOWN` basis. A publisher license
+   or `OFFICIAL` proof is not required: `edition_status=UNKNOWN` means official
+   status is unproven and is Tier B when the text is complete. Declare
+   `UNOFFICIAL_COPY` only when unauthorized or infringing status is positively
+   established, not merely because a site is not the named official storefront.
+   `FAIR_USE_RESEARCH` and `USER_AUTHORIZED_LOCAL_COPY` are valid bases; they are
+   operator claims, not a publisher licence. If no such source is available,
+   retain the Lead as `UNRESOLVED` or `BLOCKED_BY_RIGHTS` and do not download or
+   execute text whose `rights.basis` is `UNKNOWN`. Incomplete text remains
+   ineligible regardless of edition status.
 5. **Prepare through the product boundary.** Put the sealed Brief, compatible Leads,
    SourceDeclaration, and `requested_at` into the preparation input, then run:
 
@@ -103,6 +111,7 @@ Do not:
 
 - promote web/search material directly into evidence;
 - infer rights from accessibility or download rights-unknown commercial full text;
+- declare `UNOFFICIAL_COPY` merely because official or licensed status is unproven;
 - copy Lead prose, character names, URLs, chapter guesses, expected events, or
   location hints into the discovery brief, native tasks, or candidates;
 - create custom windows, prompts, schemas, `SceneCandidate`s, citation repairs, or
