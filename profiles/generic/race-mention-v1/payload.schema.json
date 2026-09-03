@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/profiles/generic/race-mention-v1/payload.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "name"],
+  "properties": {
+    "kind": {"const": "RACE_MENTION"},
+    "name": {"type": "string", "minLength": 1},
+    "explicit_type": {"type": "string", "minLength": 1},
+    "explicit_traits": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

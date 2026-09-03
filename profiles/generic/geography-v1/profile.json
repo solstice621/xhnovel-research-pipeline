@@ -1,0 +1,34 @@
+{
+  "profile_manifest_version": "extraction-profile/v1",
+  "profile_id": "xhnovel.geography",
+  "profile_version": "1.0.0",
+  "prompt": "prompt.md",
+  "payload_schema": "payload.schema.json",
+  "schema_name": "xhnovel_geography_v1",
+  "unit_policy": {
+    "id": "sliding-text/v1",
+    "target_chars": 10000,
+    "overlap_chars": 1800
+  },
+  "limits": {
+    "max_records_per_unit": 64,
+    "max_payload_bytes_per_record": 32768,
+    "max_workers": 8
+  },
+  "evidence_policy": {
+    "by_kind": {
+      "PLACE_MENTION": {
+        "required_groups": [["/name"]],
+        "exempt_paths": ["/kind"]
+      },
+      "SPATIAL_RELATION": {
+        "required_groups": [["/subject_name", "/relation", "/object_name"]],
+        "exempt_paths": ["/kind"]
+      }
+    }
+  },
+  "reduction": {
+    "reducer_id": "exact-payload-dedup/v1",
+    "config": {"record_version": 1}
+  }
+}

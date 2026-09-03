@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/generic/extraction-run.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "record_kind", "extraction_run_id", "extraction_run_hash",
+    "text_snapshot_id", "text_snapshot_hash", "extraction_build_id", "extraction_build_hash",
+    "profile_id", "profile_version", "extraction_profile_hash",
+    "units_artifact_id", "unit_count", "unit_result_hash",
+    "unit_results_artifact_id", "unit_result_count", "unit_results_hash",
+    "model_attempts_artifact_id", "model_attempt_count", "model_attempts_hash",
+    "observations_artifact_id", "observation_count", "observation_result_hash",
+    "checkpoint_artifact_id", "coverage", "artifact_integrity", "exact_runtime",
+    "functional_replay", "semantic_assurance", "status", "started_at", "completed_at"
+  ],
+  "properties": {
+    "schema_version": {"const": "extraction-run/v1"},
+    "record_kind": {"const": "EXTRACTION_RUN"},
+    "extraction_run_id": {"type": "string", "pattern": "^XRUN-[A-Z0-9]{20}$"},
+    "extraction_run_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "text_snapshot_id": {"type": "string", "pattern": "^NTS-"},
+    "text_snapshot_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "extraction_build_id": {"type": "string", "pattern": "^XBLD-"},
+    "extraction_build_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "profile_id": {"type": "string"},
+    "profile_version": {"type": "string"},
+    "extraction_profile_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "units_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "unit_count": {"type": "integer", "minimum": 1},
+    "unit_result_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "unit_results_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "unit_result_count": {"type": "integer", "minimum": 1},
+    "unit_results_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "model_attempts_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "model_attempt_count": {"type": "integer", "minimum": 0},
+    "model_attempts_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "observations_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "observation_count": {"type": "integer", "minimum": 0},
+    "observation_result_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "checkpoint_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text_coverage", "semantic_coverage", "eligible_character_count", "covered_character_count", "uncovered_ranges"],
+      "properties": {
+        "text_coverage": {"const": "FULL"},
+        "semantic_coverage": {"const": "UNMEASURED"},
+        "eligible_character_count": {"type": "integer", "minimum": 1},
+        "covered_character_count": {"type": "integer", "minimum": 1},
+        "uncovered_ranges": {"type": "array", "maxItems": 0}
+      }
+    },
+    "artifact_integrity": {"const": "VALID"},
+    "exact_runtime": {"const": "AVAILABLE"},
+    "functional_replay": {"const": "VERIFIED"},
+    "semantic_assurance": {"const": "UNQUALIFIED"},
+    "status": {"const": "SUCCEEDED"},
+    "started_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "completed_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}
+  }
+}

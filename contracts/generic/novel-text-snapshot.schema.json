@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/generic/novel-text-snapshot.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "record_kind", "text_snapshot_id", "text_snapshot_hash",
+    "work_id", "ingestion_run_id", "input_spec_artifact_id", "input_spec_hash",
+    "chapter_ids", "document_ids", "segment_ids", "source_quality_tier",
+    "coverage_use", "eligible_character_count", "created_at", "status"
+  ],
+  "properties": {
+    "schema_version": {"const": "novel-text-snapshot/v1"},
+    "record_kind": {"const": "NOVEL_TEXT_SNAPSHOT"},
+    "text_snapshot_id": {"type": "string", "pattern": "^NTS-[A-Z0-9]{20}$"},
+    "text_snapshot_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "work_id": {"type": "string", "pattern": "^NWK-"},
+    "ingestion_run_id": {"type": "string", "pattern": "^NING-"},
+    "input_spec_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "input_spec_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "chapter_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^CHP-"}},
+    "document_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^DOC-"}},
+    "segment_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^SEG-"}},
+    "source_quality_tier": {"enum": ["A", "B"]},
+    "coverage_use": {"const": "source-grounded-semantic-extraction/v0-spike"},
+    "eligible_character_count": {"type": "integer", "minimum": 1},
+    "created_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "status": {"const": "FROZEN"}
+  }
+}

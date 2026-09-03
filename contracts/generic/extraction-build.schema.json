@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/generic/extraction-build.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "extraction_build_id", "extraction_build_hash",
+    "engine_repository_commit", "engine_source_hash", "profile_id", "profile_version",
+    "extraction_profile_hash", "core_prompt_artifact_id", "profile_prompt_artifact_id",
+    "payload_schema_artifact_id", "unit_policy", "executor", "status", "created_at"
+  ],
+  "properties": {
+    "schema_version": {"const": "extraction-build/v1"},
+    "extraction_build_id": {"type": "string", "pattern": "^XBLD-[A-Z0-9]{20}$"},
+    "extraction_build_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "engine_repository_commit": {"type": "string", "minLength": 7},
+    "engine_source_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "profile_id": {"type": "string", "minLength": 1},
+    "profile_version": {"type": "string", "minLength": 1},
+    "extraction_profile_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "core_prompt_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "profile_prompt_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "payload_schema_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "unit_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "target_chars", "overlap_chars"],
+      "properties": {
+        "id": {"const": "sliding-text/v1"},
+        "target_chars": {"type": "integer", "minimum": 1},
+        "overlap_chars": {"type": "integer", "minimum": 0}
+      }
+    },
+    "executor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "build_id", "model", "response_format", "endpoint", "timeout_ms", "max_attempts"],
+      "properties": {
+        "kind": {"type": "string", "minLength": 1},
+        "build_id": {"type": "string", "minLength": 1},
+        "model": {"type": "string", "minLength": 1},
+        "response_format": {"type": "string", "minLength": 1},
+        "endpoint": {"type": "string", "minLength": 1},
+        "timeout_ms": {"type": "integer", "minimum": 0},
+        "max_attempts": {"type": "integer", "minimum": 1}
+      }
+    },
+    "status": {"const": "UNQUALIFIED"},
+    "created_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}
+  }
+}
