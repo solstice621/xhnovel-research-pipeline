@@ -61,9 +61,12 @@ The model stage is gated before ingestion starts. It requires:
 - `may_send_to_external_model: true`.
 
 Source quality is independent of rights and access. `OFFICIAL + COMPLETE` maps
-to Tier A; `PUBLISHED_EDITION` or `USER_VERIFIED_COPY` plus `COMPLETE` maps to
-Tier B. All other combinations map to Tier D. A/B permits `event-facts`; D is
-`lead-only` and creates no SceneWindows or model calls.
+to Tier A; `PUBLISHED_EDITION`, `USER_VERIFIED_COPY`, or `UNKNOWN` plus
+`COMPLETE` maps to Tier B. `UNOFFICIAL_COPY` (even if complete) and any
+non-complete text map to Tier D. Unproven official or licensed status is
+`UNKNOWN`, not a filter. `UNOFFICIAL_COPY` is a positive unauthorized
+declaration. A/B permits `event-facts`; D is `lead-only` and creates no
+SceneWindows or model calls.
 
 ## Ingestion
 

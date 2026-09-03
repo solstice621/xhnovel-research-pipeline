@@ -6,6 +6,7 @@ import pytest
 
 from xhnovel_pipeline.errors import ValidationError
 from xhnovel_pipeline.hashing import collection_snapshot_hash
+from xhnovel_pipeline.novel_assessment import NOVEL_SOURCE_CLASSIFIER_BUILD_ID
 from xhnovel_pipeline.novel_ingest import run_novel_ingestion
 from xhnovel_pipeline.novel_workflow import prepare_novel_evidence_bundle
 from xhnovel_pipeline.paths import repo_root
@@ -81,6 +82,8 @@ def test_workflow_uses_deterministic_source_classification_without_model_reviews
     assert triage["technical_access"] == {"method": "LOCAL_FILE", "succeeded": True}
     assert triage["rights"] == RIGHTS
     assert triage["source_quality"] == SOURCE_QUALITY
+    assert NOVEL_SOURCE_CLASSIFIER_BUILD_ID == "novel-source-classifier-v2"
+    assert triage["assessor_build_id"] == NOVEL_SOURCE_CLASSIFIER_BUILD_ID
     assert triage["assessment_id"] in bundle["triage_assessment_ids"]
     assert catalog.all("CollectionDecision") == []
     assert catalog.all("CollectionReview") == []
