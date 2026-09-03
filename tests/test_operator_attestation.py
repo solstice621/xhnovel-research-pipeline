@@ -195,7 +195,7 @@ def test_handoff_replay_requires_standing_attestation(tmp_path):
         validate_evidence_handoff(prepared.handoff_path, phase0_root=tmp_path)
 
 
-def test_make_source_declaration_binds_attestation_id():
+def test_make_source_declaration_binds_attestation_id(tmp_path):
     attestation = _attestation()
     work = {
         "identity": {
@@ -210,9 +210,10 @@ def test_make_source_declaration_binds_attestation_id():
         "aliases": [],
         "external_ids": [],
     }
+    source = {"kind": "txt", "path": str(tmp_path / "book.txt")}
     declaration = make_source_declaration(
         work=work,
-        source={"kind": "txt", "path": "/tmp/book.txt"},
+        source=source,
         rights=attestation_rights(attestation),
         source_quality={
             "edition_status": "USER_VERIFIED_COPY",
@@ -226,7 +227,7 @@ def test_make_source_declaration_binds_attestation_id():
     assert declaration["operator_attestation_id"] == attestation["attestation_id"]
     plain = make_source_declaration(
         work=work,
-        source={"kind": "txt", "path": "/tmp/book.txt"},
+        source=source,
         rights=attestation_rights(attestation),
         source_quality={
             "edition_status": "USER_VERIFIED_COPY",
