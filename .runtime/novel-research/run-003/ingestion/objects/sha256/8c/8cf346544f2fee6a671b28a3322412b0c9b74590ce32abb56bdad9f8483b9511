@@ -1,0 +1,9 @@
+{
+  "artifact_id": "sha256:ac529cef0fbe5578ca2312017595fa6206d2a4b9365e2bf14aa58257e7982864",
+  "byte_length": 8951,
+  "chapter_key": "chapter-001040-1040-txt",
+  "final_locator": "file:///workspace/.runtime/exploration/run-003/input/chapters/1040.txt",
+  "http_status": null,
+  "media_type": "text/plain",
+  "retrieved_at": "2026-09-03T02:43:48Z"
+}

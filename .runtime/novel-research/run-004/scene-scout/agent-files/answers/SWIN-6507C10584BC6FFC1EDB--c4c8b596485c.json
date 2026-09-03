@@ -1,0 +1,376 @@
+{
+  "candidates": [
+    {
+      "summary": "半昏迷时青莲地心火无人控制地修补强化残破身躯并灌满气旋；苏醒后心神撞击火种，火尾触到纳灵光点被吸入，炼化最后一步意外完成。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-001",
+          "start": 424,
+          "end": 433
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-001",
+          "start": 525,
+          "end": 562
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1429,
+          "end": 1440
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1453,
+          "end": 1479
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 97,
+          "end": 130
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 770,
+          "end": 831
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-001",
+          "start": 434,
+          "end": 453
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 132,
+          "end": 186
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 268,
+          "end": 300
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-001",
+          "start": 682,
+          "end": 697
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-001",
+          "start": 966,
+          "end": 1004
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 684,
+          "end": 712
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1570,
+          "end": 1589
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 32,
+          "end": 56
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1074,
+          "end": 1099
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1100,
+          "end": 1130
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-002",
+          "start": 1487,
+          "end": 1521
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-001",
+          "start": 1365,
+          "end": 1381
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 403,
+          "end": 418
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-001",
+          "start": 1163,
+          "end": 1178
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 366,
+          "end": 402
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 63,
+          "end": 90
+        },
+        {
+          "segment_id": "SEG-797C374C5248297E9FB8-003",
+          "start": 306,
+          "end": 358
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "青莲地心火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-001",
+            "start": 424,
+            "end": 433
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-001",
+            "start": 525,
+            "end": 562
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "心神狠狠撞击倒退的青莲地心火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1429,
+            "end": 1440
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1453,
+            "end": 1479
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "纳灵所成的灰色光点",
+          "残破身躯与斗气气旋"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 97,
+            "end": 130
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 770,
+            "end": 831
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "处于无意识半昏迷，心神难以凝聚",
+          "药老已将纳灵弹入体内",
+          "把异火强行压进纳灵本是炼化最难一步，失败会反噬"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-001",
+            "start": 434,
+            "end": 453
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 97,
+            "end": 130
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 132,
+            "end": 186
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 268,
+            "end": 300
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "青莲地心火无人控制地融进经脉并修补强化身体",
+          "气旋液体能量不少于百滴",
+          "火尾触到灰色光点后被纳灵全部收纳"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-001",
+            "start": 525,
+            "end": 562
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-001",
+            "start": 682,
+            "end": 697
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-001",
+            "start": 966,
+            "end": 1004
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 684,
+            "end": 712
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1570,
+            "end": 1589
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 32,
+            "end": 56
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "火灵自行沿经脉运转并修补身体",
+          "有灵智的火灵忌惮纳灵欲离开",
+          "灰色光点爆发吸力将逃脱不及的异火吸入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-001",
+            "start": 525,
+            "end": 562
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1074,
+            "end": 1099
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1100,
+            "end": 1130
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 32,
+            "end": 56
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "撞击时脑中轰鸣剧痛",
+          "正文点明此为机缘以及幸运"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 1487,
+            "end": 1521
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-001",
+            "start": 1365,
+            "end": 1381
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 403,
+            "end": 418
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "经脉骨骼坚韧超过吞噬异火之前",
+          "气旋液体能量不少于百滴",
+          "异火被收纳进纳灵，炼化最后一步完成"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-001",
+            "start": 966,
+            "end": 1004
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-001",
+            "start": 1163,
+            "end": 1178
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-002",
+            "start": 684,
+            "end": 712
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 366,
+            "end": 402
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "异火收纳后体内陷入完全寂静",
+          "炼化最后一步以微小代价结束"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 63,
+            "end": 90
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 366,
+            "end": 402
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "半昏迷使有灵智的火种自行修补并靠近纳灵，本应强行驱赶、失败即反噬的收纳因尾触光点而以微小代价完成"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 306,
+            "end": 358
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 268,
+            "end": 300
+          },
+          {
+            "segment_id": "SEG-797C374C5248297E9FB8-003",
+            "start": 403,
+            "end": 418
+          }
+        ]
+      }
+    }
+  ]
+}

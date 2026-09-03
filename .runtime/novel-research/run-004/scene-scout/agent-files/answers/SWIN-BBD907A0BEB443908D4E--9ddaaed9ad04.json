@@ -1,0 +1,191 @@
+{
+  "candidates": [
+    {
+      "summary": "在药铺柜台角落发现被标为低级黄莲精的块状物，划开露出殷红后确认是血莲精，并以低级药材之价买下装入纳戒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-E6BD3A038DA0FA87A6AF-002",
+          "start": 0,
+          "end": 1302
+        },
+        {
+          "segment_id": "SEG-BF0FC9109F91F00E9138-001",
+          "start": 0,
+          "end": 1619
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "店员",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E6BD3A038DA0FA87A6AF-002",
+            "start": 0,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-BF0FC9109F91F00E9138-001",
+            "start": 0,
+            "end": 1619
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "请店员取出柜台角落的块状物",
+          "划开检验后按黄莲精买下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E6BD3A038DA0FA87A6AF-002",
+            "start": 0,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-BF0FC9109F91F00E9138-001",
+            "start": 0,
+            "end": 1619
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "血莲精"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E6BD3A038DA0FA87A6AF-002",
+            "start": 0,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-BF0FC9109F91F00E9138-001",
+            "start": 0,
+            "end": 1619
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "柜台上的块状物被标为最低级黄莲精",
+          "血莲精外貌与黄莲精几乎完全相同，不熟悉则难以分辨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E6BD3A038DA0FA87A6AF-002",
+            "start": 0,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-BF0FC9109F91F00E9138-001",
+            "start": 0,
+            "end": 1619
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "确认并买下罕见血莲精，装进纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E6BD3A038DA0FA87A6AF-002",
+            "start": 0,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-BF0FC9109F91F00E9138-001",
+            "start": 0,
+            "end": 1619
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "店员按低级黄莲精取出并标价一百金币",
+          "店员按黄莲精数量收银两千四百枚金币"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E6BD3A038DA0FA87A6AF-002",
+            "start": 0,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-BF0FC9109F91F00E9138-001",
+            "start": 0,
+            "end": 1619
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "划开后露出殷红并嗅到血腥奇异味道",
+          "药老称运气不错遇见罕见药草"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E6BD3A038DA0FA87A6AF-002",
+            "start": 0,
+            "end": 1302
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可用血莲精炼制血莲丹",
+          "血莲丹能在体表形成抵御炽热的能量血枷"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BF0FC9109F91F00E9138-001",
+            "start": 0,
+            "end": 1619
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "血莲精已装进纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BF0FC9109F91F00E9138-001",
+            "start": 0,
+            "end": 1619
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "高级血莲精与低级黄莲精外貌几乎完全相同，因而被按最低级药材计价出售"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E6BD3A038DA0FA87A6AF-002",
+            "start": 0,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-BF0FC9109F91F00E9138-001",
+            "start": 0,
+            "end": 1619
+          }
+        ]
+      }
+    }
+  ]
+}

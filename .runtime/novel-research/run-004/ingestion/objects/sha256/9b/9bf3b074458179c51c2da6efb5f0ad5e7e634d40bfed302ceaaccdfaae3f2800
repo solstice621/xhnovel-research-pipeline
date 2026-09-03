@@ -1,0 +1,563 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎为躲避搜查把古凰血精藏进异火，高温使残留血精散入体内无法逼出；他用灵魂力量汇聚并以琉璃莲心火火鼎炼化，青红烟雾融入肉体使之强化，却因过量濒临爆体。危急时他结印展开已有骨翼承接过剩能量，骨翼当场变异为天妖凰翼，肉体也变得更强韧。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+          "start": 1323,
+          "end": 1337
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+          "start": 1135,
+          "end": 1153
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+          "start": 432,
+          "end": 446
+        },
+        {
+          "segment_id": "SEG-4AC7F6AF98181AD83AC4-002",
+          "start": 1510,
+          "end": 1532
+        },
+        {
+          "segment_id": "SEG-4AC7F6AF98181AD83AC4-002",
+          "start": 1394,
+          "end": 1407
+        },
+        {
+          "segment_id": "SEG-4AC7F6AF98181AD83AC4-002",
+          "start": 1472,
+          "end": 1502
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+          "start": 1357,
+          "end": 1404
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+          "start": 151,
+          "end": 182
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+          "start": 1363,
+          "end": 1385
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+          "start": 808,
+          "end": 862
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+          "start": 1411,
+          "end": 1452
+        },
+        {
+          "segment_id": "SEG-4AC7F6AF98181AD83AC4-002",
+          "start": 1533,
+          "end": 1560
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+          "start": 595,
+          "end": 621
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+          "start": 692,
+          "end": 704
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+          "start": 392,
+          "end": 414
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+          "start": 454,
+          "end": 471
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+          "start": 499,
+          "end": 522
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+          "start": 523,
+          "end": 542
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+          "start": 1490,
+          "end": 1539
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 0,
+          "end": 24
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 239,
+          "end": 249
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 100,
+          "end": 130
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 1364,
+          "end": 1376
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+          "start": 1465,
+          "end": 1483
+        },
+        {
+          "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+          "start": 219,
+          "end": 242
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+          "start": 388,
+          "end": 397
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+          "start": 448,
+          "end": 490
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+          "start": 1288,
+          "end": 1321
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 65,
+          "end": 78
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 839,
+          "end": 872
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 1227,
+          "end": 1248
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 1262,
+          "end": 1275
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 1077,
+          "end": 1121
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 1149,
+          "end": 1186
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 1378,
+          "end": 1410
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 1188,
+          "end": 1200
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 945,
+          "end": 967
+        },
+        {
+          "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+          "start": 968,
+          "end": 990
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "风尊者",
+          "慕青鸾",
+          "林焱"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 1323,
+            "end": 1337
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 1135,
+            "end": 1153
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 432,
+            "end": 446
+          },
+          {
+            "segment_id": "SEG-4AC7F6AF98181AD83AC4-002",
+            "start": 1510,
+            "end": 1532
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以碧绿火焰将古凰血精逼出体外",
+          "以灵魂力量驱赶汇聚体内残留的青红能量并用火鼎炼化",
+          "结印展开骨翼承接过剩的青红能量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4AC7F6AF98181AD83AC4-002",
+            "start": 1394,
+            "end": 1407
+          },
+          {
+            "segment_id": "SEG-4AC7F6AF98181AD83AC4-002",
+            "start": 1472,
+            "end": 1502
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+            "start": 1357,
+            "end": 1404
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+            "start": 151,
+            "end": 182
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 1323,
+            "end": 1337
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 1363,
+            "end": 1385
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "古凰血精",
+          "散入体内的青红狂暴能量",
+          "背后骨翼"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4AC7F6AF98181AD83AC4-002",
+            "start": 1472,
+            "end": 1502
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+            "start": 808,
+            "end": 862
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 1411,
+            "end": 1452
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "先前将古凰血精藏在异火之中，因此未曾被搜查出来",
+          "异火高温令古凰血精能量散开并残留体内，已不可能彻底逼出",
+          "寻常人无法吸收古凰血精中的天妖凰血脉之力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4AC7F6AF98181AD83AC4-002",
+            "start": 1533,
+            "end": 1560
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+            "start": 595,
+            "end": 621
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+            "start": 808,
+            "end": 862
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+            "start": 692,
+            "end": 704
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "炼化后的青红烟雾融入骨骼、经脉、肌肉与细胞，肉体力量与坚韧上升",
+          "过剩青红能量涌入骨翼，骨翼延伸、现出青红纹路并舒展近一倍，被指认为天妖凰翼",
+          "膨胀的身体迅速缩小复原",
+          "体内斗气并未增加，强化落在肉体与骨翼"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+            "start": 392,
+            "end": 414
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+            "start": 454,
+            "end": 471
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+            "start": 499,
+            "end": 522
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+            "start": 523,
+            "end": 542
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 1411,
+            "end": 1452
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 1490,
+            "end": 1539
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 0,
+            "end": 24
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 239,
+            "end": 249
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 100,
+            "end": 130
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 1364,
+            "end": 1376
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "青红狂暴能量强烈反抗，遇火鼎高温即试图分散逃逸",
+          "身体膨胀并出现爆体预兆；体内处于饱和期，再掺入外来能量会当场爆炸",
+          "慕青鸾拦住风尊者插手；风尊者仍欲强行逼出古凰血精，见萧炎睁眼结印后停手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+            "start": 1465,
+            "end": 1483
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-002",
+            "start": 219,
+            "end": 242
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 388,
+            "end": 397
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 448,
+            "end": 490
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 432,
+            "end": 446
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 1135,
+            "end": 1153
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 1288,
+            "end": 1321
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "骨翼振动带起音爆与狂风",
+          "仰天清啸中带出凤鸣龙音",
+          "皮肤隐现淡青，按压有如魔兽皮般柔韧"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 65,
+            "end": 78
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 839,
+            "end": 872
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 1227,
+            "end": 1248
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 1262,
+            "end": 1275
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "变异骨翼更强、速度提升，再施展三千雷动时费天也追不上",
+          "同时拥有凤鸣与龙音，可配合音波斗技",
+          "肉体更强悍，硬拼时抗打力提高"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 1077,
+            "end": 1121
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 1149,
+            "end": 1186
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 839,
+            "end": 872
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 1378,
+            "end": 1410
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "剩余古凰血精已被骨翼吸收，变异与肉体强化保留",
+          "骨翼可收入体内，但被嘱以后尽量不要使用，以免被天妖凰族发现"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 1077,
+            "end": 1121
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 1188,
+            "end": 1200
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 945,
+            "end": 967
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 968,
+            "end": 990
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 1378,
+            "end": 1410
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "把血脉宝物藏进异火躲避搜查，会使其能量散进身体且无法再逼出；人体饱和后既不能继续吸收也不能让外人灌能，否则爆体，唯有让同源骨翼吞掉过剩能量才会改走变异而非死亡"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4AC7F6AF98181AD83AC4-002",
+            "start": 1533,
+            "end": 1560
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+            "start": 808,
+            "end": 862
+          },
+          {
+            "segment_id": "SEG-BAC31D4F2AC89BA6424F-001",
+            "start": 692,
+            "end": 704
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 448,
+            "end": 490
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-001",
+            "start": 1411,
+            "end": 1452
+          },
+          {
+            "segment_id": "SEG-916DA1159C9F5EF5EED6-002",
+            "start": 100,
+            "end": 130
+          }
+        ]
+      }
+    }
+  ]
+}

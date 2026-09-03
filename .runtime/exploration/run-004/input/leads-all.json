@@ -1,0 +1,451 @@
+{
+  "note": "Host-audited LEAD_ONLY drafts for diversity review. Only the Doupo pair is admitted into preparation-input.json because only Doupo currently has a COMPLETE declared source. Other works remain UNRESOLVED in the denominator. Builder seals IDs; this file is not a Handoff.",
+  "brief_id": "XBR-43C121A4ED04DCADE2F5",
+  "diversity_review": {
+    "works": 8,
+    "initial_leads": 15,
+    "max_initial_leads_per_work": 2,
+    "interaction_families_covered": [
+      "误入隐秘之地或遗存",
+      "危机中触发未知机缘",
+      "拾得非常规之物",
+      "遭遇残存意志或无名施助"
+    ],
+    "genre_boundary": "遮天 is retained with a host note: some portals file it as 仙侠 while the Baidu lemma title calls it 玄幻. scope.avoid is empty."
+  },
+  "leads": [
+    {
+      "work_claim": {
+        "title": "斗破苍穹",
+        "author": "天蚕土豆",
+        "language": "zh",
+        "aliases": ["《斗破苍穹》", "Battle Through the Heavens"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称主角母亲遗物戒指中可能寄宿另一灵魂，并在持有期间吸取斗气数年；可检验是否属于拾得非常规之物后的当场机缘，而非事先交易。",
+        "why_relevant": "LEAD_ONLY：若属实，遗物本身可能就是改变修炼轨迹的非常规之物，可对照 Brief 中的拾得标志。",
+        "interaction_tags": ["拾得非常规之物", "遭遇残存意志或无名施助"],
+        "location_hints": [
+          {"kind": "OBJECT", "value": "母亲遗物戒指", "basis": "SOURCE_STATED"},
+          {"kind": "CHARACTER", "value": "药老", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://zh.wikipedia.org/wiki/%E9%AC%A5%E7%A0%B4%E8%92%BC%E7%A9%B9",
+          "title": "斗破苍穹 - 维基百科",
+          "publisher": "Wikimedia",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "斗破苍穹",
+        "author": "天蚕土豆",
+        "language": "zh",
+        "aliases": ["《斗破苍穹》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称沉睡灵魂可能在吸收斗气后苏醒，主角随即拜师并可能当场获得可进化功法；可检验残存意志施助是否立即改变能力与后续行动空间。",
+        "why_relevant": "LEAD_ONLY：若属实，这是遭遇残存意志并当场获得传承/功法的假设，需与事后转述或目录罗列相区分。",
+        "interaction_tags": ["遭遇残存意志或无名施助", "危机中触发未知机缘"],
+        "location_hints": [
+          {"kind": "CHARACTER", "value": "药尘", "basis": "SOURCE_STATED"},
+          {"kind": "CHAPTER_TITLE", "value": "第九章 药老!", "basis": "AGENT_INFERRED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://zh.wikipedia.org/wiki/%E9%AC%A5%E7%A0%B4%E8%92%BC%E7%A9%B9",
+          "title": "斗破苍穹 - 维基百科",
+          "publisher": "Wikimedia",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        },
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E8%8D%AF%E5%B0%98/11056743",
+          "title": "药尘 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "盘龙",
+        "author": "我吃西红柿",
+        "language": "zh",
+        "aliases": ["《盘龙》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称主角幼时可能在清洁宗堂/祖宅古屋中得到盘龙戒指；可检验是否为拾得非常规之物并立即改变修炼条件。",
+        "why_relevant": "LEAD_ONLY：若属实，属于拾得非常规之物家族，且与斗破遗戒场景不同作品。",
+        "interaction_tags": ["拾得非常规之物"],
+        "location_hints": [
+          {"kind": "OBJECT", "value": "盘龙之戒", "basis": "SOURCE_STATED"},
+          {"kind": "PLACE", "value": "清洁宗堂", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E6%9E%97%E9%9B%B7%C2%B7%E5%B7%B4%E9%B2%81%E5%85%8B/3710353",
+          "title": "林雷·巴鲁克 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "盘龙",
+        "author": "我吃西红柿",
+        "language": "zh",
+        "aliases": ["《盘龙》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称晨练袭击中可能滴血认主，并结识戒指中沉睡的圣域魔导德林·柯沃特；可检验危机中触发残存意志施助。",
+        "why_relevant": "LEAD_ONLY：若属实，覆盖危机触发与残存意志两个标志，且发生过程被百科描述为当场结识而非事后目录。",
+        "interaction_tags": ["危机中触发未知机缘", "遭遇残存意志或无名施助"],
+        "location_hints": [
+          {"kind": "CHARACTER", "value": "德林·柯沃特", "basis": "SOURCE_STATED"},
+          {"kind": "EVENT_PHRASE", "value": "滴血认主", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E6%9E%97%E9%9B%B7%C2%B7%E5%B7%B4%E9%B2%81%E5%85%8B/3710353",
+          "title": "林雷·巴鲁克 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "武动乾坤",
+        "author": "天蚕土豆",
+        "language": "zh",
+        "aliases": ["《武动乾坤》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：章节目录与改编综述称主角可能在山洞顶部隐藏裂缝中拾得神秘石符；可检验误入隐秘之处并拾得非常规之物。条目大量混入电视剧，不能当作源文已发生。",
+        "why_relevant": "LEAD_ONLY：若小说中属实，覆盖误入遗存与拾得两家族，且与戒指类机缘不同载体。",
+        "interaction_tags": ["误入隐秘之地或遗存", "拾得非常规之物"],
+        "location_hints": [
+          {"kind": "CHAPTER_TITLE", "value": "第五章 神秘石符", "basis": "SOURCE_STATED"},
+          {"kind": "OBJECT", "value": "神秘石符", "basis": "SOURCE_STATED"},
+          {"kind": "PLACE", "value": "山洞", "basis": "AGENT_INFERRED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "OTHER",
+          "locator": "https://mdushu.read.qq.com/chapter/1000481126",
+          "title": "武动乾坤章节列表（含第五章 神秘石符）",
+          "publisher": "QQ Reading / mdushu",
+          "supports": ["WORK_IDENTITY", "LOCATION_HINT"]
+        },
+        {
+          "source_kind": "DISCUSSION",
+          "locator": "https://zhidao.baidu.com/question/389720724",
+          "title": "武动乾坤林动手里的石符到底是什么?",
+          "publisher": "Baidu Zhidao",
+          "supports": ["SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "武动乾坤",
+        "author": "天蚕土豆",
+        "language": "zh",
+        "aliases": ["《武动乾坤》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：改编/问答材料称石符后来可能带出器灵或幻境传授，并改变修炼效率；可检验残存意志/器灵施助，但材料偏剧版，假说更弱。",
+        "why_relevant": "LEAD_ONLY：若小说当场可见器灵或传授，则属于残存意志家族的第二条林动线索，上限仍为每部两 Lead。",
+        "interaction_tags": ["遭遇残存意志或无名施助"],
+        "location_hints": [
+          {"kind": "CHARACTER", "value": "岩", "basis": "AGENT_INFERRED"},
+          {"kind": "OBJECT", "value": "祖石", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "DISCUSSION",
+          "locator": "https://zhidao.baidu.com/question/389720724",
+          "title": "武动乾坤林动手里的石符到底是什么?",
+          "publisher": "Baidu Zhidao",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "完美世界",
+        "author": "辰东",
+        "language": "zh",
+        "aliases": ["《完美世界》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称主角天生至尊骨可能被族兄夺走后垂死，后被寄养石村并遇到祭灵柳神；可检验危机中无名施助是否立即改变处境。",
+        "why_relevant": "LEAD_ONLY：若属实，覆盖危机触发与无名施助，作者/作品与斗破、盘龙均不同。",
+        "interaction_tags": ["危机中触发未知机缘", "遭遇残存意志或无名施助"],
+        "location_hints": [
+          {"kind": "CHARACTER", "value": "柳神", "basis": "SOURCE_STATED"},
+          {"kind": "PLACE", "value": "石村", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E7%9F%B3%E6%98%8A/9138725",
+          "title": "石昊 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        },
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C/9446056",
+          "title": "完美世界 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "完美世界",
+        "author": "辰东",
+        "language": "zh",
+        "aliases": ["《完美世界》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称主角在石村开启修行并可能得柳神指点、传授宝术/柳神法；可检验当场获得功法或指引，须与日后成长综述相区分。",
+        "why_relevant": "LEAD_ONLY：若存在当场传授场面，则是同一作品下第二条、偏传承/指引的线索。",
+        "interaction_tags": ["遭遇残存意志或无名施助"],
+        "location_hints": [
+          {"kind": "CHARACTER", "value": "柳神", "basis": "SOURCE_STATED"},
+          {"kind": "EVENT_PHRASE", "value": "柳神指点", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E5%AE%8C%E7%BE%8E%E4%B8%96%E7%95%8C/9446056",
+          "title": "完美世界 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "神墓",
+        "author": "辰东",
+        "language": "zh",
+        "aliases": ["《神墓》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称主角可能从神魔陵园无名小坟中复活而出，万载后处境骤变；可检验误入/出自遗存是否属于当场机缘发生过程。不要把九龙拉棺安到本部。",
+        "why_relevant": "LEAD_ONLY：若属实，覆盖误入隐秘之地或遗存家族，且开篇即以陵园为场所。",
+        "interaction_tags": ["误入隐秘之地或遗存"],
+        "location_hints": [
+          {"kind": "PLACE", "value": "神魔陵园", "basis": "SOURCE_STATED"},
+          {"kind": "EVENT_PHRASE", "value": "从神魔陵园复活而出", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E7%A5%9E%E5%A2%93/9947627",
+          "title": "神墓 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "神墓",
+        "author": "辰东",
+        "language": "zh",
+        "aliases": ["《神墓》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：小说百科综述称复活后可能在守墓者帮助下获得后羿弓等物；材料弱于词条正文，仅作第二条假说，可能是赠予而非拾得。",
+        "why_relevant": "LEAD_ONLY：若小说当场可见获得非常规兵器，可补拾得家族；若只是事后罗列则应在 Scout 中排除。",
+        "interaction_tags": ["拾得非常规之物", "遭遇残存意志或无名施助"],
+        "location_hints": [
+          {"kind": "OBJECT", "value": "后羿弓", "basis": "AGENT_INFERRED"},
+          {"kind": "CHARACTER", "value": "守墓老人", "basis": "AGENT_INFERRED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://book.qq.com/baike/3dyr9wrwxuvfh",
+          "title": "神墓 - QQ阅读百科",
+          "publisher": "QQ Reading",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "遮天",
+        "author": "辰东",
+        "language": "zh",
+        "aliases": ["《遮天》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称主角可能在泰山因九龙拉棺/青铜巨棺被带离地球、处境骤变；可检验误入隐秘器物。Host 注明部分平台将本部标为仙侠。",
+        "why_relevant": "LEAD_ONLY：若属实，是误入隐秘之地或遗存的强假说，且不可与《神墓》陵园混淆。",
+        "interaction_tags": ["误入隐秘之地或遗存"],
+        "location_hints": [
+          {"kind": "OBJECT", "value": "九龙拉棺", "basis": "SOURCE_STATED"},
+          {"kind": "PLACE", "value": "泰山", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E9%81%AE%E5%A4%A9/7572",
+          "title": "遮天 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        },
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E4%B8%89%E4%B8%96%E9%93%9C%E6%A3%BA/63631773",
+          "title": "三世铜棺 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "遮天",
+        "author": "辰东",
+        "language": "zh",
+        "aliases": ["《遮天》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称遮天开篇青铜巨棺可能内含十仙、符文仙火或缺损小世界，乘客处境由此骤变；仍是假说，且与叶凡个人是否当场得宝需源文检验。",
+        "why_relevant": "LEAD_ONLY：作为同一作品第二条，偏器物内部遗存，不单独构成已发生的得宝证据。",
+        "interaction_tags": ["误入隐秘之地或遗存", "危机中触发未知机缘"],
+        "location_hints": [
+          {"kind": "OBJECT", "value": "青铜巨棺", "basis": "SOURCE_STATED"},
+          {"kind": "CHAPTER_TITLE", "value": "序章 星空中的青铜巨棺", "basis": "AGENT_INFERRED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E4%B8%89%E4%B8%96%E9%93%9C%E6%A3%BA/63631773",
+          "title": "三世铜棺 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "大主宰",
+        "author": "天蚕土豆",
+        "language": "zh",
+        "aliases": ["《大主宰》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称九幽雀可能因进化失败钻入主角体内欲夺舍，却被体内黑纸镇压，随后被迫血脉链接；可检验危机中残存精魄冲突是否立即改变双方处境。灵路试炼本身不作为主 Lead。",
+        "why_relevant": "LEAD_ONLY：若属实，覆盖危机触发与残存意志，且不是事先约定的任务报酬。",
+        "interaction_tags": ["危机中触发未知机缘", "遭遇残存意志或无名施助"],
+        "location_hints": [
+          {"kind": "CHARACTER", "value": "九幽雀", "basis": "SOURCE_STATED"},
+          {"kind": "OBJECT", "value": "神秘黑纸", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E7%89%A7%E5%B0%98/7418807",
+          "title": "牧尘 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "星辰变",
+        "author": "我吃西红柿",
+        "language": "zh",
+        "aliases": ["《星辰变》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称真正改变主角命运的可能是流星化作的神秘晶石「流星泪」，在其无所觉中融入体内；可检验拾得/融入非常规之物是否当场改变生命力或灵魂条件。",
+        "why_relevant": "LEAD_ONLY：若属实，属于拾得非常规之物，且百科强调非常规修炼收获。",
+        "interaction_tags": ["拾得非常规之物", "危机中触发未知机缘"],
+        "location_hints": [
+          {"kind": "OBJECT", "value": "流星泪", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E6%98%9F%E8%BE%B0%E5%8F%98/10988",
+          "title": "星辰变 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "星辰变",
+        "author": "我吃西红柿",
+        "language": "zh",
+        "aliases": ["《星辰变》"]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称主角后来可能得到神秘高手雷卫留下的传承并开始修炼《星辰变》功法；可检验遗存/残存传承，须与常规拜师或任务报酬相区分。",
+        "why_relevant": "LEAD_ONLY：若存在当场可见的遗留传承场面，则覆盖遗存家族；百科综述不能证明发生过程。",
+        "interaction_tags": ["误入隐秘之地或遗存", "遭遇残存意志或无名施助"],
+        "location_hints": [
+          {"kind": "CHARACTER", "value": "雷卫", "basis": "SOURCE_STATED"},
+          {"kind": "EVENT_PHRASE", "value": "星辰变功法传承", "basis": "SOURCE_STATED"}
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E6%98%9F%E8%BE%B0%E5%8F%98/10988",
+          "title": "星辰变 - 百度百科",
+          "publisher": "Baidu",
+          "supports": ["WORK_IDENTITY", "SCENE_EXISTENCE_HINT", "LOCATION_HINT"]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    }
+  ]
+}

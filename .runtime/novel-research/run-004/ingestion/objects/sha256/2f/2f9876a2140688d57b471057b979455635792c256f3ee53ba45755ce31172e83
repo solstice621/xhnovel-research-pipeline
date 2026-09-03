@@ -1,0 +1,211 @@
+{
+  "candidates": [
+    {
+      "summary": "少年在后山怒掷古戒后，戒指自行归来并现出透明苍老人影；当场得知三年斗之气被其吸收，并被告知未经许可不再吸取。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+          "start": 0,
+          "end": 38
+        },
+        {
+          "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+          "start": 1059,
+          "end": 1114
+        },
+        {
+          "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+          "start": 820,
+          "end": 857
+        },
+        {
+          "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+          "start": 1339,
+          "end": 1372
+        },
+        {
+          "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+          "start": 858,
+          "end": 900
+        },
+        {
+          "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+          "start": 35,
+          "end": 74
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "透明苍老者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 0,
+            "end": 38
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1059,
+            "end": 1114
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "将手指上的黑色古戒掷下悬崖"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 820,
+            "end": 857
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "黑色古朴戒指",
+          "戒指中的残存老者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 820,
+            "end": 857
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1059,
+            "end": 1114
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "刚受当众悔婚后神不守舍，按习惯登上家族后山并佩戴古戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 0,
+            "end": 38
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 820,
+            "end": 857
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "残存老者现身；少年得知斗之气被其吸收并认定天赋已归来"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1059,
+            "end": 1114
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1339,
+            "end": 1372
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "戒指坠入悬崖后自行悬浮归来，并现出透明苍老人影开口认账"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 858,
+            "end": 900
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1059,
+            "end": 1114
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "离手的戒指径直掉下悬崖，随即自行归来悬浮在面前"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 858,
+            "end": 900
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1059,
+            "end": 1114
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "斗之气将不再被擅自吸取，少年可按归来的天赋重新修炼"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+            "start": 35,
+            "end": 74
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1339,
+            "end": 1372
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "老者称未经许可不再吸收斗之气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+            "start": 35,
+            "end": 74
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残存意志可长期依附已持有的信物偷吸斗气，并在宿主不知情时自行现身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1059,
+            "end": 1114
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+            "start": 35,
+            "end": 74
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,374 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎以三千莲心火煅烧从斗圣骸骨扳下的三根玉白肋骨，封印破解后肋骨化为暗金液体缠入手掌；金灵涎淬炼右掌并开拓隐秘经脉，造化圣者的记忆残片在记忆空间中传授天阶斗技大天造化掌，萧炎随即成功完成一次经脉循环。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "造化圣者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 1285,
+            "end": 1314
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 1260,
+            "end": 1276
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以三千莲心火煅烧三根肋骨",
+          "将手指插入暗金液体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 817,
+            "end": 835
+          },
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 1237,
+            "end": 1259
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "三根肋骨",
+          "大天造化掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 145,
+            "end": 185
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 482,
+            "end": 494
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "肋骨取自斗圣骸骨并隐藏天阶斗技秘密",
+          "骨骼表面设有封印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 145,
+            "end": 185
+          },
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 598,
+            "end": 608
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "肋骨化为暗金液体并沁入右掌",
+          "右掌被金灵涎淬炼并开拓隐秘经脉",
+          "获得大天造化掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 1108,
+            "end": 1123
+          },
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 1477,
+            "end": 1505
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 687,
+            "end": 715
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 1553,
+            "end": 1579
+          },
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 1565,
+            "end": 1576
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "暗金液体缠绕手指后沁入手掌",
+          "造化圣者记忆残片现身传授功法并警告须用淬炼之掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 1285,
+            "end": 1314
+          },
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 1477,
+            "end": 1505
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 313,
+            "end": 360
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 629,
+            "end": 668
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 916,
+            "end": 932
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "掌心剧痛并识得大天造化掌",
+          "右掌泛出暗金光芒",
+          "试练时斗气急速流逝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 1347,
+            "end": 1365
+          },
+          {
+            "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+            "start": 1565,
+            "end": 1576
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 1481,
+            "end": 1522
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-002",
+            "start": 738,
+            "end": 747
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可用被淬炼的右掌施展大天造化掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 629,
+            "end": 668
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-002",
+            "start": 635,
+            "end": 650
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-002",
+            "start": 1371,
+            "end": 1396
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "右掌暗金与隐秘循环经脉持续存在",
+          "经脉路线已记入脑海"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 1481,
+            "end": 1522
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 1553,
+            "end": 1579
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 960,
+            "end": 978
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-002",
+            "start": 1233,
+            "end": 1251
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "大天造化掌必须使用金灵涎淬炼并开拓隐秘经脉的手掌，否则能量无法破体而出并遭反噬"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 629,
+            "end": 668
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+            "start": 687,
+            "end": 715
+          },
+          {
+            "segment_id": "SEG-A73971A7549CF3FEDAE7-002",
+            "start": 68,
+            "end": 118
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+          "start": 1285,
+          "end": 1314
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+          "start": 1260,
+          "end": 1276
+        },
+        {
+          "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+          "start": 817,
+          "end": 835
+        },
+        {
+          "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+          "start": 1237,
+          "end": 1259
+        },
+        {
+          "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+          "start": 145,
+          "end": 185
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+          "start": 482,
+          "end": 494
+        },
+        {
+          "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+          "start": 598,
+          "end": 608
+        },
+        {
+          "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+          "start": 1108,
+          "end": 1123
+        },
+        {
+          "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+          "start": 1477,
+          "end": 1505
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+          "start": 687,
+          "end": 715
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+          "start": 1553,
+          "end": 1579
+        },
+        {
+          "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+          "start": 1565,
+          "end": 1576
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+          "start": 313,
+          "end": 360
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+          "start": 629,
+          "end": 668
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+          "start": 916,
+          "end": 932
+        },
+        {
+          "segment_id": "SEG-90A99468E3BAE4058FD1-002",
+          "start": 1347,
+          "end": 1365
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+          "start": 1481,
+          "end": 1522
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-002",
+          "start": 738,
+          "end": 747
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-002",
+          "start": 635,
+          "end": 650
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-002",
+          "start": 1371,
+          "end": 1396
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-001",
+          "start": 960,
+          "end": 978
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-002",
+          "start": 1233,
+          "end": 1251
+        },
+        {
+          "segment_id": "SEG-A73971A7549CF3FEDAE7-002",
+          "start": 68,
+          "end": 118
+        }
+      ]
+    }
+  ]
+}

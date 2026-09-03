@@ -1,0 +1,9 @@
+{
+  "artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+  "byte_length": 42,
+  "chapter_key": "chapter-000001-前置内容",
+  "final_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+  "http_status": null,
+  "media_type": "text/plain",
+  "retrieved_at": "2026-09-03T01:03:05Z"
+}

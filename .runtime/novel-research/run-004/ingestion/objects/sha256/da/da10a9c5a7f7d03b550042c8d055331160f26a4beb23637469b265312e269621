@@ -1,0 +1,259 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎要离开东龙岛时，烛离长老取出半圣才能制作的银色空间玉简递给他：日后有事捏碎即可自动开出空间通道传送回岛。萧炎当场收下。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "烛离"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 53,
+            "end": 72
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 139,
+            "end": 153
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 227,
+            "end": 244
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "烛离从纳戒取出银色空间玉简递给萧炎",
+          "萧炎接过玉简"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 198,
+            "end": 222
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 227,
+            "end": 244
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "银色空间玉简",
+          "通往东龙岛的空间通道"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 198,
+            "end": 222
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 139,
+            "end": 153
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 173,
+            "end": 196
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎因不能久留而准备离开，烛离并未阻拦"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 10,
+            "end": 27
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 53,
+            "end": 72
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "空间玉简从烛离纳戒交到萧炎手中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 198,
+            "end": 222
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 227,
+            "end": 244
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "烛离嘱咐日后要来东龙岛便将玉简捏碎",
+          "说明其中空间之力会自动形成传送通道"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 139,
+            "end": 153
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 154,
+            "end": 172
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 173,
+            "end": 196
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎没有拒绝，笑着接过",
+          "文中点明此玉简只有半圣以上强者才能制作"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 227,
+            "end": 244
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 245,
+            "end": 270
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "日后有事可捏碎玉简，自动开出空间通道传送回东龙岛"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 154,
+            "end": 172
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 173,
+            "end": 196
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "空间玉简已交给萧炎收好"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 139,
+            "end": 153
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 227,
+            "end": 244
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "临行时半圣长老把可捏碎召回东龙岛的空间玉简直接交给来客，不经交易议价或任务清单发放"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 10,
+            "end": 27
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 198,
+            "end": 222
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 154,
+            "end": 172
+          },
+          {
+            "segment_id": "SEG-5DCFB17BBE4550093418-002",
+            "start": 245,
+            "end": 270
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-5DCFB17BBE4550093418-002",
+          "start": 53,
+          "end": 72
+        },
+        {
+          "segment_id": "SEG-5DCFB17BBE4550093418-002",
+          "start": 139,
+          "end": 153
+        },
+        {
+          "segment_id": "SEG-5DCFB17BBE4550093418-002",
+          "start": 227,
+          "end": 244
+        },
+        {
+          "segment_id": "SEG-5DCFB17BBE4550093418-002",
+          "start": 198,
+          "end": 222
+        },
+        {
+          "segment_id": "SEG-5DCFB17BBE4550093418-002",
+          "start": 173,
+          "end": 196
+        },
+        {
+          "segment_id": "SEG-5DCFB17BBE4550093418-002",
+          "start": 10,
+          "end": 27
+        },
+        {
+          "segment_id": "SEG-5DCFB17BBE4550093418-002",
+          "start": 154,
+          "end": 172
+        },
+        {
+          "segment_id": "SEG-5DCFB17BBE4550093418-002",
+          "start": 245,
+          "end": 270
+        }
+      ]
+    }
+  ]
+}

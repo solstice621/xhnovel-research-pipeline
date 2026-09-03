@@ -1,0 +1,210 @@
+{
+  "candidates": [
+    {
+      "summary": "萧玄将完整版天火三玄变卷轴交到萧炎手中；萧炎接过卷轴贴于眉心，把其中大量信息收入脑海，并受命在离开天墓前尽量修炼出族纹。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+          "start": 15,
+          "end": 40
+        },
+        {
+          "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+          "start": 589,
+          "end": 614
+        },
+        {
+          "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+          "start": 669,
+          "end": 701
+        },
+        {
+          "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+          "start": 1267,
+          "end": 1337
+        },
+        {
+          "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+          "start": 1244,
+          "end": 1265
+        },
+        {
+          "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+          "start": 1374,
+          "end": 1394
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄",
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+            "start": 15,
+            "end": 40
+          },
+          {
+            "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+            "start": 589,
+            "end": 614
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎从萧玄手中接过卷轴，贴于眉心将信息收入脑海"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+            "start": 15,
+            "end": 40
+          },
+          {
+            "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+            "start": 669,
+            "end": 701
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "完整版本的天火三玄变卷轴"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+            "start": 1267,
+            "end": 1337
+          },
+          {
+            "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+            "start": 1244,
+            "end": 1265
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "绘着火焰图纹的卷轴出现在萧玄手中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+            "start": 1244,
+            "end": 1265
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "完整版天火三玄变到手，含可修炼出族纹的最后一步"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+            "start": 1374,
+            "end": 1394
+          },
+          {
+            "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+            "start": 1267,
+            "end": 1337
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄说明修成后可修炼出族纹，并让他好好观摩、尽量在离开前修出族纹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+            "start": 1267,
+            "end": 1337
+          },
+          {
+            "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+            "start": 589,
+            "end": 614
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "真正的完整版天火三玄变终于到手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+            "start": 1374,
+            "end": 1394
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可将卷轴信息收入脑海并尝试修炼出族纹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+            "start": 669,
+            "end": 701
+          },
+          {
+            "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+            "start": 1267,
+            "end": 1337
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "完整版功法已到手并被收入脑海"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+            "start": 1374,
+            "end": 1394
+          },
+          {
+            "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+            "start": 669,
+            "end": 701
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残魂交授的是功法缺失的最后一步，用来激活体内已有族纹，而非另赐一套新技能"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2CC2D54113FC18AB4F32-002",
+            "start": 1267,
+            "end": 1337
+          },
+          {
+            "segment_id": "SEG-D5BDFE09B7EEE86976C1-001",
+            "start": 15,
+            "end": 40
+          }
+        ]
+      }
+    }
+  ]
+}

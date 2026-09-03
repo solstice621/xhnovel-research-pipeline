@@ -1,0 +1,286 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎在地魔老鬼库房地阶木盒中摊开本以为无用的弄焰决，发现卷后有鲜红“真”字：地魔老鬼改进后可独自凝成假异火且后遗症大减，使他日后有望去掉毁灭火莲仅一次的限制。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 242,
+          "end": 255
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 334,
+          "end": 342
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 320,
+          "end": 325
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 410,
+          "end": 427
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 151,
+          "end": 163
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 590,
+          "end": 622
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 494,
+          "end": 507
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 522,
+          "end": 532
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 725,
+          "end": 744
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 440,
+          "end": 448
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 762,
+          "end": 775
+        },
+        {
+          "segment_id": "SEG-662FBA5034E1E43C362E-002",
+          "start": 697,
+          "end": 709
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 242,
+            "end": 255
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 334,
+            "end": 342
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "本欲随意收取弄焰决，见真字后把卷轴尽数摊开阅读"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 242,
+            "end": 255
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 320,
+            "end": 325
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "地魔老鬼改进后的真·弄焰决"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 320,
+            "end": 325
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 410,
+            "end": 427
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎早有弄焰决，因凝聚假异火后遗症巨大而未修",
+          "摊开时本以为又是无用重复"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 151,
+            "end": 163
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 590,
+            "end": 622
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 242,
+            "end": 255
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "从判定无用转为确认此决可独自凝成假异火、后遗症大减，毁灭火莲仅一次的限制有望解除"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 494,
+            "end": 507
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 522,
+            "end": 532
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 725,
+            "end": 744
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "卷轴写明地魔老鬼费多年心血改进，可独自修炼凝成假异火且后遗症大为削弱"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 410,
+            "end": 427
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 440,
+            "end": 448
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 494,
+            "end": 507
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 522,
+            "end": 532
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎愣住动容，认为地魔老鬼帮了大忙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 334,
+            "end": 342
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 762,
+            "end": 775
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可独自修炼凝成假异火",
+          "毁灭火莲有望不再受仅一次的限制"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 494,
+            "end": 507
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 697,
+            "end": 709
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 725,
+            "end": 744
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "改进之法已当场被萧炎读完并视为可修之物"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 410,
+            "end": 427
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 762,
+            "end": 775
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗存库房中看似重复的卷轴可藏有前人改进的真本，当场把已知功法的限制改写成可独自凝火、解除一次性禁制"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 242,
+            "end": 255
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 320,
+            "end": 325
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 410,
+            "end": 427
+          },
+          {
+            "segment_id": "SEG-662FBA5034E1E43C362E-002",
+            "start": 725,
+            "end": 744
+          }
+        ]
+      }
+    }
+  ]
+}

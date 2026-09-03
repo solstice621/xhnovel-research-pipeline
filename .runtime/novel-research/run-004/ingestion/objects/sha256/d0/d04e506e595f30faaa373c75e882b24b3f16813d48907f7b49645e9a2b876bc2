@@ -1,0 +1,397 @@
+{
+  "candidates": [
+    {
+      "summary": "用青莲地心火融化残破玉片后伸指浸入绿色液体，天火三玄变修炼信息当场灌入脑海。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+          "start": 228,
+          "end": 245
+        },
+        {
+          "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+          "start": 635,
+          "end": 663
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-001",
+          "start": 145,
+          "end": 155
+        },
+        {
+          "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+          "start": 702,
+          "end": 717
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+          "start": 290,
+          "end": 310
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+          "start": 350,
+          "end": 376
+        },
+        {
+          "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+          "start": 1519,
+          "end": 1525
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-001",
+          "start": 191,
+          "end": 228
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-001",
+          "start": 455,
+          "end": 481
+        },
+        {
+          "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+          "start": 1157,
+          "end": 1203
+        },
+        {
+          "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+          "start": 175,
+          "end": 193
+        },
+        {
+          "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+          "start": 468,
+          "end": 488
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+          "start": 377,
+          "end": 441
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+          "start": 487,
+          "end": 522
+        },
+        {
+          "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+          "start": 687,
+          "end": 701
+        },
+        {
+          "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+          "start": 1414,
+          "end": 1460
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+          "start": 813,
+          "end": 818
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+          "start": 213,
+          "end": 272
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+          "start": 1001,
+          "end": 1026
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+          "start": 1053,
+          "end": 1090
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+          "start": 872,
+          "end": 911
+        },
+        {
+          "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+          "start": 951,
+          "end": 989
+        },
+        {
+          "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+          "start": 209,
+          "end": 225
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 228,
+            "end": 245
+          },
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 635,
+            "end": 663
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-001",
+            "start": 145,
+            "end": 155
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "用青莲地心火融化玉片后，将手指伸进绿色液体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 702,
+            "end": 717
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 290,
+            "end": 310
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 350,
+            "end": 376
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "残破玉片中的天火三玄变",
+          "绿色晶莹液体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 1519,
+            "end": 1525
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-001",
+            "start": 191,
+            "end": 228
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-001",
+            "start": 455,
+            "end": 481
+          },
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 1157,
+            "end": 1203
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "已持残破玉片，须用火焰焚烧才能取出其中之物",
+          "紫火焚烧下玉片毫无动静"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 175,
+            "end": 193
+          },
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 228,
+            "end": 245
+          },
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 468,
+            "end": 488
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "秘法修炼信息灌入脑海，当场得到天火三玄变"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 350,
+            "end": 376
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 377,
+            "end": 441
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 487,
+            "end": 522
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "药老称其运气不错并改令改用青莲地心火",
+          "玉片融成绿色液体并涌出文字光幕",
+          "药老指认这是捡到的高级秘法"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 635,
+            "end": 663
+          },
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 687,
+            "end": 701
+          },
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 702,
+            "end": 717
+          },
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 1157,
+            "end": 1203
+          },
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 1414,
+            "end": 1460
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-001",
+            "start": 191,
+            "end": 228
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "读出天火三玄变之名",
+          "信息冲脑胀痛后盘腿消化",
+          "称极其满意"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 1519,
+            "end": 1525
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 377,
+            "end": 441
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 813,
+            "end": 818
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可修炼天火三玄变第一重变化",
+          "仅看光幕无法学会，须浸指才能得到修炼方式",
+          "日后需另寻异火并再向焚炎谷取剩余功法"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 213,
+            "end": 272
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 1001,
+            "end": 1026
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 1053,
+            "end": 1090
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "修炼信息已灌入脑海",
+          "玉片只记载第一重，后两重全无",
+          "焚炎谷手段使侥幸得法者也难以修炼完全"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 377,
+            "end": 441
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 872,
+            "end": 911
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 951,
+            "end": 989
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "越抗烧越珍贵，紫火无效后才被迫改用青莲地心火",
+          "光看光幕学不会，必须伸指浸入液体才真正得到修炼方式",
+          "即便侥幸得到也只有第一重"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 209,
+            "end": 225
+          },
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 468,
+            "end": 488
+          },
+          {
+            "segment_id": "SEG-BEFCDA88191C7BB039CD-002",
+            "start": 702,
+            "end": 717
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 213,
+            "end": 272
+          },
+          {
+            "segment_id": "SEG-A5E2E6BE5D4703E67179-002",
+            "start": 951,
+            "end": 989
+          }
+        ]
+      }
+    }
+  ]
+}

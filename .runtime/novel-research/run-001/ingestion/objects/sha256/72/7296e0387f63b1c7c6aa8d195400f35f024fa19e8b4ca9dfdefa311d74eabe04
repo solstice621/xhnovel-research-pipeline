@@ -1,0 +1,35 @@
+{
+  "limits": {
+    "max_bytes": 500000000,
+    "max_chapters": 100000
+  },
+  "request": {
+    "discovery_brief": "寻找对象的持有、所有、使用许可或约束状态发生变化，并影响角色后续可执行行动的场景。",
+    "mode": "EXPLORE"
+  },
+  "rights": {
+    "basis": "FAIR_USE_RESEARCH",
+    "may_export_excerpts": false,
+    "may_send_to_external_model": true,
+    "may_store_full_text": true
+  },
+  "scene_scout": {
+    "max_input_chars": 20000,
+    "max_request_bytes": 2000000,
+    "max_workers": 8,
+    "overlap_chars": 1800,
+    "window_chars": 10000
+  },
+  "source": {
+    "author": "xhnovel 测试组",
+    "kind": "txt",
+    "language": "zh",
+    "path": "/workspace/.runtime/exploration/run-001/input/novel.txt",
+    "title": "青岚令"
+  },
+  "source_quality": {
+    "edition_status": "USER_VERIFIED_COPY",
+    "textual_completeness": "COMPLETE"
+  },
+  "strict_order": false
+}

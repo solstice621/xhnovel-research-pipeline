@@ -1,0 +1,297 @@
+{
+  "candidates": [
+    {
+      "summary": "摘星老鬼用摘星手掐住紫研脖子将杀时，面前空间突然裂开，被无名力量丢来的熊战一拳砸向其头，逼他松手；这名不请自来的斗尊拖住摘星老鬼，萧炎得以把四种异火融成毁灭火莲。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1268,
+          "end": 1289
+        },
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1565,
+          "end": 1586
+        },
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1726,
+          "end": 1752
+        },
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1058,
+          "end": 1062
+        },
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1299,
+          "end": 1339
+        },
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1340,
+          "end": 1355
+        },
+        {
+          "segment_id": "SEG-E2EAB6F28E68DDAC4083-002",
+          "start": 774,
+          "end": 782
+        },
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1433,
+          "end": 1459
+        },
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1777,
+          "end": 1808
+        },
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1636,
+          "end": 1642
+        },
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1665,
+          "end": 1688
+        },
+        {
+          "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+          "start": 1537,
+          "end": 1548
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "紫研",
+          "摘星老鬼",
+          "熊战",
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1268,
+            "end": 1289
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1565,
+            "end": 1586
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1726,
+            "end": 1752
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1058,
+            "end": 1062
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "摘星老鬼以摘星手掐住紫研玉颈欲杀",
+          "空间裂缝中铁塔般身影暴起一拳砸向其头"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1058,
+            "end": 1062
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1268,
+            "end": 1289
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1299,
+            "end": 1339
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1340,
+            "end": 1355
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "紫研的咽喉",
+          "摘星老鬼的脑袋"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1268,
+            "end": 1289
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1299,
+            "end": 1339
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1340,
+            "end": 1355
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "紫研正为萧炎融合异火拖延摘星老鬼",
+          "摘星手已捏住她脖子将下杀手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E2EAB6F28E68DDAC4083-002",
+            "start": 774,
+            "end": 782
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1268,
+            "end": 1289
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "摘星老鬼被迫松手去接铁拳",
+          "不请自来的熊战加入战场",
+          "拖延成功使四色毁灭火莲在萧炎掌心成形"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1433,
+            "end": 1459
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1565,
+            "end": 1586
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1777,
+            "end": 1808
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "熊战自称不是想来，是被丢过来的",
+          "摘星老鬼察觉来者也是斗尊后眼皮直跳"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1636,
+            "end": 1642
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1665,
+            "end": 1688
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "紫研被松开后握着喉咙咳嗽",
+          "精美四色火莲缓缓悬浮在萧炎掌心"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1537,
+            "end": 1548
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1726,
+            "end": 1752
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "场上多出一名斗尊帮手去拦摘星老鬼",
+          "萧炎获得已融合的四种异火毁灭火莲"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1665,
+            "end": 1688
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1777,
+            "end": 1808
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "被丢来的熊战已现身站在紫研身旁",
+          "真正由四种异火组成的毁灭火莲已经融合出来"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1565,
+            "end": 1586
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1777,
+            "end": 1808
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "致命锁喉的瞬间，未点名的空间投掷把远游中的斗尊盟友砸进战场，当事人明确不是自己赶来",
+          "这次无名空间投送把拖时危机直接转成火莲完成窗口，难以用常规召唤或冷却技能表达"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1636,
+            "end": 1642
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1299,
+            "end": 1339
+          },
+          {
+            "segment_id": "SEG-05C35A01D6D78241C9F3-002",
+            "start": 1777,
+            "end": 1808
+          }
+        ]
+      }
+    }
+  ]
+}

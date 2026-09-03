@@ -1,0 +1,353 @@
+{
+  "candidates": [
+    {
+      "summary": "亡魂山脉夜里突遇噬石蚁潮、正要撤退时，紫研冲进寒雾，以太虚古龙威压收服暗金八翼噬石蚁后；蚁后当场指出魂殿方位并引路，途中清除传讯鸟眼线，众人由迷路转为摸到山谷中的黑色巨殿。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-603026143EAB1832E4F4-002",
+          "start": 1547,
+          "end": 1555
+        },
+        {
+          "segment_id": "SEG-1835401947455046BB3C-001",
+          "start": 232,
+          "end": 250
+        },
+        {
+          "segment_id": "SEG-603026143EAB1832E4F4-002",
+          "start": 1498,
+          "end": 1503
+        },
+        {
+          "segment_id": "SEG-603026143EAB1832E4F4-002",
+          "start": 1517,
+          "end": 1531
+        },
+        {
+          "segment_id": "SEG-603026143EAB1832E4F4-002",
+          "start": 1229,
+          "end": 1266
+        },
+        {
+          "segment_id": "SEG-1835401947455046BB3C-001",
+          "start": 613,
+          "end": 617
+        },
+        {
+          "segment_id": "SEG-603026143EAB1832E4F4-002",
+          "start": 1558,
+          "end": 1573
+        },
+        {
+          "segment_id": "SEG-1835401947455046BB3C-001",
+          "start": 1059,
+          "end": 1068
+        },
+        {
+          "segment_id": "SEG-603026143EAB1832E4F4-002",
+          "start": 1112,
+          "end": 1153
+        },
+        {
+          "segment_id": "SEG-603026143EAB1832E4F4-002",
+          "start": 1156,
+          "end": 1174
+        },
+        {
+          "segment_id": "SEG-1835401947455046BB3C-001",
+          "start": 159,
+          "end": 169
+        },
+        {
+          "segment_id": "SEG-603026143EAB1832E4F4-002",
+          "start": 1330,
+          "end": 1338
+        },
+        {
+          "segment_id": "SEG-603026143EAB1832E4F4-002",
+          "start": 1474,
+          "end": 1495
+        },
+        {
+          "segment_id": "SEG-1835401947455046BB3C-001",
+          "start": 1392,
+          "end": 1403
+        },
+        {
+          "segment_id": "SEG-1835401947455046BB3C-001",
+          "start": 1490,
+          "end": 1503
+        },
+        {
+          "segment_id": "SEG-1835401947455046BB3C-001",
+          "start": 1224,
+          "end": 1245
+        },
+        {
+          "segment_id": "SEG-1835401947455046BB3C-001",
+          "start": 662,
+          "end": 683
+        },
+        {
+          "segment_id": "SEG-1835401947455046BB3C-001",
+          "start": 1181,
+          "end": 1221
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "紫研",
+          "萧炎",
+          "噬石蚁后",
+          "风尊者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1547,
+            "end": 1555
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 232,
+            "end": 250
+          },
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1498,
+            "end": 1503
+          },
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1517,
+            "end": 1531
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "紫研突然冲进寒雾蚁群",
+          "带回蚁后并为众人引路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1229,
+            "end": 1266
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 613,
+            "end": 617
+          },
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1558,
+            "end": 1573
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "噬石蚁后",
+          "魂殿所在地",
+          "魂殿传讯鸟眼线"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1498,
+            "end": 1503
+          },
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1558,
+            "end": 1573
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 1059,
+            "end": 1068
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "众人刚入亡魂山脉便意外撞上致命噬石蚁群",
+          "风尊者下令撤退不要硬碰",
+          "紫研本体太虚古龙的血脉威压可震慑低阶魔兽"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1112,
+            "end": 1153
+          },
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1156,
+            "end": 1174
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 159,
+            "end": 169
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "蚁潮声音停止，蚁后温顺趴上紫研肩头",
+          "迷路搜山转为蚁后引路并摸到黑色巨殿"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1330,
+            "end": 1338
+          },
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1474,
+            "end": 1495
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 1392,
+            "end": 1403
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 1490,
+            "end": 1503
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "风尊者与铁剑尊者见到蚁后脸色剧变",
+          "蚁后以声波驱使魔蚁咬死隐藏的传讯鸟"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1517,
+            "end": 1531
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 1224,
+            "end": 1245
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "蚁群悉悉索索声尽数消失",
+          "紫研宣称这大家伙知道魂殿所在",
+          "深入后低声报到达"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1330,
+            "end": 1338
+          },
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1558,
+            "end": 1573
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 1392,
+            "end": 1403
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可跟随蚁后高速穿行亡魂山脉",
+          "附近魂殿眼线被暗中拔除，行迹暂不被传讯"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 662,
+            "end": 683
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 1224,
+            "end": 1245
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 1181,
+            "end": 1221
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "蚁后此后一直为他们带路直至巨殿眼前"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 613,
+            "end": 617
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 662,
+            "end": 683
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 1490,
+            "end": 1503
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "本应覆灭的蚁潮危机，因同伴龙威对蚁后的当场压制，立刻变成知道秘殿方位的向导",
+          "地图被寒雾作废后，向导还顺手清掉玩家感知不到的传讯鸟，否则抵达时陷阱已布好"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1112,
+            "end": 1153
+          },
+          {
+            "segment_id": "SEG-603026143EAB1832E4F4-002",
+            "start": 1558,
+            "end": 1573
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 1181,
+            "end": 1221
+          },
+          {
+            "segment_id": "SEG-1835401947455046BB3C-001",
+            "start": 159,
+            "end": 169
+          }
+        ]
+      }
+    }
+  ]
+}

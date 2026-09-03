@@ -1,0 +1,372 @@
+{
+  "candidates": [
+    {
+      "summary": "进化后的七彩光影在危机中急射而来，因森白火焰停在身前；少年用伴生紫晶源喂食后，小蛇缠腕钻进袖袍沉睡。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+          "start": 0,
+          "end": 28
+        },
+        {
+          "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+          "start": 487,
+          "end": 504
+        },
+        {
+          "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+          "start": 512,
+          "end": 520
+        },
+        {
+          "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+          "start": 333,
+          "end": 347
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-001",
+          "start": 299,
+          "end": 368
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-002",
+          "start": 336,
+          "end": 391
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-001",
+          "start": 1488,
+          "end": 1500
+        },
+        {
+          "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+          "start": 890,
+          "end": 937
+        },
+        {
+          "segment_id": "SEG-E1949D5BB2101A6358D2-001",
+          "start": 1098,
+          "end": 1115
+        },
+        {
+          "segment_id": "SEG-E1949D5BB2101A6358D2-001",
+          "start": 1339,
+          "end": 1365
+        },
+        {
+          "segment_id": "SEG-E1949D5BB2101A6358D2-001",
+          "start": 1407,
+          "end": 1444
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-001",
+          "start": 59,
+          "end": 80
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-001",
+          "start": 93,
+          "end": 112
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-001",
+          "start": 589,
+          "end": 627
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-001",
+          "start": 1453,
+          "end": 1468
+        },
+        {
+          "segment_id": "SEG-E1949D5BB2101A6358D2-001",
+          "start": 1393,
+          "end": 1406
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-002",
+          "start": 33,
+          "end": 82
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-002",
+          "start": 307,
+          "end": 335
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-001",
+          "start": 767,
+          "end": 780
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-001",
+          "start": 856,
+          "end": 878
+        },
+        {
+          "segment_id": "SEG-E08203828D3D1B351EA8-002",
+          "start": 507,
+          "end": 517
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "七彩小蛇",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+            "start": 0,
+            "end": 28
+          },
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+            "start": 487,
+            "end": 504
+          },
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+            "start": 512,
+            "end": 520
+          },
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+            "start": 333,
+            "end": 347
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "取出伴生紫晶源喂食，并劝小蛇跟随"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 299,
+            "end": 368
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-002",
+            "start": 336,
+            "end": 391
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 1488,
+            "end": 1500
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "七彩吞天蟒",
+          "七彩小蛇"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+            "start": 890,
+            "end": 937
+          },
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+            "start": 0,
+            "end": 28
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "七彩光影急射而来",
+          "小蛇如初生且记忆被破坏"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-001",
+            "start": 1098,
+            "end": 1115
+          },
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-001",
+            "start": 1339,
+            "end": 1365
+          },
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-001",
+            "start": 1407,
+            "end": 1444
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 59,
+            "end": 80
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 93,
+            "end": 112
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "小蛇戒备减少",
+          "蛇尾缠腕并溜进袖袍沉睡"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 589,
+            "end": 627
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 1453,
+            "end": 1468
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-002",
+            "start": 336,
+            "end": 391
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "小蛇因森白火焰骤停身前",
+          "对紫晶源瞬移抢食",
+          "体内高傲灵魂因紫晶源沉寂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-001",
+            "start": 1393,
+            "end": 1406
+          },
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-001",
+            "start": 1407,
+            "end": 1444
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 299,
+            "end": 368
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-002",
+            "start": 33,
+            "end": 82
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-002",
+            "start": 307,
+            "end": 335
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "药老指认面前小蛇即七彩吞天蟒与新躯体",
+          "少年打算将其收在身边"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E1949D5BB2101A6358D2-002",
+            "start": 890,
+            "end": 937
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 767,
+            "end": 780
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 856,
+            "end": 878
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可将幼生七彩吞天蟒收在身边，潜力不比掌控异火差"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 767,
+            "end": 780
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 856,
+            "end": 878
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-002",
+            "start": 336,
+            "end": 391
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "小蛇溜进袖袍沉睡"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-002",
+            "start": 336,
+            "end": 391
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-002",
+            "start": 507,
+            "end": 517
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中幼生远古异兽因记忆破坏而亲近眼前之人，可用紫晶源压过体内残存高傲灵魂，而非击杀掉落或契约面板"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 93,
+            "end": 112
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-001",
+            "start": 59,
+            "end": 80
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-002",
+            "start": 33,
+            "end": 82
+          },
+          {
+            "segment_id": "SEG-E08203828D3D1B351EA8-002",
+            "start": 307,
+            "end": 335
+          }
+        ]
+      }
+    }
+  ]
+}

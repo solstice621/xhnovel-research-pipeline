@@ -1,0 +1,398 @@
+{
+  "candidates": [
+    {
+      "summary": "魂殿黑雾趁萧炎力竭补刀时射出锁链取命，即将洞穿心脏之际，成天追杀他的美杜莎女王突然伸手抓住锁链拦住杀招，随即一脚踢向韩枫；萧炎由必死转为存活，韩枫失去气息。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-370C822BAA638DC927F8-003",
+          "start": 0,
+          "end": 68
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+          "start": 626,
+          "end": 647
+        },
+        {
+          "segment_id": "SEG-370C822BAA638DC927F8-002",
+          "start": 1426,
+          "end": 1442
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-002",
+          "start": 734,
+          "end": 746
+        },
+        {
+          "segment_id": "SEG-370C822BAA638DC927F8-002",
+          "start": 1359,
+          "end": 1389
+        },
+        {
+          "segment_id": "SEG-370C822BAA638DC927F8-003",
+          "start": 337,
+          "end": 394
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+          "start": 1106,
+          "end": 1129
+        },
+        {
+          "segment_id": "SEG-370C822BAA638DC927F8-002",
+          "start": 1456,
+          "end": 1480
+        },
+        {
+          "segment_id": "SEG-370C822BAA638DC927F8-003",
+          "start": 213,
+          "end": 237
+        },
+        {
+          "segment_id": "SEG-370C822BAA638DC927F8-003",
+          "start": 293,
+          "end": 308
+        },
+        {
+          "segment_id": "SEG-84ADF602229E342D6884-001",
+          "start": 973,
+          "end": 999
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+          "start": 12,
+          "end": 74
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+          "start": 479,
+          "end": 502
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-002",
+          "start": 1068,
+          "end": 1084
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-002",
+          "start": 1113,
+          "end": 1155
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+          "start": 75,
+          "end": 96
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+          "start": 752,
+          "end": 824
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+          "start": 539,
+          "end": 568
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+          "start": 959,
+          "end": 1019
+        },
+        {
+          "segment_id": "SEG-370C822BAA638DC927F8-003",
+          "start": 318,
+          "end": 326
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-002",
+          "start": 749,
+          "end": 765
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-002",
+          "start": 1240,
+          "end": 1282
+        },
+        {
+          "segment_id": "SEG-84ADF602229E342D6884-002",
+          "start": 528,
+          "end": 566
+        },
+        {
+          "segment_id": "SEG-84ADF602229E342D6884-001",
+          "start": 1023,
+          "end": 1080
+        },
+        {
+          "segment_id": "SEG-84ADF602229E342D6884-001",
+          "start": 1226,
+          "end": 1283
+        },
+        {
+          "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+          "start": 667,
+          "end": 695
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "美杜莎女王",
+          "韩枫",
+          "魂殿"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-003",
+            "start": 0,
+            "end": 68
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 626,
+            "end": 647
+          },
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-002",
+            "start": 1426,
+            "end": 1442
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-002",
+            "start": 734,
+            "end": 746
+          },
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-002",
+            "start": 1359,
+            "end": 1389
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "抓住即将洞穿萧炎心脏的漆黑铁链",
+          "一脚踢向韩枫腰腹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-003",
+            "start": 337,
+            "end": 394
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 1106,
+            "end": 1129
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "漆黑铁链",
+          "韩枫"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-002",
+            "start": 1456,
+            "end": 1480
+          },
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-003",
+            "start": 337,
+            "end": 394
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 1106,
+            "end": 1129
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎强弩之末，挥尺耗尽力量，面对暴射铁链没有躲避之力",
+          "锁链击中会立刻夺取性命，苏千抢救也来不及",
+          "美杜莎若袖手旁观，萧炎绝对难逃一死"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-003",
+            "start": 0,
+            "end": 68
+          },
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-003",
+            "start": 213,
+            "end": 237
+          },
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-003",
+            "start": 293,
+            "end": 308
+          },
+          {
+            "segment_id": "SEG-84ADF602229E342D6884-001",
+            "start": 973,
+            "end": 999
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "锁链被拦住，杀招停在萧炎脑门前一寸，未能取命",
+          "韩枫被踢后失去气息，成为尸体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 12,
+            "end": 74
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 479,
+            "end": 502
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-002",
+            "start": 1068,
+            "end": 1084
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "锁链被握得丝毫动弹不得",
+          "魂殿将韩枫灵魂体吸入黑雾"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 12,
+            "end": 74
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-002",
+            "start": 1113,
+            "end": 1155
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "突如其来的援手令所有人怔住",
+          "铁索尖刃停在距萧炎脑门一寸",
+          "萧炎被拍得急退十几步后坐倒在地"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 75,
+            "end": 96
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 479,
+            "end": 502
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 752,
+            "end": 824
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎保住性命，未死于锁链",
+          "萧炎连站起来的力气都没有，无法再补刀韩枫",
+          "美杜莎宣称他的命是她的，别人还没资格收"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-003",
+            "start": 337,
+            "end": 394
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 539,
+            "end": 568
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 959,
+            "end": 1019
+          },
+          {
+            "segment_id": "SEG-370C822BAA638DC927F8-003",
+            "start": 318,
+            "end": 326
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-002",
+            "start": 749,
+            "end": 765
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "魂殿日后会来收取药尘灵魂",
+          "美杜莎称这是最后一次留手，下一次定然不会再留手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-002",
+            "start": 1240,
+            "end": 1282
+          },
+          {
+            "segment_id": "SEG-84ADF602229E342D6884-002",
+            "start": 528,
+            "end": 566
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "追杀者本可袖手旁观致其必死，却因融合灵魂深处的眷恋牵引，在锁链命中前改出手拦截"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-84ADF602229E342D6884-001",
+            "start": 973,
+            "end": 999
+          },
+          {
+            "segment_id": "SEG-84ADF602229E342D6884-001",
+            "start": 1023,
+            "end": 1080
+          },
+          {
+            "segment_id": "SEG-84ADF602229E342D6884-001",
+            "start": 1226,
+            "end": 1283
+          },
+          {
+            "segment_id": "SEG-929F8CE5088AAF362DCC-001",
+            "start": 667,
+            "end": 695
+          }
+        ]
+      }
+    }
+  ]
+}

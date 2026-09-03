@@ -1,0 +1,5 @@
+{
+  "host": "cursor-cloud-task bc-5879c1f3-36e3-5288-9d13-d3466aac0cba",
+  "isolation_claim": "FRESH_SUBAGENT_NO_SEED_PAYLOAD",
+  "assurance": "HOST_ISOLATED_ATTESTED"
+}

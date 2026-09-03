@@ -1,0 +1,115 @@
+{
+  "candidates": [
+    {
+      "summary": "疗伤间隙药老从纳戒中翻出萧炎早先当便宜货买来的残破黑玉片，认出是焚炎谷储存器；按指引用火焚烧，紫火无效后改用青莲地心火将玉片炼化，当场喷出文字光幕，得到高级秘法「天火三玄变」。",
+      "source_spans": [
+        {"segment_id": "SEG-C72707F833CEC9012B65-002", "start": 1624, "end": 1651},
+        {"segment_id": "SEG-C72707F833CEC9012B65-002", "start": 1684, "end": 1713},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-001", "start": 1005, "end": 1013},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-001", "start": 1018, "end": 1031},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 133, "end": 138},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 139, "end": 154},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 175, "end": 226},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 468, "end": 487},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 607, "end": 634},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 691, "end": 717},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 887, "end": 909},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 1414, "end": 1460},
+        {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 1519, "end": 1525},
+        {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 45, "end": 65},
+        {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 191, "end": 203},
+        {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 206, "end": 228},
+        {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 255, "end": 309}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "药老"],
+        "support_spans": [
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-001", "start": 1005, "end": 1013},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 139, "end": 154}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["按药老指引用火焰焚烧残破玉片以取出其中所藏"],
+        "support_spans": [
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 133, "end": 138},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 175, "end": 226},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 887, "end": 909}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["残破黑色玉片", "其中所藏秘法"],
+        "support_spans": [
+          {"segment_id": "SEG-C72707F833CEC9012B65-002", "start": 1624, "end": 1651},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 175, "end": 226},
+          {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 206, "end": 228}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["玉片是萧炎在炼药师公会淘来的便宜货", "药老认出是须用火烧才能取出内容的焚炎谷储存器"],
+        "support_spans": [
+          {"segment_id": "SEG-C72707F833CEC9012B65-002", "start": 1684, "end": 1713},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-001", "start": 1018, "end": 1031},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 175, "end": 226}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["从不知用途的廉价残片转为炼化后半空展开「天火三玄变」高级秘法光幕"],
+        "support_spans": [
+          {"segment_id": "SEG-C72707F833CEC9012B65-002", "start": 1684, "end": 1713},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 1414, "end": 1460},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 1519, "end": 1525},
+          {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 206, "end": 228}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["紫火焚烧下玉片毫无动静", "青莲地心火下玉片融化并喷出文字信息流组成半空光幕与人体光像"],
+        "support_spans": [
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 468, "end": 487},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 1414, "end": 1460},
+          {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 45, "end": 65}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["药老先称遇见大鱼并改用青莲地心火", "萧炎读出「天火三玄变」", "药老确认捡到宝贝"],
+        "support_spans": [
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 607, "end": 634},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 691, "end": 717},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 1519, "end": 1525},
+          {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 191, "end": 203}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["获得可大幅度提升本体实力的特殊高级秘法「天火三玄变」"],
+        "support_spans": [
+          {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 206, "end": 228},
+          {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 255, "end": 309}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["秘法已以半空光幕与人体路线图形式展开，成为当场可读的传承信息"],
+        "support_spans": [
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 1414, "end": 1460},
+          {"segment_id": "SEG-A5E2E6BE5D4703E67179-001", "start": 45, "end": 65}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["已持有的廉价残玉必须用足够强的火才能打开，耐烧程度决定珍稀度；内容以信息流光幕展开而非交易授予"],
+        "support_spans": [
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 175, "end": 226},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 468, "end": 487},
+          {"segment_id": "SEG-BEFCDA88191C7BB039CD-002", "start": 1414, "end": 1460}
+        ]
+      }
+    }
+  ]
+}

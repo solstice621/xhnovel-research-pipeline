@@ -1,0 +1,126 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎晋阶后火印突兀颤动，他将灵魂力量冲入药老所留灵魂火印，沿森白火焰小道窥见关押众多灵魂的大殿并认出被囚的药老；随即空间碎裂，恐怖灵魂将这道残体震碎，他冷汗惊醒，确认所见是魂殿且药老仍活着。",
+      "source_spans": [
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 55, "end": 67},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 687, "end": 705},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 697, "end": 725},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 726, "end": 744},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 781, "end": 830},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 879, "end": 899},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1044, "end": 1062},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1064, "end": 1085},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1225, "end": 1246},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1343, "end": 1359},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1361, "end": 1370},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1413, "end": 1426},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1427, "end": 1487},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1498, "end": 1529},
+        {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1530, "end": 1571},
+        {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 116, "end": 137},
+        {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 138, "end": 166},
+        {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 197, "end": 225},
+        {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 227, "end": 261},
+        {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 293, "end": 319},
+        {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 320, "end": 336},
+        {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 406, "end": 423}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "药老", "魂殿守护者"],
+        "support_spans": [
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1064, "end": 1085},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1343, "end": 1359},
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 138, "end": 166}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["抚摸额头森白火焰印记，将灵魂力量径直冲进火印", "灵魂沿火焰小道冲入火焰空洞"],
+        "support_spans": [
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 697, "end": 725},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 781, "end": 830},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1064, "end": 1085}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["药老遗留的灵魂火印", "火印另一端被囚的药老"],
+        "support_spans": [
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 697, "end": 725},
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 116, "end": 137},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1343, "end": 1359}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["萧炎已感到斗皇、灵魂力量刚欲深敛", "额间火印突兀颤动且灵魂深处莫名震动"],
+        "support_spans": [
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 55, "end": 67},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 687, "end": 705},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 726, "end": 744},
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 406, "end": 423}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["从只知药老被抓，变为亲眼看见其被困魂殿大殿", "窥测残体被恐怖灵魂震碎成虚无"],
+        "support_spans": [
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1343, "end": 1359},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1361, "end": 1370},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1427, "end": 1487},
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 293, "end": 319}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["火印内出现森白火焰小道与火焰空洞", "大殿中光团关着活生生灵魂体", "空间如镜碎裂，恐怖灵魂一触将残体震碎"],
+        "support_spans": [
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 879, "end": 899},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1044, "end": 1062},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1225, "end": 1246},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1413, "end": 1426},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1427, "end": 1487}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["认出光团中的老者是被魂殿抓走的药老", "山谷中萧炎睁眼冷汗遍布、眼含骇然"],
+        "support_spans": [
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1343, "end": 1359},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1361, "end": 1370},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1498, "end": 1529}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["确认药老仍活着，仍有解救机会", "得知魂殿内有远超鹜护法的恐怖灵魂，此刻仍不是对手"],
+        "support_spans": [
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 293, "end": 319},
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 320, "end": 336},
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 197, "end": 225},
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 227, "end": 261}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["所见之地被确认是神秘魂殿", "药老仍被困其中活着"],
+        "support_spans": [
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1530, "end": 1571},
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 293, "end": 319}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["借助老师遗留火印窥测敌方核心，会立刻被更强守护灵魂察觉并粉碎残体", "情报与暴露同时到来，不能当成安全的地图揭示"],
+        "support_spans": [
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 116, "end": 137},
+          {"segment_id": "SEG-74A3620E24B432AF1DF0-001", "start": 138, "end": 166},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1427, "end": 1487},
+          {"segment_id": "SEG-AE8FC7407289782B1CB8-002", "start": 1530, "end": 1571}
+        ]
+      }
+    }
+  ]
+}

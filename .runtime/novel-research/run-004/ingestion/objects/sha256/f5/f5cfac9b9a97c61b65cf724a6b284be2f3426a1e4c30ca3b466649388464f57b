@@ -1,0 +1,471 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎跃入天焚炼气塔底深洞的瞬间感受到下方极淡莫名召唤并惊咦，但该召唤只持续一瞬便散去，令他怀疑只是错觉。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "苏千"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1341,
+            "end": 1364
+          },
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "咬牙后跃入塔底深洞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1409,
+            "end": 1428
+          },
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1429,
+            "end": 1442
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "深洞下方遥远处"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "苏千已允许试探并在洞口把守"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1341,
+            "end": 1364
+          },
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1365,
+            "end": 1383
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "下潜修炼被未知召唤打断"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "下方传来极淡莫名召唤，一瞬后散于无形"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          },
+          {
+            "segment_id": "SEG-E0442FFF81DB6D19A95E-001",
+            "start": 176,
+            "end": 208
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎惊咦，随即怀疑是否错觉"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          },
+          {
+            "segment_id": "SEG-E0442FFF81DB6D19A95E-001",
+            "start": 209,
+            "end": 232
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可继续留意召唤是否再现"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          },
+          {
+            "segment_id": "SEG-E0442FFF81DB6D19A95E-001",
+            "start": 176,
+            "end": 208
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "此次召唤仅持续一瞬便散去"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E0442FFF81DB6D19A95E-001",
+            "start": 176,
+            "end": 208
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "已获准进入的修炼通道可在跃入瞬间叠加无名召唤，且该牵引可以闪现即逝、令当事人无法当场确认"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          },
+          {
+            "segment_id": "SEG-E0442FFF81DB6D19A95E-001",
+            "start": 176,
+            "end": 208
+          },
+          {
+            "segment_id": "SEG-E0442FFF81DB6D19A95E-001",
+            "start": 209,
+            "end": 232
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-3C96D012DA1588C9162E-002",
+          "start": 1341,
+          "end": 1364
+        },
+        {
+          "segment_id": "SEG-3C96D012DA1588C9162E-002",
+          "start": 1449,
+          "end": 1523
+        },
+        {
+          "segment_id": "SEG-3C96D012DA1588C9162E-002",
+          "start": 1409,
+          "end": 1428
+        },
+        {
+          "segment_id": "SEG-3C96D012DA1588C9162E-002",
+          "start": 1429,
+          "end": 1442
+        },
+        {
+          "segment_id": "SEG-3C96D012DA1588C9162E-002",
+          "start": 1365,
+          "end": 1383
+        },
+        {
+          "segment_id": "SEG-E0442FFF81DB6D19A95E-001",
+          "start": 176,
+          "end": 208
+        },
+        {
+          "segment_id": "SEG-E0442FFF81DB6D19A95E-001",
+          "start": 209,
+          "end": 232
+        }
+      ]
+    },
+    {
+      "summary": "岩浆中召唤再度加强并锁定体内陨落心炎后，萧炎冒险下潜；他弹出的无形火焰不受控制地急掠深处，他咬牙跟上，被异火当成路标牵引。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E0442FFF81DB6D19A95E-002",
+            "start": 1318,
+            "end": 1415
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 901,
+            "end": 931
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "弹出陨落心炎并咬牙跟上其不受控制的下潜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 821,
+            "end": 841
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 901,
+            "end": 931
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 932,
+            "end": 944
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "对陨落心炎发出召唤的岩浆深处"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E0442FFF81DB6D19A95E-002",
+            "start": 1318,
+            "end": 1415
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 945,
+            "end": 971
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "召唤已锁定体内陨落心炎且强度陡增，萧炎决定冒险下潜",
+          "他是陨落心炎主人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E0442FFF81DB6D19A95E-002",
+            "start": 1318,
+            "end": 1415
+          },
+          {
+            "segment_id": "SEG-6D32CE9399498BCAF724-002",
+            "start": 1393,
+            "end": 1411
+          },
+          {
+            "segment_id": "SEG-6D32CE9399498BCAF724-002",
+            "start": 1546,
+            "end": 1558
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 208,
+            "end": 234
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "体内异火脱离控制，化为引路火影带他向岩浆深处急掠"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 843,
+            "end": 899
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 1057,
+            "end": 1077
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "弹出的无形火焰自行偏移并对准深处急掠而下，如同引路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 843,
+            "end": 899
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 1057,
+            "end": 1077
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎微惊后确认深处有物在召唤陨落心炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 901,
+            "end": 931
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 945,
+            "end": 971
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可沿失控异火下潜追查召唤源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 932,
+            "end": 944
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 1057,
+            "end": 1077
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "火焰仍执着下潜、未在本窗停止"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 843,
+            "end": 899
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 1057,
+            "end": 1077
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "已炼化异火可被未知召唤夺去控制权并充当路标，把持有者从主动探索改写成被迫跟随"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 843,
+            "end": 899
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 932,
+            "end": 944
+          },
+          {
+            "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+            "start": 945,
+            "end": 971
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-E0442FFF81DB6D19A95E-002",
+          "start": 1318,
+          "end": 1415
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+          "start": 901,
+          "end": 931
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+          "start": 821,
+          "end": 841
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+          "start": 932,
+          "end": 944
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+          "start": 945,
+          "end": 971
+        },
+        {
+          "segment_id": "SEG-6D32CE9399498BCAF724-002",
+          "start": 1393,
+          "end": 1411
+        },
+        {
+          "segment_id": "SEG-6D32CE9399498BCAF724-002",
+          "start": 1546,
+          "end": 1558
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+          "start": 208,
+          "end": 234
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+          "start": 843,
+          "end": 899
+        },
+        {
+          "segment_id": "SEG-B5E93C64A01841FA1FC2-001",
+          "start": 1057,
+          "end": 1077
+        }
+      ]
+    }
+  ]
+}

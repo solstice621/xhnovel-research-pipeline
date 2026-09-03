@@ -1,0 +1,355 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎在祭坛等候时探入地眼，意外发现并夺取地心珠；珠体遇阳光涌出阳火，并可吸引火属性能量。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 1468,
+            "end": 1513
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 551,
+            "end": 573
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以灵魂力量席卷地心珠冲出地眼并抓入手心"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 1198,
+            "end": 1225
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 1468,
+            "end": 1513
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "地心珠"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-31F96F84ACAAD5D8F5DA-002",
+            "start": 1493,
+            "end": 1499
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 1468,
+            "end": 1513
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 364,
+            "end": 387
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎在祭坛地眼中因无聊探视而发现被血红粘稠能量封住的珠体",
+          "粘稠液体火光会间歇降到最黯"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-31F96F84ACAAD5D8F5DA-001",
+            "start": 819,
+            "end": 873
+          },
+          {
+            "segment_id": "SEG-31F96F84ACAAD5D8F5DA-002",
+            "start": 926,
+            "end": 965
+          },
+          {
+            "segment_id": "SEG-31F96F84ACAAD5D8F5DA-002",
+            "start": 1402,
+            "end": 1420
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 728,
+            "end": 740
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 895,
+            "end": 926
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 511,
+            "end": 521
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "地心珠从地眼转入萧炎手心",
+          "地眼被石碑与祭坛光束镇压"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 1468,
+            "end": 1513
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 1535,
+            "end": 1567
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 77,
+            "end": 108
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "血红粘稠能量化为血色山洪追击逃出的灵魂",
+          "石碑受冲击后由祭坛光束覆盖镇压"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 1238,
+            "end": 1274
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 5,
+            "end": 26
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 77,
+            "end": 108
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "火红珠体躺在萧炎掌心",
+          "周遭火属性能量向其身旁凝聚",
+          "阳光照射后地心珠涌出白色火焰"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 364,
+            "end": 387
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 443,
+            "end": 472
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 727,
+            "end": 759
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 797,
+            "end": 821
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "地心珠可吸引周遭火属性能量",
+          "地心珠与阳光接触后可化为阳火源头"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 497,
+            "end": 519
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 931,
+            "end": 981
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 988,
+            "end": 1019
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "地心珠能量不消散则可源源不断制造阳火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-002",
+            "start": 988,
+            "end": 1019
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "须在狂暴地心能量火光最黯的间歇抢夺，并赶在血色山洪击中前逃出狭窄地眼"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 728,
+            "end": 740
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 895,
+            "end": 926
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 1238,
+            "end": 1274
+          },
+          {
+            "segment_id": "SEG-E8901545A3491C8AA888-001",
+            "start": 1468,
+            "end": 1513
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-001",
+          "start": 1468,
+          "end": 1513
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-001",
+          "start": 551,
+          "end": 573
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-001",
+          "start": 1198,
+          "end": 1225
+        },
+        {
+          "segment_id": "SEG-31F96F84ACAAD5D8F5DA-002",
+          "start": 1493,
+          "end": 1499
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-002",
+          "start": 364,
+          "end": 387
+        },
+        {
+          "segment_id": "SEG-31F96F84ACAAD5D8F5DA-001",
+          "start": 819,
+          "end": 873
+        },
+        {
+          "segment_id": "SEG-31F96F84ACAAD5D8F5DA-002",
+          "start": 926,
+          "end": 965
+        },
+        {
+          "segment_id": "SEG-31F96F84ACAAD5D8F5DA-002",
+          "start": 1402,
+          "end": 1420
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-001",
+          "start": 728,
+          "end": 740
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-001",
+          "start": 895,
+          "end": 926
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-001",
+          "start": 511,
+          "end": 521
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-001",
+          "start": 1535,
+          "end": 1567
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-002",
+          "start": 77,
+          "end": 108
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-001",
+          "start": 1238,
+          "end": 1274
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-002",
+          "start": 5,
+          "end": 26
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-002",
+          "start": 443,
+          "end": 472
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-002",
+          "start": 727,
+          "end": 759
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-002",
+          "start": 797,
+          "end": 821
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-002",
+          "start": 497,
+          "end": 519
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-002",
+          "start": 931,
+          "end": 981
+        },
+        {
+          "segment_id": "SEG-E8901545A3491C8AA888-002",
+          "start": 988,
+          "end": 1019
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "explicit_scope": {
+    "genres": {
+      "exclude": [],
+      "include": [
+        "玄幻"
+      ]
+    },
+    "scope_origin": "USER_EXPLICIT"
+  },
+  "neutral_goal_text": "帮我收集各种玄幻小说里的“奇遇”",
+  "neutral_input_id": "NPI-DF476D6EC4E27402DDAD",
+  "schema_version": "0.2-draft"
+}

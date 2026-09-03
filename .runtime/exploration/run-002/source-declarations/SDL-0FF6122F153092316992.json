@@ -1,0 +1,47 @@
+{
+  "declaration_hash": "sha256:7e6b1a9df363fa41d2dffdc65add791eb5cf0c78c399ed10369a958512828019",
+  "declared_at": "2026-09-03T01:21:00Z",
+  "edition_label": "起点中文网 bookresource.qq.com 官方阅读页（VIP 章节不可全文抓取）",
+  "operator_attestation_id": "OPA-89478E55445209B7F25B",
+  "rights": {
+    "basis": "FAIR_USE_RESEARCH",
+    "may_export_excerpts": false,
+    "may_send_to_external_model": true,
+    "may_store_full_text": true
+  },
+  "schema_version": "0.2-draft",
+  "source": {
+    "author": "天蚕土豆",
+    "chapter_url_pattern": "/chapter/1209977/[0-9]+/",
+    "index_url": "https://wuxia.bookresource.qq.com/book/1209977/",
+    "kind": "site",
+    "language": "zh",
+    "title": "斗破苍穹"
+  },
+  "source_declaration_id": "SDL-0FF6122F153092316992",
+  "source_quality": {
+    "edition_status": "OFFICIAL",
+    "textual_completeness": "PARTIAL"
+  },
+  "work": {
+    "aliases": [
+      "Battle Through the Heavens",
+      "《斗破苍穹》"
+    ],
+    "author": "天蚕土豆",
+    "canonical_title": "斗破苍穹",
+    "external_ids": [
+      {
+        "namespace": "qidian",
+        "value": "1209977"
+      }
+    ],
+    "identity": {
+      "basis": "TITLE_AUTHOR",
+      "language": "zh",
+      "normalized_author": "天蚕土豆",
+      "normalized_title": "斗破苍穹"
+    },
+    "language": "zh"
+  }
+}

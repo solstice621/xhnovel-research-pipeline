@@ -1,0 +1,335 @@
+{
+  "candidates": [
+    {
+      "summary": "天妖凰族四名五星斗尊合围、三人扑向紫研手中龙凰本源果时，空间突然裂开，未报身份的太虚古龙跨空降临，一掌扇飞凰轩三人并划缝带走萧炎一行。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+          "start": 125,
+          "end": 147
+        },
+        {
+          "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+          "start": 236,
+          "end": 252
+        },
+        {
+          "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+          "start": 880,
+          "end": 896
+        },
+        {
+          "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+          "start": 948,
+          "end": 956
+        },
+        {
+          "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+          "start": 173,
+          "end": 186
+        },
+        {
+          "segment_id": "SEG-2ABB79AC6B04DE426F31-001",
+          "start": 401,
+          "end": 419
+        },
+        {
+          "segment_id": "SEG-F95358EE28C2FA2FB330-002",
+          "start": 711,
+          "end": 717
+        },
+        {
+          "segment_id": "SEG-F95358EE28C2FA2FB330-002",
+          "start": 646,
+          "end": 659
+        },
+        {
+          "segment_id": "SEG-F95358EE28C2FA2FB330-002",
+          "start": 1115,
+          "end": 1140
+        },
+        {
+          "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+          "start": 195,
+          "end": 209
+        },
+        {
+          "segment_id": "SEG-2ABB79AC6B04DE426F31-001",
+          "start": 462,
+          "end": 478
+        },
+        {
+          "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+          "start": 148,
+          "end": 170
+        },
+        {
+          "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+          "start": 218,
+          "end": 234
+        },
+        {
+          "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+          "start": 308,
+          "end": 332
+        },
+        {
+          "segment_id": "SEG-2ABB79AC6B04DE426F31-001",
+          "start": 641,
+          "end": 676
+        },
+        {
+          "segment_id": "SEG-2ABB79AC6B04DE426F31-001",
+          "start": 1014,
+          "end": 1021
+        },
+        {
+          "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+          "start": 1253,
+          "end": 1262
+        },
+        {
+          "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+          "start": 1321,
+          "end": 1336
+        },
+        {
+          "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+          "start": 1360,
+          "end": 1380
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "紫研",
+          "黑擎",
+          "凰轩"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 125,
+            "end": 147
+          },
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 236,
+            "end": 252
+          },
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+            "start": 880,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+            "start": 948,
+            "end": 956
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "壮硕身影跨越空间而出并隔空扇掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 173,
+            "end": 186
+          },
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-001",
+            "start": 401,
+            "end": 419
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "扑向龙凰本源果的凰轩三人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 125,
+            "end": 147
+          },
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 236,
+            "end": 252
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "广场已被天妖凰族包围，四名五星斗尊令他们插翅难飞",
+          "三人正要抓住紫研手上的龙凰本源果"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-002",
+            "start": 711,
+            "end": 717
+          },
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-002",
+            "start": 646,
+            "end": 659
+          },
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-002",
+            "start": 1115,
+            "end": 1140
+          },
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 125,
+            "end": 147
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "扑果身形被威压凝固，三人被一掌扇出巴掌印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 195,
+            "end": 209
+          },
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 236,
+            "end": 252
+          },
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-001",
+            "start": 462,
+            "end": 478
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "空间突然裂开",
+          "天妖凰族强者面色苍白"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 148,
+            "end": 170
+          },
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 218,
+            "end": 234
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "跨空者怒笑自称太虚古龙",
+          "在场骇见五星斗尊接不下这一掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 308,
+            "end": 332
+          },
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-001",
+            "start": 641,
+            "end": 676
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "当场无人再敢抢果",
+          "可经空间裂缝撤离"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-001",
+            "start": 1014,
+            "end": 1021
+          },
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+            "start": 1253,
+            "end": 1262
+          },
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+            "start": 1321,
+            "end": 1336
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "黑擎划开空间裂缝带走萧炎等人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+            "start": 880,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+            "start": 1321,
+            "end": 1336
+          },
+          {
+            "segment_id": "SEG-2ABB79AC6B04DE426F31-002",
+            "start": 1360,
+            "end": 1380
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "果子即将被抢走的瞬间，未预先现身的太虚古龙从空间裂缝介入，一掌改写四名五星斗尊的合围"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 125,
+            "end": 147
+          },
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 148,
+            "end": 170
+          },
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-003",
+            "start": 173,
+            "end": 186
+          },
+          {
+            "segment_id": "SEG-F95358EE28C2FA2FB330-002",
+            "start": 646,
+            "end": 659
+          }
+        ]
+      }
+    }
+  ]
+}

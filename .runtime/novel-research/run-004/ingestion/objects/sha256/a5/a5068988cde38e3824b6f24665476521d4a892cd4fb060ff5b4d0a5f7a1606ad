@@ -1,0 +1,297 @@
+{
+  "candidates": [
+    {
+      "summary": "神农与万火把雏丹当作造化送出，连同先前吞下的魂虚子雏丹一并灌入，四枚异种能量偶然弥合缺陷，丹雨降下九品玄丹出世，萧炎以灵魂印记收进玉瓶。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 830,
+          "end": 848
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 902,
+          "end": 922
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 1020,
+          "end": 1037
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 1142,
+          "end": 1153
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 332,
+          "end": 348
+        },
+        {
+          "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+          "start": 588,
+          "end": 600
+        },
+        {
+          "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+          "start": 690,
+          "end": 706
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 1553,
+          "end": 1561
+        },
+        {
+          "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+          "start": 636,
+          "end": 660
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 849,
+          "end": 859
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 1071,
+          "end": 1091
+        },
+        {
+          "segment_id": "SEG-6E87E50B4D63D654F6F0-001",
+          "start": 275,
+          "end": 286
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 1234,
+          "end": 1252
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 1467,
+          "end": 1477
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "小伊",
+          "神农老人",
+          "万火长老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 830,
+            "end": 848
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 902,
+            "end": 922
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1020,
+            "end": 1037
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1142,
+            "end": 1153
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "吞炼他人雏丹并在丹成后以灵魂印记收服九品玄丹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 332,
+            "end": 348
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1142,
+            "end": 1153
+          },
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+            "start": 588,
+            "end": 600
+          },
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+            "start": 690,
+            "end": 706
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "九品玄丹",
+          "三枚他人雏丹的能量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1553,
+            "end": 1561
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1142,
+            "end": 1153
+          },
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+            "start": 636,
+            "end": 660
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "能量不足时神农送出造化，万火也甩出雏丹",
+          "此番成功带有幸运成分"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 849,
+            "end": 859
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1071,
+            "end": 1091
+          },
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-001",
+            "start": 275,
+            "end": 286
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "鼎中涌现细小光点",
+          "丹雨降、玄丹出",
+          "化形丹药被印记收成浑圆丹药"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1234,
+            "end": 1252
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1553,
+            "end": 1561
+          },
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+            "start": 636,
+            "end": 660
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "天空降下盛大丹雨",
+          "玄丹化形逃窜后被灵魂印记收服"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1467,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+            "start": 588,
+            "end": 600
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "丹雨降，玄丹出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1553,
+            "end": 1561
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "持有被封印的九品玄丹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+            "start": 690,
+            "end": 706
+          },
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+            "start": 636,
+            "end": 660
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "九品玄丹被小心放入设有灵魂封印的玉瓶"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+            "start": 690,
+            "end": 706
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "四枚异种雏丹残药性偶然弥合缺陷才炼成，丹成后仍会化形逃走，必须补上灵魂印记才算拿到手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-001",
+            "start": 275,
+            "end": 286
+          },
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+            "start": 588,
+            "end": 600
+          },
+          {
+            "segment_id": "SEG-6E87E50B4D63D654F6F0-002",
+            "start": 690,
+            "end": 706
+          }
+        ]
+      }
+    }
+  ]
+}

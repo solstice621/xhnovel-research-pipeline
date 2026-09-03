@@ -1,0 +1,256 @@
+{
+  "candidates": [
+    {
+      "summary": "九玄金雷聚灵失败后不反抗，萧炎抽取其毁灭力量封入小伊并植入灵气种子，雷龙铭记他，离池后小伊手臂现出金色龙纹。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 891,
+          "end": 915
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 1304,
+          "end": 1326
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 790,
+          "end": 805
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 942,
+          "end": 969
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 1243,
+          "end": 1245
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 1457,
+          "end": 1480
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 613,
+          "end": 620
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 994,
+          "end": 1034
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 1672,
+          "end": 1698
+        },
+        {
+          "segment_id": "SEG-074B109D45A6113C05BE-001",
+          "start": 312,
+          "end": 321
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 1327,
+          "end": 1356
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "九玄金雷",
+          "小伊"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 891,
+            "end": 915
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1304,
+            "end": 1326
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "抽取九玄金雷力量并封入小伊，再植入灵气种子助其聚灵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 790,
+            "end": 805
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 942,
+            "end": 969
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1243,
+            "end": 1245
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1457,
+            "end": 1480
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "九玄金雷体内的毁灭力量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 942,
+            "end": 969
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "聚灵失败",
+          "九玄金雷极度虚弱且没有反抗"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 613,
+            "end": 620
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 994,
+            "end": 1034
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "毁灭力量被封成迷你雷龙钻进小伊体内",
+          "九玄金雷缩小并获得灵智"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1304,
+            "end": 1326
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1457,
+            "end": 1480
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "九玄金雷没有反抗",
+          "新生雷龙把第一眼看见的人永世记下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 994,
+            "end": 1034
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1672,
+            "end": 1698
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "抽取出乎意料的顺利",
+          "小伊手臂上多出金色龙纹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 994,
+            "end": 1034
+          },
+          {
+            "segment_id": "SEG-074B109D45A6113C05BE-001",
+            "start": 312,
+            "end": 321
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "获得封存在小伊体内的九玄金雷毁灭力量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1304,
+            "end": 1326
+          },
+          {
+            "segment_id": "SEG-074B109D45A6113C05BE-001",
+            "start": 312,
+            "end": 321
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "金色龙纹留在小伊体内继续波动",
+          "九玄金雷将萧炎永世不忘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-074B109D45A6113C05BE-001",
+            "start": 312,
+            "end": 321
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1672,
+            "end": 1698
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "虚弱残存物愿意以力量换灵智，但抽走的毁灭之力只能封进火灵而不能吸入人体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 994,
+            "end": 1034
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1327,
+            "end": 1356
+          }
+        ]
+      }
+    }
+  ]
+}

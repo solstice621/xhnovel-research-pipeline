@@ -1,0 +1,332 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎在最后一轮首次转火失败、药老沉睡无法指引后，于绝地高压中介入似睡似醒的奇异状态，灵魂力量当场大增，异火裹身，提炼速度近乎倍增。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-7AA11944B727654158DB-003",
+          "start": 1021,
+          "end": 1072
+        },
+        {
+          "segment_id": "SEG-954293699302A2AA3EFB-002",
+          "start": 140,
+          "end": 167
+        },
+        {
+          "segment_id": "SEG-954293699302A2AA3EFB-002",
+          "start": 200,
+          "end": 267
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+          "start": 115,
+          "end": 164
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+          "start": 240,
+          "end": 305
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+          "start": 324,
+          "end": 345
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+          "start": 510,
+          "end": 534
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+          "start": 576,
+          "end": 635
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+          "start": 642,
+          "end": 674
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+          "start": 703,
+          "end": 794
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+          "start": 97,
+          "end": 131
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+          "start": 700,
+          "end": 759
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+          "start": 775,
+          "end": 807
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+          "start": 941,
+          "end": 968
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+          "start": 1002,
+          "end": 1033
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+          "start": 1164,
+          "end": 1193
+        },
+        {
+          "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+          "start": 1259,
+          "end": 1282
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 240,
+            "end": 305
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "清开失败灰烬后再次摆出药材，使体内青火涌出并将全身包裹，闭目介入似睡似醒状态继续炼丹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 115,
+            "end": 164
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 240,
+            "end": 305
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+            "start": 700,
+            "end": 759
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "自身灵魂力量与炼丹控火状态"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 510,
+            "end": 534
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 703,
+            "end": 794
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "首次火焰转换失败，药鼎喷出黑灰",
+          "药老沉睡，无法给予指引，只能靠萧炎自己"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7AA11944B727654158DB-003",
+            "start": 1021,
+            "end": 1072
+          },
+          {
+            "segment_id": "SEG-954293699302A2AA3EFB-002",
+            "start": 140,
+            "end": 167
+          },
+          {
+            "segment_id": "SEG-954293699302A2AA3EFB-002",
+            "start": 200,
+            "end": 267
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂力量在压力中突破，比先前强大很多，并进入似睡似醒的奇异状态，获得灵魂力量大增的机缘赏赐"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 510,
+            "end": 534
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 576,
+            "end": 635
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 703,
+            "end": 794
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+            "start": 700,
+            "end": 759
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "药老因沉睡未回应",
+          "场中炼药师惊呼操纵如此多异火所需灵魂力量之庞大",
+          "法犸将其比为好运者进入奇异状态后所得灵魂力量大增赏赐",
+          "炎利察觉对方在绝地中取得突破"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-954293699302A2AA3EFB-002",
+            "start": 200,
+            "end": 267
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 324,
+            "end": 345
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 703,
+            "end": 794
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+            "start": 97,
+            "end": 131
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "青色火焰将萧炎完全包裹成火人",
+          "提炼时间比上次缩短将近一半",
+          "异火温度被控制得与药方火候分毫不差"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 240,
+            "end": 305
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+            "start": 1164,
+            "end": 1193
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+            "start": 1002,
+            "end": 1033
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可同时操纵远超先前的大量异火",
+          "闭目时感知比肉眼更清晰，火候可对齐药方",
+          "自认可与五品炼药师一争高低"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 324,
+            "end": 345
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+            "start": 775,
+            "end": 807
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+            "start": 1002,
+            "end": 1033
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+            "start": 941,
+            "end": 968
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "被当场称为压力中的突破与收获，并被比为机缘带来的灵魂力量大增赏赐；此次炼制过程中持续生效"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 576,
+            "end": 635
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 703,
+            "end": 794
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "本不能主动修炼、只随时间变雄浑的灵魂力量，在转火失败的高压下因进入玄之又玄的奇异状态而被当场赏赐式抬升，使已失败选手在剩余时限内获得远超先前的控火与提炼能力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 642,
+            "end": 674
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-001",
+            "start": 703,
+            "end": 794
+          },
+          {
+            "segment_id": "SEG-7AA11944B727654158DB-003",
+            "start": 1021,
+            "end": 1072
+          },
+          {
+            "segment_id": "SEG-85CAF20E58CC403BC2BF-002",
+            "start": 1259,
+            "end": 1282
+          }
+        ]
+      }
+    }
+  ]
+}

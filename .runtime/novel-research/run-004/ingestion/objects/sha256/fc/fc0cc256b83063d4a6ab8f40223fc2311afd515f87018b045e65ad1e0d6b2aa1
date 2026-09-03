@@ -1,0 +1,363 @@
+{
+  "candidates": [
+    {
+      "summary": "紫研以同族鲜血划开兽灵罩,众人踏入荒凉平原,在祭坛上见到由太古虚龙与远古天凰生命力所成的龙凰本源果,随即被闯入的天妖凰族打断收取。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 78,
+          "end": 118
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 1317,
+          "end": 1344
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-001",
+          "start": 1491,
+          "end": 1536
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 25,
+          "end": 69
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 1,
+          "end": 23
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 1185,
+          "end": 1208
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 857,
+          "end": 875
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 160,
+          "end": 208
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 120,
+          "end": 152
+        },
+        {
+          "segment_id": "SEG-E22F5ADAA82596B62203-001",
+          "start": 567,
+          "end": 592
+        },
+        {
+          "segment_id": "SEG-E22F5ADAA82596B62203-001",
+          "start": 593,
+          "end": 629
+        },
+        {
+          "segment_id": "SEG-E22F5ADAA82596B62203-001",
+          "start": 691,
+          "end": 721
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 350,
+          "end": 359
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 1149,
+          "end": 1183
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 1275,
+          "end": 1315
+        },
+        {
+          "segment_id": "SEG-E22F5ADAA82596B62203-001",
+          "start": 821,
+          "end": 828
+        },
+        {
+          "segment_id": "SEG-E22F5ADAA82596B62203-001",
+          "start": 434,
+          "end": 483
+        },
+        {
+          "segment_id": "SEG-E22F5ADAA82596B62203-001",
+          "start": 931,
+          "end": 962
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 813,
+          "end": 834
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 1243,
+          "end": 1274
+        },
+        {
+          "segment_id": "SEG-08E00BF14A642803E86D-002",
+          "start": 1424,
+          "end": 1449
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "紫研",
+          "萧炎等人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 78,
+            "end": 118
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1317,
+            "end": 1344
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1491,
+            "end": 1536
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以鲜血开启兽灵罩并进入,发现龙凰本源果"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-001",
+            "start": 1491,
+            "end": 1536
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 25,
+            "end": 69
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 78,
+            "end": 118
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1317,
+            "end": 1344
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "兽灵罩",
+          "龙凰本源果"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1,
+            "end": 23
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1185,
+            "end": 1208
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 857,
+            "end": 875
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "兽灵罩只有相同血脉才能开启"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1,
+            "end": 23
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "进入兽灵罩内的平原并目击龙凰本源果"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 160,
+            "end": 208
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 120,
+            "end": 152
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 857,
+            "end": 875
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1185,
+            "end": 1208
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "金光裂缝放行后闭合",
+          "天妖凰族闯入打断收取"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 120,
+            "end": 152
+          },
+          {
+            "segment_id": "SEG-E22F5ADAA82596B62203-001",
+            "start": 567,
+            "end": 592
+          },
+          {
+            "segment_id": "SEG-E22F5ADAA82596B62203-001",
+            "start": 593,
+            "end": 629
+          },
+          {
+            "segment_id": "SEG-E22F5ADAA82596B62203-001",
+            "start": 691,
+            "end": 721
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "果实散出阻塞斗气的威压",
+          "紫研指认此为古籍仅出现五次的本源果"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 350,
+            "end": 359
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1149,
+            "end": 1183
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1275,
+            "end": 1315
+          },
+          {
+            "segment_id": "SEG-E22F5ADAA82596B62203-001",
+            "start": 821,
+            "end": 828
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可收取能进化龙凰一体至尊之兽的本源果"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E22F5ADAA82596B62203-001",
+            "start": 434,
+            "end": 483
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1275,
+            "end": 1315
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "果实仍在祭坛,收取因天妖凰族闯入而被打断"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E22F5ADAA82596B62203-001",
+            "start": 931,
+            "end": 962
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 813,
+            "end": 834
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 857,
+            "end": 875
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "同血才能打开的死兽灵罩把非任务目标的传说本源果直接放到可争夺的位置,但收取繁琐且会被闻讯而来的族群打断"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1,
+            "end": 23
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1243,
+            "end": 1274
+          },
+          {
+            "segment_id": "SEG-08E00BF14A642803E86D-002",
+            "start": 1424,
+            "end": 1449
+          },
+          {
+            "segment_id": "SEG-E22F5ADAA82596B62203-001",
+            "start": 931,
+            "end": 962
+          },
+          {
+            "segment_id": "SEG-E22F5ADAA82596B62203-001",
+            "start": 691,
+            "end": 721
+          }
+        ]
+      }
+    }
+  ]
+}

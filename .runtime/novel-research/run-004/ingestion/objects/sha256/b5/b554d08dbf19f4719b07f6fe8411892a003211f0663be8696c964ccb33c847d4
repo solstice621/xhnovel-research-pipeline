@@ -1,0 +1,519 @@
+{
+  "candidates": [
+    {
+      "summary": "两名斗圣能量体围杀至绝境时，血刀圣者突然闪现，袖袍柔劲将萧炎等人带起向天墓深处暴掠，随即被对方怒喝锁空间凝固。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 1047,
+          "end": 1052
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 972,
+          "end": 1045
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 1095,
+          "end": 1115
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 878,
+          "end": 883
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-001",
+          "start": 330,
+          "end": 370
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 1253,
+          "end": 1271
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 1272,
+          "end": 1299
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 1054,
+          "end": 1070
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "血刀圣者",
+          "萧炎等人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1047,
+            "end": 1052
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 972,
+            "end": 1045
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1095,
+            "end": 1115
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "袖袍一挥，柔劲带起萧炎等人向天墓深处暴掠"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 972,
+            "end": 1045
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "即将拼命的萧炎等人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 878,
+            "end": 883
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 972,
+            "end": 1045
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "面对两名斗圣能量体毫无胜算，准备拼命"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-001",
+            "start": 330,
+            "end": 370
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 878,
+            "end": 883
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "绝境中被带离当场，改向天墓深处逃离"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 972,
+            "end": 1045
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "魂刁二人怒喝“锁”，血刀圣者身形陡然凝固"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1253,
+            "end": 1271
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1272,
+            "end": 1299
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "突然出现的救兵令众人一愣",
+          "谁也没想到血刀圣者会出面相救"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1054,
+            "end": 1070
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1095,
+            "end": 1115
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "暂时脱离当场必死的蛇尾一击，被带向天墓深处"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 972,
+            "end": 1045
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "救援随即被两名斗圣的空间锁打断"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1272,
+            "end": 1299
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "半圣残魂在未被召唤的情况下突入斗圣围杀并强行带走目标"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 972,
+            "end": 1045
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1095,
+            "end": 1115
+          }
+        ]
+      }
+    },
+    {
+      "summary": "魂刁拳头距被锁的血刀圣者半尺时突然凝固，萧玄残影现身打碎空间锁，巨手将两名一星斗圣能量体轰成虚无，并接萧炎与薰儿进入墓府。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 1589,
+          "end": 1593
+        },
+        {
+          "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+          "start": 107,
+          "end": 136
+        },
+        {
+          "segment_id": "SEG-930AD48E26EBBB20DF4D-002",
+          "start": 360,
+          "end": 372
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 1595,
+          "end": 1620
+        },
+        {
+          "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+          "start": 32,
+          "end": 61
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 1554,
+          "end": 1587
+        },
+        {
+          "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+          "start": 1103,
+          "end": 1146
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 1431,
+          "end": 1463
+        },
+        {
+          "segment_id": "SEG-807B6303F0FC4797F17C-002",
+          "start": 1272,
+          "end": 1299
+        },
+        {
+          "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+          "start": 1350,
+          "end": 1367
+        },
+        {
+          "segment_id": "SEG-465F49B6C8D69E9742D5-001",
+          "start": 702,
+          "end": 786
+        },
+        {
+          "segment_id": "SEG-930AD48E26EBBB20DF4D-002",
+          "start": 1241,
+          "end": 1292
+        },
+        {
+          "segment_id": "SEG-465F49B6C8D69E9742D5-001",
+          "start": 422,
+          "end": 440
+        },
+        {
+          "segment_id": "SEG-465F49B6C8D69E9742D5-001",
+          "start": 190,
+          "end": 200
+        },
+        {
+          "segment_id": "SEG-930AD48E26EBBB20DF4D-002",
+          "start": 293,
+          "end": 317
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄",
+          "萧炎",
+          "魂刁二人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1589,
+            "end": 1593
+          },
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+            "start": 107,
+            "end": 136
+          },
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-002",
+            "start": 360,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1595,
+            "end": 1620
+          },
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+            "start": 32,
+            "end": 61
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "残影现身，空间锁土崩瓦解，漆黑巨手拍向魂刁二人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+            "start": 107,
+            "end": 136
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1554,
+            "end": 1587
+          },
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+            "start": 1103,
+            "end": 1146
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "魂刁二人及其凝固的空间"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1595,
+            "end": 1620
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1554,
+            "end": 1587
+          },
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+            "start": 1103,
+            "end": 1146
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "血刀圣者已被锁，魂刁拳头距其仅半尺"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1431,
+            "end": 1463
+          },
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1272,
+            "end": 1299
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "斗圣空间锁崩解，两名斗圣能量体爆裂成虚无；萧炎得见先祖并被引入墓府"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1554,
+            "end": 1587
+          },
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+            "start": 1350,
+            "end": 1367
+          },
+          {
+            "segment_id": "SEG-465F49B6C8D69E9742D5-001",
+            "start": 702,
+            "end": 786
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "魂刁二人惊呼萧玄并试图逃走，仍被巨手劲风轰碎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-807B6303F0FC4797F17C-002",
+            "start": 1595,
+            "end": 1620
+          },
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+            "start": 1103,
+            "end": 1146
+          },
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+            "start": 1350,
+            "end": 1367
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎体内血脉泛起奇异波动",
+          "青衫身影悄无声息浮现"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+            "start": 32,
+            "end": 61
+          },
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-001",
+            "start": 107,
+            "end": 136
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "危机解除，可随萧玄影像进入其墓府"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-002",
+            "start": 1241,
+            "end": 1292
+          },
+          {
+            "segment_id": "SEG-465F49B6C8D69E9742D5-001",
+            "start": 422,
+            "end": 440
+          },
+          {
+            "segment_id": "SEG-465F49B6C8D69E9742D5-001",
+            "start": 190,
+            "end": 200
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "轻触石碑后光华包裹，二人身形消失进入墓府"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-465F49B6C8D69E9742D5-001",
+            "start": 702,
+            "end": 786
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "墓府投射影像即可解开斗圣空间锁并击杀两名斗圣，且墓碑只对血脉后裔开启"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-002",
+            "start": 1241,
+            "end": 1292
+          },
+          {
+            "segment_id": "SEG-465F49B6C8D69E9742D5-001",
+            "start": 702,
+            "end": 786
+          },
+          {
+            "segment_id": "SEG-930AD48E26EBBB20DF4D-002",
+            "start": 293,
+            "end": 317
+          }
+        ]
+      }
+    }
+  ]
+}

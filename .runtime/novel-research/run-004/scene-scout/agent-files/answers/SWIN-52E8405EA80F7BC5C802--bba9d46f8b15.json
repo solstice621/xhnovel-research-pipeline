@@ -1,0 +1,308 @@
+{
+  "candidates": [
+    {
+      "summary": "魂殿殿主杀招距萧炎天灵盖不足一寸时，一只未先报身份的干瘦手掌突兀出现，屈指弹飞杀招；萧炎认出一直隐藏的萧晨先祖出手，十拿九稳的擒杀当场横生变故。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-64A69979A2A9569A88B5-001",
+          "start": 227,
+          "end": 232
+        },
+        {
+          "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+          "start": 1506,
+          "end": 1551
+        },
+        {
+          "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+          "start": 1410,
+          "end": 1416
+        },
+        {
+          "segment_id": "SEG-64A69979A2A9569A88B5-001",
+          "start": 133,
+          "end": 139
+        },
+        {
+          "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+          "start": 1471,
+          "end": 1485
+        },
+        {
+          "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+          "start": 1449,
+          "end": 1469
+        },
+        {
+          "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+          "start": 1490,
+          "end": 1505
+        },
+        {
+          "segment_id": "SEG-64A69979A2A9569A88B5-001",
+          "start": 298,
+          "end": 348
+        },
+        {
+          "segment_id": "SEG-64A69979A2A9569A88B5-001",
+          "start": 15,
+          "end": 33
+        },
+        {
+          "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+          "start": 1557,
+          "end": 1569
+        },
+        {
+          "segment_id": "SEG-64A69979A2A9569A88B5-001",
+          "start": 245,
+          "end": 265
+        },
+        {
+          "segment_id": "SEG-64A69979A2A9569A88B5-001",
+          "start": 437,
+          "end": 444
+        },
+        {
+          "segment_id": "SEG-64A69979A2A9569A88B5-001",
+          "start": 1052,
+          "end": 1065
+        },
+        {
+          "segment_id": "SEG-64A69979A2A9569A88B5-001",
+          "start": 1066,
+          "end": 1091
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧晨",
+          "萧炎",
+          "魂殿殿主"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 227,
+            "end": 232
+          },
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1506,
+            "end": 1551
+          },
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1410,
+            "end": 1416
+          },
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 133,
+            "end": 139
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "屈指一弹，将魂殿殿主抓向萧炎天灵盖的手掌弹飞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1506,
+            "end": 1551
+          },
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1471,
+            "end": 1485
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "魂殿殿主即将擒住萧炎的杀招"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1449,
+            "end": 1469
+          },
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1490,
+            "end": 1505
+          },
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1410,
+            "end": 1416
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "殿主杀招距萧炎天灵盖不足一寸",
+          "萧晨此前无论激战都隐藏在旁，直到危机关头才出手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1410,
+            "end": 1416
+          },
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1449,
+            "end": 1469
+          },
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1490,
+            "end": 1505
+          },
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 298,
+            "end": 348
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "十拿九稳的擒杀横生变故，萧炎从将被拍死转为被先祖挡下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 15,
+            "end": 33
+          },
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1506,
+            "end": 1551
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "魂殿殿主阴沉喝问来人是谁"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 133,
+            "end": 139
+          },
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 15,
+            "end": 33
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "沙哑声音响起",
+          "萧炎认出萧晨先祖并松了一口气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1557,
+            "end": 1569
+          },
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 227,
+            "end": 232
+          },
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 245,
+            "end": 265
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "萧晨转为出手对敌，气息达到五星斗圣中期，强过魂殿殿主一个层次"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 437,
+            "end": 444
+          },
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 1052,
+            "end": 1065
+          },
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 1066,
+            "end": 1091
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "萧晨既已出手便要杀掉对方，并以五星中期战力留在场上"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 437,
+            "end": 444
+          },
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 1052,
+            "end": 1065
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "同行隐藏的先辈可在未被召唤时于致命瞬间自行挡下越阶杀招，把已锁定的必死擒杀改写成当场获救"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1506,
+            "end": 1551
+          },
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 298,
+            "end": 348
+          },
+          {
+            "segment_id": "SEG-64A69979A2A9569A88B5-001",
+            "start": 15,
+            "end": 33
+          },
+          {
+            "segment_id": "SEG-1A12410FD17E883A5A9F-002",
+            "start": 1490,
+            "end": 1505
+          }
+        ]
+      }
+    }
+  ]
+}

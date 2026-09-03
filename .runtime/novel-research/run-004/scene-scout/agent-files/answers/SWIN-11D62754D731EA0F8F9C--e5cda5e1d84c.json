@@ -1,0 +1,466 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎在圣丹城叶院独自凝视星空时被星空灵性牵引进入玄妙状态，灵魂扩散并印上灵性烙印，误闯丹城星域窥见封印中的三千焱炎火，被未曾现身的厉喝震碎分魂；次日确认灵魂灵气更浓、院落枯草复青，并得知异火方位。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+          "start": 56,
+          "end": 86
+        },
+        {
+          "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+          "start": 89,
+          "end": 106
+        },
+        {
+          "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+          "start": 124,
+          "end": 154
+        },
+        {
+          "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+          "start": 208,
+          "end": 256
+        },
+        {
+          "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+          "start": 344,
+          "end": 371
+        },
+        {
+          "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+          "start": 417,
+          "end": 438
+        },
+        {
+          "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+          "start": 506,
+          "end": 520
+        },
+        {
+          "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+          "start": 586,
+          "end": 618
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 153,
+          "end": 165
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 304,
+          "end": 339
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 363,
+          "end": 411
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 448,
+          "end": 510
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 517,
+          "end": 566
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 570,
+          "end": 622
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 641,
+          "end": 704
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 726,
+          "end": 757
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 798,
+          "end": 842
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 917,
+          "end": 954
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 973,
+          "end": 1062
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 1119,
+          "end": 1129
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 1132,
+          "end": 1143
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 1182,
+          "end": 1208
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 1261,
+          "end": 1271
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 1273,
+          "end": 1308
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 1329,
+          "end": 1369
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 1370,
+          "end": 1394
+        },
+        {
+          "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+          "start": 1396,
+          "end": 1420
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 304,
+            "end": 339
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 570,
+            "end": 622
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "凝视星空至三小时后闭目，将磅礴灵魂力量向星空扩散"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 448,
+            "end": 510
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 517,
+            "end": 566
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 570,
+            "end": 622
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "圣丹城星空",
+          "丹城星域",
+          "三千焱炎火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 363,
+            "end": 411
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1132,
+            "end": 1143
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1119,
+            "end": 1129
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "小医仙已熟睡，萧炎独自凝视星空"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 153,
+            "end": 165
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 363,
+            "end": 411
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂被印上模糊灵性烙印",
+          "误入丹城星域并窥见紫黑火焰巨龙",
+          "扩散的灵魂被厉喝炸裂",
+          "确认三千焱炎火封印于内域方向",
+          "次日测得灵魂灵气较前更浓，院落枯草转为嫩草"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 641,
+            "end": 704
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 973,
+            "end": 1062
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1182,
+            "end": 1208
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1370,
+            "end": 1394
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1396,
+            "end": 1420
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 417,
+            "end": 438
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 208,
+            "end": 256
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "星空牵引其进入玄妙状态并在灵魂上印下灵性烙印",
+          "未曾现身的厉喝一语震碎分魂，并有声音指认残留为灵境灵魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 344,
+            "end": 371
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 641,
+            "end": 704
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1132,
+            "end": 1143
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 124,
+            "end": 154
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 89,
+            "end": 106
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1182,
+            "end": 1208
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1261,
+            "end": 1271
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1273,
+            "end": 1308
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂感到浓郁舒畅，体周荧光使枯草生出嫩芽",
+          "萧炎脸色苍白后退，头部眩晕",
+          "次日院落满溢清新之气，绿草钻出枯地"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 917,
+            "end": 954
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 798,
+            "end": 842
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 726,
+            "end": 757
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1329,
+            "end": 1369
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 56,
+            "end": 86
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 208,
+            "end": 256
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "已知三千焱炎火封印于丹城星域的内域方向",
+          "灵魂灵气更浓，再入此状态更接近灵境"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1396,
+            "end": 1420
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1370,
+            "end": 1394
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 417,
+            "end": 438
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 586,
+            "end": 618
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "异火方位认知仍在",
+          "次日灵魂灵气仍更浓，院落生机仍在",
+          "此种玄妙状态可遇而不可求"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1396,
+            "end": 1420
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 417,
+            "end": 438
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 208,
+            "end": 256
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 506,
+            "end": 520
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "无修炼意图的凝视被环境牵引成灵魂越界，同一过程同时给予灵性烙印、异火坐标与无名守护惩罚"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 363,
+            "end": 411
+          },
+          {
+            "segment_id": "SEG-73B8F00A0658D57CBE4B-001",
+            "start": 344,
+            "end": 371
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 641,
+            "end": 704
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 973,
+            "end": 1062
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1132,
+            "end": 1143
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1182,
+            "end": 1208
+          },
+          {
+            "segment_id": "SEG-A9B9B9869DE6DFBBAC23-002",
+            "start": 1396,
+            "end": 1420
+          }
+        ]
+      }
+    }
+  ]
+}

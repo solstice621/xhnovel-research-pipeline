@@ -1,0 +1,177 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎经苏千允许跃入天焚炼气塔底深洞时，瞬间感受到下方遥远处一丝极淡的莫名召唤，修炼行程当场被未知牵引打断。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "苏千"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1341,
+            "end": 1364
+          },
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "咬牙后跃入天焚炼气塔底深洞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1409,
+            "end": 1428
+          },
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1429,
+            "end": 1442
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "深洞下方遥远处"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "苏千已允许试探并在洞口把守"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1341,
+            "end": 1364
+          },
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1365,
+            "end": 1383
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "下潜修炼被未知召唤打断，行程转为被牵引的探索"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "下方遥远处传来一丝极淡的莫名召唤之意"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎在跃入瞬间惊咦"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可转而追查深洞下方的召唤来源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          }
+        ]
+      },
+      "persistence": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "进入已获准的已知修炼点时，未谋划的无名召唤可在跃入瞬间加到行程上，把常规下潜改写成被牵引的探索"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1429,
+            "end": 1442
+          },
+          {
+            "segment_id": "SEG-3C96D012DA1588C9162E-002",
+            "start": 1449,
+            "end": 1523
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-3C96D012DA1588C9162E-002",
+          "start": 1341,
+          "end": 1364
+        },
+        {
+          "segment_id": "SEG-3C96D012DA1588C9162E-002",
+          "start": 1449,
+          "end": 1523
+        },
+        {
+          "segment_id": "SEG-3C96D012DA1588C9162E-002",
+          "start": 1409,
+          "end": 1428
+        },
+        {
+          "segment_id": "SEG-3C96D012DA1588C9162E-002",
+          "start": 1429,
+          "end": 1442
+        },
+        {
+          "segment_id": "SEG-3C96D012DA1588C9162E-002",
+          "start": 1365,
+          "end": 1383
+        }
+      ]
+    }
+  ]
+}

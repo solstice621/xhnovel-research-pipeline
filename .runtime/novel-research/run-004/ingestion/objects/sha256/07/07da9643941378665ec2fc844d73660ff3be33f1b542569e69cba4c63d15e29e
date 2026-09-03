@@ -1,0 +1,490 @@
+{
+  "candidates": [
+    {
+      "summary": "灵魂交手中曹颖施展近乎绝迹的魂技魂玄印掌；萧炎死盯手印，以碧绿异火放缓所见后灌顶顿悟，当场复制相同手印凝出灵魂掌印，接下第三掌且未被击出红圈，从而偷学到魂手印。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "曹颖"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 13,
+            "end": 25
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 347,
+            "end": 354
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 1190,
+            "end": 1230
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 1582,
+            "end": 1620
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "应战并死盯曹颖奇异手印欲记入脑海",
+          "眼中升起碧绿异火，生涩结印并推出灵魂掌印对撞第三掌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 347,
+            "end": 354
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 1190,
+            "end": 1230
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 689,
+            "end": 700
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 1521,
+            "end": 1529
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-001",
+            "start": 840,
+            "end": 854
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "曹颖的魂技魂玄印掌",
+          "魂手印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 1288,
+            "end": 1293
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 716,
+            "end": 727
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-002",
+            "start": 688,
+            "end": 705
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "曹颖以近乎绝迹的魂技凝聚增幅灵魂攻击，要他接三记灵魂掌印",
+          "萧炎从未修行过魂技，只能先死盯手印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 758,
+            "end": 788
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 1288,
+            "end": 1293
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 1190,
+            "end": 1230
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-002",
+            "start": 779,
+            "end": 811
+          },
+          {
+            "segment_id": "SEG-9F39927B7E36D2E3E55F-002",
+            "start": 1422,
+            "end": 1443
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "异火升腾后对手印变得缓慢，萧炎灌顶顿悟并解开灵魂施展迷惑",
+          "他生涩结出与曹颖完全相同的手印，周身灵魂力量按特殊轨迹凝聚成掌印",
+          "三掌接完且未被击出红圈，当场偷学到魂手印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 689,
+            "end": 700
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 704,
+            "end": 717
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 718,
+            "end": 745
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 765,
+            "end": 780
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 880,
+            "end": 904
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 1548,
+            "end": 1581
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 1632,
+            "end": 1650
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-001",
+            "start": 77,
+            "end": 98
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-001",
+            "start": 1354,
+            "end": 1362
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-001",
+            "start": 1435,
+            "end": 1442
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-002",
+            "start": 688,
+            "end": 705
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "曹颖连续打出魂技掌印与更强灵魂风暴",
+          "见他生涩手印与自己完全相同，首次露出震惊",
+          "承认三掌已到并称他赢了，事后点破偷学"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 1288,
+            "end": 1293
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 1582,
+            "end": 1620
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 1632,
+            "end": 1650
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-001",
+            "start": 1354,
+            "end": 1362
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-002",
+            "start": 688,
+            "end": 705
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎顿悟后越战越炽热，坚持再来",
+          "曹颖震惊于他数分钟内便能施展其手印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 765,
+            "end": 780
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 908,
+            "end": 935
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 1582,
+            "end": 1620
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-001",
+            "start": 312,
+            "end": 323
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可生涩施展魂手印，使灵魂力量按特殊轨迹凝聚成攻击掌印",
+          "对从未修过魂技的他而言，这相当于万金难寻的保命增幅"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 1548,
+            "end": 1581
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-001",
+            "start": 77,
+            "end": 98
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-002",
+            "start": 779,
+            "end": 811
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-002",
+            "start": 688,
+            "end": 705
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "魂手印已被他当场使出并被曹颖点明偷学到手",
+          "文中称此次得手有几分运气，对方日后会杜绝再被偷学"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-391E1912CE8249789161-002",
+            "start": 688,
+            "end": 705
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-002",
+            "start": 754,
+            "end": 763
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-002",
+            "start": 1127,
+            "end": 1155
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-001",
+            "start": 77,
+            "end": 98
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "近乎绝迹的魂技在对战中被现场演示时，可用已有异火放缓所见，使未习者在数分钟内把对方增幅手印复制成自己的灵魂攻击"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-001",
+            "start": 758,
+            "end": 788
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 689,
+            "end": 700
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 718,
+            "end": 745
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 765,
+            "end": 780
+          },
+          {
+            "segment_id": "SEG-178352F8AC34841CA365-002",
+            "start": 1632,
+            "end": 1650
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-001",
+            "start": 312,
+            "end": 323
+          },
+          {
+            "segment_id": "SEG-391E1912CE8249789161-002",
+            "start": 1127,
+            "end": 1155
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-001",
+          "start": 13,
+          "end": 25
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-001",
+          "start": 347,
+          "end": 354
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-001",
+          "start": 1190,
+          "end": 1230
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-002",
+          "start": 1582,
+          "end": 1620
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-002",
+          "start": 689,
+          "end": 700
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-002",
+          "start": 1521,
+          "end": 1529
+        },
+        {
+          "segment_id": "SEG-391E1912CE8249789161-001",
+          "start": 840,
+          "end": 854
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-001",
+          "start": 1288,
+          "end": 1293
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-001",
+          "start": 716,
+          "end": 727
+        },
+        {
+          "segment_id": "SEG-391E1912CE8249789161-002",
+          "start": 688,
+          "end": 705
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-001",
+          "start": 758,
+          "end": 788
+        },
+        {
+          "segment_id": "SEG-391E1912CE8249789161-002",
+          "start": 779,
+          "end": 811
+        },
+        {
+          "segment_id": "SEG-9F39927B7E36D2E3E55F-002",
+          "start": 1422,
+          "end": 1443
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-002",
+          "start": 704,
+          "end": 717
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-002",
+          "start": 718,
+          "end": 745
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-002",
+          "start": 765,
+          "end": 780
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-002",
+          "start": 880,
+          "end": 904
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-002",
+          "start": 1548,
+          "end": 1581
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-002",
+          "start": 1632,
+          "end": 1650
+        },
+        {
+          "segment_id": "SEG-391E1912CE8249789161-001",
+          "start": 77,
+          "end": 98
+        },
+        {
+          "segment_id": "SEG-391E1912CE8249789161-001",
+          "start": 1354,
+          "end": 1362
+        },
+        {
+          "segment_id": "SEG-391E1912CE8249789161-001",
+          "start": 1435,
+          "end": 1442
+        },
+        {
+          "segment_id": "SEG-178352F8AC34841CA365-002",
+          "start": 908,
+          "end": 935
+        },
+        {
+          "segment_id": "SEG-391E1912CE8249789161-001",
+          "start": 312,
+          "end": 323
+        },
+        {
+          "segment_id": "SEG-391E1912CE8249789161-002",
+          "start": 754,
+          "end": 763
+        },
+        {
+          "segment_id": "SEG-391E1912CE8249789161-002",
+          "start": 1127,
+          "end": 1155
+        }
+      ]
+    }
+  ]
+}

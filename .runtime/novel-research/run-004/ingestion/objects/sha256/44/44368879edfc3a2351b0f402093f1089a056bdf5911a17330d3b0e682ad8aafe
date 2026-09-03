@@ -1,0 +1,385 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎丢开带追踪的四卷后击破前来缠斗的费天灵魂分身，光点飘散间他突然抓住逸出的无形能量；信息入脑，原先难解的雷霆字体爆光，误打误撞得到开启三千雷幻身的钥匙，完整修炼之法当场出现。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "费天分身",
+          "天火尊者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1277,
+            "end": 1328
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1248,
+            "end": 1275
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 600,
+            "end": 620
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "借天火尊者力量以陨落心炎击破费天分身",
+          "分身爆成光点后一把抓住逸散的无形能量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 580,
+            "end": 597
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 621,
+            "end": 639
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1248,
+            "end": 1275
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1277,
+            "end": 1328
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "费天分身爆裂后的飘散光点",
+          "开启三千雷幻身的钥匙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1248,
+            "end": 1275
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1277,
+            "end": 1328
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1469,
+            "end": 1509
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "四卷实体卷轴已被丢出，但内容已记在脑海",
+          "追上的是气息较弱的费天分身且只为缠斗拖延",
+          "萧炎看出分身由灵魂所凝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D249126DD3B610FD4346-002",
+            "start": 1472,
+            "end": 1495
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-001",
+            "start": 1031,
+            "end": 1051
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 321,
+            "end": 334
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 529,
+            "end": 539
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "抓住的无形能量化为信息入脑",
+          "难解雷霆字体爆发强光后变成完整修炼之法"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1330,
+            "end": 1362
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1364,
+            "end": 1401
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1411,
+            "end": 1426
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1469,
+            "end": 1509
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "光点内射出无形能量落入掌中并窜入脑中",
+          "费天分身被陨落心炎炙烤时惊叫暴退"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1277,
+            "end": 1328
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1330,
+            "end": 1362
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 749,
+            "end": 767
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎呆滞望着莫名出现的完整修炼之法，心跳剧烈",
+          "自认误打误撞从分身灵魂信息中得到钥匙，并大笑称多谢馈赠"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1430,
+            "end": 1453
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1454,
+            "end": 1468
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1469,
+            "end": 1509
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1514,
+            "end": 1526
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "脑海中已是可供使用的完整三千雷幻身修炼法诀",
+          "随即化流光逃离，费天本尊稍后才赶到"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1411,
+            "end": 1426
+          },
+          {
+            "segment_id": "SEG-2116DF4080F58DB3F6B7-001",
+            "start": 1193,
+            "end": 1220
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1568,
+            "end": 1587
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "难懂雷霆字体已消失，取而代之的是完整可用的修炼法诀",
+          "他随后在隐匿处按这已大变的法诀查看"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2116DF4080F58DB3F6B7-001",
+            "start": 1167,
+            "end": 1192
+          },
+          {
+            "segment_id": "SEG-2116DF4080F58DB3F6B7-001",
+            "start": 1193,
+            "end": 1220
+          },
+          {
+            "segment_id": "SEG-2116DF4080F58DB3F6B7-001",
+            "start": 1122,
+            "end": 1154
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "击破敌人灵魂分身时逸散光点可被误抓成钥匙，把已记下却不能炼的残法当场转成完整法诀，而原实体卷轴已被丢弃"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D249126DD3B610FD4346-002",
+            "start": 1472,
+            "end": 1495
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1277,
+            "end": 1328
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1330,
+            "end": 1362
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-002",
+            "start": 1469,
+            "end": 1509
+          },
+          {
+            "segment_id": "SEG-2B1F08D6509E8F963495-001",
+            "start": 1031,
+            "end": 1051
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 1277,
+          "end": 1328
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 1248,
+          "end": 1275
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 600,
+          "end": 620
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 580,
+          "end": 597
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 621,
+          "end": 639
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 1469,
+          "end": 1509
+        },
+        {
+          "segment_id": "SEG-D249126DD3B610FD4346-002",
+          "start": 1472,
+          "end": 1495
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-001",
+          "start": 1031,
+          "end": 1051
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 321,
+          "end": 334
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 529,
+          "end": 539
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 1330,
+          "end": 1362
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 1364,
+          "end": 1401
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 1411,
+          "end": 1426
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 749,
+          "end": 767
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 1430,
+          "end": 1453
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 1454,
+          "end": 1468
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 1514,
+          "end": 1526
+        },
+        {
+          "segment_id": "SEG-2116DF4080F58DB3F6B7-001",
+          "start": 1193,
+          "end": 1220
+        },
+        {
+          "segment_id": "SEG-2B1F08D6509E8F963495-002",
+          "start": 1568,
+          "end": 1587
+        },
+        {
+          "segment_id": "SEG-2116DF4080F58DB3F6B7-001",
+          "start": 1167,
+          "end": 1192
+        },
+        {
+          "segment_id": "SEG-2116DF4080F58DB3F6B7-001",
+          "start": 1122,
+          "end": 1154
+        }
+      ]
+    }
+  ]
+}

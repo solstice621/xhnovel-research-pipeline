@@ -1,0 +1,640 @@
+{
+  "Artifact": [
+    {
+      "artifact_id": "sha256:7296e0387f63b1c7c6aa8d195400f35f024fa19e8b4ca9dfdefa311d74eabe04",
+      "byte_length": 917,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:bf4ecc3a92bb4c4d404ec0d5582ec7b5a19a8343df26e5e793b11218a84cfef8",
+      "byte_length": 359,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:a66faf5169ac14160c1c8c00a4acae5d0be7d1f663609d545fad4dfd18953bec",
+      "byte_length": 4747,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:2ed238e52733734c4691d043523c7f62acdd8b6dd2f41279a1010a98f3fdf13b",
+      "byte_length": 359,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:31653e690263fc964e3e9cf73ddaad0608b81a35e9fdca7f92f7088713aaba81",
+      "byte_length": 2501,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "byte_length": 838,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "text/plain",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "byte_length": 264,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "text/plain",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "byte_length": 42,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "text/plain",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:18bf406a2ddc348ec6d798883ab023bf2ec1deb7a4f2e7153088d937399c5ab8",
+      "byte_length": 359,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    },
+    {
+      "artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "byte_length": 231,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "text/plain",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "byte_length": 294,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "text/plain",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:9df81e9e697c9c1002d68553df2897fe62b5c9247f8e96e9025cae2c4ec95980",
+      "byte_length": 354,
+      "created_at": "2026-09-03T01:00:45Z",
+      "durability_status": "LOCAL",
+      "media_type": "application/json",
+      "retention_policy": "retention-v1",
+      "schema_version": "0.2-draft"
+    }
+  ],
+  "NovelChapter": [
+    {
+      "artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "chapter_id": "CHP-BD0322DC6B43D26035E4",
+      "chapter_key": "chapter-000002-第一章-托令",
+      "chapter_kind": "MAIN",
+      "declared_number": 1,
+      "document_id": "DOC-4C8CA6CA2F23282047AD",
+      "duplicate_of": null,
+      "identity_confidence": "HIGH",
+      "media_type": "text/plain",
+      "normalized_content_hash": "sha256:8864377022becd8d62d6043c97bca082b7f9ae58fb885287712b055beda74ad2",
+      "ordinal": 2,
+      "retrieval_id": "RET-E7C831F7274FB2155233",
+      "schema_version": "0.2-draft",
+      "segment_ids": [
+        "SEG-4C8CA6CA2F23282047AD-000",
+        "SEG-4C8CA6CA2F23282047AD-001"
+      ],
+      "source_id": "SRC-445A2E0B1A7F23269770",
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+      "status": "READY",
+      "title": "第一章 托令",
+      "work_id": "NWK-17867764479A87681854"
+    },
+    {
+      "artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "chapter_id": "CHP-C7352CF244AEDB301365",
+      "chapter_key": "chapter-000003-第二章-解禁",
+      "chapter_kind": "MAIN",
+      "declared_number": 2,
+      "document_id": "DOC-8098B1124BB403AE80B9",
+      "duplicate_of": null,
+      "identity_confidence": "HIGH",
+      "media_type": "text/plain",
+      "normalized_content_hash": "sha256:e91fd0063b2dc53afe22569283266bd094fdae6c687389f1b3023573abd1a4ed",
+      "ordinal": 3,
+      "retrieval_id": "RET-BBBE95FC80BAD155C56A",
+      "schema_version": "0.2-draft",
+      "segment_ids": [
+        "SEG-8098B1124BB403AE80B9-000",
+        "SEG-8098B1124BB403AE80B9-001"
+      ],
+      "source_id": "SRC-A6019B30A7B934DB6A1B",
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+      "status": "READY",
+      "title": "第二章 解禁",
+      "work_id": "NWK-17867764479A87681854"
+    },
+    {
+      "artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "chapter_id": "CHP-46D04A8E85F178ABCD5E",
+      "chapter_key": "chapter-000001-前置内容",
+      "chapter_kind": "FRONTMATTER",
+      "declared_number": null,
+      "document_id": "DOC-5299EAF60EE147CAD058",
+      "duplicate_of": null,
+      "identity_confidence": "UNKNOWN",
+      "media_type": "text/plain",
+      "normalized_content_hash": "sha256:78eb6fb750e9aa08010f5aa4056f9d43b535e90b71f01a3a26dcd3391b30db1b",
+      "ordinal": 1,
+      "retrieval_id": "RET-7C3E2216968F73DBACE1",
+      "schema_version": "0.2-draft",
+      "segment_ids": [
+        "SEG-5299EAF60EE147CAD058-000",
+        "SEG-5299EAF60EE147CAD058-001"
+      ],
+      "source_id": "SRC-9DD5102CD450DF86B1A5",
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+      "status": "IGNORED",
+      "title": "前置内容",
+      "work_id": "NWK-17867764479A87681854"
+    },
+    {
+      "artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "chapter_id": "CHP-FD437BDBB5BEF07B0BB6",
+      "chapter_key": "chapter-000004-第三章-誓印",
+      "chapter_kind": "MAIN",
+      "declared_number": 3,
+      "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+      "duplicate_of": null,
+      "identity_confidence": "HIGH",
+      "media_type": "text/plain",
+      "normalized_content_hash": "sha256:398563b358329412d951b9ad500d3a691bb7a46ceaee84c085993e7908fab58b",
+      "ordinal": 4,
+      "retrieval_id": "RET-94E914E52E09349F8052",
+      "schema_version": "0.2-draft",
+      "segment_ids": [
+        "SEG-3E8DBB0B7BF3829B4ADE-000",
+        "SEG-3E8DBB0B7BF3829B4ADE-001"
+      ],
+      "source_id": "SRC-C8847EE9397B8944302D",
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+      "status": "READY",
+      "title": "第三章 誓印",
+      "work_id": "NWK-17867764479A87681854"
+    }
+  ],
+  "NovelIngestionRun": [
+    {
+      "adapter_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "chapter_ids": [
+        "CHP-46D04A8E85F178ABCD5E",
+        "CHP-BD0322DC6B43D26035E4",
+        "CHP-C7352CF244AEDB301365",
+        "CHP-FD437BDBB5BEF07B0BB6"
+      ],
+      "checkpoint_artifact_id": "sha256:a66faf5169ac14160c1c8c00a4acae5d0be7d1f663609d545fad4dfd18953bec",
+      "checkpoint_hash": "sha256:300a3b4e0a67508e1c602d4733dc4e5cb36889cf1611cbca6354b422f0bad615",
+      "duplicate_chapter_ids": [],
+      "finished_at": "2026-09-03T01:00:45Z",
+      "ignored_chapter_ids": [
+        "CHP-46D04A8E85F178ABCD5E"
+      ],
+      "ingestion_run_id": "NING-A7863874DFC3F5365C6E",
+      "input_spec_artifact_id": "sha256:7296e0387f63b1c7c6aa8d195400f35f024fa19e8b4ca9dfdefa311d74eabe04",
+      "input_spec_hash": "sha256:a87fd6b45f98ef8259358aed758af4c8fc01a3153b2e36e6b24590fbca4defb2",
+      "order_validation": {
+        "duplicate_chapter_ids": [],
+        "missing_declared_numbers": [],
+        "out_of_order_chapter_ids": [],
+        "status": "PASS"
+      },
+      "provenance_artifact_ids": [
+        "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39"
+      ],
+      "ready_chapter_ids": [
+        "CHP-BD0322DC6B43D26035E4",
+        "CHP-C7352CF244AEDB301365",
+        "CHP-FD437BDBB5BEF07B0BB6"
+      ],
+      "resumed_from_checkpoint": false,
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "started_at": "2026-09-03T01:00:45Z",
+      "status": "SUCCEEDED",
+      "strict_order": false,
+      "work_id": "NWK-17867764479A87681854"
+    }
+  ],
+  "NovelWork": [
+    {
+      "adapter_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "author": "xhnovel 测试组",
+      "created_at": "2026-09-03T01:00:45Z",
+      "language": "zh",
+      "schema_version": "0.2-draft",
+      "source_artifact_ids": [
+        "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39"
+      ],
+      "source_kind": "TXT",
+      "source_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt",
+      "title": "青岚令",
+      "work_id": "NWK-17867764479A87681854"
+    }
+  ],
+  "ParseRun": [
+    {
+      "input_artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "output_document_id": "DOC-4C8CA6CA2F23282047AD",
+      "output_hash": "sha256:ee2f6dbc8bb7becd3cea229b042871de530ffd1df91aa1454d43bf085796f895",
+      "parameters": {
+        "media_type": "text/plain"
+      },
+      "parse_run_id": "PRUN-2CAA949B9AA7C832EC10",
+      "parser_build_id": "parser-text-v0.2",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "status": "SUCCEEDED",
+      "supersedes": null
+    },
+    {
+      "input_artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "output_document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+      "output_hash": "sha256:5902c0b49734fe37846d9a06c30dceadcd9099543dcb2660def0b8de9c814878",
+      "parameters": {
+        "media_type": "text/plain"
+      },
+      "parse_run_id": "PRUN-264BD39FA1E4A17992CA",
+      "parser_build_id": "parser-text-v0.2",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "status": "SUCCEEDED",
+      "supersedes": null
+    },
+    {
+      "input_artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "output_document_id": "DOC-5299EAF60EE147CAD058",
+      "output_hash": "sha256:58c545e55131ee526b119e272afb997a7e6bb1862c3de036ef44e62361b4f3ba",
+      "parameters": {
+        "media_type": "text/plain"
+      },
+      "parse_run_id": "PRUN-B345E2E86AF1CFFBF67E",
+      "parser_build_id": "parser-text-v0.2",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "status": "SUCCEEDED",
+      "supersedes": null
+    },
+    {
+      "input_artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "output_document_id": "DOC-8098B1124BB403AE80B9",
+      "output_hash": "sha256:a66759aa33b8e75d6f17f168cac9c482f092edeadc33ab36ea000866d4fc767d",
+      "parameters": {
+        "media_type": "text/plain"
+      },
+      "parse_run_id": "PRUN-571C14C939361C65A568",
+      "parser_build_id": "parser-text-v0.2",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "status": "SUCCEEDED",
+      "supersedes": null
+    }
+  ],
+  "ParsedDocument": [
+    {
+      "document_id": "DOC-4C8CA6CA2F23282047AD",
+      "input_artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "language": "zh",
+      "parser_build_id": "parser-text-v0.2",
+      "schema_version": "0.2-draft",
+      "structure_hash": "sha256:92cc2ffcc2073dffc2cd3cce1d41171355a87775ebbb8fdeb6da7969f4a7aa33",
+      "title": "第一章 托令"
+    },
+    {
+      "document_id": "DOC-8098B1124BB403AE80B9",
+      "input_artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "language": "zh",
+      "parser_build_id": "parser-text-v0.2",
+      "schema_version": "0.2-draft",
+      "structure_hash": "sha256:47db0b36454260fe96c2ae843b7fc4ade53486d691af8b2085963621580a28b1",
+      "title": "第二章 解禁"
+    },
+    {
+      "document_id": "DOC-5299EAF60EE147CAD058",
+      "input_artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "language": "zh",
+      "parser_build_id": "parser-text-v0.2",
+      "schema_version": "0.2-draft",
+      "structure_hash": "sha256:539856813fac510a2bbeea38fc5cc94e81101f7672305944cff1a042f1540f06",
+      "title": "《青岚令》"
+    },
+    {
+      "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+      "input_artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "language": "zh",
+      "parser_build_id": "parser-text-v0.2",
+      "schema_version": "0.2-draft",
+      "structure_hash": "sha256:7eaf89a3494ccd3fa48ba9a929d770d5550cd52e5bcc5ba76e4d0bd5d22e57b9",
+      "title": "第三章 誓印"
+    }
+  ],
+  "Retrieval": [
+    {
+      "access_kind": "full_text_chapter",
+      "content_type": "text/plain",
+      "fetcher_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "final_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+      "http_status": null,
+      "requested_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+      "retrieval_id": "RET-94E914E52E09349F8052",
+      "retrieved_at": "2026-09-03T01:00:45Z",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-C8847EE9397B8944302D",
+      "status": "FETCHED"
+    },
+    {
+      "access_kind": "full_text_chapter",
+      "content_type": "text/plain",
+      "fetcher_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "final_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+      "http_status": null,
+      "requested_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+      "retrieval_id": "RET-BBBE95FC80BAD155C56A",
+      "retrieved_at": "2026-09-03T01:00:45Z",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-A6019B30A7B934DB6A1B",
+      "status": "FETCHED"
+    },
+    {
+      "access_kind": "full_text_chapter",
+      "content_type": "text/plain",
+      "fetcher_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "final_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+      "http_status": null,
+      "requested_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+      "retrieval_id": "RET-7C3E2216968F73DBACE1",
+      "retrieved_at": "2026-09-03T01:00:45Z",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-9DD5102CD450DF86B1A5",
+      "status": "FETCHED"
+    },
+    {
+      "access_kind": "full_text_chapter",
+      "content_type": "text/plain",
+      "fetcher_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+      "final_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+      "http_status": null,
+      "requested_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+      "retrieval_id": "RET-E7C831F7274FB2155233",
+      "retrieved_at": "2026-09-03T01:00:45Z",
+      "retry_of": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-445A2E0B1A7F23269770",
+      "status": "FETCHED"
+    }
+  ],
+  "RetrievalArtifact": [
+    {
+      "artifact_id": "sha256:c8b33afe32d51ca264834cbb025d577c2009443ad34e4d80ebd47a3513c71ebe",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retrieval_id": "RET-7C3E2216968F73DBACE1",
+      "role": "RAW_RESPONSE",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retrieval_id": "RET-E7C831F7274FB2155233",
+      "role": "RAW_RESPONSE",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:8edff8dd50d28cfa53da15704fbc611454ce878104646e7b38f9784b6104c864",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retrieval_id": "RET-BBBE95FC80BAD155C56A",
+      "role": "RAW_RESPONSE",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    },
+    {
+      "artifact_id": "sha256:715fd237dc15ad95bef8ad8a9dd6da4cf2938bc59e3d0bce86042f44e16d3ee0",
+      "parent_artifact_id": "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39",
+      "retrieval_id": "RET-94E914E52E09349F8052",
+      "role": "RAW_RESPONSE",
+      "schema_version": "0.2-draft",
+      "transform_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30"
+    }
+  ],
+  "Segment": [
+    {
+      "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+      "normalized_text": "入谷后,谷主需要有人搬运库中药材。谷主把阵钥暂交林舟保管,同时以誓印禁止他离开雾谷;林舟能开启库门,却不能借阵钥越过谷界。任务结束时,谷主收回阵钥并解除誓印,林舟才恢复离谷的行动空间。",
+      "normalized_text_hash": "sha256:cbc6208a205e2069e6f740c4cedf9fb2695ca66ea6418bd9c2adc14e49830023",
+      "ordinal": 1,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-001",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 100,
+        "kind": "text",
+        "selector": "line:3",
+        "start": 8
+      }
+    },
+    {
+      "document_id": "DOC-5299EAF60EE147CAD058",
+      "normalized_text": "作者:xhnovel 测试组",
+      "normalized_text_hash": "sha256:fea758207f074b34609f471a0a92852f7b9899dfb3cea62250a9fef556d4189a",
+      "ordinal": 1,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-5299EAF60EE147CAD058-001",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 20,
+        "kind": "text",
+        "selector": "line:2",
+        "start": 6
+      }
+    },
+    {
+      "document_id": "DOC-4C8CA6CA2F23282047AD",
+      "normalized_text": "青岚门命林舟护送青铜令前往雾谷。林舟把青铜令交给苏澜携带,苏澜因此实际持有令牌,但令牌仍属青岚门,她也无权催动。两人约定抵达谷口便由苏澜归还。",
+      "normalized_text_hash": "sha256:b76fa7c5b744035a056347c12806c31549914b05c5abfde00175262e91c710ca",
+      "ordinal": 1,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-4C8CA6CA2F23282047AD-001",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 79,
+        "kind": "text",
+        "selector": "line:3",
+        "start": 8
+      }
+    },
+    {
+      "document_id": "DOC-8098B1124BB403AE80B9",
+      "normalized_text": "谷口石门只认令牌许可,苏澜第一次举令时没有反应。长老确认她守约后解除第一重禁制,只授予开启山门的权限,令牌的所有权仍未转移。石门随即开启,她却依旧不能调动门内守阵。",
+      "normalized_text_hash": "sha256:b56b413d799da4c839b7307598659a980717eb065e793f32cd2888ade7843601",
+      "ordinal": 1,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-8098B1124BB403AE80B9-001",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 90,
+        "kind": "text",
+        "selector": "line:3",
+        "start": 8
+      }
+    },
+    {
+      "document_id": "DOC-3E8DBB0B7BF3829B4ADE",
+      "normalized_text": "第三章 誓印",
+      "normalized_text_hash": "sha256:7d92636ec845869fe56dfb1427a7f9c47ddc7d688c3234fdbc2de4dfa32e1625",
+      "ordinal": 0,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-3E8DBB0B7BF3829B4ADE-000",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 6,
+        "kind": "text",
+        "selector": "line:1",
+        "start": 0
+      }
+    },
+    {
+      "document_id": "DOC-5299EAF60EE147CAD058",
+      "normalized_text": "《青岚令》",
+      "normalized_text_hash": "sha256:d4d0509a3fa8969c72f9577d93a42b5e4f15496d0ff1b6accb019ab411ac9a17",
+      "ordinal": 0,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-5299EAF60EE147CAD058-000",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 5,
+        "kind": "text",
+        "selector": "line:1",
+        "start": 0
+      }
+    },
+    {
+      "document_id": "DOC-8098B1124BB403AE80B9",
+      "normalized_text": "第二章 解禁",
+      "normalized_text_hash": "sha256:a841f1219cc50f8abc1aeadbc228a853a5ea81538e2db2913699b0cf47a0c39a",
+      "ordinal": 0,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-8098B1124BB403AE80B9-000",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 6,
+        "kind": "text",
+        "selector": "line:1",
+        "start": 0
+      }
+    },
+    {
+      "document_id": "DOC-4C8CA6CA2F23282047AD",
+      "normalized_text": "第一章 托令",
+      "normalized_text_hash": "sha256:eb9d20c53dc87e3a03f568de50cd8103ca59ff6450d2481d5d89314d7ccc893c",
+      "ordinal": 0,
+      "parent_segment_id": null,
+      "schema_version": "0.2-draft",
+      "segment_id": "SEG-4C8CA6CA2F23282047AD-000",
+      "segment_type": "paragraph",
+      "source_locator": {
+        "end": 6,
+        "kind": "text",
+        "selector": "line:1",
+        "start": 0
+      }
+    }
+  ],
+  "Source": [
+    {
+      "author": "xhnovel 测试组",
+      "canonical_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=4",
+      "document_location": "chapter-000004-第三章-誓印",
+      "platform_id": "novel:txt",
+      "same_platform_as": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-C8847EE9397B8944302D",
+      "title": "第三章 誓印",
+      "work": "青岚令"
+    },
+    {
+      "author": "xhnovel 测试组",
+      "canonical_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=1",
+      "document_location": "chapter-000001-前置内容",
+      "platform_id": "novel:txt",
+      "same_platform_as": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-9DD5102CD450DF86B1A5",
+      "title": "前置内容",
+      "work": "青岚令"
+    },
+    {
+      "author": "xhnovel 测试组",
+      "canonical_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=3",
+      "document_location": "chapter-000003-第二章-解禁",
+      "platform_id": "novel:txt",
+      "same_platform_as": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-A6019B30A7B934DB6A1B",
+      "title": "第二章 解禁",
+      "work": "青岚令"
+    },
+    {
+      "author": "xhnovel 测试组",
+      "canonical_url": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+      "document_location": "chapter-000002-第一章-托令",
+      "platform_id": "novel:txt",
+      "same_platform_as": null,
+      "schema_version": "0.2-draft",
+      "source_id": "SRC-445A2E0B1A7F23269770",
+      "title": "第一章 托令",
+      "work": "青岚令"
+    }
+  ]
+}

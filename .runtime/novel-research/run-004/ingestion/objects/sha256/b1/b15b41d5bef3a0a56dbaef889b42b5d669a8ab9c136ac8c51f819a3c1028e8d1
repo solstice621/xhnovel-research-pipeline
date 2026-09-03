@@ -1,0 +1,386 @@
+{
+  "candidates": [
+    {
+      "summary": "魂元天以死寂之门收走萧炎，自以为门内无人能活着出来；萧炎反而在死亡空间中找到并抹除其灵魂印记，切断控门联系，黑门飞出由他盘坐其上，当场将这远古奇物据为己有。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "魂元天"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 775,
+            "end": 796
+          },
+          {
+            "segment_id": "SEG-0C9A53C1C534A7862343-001",
+            "start": 25,
+            "end": 51
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 586,
+            "end": 609
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "魂元天把萧炎收入死寂之门",
+          "萧炎抹除门内灵魂印记夺取控制权"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 734,
+            "end": 774
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 775,
+            "end": 796
+          },
+          {
+            "segment_id": "SEG-0C9A53C1C534A7862343-001",
+            "start": 327,
+            "end": 354
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1049,
+            "end": 1067
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "死寂之门",
+          "魂元天留在门中的灵魂印记"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-001",
+            "start": 1456,
+            "end": 1461
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 232,
+            "end": 259
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1230,
+            "end": 1249
+          },
+          {
+            "segment_id": "SEG-0C9A53C1C534A7862343-001",
+            "start": 187,
+            "end": 209
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "死寂之门能吞纳万物，进入者从未活着出来",
+          "魂元天把已踏入帝境灵魂的萧炎收入门中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 232,
+            "end": 259
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 797,
+            "end": 814
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 775,
+            "end": 796
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1328,
+            "end": 1356
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎被光束裹入死寂之门",
+          "魂元天与死寂之门的联系被切断，黑门飞出改由萧炎盘坐"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 734,
+            "end": 774
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1512,
+            "end": 1534
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1577,
+            "end": 1591
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1597,
+            "end": 1627
+          },
+          {
+            "segment_id": "SEG-0C9A53C1C534A7862343-001",
+            "start": 327,
+            "end": 354
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "魂元天发现联系削弱后试图闪入却已彻底断开",
+          "失门后眼睛血红并扬言碎尸万段"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1512,
+            "end": 1534
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1577,
+            "end": 1591
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1672,
+            "end": 1699
+          },
+          {
+            "segment_id": "SEG-0C9A53C1C534A7862343-001",
+            "start": 446,
+            "end": 458
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎称代为先收并道多谢馈赠",
+          "魂元天呆滞后血红怒视"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1049,
+            "end": 1067
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1665,
+            "end": 1670
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1672,
+            "end": 1699
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎取得死寂之门控制权并可盘坐驱使"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1271,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1642,
+            "end": 1660
+          },
+          {
+            "segment_id": "SEG-0C9A53C1C534A7862343-001",
+            "start": 418,
+            "end": 444
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "魂元天失去死寂之门控制权，门已改属萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0C9A53C1C534A7862343-001",
+            "start": 418,
+            "end": 444
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1597,
+            "end": 1627
+          },
+          {
+            "segment_id": "SEG-0C9A53C1C534A7862343-001",
+            "start": 25,
+            "end": 51
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "以灵魂印记控门的奇物一旦把帝境灵魂吸入内部，印记可被当场抹除，杀招反成夺宝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1328,
+            "end": 1356
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1230,
+            "end": 1249
+          },
+          {
+            "segment_id": "SEG-0C9A53C1C534A7862343-001",
+            "start": 327,
+            "end": 354
+          },
+          {
+            "segment_id": "SEG-7F862936DCBB9633A321-002",
+            "start": 1665,
+            "end": 1670
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-0C9A53C1C534A7862343-001",
+          "start": 25,
+          "end": 51
+        },
+        {
+          "segment_id": "SEG-0C9A53C1C534A7862343-001",
+          "start": 187,
+          "end": 209
+        },
+        {
+          "segment_id": "SEG-0C9A53C1C534A7862343-001",
+          "start": 327,
+          "end": 354
+        },
+        {
+          "segment_id": "SEG-0C9A53C1C534A7862343-001",
+          "start": 418,
+          "end": 444
+        },
+        {
+          "segment_id": "SEG-0C9A53C1C534A7862343-001",
+          "start": 446,
+          "end": 458
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-001",
+          "start": 1456,
+          "end": 1461
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 232,
+          "end": 259
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 586,
+          "end": 609
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 734,
+          "end": 774
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 775,
+          "end": 796
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 797,
+          "end": 814
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 1049,
+          "end": 1067
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 1230,
+          "end": 1249
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 1271,
+          "end": 1302
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 1328,
+          "end": 1356
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 1512,
+          "end": 1534
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 1577,
+          "end": 1591
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 1597,
+          "end": 1627
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 1642,
+          "end": 1660
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 1665,
+          "end": 1670
+        },
+        {
+          "segment_id": "SEG-7F862936DCBB9633A321-002",
+          "start": 1672,
+          "end": 1699
+        }
+      ]
+    }
+  ]
+}

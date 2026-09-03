@@ -1,0 +1,224 @@
+{
+  "candidates": [
+    {
+      "summary": "纳兰嫣然跃入天山血潭前突然告诉萧炎，若要找云韵或许可以去花宗，不容细问便入潭；萧炎当场记下这句未展开的宗门指引。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+          "start": 1247,
+          "end": 1271
+        },
+        {
+          "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+          "start": 1272,
+          "end": 1285
+        },
+        {
+          "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+          "start": 1293,
+          "end": 1317
+        },
+        {
+          "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+          "start": 1324,
+          "end": 1357
+        },
+        {
+          "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+          "start": 1396,
+          "end": 1430
+        },
+        {
+          "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+          "start": 1359,
+          "end": 1371
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "纳兰嫣然",
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1247,
+            "end": 1271
+          },
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1272,
+            "end": 1285
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "纳兰嫣然在入潭前低声给出花宗去向",
+          "她不待追问立即跃入血潭"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1293,
+            "end": 1317
+          },
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1324,
+            "end": 1357
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎日后寻找云韵的去向"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1293,
+            "end": 1317
+          },
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1396,
+            "end": 1430
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "两人已到血潭边，纳兰嫣然抛开白狐准备入潭",
+          "她正对着萧炎低声说话"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1247,
+            "end": 1271
+          },
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1272,
+            "end": 1285
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "纳兰嫣然跃入血潭消失",
+          "萧炎将可去花宗一语牢记心头"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1324,
+            "end": 1357
+          },
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1396,
+            "end": 1430
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "她不待萧炎细问便跃入血潭"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1324,
+            "end": 1357
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎脱口想到花宗是所谓二宗之一",
+          "他一怔，来不及追问云韵与花宗的关系"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1359,
+            "end": 1371
+          },
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1396,
+            "end": 1430
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "日后可向花宗寻访云韵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1293,
+            "end": 1317
+          },
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1359,
+            "end": 1371
+          },
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1396,
+            "end": 1430
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎迅速将花宗一语牢记心头"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1396,
+            "end": 1430
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "关键寻人坐标在发言者退出互动的同一拍抛出，使指引当场生效却无法验证或展开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1293,
+            "end": 1317
+          },
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1324,
+            "end": 1357
+          },
+          {
+            "segment_id": "SEG-B5DD6FBB07E133DF049E-002",
+            "start": 1396,
+            "end": 1430
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "candidates": [
+    {
+      "summary": "九天尊三人围杀、萧炎险象环生并亮出四种异火时，空间裂缝里黑擎连滚带爬现身；他凭紫研龙印被族中打发来找人，一拳轰飞两名六星斗尊，九天尊被迫离去，随即划开空间带走萧炎与青鳞。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "黑擎",
+          "九天尊",
+          "森罗鬼尊",
+          "妖花邪君"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 1862,
+            "end": 1888
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 484,
+            "end": 491
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 521,
+            "end": 533
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 867,
+            "end": 882
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "空间裂缝中黑擎连滚带爬现身并扑向萧炎",
+          "黑擎一拳将两名六星斗尊轰飞",
+          "黑擎划开空间带走萧炎与青鳞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 1813,
+            "end": 1828
+          },
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 1829,
+            "end": 1847
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 190,
+            "end": 212
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 1046,
+            "end": 1070
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 1341,
+            "end": 1385
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "九天尊等人对萧炎的围捕",
+          "扑来的森罗鬼尊与妖花邪君"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 691,
+            "end": 715
+          },
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 575,
+            "end": 613
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 867,
+            "end": 882
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 1371,
+            "end": 1393
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎正被两名六星与一名七星巅峰斗尊围攻，险象环生",
+          "必杀一击被挡住后，萧炎亮出四种异火",
+          "黑擎因紫研龙印被族中打发来找萧炎，并非预先赶来救场"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 575,
+            "end": 613
+          },
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 1614,
+            "end": 1626
+          },
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 1703,
+            "end": 1718
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 141,
+            "end": 155
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 159,
+            "end": 186
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "围杀现场突然杀出太古虚龙黑擎",
+          "两名六星斗尊被一拳轰飞喷血",
+          "九天尊放弃擒人并逃离",
+          "黑擎划开空间带走萧炎与青鳞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 1862,
+            "end": 1888
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 1203,
+            "end": 1230
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 362,
+            "end": 396
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 673,
+            "end": 701
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 1341,
+            "end": 1385
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "九天尊认出黑擎后未敢硬拼",
+          "森罗鬼尊劝黑擎不要插手，被拒后与妖花邪君动手",
+          "九天尊放话不会放过萧炎并化流光离去",
+          "黑擎宣称谁也别想带走萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 484,
+            "end": 491
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 521,
+            "end": 533
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 691,
+            "end": 715
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 819,
+            "end": 834
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 867,
+            "end": 882
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 1371,
+            "end": 1393
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 1427,
+            "end": 1458
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 425,
+            "end": 453
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 673,
+            "end": 701
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎愕然认出黑擎",
+          "森罗鬼尊二人喷血倒飞砸出巨坑",
+          "九天尊化作流光消失",
+          "萧炎称又劳烦黑擎出手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 1862,
+            "end": 1888
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 1203,
+            "end": 1230
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 1245,
+            "end": 1259
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 673,
+            "end": 701
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 759,
+            "end": 767
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "当场围杀中断，萧炎得以脱身",
+          "可随黑擎离开并前往太古虚龙一族"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 362,
+            "end": 396
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 397,
+            "end": 415
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 1341,
+            "end": 1385
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "九天尊已离开但仍放话不会放过萧炎",
+          "黑擎已把萧炎与青鳞带进空间裂缝"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 425,
+            "end": 453
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 142,
+            "end": 159
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 1341,
+            "end": 1385
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "围杀已到亮出四种异火的死线时，凭旧龙印寻人的太古虚龙熟人突然从空间裂缝闯入，一拳改写人数差并把追杀者逼退",
+          "救援并非预先召唤或约定救场，而是另有任务的来人碰巧踩中危机"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 1703,
+            "end": 1718
+          },
+          {
+            "segment_id": "SEG-925C33ED068F730D6875-002",
+            "start": 1813,
+            "end": 1828
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 159,
+            "end": 186
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 141,
+            "end": 155
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+            "start": 1046,
+            "end": 1070
+          },
+          {
+            "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+            "start": 362,
+            "end": 396
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-925C33ED068F730D6875-002",
+          "start": 1862,
+          "end": 1888
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 484,
+          "end": 491
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 521,
+          "end": 533
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 867,
+          "end": 882
+        },
+        {
+          "segment_id": "SEG-925C33ED068F730D6875-002",
+          "start": 1813,
+          "end": 1828
+        },
+        {
+          "segment_id": "SEG-925C33ED068F730D6875-002",
+          "start": 1829,
+          "end": 1847
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 190,
+          "end": 212
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 1046,
+          "end": 1070
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+          "start": 1341,
+          "end": 1385
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 691,
+          "end": 715
+        },
+        {
+          "segment_id": "SEG-925C33ED068F730D6875-002",
+          "start": 575,
+          "end": 613
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 1371,
+          "end": 1393
+        },
+        {
+          "segment_id": "SEG-925C33ED068F730D6875-002",
+          "start": 1614,
+          "end": 1626
+        },
+        {
+          "segment_id": "SEG-925C33ED068F730D6875-002",
+          "start": 1703,
+          "end": 1718
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 141,
+          "end": 155
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 159,
+          "end": 186
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 1203,
+          "end": 1230
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+          "start": 362,
+          "end": 396
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+          "start": 673,
+          "end": 701
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 819,
+          "end": 834
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 1427,
+          "end": 1458
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+          "start": 425,
+          "end": 453
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 1245,
+          "end": 1259
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+          "start": 759,
+          "end": 767
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-001",
+          "start": 397,
+          "end": 415
+        },
+        {
+          "segment_id": "SEG-125DD2C22CDC956D73FA-002",
+          "start": 142,
+          "end": 159
+        }
+      ]
+    }
+  ]
+}

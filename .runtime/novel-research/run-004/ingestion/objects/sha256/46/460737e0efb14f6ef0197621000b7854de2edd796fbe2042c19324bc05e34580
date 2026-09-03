@@ -1,0 +1,314 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎等人在已显狼藉、正欲离开的角落丹室被白影拦住；本无能量波动的雪白小兽被他当场认出是近九品的兽形丹药，并开始用丹药驯服。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+          "start": 10,
+          "end": 16
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+          "start": 301,
+          "end": 309
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 197,
+          "end": 214
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+          "start": 1507,
+          "end": 1529
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+          "start": 259,
+          "end": 273
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+          "start": 188,
+          "end": 227
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+          "start": 54,
+          "end": 70
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+          "start": 383,
+          "end": 400
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+          "start": 1392,
+          "end": 1406
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+          "start": 1454,
+          "end": 1476
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 242,
+          "end": 269
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 434,
+          "end": 460
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 75,
+          "end": 92
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 53,
+          "end": 68
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-002",
+          "start": 12,
+          "end": 33
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-002",
+          "start": 34,
+          "end": 51
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 677,
+          "end": 700
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-002",
+          "start": 313,
+          "end": 326
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 10,
+            "end": 16
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 301,
+            "end": 309
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 197,
+            "end": 214
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "正欲离开时因白影停步，转回盯视并辨认小兽"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+            "start": 1507,
+            "end": 1529
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 259,
+            "end": 273
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 188,
+            "end": 227
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "雪白小兽",
+          "兽形丹药"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 54,
+            "end": 70
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 383,
+            "end": 400
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "角落丹室狭窄狼藉，似已被人光顾",
+          "此处为斗圣远古遗迹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+            "start": 1392,
+            "end": 1406
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+            "start": 1454,
+            "end": 1476
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 242,
+            "end": 269
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "无能量波动的憨兽被当场认定为经历八色甚至九色丹雷的丹药"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 383,
+            "end": 400
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 434,
+            "end": 460
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "白影突然自狼藉丹室窜出",
+          "小兽好奇盯着来人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+            "start": 1507,
+            "end": 1529
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 75,
+            "end": 92
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎眼睛瞪鼓并骂出它是丹药",
+          "众人难以置信望着雪白小兽"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 383,
+            "end": 400
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 53,
+            "end": 68
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 197,
+            "end": 214
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可按古籍用丹药驯服丹兽",
+          "吞服则实力大有长进"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-002",
+            "start": 12,
+            "end": 33
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-002",
+            "start": 34,
+            "end": 51
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 677,
+            "end": 700
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "丹兽留下并开始接受投喂，戒备渐少"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-002",
+            "start": 313,
+            "end": 326
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-002",
+            "start": 34,
+            "end": 51
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "看似被搜空的丹室里，无能量波动的普通小兽实为高阶兽形丹药"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+            "start": 1454,
+            "end": 1476
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 188,
+            "end": 227
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 383,
+            "end": 400
+          }
+        ]
+      }
+    }
+  ]
+}

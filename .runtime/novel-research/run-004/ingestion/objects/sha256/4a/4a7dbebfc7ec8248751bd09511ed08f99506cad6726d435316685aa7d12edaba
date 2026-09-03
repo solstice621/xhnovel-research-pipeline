@@ -1,0 +1,640 @@
+{
+  "candidates": [
+    {
+      "summary": "谈妥修复灵魂后，天火尊者把幼生陨落心炎、五轮离火法和骨骸交给萧炎，白戒自动套上其指、残魂闪入其中，随即裂开光罩并以空间之力凝固岩浆波动助他撤离。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "天火尊者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 551,
+            "end": 580
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1502,
+            "end": 1510
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "接住幼生陨落心炎投入聚火壶，收起五轮离火法与骸骨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 582,
+            "end": 595
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 630,
+            "end": 644
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 647,
+            "end": 656
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 844,
+            "end": 857
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 977,
+            "end": 992
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "幼生陨落心炎、五轮离火法与天火尊者骨骸残魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 551,
+            "end": 580
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-002",
+            "start": 984,
+            "end": 999
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 907,
+            "end": 941
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "双方已谈妥修复灵魂并加一年庇护，卷轴已先交到萧炎手中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 300,
+            "end": 317
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-002",
+            "start": 1554,
+            "end": 1584
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-002",
+            "start": 984,
+            "end": 999
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "幼火入聚火壶、法诀与骨骸入纳戒；白戒自动套上萧炎手指、残魂闪入其中，并裂开光罩助他撤离"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 647,
+            "end": 656
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 844,
+            "end": 857
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 977,
+            "end": 992
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1511,
+            "end": 1529
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1530,
+            "end": 1543
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1544,
+            "end": 1575
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "天火尊者抛出幼火、嘱收骨骸，再将白戒套上其指、残魂入戒并以空间之力凝固岩浆波动"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 551,
+            "end": 580
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 907,
+            "end": 941
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1511,
+            "end": 1529
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1530,
+            "end": 1543
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 42,
+            "end": 73
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "聚火壶内升起天焚炼气塔所需波动；光罩裂开，岩浆波动被凝固"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 726,
+            "end": 747
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1544,
+            "end": 1575
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 42,
+            "end": 73
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可凭幼火重开天焚炼气塔；可修习五轮离火法并向残魂请教；残魂可短时掩藏岩浆波动助逃"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 726,
+            "end": 747
+          },
+          {
+            "segment_id": "SEG-F44D427046DE5848EBAB-002",
+            "start": 1096,
+            "end": 1124
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1361,
+            "end": 1382
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "幼火、卷轴、骨骸与白戒残魂均已随萧炎带走"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 844,
+            "end": 857
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 977,
+            "end": 992
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1511,
+            "end": 1529
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1530,
+            "end": 1543
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残存意志可在谈妥条件后把异火幼体、法诀、骨骸和自身一并发放，并立刻以寄居纳戒的空间之力改写逃生条件"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+            "start": 551,
+            "end": 580
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+            "start": 1511,
+            "end": 1529
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 42,
+            "end": 73
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 551,
+          "end": 580
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+          "start": 1502,
+          "end": 1510
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 582,
+          "end": 595
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 630,
+          "end": 644
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 647,
+          "end": 656
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 844,
+          "end": 857
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 977,
+          "end": 992
+        },
+        {
+          "segment_id": "SEG-F44D427046DE5848EBAB-002",
+          "start": 984,
+          "end": 999
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 907,
+          "end": 941
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 300,
+          "end": 317
+        },
+        {
+          "segment_id": "SEG-F44D427046DE5848EBAB-002",
+          "start": 1554,
+          "end": 1584
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+          "start": 1511,
+          "end": 1529
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+          "start": 1530,
+          "end": 1543
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+          "start": 1544,
+          "end": 1575
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+          "start": 42,
+          "end": 73
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-001",
+          "start": 726,
+          "end": 747
+        },
+        {
+          "segment_id": "SEG-F44D427046DE5848EBAB-002",
+          "start": 1096,
+          "end": 1124
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-002",
+          "start": 1361,
+          "end": 1382
+        }
+      ]
+    },
+    {
+      "summary": "撤离岩浆时，萧家祖传陀舍古帝玉突然自行发热，指向岩浆之底与斗帝遗藏有关；萧炎判断残钥不足且凶险过大，当下不回头并把异动隐瞒下来。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 171,
+            "end": 179
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 268,
+            "end": 292
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "逃亡中取出一直无反应的残缺古玉"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 171,
+            "end": 179
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 193,
+            "end": 237
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "萧家祖传陀舍古帝玉与岩浆世界之底"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 268,
+            "end": 292
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 145,
+            "end": 178
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎正借残魂掩藏波动撤离岩浆深处"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 157,
+            "end": 168
+          },
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 42,
+            "end": 73
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "久无动静的残玉自行发热，表明岩浆之底与陀舍古帝遗藏有关，但他选择不回头"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 193,
+            "end": 237
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 69,
+            "end": 92
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 145,
+            "end": 178
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 567,
+            "end": 581
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "古玉自发温度，指向岩浆之底存在与斗帝遗物相关的东西"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 193,
+            "end": 237
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 69,
+            "end": 92
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 189,
+            "end": 205
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎心中掀起惊涛骇浪，随即强行冷静并把古玉收入纳戒隐瞒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 268,
+            "end": 292
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 567,
+            "end": 581
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 995,
+            "end": 1009
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "日后若有完整钥匙与足够实力，可再探岩浆之底；此刻残钥不足以兑现遗藏"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 812,
+            "end": 832
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 1141,
+            "end": 1151
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "古玉异动被他独自隐瞒，当下不进入底层"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 995,
+            "end": 1009
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 567,
+            "end": 581
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 1141,
+            "end": 1151
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "已持有的残缺钥匙可在未主动催动时因地域自行发热示警，但残钥不足以打开底层遗藏，迫使角色在指引与保命之间当场放弃"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+            "start": 193,
+            "end": 237
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 812,
+            "end": 832
+          },
+          {
+            "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+            "start": 567,
+            "end": 581
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+          "start": 171,
+          "end": 179
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+          "start": 268,
+          "end": 292
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+          "start": 193,
+          "end": 237
+        },
+        {
+          "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+          "start": 145,
+          "end": 178
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+          "start": 157,
+          "end": 168
+        },
+        {
+          "segment_id": "SEG-7BD32930E26C1E42EAF5-003",
+          "start": 42,
+          "end": 73
+        },
+        {
+          "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+          "start": 69,
+          "end": 92
+        },
+        {
+          "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+          "start": 567,
+          "end": 581
+        },
+        {
+          "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+          "start": 189,
+          "end": 205
+        },
+        {
+          "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+          "start": 995,
+          "end": 1009
+        },
+        {
+          "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+          "start": 812,
+          "end": 832
+        },
+        {
+          "segment_id": "SEG-BC5FF9CB2D33F28DFEB5-001",
+          "start": 1141,
+          "end": 1151
+        }
+      ]
+    }
+  ]
+}

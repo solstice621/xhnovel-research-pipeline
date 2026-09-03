@@ -1,0 +1,279 @@
+{
+  "candidates": [
+    {
+      "summary": "混战场上林焱已认输仍遭王尘杀招，闭目等死之际后方突涌吸力将其拽离死线，一只温暖手掌拍上肩膀，耳旁毫无预兆响起似曾熟悉的声音；他转头只见陌生脸庞，随即以雷霆手段被从王尘手下救下。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-8C2B8FB336501FD55717-003",
+          "start": 5,
+          "end": 13
+        },
+        {
+          "segment_id": "SEG-8C2B8FB336501FD55717-003",
+          "start": 48,
+          "end": 61
+        },
+        {
+          "segment_id": "SEG-8C2B8FB336501FD55717-003",
+          "start": 734,
+          "end": 774
+        },
+        {
+          "segment_id": "SEG-8C2B8FB336501FD55717-003",
+          "start": 977,
+          "end": 1065
+        },
+        {
+          "segment_id": "SEG-8C2B8FB336501FD55717-003",
+          "start": 290,
+          "end": 296
+        },
+        {
+          "segment_id": "SEG-8C2B8FB336501FD55717-003",
+          "start": 349,
+          "end": 387
+        },
+        {
+          "segment_id": "SEG-8C2B8FB336501FD55717-003",
+          "start": 949,
+          "end": 957
+        },
+        {
+          "segment_id": "SEG-730F957673F217D38D36-001",
+          "start": 427,
+          "end": 447
+        },
+        {
+          "segment_id": "SEG-730F957673F217D38D36-001",
+          "start": 360,
+          "end": 374
+        },
+        {
+          "segment_id": "SEG-8C2B8FB336501FD55717-003",
+          "start": 1067,
+          "end": 1084
+        },
+        {
+          "segment_id": "SEG-730F957673F217D38D36-001",
+          "start": 54,
+          "end": 85
+        },
+        {
+          "segment_id": "SEG-730F957673F217D38D36-001",
+          "start": 272,
+          "end": 304
+        },
+        {
+          "segment_id": "SEG-730F957673F217D38D36-001",
+          "start": 553,
+          "end": 566
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "林焱",
+          "王尘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 5,
+            "end": 13
+          },
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 48,
+            "end": 61
+          },
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 734,
+            "end": 774
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "后方突然涌出吸力将林焱暴退并拍上其肩"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 977,
+            "end": 1065
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "林焱",
+          "王尘刺向林焱胸膛的杀招"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 734,
+            "end": 774
+          },
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 977,
+            "end": 1065
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "林焱已喊认输",
+          "王尘出手必见血不肯收回",
+          "黑芒刺向来不及闪避的林焱胸膛"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 290,
+            "end": 296
+          },
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 349,
+            "end": 387
+          },
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 734,
+            "end": 774
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "林焱由闭目等死被强制拽离死线"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 949,
+            "end": 957
+          },
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 977,
+            "end": 1065
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "林焱身形不由自主暴退",
+          "王尘对突如其来的变故出乎意料",
+          "风雷阁强者喝问来者何人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 977,
+            "end": 1065
+          },
+          {
+            "segment_id": "SEG-730F957673F217D38D36-001",
+            "start": 427,
+            "end": 447
+          },
+          {
+            "segment_id": "SEG-730F957673F217D38D36-001",
+            "start": 360,
+            "end": 374
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "温暖手掌拍在肩膀",
+          "似曾熟悉的无奈声音毫无预兆响起",
+          "转头只见陌生脸庞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 977,
+            "end": 1065
+          },
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 1067,
+            "end": 1084
+          },
+          {
+            "segment_id": "SEG-730F957673F217D38D36-001",
+            "start": 54,
+            "end": 85
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "林焱被从王尘手中救下得以存活",
+          "萧炎突然进场挡在杀招与林焱之间"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-730F957673F217D38D36-001",
+            "start": 272,
+            "end": 304
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "救援当场生效，萧炎仍抓住林焱肩膀"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-730F957673F217D38D36-001",
+            "start": 553,
+            "end": 566
+          },
+          {
+            "segment_id": "SEG-730F957673F217D38D36-001",
+            "start": 272,
+            "end": 304
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "认输规则未能收回杀招，场外吸力在致命黑芒落地前将人强行拽离"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 349,
+            "end": 387
+          },
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 734,
+            "end": 774
+          },
+          {
+            "segment_id": "SEG-8C2B8FB336501FD55717-003",
+            "start": 977,
+            "end": 1065
+          }
+        ]
+      }
+    }
+  ]
+}

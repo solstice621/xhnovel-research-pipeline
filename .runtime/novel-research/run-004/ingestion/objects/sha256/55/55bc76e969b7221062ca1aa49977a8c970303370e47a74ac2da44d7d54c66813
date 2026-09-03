@@ -1,0 +1,364 @@
+{
+  "candidates": [
+    {
+      "summary": "镇鬼关城主府内云岚宗即将击杀木铁时,天际突降不明强者打断对峙,落地后气势将云帆完全压制,木铁由待死转为被未知来客护持。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+          "start": 102,
+          "end": 115
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+          "start": 155,
+          "end": 174
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+          "start": 1063,
+          "end": 1085
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+          "start": 1220,
+          "end": 1239
+        },
+        {
+          "segment_id": "SEG-E0CFB0134650870F76A2-003",
+          "start": 271,
+          "end": 288
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+          "start": 344,
+          "end": 372
+        },
+        {
+          "segment_id": "SEG-E0CFB0134650870F76A2-002",
+          "start": 377,
+          "end": 387
+        },
+        {
+          "segment_id": "SEG-E0CFB0134650870F76A2-003",
+          "start": 25,
+          "end": 41
+        },
+        {
+          "segment_id": "SEG-E0CFB0134650870F76A2-002",
+          "start": 1342,
+          "end": 1366
+        },
+        {
+          "segment_id": "SEG-E0CFB0134650870F76A2-002",
+          "start": 340,
+          "end": 363
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+          "start": 385,
+          "end": 427
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+          "start": 270,
+          "end": 290
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+          "start": 666,
+          "end": 670
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+          "start": 1211,
+          "end": 1218
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+          "start": 728,
+          "end": 774
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+          "start": 1444,
+          "end": 1470
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-003",
+          "start": 15,
+          "end": 44
+        },
+        {
+          "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+          "start": 1453,
+          "end": 1480
+        },
+        {
+          "segment_id": "SEG-9C4E27E5A94B8C252A4E-001",
+          "start": 309,
+          "end": 332
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "木铁",
+          "云帆",
+          "蒙力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+            "start": 102,
+            "end": 115
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 155,
+            "end": 174
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 1063,
+            "end": 1085
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+            "start": 1220,
+            "end": 1239
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "自天际降落城主府并打断云帆对木铁的击杀"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E0CFB0134650870F76A2-003",
+            "start": 271,
+            "end": 288
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 344,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-E0CFB0134650870F76A2-002",
+            "start": 377,
+            "end": 387
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "木铁",
+          "云帆即将发出的击杀"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E0CFB0134650870F76A2-003",
+            "start": 25,
+            "end": 41
+          },
+          {
+            "segment_id": "SEG-E0CFB0134650870F76A2-002",
+            "start": 1342,
+            "end": 1366
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 155,
+            "end": 174
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "云帆以三星斗王实力即将击杀自认不敌的木铁",
+          "萧炎刚抵镇鬼关时意外发现城中有熟人冲突"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E0CFB0134650870F76A2-002",
+            "start": 1342,
+            "end": 1366
+          },
+          {
+            "segment_id": "SEG-E0CFB0134650870F76A2-003",
+            "start": 25,
+            "end": 41
+          },
+          {
+            "segment_id": "SEG-E0CFB0134650870F76A2-002",
+            "start": 340,
+            "end": 363
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "云帆笼罩城主府的气势被完全压制回体内",
+          "处刑对峙被外来降临打断"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 385,
+            "end": 427
+          },
+          {
+            "segment_id": "SEG-E0CFB0134650870F76A2-003",
+            "start": 271,
+            "end": 288
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 344,
+            "end": 372
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "云帆先劝来者勿管闲事后又改口试探身份",
+          "认出萧炎后喝令杀死他",
+          "蒙力私调刀斧营"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 270,
+            "end": 290
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 1063,
+            "end": 1085
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+            "start": 666,
+            "end": 670
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+            "start": 1220,
+            "end": 1239
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+            "start": 1211,
+            "end": 1218
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "云岚宗弟子刚运斗气即被刺穿胸膛致死",
+          "蒙力埋伏的士兵未能冲入院中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+            "start": 728,
+            "end": 774
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+            "start": 1444,
+            "end": 1470
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-003",
+            "start": 15,
+            "end": 44
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "木铁不必再独力硬接三星斗王",
+          "萧炎可立即对云岚宗人员动手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 385,
+            "end": 427
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 1453,
+            "end": 1480
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+            "start": 728,
+            "end": 774
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "处刑当场中断且云帆气势被压回,但交手尚未结束"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 385,
+            "end": 427
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-003",
+            "start": 15,
+            "end": 44
+          },
+          {
+            "segment_id": "SEG-9C4E27E5A94B8C252A4E-001",
+            "start": 309,
+            "end": 332
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "归途巧遇将已锁定的处刑局打断,受益方先前的放生人情直到落地后才与来者对上号,不是约定援军或任务报酬"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E0CFB0134650870F76A2-002",
+            "start": 340,
+            "end": 363
+          },
+          {
+            "segment_id": "SEG-E0CFB0134650870F76A2-003",
+            "start": 271,
+            "end": 288
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-001",
+            "start": 1453,
+            "end": 1480
+          },
+          {
+            "segment_id": "SEG-79583B1EFBB37A4ECEA0-002",
+            "start": 102,
+            "end": 115
+          }
+        ]
+      }
+    }
+  ]
+}

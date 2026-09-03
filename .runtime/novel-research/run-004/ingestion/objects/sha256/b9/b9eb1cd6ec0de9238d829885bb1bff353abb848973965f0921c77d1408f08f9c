@@ -1,0 +1,330 @@
+{
+  "candidates": [
+    {
+      "summary": "被锁困的三千焱炎火突然停止挣扎，从额头黑洞喷出本源小火龙击飞慕骨老人，使本源之火脱离本体、落到萧炎触手可及处，青华老人随即抢夺。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1111,
+          "end": 1141
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1342,
+          "end": 1352
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1499,
+          "end": 1528
+        },
+        {
+          "segment_id": "SEG-D9535C8F92175E7DB0C4-001",
+          "start": 51,
+          "end": 87
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1193,
+          "end": 1212
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1312,
+          "end": 1331
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1361,
+          "end": 1391
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1038,
+          "end": 1075
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 773,
+          "end": 786
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1101,
+          "end": 1110
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1530,
+          "end": 1560
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1422,
+          "end": 1449
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1452,
+          "end": 1456
+        },
+        {
+          "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+          "start": 1481,
+          "end": 1485
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "三千焱炎火",
+          "慕骨老人",
+          "萧炎",
+          "青华老人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1111,
+            "end": 1141
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1342,
+            "end": 1352
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1499,
+            "end": 1528
+          },
+          {
+            "segment_id": "SEG-D9535C8F92175E7DB0C4-001",
+            "start": 51,
+            "end": 87
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "三千焱炎火停止挣扎并从额头黑洞中喷出本源小火龙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1111,
+            "end": 1141
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1193,
+            "end": 1212
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1312,
+            "end": 1331
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "慕骨老人",
+          "三千焱炎火的本源之火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1342,
+            "end": 1352
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1361,
+            "end": 1391
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1312,
+            "end": 1331
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1038,
+            "end": 1075
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "本命魂锁捆住异火后慕骨老人正要从破裂龙鳞处的黑洞取本源之火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 773,
+            "end": 786
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1038,
+            "end": 1075
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1101,
+            "end": 1110
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "本源之火脱离本体，化为漆黑小火龙出现在触手可及处"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1312,
+            "end": 1331
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1193,
+            "end": 1212
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1530,
+            "end": 1560
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "本源小火龙撞击慕骨老人使其喷血倒飞并喝令抓住它",
+          "萧炎视为好机会",
+          "青华老人立刻抢向本源之火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1361,
+            "end": 1391
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1422,
+            "end": 1449
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1452,
+            "end": 1456
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1481,
+            "end": 1485
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1499,
+            "end": 1528
+          },
+          {
+            "segment_id": "SEG-D9535C8F92175E7DB0C4-001",
+            "start": 51,
+            "end": 87
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "慕骨老人被本源撞击后喷出殷红鲜血并倒飞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1422,
+            "end": 1449
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "在场者可以直接争夺已脱离本体的本源之火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1530,
+            "end": 1560
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1452,
+            "end": 1456
+          },
+          {
+            "segment_id": "SEG-D9535C8F92175E7DB0C4-001",
+            "start": 51,
+            "end": 87
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "本源之火已离开额头黑洞，在虚空中游离"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1312,
+            "end": 1331
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1530,
+            "end": 1560
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "被锁困的异火以停止挣扎诱敌，再把本源之火当杀招打出，使宝物同时变成攻击与可抢目标"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1111,
+            "end": 1141
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1312,
+            "end": 1331
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1361,
+            "end": 1391
+          },
+          {
+            "segment_id": "SEG-7B03CC1651D0DB8BAC0B-002",
+            "start": 1530,
+            "end": 1560
+          }
+        ]
+      }
+    }
+  ]
+}

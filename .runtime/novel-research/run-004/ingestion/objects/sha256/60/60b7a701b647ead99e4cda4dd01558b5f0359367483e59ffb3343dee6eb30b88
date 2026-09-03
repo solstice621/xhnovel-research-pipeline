@@ -1,0 +1,430 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎刚欲甩出佛怒火莲摧毁凶魂时，纳戒中天火尊者突然喝止并要收服这大补灵魂；萧炎改以白戒出拳，戒中强芒抵御凶魂拳劲并暴涌吸力，残存意志隐瞒的手段当场把斗宗级凶魂拖向纳戒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+          "start": 837,
+          "end": 850
+        },
+        {
+          "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+          "start": 851,
+          "end": 869
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 312,
+          "end": 321
+        },
+        {
+          "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+          "start": 871,
+          "end": 880
+        },
+        {
+          "segment_id": "SEG-FF9D901884B5AEDD2455-002",
+          "start": 1606,
+          "end": 1616
+        },
+        {
+          "segment_id": "SEG-FF9D901884B5AEDD2455-002",
+          "start": 1428,
+          "end": 1452
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 887,
+          "end": 896
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 940,
+          "end": 971
+        },
+        {
+          "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+          "start": 978,
+          "end": 987
+        },
+        {
+          "segment_id": "SEG-FF9D901884B5AEDD2455-002",
+          "start": 1566,
+          "end": 1582
+        },
+        {
+          "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+          "start": 939,
+          "end": 955
+        },
+        {
+          "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+          "start": 1239,
+          "end": 1247
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 141,
+          "end": 156
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 248,
+          "end": 276
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 973,
+          "end": 999
+        },
+        {
+          "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+          "start": 1017,
+          "end": 1045
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 785,
+          "end": 795
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 764,
+          "end": 772
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 13,
+          "end": 22
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 120,
+          "end": 137
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 442,
+          "end": 467
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 468,
+          "end": 485
+        },
+        {
+          "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+          "start": 1342,
+          "end": 1353
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 796,
+          "end": 814
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "天火尊者",
+          "轩护法",
+          "凶魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 837,
+            "end": 850
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 851,
+            "end": 869
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 312,
+            "end": 321
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 871,
+            "end": 880
+          },
+          {
+            "segment_id": "SEG-FF9D901884B5AEDD2455-002",
+            "start": 1606,
+            "end": 1616
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "收回刚欲甩出的火莲，改以白戒出拳，并按嘱将灵魂力量灌进纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 837,
+            "end": 850
+          },
+          {
+            "segment_id": "SEG-FF9D901884B5AEDD2455-002",
+            "start": 1428,
+            "end": 1452
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 887,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 940,
+            "end": 971
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "凶魂",
+          "雪白纳戒中的天火尊者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 871,
+            "end": 880
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 978,
+            "end": 987
+          },
+          {
+            "segment_id": "SEG-FF9D901884B5AEDD2455-002",
+            "start": 1566,
+            "end": 1582
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "佛怒火莲刚融合成功、萧炎正要甩出",
+          "天火尊者尚未回复实力",
+          "凶魂即将凝聚成形"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 837,
+            "end": 850
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 939,
+            "end": 955
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 1239,
+            "end": 1247
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "从准备毁掉凶魂转为白戒强芒吸扯，凶魂恐惧挣扎，吸力在灌入灵魂后成倍暴涨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FF9D901884B5AEDD2455-002",
+            "start": 1566,
+            "end": 1582
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 141,
+            "end": 156
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 248,
+            "end": 276
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 973,
+            "end": 999
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "天火尊者突然喝止并要收服凶魂炼化",
+          "白戒自行爆发吸力",
+          "凶魂流露恐惧并挣扎",
+          "轩护法脸色大变，与凶魂联手反抗并要萧炎相助"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 851,
+            "end": 869
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 871,
+            "end": 880
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 978,
+            "end": 987
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 1017,
+            "end": 1045
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 141,
+            "end": 156
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 248,
+            "end": 276
+          },
+          {
+            "segment_id": "SEG-FF9D901884B5AEDD2455-002",
+            "start": 1606,
+            "end": 1616
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 785,
+            "end": 795
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 764,
+            "end": 772
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "刺眼强光暴起，凶魂拳劲被白戒能量罩尽数抵御",
+          "萧炎震惊残存意志隐瞒了手段"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 13,
+            "end": 22
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 120,
+            "end": 137
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 442,
+            "end": 467
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 468,
+            "end": 485
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可将斗宗级凶魂留给天火尊者吞噬炼化，而不必用火莲毁掉"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 978,
+            "end": 987
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 1017,
+            "end": 1045
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 1342,
+            "end": 1353
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "吸力仍在拉扯、捕获尚未完成",
+          "残存意志已露出隐瞒的吸魂手段"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 796,
+            "end": 814
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 887,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 468,
+            "end": 485
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中寄居纳戒的残存意志可在宿主不知情时喝止其毁掉敌方凝聚物，并动用隐瞒的吸魂手段把致命凶魂改写成可炼化的灵魂资源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 871,
+            "end": 880
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 442,
+            "end": 467
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 141,
+            "end": 156
+          },
+          {
+            "segment_id": "SEG-C4E1864F4F9373BADEDA-002",
+            "start": 1017,
+            "end": 1045
+          }
+        ]
+      }
+    }
+  ]
+}

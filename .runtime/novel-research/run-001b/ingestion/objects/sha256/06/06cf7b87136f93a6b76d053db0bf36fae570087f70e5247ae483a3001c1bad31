@@ -1,0 +1,9 @@
+{
+  "artifact_id": "sha256:08871266ad78c20b83aa8e62fdbfdcede7631fa3fb10fda0ebd342fa4172fa2d",
+  "byte_length": 231,
+  "chapter_key": "chapter-000002-第一章-托令",
+  "final_locator": "file:///workspace/.runtime/exploration/run-001/input/novel.txt#chapter=2",
+  "http_status": null,
+  "media_type": "text/plain",
+  "retrieved_at": "2026-09-03T01:03:05Z"
+}

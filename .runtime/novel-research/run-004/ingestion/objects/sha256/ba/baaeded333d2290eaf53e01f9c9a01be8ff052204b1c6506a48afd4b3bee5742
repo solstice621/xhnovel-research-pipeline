@@ -1,0 +1,253 @@
+{
+  "candidates": [
+    {
+      "summary": "火灵蛇刺向胸口的危急中，青鳞尖叫，眼中绿点化为花朵并射出幽光，在双头上印下绿花；蛇对她转为温顺，她随后昏倒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-7849B1C03D2B95127103-002",
+          "start": 1451,
+          "end": 1469
+        },
+        {
+          "segment_id": "SEG-7849B1C03D2B95127103-002",
+          "start": 1495,
+          "end": 1511
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 47,
+          "end": 78
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 93,
+          "end": 123
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 325,
+          "end": 351
+        },
+        {
+          "segment_id": "SEG-7849B1C03D2B95127103-002",
+          "start": 1189,
+          "end": 1205
+        },
+        {
+          "segment_id": "SEG-7849B1C03D2B95127103-002",
+          "start": 1322,
+          "end": 1354
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 480,
+          "end": 533
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 418,
+          "end": 447
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 139,
+          "end": 174
+        },
+        {
+          "segment_id": "SEG-18905F286671855DE42C-001",
+          "start": 456,
+          "end": 475
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "青鳞"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1451,
+            "end": 1469
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "危机中尖叫，使瞳中绿点化为花朵并射出幽光"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1451,
+            "end": 1469
+          },
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1495,
+            "end": 1511
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 47,
+            "end": 78
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 93,
+            "end": 123
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "火灵蛇"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 93,
+            "end": 123
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 325,
+            "end": 351
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "火灵蛇蛇信对着胸口刺下，即将将其吞入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1189,
+            "end": 1205
+          },
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1322,
+            "end": 1354
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "绿色花朵被印刻在火灵蛇两个脑袋上",
+          "火灵蛇对她转为温顺",
+          "青鳞昏倒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 325,
+            "end": 351
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 480,
+            "end": 533
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 418,
+            "end": 447
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "火灵蛇身体骤然僵硬、巨眼惊恐",
+          "注视她时凶狠转为温顺"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 139,
+            "end": 174
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 480,
+            "end": 533
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "青鳞倒下",
+          "火灵蛇傻顿在原地"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 418,
+            "end": 447
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 456,
+            "end": 475
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "火灵蛇注视她时不再保持扑杀杀意"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 480,
+            "end": 533
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "绿色花朵印刻留在蛇头上"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 325,
+            "end": 351
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "濒死尖叫触发未知瞳术印记，使正在扑杀的魔兽当场改敌为驯，而不是击杀掉落"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7849B1C03D2B95127103-002",
+            "start": 1451,
+            "end": 1469
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 325,
+            "end": 351
+          },
+          {
+            "segment_id": "SEG-18905F286671855DE42C-001",
+            "start": 480,
+            "end": 533
+          }
+        ]
+      }
+    }
+  ]
+}

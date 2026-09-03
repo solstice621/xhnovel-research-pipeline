@@ -1,0 +1,561 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎正要离开虚空雷池时撞见沉睡的九玄金雷，逃命中被金色雷电击中，小伊发狠吞噬，反馈能量让他当场突破到五星斗圣后期。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-EDFF5B47F7779EA5FF77-002",
+          "start": 1259,
+          "end": 1269
+        },
+        {
+          "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+          "start": 170,
+          "end": 189
+        },
+        {
+          "segment_id": "SEG-EDFF5B47F7779EA5FF77-002",
+          "start": 1525,
+          "end": 1551
+        },
+        {
+          "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+          "start": 1084,
+          "end": 1099
+        },
+        {
+          "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+          "start": 11,
+          "end": 55
+        },
+        {
+          "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+          "start": 482,
+          "end": 504
+        },
+        {
+          "segment_id": "SEG-EDFF5B47F7779EA5FF77-002",
+          "start": 1480,
+          "end": 1502
+        },
+        {
+          "segment_id": "SEG-EDFF5B47F7779EA5FF77-002",
+          "start": 1172,
+          "end": 1220
+        },
+        {
+          "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+          "start": 1373,
+          "end": 1392
+        },
+        {
+          "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+          "start": 1393,
+          "end": 1409
+        },
+        {
+          "segment_id": "SEG-A0CE9EE286957F425AEC-001",
+          "start": 1447,
+          "end": 1460
+        },
+        {
+          "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+          "start": 973,
+          "end": 982
+        },
+        {
+          "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+          "start": 1319,
+          "end": 1323
+        },
+        {
+          "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+          "start": 1532,
+          "end": 1547
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "小伊",
+          "九玄金雷",
+          "北王"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EDFF5B47F7779EA5FF77-002",
+            "start": 1259,
+            "end": 1269
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 170,
+            "end": 189
+          },
+          {
+            "segment_id": "SEG-EDFF5B47F7779EA5FF77-002",
+            "start": 1525,
+            "end": 1551
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 1084,
+            "end": 1099
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "逃命时以北王和小伊硬抗金色雷电，小伊发狠吞噬"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 11,
+            "end": 55
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 482,
+            "end": 504
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "九玄金雷",
+          "金色雷电"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EDFF5B47F7779EA5FF77-002",
+            "start": 1480,
+            "end": 1502
+          },
+          {
+            "segment_id": "SEG-EDFF5B47F7779EA5FF77-002",
+            "start": 1525,
+            "end": 1551
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 11,
+            "end": 55
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎刚欲转身离开雷池",
+          "九玄金雷突然波动现身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EDFF5B47F7779EA5FF77-002",
+            "start": 1172,
+            "end": 1220
+          },
+          {
+            "segment_id": "SEG-EDFF5B47F7779EA5FF77-002",
+            "start": 1480,
+            "end": 1502
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎提升到五星斗圣后期",
+          "省去近半年修炼之功"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 1373,
+            "end": 1392
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 1393,
+            "end": 1409
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "金色雷龙苏醒并射出近乎光速的金色雷电",
+          "北王身体出现裂痕、承受不了"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-001",
+            "start": 1447,
+            "end": 1460
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 11,
+            "end": 55
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 1084,
+            "end": 1099
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "意外之喜",
+          "突破了"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 973,
+            "end": 982
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 1319,
+            "end": 1323
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "实力踏入五星斗圣后期",
+          "发现九玄金雷正在聚灵、出现可下手的虚弱窗口"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 1373,
+            "end": 1392
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 1532,
+            "end": 1547
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "五星斗圣后期的突破当场完成"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 1373,
+            "end": 1392
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "逃命防御性吞噬把杀招雷电转成突破资源，但北王容器会裂而火灵可以硬吃"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 482,
+            "end": 504
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 1084,
+            "end": 1099
+          },
+          {
+            "segment_id": "SEG-A0CE9EE286957F425AEC-002",
+            "start": 1373,
+            "end": 1392
+          }
+        ]
+      }
+    },
+    {
+      "summary": "九玄金雷聚灵失败后极度虚弱不再攻击，萧炎抽取其毁灭力量封入小伊，再植入灵气种子助其聚灵，换得可携带的金雷之力与雷龙铭记。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 891,
+          "end": 915
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 1304,
+          "end": 1326
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 790,
+          "end": 805
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 942,
+          "end": 969
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 1243,
+          "end": 1245
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 1457,
+          "end": 1480
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 1327,
+          "end": 1356
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 613,
+          "end": 620
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 994,
+          "end": 1034
+        },
+        {
+          "segment_id": "SEG-51925715C26AED9874FF-002",
+          "start": 1672,
+          "end": 1698
+        },
+        {
+          "segment_id": "SEG-074B109D45A6113C05BE-001",
+          "start": 312,
+          "end": 321
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "九玄金雷",
+          "小伊"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 891,
+            "end": 915
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1304,
+            "end": 1326
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "抽取九玄金雷力量并封入小伊，再植入灵气种子助其聚灵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 790,
+            "end": 805
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 942,
+            "end": 969
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1243,
+            "end": 1245
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1457,
+            "end": 1480
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "九玄金雷体内的毁灭力量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 942,
+            "end": 969
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1327,
+            "end": 1356
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "聚灵失败",
+          "九玄金雷极度虚弱且没有反抗"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 613,
+            "end": 620
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 994,
+            "end": 1034
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "毁灭力量被封成迷你雷龙钻进小伊体内",
+          "九玄金雷缩小并获得灵智"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1304,
+            "end": 1326
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1457,
+            "end": 1480
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "九玄金雷没有反抗、愿意放弃力量换灵智",
+          "新生雷龙把第一眼看见的人永世记下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 994,
+            "end": 1034
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1672,
+            "end": 1698
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "抽取出乎意料的顺利",
+          "小伊手臂上多出金色龙纹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 994,
+            "end": 1034
+          },
+          {
+            "segment_id": "SEG-074B109D45A6113C05BE-001",
+            "start": 312,
+            "end": 321
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "获得封存在小伊体内的九玄金雷毁灭力量",
+          "日后可动用这股力量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1304,
+            "end": 1326
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1327,
+            "end": 1356
+          },
+          {
+            "segment_id": "SEG-074B109D45A6113C05BE-001",
+            "start": 312,
+            "end": 321
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "毁灭力量只能由小伊火灵之体承载",
+          "九玄金雷将萧炎永世不忘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1327,
+            "end": 1356
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1672,
+            "end": 1698
+          },
+          {
+            "segment_id": "SEG-074B109D45A6113C05BE-001",
+            "start": 312,
+            "end": 321
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "力量过强会阻碍聚灵，必须抽走力量才能成灵；抽走的毁灭之力不能进人体，只能封进火灵"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 942,
+            "end": 969
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1327,
+            "end": 1356
+          },
+          {
+            "segment_id": "SEG-51925715C26AED9874FF-002",
+            "start": 1457,
+            "end": 1480
+          }
+        ]
+      }
+    }
+  ]
+}

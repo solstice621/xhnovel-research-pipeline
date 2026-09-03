@@ -1,0 +1,460 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎认出毒宗宗主即小医仙后当场抓住其臂,以琉璃莲心火净化沾手剧毒并提出能帮她控制厄难毒体;她点头抽出美杜莎体内毒斑,随即下令三军撤回出云帝国,持续一年的黑山攻防战骤然休止。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-40AEE0160606BEE73CE4-002",
+          "start": 1550,
+          "end": 1555
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-001",
+          "start": 501,
+          "end": 513
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+          "start": 535,
+          "end": 544
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+          "start": 1104,
+          "end": 1115
+        },
+        {
+          "segment_id": "SEG-F2069914412A0D62B62F-001",
+          "start": 897,
+          "end": 926
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+          "start": 1184,
+          "end": 1195
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+          "start": 1517,
+          "end": 1540
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+          "start": 1528,
+          "end": 1541
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-001",
+          "start": 668,
+          "end": 677
+        },
+        {
+          "segment_id": "SEG-F2069914412A0D62B62F-001",
+          "start": 927,
+          "end": 953
+        },
+        {
+          "segment_id": "SEG-F2069914412A0D62B62F-002",
+          "start": 1180,
+          "end": 1188
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+          "start": 305,
+          "end": 311
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+          "start": 979,
+          "end": 985
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+          "start": 1164,
+          "end": 1177
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+          "start": 1217,
+          "end": 1229
+        },
+        {
+          "segment_id": "SEG-F2069914412A0D62B62F-001",
+          "start": 966,
+          "end": 995
+        },
+        {
+          "segment_id": "SEG-F2069914412A0D62B62F-002",
+          "start": 1431,
+          "end": 1440
+        },
+        {
+          "segment_id": "SEG-658B54796FB845309B1C-001",
+          "start": 300,
+          "end": 319
+        },
+        {
+          "segment_id": "SEG-F2069914412A0D62B62F-001",
+          "start": 879,
+          "end": 896
+        },
+        {
+          "segment_id": "SEG-F2069914412A0D62B62F-001",
+          "start": 1035,
+          "end": 1060
+        },
+        {
+          "segment_id": "SEG-F2069914412A0D62B62F-002",
+          "start": 1296,
+          "end": 1302
+        },
+        {
+          "segment_id": "SEG-F2069914412A0D62B62F-002",
+          "start": 1342,
+          "end": 1347
+        },
+        {
+          "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+          "start": 1278,
+          "end": 1293
+        },
+        {
+          "segment_id": "SEG-F2069914412A0D62B62F-002",
+          "start": 1088,
+          "end": 1095
+        },
+        {
+          "segment_id": "SEG-658B54796FB845309B1C-001",
+          "start": 320,
+          "end": 331
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "小医仙",
+          "美杜莎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-40AEE0160606BEE73CE4-002",
+            "start": 1550,
+            "end": 1555
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-001",
+            "start": 501,
+            "end": 513
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 535,
+            "end": 544
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1104,
+            "end": 1115
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-001",
+            "start": 897,
+            "end": 926
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎抓住小医仙手臂并以琉璃莲心火净化沾毒",
+          "当场提出能帮她彻底控制厄难毒体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1104,
+            "end": 1115
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1184,
+            "end": 1195
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1517,
+            "end": 1540
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1528,
+            "end": 1541
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "小医仙的厄难毒体",
+          "美杜莎体内毒斑",
+          "三宗联军"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-001",
+            "start": 668,
+            "end": 677
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1528,
+            "end": 1541
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-001",
+            "start": 927,
+            "end": 953
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-002",
+            "start": 1180,
+            "end": 1188
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "美杜莎已中其血毒",
+          "小医仙称故人已死并以厄难毒体自居",
+          "谁碰她便会痛苦死去"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 305,
+            "end": 311
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-001",
+            "start": 501,
+            "end": 513
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-001",
+            "start": 668,
+            "end": 677
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 979,
+            "end": 985
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "沾手剧毒被异火净化、手掌恢复如初",
+          "美杜莎体内灰紫血斑被抽出脸色恢复",
+          "三军奉命撤回出云帝国、大战结束"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1164,
+            "end": 1177
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1217,
+            "end": 1229
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-001",
+            "start": 927,
+            "end": 953
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-001",
+            "start": 966,
+            "end": 995
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-002",
+            "start": 1180,
+            "end": 1188
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-002",
+            "start": 1431,
+            "end": 1440
+          },
+          {
+            "segment_id": "SEG-658B54796FB845309B1C-001",
+            "start": 300,
+            "end": 319
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "小医仙先厉声后退斥其找死",
+          "随即点头同意以控制毒体换遣散大军",
+          "下令撤退并喝问谁有意见"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 979,
+            "end": 985
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-001",
+            "start": 879,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-001",
+            "start": 897,
+            "end": 926
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-001",
+            "start": 1035,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-002",
+            "start": 1296,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-002",
+            "start": 1342,
+            "end": 1347
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "手掌乌黑后转瞬恢复如初,小医仙露出惊愕",
+          "毒斑离体后美杜莎脸色迅速正常",
+          "大军当场拔营撤退"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1164,
+            "end": 1177
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1217,
+            "end": 1229
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1278,
+            "end": 1293
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-001",
+            "start": 966,
+            "end": 995
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-002",
+            "start": 1431,
+            "end": 1440
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "小医仙同意停战并约定今夜再来",
+          "加玛帝国得以保存、大战结束"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-001",
+            "start": 1035,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-002",
+            "start": 1088,
+            "end": 1095
+          },
+          {
+            "segment_id": "SEG-658B54796FB845309B1C-001",
+            "start": 300,
+            "end": 319
+          },
+          {
+            "segment_id": "SEG-658B54796FB845309B1C-001",
+            "start": 320,
+            "end": 331
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "三军已撤回,持续一年的大战结束",
+          "控制厄难毒体尚未兑现,约定今夜再来"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-002",
+            "start": 1180,
+            "end": 1188
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-002",
+            "start": 1088,
+            "end": 1095
+          },
+          {
+            "segment_id": "SEG-658B54796FB845309B1C-001",
+            "start": 300,
+            "end": 319
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "须在碰谁谁死的厄难毒体上伸手验证异火能否净化",
+          "以尚未当场兑现的控制承诺换取立刻停战撤军"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 979,
+            "end": 985
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1104,
+            "end": 1115
+          },
+          {
+            "segment_id": "SEG-49FFAF4C3E21A1E05D5A-002",
+            "start": 1517,
+            "end": 1540
+          },
+          {
+            "segment_id": "SEG-F2069914412A0D62B62F-001",
+            "start": 1035,
+            "end": 1060
+          }
+        ]
+      }
+    }
+  ]
+}

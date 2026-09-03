@@ -1,0 +1,461 @@
+{
+  "candidates": [
+    {
+      "summary": "纳兰嫣然被围攻、土龙扑杀且被暗属性能量缠住时，浓雾中突然射来萧炎拳风将土龙打碎；他随即以异火驱散缠身黑气，并当场得知通灵白狐可免疫前方天然迷阵，一次未计划的救人立刻变成可过迷阵的指引。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+          "start": 1450,
+          "end": 1477
+        },
+        {
+          "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+          "start": 1602,
+          "end": 1612
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-001",
+          "start": 389,
+          "end": 410
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+          "start": 1257,
+          "end": 1279
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+          "start": 1501,
+          "end": 1508
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+          "start": 1151,
+          "end": 1203
+        },
+        {
+          "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+          "start": 427,
+          "end": 443
+        },
+        {
+          "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+          "start": 444,
+          "end": 463
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+          "start": 763,
+          "end": 772
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+          "start": 1135,
+          "end": 1150
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+          "start": 1091,
+          "end": 1128
+        },
+        {
+          "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+          "start": 1507,
+          "end": 1539
+        },
+        {
+          "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+          "start": 1418,
+          "end": 1436
+        },
+        {
+          "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+          "start": 1482,
+          "end": 1496
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-001",
+          "start": 280,
+          "end": 289
+        },
+        {
+          "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+          "start": 476,
+          "end": 509
+        },
+        {
+          "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+          "start": 580,
+          "end": 608
+        },
+        {
+          "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+          "start": 1463,
+          "end": 1477
+        },
+        {
+          "segment_id": "SEG-A206654FDA0078A5C081-001",
+          "start": 1461,
+          "end": 1476
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+          "start": 1205,
+          "end": 1221
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+          "start": 1387,
+          "end": 1414
+        },
+        {
+          "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+          "start": 1433,
+          "end": 1458
+        },
+        {
+          "segment_id": "SEG-F35658BD4FE3203CAFD3-002",
+          "start": 12,
+          "end": 24
+        },
+        {
+          "segment_id": "SEG-F35658BD4FE3203CAFD3-002",
+          "start": 28,
+          "end": 60
+        },
+        {
+          "segment_id": "SEG-A206654FDA0078A5C081-001",
+          "start": 1499,
+          "end": 1558
+        },
+        {
+          "segment_id": "SEG-A206654FDA0078A5C081-002",
+          "start": 7,
+          "end": 20
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "纳兰嫣然",
+          "黄天"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+            "start": 1450,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+            "start": 1602,
+            "end": 1612
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-001",
+            "start": 389,
+            "end": 410
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1257,
+            "end": 1279
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1501,
+            "end": 1508
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "自浓雾中打出拳风砸碎扑来的土龙",
+          "抓住纳兰嫣然手腕并以碧绿火焰驱散缠身黑气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1151,
+            "end": 1203
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+            "start": 427,
+            "end": 443
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+            "start": 444,
+            "end": 463
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "扑向纳兰嫣然的土龙",
+          "缠住纳兰嫣然身体的黑色能量",
+          "通灵白狐所系的迷阵出路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 763,
+            "end": 772
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1135,
+            "end": 1150
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1091,
+            "end": 1128
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+            "start": 1507,
+            "end": 1539
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎本欲对路旁打斗置之不理并继续赶路",
+          "他听出纳兰嫣然的冷喝才停步",
+          "土龙将扑中时她被黑色能量缠住无法施展",
+          "对方正为抢走通灵白狐而围攻她"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+            "start": 1418,
+            "end": 1436
+          },
+          {
+            "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+            "start": 1450,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+            "start": 1482,
+            "end": 1496
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-001",
+            "start": 280,
+            "end": 289
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1091,
+            "end": 1128
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1135,
+            "end": 1150
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "土龙被拳风砸成光点爆裂",
+          "缠身黑气遇异火融化，纳兰嫣然恢复自由",
+          "萧炎得知前方有天然迷阵且白狐可引路，并与她同行"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1151,
+            "end": 1203
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+            "start": 476,
+            "end": 509
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+            "start": 580,
+            "end": 608
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+            "start": 1463,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+            "start": 1507,
+            "end": 1539
+          },
+          {
+            "segment_id": "SEG-A206654FDA0078A5C081-001",
+            "start": 1461,
+            "end": 1476
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "土龙中拳后化为光点爆裂",
+          "黄天喝问来人不要多管闲事",
+          "纳兰嫣然认出萧炎",
+          "她说明通灵白狐可对迷阵免疫并引路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1151,
+            "end": 1203
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1205,
+            "end": 1221
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1257,
+            "end": 1279
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1501,
+            "end": 1508
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+            "start": 1507,
+            "end": 1539
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "在场所有人被突如其来的拳风一惊",
+          "纳兰嫣然惊魂未定、认出后艰难吐出萧炎的名字",
+          "萧炎恍然：若乱闯迷阵，灵魂感知也会被困许久"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1205,
+            "end": 1221
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1387,
+            "end": 1414
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1433,
+            "end": 1458
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1501,
+            "end": 1508
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-002",
+            "start": 12,
+            "end": 24
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-002",
+            "start": 28,
+            "end": 60
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可跟随通灵白狐免疫并走出天然迷阵",
+          "有纳兰嫣然指路，赶往天目山脚不必盲闯"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+            "start": 1507,
+            "end": 1539
+          },
+          {
+            "segment_id": "SEG-A206654FDA0078A5C081-001",
+            "start": 1499,
+            "end": 1558
+          },
+          {
+            "segment_id": "SEG-A206654FDA0078A5C081-002",
+            "start": 7,
+            "end": 20
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "通灵白狐仍由纳兰嫣然携带",
+          "两人约定一起赶路"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A206654FDA0078A5C081-001",
+            "start": 1461,
+            "end": 1476
+          },
+          {
+            "segment_id": "SEG-A206654FDA0078A5C081-001",
+            "start": 1499,
+            "end": 1558
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "路过危机时因旧识声音才停下施助，把他人已有的引路灵兽临时变成自己事先不知道的过阵钥匙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+            "start": 1418,
+            "end": 1436
+          },
+          {
+            "segment_id": "SEG-6CA6F10B4CB5F5BDF681-002",
+            "start": 1450,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-A40B3DE32F5F59B084C7-002",
+            "start": 1151,
+            "end": 1203
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-001",
+            "start": 1507,
+            "end": 1539
+          },
+          {
+            "segment_id": "SEG-F35658BD4FE3203CAFD3-002",
+            "start": 28,
+            "end": 60
+          }
+        ]
+      }
+    }
+  ]
+}

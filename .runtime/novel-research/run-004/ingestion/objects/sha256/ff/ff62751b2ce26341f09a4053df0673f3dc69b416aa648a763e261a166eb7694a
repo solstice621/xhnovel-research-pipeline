@@ -1,0 +1,524 @@
+{
+  "candidates": [
+    {
+      "summary": "萧玄将封印的斗帝血脉注入池水，令萧炎进入血池换血；剧痛洗去旧血后换血成功，带血脉之力的血液开始灌入体内。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+          "start": 264,
+          "end": 280
+        },
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+          "start": 229,
+          "end": 252
+        },
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+          "start": 593,
+          "end": 623
+        },
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+          "start": 808,
+          "end": 820
+        },
+        {
+          "segment_id": "SEG-465F49B6C8D69E9742D5-002",
+          "start": 1194,
+          "end": 1251
+        },
+        {
+          "segment_id": "SEG-465F49B6C8D69E9742D5-002",
+          "start": 972,
+          "end": 1058
+        },
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+          "start": 113,
+          "end": 169
+        },
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+          "start": 275,
+          "end": 322
+        },
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+          "start": 760,
+          "end": 805
+        },
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+          "start": 717,
+          "end": 736
+        },
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+          "start": 942,
+          "end": 969
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄",
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 264,
+            "end": 280
+          },
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 229,
+            "end": 252
+          },
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 593,
+            "end": 623
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎迈入血池中心，接受换血传承"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 229,
+            "end": 252
+          },
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 593,
+            "end": 623
+          },
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 808,
+            "end": 820
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "萧族最后的血脉之力",
+          "血池"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 229,
+            "end": 252
+          },
+          {
+            "segment_id": "SEG-465F49B6C8D69E9742D5-002",
+            "start": 1194,
+            "end": 1251
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄把封印的斗帝血脉由体内传入池水"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-465F49B6C8D69E9742D5-002",
+            "start": 972,
+            "end": 1058
+          },
+          {
+            "segment_id": "SEG-465F49B6C8D69E9742D5-002",
+            "start": 1194,
+            "end": 1251
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "换血成功，带血脉之力的血液开始灌注体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+            "start": 113,
+            "end": 169
+          },
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+            "start": 275,
+            "end": 322
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "血色能量如细针撞进毛孔，先洗涮普通血液再灌注血脉之血"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 760,
+            "end": 805
+          },
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+            "start": 275,
+            "end": 322
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "突然剧痛，脸色瞬间苍白"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 717,
+            "end": 736
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "换血后可将萧族最后血脉之力灌入体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+            "start": 113,
+            "end": 169
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "换血成功后血色液体源源不断灌注"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+            "start": 113,
+            "end": 169
+          },
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+            "start": 275,
+            "end": 322
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "必须蛮横洗尽旧血且不能昏睡，否则血脉无法发挥极致"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 760,
+            "end": 805
+          },
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 942,
+            "end": 969
+          }
+        ]
+      }
+    },
+    {
+      "summary": "灌注中紫金光芒拦下血丝，龙凰血脉爆发；薰儿滴入古族血脉，萧玄以龙凰血脉调和，三脉在萧炎体内开始融合。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+          "start": 264,
+          "end": 280
+        },
+        {
+          "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+          "start": 9,
+          "end": 24
+        },
+        {
+          "segment_id": "SEG-2FF7E01BBACBCA4847D9-001",
+          "start": 1374,
+          "end": 1388
+        },
+        {
+          "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+          "start": 865,
+          "end": 891
+        },
+        {
+          "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+          "start": 51,
+          "end": 82
+        },
+        {
+          "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+          "start": 634,
+          "end": 649
+        },
+        {
+          "segment_id": "SEG-2FF7E01BBACBCA4847D9-001",
+          "start": 504,
+          "end": 539
+        },
+        {
+          "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+          "start": 1201,
+          "end": 1237
+        },
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+          "start": 1235,
+          "end": 1275
+        },
+        {
+          "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+          "start": 1453,
+          "end": 1479
+        },
+        {
+          "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+          "start": 1331,
+          "end": 1354
+        },
+        {
+          "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+          "start": 1403,
+          "end": 1432
+        },
+        {
+          "segment_id": "SEG-2FF7E01BBACBCA4847D9-001",
+          "start": 867,
+          "end": 896
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧玄",
+          "薰儿",
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-001",
+            "start": 264,
+            "end": 280
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 9,
+            "end": 24
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-001",
+            "start": 1374,
+            "end": 1388
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 865,
+            "end": 891
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "薰儿抽调古族血脉滴入血池，萧玄低喝“凝”引动三脉融合"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 9,
+            "end": 24
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 51,
+            "end": 82
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 634,
+            "end": 649
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎体内互相侵蚀的血脉"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-001",
+            "start": 504,
+            "end": 539
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 865,
+            "end": 891
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 1201,
+            "end": 1237
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "龙凰血脉之力爆发，紫金光芒阻拦萧族血脉灌入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+            "start": 1235,
+            "end": 1275
+          },
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+            "start": 1453,
+            "end": 1479
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-001",
+            "start": 504,
+            "end": 539
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "三脉出现融合趋势，紫红色奇异血液自圆圈流淌而出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 1331,
+            "end": 1354
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 1403,
+            "end": 1432
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "龙凰血脉以第三者冲入两股斗帝血脉，势不两立的侵蚀减弱"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 1201,
+            "end": 1237
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "血球轰入胸膛迅速融入",
+          "萧玄惊呼龙凰血脉之力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 865,
+            "end": 891
+          },
+          {
+            "segment_id": "SEG-C67E3CAAB696F3E389C4-002",
+            "start": 1453,
+            "end": 1479
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可用龙凰血脉调和，尝试融合古、萧二族斗帝血脉"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-001",
+            "start": 867,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-001",
+            "start": 1374,
+            "end": 1388
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "融合趋势缓慢持续，窗口内新血刚开始流淌、尚未完成"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 1331,
+            "end": 1354
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 1403,
+            "end": 1432
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "本应无法融合的两族斗帝血脉，需靠意外现存的龙凰血脉作调和才开始相融"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-001",
+            "start": 867,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-002",
+            "start": 1201,
+            "end": 1237
+          },
+          {
+            "segment_id": "SEG-2FF7E01BBACBCA4847D9-001",
+            "start": 504,
+            "end": 539
+          }
+        ]
+      }
+    }
+  ]
+}

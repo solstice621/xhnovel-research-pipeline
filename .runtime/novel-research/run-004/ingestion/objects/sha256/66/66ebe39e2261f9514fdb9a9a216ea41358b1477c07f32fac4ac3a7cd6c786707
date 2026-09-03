@@ -1,0 +1,110 @@
+{
+  "candidates": [
+    {
+      "summary": "帐篷中用药液调息至晨间时，萧炎在碧绿斗气里看见未计划出现的淡银色能量，确认为空间通道摧残后未散反融的空间之力，伸掌一握当场扭曲空间，使七星斗皇获得本属斗宗的操控。",
+      "source_spans": [
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 957, "end": 978},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 979, "end": 1002},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1041, "end": 1082},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1083, "end": 1152},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1153, "end": 1204},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1216, "end": 1221},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1223, "end": 1354},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1356, "end": 1430},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1432, "end": 1449},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1460, "end": 1493},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1511, "end": 1554},
+        {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1555, "end": 1599},
+        {"segment_id": "SEG-E2E15F7291947A1E3357-001", "start": 328, "end": 401}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎"],
+        "support_spans": [
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 957, "end": 978},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1432, "end": 1449}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["摊开碧绿斗气察看其中淡银色能量", "伸掌一握试探扭曲面前空间"],
+        "support_spans": [
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1153, "end": 1204},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1511, "end": 1554}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["斗气中的淡银色空间之力", "面前的空间"],
+        "support_spans": [
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1153, "end": 1204},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1216, "end": 1221},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1511, "end": 1554}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["他在简陋帐篷中涂药盘膝调息，斗气只是一丝丝回升", "他自认银色能量是空间通道摧残后未散而融入斗气的遗留", "他当时尚是七星斗皇"],
+        "support_spans": [
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 957, "end": 978},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 979, "end": 1002},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1041, "end": 1082},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1356, "end": 1430},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1555, "end": 1599}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["淡银色能量被确认为已融入斗气的空间之力", "他获得极淡的空间操控，并当场使面前空间出现细微扭曲"],
+        "support_spans": [
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1223, "end": 1354},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1356, "end": 1430},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1460, "end": 1493},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1511, "end": 1554}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["面前空间随手掌握下出现细微扭曲"],
+        "support_spans": [
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1511, "end": 1554}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["睁眼时眼中有难以掩饰的震惊", "随即惊喜，确认银色能量真是空间之力"],
+        "support_spans": [
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1083, "end": 1152},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1223, "end": 1354}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["七星斗皇即可施展本属斗宗的扭曲空间", "此后可借体内空间之力隐匿实力，使斗皇巅峰甚至斗宗也难以判定等级"],
+        "support_spans": [
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1460, "end": 1493},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1555, "end": 1599},
+          {"segment_id": "SEG-E2E15F7291947A1E3357-001", "start": 328, "end": 401}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["空间之力未消散，已融入斗气", "数日后体内仍有许些空间之力可用来隐匿"],
+        "support_spans": [
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1356, "end": 1430},
+          {"segment_id": "SEG-E2E15F7291947A1E3357-001", "start": 328, "end": 401}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["空间通道摧残的遗留力可在常规疗伤调息中不散反融，使未达斗宗者当场获得本不应有的空间操控，并把创伤转化为越阶能力与更强隐匿"],
+        "support_spans": [
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1083, "end": 1152},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1356, "end": 1430},
+          {"segment_id": "SEG-4625C0AD8FC02A75AE23-002", "start": 1555, "end": 1599},
+          {"segment_id": "SEG-E2E15F7291947A1E3357-001", "start": 328, "end": 401}
+        ]
+      }
+    }
+  ]
+}

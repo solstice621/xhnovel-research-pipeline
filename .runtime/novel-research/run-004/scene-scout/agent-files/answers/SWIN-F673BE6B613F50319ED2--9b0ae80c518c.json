@@ -1,0 +1,407 @@
+{
+  "candidates": [
+    {
+      "summary": "月媚斗气告竭闭目待死、金雁杀招将至时,毫无预兆的黑影挡在她面前令金雁半丈外自行消散;陌生青年问她没事并递来来历不明的丹药,她吞下后药力驱走无力,从等死转为能起身应对金雁宗追敌。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+          "start": 1497,
+          "end": 1507
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 125,
+          "end": 134
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 404,
+          "end": 418
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 852,
+          "end": 857
+        },
+        {
+          "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+          "start": 1508,
+          "end": 1531
+        },
+        {
+          "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+          "start": 1534,
+          "end": 1551
+        },
+        {
+          "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+          "start": 1552,
+          "end": 1586
+        },
+        {
+          "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+          "start": 1639,
+          "end": 1644
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 227,
+          "end": 246
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 259,
+          "end": 275
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 307,
+          "end": 314
+        },
+        {
+          "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+          "start": 1177,
+          "end": 1213
+        },
+        {
+          "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+          "start": 1400,
+          "end": 1413
+        },
+        {
+          "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+          "start": 1446,
+          "end": 1475
+        },
+        {
+          "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+          "start": 1593,
+          "end": 1607
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 324,
+          "end": 358
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 75,
+          "end": 84
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 174,
+          "end": 205
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 360,
+          "end": 379
+        },
+        {
+          "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+          "start": 1670,
+          "end": 1693
+        },
+        {
+          "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+          "start": 548,
+          "end": 578
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "月媚",
+          "萧炎",
+          "金正"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1497,
+            "end": 1507
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 125,
+            "end": 134
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 404,
+            "end": 418
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 852,
+            "end": 857
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "黑影在月媚面前浮现并消解金雁杀招",
+          "递出丹药让月媚吞下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1508,
+            "end": 1531
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1534,
+            "end": 1551
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1552,
+            "end": 1586
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1639,
+            "end": 1644
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 227,
+            "end": 246
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 259,
+            "end": 275
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 307,
+            "end": 314
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "射向月媚的金色大雁",
+          "斗气告竭的月媚",
+          "疗伤丹药"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1177,
+            "end": 1213
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1400,
+            "end": 1413
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1497,
+            "end": 1507
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 227,
+            "end": 246
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "月媚斗气告竭只能靠口中毒药自尽",
+          "金雁杀招已至眼前"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1400,
+            "end": 1413
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1446,
+            "end": 1475
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1177,
+            "end": 1213
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1497,
+            "end": 1507
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "金雁在半丈外自行消散",
+          "月媚未受预期致命一击",
+          "药力驱走体内无力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1552,
+            "end": 1586
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1593,
+            "end": 1607
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 324,
+            "end": 358
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "月媚警惕询问是否加玛帝国人",
+          "迟疑后吞下未知丹药并因药力放心"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 75,
+            "end": 84
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 174,
+            "end": 205
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 259,
+            "end": 275
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 307,
+            "end": 314
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 360,
+            "end": 379
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "杀招消散后剧痛未至",
+          "月媚睁眼见到陌生年轻面庞",
+          "药力沿四肢扩散驱走无力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1593,
+            "end": 1607
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1670,
+            "end": 1693
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 324,
+            "end": 358
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "月媚从待死转为借丹药回复气力并起身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 324,
+            "end": 358
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 404,
+            "end": 418
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 548,
+            "end": 578
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "金雁杀招已消散",
+          "丹药药力已驱走无力并回复一点气力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1552,
+            "end": 1586
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 324,
+            "end": 358
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 548,
+            "end": 578
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "绝境中无法验证挡在面前的黑影与递来丹药是否有毒或敌友",
+          "只能在斗气告竭、杀招将至时选择吞下来历不明的丹药"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1446,
+            "end": 1475
+          },
+          {
+            "segment_id": "SEG-EBFF19F2AD3CE237641B-002",
+            "start": 1534,
+            "end": 1551
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 75,
+            "end": 84
+          },
+          {
+            "segment_id": "SEG-8BBF32D4608904EBE9F3-001",
+            "start": 259,
+            "end": 275
+          }
+        ]
+      }
+    }
+  ]
+}

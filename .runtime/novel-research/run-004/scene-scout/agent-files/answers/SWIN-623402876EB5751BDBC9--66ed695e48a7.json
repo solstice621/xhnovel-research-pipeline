@@ -1,0 +1,408 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎抹除刚抢来的沈云纳戒印记后搜出古怪银色卷轴，令地妖傀摊开并挨下一记隐藏雷击，随即读到风雷阁镇阁之宝三千雷幻身；灵魂侵入卷轴记下雷光字体，当场确认只得到被拆开存放的一部分并收入纳戒。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "地妖傀",
+          "沈云"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-001",
+            "start": 649,
+            "end": 664
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 400,
+            "end": 410
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-001",
+            "start": 665,
+            "end": 709
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "召唤地妖傀摊开古怪银色卷轴",
+          "以灵魂力量侵入卷轴并记下雷光字体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 400,
+            "end": 410
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 411,
+            "end": 424
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 1440,
+            "end": 1462
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 694,
+            "end": 706
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "沈云纳戒中的古怪银色卷轴",
+          "三千雷幻身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 334,
+            "end": 358
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 202,
+            "end": 225
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 878,
+            "end": 911
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "银白纳戒刚从沈云手上夺来",
+          "已抹除纳戒上的灵魂印记",
+          "因卷轴古怪而未直接亲自打开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-001",
+            "start": 665,
+            "end": 709
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-001",
+            "start": 1215,
+            "end": 1231
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 379,
+            "end": 397
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "卷轴出现在萧炎掌中并被确认为风雷阁镇阁残法",
+          "当场只得到三千雷幻身修炼之法的一部分"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 202,
+            "end": 225
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 878,
+            "end": 911
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 1006,
+            "end": 1046
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 1069,
+            "end": 1097
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 1402,
+            "end": 1422
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "地妖傀摊开卷轴后遭大腿粗雷电击飞",
+          "雷光字体显示三千雷幻身为远古地阶高级斗技",
+          "卷轴内现出雷电世界供灵魂侵入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 425,
+            "end": 450
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 486,
+            "end": 514
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 878,
+            "end": 911
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 10,
+            "end": 27
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎见雷击后说果然有鬼",
+          "读到字体时心头掀起滔天骇浪并惊叹风雷阁竟有这等宝贝",
+          "记完后发现并不完整而感可惜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 580,
+            "end": 585
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 973,
+            "end": 988
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 1068,
+            "end": 1083
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 666,
+            "end": 674
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 1069,
+            "end": 1097
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "已将残法字体记入脑海",
+          "可再寻其他风雷阁长老身上的其余部分",
+          "完整修成则可凝与本体相仿、本体不死则不灭的雷幻身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 694,
+            "end": 706
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 1423,
+            "end": 1449
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 912,
+            "end": 944
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "银色卷轴已收入幽海纳戒",
+          "手中仍只是被拆开存放的一部分"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 1473,
+            "end": 1494
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 1069,
+            "end": 1097
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "刚抢来的纳戒里藏着带雷击陷阱的镇阁残卷，打开后才知道功法被拆成多份分开存放，当场只能得到无法单独修成的一部分"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-001",
+            "start": 665,
+            "end": 709
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 486,
+            "end": 514
+          },
+          {
+            "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+            "start": 878,
+            "end": 911
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 1006,
+            "end": 1046
+          },
+          {
+            "segment_id": "SEG-040277BB1068A9CE4289-001",
+            "start": 1069,
+            "end": 1097
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-001",
+          "start": 649,
+          "end": 664
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 400,
+          "end": 410
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-001",
+          "start": 665,
+          "end": 709
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 411,
+          "end": 424
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 1440,
+          "end": 1462
+        },
+        {
+          "segment_id": "SEG-040277BB1068A9CE4289-001",
+          "start": 694,
+          "end": 706
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 334,
+          "end": 358
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 202,
+          "end": 225
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 878,
+          "end": 911
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-001",
+          "start": 1215,
+          "end": 1231
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 379,
+          "end": 397
+        },
+        {
+          "segment_id": "SEG-040277BB1068A9CE4289-001",
+          "start": 1006,
+          "end": 1046
+        },
+        {
+          "segment_id": "SEG-040277BB1068A9CE4289-001",
+          "start": 1069,
+          "end": 1097
+        },
+        {
+          "segment_id": "SEG-040277BB1068A9CE4289-001",
+          "start": 1402,
+          "end": 1422
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 425,
+          "end": 450
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 486,
+          "end": 514
+        },
+        {
+          "segment_id": "SEG-040277BB1068A9CE4289-001",
+          "start": 10,
+          "end": 27
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 580,
+          "end": 585
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 973,
+          "end": 988
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 1068,
+          "end": 1083
+        },
+        {
+          "segment_id": "SEG-040277BB1068A9CE4289-001",
+          "start": 666,
+          "end": 674
+        },
+        {
+          "segment_id": "SEG-040277BB1068A9CE4289-001",
+          "start": 1423,
+          "end": 1449
+        },
+        {
+          "segment_id": "SEG-2D7AD6DE4F86BD7A1E1A-002",
+          "start": 912,
+          "end": 944
+        },
+        {
+          "segment_id": "SEG-040277BB1068A9CE4289-001",
+          "start": 1473,
+          "end": 1494
+        }
+      ]
+    }
+  ]
+}

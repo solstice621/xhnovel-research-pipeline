@@ -1,0 +1,40 @@
+{
+  "adapter_build_id": "novel-text-v1+sha256:2feb7b88a2d4229244ebef5b8780c879b1e20f2db8b143d244fdb0f22b775a30",
+  "chapter_ids": [
+    "CHP-46D04A8E85F178ABCD5E",
+    "CHP-BD0322DC6B43D26035E4",
+    "CHP-C7352CF244AEDB301365",
+    "CHP-FD437BDBB5BEF07B0BB6"
+  ],
+  "checkpoint_artifact_id": "sha256:a66faf5169ac14160c1c8c00a4acae5d0be7d1f663609d545fad4dfd18953bec",
+  "checkpoint_hash": "sha256:300a3b4e0a67508e1c602d4733dc4e5cb36889cf1611cbca6354b422f0bad615",
+  "duplicate_chapter_ids": [],
+  "finished_at": "2026-09-03T01:00:45Z",
+  "ignored_chapter_ids": [
+    "CHP-46D04A8E85F178ABCD5E"
+  ],
+  "ingestion_run_id": "NING-A7863874DFC3F5365C6E",
+  "input_spec_artifact_id": "sha256:7296e0387f63b1c7c6aa8d195400f35f024fa19e8b4ca9dfdefa311d74eabe04",
+  "input_spec_hash": "sha256:a87fd6b45f98ef8259358aed758af4c8fc01a3153b2e36e6b24590fbca4defb2",
+  "order_validation": {
+    "duplicate_chapter_ids": [],
+    "missing_declared_numbers": [],
+    "out_of_order_chapter_ids": [],
+    "status": "PASS"
+  },
+  "provenance_artifact_ids": [
+    "sha256:808abbc4de2caf3456bbe162b90c0e411e22445f4f51552300f2e0979a8f0f39"
+  ],
+  "ready_chapter_ids": [
+    "CHP-BD0322DC6B43D26035E4",
+    "CHP-C7352CF244AEDB301365",
+    "CHP-FD437BDBB5BEF07B0BB6"
+  ],
+  "resumed_from_checkpoint": false,
+  "retry_of": null,
+  "schema_version": "0.2-draft",
+  "started_at": "2026-09-03T01:00:45Z",
+  "status": "SUCCEEDED",
+  "strict_order": false,
+  "work_id": "NWK-17867764479A87681854"
+}

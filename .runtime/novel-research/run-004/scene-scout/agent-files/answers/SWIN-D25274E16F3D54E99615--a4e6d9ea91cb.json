@@ -1,0 +1,534 @@
+{
+  "candidates": [
+    {
+      "summary": "紫研凭说不清的感觉切下看似废软的爪牙，萧炎用异火煅烧后当场析出可作武器的青红骨尖。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-E31235E69B8128F651B2-002",
+          "start": 1076,
+          "end": 1087
+        },
+        {
+          "segment_id": "SEG-E31235E69B8128F651B2-002",
+          "start": 889,
+          "end": 902
+        },
+        {
+          "segment_id": "SEG-E31235E69B8128F651B2-002",
+          "start": 905,
+          "end": 933
+        },
+        {
+          "segment_id": "SEG-E31235E69B8128F651B2-002",
+          "start": 1055,
+          "end": 1071
+        },
+        {
+          "segment_id": "SEG-E31235E69B8128F651B2-002",
+          "start": 1108,
+          "end": 1140
+        },
+        {
+          "segment_id": "SEG-E31235E69B8128F651B2-002",
+          "start": 973,
+          "end": 1007
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-001",
+          "start": 900,
+          "end": 932
+        },
+        {
+          "segment_id": "SEG-E31235E69B8128F651B2-002",
+          "start": 1170,
+          "end": 1202
+        },
+        {
+          "segment_id": "SEG-E31235E69B8128F651B2-002",
+          "start": 1334,
+          "end": 1349
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-001",
+          "start": 151,
+          "end": 176
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-001",
+          "start": 304,
+          "end": 331
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-001",
+          "start": 335,
+          "end": 345
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-001",
+          "start": 702,
+          "end": 712
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-001",
+          "start": 755,
+          "end": 782
+        },
+        {
+          "segment_id": "SEG-E31235E69B8128F651B2-002",
+          "start": 1460,
+          "end": 1484
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "紫研"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 1076,
+            "end": 1087
+          },
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 889,
+            "end": 902
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "紫研切下十根苍白爪牙并催促萧炎用异火煅烧"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 905,
+            "end": 933
+          },
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 1055,
+            "end": 1071
+          },
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 1108,
+            "end": 1140
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "魔兽干尸的苍白爪牙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 905,
+            "end": 933
+          },
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 973,
+            "end": 1007
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "爪牙软如泥、已无坚硬之效",
+          "紫研只有说不清的感觉却认定爪牙对她有用"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 973,
+            "end": 1007
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 900,
+            "end": 932
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "软泥般苍白爪牙经异火煅烧缩小并转变为青红骨尖"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 1170,
+            "end": 1202
+          },
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 1334,
+            "end": 1349
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "爪牙在琉璃莲心火中不化灰烬，而是缓慢缩小并显出青红之色与寒芒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 1170,
+            "end": 1202
+          },
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 1334,
+            "end": 1349
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "青红骨尖划开坚硬实木桌面，光滑如镜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 151,
+            "end": 176
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "紫研可用十枚骨尖制作拳套作为武器"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 304,
+            "end": 331
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 335,
+            "end": 345
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "十枚青红骨尖被紫研收入腰包"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 702,
+            "end": 712
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 755,
+            "end": 782
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "看似废骨的爪牙必须经异火煅烧才显露锋利本质，而指引来自紫研无法解释的本能感觉"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 900,
+            "end": 932
+          },
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 1170,
+            "end": 1202
+          },
+          {
+            "segment_id": "SEG-E31235E69B8128F651B2-002",
+            "start": 1460,
+            "end": 1484
+          }
+        ]
+      }
+    },
+    {
+      "summary": "紫研指点把看似无用的森白肉块烧掉，萧炎用异火煅烧后当场析出青红血液，误吸一口便使肉体力量微增。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 101,
+          "end": 125
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-001",
+          "start": 1300,
+          "end": 1312
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-001",
+          "start": 1275,
+          "end": 1299
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-001",
+          "start": 1331,
+          "end": 1363
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 108,
+          "end": 140
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 53,
+          "end": 72
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 433,
+          "end": 466
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 494,
+          "end": 514
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 1113,
+          "end": 1146
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 1031,
+          "end": 1041
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 810,
+          "end": 827
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 891,
+          "end": 904
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 1242,
+          "end": 1253
+        },
+        {
+          "segment_id": "SEG-7873D6A4D914CCA48468-002",
+          "start": 1315,
+          "end": 1328
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "紫研"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 101,
+            "end": 125
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 1300,
+            "end": 1312
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎按紫研指引用异火煅烧森白肉块并接入青红血液"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 1275,
+            "end": 1299
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 1331,
+            "end": 1363
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 108,
+            "end": 140
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "魔兽干尸的森白肉块",
+          "青红血液"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 1331,
+            "end": 1363
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 53,
+            "end": 72
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "紫研告知烧掉难看的肉就会出现想要的东西"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-001",
+            "start": 1275,
+            "end": 1299
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "肉块在异火中缩小并凝聚成青红血液"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 53,
+            "end": 72
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "血液自血肉渗出滴落，吸入的狂暴能量需用异火炼化"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 53,
+            "end": 72
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 433,
+            "end": 466
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎察觉皮肤肌肉中的肉体力量稍稍加强",
+          "血液有增强人体力量的奇效"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 433,
+            "end": 466
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 494,
+            "end": 514
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可在调和狂暴因子后择时将血液尽数吸收以增强肉体力量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 1113,
+            "end": 1146
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 1031,
+            "end": 1041
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "炼出的五滴青红血液被收入纳戒玉瓶，不能乱服"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 810,
+            "end": 827
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 891,
+            "end": 904
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 1031,
+            "end": 1041
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "黑皇宗反复检验视为无用的干尸肉块，经异火煅烧才析出能增强肉体的血液，平白捡了大便宜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 1242,
+            "end": 1253
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 494,
+            "end": 514
+          },
+          {
+            "segment_id": "SEG-7873D6A4D914CCA48468-002",
+            "start": 1315,
+            "end": 1328
+          }
+        ]
+      }
+    }
+  ]
+}

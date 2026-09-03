@@ -1,0 +1,285 @@
+{
+  "candidates": [
+    {
+      "summary": "即将被擒时，袖中一直沉睡的七彩吞天蟒自行暴射甩开云棱，随后膨胀成可抗斗王的巨蟒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+          "start": 728,
+          "end": 773
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+          "start": 858,
+          "end": 879
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+          "start": 24,
+          "end": 73
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+          "start": 806,
+          "end": 824
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-002",
+          "start": 216,
+          "end": 260
+        },
+        {
+          "segment_id": "SEG-FD660404CB91CFA43F91-003",
+          "start": 161,
+          "end": 197
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+          "start": 187,
+          "end": 206
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+          "start": 1012,
+          "end": 1029
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+          "start": 880,
+          "end": 914
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+          "start": 646,
+          "end": 661
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+          "start": 916,
+          "end": 948
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-002",
+          "start": 510,
+          "end": 537
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-002",
+          "start": 0,
+          "end": 47
+        },
+        {
+          "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+          "start": 1542,
+          "end": 1595
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "七彩吞天蟒",
+          "云棱"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 728,
+            "end": 773
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 858,
+            "end": 879
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 24,
+            "end": 73
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "袖袍自行震出粗大影子甩中云棱手掌",
+          "沉睡小蛇现身并迅速膨胀成巨蟒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 24,
+            "end": 73
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 806,
+            "end": 824
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-002",
+            "start": 216,
+            "end": 260
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "即将抓住萧炎脖子的云棱"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FD660404CB91CFA43F91-003",
+            "start": 161,
+            "end": 197
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 24,
+            "end": 73
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "云棱手爪距萧炎脖子不足半米",
+          "七彩吞天蟒一直处于沉睡"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FD660404CB91CFA43F91-003",
+            "start": 161,
+            "end": 197
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 858,
+            "end": 879
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "云棱被甩得急速后退且手腕发麻",
+          "沉睡小蛇苏醒并替萧炎解围"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 187,
+            "end": 206
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 1012,
+            "end": 1029
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 880,
+            "end": 914
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "云棱追问袖中何物并脸色阴沉",
+          "云棱改口自己对付巨蟒并令执事擒萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 646,
+            "end": 661
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 916,
+            "end": 948
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-002",
+            "start": 510,
+            "end": 537
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎先怔住，随即明白并涌上狂喜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 728,
+            "end": 773
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "当场多出一个可抵挡斗王强者的帮手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-002",
+            "start": 0,
+            "end": 47
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 1542,
+            "end": 1595
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "吞天蟒保持苏醒并变成十来丈巨蟒继续对敌"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-002",
+            "start": 216,
+            "end": 260
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-002",
+            "start": 510,
+            "end": 537
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中已有宠物自行苏醒解困，并非持有者按计划召唤或动用既有工具的常规用法"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 880,
+            "end": 914
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 728,
+            "end": 773
+          },
+          {
+            "segment_id": "SEG-F0FA35F3FE16EB465E0B-001",
+            "start": 24,
+            "end": 73
+          }
+        ]
+      }
+    }
+  ]
+}

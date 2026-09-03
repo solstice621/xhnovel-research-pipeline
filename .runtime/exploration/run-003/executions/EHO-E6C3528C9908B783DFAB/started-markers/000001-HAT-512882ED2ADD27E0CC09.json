@@ -1,0 +1,13 @@
+{
+  "attempt_id": "HAT-512882ED2ADD27E0CC09",
+  "attempt_ordinal": 1,
+  "event_hash": "sha256:f1c70bc8df2c83ee34939243a0083666c6624895de6fb3cf69d5f95a4048f061",
+  "event_id": "HEV-8996A5EEDE1562705FA5",
+  "event_ordinal": 1,
+  "executor": "agent-files",
+  "handoff_id": "EHO-E6C3528C9908B783DFAB",
+  "recorded_at": "2026-09-03T02:43:48Z",
+  "schema_version": "0.2-draft",
+  "state": "STARTED",
+  "work_dir": "/workspace/.runtime/novel-research/run-003"
+}

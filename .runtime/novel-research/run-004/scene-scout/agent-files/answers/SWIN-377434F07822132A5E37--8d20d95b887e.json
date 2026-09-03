@@ -1,0 +1,529 @@
+{
+  "candidates": [
+    {
+      "summary": "陨落心炎加大心火炼化时误打误撞炙烤美杜莎与吞天蟒双魂,人影与蛇影开始融合;若坚持到彻底融合,她将掌控身躯且心炎克制自动消散。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "陨落心炎",
+          "美杜莎女王",
+          "吞天蟒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 951,
+            "end": 990
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "加大心火炼化",
+          "误打误撞炙烤双魂使之融合"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 951,
+            "end": 990
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 1100,
+            "end": 1125
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "美杜莎与吞天蟒尚未独占的双魂与身躯"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-808B4837EEA8A155F39D-003",
+            "start": 159,
+            "end": 188
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 951,
+            "end": 990
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "双魂对身躯都没有绝对控制权",
+          "心火已悄然进入美杜莎体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-808B4837EEA8A155F39D-003",
+            "start": 159,
+            "end": 188
+          },
+          {
+            "segment_id": "SEG-808B4837EEA8A155F39D-002",
+            "start": 1107,
+            "end": 1133
+          },
+          {
+            "segment_id": "SEG-808B4837EEA8A155F39D-002",
+            "start": 1077,
+            "end": 1105
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "头顶人影与蛇影出现融合迹象",
+          "美杜莎痛苦之色减轻"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 863,
+            "end": 923
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "陨落心炎不知自己帮了忙,仍加大心火炼化"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 1100,
+            "end": 1125
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "痛苦减轻",
+          "人影与蛇影悄然融合"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 863,
+            "end": 923
+          },
+          {
+            "segment_id": "SEG-808B4837EEA8A155F39D-002",
+            "start": 1560,
+            "end": 1596
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "彻底融合后可完全掌控身躯",
+          "届时陨落心炎对她的克制自动消散"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 1009,
+            "end": 1060
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "融合极为缓慢,须坚持到彻底完成"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 993,
+            "end": 1001
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 1009,
+            "end": 1060
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "敌方炼化用心火误把互争身躯的双魂烤向融合,成功后反使克制自己的效果消失"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 951,
+            "end": 990
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 1009,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 1100,
+            "end": 1125
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-001",
+          "start": 951,
+          "end": 990
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-001",
+          "start": 1100,
+          "end": 1125
+        },
+        {
+          "segment_id": "SEG-808B4837EEA8A155F39D-003",
+          "start": 159,
+          "end": 188
+        },
+        {
+          "segment_id": "SEG-808B4837EEA8A155F39D-002",
+          "start": 1107,
+          "end": 1133
+        },
+        {
+          "segment_id": "SEG-808B4837EEA8A155F39D-002",
+          "start": 1077,
+          "end": 1105
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-001",
+          "start": 863,
+          "end": 923
+        },
+        {
+          "segment_id": "SEG-808B4837EEA8A155F39D-002",
+          "start": 1560,
+          "end": 1596
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-001",
+          "start": 1009,
+          "end": 1060
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-001",
+          "start": 993,
+          "end": 1001
+        }
+      ]
+    },
+    {
+      "summary": "萧炎意识陷入黑暗濒死时,所坐青莲被高温融化、纳戒炸裂,无灵智青液把地灵丹等药材丹药煮成杂烩浸入体内,与心火破坏拉锯修复,并因假死熬过剧痛,开始缓慢蜕变。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "青色液体",
+          "陨落心炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 236,
+            "end": 276
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 900,
+            "end": 955
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "青莲因高温融化包裹身体",
+          "纳戒爆裂后无灵智药液杂烩浸润体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 166,
+            "end": 227
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 295,
+            "end": 331
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 520,
+            "end": 549
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 755,
+            "end": 791
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "濒死的萧炎躯体",
+          "即将毁灭的经脉骨骼血液"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 236,
+            "end": 276
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 846,
+            "end": 899
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎意识步入黑暗濒死",
+          "青莲融化与纳戒炸裂同属巧合"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 85,
+            "end": 105
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 166,
+            "end": 227
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 682,
+            "end": 720
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "濒毁经脉骨骼血液生光再生",
+          "心火破坏与斑驳液体修复形成拉锯",
+          "萧炎进入假死"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 846,
+            "end": 899
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1032,
+            "end": 1047
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1171,
+            "end": 1210
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "陨落心炎察觉生机后心火再爆高温"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 900,
+            "end": 955
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "斑驳液体沿毛孔伤口进入后组织再生",
+          "假死使他感觉不到非人剧痛"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 755,
+            "end": 791
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 846,
+            "end": 899
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1171,
+            "end": 1210
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "若在蜕变中熬下并醒来将脱胎换骨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1399,
+            "end": 1434
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "蜕变极其缓慢,持续时间未知"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1330,
+            "end": 1357
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1435,
+            "end": 1447
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "高温巧合融化青莲并炸裂纳戒,无灵智杂烩含地灵丹的药液与心火拉锯修复;假死才使他不因剧痛发疯"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 682,
+            "end": 720
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 520,
+            "end": 549
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 590,
+            "end": 612
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1032,
+            "end": 1047
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1171,
+            "end": 1210
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 236,
+          "end": 276
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 900,
+          "end": 955
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 166,
+          "end": 227
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 295,
+          "end": 331
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 520,
+          "end": 549
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 755,
+          "end": 791
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 846,
+          "end": 899
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 85,
+          "end": 105
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 682,
+          "end": 720
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 1032,
+          "end": 1047
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 1171,
+          "end": 1210
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 1399,
+          "end": 1434
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 1330,
+          "end": 1357
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 1435,
+          "end": 1447
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 590,
+          "end": 612
+        }
+      ]
+    }
+  ]
+}

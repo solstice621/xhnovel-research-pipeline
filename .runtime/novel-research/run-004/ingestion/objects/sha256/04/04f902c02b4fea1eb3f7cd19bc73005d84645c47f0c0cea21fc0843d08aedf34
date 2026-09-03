@@ -1,0 +1,358 @@
+{
+  "candidates": [
+    {
+      "summary": "碧绿火焰人影在云督四人合力杀招砸落前瞬现海波东身前硬接并将其震退,随即散去火焰亮明萧炎身份,米特尔家族由灭门边缘转为被归来之人当场护持。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 1421,
+          "end": 1436
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 1364,
+          "end": 1388
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 385,
+          "end": 439
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 375,
+          "end": 395
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 593,
+          "end": 635
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 254,
+          "end": 263
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 1438,
+          "end": 1442
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 664,
+          "end": 687
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 61,
+          "end": 95
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 241,
+          "end": 264
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 780,
+          "end": 794
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 734,
+          "end": 745
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+          "start": 1002,
+          "end": 1021
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 500,
+          "end": 515
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 96,
+          "end": 115
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 170,
+          "end": 181
+        },
+        {
+          "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+          "start": 1339,
+          "end": 1349
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "海波东",
+          "云督四人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 1421,
+            "end": 1436
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 1364,
+            "end": 1388
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 385,
+            "end": 439
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 375,
+            "end": 395
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 593,
+            "end": 635
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "清啸中瞬现海波东身前硬接四人合力杀招,随后散去火焰现出真身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 254,
+            "end": 263
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 385,
+            "end": 439
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 1438,
+            "end": 1442
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 1364,
+            "end": 1388
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "海波东",
+          "云督四人正至的合力杀招"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 593,
+            "end": 635
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 385,
+            "end": 439
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "云督四人的合力凶悍一拳在神秘人出现时仍砸向海波东"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 593,
+            "end": 635
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "对海波东的锁定被解开",
+          "云督四人被一拳击溃震退",
+          "神秘人被当场指认为归来讨债的萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 664,
+            "end": 687
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 61,
+            "end": 95
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 241,
+            "end": 264
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 1421,
+            "end": 1436
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "云督等对突然出现者冷喝并加大全力一击",
+          "海波东提醒对方小心",
+          "击退后云督追问来者姓名"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 780,
+            "end": 794
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 734,
+            "end": 745
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 1002,
+            "end": 1021
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 500,
+            "end": 515
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "火焰人影后退卸力,云督四人倒飞十几丈且袖袍爆裂",
+          "满城鸦雀无声,雅妃确认他回来了"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 61,
+            "end": 95
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 96,
+            "end": 115
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 170,
+            "end": 181
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 1339,
+            "end": 1349
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "海波东从被锁定的必死拳势中脱身",
+          "米特尔一方得知神秘援手即萧炎归来讨债"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 664,
+            "end": 687
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 385,
+            "end": 439
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 1421,
+            "end": 1436
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "合力杀招已被击溃,四人被震退但仍稳住身形,萧炎身份已向全城摊开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 61,
+            "end": 95
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 241,
+            "end": 264
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 1421,
+            "end": 1436
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 1364,
+            "end": 1388
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中未具名外援先拆锁定杀招再亮明身份,受益方并未预先召唤该援手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 254,
+            "end": 263
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 385,
+            "end": 439
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-001",
+            "start": 664,
+            "end": 687
+          },
+          {
+            "segment_id": "SEG-EACF2C57B783C9EE670E-002",
+            "start": 1421,
+            "end": 1436
+          }
+        ]
+      }
+    }
+  ]
+}

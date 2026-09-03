@@ -1,0 +1,240 @@
+{
+  "candidates": [
+    {
+      "summary": "悬崖边残存透明老者现身并停止偷吸斗之气后，提出传授炼药；少年当场行拜师礼，获得炼药培养路径，所提进化功法暂不传授。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-2EE218081661E7AE0994-001",
+          "start": 751,
+          "end": 792
+        },
+        {
+          "segment_id": "SEG-2EE218081661E7AE0994-001",
+          "start": 833,
+          "end": 861
+        },
+        {
+          "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+          "start": 1059,
+          "end": 1114
+        },
+        {
+          "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+          "start": 35,
+          "end": 74
+        },
+        {
+          "segment_id": "SEG-2EE218081661E7AE0994-001",
+          "start": 793,
+          "end": 819
+        },
+        {
+          "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+          "start": 1060,
+          "end": 1069
+        },
+        {
+          "segment_id": "SEG-2EE218081661E7AE0994-001",
+          "start": 650,
+          "end": 664
+        },
+        {
+          "segment_id": "SEG-2EE218081661E7AE0994-002",
+          "start": 720,
+          "end": 754
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 751,
+            "end": 792
+          },
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 833,
+            "end": 861
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "向现身的残存老者行拜师礼"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 751,
+            "end": 792
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "戒指中的残存老者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1059,
+            "end": 1114
+          },
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 833,
+            "end": 861
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "古戒中残存老者已现身，并已吸取其三年斗之气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1059,
+            "end": 1114
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+            "start": 35,
+            "end": 74
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "少年成为药老弟子，获得炼药师培养资格"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 751,
+            "end": 792
+          },
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 793,
+            "end": 819
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+            "start": 1060,
+            "end": 1069
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "老者以教炼药收徒，并声明能进化的功法待成为斗者再传"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+            "start": 1060,
+            "end": 1069
+          },
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 650,
+            "end": 664
+          },
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-002",
+            "start": 720,
+            "end": 754
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "老者验礼后点头，自名为药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 793,
+            "end": 819
+          },
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 833,
+            "end": 861
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可走炼药师培养路径；斗之气不再被擅自吸取"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+            "start": 1060,
+            "end": 1069
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+            "start": 35,
+            "end": 74
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "师徒关系成立；所提能进化的功法暂不传授"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 793,
+            "end": 819
+          },
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-002",
+            "start": 720,
+            "end": 754
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残存意志可依附信物现身议价，并以拜师换取炼药传授与停吸斗气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-001",
+            "start": 1059,
+            "end": 1114
+          },
+          {
+            "segment_id": "SEG-2EE218081661E7AE0994-001",
+            "start": 751,
+            "end": 792
+          },
+          {
+            "segment_id": "SEG-D380F6BBEF2CB973A212-002",
+            "start": 35,
+            "end": 74
+          }
+        ]
+      }
+    }
+  ]
+}

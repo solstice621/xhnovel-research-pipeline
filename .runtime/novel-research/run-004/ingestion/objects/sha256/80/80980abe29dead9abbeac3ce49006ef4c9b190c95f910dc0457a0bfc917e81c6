@@ -1,0 +1,1180 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎灵魂疲惫沉睡后，菩提古树以翠绿光霞将他拉入树心盘坐如雕塑；随即内空间裂开口子，把同入古树的薰儿等人从幻境吐出。古青阳拦住薰儿，称这或许是他的大机缘。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+          "start": 447,
+          "end": 459
+        },
+        {
+          "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+          "start": 503,
+          "end": 524
+        },
+        {
+          "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+          "start": 657,
+          "end": 690
+        },
+        {
+          "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+          "start": 1137,
+          "end": 1155
+        },
+        {
+          "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+          "start": 424,
+          "end": 439
+        },
+        {
+          "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+          "start": 552,
+          "end": 586
+        },
+        {
+          "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+          "start": 638,
+          "end": 652
+        },
+        {
+          "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+          "start": 481,
+          "end": 502
+        },
+        {
+          "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+          "start": 1156,
+          "end": 1165
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "菩提古树",
+          "薰儿",
+          "古青阳"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 447,
+            "end": 459
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 503,
+            "end": 524
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 657,
+            "end": 690
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 1137,
+            "end": 1155
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 1156,
+            "end": 1165
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "因灵魂疲惫陷入沉睡"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 424,
+            "end": 439
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 447,
+            "end": 459
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "盘坐蒲团上的萧炎",
+          "树体中心"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 503,
+            "end": 524
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 552,
+            "end": 586
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "驱邪后灵魂疲惫无法被斗气回复清除"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 424,
+            "end": 439
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎被拉入树心盘坐如雕塑",
+          "同入者被从幻境吐进这片内空间"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 552,
+            "end": 586
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 638,
+            "end": 652
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 657,
+            "end": 690
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "古树爆发绿光如触手拉人入树，并撕开空间口子吐出其余人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 481,
+            "end": 502
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 503,
+            "end": 524
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 638,
+            "end": 652
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 657,
+            "end": 690
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "众人明白先前经历皆是幻境并惊骇",
+          "古青阳称这或许是萧炎的大机缘，拦住薰儿勿冲动"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 657,
+            "end": 690
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 1137,
+            "end": 1155
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎进入树内机缘状态，他人被放出幻境但难以把他从树中取出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 552,
+            "end": 586
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 1137,
+            "end": 1155
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎盘坐树心纹丝不动，其余人留在同一内空间"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 552,
+            "end": 586
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 657,
+            "end": 690
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗存在宿主沉睡时单方面把人拉入树心并释放其他被困者，机缘对象由树选择而非众人争夺"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 447,
+            "end": 459
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 552,
+            "end": 586
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 657,
+            "end": 690
+          },
+          {
+            "segment_id": "SEG-9A634B7B51B05BF5BED7-002",
+            "start": 1137,
+            "end": 1155
+          }
+        ]
+      }
+    },
+    {
+      "summary": "魂玉与九凤趁萧炎盘坐树中，联手拍击菩提古树想把他惊醒；树体落掌处反弹出极端可怕劲力，两人吐血倒飞，萧炎并未被惊醒。众人意识到是古树在保护他，即令全场联手也无法撼动一根枝叶。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-001",
+          "start": 614,
+          "end": 636
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-001",
+          "start": 726,
+          "end": 733
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-002",
+          "start": 1,
+          "end": 13
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-001",
+          "start": 637,
+          "end": 656
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-001",
+          "start": 830,
+          "end": 855
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-002",
+          "start": 1186,
+          "end": 1213
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-001",
+          "start": 915,
+          "end": 942
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-001",
+          "start": 1036,
+          "end": 1054
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-001",
+          "start": 1055,
+          "end": 1076
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-001",
+          "start": 1173,
+          "end": 1191
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-002",
+          "start": 125,
+          "end": 154
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-001",
+          "start": 680,
+          "end": 689
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "魂玉",
+          "九凤",
+          "菩提古树",
+          "萧炎",
+          "薰儿"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 614,
+            "end": 636
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 726,
+            "end": 733
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1,
+            "end": 13
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 680,
+            "end": 689
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "魂玉与九凤化作黑线出现在树下，全力拍向树中萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 614,
+            "end": 636
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 637,
+            "end": 656
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 830,
+            "end": 855
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "菩提古树",
+          "树体之中盘坐的萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 830,
+            "end": 855
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 637,
+            "end": 656
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 680,
+            "end": 689
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎盘坐树中如琥珀纹丝不动",
+          "两人想强行把他从状态中惊醒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1186,
+            "end": 1213
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 830,
+            "end": 855
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "攻击被反弹，两人吐血倒飞",
+          "萧炎未被惊醒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 915,
+            "end": 942
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 1036,
+            "end": 1054
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 1055,
+            "end": 1076
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 1173,
+            "end": 1191
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "落掌处暴涌极端可怕劲力反弹进两人体内，摧毁斗气防御"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 915,
+            "end": 942
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "两人眼中涌现惊骇，众人愣住望向古树"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 915,
+            "end": 942
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 1036,
+            "end": 1054
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "无法靠联手撼动古树或把萧炎从状态中打醒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1,
+            "end": 13
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 125,
+            "end": 154
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "古树持续保护树中萧炎，外来者只能眼睁睁看着"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1,
+            "end": 13
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 125,
+            "end": 154
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1186,
+            "end": 1213
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗存对沉睡宿主的保护反击不由宿主控制，外来强击只会被树体反弹而非与宿主交手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 830,
+            "end": 855
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-001",
+            "start": 915,
+            "end": 942
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1,
+            "end": 13
+          }
+        ]
+      }
+    },
+    {
+      "summary": "约一个月后树中萧炎睁眼，目光带看破万物的沧桑，随即内敛进灵魂深处；他如液体从坚硬树体穿融而出，自述灵魂在树内经历百次轮回，实力处于九转斗尊巅峰而非半圣。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-002",
+          "start": 1457,
+          "end": 1487
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-001",
+          "start": 132,
+          "end": 139
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-001",
+          "start": 754,
+          "end": 788
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-001",
+          "start": 713,
+          "end": 723
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-002",
+          "start": 1138,
+          "end": 1163
+        },
+        {
+          "segment_id": "SEG-B056FB1EB98E03802424-002",
+          "start": 1186,
+          "end": 1213
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-001",
+          "start": 88,
+          "end": 110
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-001",
+          "start": 596,
+          "end": 632
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-001",
+          "start": 968,
+          "end": 992
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-001",
+          "start": 1453,
+          "end": 1471
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 0,
+          "end": 39
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-001",
+          "start": 1365,
+          "end": 1378
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-001",
+          "start": 1438,
+          "end": 1452
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-001",
+          "start": 1331,
+          "end": 1338
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "薰儿",
+          "古青阳",
+          "菩提古树"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1457,
+            "end": 1487
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 132,
+            "end": 139
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 754,
+            "end": 788
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 1331,
+            "end": 1338
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "睁开紧闭一个月的双眼",
+          "从菩提古树中穿融走出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1457,
+            "end": 1487
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 713,
+            "end": 723
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 754,
+            "end": 788
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "菩提古树"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 754,
+            "end": 788
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "他已在树中盘坐约一个月，气息甚至从他人感知中消失"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1138,
+            "end": 1163
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1186,
+            "end": 1213
+          },
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1457,
+            "end": 1487
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "睁眼时的沧桑内敛进灵魂深处",
+          "身体如液体穿融出树",
+          "处于九转斗尊巅峰，灵魂经历百次轮回"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 88,
+            "end": 110
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 596,
+            "end": 632
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 754,
+            "end": 788
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 968,
+            "end": 992
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 1453,
+            "end": 1471
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 0,
+            "end": 39
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "空间泛起奇异波动",
+          "身体碰触树体时表面起波动而允许穿融"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 88,
+            "end": 110
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 754,
+            "end": 788
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "薰儿惊喜呼唤",
+          "旁人感觉不到他的气息，误以为可能已是半圣"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 132,
+            "end": 139
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 1365,
+            "end": 1378
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 1438,
+            "end": 1452
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "九转斗尊巅峰战力",
+          "沧桑内敛于灵魂深处"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 1453,
+            "end": 1471
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 0,
+            "end": 39
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 596,
+            "end": 632
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "九转巅峰与灵魂深处的沧桑留下，他声明并未突破半圣"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 596,
+            "end": 632
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 1438,
+            "end": 1452
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 1453,
+            "end": 1471
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 0,
+            "end": 39
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "树下不可见的百世轮回在睁眼时才体现为九转巅峰与灵魂沧桑，外人只见一个月，无法用常规修炼时间换算"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B056FB1EB98E03802424-002",
+            "start": 1138,
+            "end": 1163
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 968,
+            "end": 992
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-001",
+            "start": 1453,
+            "end": 1471
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 0,
+            "end": 39
+          }
+        ]
+      }
+    },
+    {
+      "summary": "菩提古树突然喷出二十多枚翠绿光点，众人认出是菩提子并抢夺；萧炎手掌一招，光点如受召唤躲开抓取，尽数汇入他掌心。他向古树道谢馈赠。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 899,
+          "end": 934
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 992,
+          "end": 1009
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1148,
+          "end": 1211
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1214,
+          "end": 1222
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1224,
+          "end": 1247
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 939,
+          "end": 943
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 980,
+          "end": 989
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1035,
+          "end": 1055
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 945,
+          "end": 958
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1058,
+          "end": 1060
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1099,
+          "end": 1119
+        },
+        {
+          "segment_id": "SEG-6B610FE58593294052DC-002",
+          "start": 1250,
+          "end": 1267
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "菩提古树",
+          "魂玉等人"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 899,
+            "end": 934
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 992,
+            "end": 1009
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1214,
+            "end": 1222
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "手掌一招收取光点",
+          "向菩提古树道谢馈赠"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1214,
+            "end": 1222
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1224,
+            "end": 1247
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "菩提子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 939,
+            "end": 943
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 980,
+            "end": 989
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1035,
+            "end": 1055
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "古树突然喷出翠绿光点悬浮在空间中"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 899,
+            "end": 934
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "约二十多枚菩提子躲开他人抓取，尽数汇入萧炎掌心"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1035,
+            "end": 1055
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "古树喷出光点",
+          "光点如受召唤自行避开抢夺飞向萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 899,
+            "end": 934
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "众人震惊认出是菩提子并喊抢"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 939,
+            "end": 943
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 945,
+            "end": 958
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 980,
+            "end": 989
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1058,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1099,
+            "end": 1119
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎持有这批菩提子并可分配"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1250,
+            "end": 1267
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "菩提子已聚于萧炎掌心，他称之为古树馈赠"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1214,
+            "end": 1222
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1224,
+            "end": 1247
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗存喷出的宝物自行汇入被树选中者掌心，他人现场抢夺无法截取"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 899,
+            "end": 934
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1058,
+            "end": 1060
+          },
+          {
+            "segment_id": "SEG-6B610FE58593294052DC-002",
+            "start": 1148,
+            "end": 1211
+          }
+        ]
+      }
+    }
+  ]
+}

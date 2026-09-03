@@ -1,0 +1,88 @@
+{
+  "brief_id": "XBR-43C121A4ED04DCADE2F5",
+  "builder": {
+    "build_id": "phase0-handoff-builder-v1",
+    "build_request_artifact_id": "sha256:86c930c5b0e18b9db823c701c5819f90c2f1a3a3693e5e39996ce752c8277b70",
+    "exploration_brief_artifact_id": "sha256:90003e18e0ff43280a87f12f354c423e560bbd8b36b4fc7d1588604ad6109abd",
+    "research_lead_artifact_ids": [
+      "sha256:61717e087803563f6cebe7e14ec74a7e99ba2253c875076effa1e17e7e1c91ff",
+      "sha256:e65270215316049d3bfee738b5338960afc65a8442cce2d483b0458418d8c204"
+    ],
+    "source_declaration_artifact_id": "sha256:8661bde80b412e457e3228ebd9b90843909fe214aa4103d259e976c415bc9d02"
+  },
+  "contains_evidence": false,
+  "handoff_hash": "sha256:a67dadca385cabb6abbafefb36611f7ec7a84b8454607069e95d3ba320a57e41",
+  "handoff_id": "EHO-D265EDFA714EA2C36829",
+  "localization": {
+    "execution_scope": "FULL_WORK",
+    "hint_refs": [
+      {
+        "hint_indexes": [
+          0,
+          1
+        ],
+        "lead_id": "RLD-886021B732A340DF0CA7"
+      },
+      {
+        "hint_indexes": [
+          0,
+          1
+        ],
+        "lead_id": "RLD-D136E73F9B2AEEF508D9"
+      }
+    ],
+    "policy": "LEAD_ONLY_NOT_EXECUTOR_INPUT"
+  },
+  "motivating_lead_ids": [
+    "RLD-886021B732A340DF0CA7",
+    "RLD-D136E73F9B2AEEF508D9"
+  ],
+  "novel_spec": {
+    "expected_input_spec_hash": "sha256:9ff536b77c4fbe246955c110bc09c54710cf2b4ad68b558775de6bc3712326b4",
+    "path": "novel-spec.json",
+    "raw_artifact_id": "sha256:67f32f009ec45b3b43ca53622dc5f61bc72e9c111a852f3899dd52345eda008f"
+  },
+  "readiness": {
+    "discovery_brief_hash": "sha256:c5514397ff072a6bb4f62b217fb6f6c97abfef11c0f57138e2992e69929d64f8",
+    "may_send_to_external_model": true,
+    "may_store_full_text": true,
+    "rights_basis": "FAIR_USE_RESEARCH",
+    "source_quality_tier": "B",
+    "status": "READY_FOR_XHNOVEL"
+  },
+  "requested_at": "2026-09-03T05:15:00Z",
+  "schema_version": "0.2-draft",
+  "source_ref": {
+    "content_binding": "DEFERRED_TO_INGESTION",
+    "edition_label": "Reused run-003 local chapter directory (www.shubaobiquge.com/169709/ HTML catalog fetched 2026-09-03); official/licensed status unproven; not a new crawl; bound to sealed encounter Brief XBR-43C121A4ED04DCADE2F5 rather than run-003 ownership brief",
+    "kind": "directory",
+    "locator": "file:///workspace/.runtime/exploration/run-003/input/chapters",
+    "source_config_hash": "sha256:e9a9ea16d8c720a2fd8fa367f082a553529d791dbaa83029e549cedbaf7b1806",
+    "source_ref_id": "SREF-D06EF4993EBD14574063",
+    "work_ref_id": "WREF-7717D203AC840E109907"
+  },
+  "work_ref": {
+    "aliases": [
+      "Battle Through the Heavens",
+      "《斗破苍穹》"
+    ],
+    "author": "天蚕土豆",
+    "canonical_title": "斗破苍穹",
+    "external_ids": [
+      {
+        "namespace": "qidian",
+        "value": "1209977"
+      }
+    ],
+    "identity": {
+      "basis": "STABLE_EXTERNAL_ID",
+      "external_id": "1209977",
+      "namespace": "qidian"
+    },
+    "language": "zh",
+    "normalized_author": "天蚕土豆",
+    "normalized_title": "斗破苍穹",
+    "resolution_basis": "STABLE_EXTERNAL_ID",
+    "work_ref_id": "WREF-7717D203AC840E109907"
+  }
+}

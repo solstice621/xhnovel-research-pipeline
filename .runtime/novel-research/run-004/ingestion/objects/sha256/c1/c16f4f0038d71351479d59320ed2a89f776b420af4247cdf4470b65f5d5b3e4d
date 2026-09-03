@@ -1,0 +1,237 @@
+{
+  "candidates": [
+    {
+      "summary": "虚空雷池中一道黑魔雷无意识撞上萧炎，小伊以虚无吞炎吞噬之力将其炼化，黑魔雷从杀招变成可吸收的大补，停滞的实力当场重新增涨。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 519,
+          "end": 561
+        },
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 844,
+          "end": 868
+        },
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 971,
+          "end": 988
+        },
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 608,
+          "end": 624
+        },
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 1120,
+          "end": 1132
+        },
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 1254,
+          "end": 1267
+        },
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 1353,
+          "end": 1374
+        },
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 662,
+          "end": 679
+        },
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 787,
+          "end": 802
+        },
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 1376,
+          "end": 1384
+        },
+        {
+          "segment_id": "SEG-26230E2021E0FF002F79-002",
+          "start": 1173,
+          "end": 1184
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "小伊"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 519,
+            "end": 561
+          },
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 844,
+            "end": 868
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "小伊一口吞噬黑魔雷"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 971,
+            "end": 988
+          },
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 608,
+            "end": 624
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "黑魔雷"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 519,
+            "end": 561
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎此前从未想过吸收黑魔雷"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 1120,
+            "end": 1132
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "黑魔雷被炼成精纯能量，萧炎停滞的实力重新缓慢增涨",
+          "黑魔雷在他眼中变成大补之物"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 1254,
+            "end": 1267
+          },
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 1353,
+            "end": 1374
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "小伊主动吸卷更多黑魔雷并一口吞下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 971,
+            "end": 988
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "异常精纯的能量突然自体内涌出",
+          "萧炎认出这是虚无吞炎的吞噬之力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 662,
+            "end": 679
+          },
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 787,
+            "end": 802
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可将雷池中的黑魔雷当作修炼资源吞噬"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 1353,
+            "end": 1374
+          },
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 1376,
+            "end": 1384
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "小伊具备虚无吞炎吞噬之力，此后能继续吞噬黑魔雷"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 787,
+            "end": 802
+          },
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 1173,
+            "end": 1184
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "无意识撞击把环境杀伤物交给火灵吞噬，才把不可吸收的雷霆改写成修炼资源"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 519,
+            "end": 561
+          },
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 1120,
+            "end": 1132
+          },
+          {
+            "segment_id": "SEG-26230E2021E0FF002F79-002",
+            "start": 1173,
+            "end": 1184
+          }
+        ]
+      }
+    }
+  ]
+}

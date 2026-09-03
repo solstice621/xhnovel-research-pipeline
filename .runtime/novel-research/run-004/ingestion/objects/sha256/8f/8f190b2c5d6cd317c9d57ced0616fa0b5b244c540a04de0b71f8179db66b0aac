@@ -1,0 +1,97 @@
+{
+  "candidates": [
+    {
+      "summary": "濒死的天毒蝎龙兽以蝎龙族血脉发誓，独眼爆裂放出无法躲避的血芒钻入萧炎体内，当场把族级追杀绑到他身上。",
+      "source_spans": [
+        {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 704, "end": 713},
+        {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 962, "end": 976},
+        {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1024, "end": 1056},
+        {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1063, "end": 1094},
+        {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1095, "end": 1133},
+        {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1134, "end": 1145},
+        {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1146, "end": 1172},
+        {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1174, "end": 1192}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["天毒蝎龙兽", "摩蝎", "萧炎"],
+        "support_spans": [
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1024, "end": 1056},
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1095, "end": 1133}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["以蝎龙族血脉发誓并放出血芒钻入萧炎体内"],
+        "support_spans": [
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1024, "end": 1056},
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1095, "end": 1133}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["萧炎"],
+        "support_spans": [
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1095, "end": 1133}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["天毒蝎龙兽濒死，萧炎一方正要取其魔核"],
+        "support_spans": [
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 704, "end": 713},
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 962, "end": 976}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["血芒钻进萧炎体内，蝎龙族追杀咒誓落到他身上"],
+        "support_spans": [
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1024, "end": 1056},
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1095, "end": 1133}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["血芒速度快到萧炎只能眼睁睁看着，毫无躲避之力"],
+        "support_spans": [
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1134, "end": 1145},
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1146, "end": 1172}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["独眼自动脱落爆裂，血芒钻入体内"],
+        "support_spans": [
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1063, "end": 1094},
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1095, "end": 1133}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["萧炎此后须面对蝎龙族追杀，已无法靠闪避解除这次入体"],
+        "support_spans": [
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1024, "end": 1056},
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1146, "end": 1172},
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1174, "end": 1192}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["血脉发誓称将令其在蝎龙族追杀下逃亡一生"],
+        "support_spans": [
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1024, "end": 1056},
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1174, "end": 1192}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["濒死敌以不可闪避的非常规血芒，把族级追杀直接绑定到击杀者身上"],
+        "support_spans": [
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1095, "end": 1133},
+          {"segment_id": "SEG-72009F42C3413AA4DDAF-002", "start": 1146, "end": 1172}
+        ]
+      }
+    }
+  ]
+}

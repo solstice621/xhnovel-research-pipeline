@@ -1,0 +1,768 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎濒死假死时，坐垫青莲被高温意外融化、纳戒炸裂，无灵智青色液体把其中全部药材丹药胡乱熔成斑驳药液并侵润残躯，与陨落心炎心火拉锯修复，启动脱胎换骨。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 28,
+          "end": 46
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 0,
+          "end": 27
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 236,
+          "end": 276
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 180,
+          "end": 227
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 755,
+          "end": 797
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 682,
+          "end": 754
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-001",
+          "start": 1486,
+          "end": 1495
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 1171,
+          "end": 1190
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 846,
+          "end": 899
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 1399,
+          "end": 1434
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 900,
+          "end": 955
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 1032,
+          "end": 1050
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 1330,
+          "end": 1384
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 1435,
+          "end": 1447
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 520,
+          "end": 557
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 295,
+          "end": 331
+        },
+        {
+          "segment_id": "SEG-167F31C1CDDD8E566050-002",
+          "start": 351,
+          "end": 427
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "陨落心炎",
+          "青色液体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 28,
+            "end": 46
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 0,
+            "end": 27
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 236,
+            "end": 276
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "高温中青莲意外融化成青色液体，并包裹侵润萧炎残躯"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 180,
+            "end": 227
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 236,
+            "end": 276
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 755,
+            "end": 797
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎被摧残得不成人样的身体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 682,
+            "end": 754
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎濒临死亡并陷入假死"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-001",
+            "start": 1486,
+            "end": 1495
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1171,
+            "end": 1190
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "濒毁经脉骨骼血液被斑驳药液修复并开始脱胎换骨蜕变"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 846,
+            "end": 899
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1399,
+            "end": 1434
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "陨落心炎察觉生机后心火再爆发高温破坏"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 900,
+            "end": 955
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "心火破坏与斑驳液体修复形成拉锯"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1032,
+            "end": 1050
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "若在蜕变中熬下并醒来则可脱胎换骨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1399,
+            "end": 1434
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "蜕变缓慢持续，时长未知"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1330,
+            "end": 1384
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 1435,
+            "end": 1447
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "无灵智青色液体在高温巧合中融化青莲、炸裂纳戒，把全部药材丹药煮成未知杂烩侵润身体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 682,
+            "end": 754
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 520,
+            "end": 557
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 295,
+            "end": 331
+          },
+          {
+            "segment_id": "SEG-167F31C1CDDD8E566050-002",
+            "start": 351,
+            "end": 427
+          }
+        ]
+      }
+    },
+    {
+      "summary": "黑暗中突然出现淡青光芒指引萧炎混沌意识接近一簇青色火焰，温暖照耀使他清醒睁眼；他发现经脉晶莹、肉体力量暴涨，斗气从体内部位直接涌出，并仅凭自身施展斗气化翼，踏足斗王。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+          "start": 1042,
+          "end": 1070
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+          "start": 1231,
+          "end": 1242
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+          "start": 1142,
+          "end": 1202
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+          "start": 1029,
+          "end": 1082
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+          "start": 856,
+          "end": 907
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+          "start": 1244,
+          "end": 1297
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+          "start": 1434,
+          "end": 1471
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+          "start": 60,
+          "end": 112
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+          "start": 133,
+          "end": 173
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+          "start": 1562,
+          "end": 1579
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+          "start": 477,
+          "end": 505
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+          "start": 615,
+          "end": 661
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+          "start": 919,
+          "end": 971
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "青色火焰"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+            "start": 1042,
+            "end": 1070
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 1231,
+            "end": 1242
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "混沌意识受淡青光芒指引，不由自主接近青色火焰"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 1142,
+            "end": 1202
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "淡青色光芒与摇曳的青色火焰"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 1142,
+            "end": 1202
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 1231,
+            "end": 1242
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "意识在无光黑暗中游荡，肉身如死尸般不动"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 1029,
+            "end": 1082
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 856,
+            "end": 907
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "意识回复清醒并睁眼苏醒，干枯经脉变为晶莹管道，肉体力量飞跃"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 1244,
+            "end": 1297
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 1434,
+            "end": 1471
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+            "start": 60,
+            "end": 112
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+            "start": 133,
+            "end": 173
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 1562,
+            "end": 1579
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "青色火焰散发侵润灵魂的温暖，令混沌意识回复清醒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 1244,
+            "end": 1297
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "充实力量涌现，雄浑斗气从身体各处直接涌出而非经气旋运转"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-001",
+            "start": 1562,
+            "end": 1579
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+            "start": 477,
+            "end": 505
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+            "start": 615,
+            "end": 661
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "不借飞行斗技、秘法或外力即可斗气化翼，踏足斗王强者阶层"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+            "start": 919,
+            "end": 971
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+            "start": 1042,
+            "end": 1070
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "经脉韧性与容纳度的飞跃蜕变留存在体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+            "start": 133,
+            "end": 173
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "无主动修炼的苏醒使斗气改由肉体各处直接涌出，并以自身实力化翼"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+            "start": 615,
+            "end": 661
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-002",
+            "start": 919,
+            "end": 971
+          }
+        ]
+      }
+    },
+    {
+      "summary": "陨落心炎对苏醒的萧炎再打心火时，他本欲以斗气压制，体内却突然爆出未知奇异荧光，把心火逼退消散；此抗性来自先前药液与心火的意外对峙，成为他反攻倚仗。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-003",
+          "start": 99,
+          "end": 133
+        },
+        {
+          "segment_id": "SEG-6EC469239554958BAF88-001",
+          "start": 855,
+          "end": 876
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-003",
+          "start": 232,
+          "end": 258
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-003",
+          "start": 142,
+          "end": 175
+        },
+        {
+          "segment_id": "SEG-6EC469239554958BAF88-001",
+          "start": 580,
+          "end": 606
+        },
+        {
+          "segment_id": "SEG-6EC469239554958BAF88-001",
+          "start": 437,
+          "end": 487
+        },
+        {
+          "segment_id": "SEG-6EC469239554958BAF88-001",
+          "start": 488,
+          "end": 519
+        },
+        {
+          "segment_id": "SEG-7067042FAC2E21AB6C91-003",
+          "start": 300,
+          "end": 322
+        },
+        {
+          "segment_id": "SEG-6EC469239554958BAF88-001",
+          "start": 552,
+          "end": 579
+        },
+        {
+          "segment_id": "SEG-6EC469239554958BAF88-001",
+          "start": 815,
+          "end": 854
+        },
+        {
+          "segment_id": "SEG-6EC469239554958BAF88-001",
+          "start": 607,
+          "end": 685
+        },
+        {
+          "segment_id": "SEG-6EC469239554958BAF88-001",
+          "start": 1447,
+          "end": 1492
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "陨落心炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-003",
+            "start": 99,
+            "end": 133
+          },
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 855,
+            "end": 876
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "急忙调动体内斗气准备压制心火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-003",
+            "start": 232,
+            "end": 258
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "再度出现在萧炎心中的陨落心炎心火"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-003",
+            "start": 142,
+            "end": 175
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎苏醒后不知沉睡期内体内变故，陨落心炎发现他存活并愤怒尖鸣"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 580,
+            "end": 606
+          },
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-003",
+            "start": 99,
+            "end": 133
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "体内突发奇异荧光，心火遇克星急速退缩至完全消散"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 437,
+            "end": 487
+          },
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 488,
+            "end": 519
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "陨落心炎在萧炎心中召唤猛烈心火肆意破坏"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-003",
+            "start": 142,
+            "end": 175
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "心火高温未造成预期破坏剧痛，反令身体暖洋洋；萧炎不知荧光从何而来"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-7067042FAC2E21AB6C91-003",
+            "start": 300,
+            "end": 322
+          },
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 552,
+            "end": 579
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "荧光守护使心火焚烧大打折扣，成为对陨落心炎反攻的最大倚仗"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 815,
+            "end": 854
+          },
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 855,
+            "end": 876
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "荧光由奇异药液与心火长期对峙磨合成抗性，衍变成陨落心炎克星"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 607,
+            "end": 685
+          },
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 1447,
+            "end": 1492
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中未知荧光自动爆发克制心火，并非萧炎有意施展的已有手段"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 437,
+            "end": 487
+          },
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 552,
+            "end": 579
+          },
+          {
+            "segment_id": "SEG-6EC469239554958BAF88-001",
+            "start": 580,
+            "end": 606
+          }
+        ]
+      }
+    }
+  ]
+}

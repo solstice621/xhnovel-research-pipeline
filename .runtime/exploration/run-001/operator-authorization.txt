@@ -1,0 +1,1 @@
+Operator Zihan Qiu (qiuzihan32@163.com) authorized this cloud agent to sign the standing operator attestation with the message 「授权你署名」 at 2026-09-03T00:56:00Z. The agent is the attested_by party; this is not a forged personal signature of the operator.

@@ -1,0 +1,261 @@
+{
+  "candidates": [
+    {
+      "summary": "范痨围杀之际美杜莎女王突然现身要拦萧炎；萧炎以拼命相威胁后，融合进其体内的吞天蟒残存依恋从灵魂深处安抚杀意，使她暂时离去，萧炎得以专对范痨。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+          "start": 1071,
+          "end": 1118
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+          "start": 373,
+          "end": 395
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-003",
+          "start": 110,
+          "end": 120
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+          "start": 433,
+          "end": 444
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+          "start": 1156,
+          "end": 1189
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+          "start": 1332,
+          "end": 1365
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+          "start": 1431,
+          "end": 1487
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-003",
+          "start": 80,
+          "end": 120
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-003",
+          "start": 121,
+          "end": 179
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+          "start": 1407,
+          "end": 1429
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+          "start": 1488,
+          "end": 1515
+        },
+        {
+          "segment_id": "SEG-A0069F098B677B9CA6D9-003",
+          "start": 252,
+          "end": 280
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "美杜莎女王",
+          "吞天蟒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1071,
+            "end": 1118
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 373,
+            "end": 395
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-003",
+            "start": 110,
+            "end": 120
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎喝令美杜莎今日不得插手，并以拼命相威胁"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1071,
+            "end": 1118
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "美杜莎女王"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 373,
+            "end": 395
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "美杜莎女王跟踪现身质问此次是否还有人帮萧炎；若她拦住则萧厉会落入范痨之手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 373,
+            "end": 395
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 433,
+            "end": 444
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1156,
+            "end": 1189
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "美杜莎杀意被灵魂深处莫名情绪安抚，暂时离去"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1332,
+            "end": 1365
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1431,
+            "end": 1487
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "融合中掺杂的吞天蟒依恋情绪从灵魂深处蔓延，将美杜莎杀意安抚而下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-003",
+            "start": 80,
+            "end": 120
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-003",
+            "start": 121,
+            "end": 179
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1332,
+            "end": 1365
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "美杜莎宣称萧炎的命是她的后挥袖消散，萧炎对此怔住"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1407,
+            "end": 1429
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1431,
+            "end": 1487
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1488,
+            "end": 1515
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "没有美杜莎束缚后可安心与范痨了结恩怨"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-003",
+            "start": 252,
+            "end": 280
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "美杜莎声明迟早拿走萧炎的命，杀意与依恋并存的复杂情绪仍在"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1407,
+            "end": 1429
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-003",
+            "start": 121,
+            "end": 179
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "敌对斗宗的杀意被体内另一残存灵魂的依恋在威胁当下突然安抚，导致其放弃插手而非被击败"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1332,
+            "end": 1365
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-003",
+            "start": 121,
+            "end": 179
+          },
+          {
+            "segment_id": "SEG-A0069F098B677B9CA6D9-002",
+            "start": 1488,
+            "end": 1515
+          }
+        ]
+      }
+    }
+  ]
+}

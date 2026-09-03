@@ -1,0 +1,702 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎拼齐净莲残图后滴血无果，本欲用异火毁图，古图却烧不掉；加大火力后纹路飞出，化为预告净莲妖火将在天地潮汐降世的古老文字。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 343,
+          "end": 372
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 384,
+          "end": 390
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 503,
+          "end": 530
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 887,
+          "end": 902
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 323,
+          "end": 336
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 496,
+          "end": 501
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-001",
+          "start": 1206,
+          "end": 1234
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-001",
+          "start": 1338,
+          "end": 1355
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 1,
+          "end": 8
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 23,
+          "end": 39
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 71,
+          "end": 82
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 408,
+          "end": 417
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 462,
+          "end": 494
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 811,
+          "end": 862
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 863,
+          "end": 868
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 869,
+          "end": 874
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 875,
+          "end": 880
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 881,
+          "end": 886
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 1046,
+          "end": 1072
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 1145,
+          "end": 1154
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 343,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 384,
+            "end": 390
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 503,
+            "end": 530
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 887,
+            "end": 902
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以异火席卷焚烧完整古图",
+          "加大火力继续焚烧"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 323,
+            "end": 336
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 343,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 496,
+            "end": 501
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "拼齐后的净莲残图"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-001",
+            "start": 1206,
+            "end": 1234
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 343,
+            "end": 372
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "古图已拼齐但看起来只是普通山水画",
+          "按药老所说滴血后没有反应"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-001",
+            "start": 1206,
+            "end": 1234
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-001",
+            "start": 1338,
+            "end": 1355
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1,
+            "end": 8
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 23,
+            "end": 39
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 71,
+            "end": 82
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "古图在异火中烧不掉也不化灰",
+          "图上纹路飞出化为古老文字悬浮半空"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 408,
+            "end": 417
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 462,
+            "end": 494
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 811,
+            "end": 862
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "古图纹丝不动",
+          "纹路破图而出化为文字"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 462,
+            "end": 494
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 811,
+            "end": 862
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "现出双月同现、九星一体、天地潮汐、妖火降世四句",
+          "药老解读为天地潮汐之日净莲妖火也会降世",
+          "距今约还有三年"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 863,
+            "end": 868
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 869,
+            "end": 874
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 875,
+            "end": 880
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 881,
+            "end": 886
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 887,
+            "end": 902
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1046,
+            "end": 1072
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1145,
+            "end": 1154
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "得知净莲妖火将在约三年后的天地潮汐降世"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1046,
+            "end": 1072
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1145,
+            "end": 1154
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "古图无法被萧炎的异火焚毁"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 462,
+            "end": 494
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "已持有的完整线索在阅读和滴血都无效后，本意毁弃的异火反而触发隐藏铭文"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 71,
+            "end": 82
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 343,
+            "end": 372
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 408,
+            "end": 417
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 811,
+            "end": 862
+          }
+        ]
+      }
+    },
+    {
+      "summary": "萧炎伸手去取仍在异火中的古图时，妖莲图纹突然如活物化作电芒射入眉心，留下无法撼动的外来光团；他以灵魂力量靠近时白芒穿透防御进入灵魂，并传入“净莲妖圣”四字。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 1445,
+          "end": 1509
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 1510,
+          "end": 1535
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 265,
+          "end": 290
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 925,
+          "end": 935
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 1427,
+          "end": 1441
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 487,
+          "end": 509
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 238,
+          "end": 264
+        },
+        {
+          "segment_id": "SEG-83C1707B796D92E80F69-002",
+          "start": 462,
+          "end": 494
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 701,
+          "end": 753
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 609,
+          "end": 640
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 664,
+          "end": 688
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 754,
+          "end": 789
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 1228,
+          "end": 1253
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 1268,
+          "end": 1273
+        },
+        {
+          "segment_id": "SEG-D792A1801B638C338DB0-001",
+          "start": 971,
+          "end": 1012
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "药老"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1445,
+            "end": 1509
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1510,
+            "end": 1535
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 265,
+            "end": 290
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 925,
+            "end": 935
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "伸手触摸火焰中的古图想取回",
+          "以灵魂力量靠近眉心光团"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1427,
+            "end": 1441
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1445,
+            "end": 1509
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 487,
+            "end": 509
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "古图上的妖莲图纹",
+          "射入眉心的外来光团"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1445,
+            "end": 1509
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 238,
+            "end": 264
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 265,
+            "end": 290
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "古图已在异火中烧不掉",
+          "萧炎伸手想把古图从火中取出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 462,
+            "end": 494
+          },
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1427,
+            "end": 1441
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "妖莲图纹化作电芒射进萧炎眉心",
+          "眉心出现非己光团",
+          "白芒穿透灵魂防御进入灵魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1445,
+            "end": 1509
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 238,
+            "end": 264
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 265,
+            "end": 290
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 701,
+            "end": 753
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "图纹如活物化电芒主动射入眉心",
+          "光团白芒无视灵魂防御直射灵魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1445,
+            "end": 1509
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 609,
+            "end": 640
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 664,
+            "end": 688
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 701,
+            "end": 753
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "药老面色陡然大变",
+          "萧炎身体僵硬并显出痛苦",
+          "接触后只收到四个字：净莲妖圣",
+          "光团停在眉心撼动不得"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1510,
+            "end": 1535
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 754,
+            "end": 789
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 1228,
+            "end": 1253
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 1268,
+            "end": 1273
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 971,
+            "end": 1012
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "获知残存示名为净莲妖圣",
+          "眉心异物暂不能主动驱使"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 1228,
+            "end": 1253
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 1268,
+            "end": 1273
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 971,
+            "end": 1012
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "外来光团停驻眉心且灵魂力量无法撼动"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 238,
+            "end": 264
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 971,
+            "end": 1012
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "接触已激活的古图时残存会主动植入持有者，随后可无视其灵魂防御写入信息且无法被宿主移除"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-83C1707B796D92E80F69-002",
+            "start": 1445,
+            "end": 1509
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 664,
+            "end": 688
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 701,
+            "end": 753
+          },
+          {
+            "segment_id": "SEG-D792A1801B638C338DB0-001",
+            "start": 971,
+            "end": 1012
+          }
+        ]
+      }
+    }
+  ]
+}

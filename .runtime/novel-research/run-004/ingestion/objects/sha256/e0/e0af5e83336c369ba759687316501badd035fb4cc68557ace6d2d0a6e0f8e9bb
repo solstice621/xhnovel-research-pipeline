@@ -1,0 +1,314 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎用灵魂力量冲开易尘血色纳戒上的灵魂印记后搜刮其中，先取出血腥的血邪功卷轴，又在几乎放弃时被杀伐余气引向一卷不起眼的灰色卷轴，当场得到天冥宗镇宗斗技天冥修罗手。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 108,
+          "end": 131
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 313,
+          "end": 338
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 969,
+          "end": 999
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 46,
+          "end": 62
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 402,
+          "end": 405
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 1188,
+          "end": 1193
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 1131,
+          "end": 1141
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 178,
+          "end": 187
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 218,
+          "end": 243
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 384,
+          "end": 399
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 863,
+          "end": 877
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-002",
+          "start": 26,
+          "end": 47
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 192,
+          "end": 199
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 300,
+          "end": 312
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+          "start": 1016,
+          "end": 1044
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-002",
+          "start": 48,
+          "end": 80
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-002",
+          "start": 81,
+          "end": 95
+        },
+        {
+          "segment_id": "SEG-80511CC5D3F02201C1A3-002",
+          "start": 316,
+          "end": 330
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 108,
+            "end": 131
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以灵魂力量侵入血色纳戒并抹除灵魂印记",
+          "在几乎放弃时继续搜刮出灰色卷轴"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 108,
+            "end": 131
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 313,
+            "end": 338
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 969,
+            "end": 999
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "血红色纳戒",
+          "血邪功",
+          "天冥修罗手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 46,
+            "end": 62
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 402,
+            "end": 405
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 1188,
+            "end": 1193
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 1131,
+            "end": 1141
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "纳戒是从易尘手中强行拔来的",
+          "纳戒被设下了灵魂印记",
+          "萧炎灵魂力量远强于易尘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 46,
+            "end": 62
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 178,
+            "end": 187
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 218,
+            "end": 243
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂印记被抹除，纳戒可被搜刮",
+          "血邪功与天冥修罗手落入萧炎之手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 313,
+            "end": 338
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 384,
+            "end": 399
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 863,
+            "end": 877
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-002",
+            "start": 26,
+            "end": 47
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂印记将初次探入的灵魂力量弹开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 192,
+            "end": 199
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "印记发出细微咔嚓声后被抹除",
+          "不起眼的灰色卷轴溢出淡淡杀伐之气"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 300,
+            "end": 312
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 1016,
+            "end": 1044
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "习会天冥修罗手后战斗力可上升",
+          "对敌时多一种镇宗斗技手段"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-002",
+            "start": 48,
+            "end": 80
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-002",
+            "start": 81,
+            "end": 95
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "血邪功被收入萧炎自己的纳戒",
+          "他计划抽出时间将天冥修罗手熟练与修炼"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 863,
+            "end": 877
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-002",
+            "start": 316,
+            "end": 330
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "战利品纳戒上的灵魂印记先弹开探入，需以更强灵魂力量当场碾碎才能打开",
+          "几乎搜刮完毕准备放弃时，杀伐余气才把隐藏的镇宗卷轴标出来"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 192,
+            "end": 199
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 969,
+            "end": 999
+          },
+          {
+            "segment_id": "SEG-80511CC5D3F02201C1A3-001",
+            "start": 1016,
+            "end": 1044
+          }
+        ]
+      }
+    }
+  ]
+}

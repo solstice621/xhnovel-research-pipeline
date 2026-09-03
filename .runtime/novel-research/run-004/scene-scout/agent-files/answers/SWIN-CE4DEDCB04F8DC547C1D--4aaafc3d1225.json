@@ -1,0 +1,437 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎按天火尊者所嘱把灵魂力量灌进白戒，吸力成倍暴涨，凶魂被吸入戒指；与之灵魂相连的轩护法近乎废掉。残存意志宣称已暂时封印凶魂，随即因灵魂枯竭陷入沉睡，并要萧炎十日内用滋养灵魂之物将其唤醒，否则凶魂会再逸出。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 815,
+          "end": 827
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 841,
+          "end": 852
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-002",
+          "start": 1464,
+          "end": 1477
+        },
+        {
+          "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+          "start": 260,
+          "end": 269
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 879,
+          "end": 884
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 887,
+          "end": 896
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 940,
+          "end": 971
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-002",
+          "start": 1167,
+          "end": 1185
+        },
+        {
+          "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+          "start": 188,
+          "end": 198
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 854,
+          "end": 869
+        },
+        {
+          "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+          "start": 295,
+          "end": 304
+        },
+        {
+          "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+          "start": 904,
+          "end": 917
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-002",
+          "start": 1086,
+          "end": 1098
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-002",
+          "start": 1187,
+          "end": 1194
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-002",
+          "start": 1212,
+          "end": 1237
+        },
+        {
+          "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+          "start": 312,
+          "end": 326
+        },
+        {
+          "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+          "start": 327,
+          "end": 343
+        },
+        {
+          "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+          "start": 351,
+          "end": 365
+        },
+        {
+          "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+          "start": 530,
+          "end": 558
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-001",
+          "start": 973,
+          "end": 999
+        },
+        {
+          "segment_id": "SEG-27FD402D8225465913FD-002",
+          "start": 1363,
+          "end": 1378
+        },
+        {
+          "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+          "start": 654,
+          "end": 672
+        },
+        {
+          "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+          "start": 991,
+          "end": 1003
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "天火尊者",
+          "轩护法",
+          "凶魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 815,
+            "end": 827
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 841,
+            "end": 852
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1464,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 260,
+            "end": 269
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "按嘱将灵魂力量传入纳戒，助天火尊者收取凶魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 879,
+            "end": 884
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 887,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 940,
+            "end": 971
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "凶魂",
+          "白色纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1167,
+            "end": 1185
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 188,
+            "end": 198
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 260,
+            "end": 269
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "天火尊者虽有保留，仍难独自敌过凶魂与轩护法联手"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 841,
+            "end": 852
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 854,
+            "end": 869
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "凶魂被吸入白色戒指并被暂时封印",
+          "与之灵魂相连的轩护法近乎废掉",
+          "天火尊者灵魂枯竭陷入沉睡"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1167,
+            "end": 1185
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 260,
+            "end": 269
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1464,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 295,
+            "end": 304
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 904,
+            "end": 917
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "天火尊者要萧炎把灵魂力量传入纳戒",
+          "轩护法惊吼追问",
+          "韩枫看不见戒中天火尊者",
+          "天火尊者嘱十日内用滋养灵魂之物将其从沉睡中唤醒，否则封印凶魂会再逸出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 887,
+            "end": 896
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1086,
+            "end": 1098
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1187,
+            "end": 1194
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1212,
+            "end": 1237
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 312,
+            "end": 326
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 327,
+            "end": 343
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 351,
+            "end": 365
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 530,
+            "end": 558
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "纳戒吸力成倍暴涨，凶魂被吸入戒指",
+          "轩护法黑雾散开、气息紊乱，遭受近乎致命的灵魂打击"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-001",
+            "start": 973,
+            "end": 999
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1167,
+            "end": 1185
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1363,
+            "end": 1378
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1464,
+            "end": 1477
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "场上少了一名可战的斗宗对手",
+          "戒中封有凶魂可待后用",
+          "须在十日内唤醒天火尊者，否则凶魂可能再逸出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1464,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 260,
+            "end": 269
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 312,
+            "end": 326
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 351,
+            "end": 365
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "凶魂暂时封印在白戒中",
+          "天火尊者陷入沉睡，需十日内用滋养灵魂之物唤醒，否则其灵魂可能消散"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 260,
+            "end": 269
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 295,
+            "end": 304
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 312,
+            "end": 326
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 327,
+            "end": 343
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 654,
+            "end": 672
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 991,
+            "end": 1003
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "残存意志可借宿主灌入的灵魂力量把敌方凶魂封进寄居纳戒，当场废掉与之灵魂相连的斗宗，同时把自己拖入沉睡并留下时限"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1167,
+            "end": 1185
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 260,
+            "end": 269
+          },
+          {
+            "segment_id": "SEG-27FD402D8225465913FD-002",
+            "start": 1464,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 312,
+            "end": 326
+          },
+          {
+            "segment_id": "SEG-369A5FC0ECC8EA9FC3B8-001",
+            "start": 351,
+            "end": 365
+          }
+        ]
+      }
+    }
+  ]
+}

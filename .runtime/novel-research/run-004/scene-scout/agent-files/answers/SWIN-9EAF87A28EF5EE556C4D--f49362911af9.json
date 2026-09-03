@@ -1,0 +1,346 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎即将甩出六色火莲、凰天本体将对撞时，九幽黄泉突然喷出九色光柱拦住冲击；彩鳞以九彩吞天蟒之姿出关缠甩重创凰天，并收回先辈残魂，自述在黄泉之底获得七彩吞天蟒传承。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-5617D5FF38B3BE30CADF-002",
+          "start": 1599,
+          "end": 1624
+        },
+        {
+          "segment_id": "SEG-22D5E82162807F3AD24B-001",
+          "start": 13,
+          "end": 47
+        },
+        {
+          "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+          "start": 198,
+          "end": 214
+        },
+        {
+          "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+          "start": 198,
+          "end": 228
+        },
+        {
+          "segment_id": "SEG-5617D5FF38B3BE30CADF-002",
+          "start": 1625,
+          "end": 1667
+        },
+        {
+          "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+          "start": 345,
+          "end": 392
+        },
+        {
+          "segment_id": "SEG-808CFF03019FFAA0BC9C-002",
+          "start": 340,
+          "end": 356
+        },
+        {
+          "segment_id": "SEG-5617D5FF38B3BE30CADF-002",
+          "start": 1671,
+          "end": 1677
+        },
+        {
+          "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+          "start": 617,
+          "end": 641
+        },
+        {
+          "segment_id": "SEG-808CFF03019FFAA0BC9C-002",
+          "start": 406,
+          "end": 442
+        },
+        {
+          "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+          "start": 398,
+          "end": 417
+        },
+        {
+          "segment_id": "SEG-22D5E82162807F3AD24B-001",
+          "start": 1172,
+          "end": 1206
+        },
+        {
+          "segment_id": "SEG-22D5E82162807F3AD24B-001",
+          "start": 1207,
+          "end": 1244
+        },
+        {
+          "segment_id": "SEG-22D5E82162807F3AD24B-001",
+          "start": 1422,
+          "end": 1458
+        },
+        {
+          "segment_id": "SEG-808CFF03019FFAA0BC9C-002",
+          "start": 914,
+          "end": 962
+        },
+        {
+          "segment_id": "SEG-808CFF03019FFAA0BC9C-002",
+          "start": 1008,
+          "end": 1033
+        },
+        {
+          "segment_id": "SEG-22D5E82162807F3AD24B-002",
+          "start": 736,
+          "end": 753
+        },
+        {
+          "segment_id": "SEG-22D5E82162807F3AD24B-001",
+          "start": 674,
+          "end": 682
+        },
+        {
+          "segment_id": "SEG-22D5E82162807F3AD24B-001",
+          "start": 852,
+          "end": 859
+        },
+        {
+          "segment_id": "SEG-22D5E82162807F3AD24B-001",
+          "start": 1131,
+          "end": 1162
+        },
+        {
+          "segment_id": "SEG-22D5E82162807F3AD24B-001",
+          "start": 1321,
+          "end": 1341
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "彩鳞",
+          "凰天"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5617D5FF38B3BE30CADF-002",
+            "start": 1599,
+            "end": 1624
+          },
+          {
+            "segment_id": "SEG-22D5E82162807F3AD24B-001",
+            "start": 13,
+            "end": 47
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+            "start": 198,
+            "end": 214
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "九幽黄泉突然炸裂喷出九色光柱横插二人之间，彩鳞以九彩吞天蟒之姿出关缠甩凰天"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5617D5FF38B3BE30CADF-002",
+            "start": 1625,
+            "end": 1667
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+            "start": 345,
+            "end": 392
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-002",
+            "start": 340,
+            "end": 356
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "正以本体冲击扑向萧炎的凰天"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5617D5FF38B3BE30CADF-002",
+            "start": 1599,
+            "end": 1624
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+            "start": 198,
+            "end": 214
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎即将甩出六种异火凝聚的火莲，凰天巨大本体正对着他撞击而来"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5617D5FF38B3BE30CADF-002",
+            "start": 1599,
+            "end": 1624
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+            "start": 198,
+            "end": 214
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "九色光柱拦住撞击，彩鳞以传说中的九彩吞天蟒出关并重创凰天"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5617D5FF38B3BE30CADF-002",
+            "start": 1671,
+            "end": 1677
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+            "start": 617,
+            "end": 641
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-002",
+            "start": 406,
+            "end": 442
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "凰天收力不急撞上光柱，被九彩蛇尾死死缠绕后又被甩出喷血"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+            "start": 198,
+            "end": 228
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+            "start": 345,
+            "end": 392
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-002",
+            "start": 406,
+            "end": 442
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "光柱崩裂现出体形更大的九彩巨蟒，围观者识出九彩吞天蟒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+            "start": 398,
+            "end": 417
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-001",
+            "start": 617,
+            "end": 641
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可唤醒并驱使黄泉之底先辈残魂，借助外力与凰天抗衡"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-22D5E82162807F3AD24B-001",
+            "start": 1172,
+            "end": 1206
+          },
+          {
+            "segment_id": "SEG-22D5E82162807F3AD24B-001",
+            "start": 1207,
+            "end": 1244
+          },
+          {
+            "segment_id": "SEG-22D5E82162807F3AD24B-001",
+            "start": 1422,
+            "end": 1458
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "七彩吞天蟒灵魂收入体内受其驱使，人形成形后九彩光泽仍可涌现"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-002",
+            "start": 914,
+            "end": 962
+          },
+          {
+            "segment_id": "SEG-808CFF03019FFAA0BC9C-002",
+            "start": 1008,
+            "end": 1033
+          },
+          {
+            "segment_id": "SEG-22D5E82162807F3AD24B-001",
+            "start": 1422,
+            "end": 1458
+          },
+          {
+            "segment_id": "SEG-22D5E82162807F3AD24B-002",
+            "start": 736,
+            "end": 753
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "闭关之地突然喷柱改写死斗，出关者自报四星却靠误碰巢穴所得先辈残魂打出超己战力"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-5617D5FF38B3BE30CADF-002",
+            "start": 1625,
+            "end": 1667
+          },
+          {
+            "segment_id": "SEG-22D5E82162807F3AD24B-001",
+            "start": 674,
+            "end": 682
+          },
+          {
+            "segment_id": "SEG-22D5E82162807F3AD24B-001",
+            "start": 852,
+            "end": 859
+          },
+          {
+            "segment_id": "SEG-22D5E82162807F3AD24B-001",
+            "start": 1131,
+            "end": 1162
+          },
+          {
+            "segment_id": "SEG-22D5E82162807F3AD24B-001",
+            "start": 1321,
+            "end": 1341
+          }
+        ]
+      }
+    }
+  ]
+}

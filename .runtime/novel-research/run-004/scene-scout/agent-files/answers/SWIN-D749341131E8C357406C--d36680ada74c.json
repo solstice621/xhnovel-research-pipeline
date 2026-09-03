@@ -1,0 +1,414 @@
+{
+  "candidates": [
+    {
+      "summary": "天火尊者剥尽铜锈后弃掉铜片，令萧炎用异火煅烧锈凝铜球；铜球久抗后融化，析出五粒远古孕灵粉尘，被当场认定为远超所付药方的机缘。",
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "天火尊者",
+          "小医仙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 504,
+            "end": 529
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 609,
+            "end": 626
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 882,
+            "end": 938
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1296,
+            "end": 1318
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1403,
+            "end": 1435
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "接过铜锈凝成的绿球，以半信半疑心态召唤碧绿异火将其煅烧"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 855,
+            "end": 880
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 882,
+            "end": 938
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "铜片上剥落凝成的绿色铜锈",
+          "煅烧后析出的孕灵粉尘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 792,
+            "end": 817
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 755,
+            "end": 789
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1403,
+            "end": 1435
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "铜片本身探查无果，天火尊者宣称真正秘密在不起眼的铜锈里",
+          "他弃掉铜片，把铜锈弹给萧炎并要其用异火煅烧"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 609,
+            "end": 638
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 755,
+            "end": 789
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 792,
+            "end": 817
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 818,
+            "end": 832
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 833,
+            "end": 851
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 855,
+            "end": 880
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "铜球由几乎不融转为融化，锈中脱落五粒淡黄色粉尘，铜球湮灭",
+          "粉尘被认定为远古孕灵粉尘，价值被判远超所付七品中级药方"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 970,
+            "end": 999
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1104,
+            "end": 1141
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1227,
+            "end": 1263
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1403,
+            "end": 1435
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1453,
+            "end": 1483
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "碧绿异火提升温度后铜球仍久不融化",
+          "铜球融化时绿色淡化并脱落灵性粉尘，随后瞬间湮灭，粉尘再煅烧也不变"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 970,
+            "end": 999
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1104,
+            "end": 1141
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1227,
+            "end": 1263
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎先觉有名堂，见粉尘后惊讶茫然、不在认知之中",
+          "天火尊者沉吟后认定为孕灵粉尘，称信他没错、捡了天大便宜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1004,
+            "end": 1010
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1296,
+            "end": 1318
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1326,
+            "end": 1342
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1403,
+            "end": 1435
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1441,
+            "end": 1449
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1453,
+            "end": 1483
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1486,
+            "end": 1491
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "当场得到五粒孕灵粉尘",
+          "可作炼制八品及以上丹药的必需之物",
+          "若融入灵魂可孕育灵魂、增强灵气并趋向灵境"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1227,
+            "end": 1263
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 116,
+            "end": 133
+          },
+          {
+            "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+            "start": 136,
+            "end": 180
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "五粒充满灵性的淡黄粉尘悬浮在火焰中，继续煅烧也不再变化",
+          "天火尊者已将其定性为远古孕灵粉尘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1227,
+            "end": 1263
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1403,
+            "end": 1435
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "摊上远古铜片的真正机缘藏在可剥离的普通铜锈里：弃掉“本体”、用已有异火煅烧伪装层后，才析出远超所付药方的孕灵粉尘"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 792,
+            "end": 817
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 818,
+            "end": 832
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 609,
+            "end": 638
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 855,
+            "end": 880
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1403,
+            "end": 1435
+          },
+          {
+            "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+            "start": 1453,
+            "end": 1483
+          }
+        ]
+      },
+      "source_spans": [
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 504,
+          "end": 529
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 609,
+          "end": 626
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 882,
+          "end": 938
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1296,
+          "end": 1318
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1403,
+          "end": 1435
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 855,
+          "end": 880
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 792,
+          "end": 817
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 755,
+          "end": 789
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 609,
+          "end": 638
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 818,
+          "end": 832
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 833,
+          "end": 851
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 970,
+          "end": 999
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1104,
+          "end": 1141
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1227,
+          "end": 1263
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1453,
+          "end": 1483
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1004,
+          "end": 1010
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1326,
+          "end": 1342
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1441,
+          "end": 1449
+        },
+        {
+          "segment_id": "SEG-0CF6D8C2B67A1911B160-002",
+          "start": 1486,
+          "end": 1491
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 116,
+          "end": 133
+        },
+        {
+          "segment_id": "SEG-A5E6A37DC5304068BDDE-001",
+          "start": 136,
+          "end": 180
+        }
+      ]
+    }
+  ]
+}

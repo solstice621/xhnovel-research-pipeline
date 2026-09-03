@@ -1,0 +1,102 @@
+{
+  "candidates": [
+    {
+      "summary": "药老当场指出凹槽乳液只是稀释障眼物,真正地心淬体乳藏在钟乳与大地接触处;萧炎用玉勺舀出大半装入玉瓶,离开前另收两瓶稀释乳液。",
+      "source_spans": [
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 476, "end": 487},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 591, "end": 618},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 686, "end": 715},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 773, "end": 807},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1060, "end": 1089},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1128, "end": 1178},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1254, "end": 1290},
+        {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1417, "end": 1496},
+        {"segment_id": "SEG-198C5A796D737E0C7A2F-001", "start": 73, "end": 102},
+        {"segment_id": "SEG-198C5A796D737E0C7A2F-001", "start": 423, "end": 440},
+        {"segment_id": "SEG-7A35A1DCC08CF1BADAD8-002", "start": 1494, "end": 1511}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "药老"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 476, "end": 487},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1060, "end": 1089}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["用玉勺舀取钟乳内真正的地心淬体乳并装瓶", "另将两瓶稀释地心乳收入纳戒"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1128, "end": 1178},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1417, "end": 1496},
+          {"segment_id": "SEG-198C5A796D737E0C7A2F-001", "start": 423, "end": 440}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["隐藏在钟乳与大地接触点的真正地心淬体乳", "凹槽中被稀释的地心乳"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 591, "end": 618},
+          {"segment_id": "SEG-198C5A796D737E0C7A2F-001", "start": 73, "end": 102}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["药老已指认钟乳内翡翠液体才是真正地心淬体乳", "真正地心淬体乳极脆弱,必须用温润玉器"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 591, "end": 618},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 773, "end": 807}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["真正地心淬体乳装入玉瓶到手", "另收两瓶稀释地心乳"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1417, "end": 1496},
+          {"segment_id": "SEG-198C5A796D737E0C7A2F-001", "start": 423, "end": 440}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["本体藏在钟乳与大地接触点,下方乳液只是稀释障眼物", "全部取走会使万年钟乳崩裂"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 591, "end": 618},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 686, "end": 715},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1254, "end": 1290}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["玉瓶中翡翠液体如活物自动流淌,萧炎确认到手"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1417, "end": 1496}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["可用真正地心淬体乳尝试一举突破到斗灵", "稀释乳液仍有淬炼身体之效"],
+        "support_spans": [
+          {"segment_id": "SEG-198C5A796D737E0C7A2F-001", "start": 73, "end": 102},
+          {"segment_id": "SEG-7A35A1DCC08CF1BADAD8-002", "start": 1494, "end": 1511}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["真正地心淬体乳装入玉瓶带走", "留下少量温养钟乳,稀释乳液收入纳戒"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1254, "end": 1290},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 1417, "end": 1496},
+          {"segment_id": "SEG-198C5A796D737E0C7A2F-001", "start": 423, "end": 440}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["真正地心淬体乳极脆弱,非温润玉器会毁成废液", "常人只会收走下方稀释物而漏掉本体"],
+        "support_spans": [
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 686, "end": 715},
+          {"segment_id": "SEG-E1B17DF1E32D8F5ED0F4-002", "start": 773, "end": 807}
+        ]
+      }
+    }
+  ]
+}

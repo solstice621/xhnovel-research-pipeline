@@ -1,0 +1,12 @@
+{
+  "assurance": "UNQUALIFIED",
+  "auditability": "DEGRADED",
+  "bundle_id": "BND-9889F0D83AD85718C676",
+  "candidate_count": 155,
+  "export_id": "EXP-3486A1B9158C78DADC4E",
+  "ingestion_run_id": "NING-082F0DE349DC0FA7ED34",
+  "merge_run_id": "SMRUN-CDC93214481ACC08EAEF",
+  "scene_scout_run_id": "SSRUN-C6CCB279B0D2D44B1FFC",
+  "snapshot_id": "SNP-300A9979C72274F378B3",
+  "work_id": "NWK-10E97C977B9FB8F57A09"
+}

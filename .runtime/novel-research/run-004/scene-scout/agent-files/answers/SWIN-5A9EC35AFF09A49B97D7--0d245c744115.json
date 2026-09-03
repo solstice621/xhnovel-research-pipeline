@@ -1,0 +1,368 @@
+{
+  "candidates": [
+    {
+      "summary": "紫研以精血强开的空间逃门抖到将溃、铁剑尊者正要自爆断后时，门突然被无名力量凝固并增强，把萧炎一行强行扯入；门散后虚无中一声无奈叹息，漆黑裂缝又把铁剑尊者吞走，黑白天尊再看时原地已空。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 453,
+          "end": 459
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 901,
+          "end": 911
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 1497,
+          "end": 1519
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 716,
+          "end": 734
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 476,
+          "end": 491
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 527,
+          "end": 541
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 629,
+          "end": 640
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 920,
+          "end": 924
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 1143,
+          "end": 1149
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 1283,
+          "end": 1313
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 1587,
+          "end": 1613
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 750,
+          "end": 778
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 1362,
+          "end": 1381
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 1614,
+          "end": 1625
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 1670,
+          "end": 1689
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 711,
+          "end": 714
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 1570,
+          "end": 1586
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 1453,
+          "end": 1463
+        },
+        {
+          "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+          "start": 1523,
+          "end": 1544
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "紫研",
+          "铁剑尊者",
+          "萧炎一行人",
+          "黑白天尊"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 453,
+            "end": 459
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 901,
+            "end": 911
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1497,
+            "end": 1519
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 716,
+            "end": 734
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "紫研以暗金精血强行开辟空间之门要带走众人",
+          "铁剑尊者留下拦截并准备自爆"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 476,
+            "end": 491
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 527,
+            "end": 541
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 629,
+            "end": 640
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 901,
+            "end": 911
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 920,
+            "end": 924
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1143,
+            "end": 1149
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "摇晃将溃的空间大门",
+          "欲自爆的铁剑尊者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1283,
+            "end": 1313
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1587,
+            "end": 1613
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "黑白天尊已发现逃门并打出黑雾匹练",
+          "紫研带人穿梭虚无仍太勉强，门抖到她心生绝望",
+          "铁剑尊者正要自爆断后"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 750,
+            "end": 778
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1283,
+            "end": 1313
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1143,
+            "end": 1149
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "将溃的空间门突然凝固并爆出更强稳定光芒，把萧炎一行强行扯入",
+          "门散后漆黑裂缝把欲自爆的铁剑尊者也吞走",
+          "黑白天尊再看时原地已空"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1362,
+            "end": 1381
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1497,
+            "end": 1519
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1614,
+            "end": 1625
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1670,
+            "end": 1689
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "黑白天尊喝问想走并发动拦截",
+          "虚无空间中响起无奈叹息，另裂一口把铁剑尊者吞入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 711,
+            "end": 714
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1570,
+            "end": 1586
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1587,
+            "end": 1613
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "紫研眼中掠过感激",
+          "空间之门一颤散于无形",
+          "黑白天尊脸色瞬间铁青"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1453,
+            "end": 1463
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1523,
+            "end": 1544
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1670,
+            "end": 1689
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "本将全灭的一行人被送出战场",
+          "铁剑尊者未在自爆中留下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1497,
+            "end": 1519
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1614,
+            "end": 1625
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1670,
+            "end": 1689
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "空间之门消散后谷中已空，黑白天尊无法再抓到他们"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1523,
+            "end": 1544
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1670,
+            "end": 1689
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "玩家开出的逃门正在自己失败，场外无名空间力在最后一刻改写门的稳定性并把全队强行吸入",
+          "同一无名助力又另开口把准备自爆的断后人单独救走，只留下一声叹息，无法用技能冷却或队友指令解释"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1283,
+            "end": 1313
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1362,
+            "end": 1381
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1570,
+            "end": 1586
+          },
+          {
+            "segment_id": "SEG-1CDEB9F4B10A17603FCE-002",
+            "start": 1614,
+            "end": 1625
+          }
+        ]
+      }
+    }
+  ]
+}

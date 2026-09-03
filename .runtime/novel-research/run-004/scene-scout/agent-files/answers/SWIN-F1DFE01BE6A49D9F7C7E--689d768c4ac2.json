@@ -1,0 +1,99 @@
+{
+  "candidates": [
+    {
+      "summary": "药老在被捕定局时将骨灵冷火本源射入萧炎额头并留下口谕；白色火焰之印成形的同时，鹜护法将药老灵魂吸入黑雾。",
+      "source_spans": [
+        {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 862, "end": 904},
+        {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 976, "end": 1003},
+        {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1004, "end": 1019},
+        {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1029, "end": 1109},
+        {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1214, "end": 1244},
+        {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1245, "end": 1298},
+        {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1315, "end": 1464},
+        {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1473, "end": 1561},
+        {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1686, "end": 1725},
+        {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1726, "end": 1777}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["药老", "萧炎", "鹜护法"],
+        "support_spans": [
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1029, "end": 1109},
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1726, "end": 1777}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["药老自眉心射出白色火芒，窜进萧炎额头"],
+        "support_spans": [
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1029, "end": 1109}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["萧炎额头", "骨灵冷火本源"],
+        "support_spans": [
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1029, "end": 1109},
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1315, "end": 1464}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["药老重伤，已不可能躲开鹜护法的抓捕"],
+        "support_spans": [
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 976, "end": 1003},
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1004, "end": 1019}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["萧炎额头浮现白色火焰之印", "火印成形时药老被吸入黑雾"],
+        "support_spans": [
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1686, "end": 1725},
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1726, "end": 1777}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["鹜护法鬼爪穿透药老身躯，将其强行吸入黑雾"],
+        "support_spans": [
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 862, "end": 904},
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1726, "end": 1777}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["药老声音在萧炎脑海响起", "萧炎剧烈颤抖并咬唇出血", "白色火焰之印在额上成形"],
+        "support_spans": [
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1214, "end": 1244},
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1245, "end": 1298},
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1686, "end": 1725}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["熟练后可施展骨灵冷火", "焚决不能吞噬这缕已炼化的异火", "可凭骨炎戒取得噬生丹解法及药老所留", "出示骨炎戒可获风尊者相信与帮助"],
+        "support_spans": [
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1315, "end": 1464},
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1473, "end": 1561}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["白色火焰之印留在萧炎额头", "药老若遇害则火印自动消失且异火成无主之物可被吞噬", "骨炎戒内另有破解噬生丹之法与药老所留"],
+        "support_spans": [
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1315, "end": 1464},
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1473, "end": 1561},
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1686, "end": 1725}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["已炼化的异火本源以额上火印寄存：授予日后施展权却禁止焚决吞噬，并与师尊生死绑定，师尊遇害后才变为可吞噬的无主之物"],
+        "support_spans": [
+          {"segment_id": "SEG-625BB954C42C8C901D31-002", "start": 1315, "end": 1464}
+        ]
+      }
+    }
+  ]
+}

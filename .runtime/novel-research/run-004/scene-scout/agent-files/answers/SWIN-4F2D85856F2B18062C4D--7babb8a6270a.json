@@ -1,0 +1,575 @@
+{
+  "candidates": [
+    {
+      "summary": "紫研借太古虚龙祖魂击碎天凰祖魂逼退天妖凰族后,以血液触摸龙凰本源果,果实液化侵入其体并在手心留下封印图纹。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+          "start": 1372,
+          "end": 1421
+        },
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+          "start": 1351,
+          "end": 1370
+        },
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+          "start": 989,
+          "end": 999
+        },
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+          "start": 1500,
+          "end": 1530
+        },
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+          "start": 1,
+          "end": 10
+        },
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+          "start": 367,
+          "end": 403
+        },
+        {
+          "segment_id": "SEG-498A59B1315EAFBF9A7C-002",
+          "start": 1595,
+          "end": 1628
+        },
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-001",
+          "start": 1433,
+          "end": 1469
+        },
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+          "start": 1422,
+          "end": 1491
+        },
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+          "start": 1532,
+          "end": 1572
+        },
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+          "start": 1027,
+          "end": 1041
+        },
+        {
+          "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+          "start": 1581,
+          "end": 1596
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "紫研",
+          "萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1372,
+            "end": 1421
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1351,
+            "end": 1370
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 989,
+            "end": 999
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以血液触摸并收取龙凰本源果"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1372,
+            "end": 1421
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1351,
+            "end": 1370
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "龙凰本源果"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1372,
+            "end": 1421
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1500,
+            "end": 1530
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "天妖凰族祖魂被击碎后撤离",
+          "萧炎催促先收下免得再生变故"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1,
+            "end": 10
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 367,
+            "end": 403
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1351,
+            "end": 1370
+          },
+          {
+            "segment_id": "SEG-498A59B1315EAFBF9A7C-002",
+            "start": 1595,
+            "end": 1628
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-001",
+            "start": 1433,
+            "end": 1469
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "果实化为金紫液体侵入紫研体内,手心留下龙凰本源果图纹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1422,
+            "end": 1491
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1500,
+            "end": 1530
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "果实爆发强芒后自行液化侵入"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1422,
+            "end": 1491
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "能量过强只能暂时封印,须交族中长老处理",
+          "祖魂负荷使紫研脸色苍白"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1532,
+            "end": 1572
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1027,
+            "end": 1041
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "龙凰本源果已到手并可带离现场"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1581,
+            "end": 1596
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1500,
+            "end": 1530
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "暂时封印在紫研体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1532,
+            "end": 1572
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1500,
+            "end": 1530
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "同族血液才能收取的本源果能量过强,无法当场炼化只能先封印入体"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1372,
+            "end": 1421
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1422,
+            "end": 1491
+          },
+          {
+            "segment_id": "SEG-FED05AAF6C363AC77DF2-002",
+            "start": 1532,
+            "end": 1572
+          }
+        ]
+      }
+    },
+    {
+      "summary": "萧炎一行在已遭搜刮的狭窄丹室正欲离开时,发现窜出的无波动白色肥兽其实是一枚近九品的活体丹药,随即让熊战堵住门口。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+          "start": 352,
+          "end": 381
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 829,
+          "end": 848
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 849,
+          "end": 899
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+          "start": 383,
+          "end": 400
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 128,
+          "end": 146
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+          "start": 54,
+          "end": 70
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 424,
+          "end": 476
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+          "start": 1431,
+          "end": 1477
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+          "start": 1486,
+          "end": 1513
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+          "start": 185,
+          "end": 227
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 69,
+          "end": 92
+        },
+        {
+          "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+          "start": 1507,
+          "end": 1530
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 177,
+          "end": 196
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 679,
+          "end": 718
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 566,
+          "end": 596
+        },
+        {
+          "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+          "start": 998,
+          "end": 1007
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "熊战"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 352,
+            "end": 381
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 829,
+            "end": 848
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 849,
+            "end": 899
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "识别白影小兽为高阶丹药并封门"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 383,
+            "end": 400
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 128,
+            "end": 146
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 829,
+            "end": 848
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 849,
+            "end": 899
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "白色绒毛小兽"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 54,
+            "end": 70
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 383,
+            "end": 400
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 424,
+            "end": 476
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "丹室已遭人光顾,众人正欲离开"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+            "start": 1431,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+            "start": 1486,
+            "end": 1513
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "普通小兽被确认为历经八色甚至九色丹雷的丹药"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 185,
+            "end": 227
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 383,
+            "end": 400
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 424,
+            "end": 476
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "小兽以灵动眼睛好奇盯着他们"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 69,
+            "end": 92
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+            "start": 1507,
+            "end": 1530
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "丹香来自小兽体内,萧炎失态确认这是丹药"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 177,
+            "end": 196
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 383,
+            "end": 400
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 352,
+            "end": 381
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "有机会取得可抵数十年修炼的近九品丹药,同时面临消息走漏则举世争夺"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 424,
+            "end": 476
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 679,
+            "end": 718
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 566,
+            "end": 596
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 998,
+            "end": 1007
+          }
+        ]
+      },
+      "persistence": {
+        "status": "UNKNOWN",
+        "values": [],
+        "support_spans": []
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "高阶丹药化兽形藏于已搜刮空室且无能量波动,几乎被当成普通小兽放过"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 185,
+            "end": 227
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-003",
+            "start": 54,
+            "end": 70
+          },
+          {
+            "segment_id": "SEG-3A5D14FB769234D34B0E-002",
+            "start": 1431,
+            "end": 1477
+          },
+          {
+            "segment_id": "SEG-1F7363AFAACC29DDED39-001",
+            "start": 424,
+            "end": 476
+          }
+        ]
+      }
+    }
+  ]
+}

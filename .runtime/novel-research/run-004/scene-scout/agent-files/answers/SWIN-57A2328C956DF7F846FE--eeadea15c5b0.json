@@ -1,0 +1,149 @@
+{
+  "candidates": [
+    {
+      "summary": "驱毒后烙毒侵入斗气并被炼为己用；中指凝成可控黑指，试刺时腐蚀切开玄冰镜，当场获得这种误打误撞的诡异攻击能力。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+          "start": 0,
+          "end": 1408
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "海波东"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+            "start": 0,
+            "end": 1408
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "将烙毒纹痕逼入中指并试刺玄冰镜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+            "start": 0,
+            "end": 1408
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "烙毒",
+          "黑指"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+            "start": 0,
+            "end": 1408
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "烙毒已侵入斗气并在表面现出黑色纹痕"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+            "start": 0,
+            "end": 1408
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "中指变得漆黑",
+          "烙毒被炼为可控黑指"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+            "start": 0,
+            "end": 1408
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "海波东凝出玄冰镜阻挡试刺",
+          "玄冰镜被黑气腐蚀穿孔并被切割"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+            "start": 0,
+            "end": 1408
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "斗气杀伤力似乎变得更强",
+          "黑指暂无反噬且破坏力超出意料"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+            "start": 0,
+            "end": 1408
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可用黑指腐蚀切割防御"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+            "start": 0,
+            "end": 1408
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "黑指可褪去黑色再恢复正常"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+            "start": 0,
+            "end": 1408
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "黑指本体仍是可能日后爆发的烙毒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-B0E8FCFF88343AFF7954-003",
+            "start": 0,
+            "end": 1408
+          }
+        ]
+      }
+    }
+  ]
+}

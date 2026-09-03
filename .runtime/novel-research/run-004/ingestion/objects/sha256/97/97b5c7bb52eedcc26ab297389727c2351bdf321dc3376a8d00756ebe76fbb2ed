@@ -1,0 +1,446 @@
+{
+  "candidates": [
+    {
+      "summary": "炼丹能量耗尽时，小伊擅自冲进魂虚子火鼎抢走未成形雏丹；萧炎并未授意，随后让小伊吞炼雏丹，能量灌入火鼎仍不够凝丹。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+          "start": 28,
+          "end": 41
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+          "start": 93,
+          "end": 106
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+          "start": 532,
+          "end": 546
+        },
+        {
+          "segment_id": "SEG-BC98B00516A5FFBD93F8-002",
+          "start": 1683,
+          "end": 1709
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+          "start": 107,
+          "end": 121
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 332,
+          "end": 348
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 744,
+          "end": 751
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "小伊",
+          "萧炎",
+          "魂虚子"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+            "start": 28,
+            "end": 41
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+            "start": 93,
+            "end": 106
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+            "start": 532,
+            "end": 546
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "小伊擅自抱走魂虚子的丹药雏形并吞进体内炼化"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BC98B00516A5FFBD93F8-002",
+            "start": 1683,
+            "end": 1709
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+            "start": 107,
+            "end": 121
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 332,
+            "end": 348
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "魂虚子尚未成形的丹药雏形"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BC98B00516A5FFBD93F8-002",
+            "start": 1683,
+            "end": 1709
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "此事跟萧炎没半点关系，全是小伊自己的主张"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+            "start": 93,
+            "end": 106
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+            "start": 107,
+            "end": 121
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "雏丹被小伊吞炼，能量灌入萧炎火鼎，但还是不够"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 332,
+            "end": 348
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 744,
+            "end": 751
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "魂虚子暴怒要碎尸万段"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+            "start": 532,
+            "end": 546
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "小伊把未成形雏丹一把抱走窜出"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-BC98B00516A5FFBD93F8-002",
+            "start": 1683,
+            "end": 1709
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "多了一枚可净化的雏丹能量，但尚不足以凝成九品玄丹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 332,
+            "end": 348
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 744,
+            "end": 751
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "魂虚子雏丹已被炼化进萧炎火鼎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 332,
+            "end": 348
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "火灵在赛场上越权夺取对手未完成产物，主角事后才把赃物转成可吞用的能量"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-001",
+            "start": 107,
+            "end": 121
+          },
+          {
+            "segment_id": "SEG-BC98B00516A5FFBD93F8-002",
+            "start": 1683,
+            "end": 1709
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 332,
+            "end": 348
+          }
+        ]
+      }
+    },
+    {
+      "summary": "能量仍不够时，神农老人把被打乱药性的雏丹当作造化送给萧炎，万火长老迟疑后也甩出自己的雏丹，两枚雏丹打入小伊化为光柱。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 902,
+          "end": 922
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 1020,
+          "end": 1037
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 1142,
+          "end": 1153
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 830,
+          "end": 848
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 849,
+          "end": 859
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 1071,
+          "end": 1091
+        },
+        {
+          "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+          "start": 744,
+          "end": 751
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "神农老人",
+          "万火长老",
+          "萧炎",
+          "小伊"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 902,
+            "end": 922
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1020,
+            "end": 1037
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1142,
+            "end": 1153
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 830,
+            "end": 848
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "神农与万火把己方雏丹送给萧炎，萧炎将两枚雏丹打入小伊体内"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 849,
+            "end": 859
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1071,
+            "end": 1091
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1142,
+            "end": 1153
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "神农老人与万火长老的雏丹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 830,
+            "end": 848
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1071,
+            "end": 1091
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "吞噬魂虚子雏丹后还是不够",
+          "神农雏丹药性已被魂虚子打乱"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 744,
+            "end": 751
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 830,
+            "end": 848
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "两枚雏丹打入小伊体内化为浩瀚光柱"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1142,
+            "end": 1153
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "神农主动送出造化",
+          "万火长老迟疑后仍甩出雏丹"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 849,
+            "end": 859
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1071,
+            "end": 1091
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎大喜称谢"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 849,
+            "end": 859
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "再获得两枚雏丹能量，炼成九品玄丹的机缘上升"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 849,
+            "end": 859
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1142,
+            "end": 1153
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "两枚雏丹能量正在灌入萧炎药鼎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1142,
+            "end": 1153
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "同场对手把竞赛半成品无偿转赠为造化，而不是按赛制结算奖励"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 849,
+            "end": 859
+          },
+          {
+            "segment_id": "SEG-4EE7A48E280C5D3D9CB2-002",
+            "start": 1071,
+            "end": 1091
+          }
+        ]
+      }
+    }
+  ]
+}

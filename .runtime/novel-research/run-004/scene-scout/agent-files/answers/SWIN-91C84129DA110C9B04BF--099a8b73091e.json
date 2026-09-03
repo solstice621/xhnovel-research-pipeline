@@ -1,0 +1,433 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎为炼化已购玉石骨翼而将灵魂探入其中,当场坠入灰色遗存并遭残兽虚像撞击侵蚀;在将被拖垮之际催出陨落心炎,残息受创逃散后反被吞噬,灵魂力量意外增长,残存气息尽成补品。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-001",
+          "start": 1169,
+          "end": 1193
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-001",
+          "start": 539,
+          "end": 565
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 1435,
+          "end": 1470
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-001",
+          "start": 836,
+          "end": 860
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-001",
+          "start": 349,
+          "end": 366
+        },
+        {
+          "segment_id": "SEG-8D7DD7A5E08223811300-002",
+          "start": 1532,
+          "end": 1551
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-001",
+          "start": 173,
+          "end": 215
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 278,
+          "end": 285
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 302,
+          "end": 324
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 71,
+          "end": 84
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-001",
+          "start": 1229,
+          "end": 1265
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-001",
+          "start": 1337,
+          "end": 1373
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 404,
+          "end": 427
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 1023,
+          "end": 1042
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 1496,
+          "end": 1518
+        },
+        {
+          "segment_id": "SEG-76573BE826D5897BAD72-001",
+          "start": 99,
+          "end": 127
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-001",
+          "start": 222,
+          "end": 282
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-001",
+          "start": 430,
+          "end": 449
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-001",
+          "start": 993,
+          "end": 1010
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 450,
+          "end": 471
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 1531,
+          "end": 1564
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 1177,
+          "end": 1213
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 1584,
+          "end": 1607
+        },
+        {
+          "segment_id": "SEG-76573BE826D5897BAD72-001",
+          "start": 128,
+          "end": 146
+        },
+        {
+          "segment_id": "SEG-94ACED8507FDACB8C343-002",
+          "start": 1044,
+          "end": 1084
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "玉石骨翼中的残存气息"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 1169,
+            "end": 1193
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 539,
+            "end": 565
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1435,
+            "end": 1470
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 836,
+            "end": 860
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 349,
+            "end": 366
+          },
+          {
+            "segment_id": "SEG-8D7DD7A5E08223811300-002",
+            "start": 1532,
+            "end": 1551
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "以灵魂力量缠绕玉石骨翼探入其中",
+          "危机中手印骤变,催出陨落心炎吞噬灰色气流"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 173,
+            "end": 215
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 278,
+            "end": 285
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 302,
+            "end": 324
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "玉石骨翼中的残留气息",
+          "由灰色气流凝聚的魔兽虚像"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8D7DD7A5E08223811300-002",
+            "start": 1532,
+            "end": 1551
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1435,
+            "end": 1470
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 836,
+            "end": 860
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎已下决心先与骨翼残留气息斗一场",
+          "残息两次撞击后灵魂力已损耗且气流不减,再拖下去必先被拖垮",
+          "凶虐正渗透灵魂障壁"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-8D7DD7A5E08223811300-002",
+            "start": 1532,
+            "end": 1551
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 71,
+            "end": 84
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 1229,
+            "end": 1265
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 1337,
+            "end": 1373
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "残存气息由侵蚀压制转为被心炎驱散并可吞噬",
+          "灵魂力量当场出现增长,灵魂体更凝实",
+          "残存气息尽数成为灵魂补品"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 404,
+            "end": 427
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1023,
+            "end": 1042
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1496,
+            "end": 1518
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1435,
+            "end": 1470
+          },
+          {
+            "segment_id": "SEG-76573BE826D5897BAD72-001",
+            "start": 99,
+            "end": 127
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂刚触骨翼即被拉入灰色遗存空间",
+          "血色光柱成形,灰色气流成兽撞击并渗透凶虐",
+          "心炎出现后魔兽虚像淡化,气流受惊逃散"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 222,
+            "end": 282
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 430,
+            "end": 449
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 836,
+            "end": 860
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 993,
+            "end": 1010
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-001",
+            "start": 1229,
+            "end": 1265
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 404,
+            "end": 427
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 450,
+            "end": 471
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "魔兽虚像尽数消散,灰色气流四面逃开",
+          "吞噬气流后灵魂力量细微增长",
+          "萧炎自认此次收获出乎意料"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 404,
+            "end": 427
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 450,
+            "end": 471
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1023,
+            "end": 1042
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1531,
+            "end": 1564
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "灰色气流被炼去凶虐后成为灵魂力量的大补之物",
+          "炼制天雁九行翼最麻烦的残息清除已经完成"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1177,
+            "end": 1213
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1584,
+            "end": 1607
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "骨翼中残存气息已尽成灵魂补品",
+          "出魂战后灵魂力量增长与活力仍在"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1435,
+            "end": 1470
+          },
+          {
+            "segment_id": "SEG-76573BE826D5897BAD72-001",
+            "start": 99,
+            "end": 127
+          },
+          {
+            "segment_id": "SEG-76573BE826D5897BAD72-001",
+            "start": 128,
+            "end": 146
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "本应清掉的凶虐残息,在将被拖垮的危机里被异火剥去负面后突然变成灵魂补品",
+          "灵魂增强本需晋阶或天材地宝,此处却无缘无故当场增长,无法事先当作固定收获"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 71,
+            "end": 84
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1177,
+            "end": 1213
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1044,
+            "end": 1084
+          },
+          {
+            "segment_id": "SEG-94ACED8507FDACB8C343-002",
+            "start": 1531,
+            "end": 1564
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,646 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎读完远古傀儡术天妖傀，苏千因学院不宜收藏而把竹简留给他；他除特殊材料外躯体、灵魂、魔核几乎齐备，随即将竹简与弄焰决收入纳戒。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-0379CD2C281569568F99-001",
+          "start": 90,
+          "end": 99
+        },
+        {
+          "segment_id": "SEG-0379CD2C281569568F99-001",
+          "start": 441,
+          "end": 466
+        },
+        {
+          "segment_id": "SEG-0379CD2C281569568F99-001",
+          "start": 706,
+          "end": 716
+        },
+        {
+          "segment_id": "SEG-0379CD2C281569568F99-001",
+          "start": 752,
+          "end": 757
+        },
+        {
+          "segment_id": "SEG-0379CD2C281569568F99-001",
+          "start": 850,
+          "end": 865
+        },
+        {
+          "segment_id": "SEG-0379CD2C281569568F99-001",
+          "start": 111,
+          "end": 123
+        },
+        {
+          "segment_id": "SEG-0379CD2C281569568F99-001",
+          "start": 124,
+          "end": 135
+        },
+        {
+          "segment_id": "SEG-0379CD2C281569568F99-001",
+          "start": 791,
+          "end": 824
+        },
+        {
+          "segment_id": "SEG-0379CD2C281569568F99-001",
+          "start": 717,
+          "end": 731
+        },
+        {
+          "segment_id": "SEG-0379CD2C281569568F99-001",
+          "start": 362,
+          "end": 380
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "苏千"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 90,
+            "end": 99
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 441,
+            "end": 466
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 706,
+            "end": 716
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 752,
+            "end": 757
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "读完天妖傀竹简，接受苏千留下并与弄焰决一并收入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 90,
+            "end": 99
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 706,
+            "end": 716
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 850,
+            "end": 865
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "远古傀儡术天妖傀"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 90,
+            "end": 99
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 111,
+            "end": 123
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 124,
+            "end": 135
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "竹简出自地魔老鬼库房，苏千只在古籍见过炼制之法",
+          "萧炎除特殊材料外，躯体、灵魂、魔核几乎齐备"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 441,
+            "end": 466
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 791,
+            "end": 824
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "从初次听说傀儡之技转为苏千把竹简留给萧炎，并收入纳戒"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 706,
+            "end": 716
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 850,
+            "end": 865
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "苏千惊叹从未见过炼制之法，以学院不宜收藏为由把东西留给萧炎"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 441,
+            "end": 466
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 706,
+            "end": 716
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 717,
+            "end": 731
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎对天妖傀极感兴趣，认为炼成后可多一名唯命是从的贴身护卫"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 362,
+            "end": 380
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 752,
+            "end": 757
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可凭竹简尝试炼制天妖傀，材料已大致齐备"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 124,
+            "end": 135
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 362,
+            "end": 380
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 791,
+            "end": 824
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "竹简与弄焰决已收入纳戒带走"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 850,
+            "end": 865
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "遗存中的远古傀儡术可在材料已齐时当场交给适合闯荡的人，而不是作为普通功法目录留下"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 111,
+            "end": 123
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 791,
+            "end": 824
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 706,
+            "end": 716
+          },
+          {
+            "segment_id": "SEG-0379CD2C281569568F99-001",
+            "start": 850,
+            "end": 865
+          }
+        ]
+      }
+    },
+    {
+      "summary": "小医仙厄难毒体将提前爆发、毒丹缺料无解时，纳戒中天火尊者突然认出此体，把自创且大陆稀少的天都火印灌进萧炎脑海；萧炎当场宣称有了压制之法，并开始按图勾勒火痕。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 883,
+          "end": 906
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 939,
+          "end": 946
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-001",
+          "start": 1328,
+          "end": 1341
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 1542,
+          "end": 1555
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 1358,
+          "end": 1371
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 1432,
+          "end": 1438
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+          "start": 555,
+          "end": 569
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 1278,
+          "end": 1289
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 972,
+          "end": 988
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 581,
+          "end": 600
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 751,
+          "end": 760
+        },
+        {
+          "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+          "start": 398,
+          "end": 417
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 782,
+          "end": 807
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 809,
+          "end": 834
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 1043,
+          "end": 1057
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 1103,
+          "end": 1117
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 1124,
+          "end": 1147
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 1347,
+          "end": 1357
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 1292,
+          "end": 1308
+        },
+        {
+          "segment_id": "SEG-4F293BB3294D94CA568D-002",
+          "start": 1459,
+          "end": 1468
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "天火尊者",
+          "小医仙"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 883,
+            "end": 906
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 939,
+            "end": 946
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-001",
+            "start": 1328,
+            "end": 1341
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1542,
+            "end": 1555
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "向天火尊者求问压制之法，接收涌入脑海的天都火印并开始按图勾勒火痕"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 883,
+            "end": 906
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1358,
+            "end": 1371
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1432,
+            "end": 1438
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+            "start": 555,
+            "end": 569
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "即将提前爆发的厄难毒体",
+          "天都火印"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-001",
+            "start": 1328,
+            "end": 1341
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1278,
+            "end": 1289
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "厄难毒体似乎要提前爆发，毒气将入脑",
+          "彻底控制所需毒丹还缺天毒蝎龙兽魔核",
+          "萧炎搜寻药方毫无结果"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-001",
+            "start": 1328,
+            "end": 1341
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 972,
+            "end": 988
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 581,
+            "end": 600
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 751,
+            "end": 760
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "从无计可施转为获得天都火印并宣称有了压制之法，开始在小医仙身上勾勒火痕"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1358,
+            "end": 1371
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1432,
+            "end": 1438
+          },
+          {
+            "segment_id": "SEG-2AF87D8A4E1761B69CF0-001",
+            "start": 398,
+            "end": 417
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "天火尊者突然出声认出厄难毒体，称封印法为他自创、大陆稀少，只能施展一次且最多维持三年，随即把信息灌进萧炎脑海"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 782,
+            "end": 807
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 809,
+            "end": 834
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1043,
+            "end": 1057
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1103,
+            "end": 1117
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1124,
+            "end": 1147
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1278,
+            "end": 1289
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1347,
+            "end": 1357
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1358,
+            "end": 1371
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎接收信息后称有压制之法，小医仙露出欣喜"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1432,
+            "end": 1438
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1459,
+            "end": 1468
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "可用天都火印封印厄难毒体，最多维持三年且只能施展一次"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1278,
+            "end": 1289
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1124,
+            "end": 1147
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1292,
+            "end": 1308
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "天都火印已灌入萧炎脑海；封印尚未完成，且只能用一次、顶多三年"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1358,
+            "end": 1371
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1124,
+            "end": 1147
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中寄居纳戒的残存意志可把自创、大陆稀少的一次性封印法当场灌入宿主脑海，改写毒体爆发无解的局面"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 782,
+            "end": 807
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1043,
+            "end": 1057
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1103,
+            "end": 1117
+          },
+          {
+            "segment_id": "SEG-4F293BB3294D94CA568D-002",
+            "start": 1358,
+            "end": 1371
+          }
+        ]
+      }
+    }
+  ]
+}

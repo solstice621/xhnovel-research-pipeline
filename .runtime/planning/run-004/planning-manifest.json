@@ -1,0 +1,11 @@
+{
+  "compiled_brief_artifact_id": "sha256:90003e18e0ff43280a87f12f354c423e560bbd8b36b4fc7d1588604ad6109abd",
+  "intake_artifact_id": "sha256:81322124e66723bb8c5c8ed364c5518d1b3e0e38cc30a23ff21095ed544ec16d",
+  "neutral_execution_artifact_id": "sha256:bc375dbbb9a33767806df29e1265d7ca28ebba1289faa91f79db1dc06ff9c9e2",
+  "neutral_frame_artifact_id": "sha256:589a6e381b73851fad1cc5902cb1bd65c255523e2c43b769b81ffd9be70d0297",
+  "neutral_input_artifact_id": "sha256:e644e139960964ead06a0e4dfd12f7cc9f282f77bf45e641f469b101746f47a3",
+  "plan_artifact_id": "sha256:af1a22ab9e3cd3f7c4816b3e4f765095763f540dc175be947183b7d04624cfde",
+  "receipt_id": "PCR-BF640547AC7578C6EB26",
+  "record_kind": "PHASE_MINUS1_PLANNING_MANIFEST",
+  "schema_version": "0.2-draft"
+}

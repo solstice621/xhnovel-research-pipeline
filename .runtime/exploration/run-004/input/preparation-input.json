@@ -1,0 +1,155 @@
+{
+  "brief": {
+    "brief_hash": "sha256:ea099e2dc765d87c92f769aaffea4ffec8e9bc39ca32c1c484fa71327d4713dd",
+    "brief_id": "XBR-43C121A4ED04DCADE2F5",
+    "evidence_discovery_brief": "在已冻结的玄幻源文中，寻找角色因非预先谋划的意外机缘而当场获得传承、宝物、功法、体质、指引，或因此处境骤变的场景。可观察标志包括：误入隐秘之地或遗存、危机中触发未知机缘、拾得非常规之物、遭遇残存意志或无名施助，并立即改变能力、资源或后续行动空间。须与事先约定的交易、任务报酬及常规修炼收获相区分；只采当场可见的机缘发生过程，不采事后转述或目录式罗列。",
+    "frozen_at": "2026-09-03T03:05:00Z",
+    "research_question": "收集玄幻作品中角色遭遇意外机缘、当场获得非常规机遇并因此改变能力或处境的奇遇场景，并覆盖不同形态的机缘发生过程。",
+    "schema_version": "0.2-draft",
+    "scope": {
+      "genres": [
+        "玄幻"
+      ],
+      "max_leads_per_work": 3,
+      "target_leads": 16
+    }
+  },
+  "leads": [
+    {
+      "work_claim": {
+        "title": "斗破苍穹",
+        "author": "天蚕土豆",
+        "language": "zh",
+        "aliases": [
+          "《斗破苍穹》",
+          "Battle Through the Heavens"
+        ]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称主角母亲遗物戒指中可能寄宿另一灵魂，并在持有期间吸取斗气数年；可检验是否属于拾得非常规之物后的当场机缘，而非事先交易。",
+        "why_relevant": "LEAD_ONLY：若属实，遗物本身可能就是改变修炼轨迹的非常规之物，可对照 Brief 中的拾得标志。",
+        "interaction_tags": [
+          "拾得非常规之物",
+          "遭遇残存意志或无名施助"
+        ],
+        "location_hints": [
+          {
+            "kind": "OBJECT",
+            "value": "母亲遗物戒指",
+            "basis": "SOURCE_STATED"
+          },
+          {
+            "kind": "CHARACTER",
+            "value": "药老",
+            "basis": "SOURCE_STATED"
+          }
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://zh.wikipedia.org/wiki/%E9%AC%A5%E7%A0%B4%E8%92%BC%E7%A9%B9",
+          "title": "斗破苍穹 - 维基百科",
+          "publisher": "Wikimedia",
+          "supports": [
+            "WORK_IDENTITY",
+            "SCENE_EXISTENCE_HINT",
+            "LOCATION_HINT"
+          ]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    },
+    {
+      "work_claim": {
+        "title": "斗破苍穹",
+        "author": "天蚕土豆",
+        "language": "zh",
+        "aliases": [
+          "《斗破苍穹》"
+        ]
+      },
+      "scene_hint": {
+        "summary": "LEAD_ONLY：百科称沉睡灵魂可能在吸收斗气后苏醒，主角随即拜师并可能当场获得可进化功法；可检验残存意志施助是否立即改变能力与后续行动空间。",
+        "why_relevant": "LEAD_ONLY：若属实，这是遭遇残存意志并当场获得传承/功法的假设，需与事后转述或目录罗列相区分。",
+        "interaction_tags": [
+          "遭遇残存意志或无名施助",
+          "危机中触发未知机缘"
+        ],
+        "location_hints": [
+          {
+            "kind": "CHARACTER",
+            "value": "药尘",
+            "basis": "SOURCE_STATED"
+          },
+          {
+            "kind": "CHAPTER_TITLE",
+            "value": "第九章 药老!",
+            "basis": "AGENT_INFERRED"
+          }
+        ]
+      },
+      "lead_sources": [
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://zh.wikipedia.org/wiki/%E9%AC%A5%E7%A0%B4%E8%92%BC%E7%A9%B9",
+          "title": "斗破苍穹 - 维基百科",
+          "publisher": "Wikimedia",
+          "supports": [
+            "WORK_IDENTITY",
+            "SCENE_EXISTENCE_HINT",
+            "LOCATION_HINT"
+          ]
+        },
+        {
+          "source_kind": "ENCYCLOPEDIA",
+          "locator": "https://baike.baidu.com/item/%E8%8D%AF%E5%B0%98/11056743",
+          "title": "药尘 - 百度百科",
+          "publisher": "Baidu",
+          "supports": [
+            "WORK_IDENTITY",
+            "SCENE_EXISTENCE_HINT",
+            "LOCATION_HINT"
+          ]
+        }
+      ],
+      "frozen_at": "2026-09-03T05:15:00Z"
+    }
+  ],
+  "source_declaration": {
+    "work": {
+      "canonical_title": "斗破苍穹",
+      "author": "天蚕土豆",
+      "language": "zh",
+      "aliases": [
+        "《斗破苍穹》",
+        "Battle Through the Heavens"
+      ],
+      "external_ids": [
+        {
+          "namespace": "qidian",
+          "value": "1209977"
+        }
+      ],
+      "identity": {
+        "basis": "STABLE_EXTERNAL_ID",
+        "namespace": "qidian",
+        "external_id": "1209977"
+      }
+    },
+    "source": {
+      "kind": "directory",
+      "path": "/workspace/.runtime/exploration/run-003/input/chapters",
+      "title": "斗破苍穹",
+      "author": "天蚕土豆",
+      "language": "zh"
+    },
+    "source_quality": {
+      "edition_status": "UNKNOWN",
+      "textual_completeness": "COMPLETE"
+    },
+    "edition_label": "Reused run-003 local chapter directory (www.shubaobiquge.com/169709/ HTML catalog fetched 2026-09-03); official/licensed status unproven; not a new crawl; bound to sealed encounter Brief XBR-43C121A4ED04DCADE2F5 rather than run-003 ownership brief",
+    "declared_at": "2026-09-03T05:15:00Z"
+  },
+  "requested_at": "2026-09-03T05:15:00Z"
+}

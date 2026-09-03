@@ -1,0 +1,341 @@
+{
+  "candidates": [
+    {
+      "summary": "魂殿殿主禁锢天地抓捕离体灵魂时，未报身份的苍老声音化出巨手对撞破禁，并推回萧炎灵魂；他冷汗回体，脱身成功。",
+      "source_spans": [
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 660,
+          "end": 674
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 834,
+          "end": 842
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 1107,
+          "end": 1131
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 1132,
+          "end": 1218
+        },
+        {
+          "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+          "start": 84,
+          "end": 103
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-001",
+          "start": 1492,
+          "end": 1527
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 929,
+          "end": 955
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 1000,
+          "end": 1032
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 1064,
+          "end": 1105
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 1304,
+          "end": 1395
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 622,
+          "end": 658
+        },
+        {
+          "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+          "start": 16,
+          "end": 34
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 1294,
+          "end": 1302
+        },
+        {
+          "segment_id": "SEG-28B2C619670D86436AD7-002",
+          "start": 1262,
+          "end": 1280
+        },
+        {
+          "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+          "start": 292,
+          "end": 300
+        }
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎",
+          "魂殿殿主",
+          "苍老声音的神秘强者"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 660,
+            "end": 674
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 834,
+            "end": 842
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1107,
+            "end": 1131
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1132,
+            "end": 1218
+          },
+          {
+            "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+            "start": 84,
+            "end": 103
+          }
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": [
+          "离体灵魂因异样燥热掠向净莲妖火出世之地，遭殿主禁锢抓捕"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-001",
+            "start": 1492,
+            "end": 1527
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 929,
+            "end": 955
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1000,
+            "end": 1032
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1064,
+            "end": 1105
+          }
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": [
+          "萧炎的离体灵魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1064,
+            "end": 1105
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1000,
+            "end": 1032
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1304,
+            "end": 1395
+          }
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂力量已达天境大圆满，离体遨游时触及妖火出世之地，殿主灵魂不弱于他"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-001",
+            "start": 1492,
+            "end": 1527
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 622,
+            "end": 658
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 929,
+            "end": 955
+          }
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": [
+          "天地禁锢被对撞冲破，离体灵魂被推回本体，抓捕中断"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1132,
+            "end": 1218
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1304,
+            "end": 1395
+          },
+          {
+            "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+            "start": 16,
+            "end": 34
+          }
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": [
+          "未报身份的苍老声音化出巨手与黑暗大手对撞破禁，喝令离开并推回其灵魂"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1107,
+            "end": 1131
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1132,
+            "end": 1218
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1294,
+            "end": 1302
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1304,
+            "end": 1395
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1262,
+            "end": 1280
+          }
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": [
+          "灵魂风暴冲破禁锢；几个呼吸退回脑海，满头冷汗睁眼"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1132,
+            "end": 1218
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1304,
+            "end": 1395
+          },
+          {
+            "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+            "start": 16,
+            "end": 34
+          }
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": [
+          "脱身存活，可继续准备争夺净莲妖火，而不被押回魂殿"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1304,
+            "end": 1395
+          },
+          {
+            "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+            "start": 84,
+            "end": 103
+          },
+          {
+            "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+            "start": 16,
+            "end": 34
+          }
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": [
+          "回体后仍不知施助者身份；事后自认若无此人帮忙难以脱身"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+            "start": 292,
+            "end": 300
+          },
+          {
+            "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+            "start": 84,
+            "end": 103
+          },
+          {
+            "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+            "start": 16,
+            "end": 34
+          }
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": [
+          "危机中无名远距施助直接改写被擒死局，而非玩家技能、交易或求援换来的救援"
+        ],
+        "support_spans": [
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1132,
+            "end": 1218
+          },
+          {
+            "segment_id": "SEG-28B2C619670D86436AD7-002",
+            "start": 1304,
+            "end": 1395
+          },
+          {
+            "segment_id": "SEG-49C4BD6C54CBCCD4C356-001",
+            "start": 84,
+            "end": 103
+          }
+        ]
+      }
+    }
+  ]
+}

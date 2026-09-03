@@ -1,0 +1,137 @@
+{
+  "candidates": [
+    {
+      "summary": "萧炎按药老嘱咐服下已入手的阴阳玄龙丹后，主效药力沉入体内、并无即时战力提升；他随即在山崖上把斗气高速运转到极限，一缕奇异能量自行甩出经脉冲喉破口，当场将丹中稀薄龙气嫁接到身上，吼出镇魂声波。",
+      "source_spans": [
+        {"segment_id": "SEG-6259A85D927991B3361D-001", "start": 1343, "end": 1359},
+        {"segment_id": "SEG-6259A85D927991B3361D-001", "start": 1405, "end": 1420},
+        {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 312, "end": 368},
+        {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 448, "end": 490},
+        {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 675, "end": 742},
+        {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1011, "end": 1092},
+        {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1105, "end": 1188},
+        {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1217, "end": 1291},
+        {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1312, "end": 1365},
+        {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1424, "end": 1501},
+        {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 172, "end": 225},
+        {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 226, "end": 263},
+        {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 264, "end": 316},
+        {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 322, "end": 367},
+        {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 369, "end": 428},
+        {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 429, "end": 463},
+        {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 73, "end": 128},
+        {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 130, "end": 144},
+        {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 145, "end": 162},
+        {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 164, "end": 178},
+        {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 215, "end": 244},
+        {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 278, "end": 328},
+        {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 357, "end": 436},
+        {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 445, "end": 472}
+      ],
+      "actors": {
+        "status": "KNOWN",
+        "values": ["萧炎", "药老"],
+        "support_spans": [
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 312, "end": 368},
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 429, "end": 463},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 145, "end": 162}
+        ]
+      },
+      "action": {
+        "status": "KNOWN",
+        "values": ["萧炎服下阴阳玄龙丹后，在山崖上闭目把体内斗气高速运转，按药老所说试探能否把丹中稀薄龙气从斗气里分离并继承。"],
+        "support_spans": [
+          {"segment_id": "SEG-6259A85D927991B3361D-001", "start": 1405, "end": 1420},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 312, "end": 368},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1105, "end": 1188},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1424, "end": 1501}
+        ]
+      },
+      "target": {
+        "status": "KNOWN",
+        "values": ["阴阳玄龙丹中可低概率嫁接的稀薄龙气"],
+        "support_spans": [
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1011, "end": 1092},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1105, "end": 1188}
+        ]
+      },
+      "precondition": {
+        "status": "KNOWN",
+        "values": ["药老因丹药留在身上不安全而催促萧炎当场服下阴阳玄龙丹。", "此丹主效是日后重伤时才可能触发的破后而立，服下后药力会沉入体内而非即时增力。", "另有低概率把稀薄龙气嫁接到服药者身上，风尊者古灵未得到该项功能；可用斗气高速运转检验是否分出奇异能量。"],
+        "support_spans": [
+          {"segment_id": "SEG-6259A85D927991B3361D-001", "start": 1343, "end": 1359},
+          {"segment_id": "SEG-6259A85D927991B3361D-001", "start": 1405, "end": 1420},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 448, "end": 490},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 675, "end": 742},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1011, "end": 1092},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1105, "end": 1188}
+        ]
+      },
+      "state_transition": {
+        "status": "KNOWN",
+        "values": ["萧炎把斗气逼到极限时，一缕奇异能量被甩出经脉、直冲喉咙并强行冲破牙关，化为镇魂声波吼出。", "药老确认稀薄龙气已被继承到萧炎身上。"],
+        "support_spans": [
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 172, "end": 225},
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 226, "end": 263},
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 264, "end": 316},
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 369, "end": 428},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 215, "end": 244}
+        ]
+      },
+      "external_response": {
+        "status": "KNOWN",
+        "values": ["被甩出的奇异能量不受牙关控制，强行冲喉成吼。", "吼声使这座原本会有魔兽叫声的山峦陷入惊惧般的安静。"],
+        "support_spans": [
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 226, "end": 263},
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 264, "end": 316},
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 322, "end": 367}
+        ]
+      },
+      "immediate_feedback": {
+        "status": "KNOWN",
+        "values": ["萧炎捂颈剧咳，喉咙火烧火燎。", "药老称这是正常反应，并确认他成功得到具有震慑灵魂的奇异龙气。", "丹药并未立即提升实力，但龙气让他多了一种出人意料的攻击手段。"],
+        "support_spans": [
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 73, "end": 128},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 130, "end": 144},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 164, "end": 178},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 215, "end": 244},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 278, "end": 328}
+        ]
+      },
+      "new_affordances": {
+        "status": "KNOWN",
+        "values": ["可发出震慑灵魂的龙气声波，对敌时能令对方灵魂霎那失神。", "蕴含龙气的声波对灵魂体杀伤力大，可作对灵魂体强者的手段。", "若只靠龙气发声会严重伤喉，还需另得声波类斗技才能稳定使用。"],
+        "support_spans": [
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1217, "end": 1291},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1312, "end": 1365},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 278, "end": 328},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 357, "end": 436},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 445, "end": 472}
+        ]
+      },
+      "persistence": {
+        "status": "KNOWN",
+        "values": ["稀薄龙气已嫁接、继承在萧炎身上，并非吼完即消失。", "若只靠龙气发声波会重创喉咙甚至变哑，须另寻声波斗技配合才能持续安全使用。"],
+        "support_spans": [
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1011, "end": 1092},
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 369, "end": 428},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 215, "end": 244},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 357, "end": 436},
+          {"segment_id": "SEG-F6D3B6834EF39E375296-001", "start": 445, "end": 472}
+        ]
+      },
+      "mechanic_pressure_point": {
+        "status": "KNOWN",
+        "values": ["七品丹的主效是日后才可能触发的破后而立，服下后药力沉入体内直至消失、没有即时战力反馈；当场兑现的是低概率龙气嫁接，须把斗气运转到极限，能量才自行甩出并强行破口成吼，该概率低到风尊者古灵都未触发，难以写成吃丹升级或主动放技能。"],
+        "support_spans": [
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 448, "end": 490},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 675, "end": 742},
+          {"segment_id": "SEG-6259A85D927991B3361D-002", "start": 1011, "end": 1092},
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 172, "end": 225},
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 264, "end": 316},
+          {"segment_id": "SEG-6259A85D927991B3361D-003", "start": 369, "end": 428}
+        ]
+      }
+    }
+  ]
+}

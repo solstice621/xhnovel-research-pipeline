@@ -1,0 +1,15 @@
+{
+  "status": "WAITING_FOR_AGENT",
+  "exit_code": 3,
+  "executor": "agent-files",
+  "pending_count": 1,
+  "tasks_dir": "scene-scout/agent-files/tasks",
+  "answers_dir": "scene-scout/agent-files/answers",
+  "pending": [
+    {
+      "window_id": "SWIN-AC2143A3867E8626EE69",
+      "task": "scene-scout/agent-files/tasks/SWIN-AC2143A3867E8626EE69--1170193ac3f0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AC2143A3867E8626EE69--1170193ac3f0.json"
+    }
+  ]
+}

@@ -1,0 +1,3397 @@
+WAITING_FOR_AGENT: 677 SceneWindow answer(s) are pending
+{
+  "status": "WAITING_FOR_AGENT",
+  "exit_code": 3,
+  "executor": "agent-files",
+  "pending_count": 677,
+  "tasks_dir": "scene-scout/agent-files/tasks",
+  "answers_dir": "scene-scout/agent-files/answers",
+  "pending": [
+    {
+      "window_id": "SWIN-0019B42B941BD0B78A6D",
+      "task": "scene-scout/agent-files/tasks/SWIN-0019B42B941BD0B78A6D--c143715b0b66.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0019B42B941BD0B78A6D--c143715b0b66.json"
+    },
+    {
+      "window_id": "SWIN-003A2440B651914B530C",
+      "task": "scene-scout/agent-files/tasks/SWIN-003A2440B651914B530C--a5ab3a4397e4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-003A2440B651914B530C--a5ab3a4397e4.json"
+    },
+    {
+      "window_id": "SWIN-00D91E402D38DDE1A4FD",
+      "task": "scene-scout/agent-files/tasks/SWIN-00D91E402D38DDE1A4FD--fe5dc46f702a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-00D91E402D38DDE1A4FD--fe5dc46f702a.json"
+    },
+    {
+      "window_id": "SWIN-015A4A8048836437C0FA",
+      "task": "scene-scout/agent-files/tasks/SWIN-015A4A8048836437C0FA--52f03c4ca519.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-015A4A8048836437C0FA--52f03c4ca519.json"
+    },
+    {
+      "window_id": "SWIN-01BB7F7E837296FA3780",
+      "task": "scene-scout/agent-files/tasks/SWIN-01BB7F7E837296FA3780--c5d921547794.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-01BB7F7E837296FA3780--c5d921547794.json"
+    },
+    {
+      "window_id": "SWIN-02149C07AE4DEB1684A2",
+      "task": "scene-scout/agent-files/tasks/SWIN-02149C07AE4DEB1684A2--d4f4bd5f03eb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-02149C07AE4DEB1684A2--d4f4bd5f03eb.json"
+    },
+    {
+      "window_id": "SWIN-0291A56C265C88A8EFAC",
+      "task": "scene-scout/agent-files/tasks/SWIN-0291A56C265C88A8EFAC--43f37db25130.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0291A56C265C88A8EFAC--43f37db25130.json"
+    },
+    {
+      "window_id": "SWIN-034589790358108D3B9E",
+      "task": "scene-scout/agent-files/tasks/SWIN-034589790358108D3B9E--af41ac99a63e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-034589790358108D3B9E--af41ac99a63e.json"
+    },
+    {
+      "window_id": "SWIN-03C94B709D5FE97A7628",
+      "task": "scene-scout/agent-files/tasks/SWIN-03C94B709D5FE97A7628--10e604da0f8c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-03C94B709D5FE97A7628--10e604da0f8c.json"
+    },
+    {
+      "window_id": "SWIN-03FFFD4D3DFEFD6AE52E",
+      "task": "scene-scout/agent-files/tasks/SWIN-03FFFD4D3DFEFD6AE52E--b05c0173cac4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-03FFFD4D3DFEFD6AE52E--b05c0173cac4.json"
+    },
+    {
+      "window_id": "SWIN-0467B46F7211339CE32C",
+      "task": "scene-scout/agent-files/tasks/SWIN-0467B46F7211339CE32C--81f01684979a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0467B46F7211339CE32C--81f01684979a.json"
+    },
+    {
+      "window_id": "SWIN-060456746508FEF0EC4E",
+      "task": "scene-scout/agent-files/tasks/SWIN-060456746508FEF0EC4E--6e16eed80411.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-060456746508FEF0EC4E--6e16eed80411.json"
+    },
+    {
+      "window_id": "SWIN-069FD9C17BCAD2547580",
+      "task": "scene-scout/agent-files/tasks/SWIN-069FD9C17BCAD2547580--f19053b4f883.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-069FD9C17BCAD2547580--f19053b4f883.json"
+    },
+    {
+      "window_id": "SWIN-06C1DE768C79718A1454",
+      "task": "scene-scout/agent-files/tasks/SWIN-06C1DE768C79718A1454--8eaf316cfbfb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-06C1DE768C79718A1454--8eaf316cfbfb.json"
+    },
+    {
+      "window_id": "SWIN-073D65F28A6567C0E05B",
+      "task": "scene-scout/agent-files/tasks/SWIN-073D65F28A6567C0E05B--ce105f3c0b2e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-073D65F28A6567C0E05B--ce105f3c0b2e.json"
+    },
+    {
+      "window_id": "SWIN-0868BCC7EA0A68A856F0",
+      "task": "scene-scout/agent-files/tasks/SWIN-0868BCC7EA0A68A856F0--d62bf9645bf9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0868BCC7EA0A68A856F0--d62bf9645bf9.json"
+    },
+    {
+      "window_id": "SWIN-097A45B66D233CCEEEB8",
+      "task": "scene-scout/agent-files/tasks/SWIN-097A45B66D233CCEEEB8--de229ba792c6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-097A45B66D233CCEEEB8--de229ba792c6.json"
+    },
+    {
+      "window_id": "SWIN-09A326FB6275FA14E5FF",
+      "task": "scene-scout/agent-files/tasks/SWIN-09A326FB6275FA14E5FF--9184a775ceb7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-09A326FB6275FA14E5FF--9184a775ceb7.json"
+    },
+    {
+      "window_id": "SWIN-09BCDB0585702FA4E79A",
+      "task": "scene-scout/agent-files/tasks/SWIN-09BCDB0585702FA4E79A--fc9b76fc134b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-09BCDB0585702FA4E79A--fc9b76fc134b.json"
+    },
+    {
+      "window_id": "SWIN-0A6813A6E82287E0BCDA",
+      "task": "scene-scout/agent-files/tasks/SWIN-0A6813A6E82287E0BCDA--8b7065bfb195.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0A6813A6E82287E0BCDA--8b7065bfb195.json"
+    },
+    {
+      "window_id": "SWIN-0ACDE2A33287F83EFBEE",
+      "task": "scene-scout/agent-files/tasks/SWIN-0ACDE2A33287F83EFBEE--8f2aa116ee7d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0ACDE2A33287F83EFBEE--8f2aa116ee7d.json"
+    },
+    {
+      "window_id": "SWIN-0ADF62D50B93DE64E4AA",
+      "task": "scene-scout/agent-files/tasks/SWIN-0ADF62D50B93DE64E4AA--ae80e1ee7d26.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0ADF62D50B93DE64E4AA--ae80e1ee7d26.json"
+    },
+    {
+      "window_id": "SWIN-0B0C1BCB696A4BC9C9FE",
+      "task": "scene-scout/agent-files/tasks/SWIN-0B0C1BCB696A4BC9C9FE--88edb3d58b38.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0B0C1BCB696A4BC9C9FE--88edb3d58b38.json"
+    },
+    {
+      "window_id": "SWIN-0B2522CC72301DE2BF60",
+      "task": "scene-scout/agent-files/tasks/SWIN-0B2522CC72301DE2BF60--2dc92c08704b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0B2522CC72301DE2BF60--2dc92c08704b.json"
+    },
+    {
+      "window_id": "SWIN-0B7A72BF7C072F4B21FC",
+      "task": "scene-scout/agent-files/tasks/SWIN-0B7A72BF7C072F4B21FC--e248a9f5fdde.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0B7A72BF7C072F4B21FC--e248a9f5fdde.json"
+    },
+    {
+      "window_id": "SWIN-0C00EF9A714374F1FE67",
+      "task": "scene-scout/agent-files/tasks/SWIN-0C00EF9A714374F1FE67--7e59002c0f6f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0C00EF9A714374F1FE67--7e59002c0f6f.json"
+    },
+    {
+      "window_id": "SWIN-0C401A6D721BC8122D06",
+      "task": "scene-scout/agent-files/tasks/SWIN-0C401A6D721BC8122D06--b30d8640da5c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0C401A6D721BC8122D06--b30d8640da5c.json"
+    },
+    {
+      "window_id": "SWIN-0C9810DE56091E77CF3C",
+      "task": "scene-scout/agent-files/tasks/SWIN-0C9810DE56091E77CF3C--33390f6fee06.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0C9810DE56091E77CF3C--33390f6fee06.json"
+    },
+    {
+      "window_id": "SWIN-0D457F8D454C647D836E",
+      "task": "scene-scout/agent-files/tasks/SWIN-0D457F8D454C647D836E--7b7f52aa0e26.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0D457F8D454C647D836E--7b7f52aa0e26.json"
+    },
+    {
+      "window_id": "SWIN-0D55D4AA4F7C7553799C",
+      "task": "scene-scout/agent-files/tasks/SWIN-0D55D4AA4F7C7553799C--8f4947e08ec6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0D55D4AA4F7C7553799C--8f4947e08ec6.json"
+    },
+    {
+      "window_id": "SWIN-0EB6A23C3BF47139ABF6",
+      "task": "scene-scout/agent-files/tasks/SWIN-0EB6A23C3BF47139ABF6--dff5879ef32c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0EB6A23C3BF47139ABF6--dff5879ef32c.json"
+    },
+    {
+      "window_id": "SWIN-0EE41C9694293C62ACCB",
+      "task": "scene-scout/agent-files/tasks/SWIN-0EE41C9694293C62ACCB--97da474f6c8b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0EE41C9694293C62ACCB--97da474f6c8b.json"
+    },
+    {
+      "window_id": "SWIN-0F4BBDB657B5239E10B0",
+      "task": "scene-scout/agent-files/tasks/SWIN-0F4BBDB657B5239E10B0--1abaa5fe0f91.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0F4BBDB657B5239E10B0--1abaa5fe0f91.json"
+    },
+    {
+      "window_id": "SWIN-0FF9309C85D1CC1E875F",
+      "task": "scene-scout/agent-files/tasks/SWIN-0FF9309C85D1CC1E875F--e97c48f8bc69.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-0FF9309C85D1CC1E875F--e97c48f8bc69.json"
+    },
+    {
+      "window_id": "SWIN-1015788093EB79EBCD68",
+      "task": "scene-scout/agent-files/tasks/SWIN-1015788093EB79EBCD68--87e0757a189b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1015788093EB79EBCD68--87e0757a189b.json"
+    },
+    {
+      "window_id": "SWIN-1096922A713EC5F45B06",
+      "task": "scene-scout/agent-files/tasks/SWIN-1096922A713EC5F45B06--83736c1908c2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1096922A713EC5F45B06--83736c1908c2.json"
+    },
+    {
+      "window_id": "SWIN-10A72F915486221F5D25",
+      "task": "scene-scout/agent-files/tasks/SWIN-10A72F915486221F5D25--6746923a759c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-10A72F915486221F5D25--6746923a759c.json"
+    },
+    {
+      "window_id": "SWIN-10E7AA7D71AF75EE6F54",
+      "task": "scene-scout/agent-files/tasks/SWIN-10E7AA7D71AF75EE6F54--4b023bffb63e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-10E7AA7D71AF75EE6F54--4b023bffb63e.json"
+    },
+    {
+      "window_id": "SWIN-10F92992E38AA6429E2C",
+      "task": "scene-scout/agent-files/tasks/SWIN-10F92992E38AA6429E2C--9311e970f233.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-10F92992E38AA6429E2C--9311e970f233.json"
+    },
+    {
+      "window_id": "SWIN-1129A231D58BE0238DEE",
+      "task": "scene-scout/agent-files/tasks/SWIN-1129A231D58BE0238DEE--414249cd2638.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1129A231D58BE0238DEE--414249cd2638.json"
+    },
+    {
+      "window_id": "SWIN-118E5AA0D17F45484D47",
+      "task": "scene-scout/agent-files/tasks/SWIN-118E5AA0D17F45484D47--2c58363d4fd0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-118E5AA0D17F45484D47--2c58363d4fd0.json"
+    },
+    {
+      "window_id": "SWIN-11DE80A6ECB0444FA19A",
+      "task": "scene-scout/agent-files/tasks/SWIN-11DE80A6ECB0444FA19A--b67e0e1ce391.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-11DE80A6ECB0444FA19A--b67e0e1ce391.json"
+    },
+    {
+      "window_id": "SWIN-124122F11B49FA4DAE41",
+      "task": "scene-scout/agent-files/tasks/SWIN-124122F11B49FA4DAE41--ceb0c324ee01.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-124122F11B49FA4DAE41--ceb0c324ee01.json"
+    },
+    {
+      "window_id": "SWIN-1269559F1A78143AAD80",
+      "task": "scene-scout/agent-files/tasks/SWIN-1269559F1A78143AAD80--1da097b7a406.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1269559F1A78143AAD80--1da097b7a406.json"
+    },
+    {
+      "window_id": "SWIN-12AB90084D30F4BA940F",
+      "task": "scene-scout/agent-files/tasks/SWIN-12AB90084D30F4BA940F--be88c9461078.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-12AB90084D30F4BA940F--be88c9461078.json"
+    },
+    {
+      "window_id": "SWIN-13C490A3F9F72394972D",
+      "task": "scene-scout/agent-files/tasks/SWIN-13C490A3F9F72394972D--a4a3b5f5b7d8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-13C490A3F9F72394972D--a4a3b5f5b7d8.json"
+    },
+    {
+      "window_id": "SWIN-144FAD51CC53C2B41A4B",
+      "task": "scene-scout/agent-files/tasks/SWIN-144FAD51CC53C2B41A4B--61cd0fa6e8ba.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-144FAD51CC53C2B41A4B--61cd0fa6e8ba.json"
+    },
+    {
+      "window_id": "SWIN-145FE13F8815FEBE831D",
+      "task": "scene-scout/agent-files/tasks/SWIN-145FE13F8815FEBE831D--6e8e62404396.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-145FE13F8815FEBE831D--6e8e62404396.json"
+    },
+    {
+      "window_id": "SWIN-14E26D9EF5AF4EC7556B",
+      "task": "scene-scout/agent-files/tasks/SWIN-14E26D9EF5AF4EC7556B--a360ecdb361c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-14E26D9EF5AF4EC7556B--a360ecdb361c.json"
+    },
+    {
+      "window_id": "SWIN-150251462C561FFA53B9",
+      "task": "scene-scout/agent-files/tasks/SWIN-150251462C561FFA53B9--ecb234a86fdd.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-150251462C561FFA53B9--ecb234a86fdd.json"
+    },
+    {
+      "window_id": "SWIN-154AC1969A07979CE57D",
+      "task": "scene-scout/agent-files/tasks/SWIN-154AC1969A07979CE57D--001fe6688ad7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-154AC1969A07979CE57D--001fe6688ad7.json"
+    },
+    {
+      "window_id": "SWIN-15C1CD148322C5F44039",
+      "task": "scene-scout/agent-files/tasks/SWIN-15C1CD148322C5F44039--a633a0ca6d9c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-15C1CD148322C5F44039--a633a0ca6d9c.json"
+    },
+    {
+      "window_id": "SWIN-15EA6316985150762691",
+      "task": "scene-scout/agent-files/tasks/SWIN-15EA6316985150762691--19a7b0af471a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-15EA6316985150762691--19a7b0af471a.json"
+    },
+    {
+      "window_id": "SWIN-15F943FDF98F0F9DB8B4",
+      "task": "scene-scout/agent-files/tasks/SWIN-15F943FDF98F0F9DB8B4--69765f39b6ad.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-15F943FDF98F0F9DB8B4--69765f39b6ad.json"
+    },
+    {
+      "window_id": "SWIN-164D25FA6706387CE268",
+      "task": "scene-scout/agent-files/tasks/SWIN-164D25FA6706387CE268--a7a354a5a419.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-164D25FA6706387CE268--a7a354a5a419.json"
+    },
+    {
+      "window_id": "SWIN-16CC1BFF2288B7B22F8C",
+      "task": "scene-scout/agent-files/tasks/SWIN-16CC1BFF2288B7B22F8C--7d8bdb312dfb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-16CC1BFF2288B7B22F8C--7d8bdb312dfb.json"
+    },
+    {
+      "window_id": "SWIN-173E9C505320C6CC48F7",
+      "task": "scene-scout/agent-files/tasks/SWIN-173E9C505320C6CC48F7--b61e6fb28471.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-173E9C505320C6CC48F7--b61e6fb28471.json"
+    },
+    {
+      "window_id": "SWIN-1777BF6AF44782C9B5E3",
+      "task": "scene-scout/agent-files/tasks/SWIN-1777BF6AF44782C9B5E3--1230ce23898c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1777BF6AF44782C9B5E3--1230ce23898c.json"
+    },
+    {
+      "window_id": "SWIN-185FEECF18B630493FC6",
+      "task": "scene-scout/agent-files/tasks/SWIN-185FEECF18B630493FC6--640ac931ee93.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-185FEECF18B630493FC6--640ac931ee93.json"
+    },
+    {
+      "window_id": "SWIN-1864A78C177F6C5D174F",
+      "task": "scene-scout/agent-files/tasks/SWIN-1864A78C177F6C5D174F--ae1f63fa8850.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1864A78C177F6C5D174F--ae1f63fa8850.json"
+    },
+    {
+      "window_id": "SWIN-18F3EE7E7DB24BDEB6F0",
+      "task": "scene-scout/agent-files/tasks/SWIN-18F3EE7E7DB24BDEB6F0--1b3decd5bddf.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-18F3EE7E7DB24BDEB6F0--1b3decd5bddf.json"
+    },
+    {
+      "window_id": "SWIN-1BCC50B8D4378B790B85",
+      "task": "scene-scout/agent-files/tasks/SWIN-1BCC50B8D4378B790B85--c776aa9f4f61.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1BCC50B8D4378B790B85--c776aa9f4f61.json"
+    },
+    {
+      "window_id": "SWIN-1C1D8A57F04166B44180",
+      "task": "scene-scout/agent-files/tasks/SWIN-1C1D8A57F04166B44180--e4b8932aeda3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1C1D8A57F04166B44180--e4b8932aeda3.json"
+    },
+    {
+      "window_id": "SWIN-1C1F613044B1D5C4144D",
+      "task": "scene-scout/agent-files/tasks/SWIN-1C1F613044B1D5C4144D--0c55dff799b9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1C1F613044B1D5C4144D--0c55dff799b9.json"
+    },
+    {
+      "window_id": "SWIN-1C5B7FA7698291EE7E3D",
+      "task": "scene-scout/agent-files/tasks/SWIN-1C5B7FA7698291EE7E3D--5916e564531b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1C5B7FA7698291EE7E3D--5916e564531b.json"
+    },
+    {
+      "window_id": "SWIN-1CB23309A09A460748F1",
+      "task": "scene-scout/agent-files/tasks/SWIN-1CB23309A09A460748F1--34b36ecd2846.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1CB23309A09A460748F1--34b36ecd2846.json"
+    },
+    {
+      "window_id": "SWIN-1CECAD525670F8B6EDBA",
+      "task": "scene-scout/agent-files/tasks/SWIN-1CECAD525670F8B6EDBA--dfcc20a6a309.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1CECAD525670F8B6EDBA--dfcc20a6a309.json"
+    },
+    {
+      "window_id": "SWIN-1CF0BBFB69CE56D4B014",
+      "task": "scene-scout/agent-files/tasks/SWIN-1CF0BBFB69CE56D4B014--0859d55e9c7c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1CF0BBFB69CE56D4B014--0859d55e9c7c.json"
+    },
+    {
+      "window_id": "SWIN-1D028213C40C6510F14F",
+      "task": "scene-scout/agent-files/tasks/SWIN-1D028213C40C6510F14F--1b8e26192e0b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1D028213C40C6510F14F--1b8e26192e0b.json"
+    },
+    {
+      "window_id": "SWIN-1D2F106D3C009121801A",
+      "task": "scene-scout/agent-files/tasks/SWIN-1D2F106D3C009121801A--ad56c8b1787f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1D2F106D3C009121801A--ad56c8b1787f.json"
+    },
+    {
+      "window_id": "SWIN-1D8C18991BDFE4839E89",
+      "task": "scene-scout/agent-files/tasks/SWIN-1D8C18991BDFE4839E89--069aa3c4f475.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1D8C18991BDFE4839E89--069aa3c4f475.json"
+    },
+    {
+      "window_id": "SWIN-1DBDA88E13A4BD1C39EC",
+      "task": "scene-scout/agent-files/tasks/SWIN-1DBDA88E13A4BD1C39EC--0dafab73b438.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1DBDA88E13A4BD1C39EC--0dafab73b438.json"
+    },
+    {
+      "window_id": "SWIN-1DF7E3736BE49D337E3E",
+      "task": "scene-scout/agent-files/tasks/SWIN-1DF7E3736BE49D337E3E--d821688df2f0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1DF7E3736BE49D337E3E--d821688df2f0.json"
+    },
+    {
+      "window_id": "SWIN-1E03F20DCB6C6108D785",
+      "task": "scene-scout/agent-files/tasks/SWIN-1E03F20DCB6C6108D785--3df9b553a4b8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1E03F20DCB6C6108D785--3df9b553a4b8.json"
+    },
+    {
+      "window_id": "SWIN-1E109AF286B815822531",
+      "task": "scene-scout/agent-files/tasks/SWIN-1E109AF286B815822531--d056beee460e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1E109AF286B815822531--d056beee460e.json"
+    },
+    {
+      "window_id": "SWIN-1E134693C32AEC585614",
+      "task": "scene-scout/agent-files/tasks/SWIN-1E134693C32AEC585614--b0e52cd97d1b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1E134693C32AEC585614--b0e52cd97d1b.json"
+    },
+    {
+      "window_id": "SWIN-1E3113E3A5E10829D03F",
+      "task": "scene-scout/agent-files/tasks/SWIN-1E3113E3A5E10829D03F--948ad0d21ec6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1E3113E3A5E10829D03F--948ad0d21ec6.json"
+    },
+    {
+      "window_id": "SWIN-1E35360D1B9569AC1A41",
+      "task": "scene-scout/agent-files/tasks/SWIN-1E35360D1B9569AC1A41--4f715f5c040d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1E35360D1B9569AC1A41--4f715f5c040d.json"
+    },
+    {
+      "window_id": "SWIN-1E99CA391B540C935A51",
+      "task": "scene-scout/agent-files/tasks/SWIN-1E99CA391B540C935A51--b31db610d11f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1E99CA391B540C935A51--b31db610d11f.json"
+    },
+    {
+      "window_id": "SWIN-1FB4BADD829691276AC8",
+      "task": "scene-scout/agent-files/tasks/SWIN-1FB4BADD829691276AC8--102df822ad05.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1FB4BADD829691276AC8--102df822ad05.json"
+    },
+    {
+      "window_id": "SWIN-1FC8A912E9C0DB3CBCC3",
+      "task": "scene-scout/agent-files/tasks/SWIN-1FC8A912E9C0DB3CBCC3--5f08edaef48e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1FC8A912E9C0DB3CBCC3--5f08edaef48e.json"
+    },
+    {
+      "window_id": "SWIN-1FD67AD9BCFDED69E5A8",
+      "task": "scene-scout/agent-files/tasks/SWIN-1FD67AD9BCFDED69E5A8--397324abd4a5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1FD67AD9BCFDED69E5A8--397324abd4a5.json"
+    },
+    {
+      "window_id": "SWIN-1FF7A0003DCEA9414FAD",
+      "task": "scene-scout/agent-files/tasks/SWIN-1FF7A0003DCEA9414FAD--891e04e9fb83.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-1FF7A0003DCEA9414FAD--891e04e9fb83.json"
+    },
+    {
+      "window_id": "SWIN-21043FC91EEBB381D263",
+      "task": "scene-scout/agent-files/tasks/SWIN-21043FC91EEBB381D263--ae879ebb0149.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-21043FC91EEBB381D263--ae879ebb0149.json"
+    },
+    {
+      "window_id": "SWIN-21834FACA1CA6F71F5F0",
+      "task": "scene-scout/agent-files/tasks/SWIN-21834FACA1CA6F71F5F0--47d2ad34f8b1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-21834FACA1CA6F71F5F0--47d2ad34f8b1.json"
+    },
+    {
+      "window_id": "SWIN-21D68A59BA1CA5BC6143",
+      "task": "scene-scout/agent-files/tasks/SWIN-21D68A59BA1CA5BC6143--de7f8cd67aa6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-21D68A59BA1CA5BC6143--de7f8cd67aa6.json"
+    },
+    {
+      "window_id": "SWIN-21EDB21457B1E45B1618",
+      "task": "scene-scout/agent-files/tasks/SWIN-21EDB21457B1E45B1618--ddedb69c6244.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-21EDB21457B1E45B1618--ddedb69c6244.json"
+    },
+    {
+      "window_id": "SWIN-2438F2B4BF2E9EE1D3B5",
+      "task": "scene-scout/agent-files/tasks/SWIN-2438F2B4BF2E9EE1D3B5--e95e02a30a45.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2438F2B4BF2E9EE1D3B5--e95e02a30a45.json"
+    },
+    {
+      "window_id": "SWIN-2453930DD7D80389BD28",
+      "task": "scene-scout/agent-files/tasks/SWIN-2453930DD7D80389BD28--a267e2bcfaf7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2453930DD7D80389BD28--a267e2bcfaf7.json"
+    },
+    {
+      "window_id": "SWIN-249429FCAA09A10BDFFA",
+      "task": "scene-scout/agent-files/tasks/SWIN-249429FCAA09A10BDFFA--63bdc0c0969a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-249429FCAA09A10BDFFA--63bdc0c0969a.json"
+    },
+    {
+      "window_id": "SWIN-24F2F6C3368F6940E8EE",
+      "task": "scene-scout/agent-files/tasks/SWIN-24F2F6C3368F6940E8EE--015e8f26d4b7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-24F2F6C3368F6940E8EE--015e8f26d4b7.json"
+    },
+    {
+      "window_id": "SWIN-24F51A0B2E58119A7E4D",
+      "task": "scene-scout/agent-files/tasks/SWIN-24F51A0B2E58119A7E4D--ebc788a88e99.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-24F51A0B2E58119A7E4D--ebc788a88e99.json"
+    },
+    {
+      "window_id": "SWIN-252AA638FB456D9CE4A7",
+      "task": "scene-scout/agent-files/tasks/SWIN-252AA638FB456D9CE4A7--7589151bbf6e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-252AA638FB456D9CE4A7--7589151bbf6e.json"
+    },
+    {
+      "window_id": "SWIN-266D5FDF2441194E7494",
+      "task": "scene-scout/agent-files/tasks/SWIN-266D5FDF2441194E7494--09df51f4a895.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-266D5FDF2441194E7494--09df51f4a895.json"
+    },
+    {
+      "window_id": "SWIN-270CFB88081CDC1B9820",
+      "task": "scene-scout/agent-files/tasks/SWIN-270CFB88081CDC1B9820--fc115426c37a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-270CFB88081CDC1B9820--fc115426c37a.json"
+    },
+    {
+      "window_id": "SWIN-277F6ECA2AB7243142D4",
+      "task": "scene-scout/agent-files/tasks/SWIN-277F6ECA2AB7243142D4--cb7f03f010f4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-277F6ECA2AB7243142D4--cb7f03f010f4.json"
+    },
+    {
+      "window_id": "SWIN-27AF212728D79E1185D2",
+      "task": "scene-scout/agent-files/tasks/SWIN-27AF212728D79E1185D2--5682e5e6bb95.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-27AF212728D79E1185D2--5682e5e6bb95.json"
+    },
+    {
+      "window_id": "SWIN-27C04D45709027573BE3",
+      "task": "scene-scout/agent-files/tasks/SWIN-27C04D45709027573BE3--7b805fd33245.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-27C04D45709027573BE3--7b805fd33245.json"
+    },
+    {
+      "window_id": "SWIN-27C26471E5E217CF1724",
+      "task": "scene-scout/agent-files/tasks/SWIN-27C26471E5E217CF1724--5637d0a6b3e5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-27C26471E5E217CF1724--5637d0a6b3e5.json"
+    },
+    {
+      "window_id": "SWIN-2809B1F1FB97FC703DBB",
+      "task": "scene-scout/agent-files/tasks/SWIN-2809B1F1FB97FC703DBB--98cec4d8c7ad.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2809B1F1FB97FC703DBB--98cec4d8c7ad.json"
+    },
+    {
+      "window_id": "SWIN-289744F2C336208F8AC1",
+      "task": "scene-scout/agent-files/tasks/SWIN-289744F2C336208F8AC1--8799eb8f733d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-289744F2C336208F8AC1--8799eb8f733d.json"
+    },
+    {
+      "window_id": "SWIN-29A09B8CAF96C88AC828",
+      "task": "scene-scout/agent-files/tasks/SWIN-29A09B8CAF96C88AC828--f24555b60fc1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-29A09B8CAF96C88AC828--f24555b60fc1.json"
+    },
+    {
+      "window_id": "SWIN-29CAA82BEBEC16C9F3A0",
+      "task": "scene-scout/agent-files/tasks/SWIN-29CAA82BEBEC16C9F3A0--2e7ebcefc6a3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-29CAA82BEBEC16C9F3A0--2e7ebcefc6a3.json"
+    },
+    {
+      "window_id": "SWIN-2A480B283363AEF7DF20",
+      "task": "scene-scout/agent-files/tasks/SWIN-2A480B283363AEF7DF20--ad92f65e2bdb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2A480B283363AEF7DF20--ad92f65e2bdb.json"
+    },
+    {
+      "window_id": "SWIN-2AA497BA8DE3C9C8D57A",
+      "task": "scene-scout/agent-files/tasks/SWIN-2AA497BA8DE3C9C8D57A--e15870fbffbc.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2AA497BA8DE3C9C8D57A--e15870fbffbc.json"
+    },
+    {
+      "window_id": "SWIN-2B9D83D00BDD8CB775AD",
+      "task": "scene-scout/agent-files/tasks/SWIN-2B9D83D00BDD8CB775AD--f21d91db38d1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2B9D83D00BDD8CB775AD--f21d91db38d1.json"
+    },
+    {
+      "window_id": "SWIN-2BE575DC4E0EB0386127",
+      "task": "scene-scout/agent-files/tasks/SWIN-2BE575DC4E0EB0386127--63a7b9a1f6d0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2BE575DC4E0EB0386127--63a7b9a1f6d0.json"
+    },
+    {
+      "window_id": "SWIN-2C41631ED3F25AD6A303",
+      "task": "scene-scout/agent-files/tasks/SWIN-2C41631ED3F25AD6A303--8d8ee5b597b1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2C41631ED3F25AD6A303--8d8ee5b597b1.json"
+    },
+    {
+      "window_id": "SWIN-2CD372C3D6830E5A7C53",
+      "task": "scene-scout/agent-files/tasks/SWIN-2CD372C3D6830E5A7C53--ebdec29627f7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2CD372C3D6830E5A7C53--ebdec29627f7.json"
+    },
+    {
+      "window_id": "SWIN-2CF961323E244183CDB9",
+      "task": "scene-scout/agent-files/tasks/SWIN-2CF961323E244183CDB9--97345afc853c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2CF961323E244183CDB9--97345afc853c.json"
+    },
+    {
+      "window_id": "SWIN-2D126B257C8DA91EBA08",
+      "task": "scene-scout/agent-files/tasks/SWIN-2D126B257C8DA91EBA08--6dc4d5447801.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2D126B257C8DA91EBA08--6dc4d5447801.json"
+    },
+    {
+      "window_id": "SWIN-2D98E7CA9CB1C4857254",
+      "task": "scene-scout/agent-files/tasks/SWIN-2D98E7CA9CB1C4857254--125ccbeae5ee.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2D98E7CA9CB1C4857254--125ccbeae5ee.json"
+    },
+    {
+      "window_id": "SWIN-2ECEEAA7DFE429F7032C",
+      "task": "scene-scout/agent-files/tasks/SWIN-2ECEEAA7DFE429F7032C--b9d2cdc22b99.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2ECEEAA7DFE429F7032C--b9d2cdc22b99.json"
+    },
+    {
+      "window_id": "SWIN-2F76AEBB330D56FA450D",
+      "task": "scene-scout/agent-files/tasks/SWIN-2F76AEBB330D56FA450D--20805fa452c5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2F76AEBB330D56FA450D--20805fa452c5.json"
+    },
+    {
+      "window_id": "SWIN-2FF1EBA9BC62022BE5FF",
+      "task": "scene-scout/agent-files/tasks/SWIN-2FF1EBA9BC62022BE5FF--d78eb8774c64.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-2FF1EBA9BC62022BE5FF--d78eb8774c64.json"
+    },
+    {
+      "window_id": "SWIN-3051648601BE975D6776",
+      "task": "scene-scout/agent-files/tasks/SWIN-3051648601BE975D6776--bc6bb8922687.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3051648601BE975D6776--bc6bb8922687.json"
+    },
+    {
+      "window_id": "SWIN-305752004BE46BD32B56",
+      "task": "scene-scout/agent-files/tasks/SWIN-305752004BE46BD32B56--c9dffbf687d1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-305752004BE46BD32B56--c9dffbf687d1.json"
+    },
+    {
+      "window_id": "SWIN-306A27B4FA24DB27484C",
+      "task": "scene-scout/agent-files/tasks/SWIN-306A27B4FA24DB27484C--85747fd2707c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-306A27B4FA24DB27484C--85747fd2707c.json"
+    },
+    {
+      "window_id": "SWIN-30E176626F4322E318CE",
+      "task": "scene-scout/agent-files/tasks/SWIN-30E176626F4322E318CE--ee74dfee8def.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-30E176626F4322E318CE--ee74dfee8def.json"
+    },
+    {
+      "window_id": "SWIN-3154D326A602B21A4794",
+      "task": "scene-scout/agent-files/tasks/SWIN-3154D326A602B21A4794--b2ec31b5d202.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3154D326A602B21A4794--b2ec31b5d202.json"
+    },
+    {
+      "window_id": "SWIN-3170F298B57B091AB8E5",
+      "task": "scene-scout/agent-files/tasks/SWIN-3170F298B57B091AB8E5--1654dc0f060c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3170F298B57B091AB8E5--1654dc0f060c.json"
+    },
+    {
+      "window_id": "SWIN-317CB3C653BBCD708C9A",
+      "task": "scene-scout/agent-files/tasks/SWIN-317CB3C653BBCD708C9A--f509442e526f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-317CB3C653BBCD708C9A--f509442e526f.json"
+    },
+    {
+      "window_id": "SWIN-31F319245C59C7AF4EC1",
+      "task": "scene-scout/agent-files/tasks/SWIN-31F319245C59C7AF4EC1--60b34b276ebc.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-31F319245C59C7AF4EC1--60b34b276ebc.json"
+    },
+    {
+      "window_id": "SWIN-328616084AFAE0F71E30",
+      "task": "scene-scout/agent-files/tasks/SWIN-328616084AFAE0F71E30--9acb1033522d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-328616084AFAE0F71E30--9acb1033522d.json"
+    },
+    {
+      "window_id": "SWIN-32BA14FCDAE0430C2477",
+      "task": "scene-scout/agent-files/tasks/SWIN-32BA14FCDAE0430C2477--753088076ca4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-32BA14FCDAE0430C2477--753088076ca4.json"
+    },
+    {
+      "window_id": "SWIN-32C383C5705AFDCF6D42",
+      "task": "scene-scout/agent-files/tasks/SWIN-32C383C5705AFDCF6D42--86d21628ee5d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-32C383C5705AFDCF6D42--86d21628ee5d.json"
+    },
+    {
+      "window_id": "SWIN-32C66C3081084239DEDC",
+      "task": "scene-scout/agent-files/tasks/SWIN-32C66C3081084239DEDC--73ad85c19a5e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-32C66C3081084239DEDC--73ad85c19a5e.json"
+    },
+    {
+      "window_id": "SWIN-32DED68B849CBA0F1B54",
+      "task": "scene-scout/agent-files/tasks/SWIN-32DED68B849CBA0F1B54--bcb52979d063.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-32DED68B849CBA0F1B54--bcb52979d063.json"
+    },
+    {
+      "window_id": "SWIN-33523FD95520924191EB",
+      "task": "scene-scout/agent-files/tasks/SWIN-33523FD95520924191EB--7ad7b3cd4e98.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-33523FD95520924191EB--7ad7b3cd4e98.json"
+    },
+    {
+      "window_id": "SWIN-33586C7DED37B4B0D336",
+      "task": "scene-scout/agent-files/tasks/SWIN-33586C7DED37B4B0D336--ff2231ed0c8c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-33586C7DED37B4B0D336--ff2231ed0c8c.json"
+    },
+    {
+      "window_id": "SWIN-34F905671902ED5DA23E",
+      "task": "scene-scout/agent-files/tasks/SWIN-34F905671902ED5DA23E--f41d2c574f7c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-34F905671902ED5DA23E--f41d2c574f7c.json"
+    },
+    {
+      "window_id": "SWIN-3526020B73F5A1528F66",
+      "task": "scene-scout/agent-files/tasks/SWIN-3526020B73F5A1528F66--1bc380443fe1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3526020B73F5A1528F66--1bc380443fe1.json"
+    },
+    {
+      "window_id": "SWIN-354E01E0DF566149D73C",
+      "task": "scene-scout/agent-files/tasks/SWIN-354E01E0DF566149D73C--7c5bdd73b1d1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-354E01E0DF566149D73C--7c5bdd73b1d1.json"
+    },
+    {
+      "window_id": "SWIN-35C72493677BFC0DA461",
+      "task": "scene-scout/agent-files/tasks/SWIN-35C72493677BFC0DA461--0f2c9f6669ee.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-35C72493677BFC0DA461--0f2c9f6669ee.json"
+    },
+    {
+      "window_id": "SWIN-35EF60B146A37D664455",
+      "task": "scene-scout/agent-files/tasks/SWIN-35EF60B146A37D664455--7dd859ca37c3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-35EF60B146A37D664455--7dd859ca37c3.json"
+    },
+    {
+      "window_id": "SWIN-360B4B50731ACB3069EE",
+      "task": "scene-scout/agent-files/tasks/SWIN-360B4B50731ACB3069EE--3fff5eb867b6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-360B4B50731ACB3069EE--3fff5eb867b6.json"
+    },
+    {
+      "window_id": "SWIN-361EC25AFB7D0BA4C048",
+      "task": "scene-scout/agent-files/tasks/SWIN-361EC25AFB7D0BA4C048--b1b245e5b254.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-361EC25AFB7D0BA4C048--b1b245e5b254.json"
+    },
+    {
+      "window_id": "SWIN-3656A5B4C37785336B7D",
+      "task": "scene-scout/agent-files/tasks/SWIN-3656A5B4C37785336B7D--51e1a2bea635.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3656A5B4C37785336B7D--51e1a2bea635.json"
+    },
+    {
+      "window_id": "SWIN-367984E7BC7E12FB95E0",
+      "task": "scene-scout/agent-files/tasks/SWIN-367984E7BC7E12FB95E0--790d71fb1e34.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-367984E7BC7E12FB95E0--790d71fb1e34.json"
+    },
+    {
+      "window_id": "SWIN-368B72FECB3101E296A0",
+      "task": "scene-scout/agent-files/tasks/SWIN-368B72FECB3101E296A0--974600b1eb2e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-368B72FECB3101E296A0--974600b1eb2e.json"
+    },
+    {
+      "window_id": "SWIN-3734F909EB9ECAD5F862",
+      "task": "scene-scout/agent-files/tasks/SWIN-3734F909EB9ECAD5F862--09eee98c934b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3734F909EB9ECAD5F862--09eee98c934b.json"
+    },
+    {
+      "window_id": "SWIN-37BC1E8D0F0517526CA9",
+      "task": "scene-scout/agent-files/tasks/SWIN-37BC1E8D0F0517526CA9--9c4778ebb9b4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-37BC1E8D0F0517526CA9--9c4778ebb9b4.json"
+    },
+    {
+      "window_id": "SWIN-383F6387B846AC6C394C",
+      "task": "scene-scout/agent-files/tasks/SWIN-383F6387B846AC6C394C--bb1fb867a420.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-383F6387B846AC6C394C--bb1fb867a420.json"
+    },
+    {
+      "window_id": "SWIN-38ED9DC26858FB82185D",
+      "task": "scene-scout/agent-files/tasks/SWIN-38ED9DC26858FB82185D--593dc6b0ca99.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-38ED9DC26858FB82185D--593dc6b0ca99.json"
+    },
+    {
+      "window_id": "SWIN-38F73DAE7E0CA5803B95",
+      "task": "scene-scout/agent-files/tasks/SWIN-38F73DAE7E0CA5803B95--346637aa9869.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-38F73DAE7E0CA5803B95--346637aa9869.json"
+    },
+    {
+      "window_id": "SWIN-393F6320620FE648BC39",
+      "task": "scene-scout/agent-files/tasks/SWIN-393F6320620FE648BC39--5edc15d00473.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-393F6320620FE648BC39--5edc15d00473.json"
+    },
+    {
+      "window_id": "SWIN-3969F8DE1C936A9D6487",
+      "task": "scene-scout/agent-files/tasks/SWIN-3969F8DE1C936A9D6487--13faaaf7cd6e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3969F8DE1C936A9D6487--13faaaf7cd6e.json"
+    },
+    {
+      "window_id": "SWIN-3A4F84295D2CA5C30470",
+      "task": "scene-scout/agent-files/tasks/SWIN-3A4F84295D2CA5C30470--b26e7453772d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3A4F84295D2CA5C30470--b26e7453772d.json"
+    },
+    {
+      "window_id": "SWIN-3A8E7FDC4BB764A617AC",
+      "task": "scene-scout/agent-files/tasks/SWIN-3A8E7FDC4BB764A617AC--d7fc61036b41.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3A8E7FDC4BB764A617AC--d7fc61036b41.json"
+    },
+    {
+      "window_id": "SWIN-3BDCB68A417AB6A2C491",
+      "task": "scene-scout/agent-files/tasks/SWIN-3BDCB68A417AB6A2C491--c2c10d4f42e8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3BDCB68A417AB6A2C491--c2c10d4f42e8.json"
+    },
+    {
+      "window_id": "SWIN-3C4ABC142F4A64C49599",
+      "task": "scene-scout/agent-files/tasks/SWIN-3C4ABC142F4A64C49599--6908c46507da.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3C4ABC142F4A64C49599--6908c46507da.json"
+    },
+    {
+      "window_id": "SWIN-3CF736FECBE7D7FB66EA",
+      "task": "scene-scout/agent-files/tasks/SWIN-3CF736FECBE7D7FB66EA--677142454ae4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3CF736FECBE7D7FB66EA--677142454ae4.json"
+    },
+    {
+      "window_id": "SWIN-3CFE1844392C3549196E",
+      "task": "scene-scout/agent-files/tasks/SWIN-3CFE1844392C3549196E--267f676f57ba.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3CFE1844392C3549196E--267f676f57ba.json"
+    },
+    {
+      "window_id": "SWIN-3D386BB42622265A5F66",
+      "task": "scene-scout/agent-files/tasks/SWIN-3D386BB42622265A5F66--71886886a633.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3D386BB42622265A5F66--71886886a633.json"
+    },
+    {
+      "window_id": "SWIN-3D4B4C09ECCD77DD01E5",
+      "task": "scene-scout/agent-files/tasks/SWIN-3D4B4C09ECCD77DD01E5--4a44d7d95b94.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3D4B4C09ECCD77DD01E5--4a44d7d95b94.json"
+    },
+    {
+      "window_id": "SWIN-3EC3B583FF85DACE8F28",
+      "task": "scene-scout/agent-files/tasks/SWIN-3EC3B583FF85DACE8F28--198bdc56ae9c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3EC3B583FF85DACE8F28--198bdc56ae9c.json"
+    },
+    {
+      "window_id": "SWIN-3EEC4EDD982BA75F529E",
+      "task": "scene-scout/agent-files/tasks/SWIN-3EEC4EDD982BA75F529E--23bb971e2394.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3EEC4EDD982BA75F529E--23bb971e2394.json"
+    },
+    {
+      "window_id": "SWIN-3F05E2B690B1644A9BE3",
+      "task": "scene-scout/agent-files/tasks/SWIN-3F05E2B690B1644A9BE3--99f93c87caf3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3F05E2B690B1644A9BE3--99f93c87caf3.json"
+    },
+    {
+      "window_id": "SWIN-3F730A00C49AC9EB5755",
+      "task": "scene-scout/agent-files/tasks/SWIN-3F730A00C49AC9EB5755--d9ebd7cffe2a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3F730A00C49AC9EB5755--d9ebd7cffe2a.json"
+    },
+    {
+      "window_id": "SWIN-3FA044433D0294E6B948",
+      "task": "scene-scout/agent-files/tasks/SWIN-3FA044433D0294E6B948--24991fce075c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3FA044433D0294E6B948--24991fce075c.json"
+    },
+    {
+      "window_id": "SWIN-3FCF181B39021B18E691",
+      "task": "scene-scout/agent-files/tasks/SWIN-3FCF181B39021B18E691--c264b688cc82.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3FCF181B39021B18E691--c264b688cc82.json"
+    },
+    {
+      "window_id": "SWIN-3FDB9DB08CA2636BA2B8",
+      "task": "scene-scout/agent-files/tasks/SWIN-3FDB9DB08CA2636BA2B8--e12f35a4a098.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-3FDB9DB08CA2636BA2B8--e12f35a4a098.json"
+    },
+    {
+      "window_id": "SWIN-408FD6AE98E6CAC9FB0C",
+      "task": "scene-scout/agent-files/tasks/SWIN-408FD6AE98E6CAC9FB0C--f3b32c1e9fb9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-408FD6AE98E6CAC9FB0C--f3b32c1e9fb9.json"
+    },
+    {
+      "window_id": "SWIN-40C9BD4C4181AA87D47A",
+      "task": "scene-scout/agent-files/tasks/SWIN-40C9BD4C4181AA87D47A--28993b9cb4fd.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-40C9BD4C4181AA87D47A--28993b9cb4fd.json"
+    },
+    {
+      "window_id": "SWIN-40FBCCE3B0550ACBC130",
+      "task": "scene-scout/agent-files/tasks/SWIN-40FBCCE3B0550ACBC130--08a0b056f5be.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-40FBCCE3B0550ACBC130--08a0b056f5be.json"
+    },
+    {
+      "window_id": "SWIN-410F329344EE63CAD51F",
+      "task": "scene-scout/agent-files/tasks/SWIN-410F329344EE63CAD51F--2aec79335892.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-410F329344EE63CAD51F--2aec79335892.json"
+    },
+    {
+      "window_id": "SWIN-4141A922C387299CDFB9",
+      "task": "scene-scout/agent-files/tasks/SWIN-4141A922C387299CDFB9--e989a0c3f179.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4141A922C387299CDFB9--e989a0c3f179.json"
+    },
+    {
+      "window_id": "SWIN-42E3F46A31E66F00AD71",
+      "task": "scene-scout/agent-files/tasks/SWIN-42E3F46A31E66F00AD71--7e6272be37a0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-42E3F46A31E66F00AD71--7e6272be37a0.json"
+    },
+    {
+      "window_id": "SWIN-42EEA5ADD734A9AC8D35",
+      "task": "scene-scout/agent-files/tasks/SWIN-42EEA5ADD734A9AC8D35--45f2b1197de2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-42EEA5ADD734A9AC8D35--45f2b1197de2.json"
+    },
+    {
+      "window_id": "SWIN-4308A91C8EB173AFF35E",
+      "task": "scene-scout/agent-files/tasks/SWIN-4308A91C8EB173AFF35E--a0f74a997986.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4308A91C8EB173AFF35E--a0f74a997986.json"
+    },
+    {
+      "window_id": "SWIN-435FD46556943EC1F108",
+      "task": "scene-scout/agent-files/tasks/SWIN-435FD46556943EC1F108--b6ee96fbddb3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-435FD46556943EC1F108--b6ee96fbddb3.json"
+    },
+    {
+      "window_id": "SWIN-43C136687D437874ED98",
+      "task": "scene-scout/agent-files/tasks/SWIN-43C136687D437874ED98--44fad1b18026.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-43C136687D437874ED98--44fad1b18026.json"
+    },
+    {
+      "window_id": "SWIN-43CF068FB248B3A89BA8",
+      "task": "scene-scout/agent-files/tasks/SWIN-43CF068FB248B3A89BA8--32d985bc18ae.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-43CF068FB248B3A89BA8--32d985bc18ae.json"
+    },
+    {
+      "window_id": "SWIN-43EB91E24E537E11AA9F",
+      "task": "scene-scout/agent-files/tasks/SWIN-43EB91E24E537E11AA9F--d7e6272f007b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-43EB91E24E537E11AA9F--d7e6272f007b.json"
+    },
+    {
+      "window_id": "SWIN-43EEEC2C95A1361BDB15",
+      "task": "scene-scout/agent-files/tasks/SWIN-43EEEC2C95A1361BDB15--b3ee9d7e3503.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-43EEEC2C95A1361BDB15--b3ee9d7e3503.json"
+    },
+    {
+      "window_id": "SWIN-44620E95788F288A7FE3",
+      "task": "scene-scout/agent-files/tasks/SWIN-44620E95788F288A7FE3--55a20386aab7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-44620E95788F288A7FE3--55a20386aab7.json"
+    },
+    {
+      "window_id": "SWIN-44A3334FEDAFBA79CB62",
+      "task": "scene-scout/agent-files/tasks/SWIN-44A3334FEDAFBA79CB62--8abeefec66c9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-44A3334FEDAFBA79CB62--8abeefec66c9.json"
+    },
+    {
+      "window_id": "SWIN-44C3545C542B6858549B",
+      "task": "scene-scout/agent-files/tasks/SWIN-44C3545C542B6858549B--1acb4b8cedde.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-44C3545C542B6858549B--1acb4b8cedde.json"
+    },
+    {
+      "window_id": "SWIN-4528598E7A1E213BBABE",
+      "task": "scene-scout/agent-files/tasks/SWIN-4528598E7A1E213BBABE--c43b98525e65.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4528598E7A1E213BBABE--c43b98525e65.json"
+    },
+    {
+      "window_id": "SWIN-45401D51902D945B27CA",
+      "task": "scene-scout/agent-files/tasks/SWIN-45401D51902D945B27CA--dcff3153ed82.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-45401D51902D945B27CA--dcff3153ed82.json"
+    },
+    {
+      "window_id": "SWIN-455387591F006357F7A8",
+      "task": "scene-scout/agent-files/tasks/SWIN-455387591F006357F7A8--b68f7203c228.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-455387591F006357F7A8--b68f7203c228.json"
+    },
+    {
+      "window_id": "SWIN-45A09482CFF890E42798",
+      "task": "scene-scout/agent-files/tasks/SWIN-45A09482CFF890E42798--a893c136b3ff.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-45A09482CFF890E42798--a893c136b3ff.json"
+    },
+    {
+      "window_id": "SWIN-466B8DBCE4735E9B7F58",
+      "task": "scene-scout/agent-files/tasks/SWIN-466B8DBCE4735E9B7F58--a2f1d8677634.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-466B8DBCE4735E9B7F58--a2f1d8677634.json"
+    },
+    {
+      "window_id": "SWIN-46721850172E953E6B64",
+      "task": "scene-scout/agent-files/tasks/SWIN-46721850172E953E6B64--253d66612e29.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-46721850172E953E6B64--253d66612e29.json"
+    },
+    {
+      "window_id": "SWIN-46A5F281D4BBCAA1E6A2",
+      "task": "scene-scout/agent-files/tasks/SWIN-46A5F281D4BBCAA1E6A2--ecb4cc8c393c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-46A5F281D4BBCAA1E6A2--ecb4cc8c393c.json"
+    },
+    {
+      "window_id": "SWIN-46CA67CDF3DE8265FA35",
+      "task": "scene-scout/agent-files/tasks/SWIN-46CA67CDF3DE8265FA35--c869f3dfae30.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-46CA67CDF3DE8265FA35--c869f3dfae30.json"
+    },
+    {
+      "window_id": "SWIN-471E949D54A3262E772E",
+      "task": "scene-scout/agent-files/tasks/SWIN-471E949D54A3262E772E--0aaa82d94fcc.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-471E949D54A3262E772E--0aaa82d94fcc.json"
+    },
+    {
+      "window_id": "SWIN-473378AE6AFF9A0DF046",
+      "task": "scene-scout/agent-files/tasks/SWIN-473378AE6AFF9A0DF046--c26fe1d65194.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-473378AE6AFF9A0DF046--c26fe1d65194.json"
+    },
+    {
+      "window_id": "SWIN-47EB64A768253C545168",
+      "task": "scene-scout/agent-files/tasks/SWIN-47EB64A768253C545168--1d32769cc9cb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-47EB64A768253C545168--1d32769cc9cb.json"
+    },
+    {
+      "window_id": "SWIN-497884BD78C23D74B979",
+      "task": "scene-scout/agent-files/tasks/SWIN-497884BD78C23D74B979--73e87fee288f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-497884BD78C23D74B979--73e87fee288f.json"
+    },
+    {
+      "window_id": "SWIN-4A6648BA299DDC1256CF",
+      "task": "scene-scout/agent-files/tasks/SWIN-4A6648BA299DDC1256CF--f47b088aa1a4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4A6648BA299DDC1256CF--f47b088aa1a4.json"
+    },
+    {
+      "window_id": "SWIN-4AAB158917AD1F7BE7CA",
+      "task": "scene-scout/agent-files/tasks/SWIN-4AAB158917AD1F7BE7CA--a0c9b74d1f46.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4AAB158917AD1F7BE7CA--a0c9b74d1f46.json"
+    },
+    {
+      "window_id": "SWIN-4ACD7598227F95AC7253",
+      "task": "scene-scout/agent-files/tasks/SWIN-4ACD7598227F95AC7253--5dcf2645ecd4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4ACD7598227F95AC7253--5dcf2645ecd4.json"
+    },
+    {
+      "window_id": "SWIN-4B75F5794AEF9C8B9769",
+      "task": "scene-scout/agent-files/tasks/SWIN-4B75F5794AEF9C8B9769--017d3204f8ef.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4B75F5794AEF9C8B9769--017d3204f8ef.json"
+    },
+    {
+      "window_id": "SWIN-4C12D469C4CE39E841E6",
+      "task": "scene-scout/agent-files/tasks/SWIN-4C12D469C4CE39E841E6--e73cfe7ec542.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4C12D469C4CE39E841E6--e73cfe7ec542.json"
+    },
+    {
+      "window_id": "SWIN-4C7CC4A25BF370831F89",
+      "task": "scene-scout/agent-files/tasks/SWIN-4C7CC4A25BF370831F89--5e970e102bbf.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4C7CC4A25BF370831F89--5e970e102bbf.json"
+    },
+    {
+      "window_id": "SWIN-4D8CED37112ACCDC8C92",
+      "task": "scene-scout/agent-files/tasks/SWIN-4D8CED37112ACCDC8C92--3ca000231e4e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4D8CED37112ACCDC8C92--3ca000231e4e.json"
+    },
+    {
+      "window_id": "SWIN-4D962E1703813AC7857A",
+      "task": "scene-scout/agent-files/tasks/SWIN-4D962E1703813AC7857A--2f9c0515dd27.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4D962E1703813AC7857A--2f9c0515dd27.json"
+    },
+    {
+      "window_id": "SWIN-4DB10BC08C790DB1E52D",
+      "task": "scene-scout/agent-files/tasks/SWIN-4DB10BC08C790DB1E52D--fd64101221f2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4DB10BC08C790DB1E52D--fd64101221f2.json"
+    },
+    {
+      "window_id": "SWIN-4E0A5610272616AFD7CB",
+      "task": "scene-scout/agent-files/tasks/SWIN-4E0A5610272616AFD7CB--aef7bc7c9e7b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4E0A5610272616AFD7CB--aef7bc7c9e7b.json"
+    },
+    {
+      "window_id": "SWIN-4EBB0AC1B0D61C64FF8B",
+      "task": "scene-scout/agent-files/tasks/SWIN-4EBB0AC1B0D61C64FF8B--adf2a52ee22e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4EBB0AC1B0D61C64FF8B--adf2a52ee22e.json"
+    },
+    {
+      "window_id": "SWIN-4EF0D6EE9FB43A3271EA",
+      "task": "scene-scout/agent-files/tasks/SWIN-4EF0D6EE9FB43A3271EA--f790a3f535a4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4EF0D6EE9FB43A3271EA--f790a3f535a4.json"
+    },
+    {
+      "window_id": "SWIN-4F21D7A2D8360D2FA95D",
+      "task": "scene-scout/agent-files/tasks/SWIN-4F21D7A2D8360D2FA95D--75fdb49a62d5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4F21D7A2D8360D2FA95D--75fdb49a62d5.json"
+    },
+    {
+      "window_id": "SWIN-4F3ED609A66AF6C582DD",
+      "task": "scene-scout/agent-files/tasks/SWIN-4F3ED609A66AF6C582DD--342a7acf7f30.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4F3ED609A66AF6C582DD--342a7acf7f30.json"
+    },
+    {
+      "window_id": "SWIN-4F93753D2C716A367CF1",
+      "task": "scene-scout/agent-files/tasks/SWIN-4F93753D2C716A367CF1--f8688843070c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4F93753D2C716A367CF1--f8688843070c.json"
+    },
+    {
+      "window_id": "SWIN-4F9ED750F17F57645CAC",
+      "task": "scene-scout/agent-files/tasks/SWIN-4F9ED750F17F57645CAC--82b7ad090691.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-4F9ED750F17F57645CAC--82b7ad090691.json"
+    },
+    {
+      "window_id": "SWIN-5000A0B2E1CA2E458DAD",
+      "task": "scene-scout/agent-files/tasks/SWIN-5000A0B2E1CA2E458DAD--2dc9573c5a11.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5000A0B2E1CA2E458DAD--2dc9573c5a11.json"
+    },
+    {
+      "window_id": "SWIN-50877919A8E829C7397A",
+      "task": "scene-scout/agent-files/tasks/SWIN-50877919A8E829C7397A--717b8eba0a4f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-50877919A8E829C7397A--717b8eba0a4f.json"
+    },
+    {
+      "window_id": "SWIN-5108971A0985C683AEF7",
+      "task": "scene-scout/agent-files/tasks/SWIN-5108971A0985C683AEF7--dc97d05e7707.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5108971A0985C683AEF7--dc97d05e7707.json"
+    },
+    {
+      "window_id": "SWIN-511A1BFF642317201800",
+      "task": "scene-scout/agent-files/tasks/SWIN-511A1BFF642317201800--fdf18f3c915b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-511A1BFF642317201800--fdf18f3c915b.json"
+    },
+    {
+      "window_id": "SWIN-51270CD6141FE53C0A33",
+      "task": "scene-scout/agent-files/tasks/SWIN-51270CD6141FE53C0A33--417ee320f765.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-51270CD6141FE53C0A33--417ee320f765.json"
+    },
+    {
+      "window_id": "SWIN-51DDDB78E7D0ED228B1B",
+      "task": "scene-scout/agent-files/tasks/SWIN-51DDDB78E7D0ED228B1B--0288fb3bf762.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-51DDDB78E7D0ED228B1B--0288fb3bf762.json"
+    },
+    {
+      "window_id": "SWIN-51ED50C89FDACA957C6D",
+      "task": "scene-scout/agent-files/tasks/SWIN-51ED50C89FDACA957C6D--c8f26faef1d8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-51ED50C89FDACA957C6D--c8f26faef1d8.json"
+    },
+    {
+      "window_id": "SWIN-539C1BF6BDF442812235",
+      "task": "scene-scout/agent-files/tasks/SWIN-539C1BF6BDF442812235--f5dcd8c40721.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-539C1BF6BDF442812235--f5dcd8c40721.json"
+    },
+    {
+      "window_id": "SWIN-53A4FBB162BE684BA10A",
+      "task": "scene-scout/agent-files/tasks/SWIN-53A4FBB162BE684BA10A--abc5bd5dd4a1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-53A4FBB162BE684BA10A--abc5bd5dd4a1.json"
+    },
+    {
+      "window_id": "SWIN-53A7D5E6F4BBE2EFB83A",
+      "task": "scene-scout/agent-files/tasks/SWIN-53A7D5E6F4BBE2EFB83A--eb00c778050a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-53A7D5E6F4BBE2EFB83A--eb00c778050a.json"
+    },
+    {
+      "window_id": "SWIN-53B61F5643536B8D8A04",
+      "task": "scene-scout/agent-files/tasks/SWIN-53B61F5643536B8D8A04--8bc2396b9344.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-53B61F5643536B8D8A04--8bc2396b9344.json"
+    },
+    {
+      "window_id": "SWIN-5451A7C44DC83015DC19",
+      "task": "scene-scout/agent-files/tasks/SWIN-5451A7C44DC83015DC19--51b9594a4aee.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5451A7C44DC83015DC19--51b9594a4aee.json"
+    },
+    {
+      "window_id": "SWIN-54FAB2BB628943CEA4E0",
+      "task": "scene-scout/agent-files/tasks/SWIN-54FAB2BB628943CEA4E0--04dacbe3a727.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-54FAB2BB628943CEA4E0--04dacbe3a727.json"
+    },
+    {
+      "window_id": "SWIN-5553588B9C53CBF3FB73",
+      "task": "scene-scout/agent-files/tasks/SWIN-5553588B9C53CBF3FB73--71743ddef86b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5553588B9C53CBF3FB73--71743ddef86b.json"
+    },
+    {
+      "window_id": "SWIN-555F04D9E35D53962A28",
+      "task": "scene-scout/agent-files/tasks/SWIN-555F04D9E35D53962A28--f7698f64422f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-555F04D9E35D53962A28--f7698f64422f.json"
+    },
+    {
+      "window_id": "SWIN-555F3B393DD1CAE461A0",
+      "task": "scene-scout/agent-files/tasks/SWIN-555F3B393DD1CAE461A0--de48aac6c71c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-555F3B393DD1CAE461A0--de48aac6c71c.json"
+    },
+    {
+      "window_id": "SWIN-55B76CD1ACD279CD85DD",
+      "task": "scene-scout/agent-files/tasks/SWIN-55B76CD1ACD279CD85DD--8c71f7d14ddb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-55B76CD1ACD279CD85DD--8c71f7d14ddb.json"
+    },
+    {
+      "window_id": "SWIN-5617ABC238E27B69ED06",
+      "task": "scene-scout/agent-files/tasks/SWIN-5617ABC238E27B69ED06--a6c96124cf03.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5617ABC238E27B69ED06--a6c96124cf03.json"
+    },
+    {
+      "window_id": "SWIN-5744C77C0D49C1CAED65",
+      "task": "scene-scout/agent-files/tasks/SWIN-5744C77C0D49C1CAED65--a49e30b8e91a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5744C77C0D49C1CAED65--a49e30b8e91a.json"
+    },
+    {
+      "window_id": "SWIN-577ECA31E0E04D95767B",
+      "task": "scene-scout/agent-files/tasks/SWIN-577ECA31E0E04D95767B--9c3762861b86.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-577ECA31E0E04D95767B--9c3762861b86.json"
+    },
+    {
+      "window_id": "SWIN-57C8CA5940349EDBD5AB",
+      "task": "scene-scout/agent-files/tasks/SWIN-57C8CA5940349EDBD5AB--1f155ceaf762.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-57C8CA5940349EDBD5AB--1f155ceaf762.json"
+    },
+    {
+      "window_id": "SWIN-589B2277ACBAA9B7A20B",
+      "task": "scene-scout/agent-files/tasks/SWIN-589B2277ACBAA9B7A20B--ab956bcb6f09.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-589B2277ACBAA9B7A20B--ab956bcb6f09.json"
+    },
+    {
+      "window_id": "SWIN-58F650F69911813CD34F",
+      "task": "scene-scout/agent-files/tasks/SWIN-58F650F69911813CD34F--d4e966ff8828.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-58F650F69911813CD34F--d4e966ff8828.json"
+    },
+    {
+      "window_id": "SWIN-599D01ABEEE19A1B5F6D",
+      "task": "scene-scout/agent-files/tasks/SWIN-599D01ABEEE19A1B5F6D--d9d3575019c3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-599D01ABEEE19A1B5F6D--d9d3575019c3.json"
+    },
+    {
+      "window_id": "SWIN-59C04A522918C7BEE870",
+      "task": "scene-scout/agent-files/tasks/SWIN-59C04A522918C7BEE870--d077a6244dbb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-59C04A522918C7BEE870--d077a6244dbb.json"
+    },
+    {
+      "window_id": "SWIN-5A8F5E360EE67F715198",
+      "task": "scene-scout/agent-files/tasks/SWIN-5A8F5E360EE67F715198--36a6b1657c8b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5A8F5E360EE67F715198--36a6b1657c8b.json"
+    },
+    {
+      "window_id": "SWIN-5A98023A2AEDA9ABD2A2",
+      "task": "scene-scout/agent-files/tasks/SWIN-5A98023A2AEDA9ABD2A2--39eac3ee4e84.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5A98023A2AEDA9ABD2A2--39eac3ee4e84.json"
+    },
+    {
+      "window_id": "SWIN-5AFAB26F0420105D3A49",
+      "task": "scene-scout/agent-files/tasks/SWIN-5AFAB26F0420105D3A49--b5190f091f4a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5AFAB26F0420105D3A49--b5190f091f4a.json"
+    },
+    {
+      "window_id": "SWIN-5C26ACE9E7FB5C3281AD",
+      "task": "scene-scout/agent-files/tasks/SWIN-5C26ACE9E7FB5C3281AD--3284ef8f9c69.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5C26ACE9E7FB5C3281AD--3284ef8f9c69.json"
+    },
+    {
+      "window_id": "SWIN-5C659962E9A6A9AFDE8C",
+      "task": "scene-scout/agent-files/tasks/SWIN-5C659962E9A6A9AFDE8C--11b086a1be4e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5C659962E9A6A9AFDE8C--11b086a1be4e.json"
+    },
+    {
+      "window_id": "SWIN-5D750670CE3A5C2A7562",
+      "task": "scene-scout/agent-files/tasks/SWIN-5D750670CE3A5C2A7562--9d96f6743154.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5D750670CE3A5C2A7562--9d96f6743154.json"
+    },
+    {
+      "window_id": "SWIN-5D982F04E08639C3880D",
+      "task": "scene-scout/agent-files/tasks/SWIN-5D982F04E08639C3880D--3ceda7a967d3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5D982F04E08639C3880D--3ceda7a967d3.json"
+    },
+    {
+      "window_id": "SWIN-5E892C98A45036E46235",
+      "task": "scene-scout/agent-files/tasks/SWIN-5E892C98A45036E46235--ec7d85ed5761.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5E892C98A45036E46235--ec7d85ed5761.json"
+    },
+    {
+      "window_id": "SWIN-5ECC855B2447AC2BC53C",
+      "task": "scene-scout/agent-files/tasks/SWIN-5ECC855B2447AC2BC53C--c5b02af33ca5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5ECC855B2447AC2BC53C--c5b02af33ca5.json"
+    },
+    {
+      "window_id": "SWIN-5F3E5DF7B906E030B3D0",
+      "task": "scene-scout/agent-files/tasks/SWIN-5F3E5DF7B906E030B3D0--9ca70f9608b3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5F3E5DF7B906E030B3D0--9ca70f9608b3.json"
+    },
+    {
+      "window_id": "SWIN-5FCE02948E140FA507EE",
+      "task": "scene-scout/agent-files/tasks/SWIN-5FCE02948E140FA507EE--7e2a5c4c1575.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-5FCE02948E140FA507EE--7e2a5c4c1575.json"
+    },
+    {
+      "window_id": "SWIN-60267E7F80E74D0A58B4",
+      "task": "scene-scout/agent-files/tasks/SWIN-60267E7F80E74D0A58B4--5bd843483849.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-60267E7F80E74D0A58B4--5bd843483849.json"
+    },
+    {
+      "window_id": "SWIN-6063DDFADF7B35CC775A",
+      "task": "scene-scout/agent-files/tasks/SWIN-6063DDFADF7B35CC775A--caf20e88716c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6063DDFADF7B35CC775A--caf20e88716c.json"
+    },
+    {
+      "window_id": "SWIN-60D1DF70A1CC3556110C",
+      "task": "scene-scout/agent-files/tasks/SWIN-60D1DF70A1CC3556110C--4c0be197ce1d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-60D1DF70A1CC3556110C--4c0be197ce1d.json"
+    },
+    {
+      "window_id": "SWIN-60D67DE3E4B908607B83",
+      "task": "scene-scout/agent-files/tasks/SWIN-60D67DE3E4B908607B83--cabc55098b13.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-60D67DE3E4B908607B83--cabc55098b13.json"
+    },
+    {
+      "window_id": "SWIN-60E3B8906E1AADCDF415",
+      "task": "scene-scout/agent-files/tasks/SWIN-60E3B8906E1AADCDF415--4cc811e0e50d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-60E3B8906E1AADCDF415--4cc811e0e50d.json"
+    },
+    {
+      "window_id": "SWIN-60E5769DC497807A5B7B",
+      "task": "scene-scout/agent-files/tasks/SWIN-60E5769DC497807A5B7B--9f355b94df92.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-60E5769DC497807A5B7B--9f355b94df92.json"
+    },
+    {
+      "window_id": "SWIN-610DB52946725D928B51",
+      "task": "scene-scout/agent-files/tasks/SWIN-610DB52946725D928B51--ad02d95d511b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-610DB52946725D928B51--ad02d95d511b.json"
+    },
+    {
+      "window_id": "SWIN-610E3CC450244EC0865E",
+      "task": "scene-scout/agent-files/tasks/SWIN-610E3CC450244EC0865E--4af27686af3d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-610E3CC450244EC0865E--4af27686af3d.json"
+    },
+    {
+      "window_id": "SWIN-612173BBD0DD75D2DC47",
+      "task": "scene-scout/agent-files/tasks/SWIN-612173BBD0DD75D2DC47--55950ea72096.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-612173BBD0DD75D2DC47--55950ea72096.json"
+    },
+    {
+      "window_id": "SWIN-61DD0D0FC90569D2F4E0",
+      "task": "scene-scout/agent-files/tasks/SWIN-61DD0D0FC90569D2F4E0--b82b117a57a1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-61DD0D0FC90569D2F4E0--b82b117a57a1.json"
+    },
+    {
+      "window_id": "SWIN-6278E71CBF2E89E5B585",
+      "task": "scene-scout/agent-files/tasks/SWIN-6278E71CBF2E89E5B585--66d2690b46b4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6278E71CBF2E89E5B585--66d2690b46b4.json"
+    },
+    {
+      "window_id": "SWIN-63420FA061BAC1D821C7",
+      "task": "scene-scout/agent-files/tasks/SWIN-63420FA061BAC1D821C7--450e1b897b9c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-63420FA061BAC1D821C7--450e1b897b9c.json"
+    },
+    {
+      "window_id": "SWIN-63428841594250C0F0B1",
+      "task": "scene-scout/agent-files/tasks/SWIN-63428841594250C0F0B1--5ec01fee1121.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-63428841594250C0F0B1--5ec01fee1121.json"
+    },
+    {
+      "window_id": "SWIN-63782E5485BE128E5E6A",
+      "task": "scene-scout/agent-files/tasks/SWIN-63782E5485BE128E5E6A--86f427fe30f3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-63782E5485BE128E5E6A--86f427fe30f3.json"
+    },
+    {
+      "window_id": "SWIN-6390C3F4AE6BF328111C",
+      "task": "scene-scout/agent-files/tasks/SWIN-6390C3F4AE6BF328111C--b4e348b0cbd5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6390C3F4AE6BF328111C--b4e348b0cbd5.json"
+    },
+    {
+      "window_id": "SWIN-639B60BAC1E1AB98C4D8",
+      "task": "scene-scout/agent-files/tasks/SWIN-639B60BAC1E1AB98C4D8--b52a2301b492.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-639B60BAC1E1AB98C4D8--b52a2301b492.json"
+    },
+    {
+      "window_id": "SWIN-63A82C93C8E84C6994C8",
+      "task": "scene-scout/agent-files/tasks/SWIN-63A82C93C8E84C6994C8--8e6c7f66eb3d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-63A82C93C8E84C6994C8--8e6c7f66eb3d.json"
+    },
+    {
+      "window_id": "SWIN-63C609C99081E9CBCF67",
+      "task": "scene-scout/agent-files/tasks/SWIN-63C609C99081E9CBCF67--056f2cf1c359.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-63C609C99081E9CBCF67--056f2cf1c359.json"
+    },
+    {
+      "window_id": "SWIN-63F0B15779FCB539F347",
+      "task": "scene-scout/agent-files/tasks/SWIN-63F0B15779FCB539F347--44ff5e02fbd4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-63F0B15779FCB539F347--44ff5e02fbd4.json"
+    },
+    {
+      "window_id": "SWIN-64DBB85A25D57BA7EA4E",
+      "task": "scene-scout/agent-files/tasks/SWIN-64DBB85A25D57BA7EA4E--5a2450423434.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-64DBB85A25D57BA7EA4E--5a2450423434.json"
+    },
+    {
+      "window_id": "SWIN-6537A243D5117F4DEDF5",
+      "task": "scene-scout/agent-files/tasks/SWIN-6537A243D5117F4DEDF5--b7a10e4f169f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6537A243D5117F4DEDF5--b7a10e4f169f.json"
+    },
+    {
+      "window_id": "SWIN-658A9A50B6BBE2DEE2E7",
+      "task": "scene-scout/agent-files/tasks/SWIN-658A9A50B6BBE2DEE2E7--598a3e22caf9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-658A9A50B6BBE2DEE2E7--598a3e22caf9.json"
+    },
+    {
+      "window_id": "SWIN-66B8707B850A56C946A3",
+      "task": "scene-scout/agent-files/tasks/SWIN-66B8707B850A56C946A3--3aa746bc9d75.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-66B8707B850A56C946A3--3aa746bc9d75.json"
+    },
+    {
+      "window_id": "SWIN-66C7CD26150134AD63F7",
+      "task": "scene-scout/agent-files/tasks/SWIN-66C7CD26150134AD63F7--03d6a3ba20c1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-66C7CD26150134AD63F7--03d6a3ba20c1.json"
+    },
+    {
+      "window_id": "SWIN-675D5514982728963577",
+      "task": "scene-scout/agent-files/tasks/SWIN-675D5514982728963577--0c43c2032eb1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-675D5514982728963577--0c43c2032eb1.json"
+    },
+    {
+      "window_id": "SWIN-6766FCF2144A75D2F550",
+      "task": "scene-scout/agent-files/tasks/SWIN-6766FCF2144A75D2F550--db92a50a728b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6766FCF2144A75D2F550--db92a50a728b.json"
+    },
+    {
+      "window_id": "SWIN-67A47AEF17962C9E9BB5",
+      "task": "scene-scout/agent-files/tasks/SWIN-67A47AEF17962C9E9BB5--15391a42bf26.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-67A47AEF17962C9E9BB5--15391a42bf26.json"
+    },
+    {
+      "window_id": "SWIN-681A8D34B57FAC4CC3B0",
+      "task": "scene-scout/agent-files/tasks/SWIN-681A8D34B57FAC4CC3B0--c830d90b0b39.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-681A8D34B57FAC4CC3B0--c830d90b0b39.json"
+    },
+    {
+      "window_id": "SWIN-68CD63C4C915DE4323C2",
+      "task": "scene-scout/agent-files/tasks/SWIN-68CD63C4C915DE4323C2--af28433dcd7b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-68CD63C4C915DE4323C2--af28433dcd7b.json"
+    },
+    {
+      "window_id": "SWIN-6959F819C7A92B61EA28",
+      "task": "scene-scout/agent-files/tasks/SWIN-6959F819C7A92B61EA28--88c5520d6620.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6959F819C7A92B61EA28--88c5520d6620.json"
+    },
+    {
+      "window_id": "SWIN-69696209F43ED43DC126",
+      "task": "scene-scout/agent-files/tasks/SWIN-69696209F43ED43DC126--495824cdce4f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-69696209F43ED43DC126--495824cdce4f.json"
+    },
+    {
+      "window_id": "SWIN-697D3F1A22C3F58E5D06",
+      "task": "scene-scout/agent-files/tasks/SWIN-697D3F1A22C3F58E5D06--86a63e15d649.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-697D3F1A22C3F58E5D06--86a63e15d649.json"
+    },
+    {
+      "window_id": "SWIN-6A4C20CED0D12DEFC941",
+      "task": "scene-scout/agent-files/tasks/SWIN-6A4C20CED0D12DEFC941--9acdd2d75722.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6A4C20CED0D12DEFC941--9acdd2d75722.json"
+    },
+    {
+      "window_id": "SWIN-6A83E78C4132B1F5E460",
+      "task": "scene-scout/agent-files/tasks/SWIN-6A83E78C4132B1F5E460--b737faff9c34.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6A83E78C4132B1F5E460--b737faff9c34.json"
+    },
+    {
+      "window_id": "SWIN-6ADA14090C43A77D8861",
+      "task": "scene-scout/agent-files/tasks/SWIN-6ADA14090C43A77D8861--039196d39be4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6ADA14090C43A77D8861--039196d39be4.json"
+    },
+    {
+      "window_id": "SWIN-6B14C4F38F5A4FD9184D",
+      "task": "scene-scout/agent-files/tasks/SWIN-6B14C4F38F5A4FD9184D--ffb5dfe02d23.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6B14C4F38F5A4FD9184D--ffb5dfe02d23.json"
+    },
+    {
+      "window_id": "SWIN-6B88525D5B5EC3B2057E",
+      "task": "scene-scout/agent-files/tasks/SWIN-6B88525D5B5EC3B2057E--e0629b42495e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6B88525D5B5EC3B2057E--e0629b42495e.json"
+    },
+    {
+      "window_id": "SWIN-6BC1A09C64BFC7D32C8C",
+      "task": "scene-scout/agent-files/tasks/SWIN-6BC1A09C64BFC7D32C8C--ad8eb8a12397.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6BC1A09C64BFC7D32C8C--ad8eb8a12397.json"
+    },
+    {
+      "window_id": "SWIN-6BC67DA52474BC6670BB",
+      "task": "scene-scout/agent-files/tasks/SWIN-6BC67DA52474BC6670BB--806bf3f3a48e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6BC67DA52474BC6670BB--806bf3f3a48e.json"
+    },
+    {
+      "window_id": "SWIN-6C1A9346309740D9DF40",
+      "task": "scene-scout/agent-files/tasks/SWIN-6C1A9346309740D9DF40--820829ab611f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6C1A9346309740D9DF40--820829ab611f.json"
+    },
+    {
+      "window_id": "SWIN-6D2425F1B6F21DA80DA1",
+      "task": "scene-scout/agent-files/tasks/SWIN-6D2425F1B6F21DA80DA1--a06a844c65f7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6D2425F1B6F21DA80DA1--a06a844c65f7.json"
+    },
+    {
+      "window_id": "SWIN-6E6705E33C1BC8FCA274",
+      "task": "scene-scout/agent-files/tasks/SWIN-6E6705E33C1BC8FCA274--9980620ebedd.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6E6705E33C1BC8FCA274--9980620ebedd.json"
+    },
+    {
+      "window_id": "SWIN-6E76BCBE0490C6CE0E1B",
+      "task": "scene-scout/agent-files/tasks/SWIN-6E76BCBE0490C6CE0E1B--0a215ff42ad8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6E76BCBE0490C6CE0E1B--0a215ff42ad8.json"
+    },
+    {
+      "window_id": "SWIN-6EA29530186959135576",
+      "task": "scene-scout/agent-files/tasks/SWIN-6EA29530186959135576--cacb50087f76.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6EA29530186959135576--cacb50087f76.json"
+    },
+    {
+      "window_id": "SWIN-6EE13ACA9E3694B50FCF",
+      "task": "scene-scout/agent-files/tasks/SWIN-6EE13ACA9E3694B50FCF--31f327243de3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6EE13ACA9E3694B50FCF--31f327243de3.json"
+    },
+    {
+      "window_id": "SWIN-6F14B7E7FCE5A4BACE85",
+      "task": "scene-scout/agent-files/tasks/SWIN-6F14B7E7FCE5A4BACE85--d82dc1dbec07.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6F14B7E7FCE5A4BACE85--d82dc1dbec07.json"
+    },
+    {
+      "window_id": "SWIN-6F215078D24EA717EB39",
+      "task": "scene-scout/agent-files/tasks/SWIN-6F215078D24EA717EB39--14329bd498be.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6F215078D24EA717EB39--14329bd498be.json"
+    },
+    {
+      "window_id": "SWIN-6F4BCBC32870DE2F6656",
+      "task": "scene-scout/agent-files/tasks/SWIN-6F4BCBC32870DE2F6656--52478dfba477.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6F4BCBC32870DE2F6656--52478dfba477.json"
+    },
+    {
+      "window_id": "SWIN-6F72C23E22144AA07ADC",
+      "task": "scene-scout/agent-files/tasks/SWIN-6F72C23E22144AA07ADC--775b24eb5422.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6F72C23E22144AA07ADC--775b24eb5422.json"
+    },
+    {
+      "window_id": "SWIN-6F92BEAAFC7751BFC8F3",
+      "task": "scene-scout/agent-files/tasks/SWIN-6F92BEAAFC7751BFC8F3--7606313b8df0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6F92BEAAFC7751BFC8F3--7606313b8df0.json"
+    },
+    {
+      "window_id": "SWIN-6FC733069F94C2FCDA5D",
+      "task": "scene-scout/agent-files/tasks/SWIN-6FC733069F94C2FCDA5D--71dc9dc8030a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-6FC733069F94C2FCDA5D--71dc9dc8030a.json"
+    },
+    {
+      "window_id": "SWIN-7011E9FD9167F0D65CF2",
+      "task": "scene-scout/agent-files/tasks/SWIN-7011E9FD9167F0D65CF2--d75216fae76d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7011E9FD9167F0D65CF2--d75216fae76d.json"
+    },
+    {
+      "window_id": "SWIN-709E2FEB7BDBDA815C45",
+      "task": "scene-scout/agent-files/tasks/SWIN-709E2FEB7BDBDA815C45--46dd3a8aa345.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-709E2FEB7BDBDA815C45--46dd3a8aa345.json"
+    },
+    {
+      "window_id": "SWIN-71B56ABD306C91EC2023",
+      "task": "scene-scout/agent-files/tasks/SWIN-71B56ABD306C91EC2023--8700b8008f4a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-71B56ABD306C91EC2023--8700b8008f4a.json"
+    },
+    {
+      "window_id": "SWIN-71C36991394243BADA2B",
+      "task": "scene-scout/agent-files/tasks/SWIN-71C36991394243BADA2B--d4b166f4593f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-71C36991394243BADA2B--d4b166f4593f.json"
+    },
+    {
+      "window_id": "SWIN-71DB919ACA295B250F21",
+      "task": "scene-scout/agent-files/tasks/SWIN-71DB919ACA295B250F21--07529f2a1d2a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-71DB919ACA295B250F21--07529f2a1d2a.json"
+    },
+    {
+      "window_id": "SWIN-72561F0F617CDBEE72E9",
+      "task": "scene-scout/agent-files/tasks/SWIN-72561F0F617CDBEE72E9--a70d046c2316.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-72561F0F617CDBEE72E9--a70d046c2316.json"
+    },
+    {
+      "window_id": "SWIN-726F529E686B3540DFC4",
+      "task": "scene-scout/agent-files/tasks/SWIN-726F529E686B3540DFC4--4dc0ea6711e7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-726F529E686B3540DFC4--4dc0ea6711e7.json"
+    },
+    {
+      "window_id": "SWIN-72819996F84E3C988AED",
+      "task": "scene-scout/agent-files/tasks/SWIN-72819996F84E3C988AED--b854cbcf85b9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-72819996F84E3C988AED--b854cbcf85b9.json"
+    },
+    {
+      "window_id": "SWIN-7298FA7DA185276A7A8E",
+      "task": "scene-scout/agent-files/tasks/SWIN-7298FA7DA185276A7A8E--2c66654e985f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7298FA7DA185276A7A8E--2c66654e985f.json"
+    },
+    {
+      "window_id": "SWIN-7392A0BCB146A5AD73F0",
+      "task": "scene-scout/agent-files/tasks/SWIN-7392A0BCB146A5AD73F0--63eaa81b3bbc.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7392A0BCB146A5AD73F0--63eaa81b3bbc.json"
+    },
+    {
+      "window_id": "SWIN-7405BF10D18DA62E68C5",
+      "task": "scene-scout/agent-files/tasks/SWIN-7405BF10D18DA62E68C5--787f885fca37.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7405BF10D18DA62E68C5--787f885fca37.json"
+    },
+    {
+      "window_id": "SWIN-7414BF181A7D9B616BB8",
+      "task": "scene-scout/agent-files/tasks/SWIN-7414BF181A7D9B616BB8--51c798d428f8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7414BF181A7D9B616BB8--51c798d428f8.json"
+    },
+    {
+      "window_id": "SWIN-745B1D7F50F4E4AB4C6C",
+      "task": "scene-scout/agent-files/tasks/SWIN-745B1D7F50F4E4AB4C6C--1927aec26d36.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-745B1D7F50F4E4AB4C6C--1927aec26d36.json"
+    },
+    {
+      "window_id": "SWIN-74991889085CEAA0E7F2",
+      "task": "scene-scout/agent-files/tasks/SWIN-74991889085CEAA0E7F2--dc4bd5e0ef4f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-74991889085CEAA0E7F2--dc4bd5e0ef4f.json"
+    },
+    {
+      "window_id": "SWIN-74EEA3E5B75D17B67C9B",
+      "task": "scene-scout/agent-files/tasks/SWIN-74EEA3E5B75D17B67C9B--98b7413e2efa.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-74EEA3E5B75D17B67C9B--98b7413e2efa.json"
+    },
+    {
+      "window_id": "SWIN-74F07AB40D12355573DA",
+      "task": "scene-scout/agent-files/tasks/SWIN-74F07AB40D12355573DA--511986850ed0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-74F07AB40D12355573DA--511986850ed0.json"
+    },
+    {
+      "window_id": "SWIN-75089E6D1B8B0BBA348D",
+      "task": "scene-scout/agent-files/tasks/SWIN-75089E6D1B8B0BBA348D--b93f7939bdfb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-75089E6D1B8B0BBA348D--b93f7939bdfb.json"
+    },
+    {
+      "window_id": "SWIN-7555B058C1817A2A6E49",
+      "task": "scene-scout/agent-files/tasks/SWIN-7555B058C1817A2A6E49--7b7461bf5d19.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7555B058C1817A2A6E49--7b7461bf5d19.json"
+    },
+    {
+      "window_id": "SWIN-759ABBFB2EA6DD9985EE",
+      "task": "scene-scout/agent-files/tasks/SWIN-759ABBFB2EA6DD9985EE--d168a3faf522.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-759ABBFB2EA6DD9985EE--d168a3faf522.json"
+    },
+    {
+      "window_id": "SWIN-75F5DF638D88EE2A6E2D",
+      "task": "scene-scout/agent-files/tasks/SWIN-75F5DF638D88EE2A6E2D--ea33e76a5423.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-75F5DF638D88EE2A6E2D--ea33e76a5423.json"
+    },
+    {
+      "window_id": "SWIN-76B7C4FF288CBE25167D",
+      "task": "scene-scout/agent-files/tasks/SWIN-76B7C4FF288CBE25167D--14c85addf0a3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-76B7C4FF288CBE25167D--14c85addf0a3.json"
+    },
+    {
+      "window_id": "SWIN-76F84C3BD5E2744937B9",
+      "task": "scene-scout/agent-files/tasks/SWIN-76F84C3BD5E2744937B9--cc42db9bcf45.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-76F84C3BD5E2744937B9--cc42db9bcf45.json"
+    },
+    {
+      "window_id": "SWIN-7712D8DB5AFBF4CEE260",
+      "task": "scene-scout/agent-files/tasks/SWIN-7712D8DB5AFBF4CEE260--47b759c3989a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7712D8DB5AFBF4CEE260--47b759c3989a.json"
+    },
+    {
+      "window_id": "SWIN-77428BC74E1A451AB400",
+      "task": "scene-scout/agent-files/tasks/SWIN-77428BC74E1A451AB400--eead7d04b096.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-77428BC74E1A451AB400--eead7d04b096.json"
+    },
+    {
+      "window_id": "SWIN-77BF13D89DE69877DE7D",
+      "task": "scene-scout/agent-files/tasks/SWIN-77BF13D89DE69877DE7D--e1ff3f94e20d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-77BF13D89DE69877DE7D--e1ff3f94e20d.json"
+    },
+    {
+      "window_id": "SWIN-77FD562F12EB6A0EA150",
+      "task": "scene-scout/agent-files/tasks/SWIN-77FD562F12EB6A0EA150--d9ae89843ede.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-77FD562F12EB6A0EA150--d9ae89843ede.json"
+    },
+    {
+      "window_id": "SWIN-78C51E7D9CF6F419BDD9",
+      "task": "scene-scout/agent-files/tasks/SWIN-78C51E7D9CF6F419BDD9--fe5e7c9b907b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-78C51E7D9CF6F419BDD9--fe5e7c9b907b.json"
+    },
+    {
+      "window_id": "SWIN-7924B57E5B4446F6520E",
+      "task": "scene-scout/agent-files/tasks/SWIN-7924B57E5B4446F6520E--6de44af0c3d3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7924B57E5B4446F6520E--6de44af0c3d3.json"
+    },
+    {
+      "window_id": "SWIN-79EAD8AEC918862B0D01",
+      "task": "scene-scout/agent-files/tasks/SWIN-79EAD8AEC918862B0D01--0f555b13d72c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-79EAD8AEC918862B0D01--0f555b13d72c.json"
+    },
+    {
+      "window_id": "SWIN-7A691C9A8AB998723201",
+      "task": "scene-scout/agent-files/tasks/SWIN-7A691C9A8AB998723201--6e589c6c5bd4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7A691C9A8AB998723201--6e589c6c5bd4.json"
+    },
+    {
+      "window_id": "SWIN-7AB702807057346D3F0E",
+      "task": "scene-scout/agent-files/tasks/SWIN-7AB702807057346D3F0E--42764cd7d3c7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7AB702807057346D3F0E--42764cd7d3c7.json"
+    },
+    {
+      "window_id": "SWIN-7B7042AB415F1ABC129C",
+      "task": "scene-scout/agent-files/tasks/SWIN-7B7042AB415F1ABC129C--93807fd18683.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7B7042AB415F1ABC129C--93807fd18683.json"
+    },
+    {
+      "window_id": "SWIN-7C40CBC80C9DF95A0E5D",
+      "task": "scene-scout/agent-files/tasks/SWIN-7C40CBC80C9DF95A0E5D--e3bb9600cce4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7C40CBC80C9DF95A0E5D--e3bb9600cce4.json"
+    },
+    {
+      "window_id": "SWIN-7CA43503531460299EA1",
+      "task": "scene-scout/agent-files/tasks/SWIN-7CA43503531460299EA1--2053de392c13.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7CA43503531460299EA1--2053de392c13.json"
+    },
+    {
+      "window_id": "SWIN-7CB4E4D6E669C6766AE8",
+      "task": "scene-scout/agent-files/tasks/SWIN-7CB4E4D6E669C6766AE8--ae4ceb0412ed.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7CB4E4D6E669C6766AE8--ae4ceb0412ed.json"
+    },
+    {
+      "window_id": "SWIN-7D24CAE7CE453FD6046D",
+      "task": "scene-scout/agent-files/tasks/SWIN-7D24CAE7CE453FD6046D--8590cec2acef.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7D24CAE7CE453FD6046D--8590cec2acef.json"
+    },
+    {
+      "window_id": "SWIN-7D318C552B43A7880C99",
+      "task": "scene-scout/agent-files/tasks/SWIN-7D318C552B43A7880C99--185228812920.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7D318C552B43A7880C99--185228812920.json"
+    },
+    {
+      "window_id": "SWIN-7E6B6085710BE9CD4C5E",
+      "task": "scene-scout/agent-files/tasks/SWIN-7E6B6085710BE9CD4C5E--13457fbf5d1f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7E6B6085710BE9CD4C5E--13457fbf5d1f.json"
+    },
+    {
+      "window_id": "SWIN-7F2ACFDD135AFE6DE63E",
+      "task": "scene-scout/agent-files/tasks/SWIN-7F2ACFDD135AFE6DE63E--f79427a6268c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7F2ACFDD135AFE6DE63E--f79427a6268c.json"
+    },
+    {
+      "window_id": "SWIN-7F494B590CBBE0CC9C2C",
+      "task": "scene-scout/agent-files/tasks/SWIN-7F494B590CBBE0CC9C2C--15403b160331.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7F494B590CBBE0CC9C2C--15403b160331.json"
+    },
+    {
+      "window_id": "SWIN-7F5A91F9BFDDCA5BEBB3",
+      "task": "scene-scout/agent-files/tasks/SWIN-7F5A91F9BFDDCA5BEBB3--51bc07cb03b2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7F5A91F9BFDDCA5BEBB3--51bc07cb03b2.json"
+    },
+    {
+      "window_id": "SWIN-7F7D82B89AD19D54A545",
+      "task": "scene-scout/agent-files/tasks/SWIN-7F7D82B89AD19D54A545--9899f1137e4f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-7F7D82B89AD19D54A545--9899f1137e4f.json"
+    },
+    {
+      "window_id": "SWIN-8094EC7B274A00D1DF57",
+      "task": "scene-scout/agent-files/tasks/SWIN-8094EC7B274A00D1DF57--a2e99a99e10e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8094EC7B274A00D1DF57--a2e99a99e10e.json"
+    },
+    {
+      "window_id": "SWIN-81178872EDD07E1B7B49",
+      "task": "scene-scout/agent-files/tasks/SWIN-81178872EDD07E1B7B49--45d4f9d39647.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-81178872EDD07E1B7B49--45d4f9d39647.json"
+    },
+    {
+      "window_id": "SWIN-817FF7F9395E218A01CC",
+      "task": "scene-scout/agent-files/tasks/SWIN-817FF7F9395E218A01CC--61c3af9a60bb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-817FF7F9395E218A01CC--61c3af9a60bb.json"
+    },
+    {
+      "window_id": "SWIN-81E082B20888548EB3B0",
+      "task": "scene-scout/agent-files/tasks/SWIN-81E082B20888548EB3B0--8cfe3090c6b1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-81E082B20888548EB3B0--8cfe3090c6b1.json"
+    },
+    {
+      "window_id": "SWIN-82443A08FA8AD51118BB",
+      "task": "scene-scout/agent-files/tasks/SWIN-82443A08FA8AD51118BB--8db436b4e8cc.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-82443A08FA8AD51118BB--8db436b4e8cc.json"
+    },
+    {
+      "window_id": "SWIN-82737A97C59FD20FA60A",
+      "task": "scene-scout/agent-files/tasks/SWIN-82737A97C59FD20FA60A--b24cf1b169b0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-82737A97C59FD20FA60A--b24cf1b169b0.json"
+    },
+    {
+      "window_id": "SWIN-8293746F80F69D7610C1",
+      "task": "scene-scout/agent-files/tasks/SWIN-8293746F80F69D7610C1--b8ee8f62665e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8293746F80F69D7610C1--b8ee8f62665e.json"
+    },
+    {
+      "window_id": "SWIN-82F3ECBBAB6838350881",
+      "task": "scene-scout/agent-files/tasks/SWIN-82F3ECBBAB6838350881--d70b75fa1bc1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-82F3ECBBAB6838350881--d70b75fa1bc1.json"
+    },
+    {
+      "window_id": "SWIN-8305CFF6929C2C410C21",
+      "task": "scene-scout/agent-files/tasks/SWIN-8305CFF6929C2C410C21--b47bc6fd2b82.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8305CFF6929C2C410C21--b47bc6fd2b82.json"
+    },
+    {
+      "window_id": "SWIN-8385820560E5D81E7AC2",
+      "task": "scene-scout/agent-files/tasks/SWIN-8385820560E5D81E7AC2--a9e24e747b84.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8385820560E5D81E7AC2--a9e24e747b84.json"
+    },
+    {
+      "window_id": "SWIN-83F61F2DE1B3A8764036",
+      "task": "scene-scout/agent-files/tasks/SWIN-83F61F2DE1B3A8764036--000a04318573.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-83F61F2DE1B3A8764036--000a04318573.json"
+    },
+    {
+      "window_id": "SWIN-8426DFC04CD93BD0C939",
+      "task": "scene-scout/agent-files/tasks/SWIN-8426DFC04CD93BD0C939--4fc6d4b0a5e3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8426DFC04CD93BD0C939--4fc6d4b0a5e3.json"
+    },
+    {
+      "window_id": "SWIN-84E0039098A5D804028A",
+      "task": "scene-scout/agent-files/tasks/SWIN-84E0039098A5D804028A--a4ea94ced50e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-84E0039098A5D804028A--a4ea94ced50e.json"
+    },
+    {
+      "window_id": "SWIN-84F0F52CBBFCB06AB9FF",
+      "task": "scene-scout/agent-files/tasks/SWIN-84F0F52CBBFCB06AB9FF--be502ceca581.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-84F0F52CBBFCB06AB9FF--be502ceca581.json"
+    },
+    {
+      "window_id": "SWIN-8561BB835A9DC0FBBBF7",
+      "task": "scene-scout/agent-files/tasks/SWIN-8561BB835A9DC0FBBBF7--2928ec90baca.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8561BB835A9DC0FBBBF7--2928ec90baca.json"
+    },
+    {
+      "window_id": "SWIN-857AAB50D0E6D91DF643",
+      "task": "scene-scout/agent-files/tasks/SWIN-857AAB50D0E6D91DF643--fbf8fa828401.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-857AAB50D0E6D91DF643--fbf8fa828401.json"
+    },
+    {
+      "window_id": "SWIN-858ABF794E21B34DEA51",
+      "task": "scene-scout/agent-files/tasks/SWIN-858ABF794E21B34DEA51--2a391085c2aa.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-858ABF794E21B34DEA51--2a391085c2aa.json"
+    },
+    {
+      "window_id": "SWIN-859C96870FB53AC0AE4C",
+      "task": "scene-scout/agent-files/tasks/SWIN-859C96870FB53AC0AE4C--cec44aacc316.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-859C96870FB53AC0AE4C--cec44aacc316.json"
+    },
+    {
+      "window_id": "SWIN-860516E69B00A735C361",
+      "task": "scene-scout/agent-files/tasks/SWIN-860516E69B00A735C361--9abf8daf52b3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-860516E69B00A735C361--9abf8daf52b3.json"
+    },
+    {
+      "window_id": "SWIN-86108DE2759DA4BF93B9",
+      "task": "scene-scout/agent-files/tasks/SWIN-86108DE2759DA4BF93B9--e606817fbf54.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-86108DE2759DA4BF93B9--e606817fbf54.json"
+    },
+    {
+      "window_id": "SWIN-86C67907E4D3722E3ABF",
+      "task": "scene-scout/agent-files/tasks/SWIN-86C67907E4D3722E3ABF--bde351bd7e0e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-86C67907E4D3722E3ABF--bde351bd7e0e.json"
+    },
+    {
+      "window_id": "SWIN-871F55EBBAC8380B9032",
+      "task": "scene-scout/agent-files/tasks/SWIN-871F55EBBAC8380B9032--a26514c2bc45.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-871F55EBBAC8380B9032--a26514c2bc45.json"
+    },
+    {
+      "window_id": "SWIN-87576CEF25DD97DE23A3",
+      "task": "scene-scout/agent-files/tasks/SWIN-87576CEF25DD97DE23A3--061eb8051bb4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-87576CEF25DD97DE23A3--061eb8051bb4.json"
+    },
+    {
+      "window_id": "SWIN-88BCF72CCF2F2F56FC82",
+      "task": "scene-scout/agent-files/tasks/SWIN-88BCF72CCF2F2F56FC82--929745eee643.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-88BCF72CCF2F2F56FC82--929745eee643.json"
+    },
+    {
+      "window_id": "SWIN-89B2DD23E1C71C4E2C39",
+      "task": "scene-scout/agent-files/tasks/SWIN-89B2DD23E1C71C4E2C39--2838c1a38023.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-89B2DD23E1C71C4E2C39--2838c1a38023.json"
+    },
+    {
+      "window_id": "SWIN-89B93878F01E78B2549A",
+      "task": "scene-scout/agent-files/tasks/SWIN-89B93878F01E78B2549A--9c86f026d215.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-89B93878F01E78B2549A--9c86f026d215.json"
+    },
+    {
+      "window_id": "SWIN-8A281F9B0FE2CCEA823F",
+      "task": "scene-scout/agent-files/tasks/SWIN-8A281F9B0FE2CCEA823F--6be4d43989ad.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8A281F9B0FE2CCEA823F--6be4d43989ad.json"
+    },
+    {
+      "window_id": "SWIN-8AF17F3D115CEF287865",
+      "task": "scene-scout/agent-files/tasks/SWIN-8AF17F3D115CEF287865--193b2803e4f4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8AF17F3D115CEF287865--193b2803e4f4.json"
+    },
+    {
+      "window_id": "SWIN-8B242F33E7A2E71D06C7",
+      "task": "scene-scout/agent-files/tasks/SWIN-8B242F33E7A2E71D06C7--d148ea1ec6e7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8B242F33E7A2E71D06C7--d148ea1ec6e7.json"
+    },
+    {
+      "window_id": "SWIN-8B5934EDD5A5AB992A62",
+      "task": "scene-scout/agent-files/tasks/SWIN-8B5934EDD5A5AB992A62--d2801ab53a50.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8B5934EDD5A5AB992A62--d2801ab53a50.json"
+    },
+    {
+      "window_id": "SWIN-8B7D1A80E92E49977990",
+      "task": "scene-scout/agent-files/tasks/SWIN-8B7D1A80E92E49977990--e4d04faabf9a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8B7D1A80E92E49977990--e4d04faabf9a.json"
+    },
+    {
+      "window_id": "SWIN-8BEFD8A72FE4CD69B13B",
+      "task": "scene-scout/agent-files/tasks/SWIN-8BEFD8A72FE4CD69B13B--d632b801f0a5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8BEFD8A72FE4CD69B13B--d632b801f0a5.json"
+    },
+    {
+      "window_id": "SWIN-8CA17FAC40E5EB6F0EF1",
+      "task": "scene-scout/agent-files/tasks/SWIN-8CA17FAC40E5EB6F0EF1--4058e82a2155.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8CA17FAC40E5EB6F0EF1--4058e82a2155.json"
+    },
+    {
+      "window_id": "SWIN-8DA3E0496E5F67133B8F",
+      "task": "scene-scout/agent-files/tasks/SWIN-8DA3E0496E5F67133B8F--e1f265f014a5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8DA3E0496E5F67133B8F--e1f265f014a5.json"
+    },
+    {
+      "window_id": "SWIN-8E317E6A5699E7CAA397",
+      "task": "scene-scout/agent-files/tasks/SWIN-8E317E6A5699E7CAA397--6cfac9c0373b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8E317E6A5699E7CAA397--6cfac9c0373b.json"
+    },
+    {
+      "window_id": "SWIN-8E5F313CAAA2C3372D63",
+      "task": "scene-scout/agent-files/tasks/SWIN-8E5F313CAAA2C3372D63--4d34d528edeb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8E5F313CAAA2C3372D63--4d34d528edeb.json"
+    },
+    {
+      "window_id": "SWIN-8E6F7EDF824B5C37C107",
+      "task": "scene-scout/agent-files/tasks/SWIN-8E6F7EDF824B5C37C107--16305f8f9f34.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8E6F7EDF824B5C37C107--16305f8f9f34.json"
+    },
+    {
+      "window_id": "SWIN-8EE9ADC40E84D9948B84",
+      "task": "scene-scout/agent-files/tasks/SWIN-8EE9ADC40E84D9948B84--934adf8abb19.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8EE9ADC40E84D9948B84--934adf8abb19.json"
+    },
+    {
+      "window_id": "SWIN-8EEEB59EC7683DD0B157",
+      "task": "scene-scout/agent-files/tasks/SWIN-8EEEB59EC7683DD0B157--0ccdd98181a8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8EEEB59EC7683DD0B157--0ccdd98181a8.json"
+    },
+    {
+      "window_id": "SWIN-8EF21F19011081BF9675",
+      "task": "scene-scout/agent-files/tasks/SWIN-8EF21F19011081BF9675--2b4e2ce6e060.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8EF21F19011081BF9675--2b4e2ce6e060.json"
+    },
+    {
+      "window_id": "SWIN-8FE6423E4E3B439B901B",
+      "task": "scene-scout/agent-files/tasks/SWIN-8FE6423E4E3B439B901B--f06afad3fac7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8FE6423E4E3B439B901B--f06afad3fac7.json"
+    },
+    {
+      "window_id": "SWIN-8FF3CF4EF28B6E671E3B",
+      "task": "scene-scout/agent-files/tasks/SWIN-8FF3CF4EF28B6E671E3B--b8a483c8b99c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-8FF3CF4EF28B6E671E3B--b8a483c8b99c.json"
+    },
+    {
+      "window_id": "SWIN-9106FA08EBF16E43056C",
+      "task": "scene-scout/agent-files/tasks/SWIN-9106FA08EBF16E43056C--75b4efe2760a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9106FA08EBF16E43056C--75b4efe2760a.json"
+    },
+    {
+      "window_id": "SWIN-911BAE667745F9249EE8",
+      "task": "scene-scout/agent-files/tasks/SWIN-911BAE667745F9249EE8--494166f93e3d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-911BAE667745F9249EE8--494166f93e3d.json"
+    },
+    {
+      "window_id": "SWIN-91202D8F0A9EFBCEF53C",
+      "task": "scene-scout/agent-files/tasks/SWIN-91202D8F0A9EFBCEF53C--32641c4359d2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-91202D8F0A9EFBCEF53C--32641c4359d2.json"
+    },
+    {
+      "window_id": "SWIN-914D531220B71D94B99F",
+      "task": "scene-scout/agent-files/tasks/SWIN-914D531220B71D94B99F--debf87ba7d6d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-914D531220B71D94B99F--debf87ba7d6d.json"
+    },
+    {
+      "window_id": "SWIN-91DB73749F6EE940290F",
+      "task": "scene-scout/agent-files/tasks/SWIN-91DB73749F6EE940290F--6539573b5f4d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-91DB73749F6EE940290F--6539573b5f4d.json"
+    },
+    {
+      "window_id": "SWIN-91F24746F8CFFE0A62B8",
+      "task": "scene-scout/agent-files/tasks/SWIN-91F24746F8CFFE0A62B8--83f734173b1d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-91F24746F8CFFE0A62B8--83f734173b1d.json"
+    },
+    {
+      "window_id": "SWIN-920454C135D2AA77450A",
+      "task": "scene-scout/agent-files/tasks/SWIN-920454C135D2AA77450A--96a2213ed83b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-920454C135D2AA77450A--96a2213ed83b.json"
+    },
+    {
+      "window_id": "SWIN-9244F988EDDFCB4ADC44",
+      "task": "scene-scout/agent-files/tasks/SWIN-9244F988EDDFCB4ADC44--1b7ef9d31254.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9244F988EDDFCB4ADC44--1b7ef9d31254.json"
+    },
+    {
+      "window_id": "SWIN-92585A7AA4F7D197DE6F",
+      "task": "scene-scout/agent-files/tasks/SWIN-92585A7AA4F7D197DE6F--72f8187749b9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-92585A7AA4F7D197DE6F--72f8187749b9.json"
+    },
+    {
+      "window_id": "SWIN-9267D751099DBEB6EFF5",
+      "task": "scene-scout/agent-files/tasks/SWIN-9267D751099DBEB6EFF5--b15608a379e0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9267D751099DBEB6EFF5--b15608a379e0.json"
+    },
+    {
+      "window_id": "SWIN-92B8AEB57D441A61084C",
+      "task": "scene-scout/agent-files/tasks/SWIN-92B8AEB57D441A61084C--49db64910a07.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-92B8AEB57D441A61084C--49db64910a07.json"
+    },
+    {
+      "window_id": "SWIN-92BC6A1F0F8BAC6E7CC4",
+      "task": "scene-scout/agent-files/tasks/SWIN-92BC6A1F0F8BAC6E7CC4--74bb5d847216.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-92BC6A1F0F8BAC6E7CC4--74bb5d847216.json"
+    },
+    {
+      "window_id": "SWIN-92D915A105FD00BD56AC",
+      "task": "scene-scout/agent-files/tasks/SWIN-92D915A105FD00BD56AC--071e90d2e4c6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-92D915A105FD00BD56AC--071e90d2e4c6.json"
+    },
+    {
+      "window_id": "SWIN-930F4EB9FAC7BD35C24E",
+      "task": "scene-scout/agent-files/tasks/SWIN-930F4EB9FAC7BD35C24E--fd5eb263e503.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-930F4EB9FAC7BD35C24E--fd5eb263e503.json"
+    },
+    {
+      "window_id": "SWIN-931457EEC59147A7CFD1",
+      "task": "scene-scout/agent-files/tasks/SWIN-931457EEC59147A7CFD1--7dd36052a035.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-931457EEC59147A7CFD1--7dd36052a035.json"
+    },
+    {
+      "window_id": "SWIN-93C42E6DEB2078F3EE56",
+      "task": "scene-scout/agent-files/tasks/SWIN-93C42E6DEB2078F3EE56--9192a4d87e31.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-93C42E6DEB2078F3EE56--9192a4d87e31.json"
+    },
+    {
+      "window_id": "SWIN-9405BE7D7823D40B7BEF",
+      "task": "scene-scout/agent-files/tasks/SWIN-9405BE7D7823D40B7BEF--1019ce11ec32.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9405BE7D7823D40B7BEF--1019ce11ec32.json"
+    },
+    {
+      "window_id": "SWIN-9433716C0D20B05FB63E",
+      "task": "scene-scout/agent-files/tasks/SWIN-9433716C0D20B05FB63E--614a85a44d9d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9433716C0D20B05FB63E--614a85a44d9d.json"
+    },
+    {
+      "window_id": "SWIN-94340E73128E664FA562",
+      "task": "scene-scout/agent-files/tasks/SWIN-94340E73128E664FA562--8b316e684127.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-94340E73128E664FA562--8b316e684127.json"
+    },
+    {
+      "window_id": "SWIN-945FF65AB21112A1C838",
+      "task": "scene-scout/agent-files/tasks/SWIN-945FF65AB21112A1C838--4f607cb07ba0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-945FF65AB21112A1C838--4f607cb07ba0.json"
+    },
+    {
+      "window_id": "SWIN-94780067C0180A6C34E3",
+      "task": "scene-scout/agent-files/tasks/SWIN-94780067C0180A6C34E3--7de13b59d0c6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-94780067C0180A6C34E3--7de13b59d0c6.json"
+    },
+    {
+      "window_id": "SWIN-952008C88DB3572D4069",
+      "task": "scene-scout/agent-files/tasks/SWIN-952008C88DB3572D4069--58493098f825.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-952008C88DB3572D4069--58493098f825.json"
+    },
+    {
+      "window_id": "SWIN-955CCED5B2C0D09A5AF8",
+      "task": "scene-scout/agent-files/tasks/SWIN-955CCED5B2C0D09A5AF8--ff13f28cd480.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-955CCED5B2C0D09A5AF8--ff13f28cd480.json"
+    },
+    {
+      "window_id": "SWIN-95FF9AAA7567EAD52788",
+      "task": "scene-scout/agent-files/tasks/SWIN-95FF9AAA7567EAD52788--501914ef4894.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-95FF9AAA7567EAD52788--501914ef4894.json"
+    },
+    {
+      "window_id": "SWIN-970CFB4490DAD60970DE",
+      "task": "scene-scout/agent-files/tasks/SWIN-970CFB4490DAD60970DE--348787b76e77.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-970CFB4490DAD60970DE--348787b76e77.json"
+    },
+    {
+      "window_id": "SWIN-97539DC438230D24EE01",
+      "task": "scene-scout/agent-files/tasks/SWIN-97539DC438230D24EE01--d42e85149465.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-97539DC438230D24EE01--d42e85149465.json"
+    },
+    {
+      "window_id": "SWIN-9813FEB0BDF999EF1058",
+      "task": "scene-scout/agent-files/tasks/SWIN-9813FEB0BDF999EF1058--2af8fb783931.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9813FEB0BDF999EF1058--2af8fb783931.json"
+    },
+    {
+      "window_id": "SWIN-982308A74368E31AC13A",
+      "task": "scene-scout/agent-files/tasks/SWIN-982308A74368E31AC13A--4b05e5efa422.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-982308A74368E31AC13A--4b05e5efa422.json"
+    },
+    {
+      "window_id": "SWIN-990D1CD6AD63D87D65A1",
+      "task": "scene-scout/agent-files/tasks/SWIN-990D1CD6AD63D87D65A1--444d69142f76.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-990D1CD6AD63D87D65A1--444d69142f76.json"
+    },
+    {
+      "window_id": "SWIN-993A18E3910D958ECB98",
+      "task": "scene-scout/agent-files/tasks/SWIN-993A18E3910D958ECB98--ce5df11a99de.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-993A18E3910D958ECB98--ce5df11a99de.json"
+    },
+    {
+      "window_id": "SWIN-99F93F9BA9E2C235A3DE",
+      "task": "scene-scout/agent-files/tasks/SWIN-99F93F9BA9E2C235A3DE--21ea1d241ba2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-99F93F9BA9E2C235A3DE--21ea1d241ba2.json"
+    },
+    {
+      "window_id": "SWIN-9A074ACAFDE2A4767558",
+      "task": "scene-scout/agent-files/tasks/SWIN-9A074ACAFDE2A4767558--1f6900b9adfd.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9A074ACAFDE2A4767558--1f6900b9adfd.json"
+    },
+    {
+      "window_id": "SWIN-9A379C1A01A3BD974719",
+      "task": "scene-scout/agent-files/tasks/SWIN-9A379C1A01A3BD974719--23fb670c966d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9A379C1A01A3BD974719--23fb670c966d.json"
+    },
+    {
+      "window_id": "SWIN-9AF09D81AB7F0F03EAF8",
+      "task": "scene-scout/agent-files/tasks/SWIN-9AF09D81AB7F0F03EAF8--e0dde5a28d0e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9AF09D81AB7F0F03EAF8--e0dde5a28d0e.json"
+    },
+    {
+      "window_id": "SWIN-9B1C29404E31E87B925A",
+      "task": "scene-scout/agent-files/tasks/SWIN-9B1C29404E31E87B925A--edea656f70b7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9B1C29404E31E87B925A--edea656f70b7.json"
+    },
+    {
+      "window_id": "SWIN-9E13132F0C6A5FACF855",
+      "task": "scene-scout/agent-files/tasks/SWIN-9E13132F0C6A5FACF855--00137b7340cf.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9E13132F0C6A5FACF855--00137b7340cf.json"
+    },
+    {
+      "window_id": "SWIN-9F7285E694C75B21C59F",
+      "task": "scene-scout/agent-files/tasks/SWIN-9F7285E694C75B21C59F--14f1e7d9fcbe.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9F7285E694C75B21C59F--14f1e7d9fcbe.json"
+    },
+    {
+      "window_id": "SWIN-9FC4A829930C60F6EE88",
+      "task": "scene-scout/agent-files/tasks/SWIN-9FC4A829930C60F6EE88--40e34c77097f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9FC4A829930C60F6EE88--40e34c77097f.json"
+    },
+    {
+      "window_id": "SWIN-9FCC7E2A73719E48574C",
+      "task": "scene-scout/agent-files/tasks/SWIN-9FCC7E2A73719E48574C--86e1b94a82bb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-9FCC7E2A73719E48574C--86e1b94a82bb.json"
+    },
+    {
+      "window_id": "SWIN-A11F659BDEBA9E6B881E",
+      "task": "scene-scout/agent-files/tasks/SWIN-A11F659BDEBA9E6B881E--e3d5e43a39e1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A11F659BDEBA9E6B881E--e3d5e43a39e1.json"
+    },
+    {
+      "window_id": "SWIN-A14DE96711C409E8E4BE",
+      "task": "scene-scout/agent-files/tasks/SWIN-A14DE96711C409E8E4BE--a9c86d197bc8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A14DE96711C409E8E4BE--a9c86d197bc8.json"
+    },
+    {
+      "window_id": "SWIN-A182E8F9DFCAEAA432C4",
+      "task": "scene-scout/agent-files/tasks/SWIN-A182E8F9DFCAEAA432C4--85e557fbabc6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A182E8F9DFCAEAA432C4--85e557fbabc6.json"
+    },
+    {
+      "window_id": "SWIN-A1DDAC721CEBF96F73E3",
+      "task": "scene-scout/agent-files/tasks/SWIN-A1DDAC721CEBF96F73E3--e1abdf04669f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A1DDAC721CEBF96F73E3--e1abdf04669f.json"
+    },
+    {
+      "window_id": "SWIN-A2344209101B4B9A14EA",
+      "task": "scene-scout/agent-files/tasks/SWIN-A2344209101B4B9A14EA--c3f87b71fc68.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A2344209101B4B9A14EA--c3f87b71fc68.json"
+    },
+    {
+      "window_id": "SWIN-A25BF3630D1A132FE6F7",
+      "task": "scene-scout/agent-files/tasks/SWIN-A25BF3630D1A132FE6F7--6b965ff19589.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A25BF3630D1A132FE6F7--6b965ff19589.json"
+    },
+    {
+      "window_id": "SWIN-A29A30DDE3C8E46275A2",
+      "task": "scene-scout/agent-files/tasks/SWIN-A29A30DDE3C8E46275A2--d7a7e33d4b06.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A29A30DDE3C8E46275A2--d7a7e33d4b06.json"
+    },
+    {
+      "window_id": "SWIN-A2B2FD6D2E35D92BCD2B",
+      "task": "scene-scout/agent-files/tasks/SWIN-A2B2FD6D2E35D92BCD2B--8141bed1618d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A2B2FD6D2E35D92BCD2B--8141bed1618d.json"
+    },
+    {
+      "window_id": "SWIN-A2F02C86D56344635003",
+      "task": "scene-scout/agent-files/tasks/SWIN-A2F02C86D56344635003--a3befbd2952a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A2F02C86D56344635003--a3befbd2952a.json"
+    },
+    {
+      "window_id": "SWIN-A3267F1223ECDF4D494B",
+      "task": "scene-scout/agent-files/tasks/SWIN-A3267F1223ECDF4D494B--c01400bc30ac.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A3267F1223ECDF4D494B--c01400bc30ac.json"
+    },
+    {
+      "window_id": "SWIN-A353732A7DD418DF6ED9",
+      "task": "scene-scout/agent-files/tasks/SWIN-A353732A7DD418DF6ED9--722284782ead.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A353732A7DD418DF6ED9--722284782ead.json"
+    },
+    {
+      "window_id": "SWIN-A37B58819E98F2694500",
+      "task": "scene-scout/agent-files/tasks/SWIN-A37B58819E98F2694500--19153f45a7c2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A37B58819E98F2694500--19153f45a7c2.json"
+    },
+    {
+      "window_id": "SWIN-A3C364A9246C32EB486B",
+      "task": "scene-scout/agent-files/tasks/SWIN-A3C364A9246C32EB486B--b3ca8c4284c8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A3C364A9246C32EB486B--b3ca8c4284c8.json"
+    },
+    {
+      "window_id": "SWIN-A43E5937FB9B11325756",
+      "task": "scene-scout/agent-files/tasks/SWIN-A43E5937FB9B11325756--e698339c6808.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A43E5937FB9B11325756--e698339c6808.json"
+    },
+    {
+      "window_id": "SWIN-A529F515D9C06EFBE684",
+      "task": "scene-scout/agent-files/tasks/SWIN-A529F515D9C06EFBE684--e54e9bbb494a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A529F515D9C06EFBE684--e54e9bbb494a.json"
+    },
+    {
+      "window_id": "SWIN-A5791F9441EA0FFA890E",
+      "task": "scene-scout/agent-files/tasks/SWIN-A5791F9441EA0FFA890E--3a13fa975221.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A5791F9441EA0FFA890E--3a13fa975221.json"
+    },
+    {
+      "window_id": "SWIN-A58AB827F404F98E552B",
+      "task": "scene-scout/agent-files/tasks/SWIN-A58AB827F404F98E552B--fb280d7e9c67.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A58AB827F404F98E552B--fb280d7e9c67.json"
+    },
+    {
+      "window_id": "SWIN-A5B007F5B971CB8CC2CB",
+      "task": "scene-scout/agent-files/tasks/SWIN-A5B007F5B971CB8CC2CB--80e4399d35fa.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A5B007F5B971CB8CC2CB--80e4399d35fa.json"
+    },
+    {
+      "window_id": "SWIN-A5E4997EC09A360CC20B",
+      "task": "scene-scout/agent-files/tasks/SWIN-A5E4997EC09A360CC20B--702018099434.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A5E4997EC09A360CC20B--702018099434.json"
+    },
+    {
+      "window_id": "SWIN-A5E53E926DB2913DA58B",
+      "task": "scene-scout/agent-files/tasks/SWIN-A5E53E926DB2913DA58B--56bb8db75993.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A5E53E926DB2913DA58B--56bb8db75993.json"
+    },
+    {
+      "window_id": "SWIN-A6517B15A8EC4C736B15",
+      "task": "scene-scout/agent-files/tasks/SWIN-A6517B15A8EC4C736B15--81af887b997e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A6517B15A8EC4C736B15--81af887b997e.json"
+    },
+    {
+      "window_id": "SWIN-A713B54DC80FBC9A394B",
+      "task": "scene-scout/agent-files/tasks/SWIN-A713B54DC80FBC9A394B--9a9bbd031760.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A713B54DC80FBC9A394B--9a9bbd031760.json"
+    },
+    {
+      "window_id": "SWIN-A795457085F11A14FB95",
+      "task": "scene-scout/agent-files/tasks/SWIN-A795457085F11A14FB95--79da0067a80e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A795457085F11A14FB95--79da0067a80e.json"
+    },
+    {
+      "window_id": "SWIN-A805FF3C347E2057FAD9",
+      "task": "scene-scout/agent-files/tasks/SWIN-A805FF3C347E2057FAD9--68c729071f33.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A805FF3C347E2057FAD9--68c729071f33.json"
+    },
+    {
+      "window_id": "SWIN-A8310D8937E08637FD30",
+      "task": "scene-scout/agent-files/tasks/SWIN-A8310D8937E08637FD30--8951be71a042.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A8310D8937E08637FD30--8951be71a042.json"
+    },
+    {
+      "window_id": "SWIN-A83165EF8BB12FFC9B10",
+      "task": "scene-scout/agent-files/tasks/SWIN-A83165EF8BB12FFC9B10--cce621b97d8c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A83165EF8BB12FFC9B10--cce621b97d8c.json"
+    },
+    {
+      "window_id": "SWIN-A86E0B9A3F3DEF9A32B1",
+      "task": "scene-scout/agent-files/tasks/SWIN-A86E0B9A3F3DEF9A32B1--35af7801923b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A86E0B9A3F3DEF9A32B1--35af7801923b.json"
+    },
+    {
+      "window_id": "SWIN-A9AF18909B8267DAC8EE",
+      "task": "scene-scout/agent-files/tasks/SWIN-A9AF18909B8267DAC8EE--1871b3195710.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-A9AF18909B8267DAC8EE--1871b3195710.json"
+    },
+    {
+      "window_id": "SWIN-AA6714E21B32A1E041B0",
+      "task": "scene-scout/agent-files/tasks/SWIN-AA6714E21B32A1E041B0--d8b81e992141.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AA6714E21B32A1E041B0--d8b81e992141.json"
+    },
+    {
+      "window_id": "SWIN-AA79443B29C038F550CB",
+      "task": "scene-scout/agent-files/tasks/SWIN-AA79443B29C038F550CB--4f568bc44f01.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AA79443B29C038F550CB--4f568bc44f01.json"
+    },
+    {
+      "window_id": "SWIN-AAFD092E346723EC51A5",
+      "task": "scene-scout/agent-files/tasks/SWIN-AAFD092E346723EC51A5--ad37fb370be1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AAFD092E346723EC51A5--ad37fb370be1.json"
+    },
+    {
+      "window_id": "SWIN-AB33A2B0B2FD185C16EC",
+      "task": "scene-scout/agent-files/tasks/SWIN-AB33A2B0B2FD185C16EC--394a4e67ada6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AB33A2B0B2FD185C16EC--394a4e67ada6.json"
+    },
+    {
+      "window_id": "SWIN-ABA005CF51C1FAEB2447",
+      "task": "scene-scout/agent-files/tasks/SWIN-ABA005CF51C1FAEB2447--82e3269c1bf4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-ABA005CF51C1FAEB2447--82e3269c1bf4.json"
+    },
+    {
+      "window_id": "SWIN-ABB871A79CA455CBEFCF",
+      "task": "scene-scout/agent-files/tasks/SWIN-ABB871A79CA455CBEFCF--6f9469a1d022.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-ABB871A79CA455CBEFCF--6f9469a1d022.json"
+    },
+    {
+      "window_id": "SWIN-ABD5B21ECE7C8E3EC9B4",
+      "task": "scene-scout/agent-files/tasks/SWIN-ABD5B21ECE7C8E3EC9B4--7c17ecddb9a5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-ABD5B21ECE7C8E3EC9B4--7c17ecddb9a5.json"
+    },
+    {
+      "window_id": "SWIN-ACAFECCDEBFE4084E3DD",
+      "task": "scene-scout/agent-files/tasks/SWIN-ACAFECCDEBFE4084E3DD--935a1d56886f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-ACAFECCDEBFE4084E3DD--935a1d56886f.json"
+    },
+    {
+      "window_id": "SWIN-AD0CAE39CB3343654679",
+      "task": "scene-scout/agent-files/tasks/SWIN-AD0CAE39CB3343654679--25959d3fa443.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AD0CAE39CB3343654679--25959d3fa443.json"
+    },
+    {
+      "window_id": "SWIN-ADC7CF597C4088224C58",
+      "task": "scene-scout/agent-files/tasks/SWIN-ADC7CF597C4088224C58--2df7e6610d5e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-ADC7CF597C4088224C58--2df7e6610d5e.json"
+    },
+    {
+      "window_id": "SWIN-ADEAE0B22E7FDC9A3A9C",
+      "task": "scene-scout/agent-files/tasks/SWIN-ADEAE0B22E7FDC9A3A9C--afc0f7ebe970.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-ADEAE0B22E7FDC9A3A9C--afc0f7ebe970.json"
+    },
+    {
+      "window_id": "SWIN-AE06105A9665DFC42934",
+      "task": "scene-scout/agent-files/tasks/SWIN-AE06105A9665DFC42934--0d03bfd0850c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AE06105A9665DFC42934--0d03bfd0850c.json"
+    },
+    {
+      "window_id": "SWIN-AE24E947E9AF84B6AF86",
+      "task": "scene-scout/agent-files/tasks/SWIN-AE24E947E9AF84B6AF86--73847cadcfc5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AE24E947E9AF84B6AF86--73847cadcfc5.json"
+    },
+    {
+      "window_id": "SWIN-AE535655ED41A14A8D06",
+      "task": "scene-scout/agent-files/tasks/SWIN-AE535655ED41A14A8D06--12ae669e7cd1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AE535655ED41A14A8D06--12ae669e7cd1.json"
+    },
+    {
+      "window_id": "SWIN-AEC152C589DD0C121791",
+      "task": "scene-scout/agent-files/tasks/SWIN-AEC152C589DD0C121791--8d900612be3e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AEC152C589DD0C121791--8d900612be3e.json"
+    },
+    {
+      "window_id": "SWIN-AF9C8D3AC9E3A526C2C7",
+      "task": "scene-scout/agent-files/tasks/SWIN-AF9C8D3AC9E3A526C2C7--789378f9e7fc.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AF9C8D3AC9E3A526C2C7--789378f9e7fc.json"
+    },
+    {
+      "window_id": "SWIN-AFE51B59377062E5CDC9",
+      "task": "scene-scout/agent-files/tasks/SWIN-AFE51B59377062E5CDC9--2c582b51049f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AFE51B59377062E5CDC9--2c582b51049f.json"
+    },
+    {
+      "window_id": "SWIN-AFED11449B56C8D45868",
+      "task": "scene-scout/agent-files/tasks/SWIN-AFED11449B56C8D45868--6e88a291fccf.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AFED11449B56C8D45868--6e88a291fccf.json"
+    },
+    {
+      "window_id": "SWIN-AFFB5EC8B8D7BF61E07F",
+      "task": "scene-scout/agent-files/tasks/SWIN-AFFB5EC8B8D7BF61E07F--ad4f699df840.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-AFFB5EC8B8D7BF61E07F--ad4f699df840.json"
+    },
+    {
+      "window_id": "SWIN-B0473E638CF8A5F3706F",
+      "task": "scene-scout/agent-files/tasks/SWIN-B0473E638CF8A5F3706F--a49c86cdaa37.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B0473E638CF8A5F3706F--a49c86cdaa37.json"
+    },
+    {
+      "window_id": "SWIN-B1032D1ED7C5B5370B89",
+      "task": "scene-scout/agent-files/tasks/SWIN-B1032D1ED7C5B5370B89--1c7d4397912b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B1032D1ED7C5B5370B89--1c7d4397912b.json"
+    },
+    {
+      "window_id": "SWIN-B105A6BC4F61C899FDEE",
+      "task": "scene-scout/agent-files/tasks/SWIN-B105A6BC4F61C899FDEE--bf405105eece.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B105A6BC4F61C899FDEE--bf405105eece.json"
+    },
+    {
+      "window_id": "SWIN-B12479040785591A0C00",
+      "task": "scene-scout/agent-files/tasks/SWIN-B12479040785591A0C00--c95969d7cdb7.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B12479040785591A0C00--c95969d7cdb7.json"
+    },
+    {
+      "window_id": "SWIN-B13098B9F4363769E2DF",
+      "task": "scene-scout/agent-files/tasks/SWIN-B13098B9F4363769E2DF--acb820e39bff.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B13098B9F4363769E2DF--acb820e39bff.json"
+    },
+    {
+      "window_id": "SWIN-B14A10DF51AA5E8E5BBA",
+      "task": "scene-scout/agent-files/tasks/SWIN-B14A10DF51AA5E8E5BBA--6fc5100bb7dc.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B14A10DF51AA5E8E5BBA--6fc5100bb7dc.json"
+    },
+    {
+      "window_id": "SWIN-B18557FC9C2CA6D42D13",
+      "task": "scene-scout/agent-files/tasks/SWIN-B18557FC9C2CA6D42D13--f3bd2cdee9db.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B18557FC9C2CA6D42D13--f3bd2cdee9db.json"
+    },
+    {
+      "window_id": "SWIN-B1E8EA0C8A870DA087B3",
+      "task": "scene-scout/agent-files/tasks/SWIN-B1E8EA0C8A870DA087B3--8d614ffee165.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B1E8EA0C8A870DA087B3--8d614ffee165.json"
+    },
+    {
+      "window_id": "SWIN-B1F07793DDE284BF5C37",
+      "task": "scene-scout/agent-files/tasks/SWIN-B1F07793DDE284BF5C37--f1a9769033bc.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B1F07793DDE284BF5C37--f1a9769033bc.json"
+    },
+    {
+      "window_id": "SWIN-B25269C1ADB0C5F19C4D",
+      "task": "scene-scout/agent-files/tasks/SWIN-B25269C1ADB0C5F19C4D--aef5846154e5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B25269C1ADB0C5F19C4D--aef5846154e5.json"
+    },
+    {
+      "window_id": "SWIN-B2DFC5EBC9A635E2F5A1",
+      "task": "scene-scout/agent-files/tasks/SWIN-B2DFC5EBC9A635E2F5A1--0bf6e51a039a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B2DFC5EBC9A635E2F5A1--0bf6e51a039a.json"
+    },
+    {
+      "window_id": "SWIN-B34A0604CBC3070CA1BD",
+      "task": "scene-scout/agent-files/tasks/SWIN-B34A0604CBC3070CA1BD--76edd938c1b8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B34A0604CBC3070CA1BD--76edd938c1b8.json"
+    },
+    {
+      "window_id": "SWIN-B37F7FC2DFABA1EB4428",
+      "task": "scene-scout/agent-files/tasks/SWIN-B37F7FC2DFABA1EB4428--b77f0cf61bcf.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B37F7FC2DFABA1EB4428--b77f0cf61bcf.json"
+    },
+    {
+      "window_id": "SWIN-B39CA90303A8E4F3F573",
+      "task": "scene-scout/agent-files/tasks/SWIN-B39CA90303A8E4F3F573--037b4509ee7c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B39CA90303A8E4F3F573--037b4509ee7c.json"
+    },
+    {
+      "window_id": "SWIN-B40774480A0C574B9864",
+      "task": "scene-scout/agent-files/tasks/SWIN-B40774480A0C574B9864--1cd98d697150.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B40774480A0C574B9864--1cd98d697150.json"
+    },
+    {
+      "window_id": "SWIN-B4B8E46FE73DEADF6544",
+      "task": "scene-scout/agent-files/tasks/SWIN-B4B8E46FE73DEADF6544--2248302beaf9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B4B8E46FE73DEADF6544--2248302beaf9.json"
+    },
+    {
+      "window_id": "SWIN-B52B6F2412F1E1CE3C79",
+      "task": "scene-scout/agent-files/tasks/SWIN-B52B6F2412F1E1CE3C79--ea6ae2e40019.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B52B6F2412F1E1CE3C79--ea6ae2e40019.json"
+    },
+    {
+      "window_id": "SWIN-B61957A457C8F85C19B7",
+      "task": "scene-scout/agent-files/tasks/SWIN-B61957A457C8F85C19B7--33b9d9196361.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B61957A457C8F85C19B7--33b9d9196361.json"
+    },
+    {
+      "window_id": "SWIN-B66AA4A29C0BE835FA04",
+      "task": "scene-scout/agent-files/tasks/SWIN-B66AA4A29C0BE835FA04--1249a64d7921.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B66AA4A29C0BE835FA04--1249a64d7921.json"
+    },
+    {
+      "window_id": "SWIN-B6994BC905A99C35526A",
+      "task": "scene-scout/agent-files/tasks/SWIN-B6994BC905A99C35526A--5219500e9658.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B6994BC905A99C35526A--5219500e9658.json"
+    },
+    {
+      "window_id": "SWIN-B6B2C871AB736199A659",
+      "task": "scene-scout/agent-files/tasks/SWIN-B6B2C871AB736199A659--0d4f7c6b1da2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B6B2C871AB736199A659--0d4f7c6b1da2.json"
+    },
+    {
+      "window_id": "SWIN-B6DEA8F61EEC6C21D978",
+      "task": "scene-scout/agent-files/tasks/SWIN-B6DEA8F61EEC6C21D978--750e9727eb84.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B6DEA8F61EEC6C21D978--750e9727eb84.json"
+    },
+    {
+      "window_id": "SWIN-B6F070A190C6DBAD3B3E",
+      "task": "scene-scout/agent-files/tasks/SWIN-B6F070A190C6DBAD3B3E--ca80dd24209f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B6F070A190C6DBAD3B3E--ca80dd24209f.json"
+    },
+    {
+      "window_id": "SWIN-B719F8F167CFAF8C6EE3",
+      "task": "scene-scout/agent-files/tasks/SWIN-B719F8F167CFAF8C6EE3--289a30ec4157.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B719F8F167CFAF8C6EE3--289a30ec4157.json"
+    },
+    {
+      "window_id": "SWIN-B7BC6ED63451E05F97A9",
+      "task": "scene-scout/agent-files/tasks/SWIN-B7BC6ED63451E05F97A9--4a3bde859a32.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B7BC6ED63451E05F97A9--4a3bde859a32.json"
+    },
+    {
+      "window_id": "SWIN-B7D4A3227CAEC67727D6",
+      "task": "scene-scout/agent-files/tasks/SWIN-B7D4A3227CAEC67727D6--21fb9b0ed57e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B7D4A3227CAEC67727D6--21fb9b0ed57e.json"
+    },
+    {
+      "window_id": "SWIN-B831A1EF5E9786513A82",
+      "task": "scene-scout/agent-files/tasks/SWIN-B831A1EF5E9786513A82--dddbd128073c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B831A1EF5E9786513A82--dddbd128073c.json"
+    },
+    {
+      "window_id": "SWIN-B935960CEBFD72D07230",
+      "task": "scene-scout/agent-files/tasks/SWIN-B935960CEBFD72D07230--5e59c00f71cf.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B935960CEBFD72D07230--5e59c00f71cf.json"
+    },
+    {
+      "window_id": "SWIN-B9812F7A04A28239C3BB",
+      "task": "scene-scout/agent-files/tasks/SWIN-B9812F7A04A28239C3BB--b72068680f94.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B9812F7A04A28239C3BB--b72068680f94.json"
+    },
+    {
+      "window_id": "SWIN-B98AD4593DD1F523304C",
+      "task": "scene-scout/agent-files/tasks/SWIN-B98AD4593DD1F523304C--340b9b3bd260.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B98AD4593DD1F523304C--340b9b3bd260.json"
+    },
+    {
+      "window_id": "SWIN-B99D3E5623381ED40747",
+      "task": "scene-scout/agent-files/tasks/SWIN-B99D3E5623381ED40747--6b3b18ca0b4f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-B99D3E5623381ED40747--6b3b18ca0b4f.json"
+    },
+    {
+      "window_id": "SWIN-BA3682B39F6D54031D9A",
+      "task": "scene-scout/agent-files/tasks/SWIN-BA3682B39F6D54031D9A--419a146f680d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BA3682B39F6D54031D9A--419a146f680d.json"
+    },
+    {
+      "window_id": "SWIN-BAD1EA5273542DB2DE8B",
+      "task": "scene-scout/agent-files/tasks/SWIN-BAD1EA5273542DB2DE8B--9c5a97e37207.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BAD1EA5273542DB2DE8B--9c5a97e37207.json"
+    },
+    {
+      "window_id": "SWIN-BAE7F90FC1992D779431",
+      "task": "scene-scout/agent-files/tasks/SWIN-BAE7F90FC1992D779431--a3fd468e8c5b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BAE7F90FC1992D779431--a3fd468e8c5b.json"
+    },
+    {
+      "window_id": "SWIN-BAF088A61108A37285BF",
+      "task": "scene-scout/agent-files/tasks/SWIN-BAF088A61108A37285BF--accbb77b6688.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BAF088A61108A37285BF--accbb77b6688.json"
+    },
+    {
+      "window_id": "SWIN-BAF62EBBCE71FE084910",
+      "task": "scene-scout/agent-files/tasks/SWIN-BAF62EBBCE71FE084910--2a4eca171d2f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BAF62EBBCE71FE084910--2a4eca171d2f.json"
+    },
+    {
+      "window_id": "SWIN-BB3CEE0831B9214F3225",
+      "task": "scene-scout/agent-files/tasks/SWIN-BB3CEE0831B9214F3225--8c55e68025e4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BB3CEE0831B9214F3225--8c55e68025e4.json"
+    },
+    {
+      "window_id": "SWIN-BBF77CAA6309B45C7CEE",
+      "task": "scene-scout/agent-files/tasks/SWIN-BBF77CAA6309B45C7CEE--6d5c89c85751.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BBF77CAA6309B45C7CEE--6d5c89c85751.json"
+    },
+    {
+      "window_id": "SWIN-BDC891F7B66E50A55ADD",
+      "task": "scene-scout/agent-files/tasks/SWIN-BDC891F7B66E50A55ADD--673fc2057b42.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BDC891F7B66E50A55ADD--673fc2057b42.json"
+    },
+    {
+      "window_id": "SWIN-BE202538D73E827A2AFB",
+      "task": "scene-scout/agent-files/tasks/SWIN-BE202538D73E827A2AFB--0696074bb597.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BE202538D73E827A2AFB--0696074bb597.json"
+    },
+    {
+      "window_id": "SWIN-BE694100AA08A41BDA50",
+      "task": "scene-scout/agent-files/tasks/SWIN-BE694100AA08A41BDA50--1c38cd74f178.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BE694100AA08A41BDA50--1c38cd74f178.json"
+    },
+    {
+      "window_id": "SWIN-BE87C60730DAC2353CC2",
+      "task": "scene-scout/agent-files/tasks/SWIN-BE87C60730DAC2353CC2--0b59a5002a81.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BE87C60730DAC2353CC2--0b59a5002a81.json"
+    },
+    {
+      "window_id": "SWIN-BF1296233B7AE27ED9F9",
+      "task": "scene-scout/agent-files/tasks/SWIN-BF1296233B7AE27ED9F9--e01158cef751.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BF1296233B7AE27ED9F9--e01158cef751.json"
+    },
+    {
+      "window_id": "SWIN-BF70C2002B020D36F56E",
+      "task": "scene-scout/agent-files/tasks/SWIN-BF70C2002B020D36F56E--e5a935a59d4c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-BF70C2002B020D36F56E--e5a935a59d4c.json"
+    },
+    {
+      "window_id": "SWIN-C00EC0E1505EB687AC97",
+      "task": "scene-scout/agent-files/tasks/SWIN-C00EC0E1505EB687AC97--5b14f3dbacf4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C00EC0E1505EB687AC97--5b14f3dbacf4.json"
+    },
+    {
+      "window_id": "SWIN-C025493975818AFED310",
+      "task": "scene-scout/agent-files/tasks/SWIN-C025493975818AFED310--101661e1377b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C025493975818AFED310--101661e1377b.json"
+    },
+    {
+      "window_id": "SWIN-C10C320079FA002AED06",
+      "task": "scene-scout/agent-files/tasks/SWIN-C10C320079FA002AED06--eaa4afd30e72.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C10C320079FA002AED06--eaa4afd30e72.json"
+    },
+    {
+      "window_id": "SWIN-C10D0868B89F0DC29937",
+      "task": "scene-scout/agent-files/tasks/SWIN-C10D0868B89F0DC29937--9ad952c8da63.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C10D0868B89F0DC29937--9ad952c8da63.json"
+    },
+    {
+      "window_id": "SWIN-C11A717C18473E9382B9",
+      "task": "scene-scout/agent-files/tasks/SWIN-C11A717C18473E9382B9--420b205c780f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C11A717C18473E9382B9--420b205c780f.json"
+    },
+    {
+      "window_id": "SWIN-C20C9ABD5F332773DFC2",
+      "task": "scene-scout/agent-files/tasks/SWIN-C20C9ABD5F332773DFC2--c7bb18484da4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C20C9ABD5F332773DFC2--c7bb18484da4.json"
+    },
+    {
+      "window_id": "SWIN-C24F65CCF357B32EA1DA",
+      "task": "scene-scout/agent-files/tasks/SWIN-C24F65CCF357B32EA1DA--21c3ed490d6f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C24F65CCF357B32EA1DA--21c3ed490d6f.json"
+    },
+    {
+      "window_id": "SWIN-C2684DC727F9429CC230",
+      "task": "scene-scout/agent-files/tasks/SWIN-C2684DC727F9429CC230--8cc328ebb13f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C2684DC727F9429CC230--8cc328ebb13f.json"
+    },
+    {
+      "window_id": "SWIN-C2985550811A94965143",
+      "task": "scene-scout/agent-files/tasks/SWIN-C2985550811A94965143--40feda2cf1e8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C2985550811A94965143--40feda2cf1e8.json"
+    },
+    {
+      "window_id": "SWIN-C2D9941FBEF263D4AF1B",
+      "task": "scene-scout/agent-files/tasks/SWIN-C2D9941FBEF263D4AF1B--e16235b0cbab.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C2D9941FBEF263D4AF1B--e16235b0cbab.json"
+    },
+    {
+      "window_id": "SWIN-C33D01601A18788952A3",
+      "task": "scene-scout/agent-files/tasks/SWIN-C33D01601A18788952A3--3916d5002eea.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C33D01601A18788952A3--3916d5002eea.json"
+    },
+    {
+      "window_id": "SWIN-C34487485FAE23039754",
+      "task": "scene-scout/agent-files/tasks/SWIN-C34487485FAE23039754--b3f40d5b1f4d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C34487485FAE23039754--b3f40d5b1f4d.json"
+    },
+    {
+      "window_id": "SWIN-C39653648EAC8A693FCC",
+      "task": "scene-scout/agent-files/tasks/SWIN-C39653648EAC8A693FCC--e54ba3c8875d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C39653648EAC8A693FCC--e54ba3c8875d.json"
+    },
+    {
+      "window_id": "SWIN-C3A296E37AE54E535B93",
+      "task": "scene-scout/agent-files/tasks/SWIN-C3A296E37AE54E535B93--56da0dae2cfb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C3A296E37AE54E535B93--56da0dae2cfb.json"
+    },
+    {
+      "window_id": "SWIN-C44BEC8ECDC1CB741823",
+      "task": "scene-scout/agent-files/tasks/SWIN-C44BEC8ECDC1CB741823--90df3a84b860.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C44BEC8ECDC1CB741823--90df3a84b860.json"
+    },
+    {
+      "window_id": "SWIN-C48F45E40515D3A2411A",
+      "task": "scene-scout/agent-files/tasks/SWIN-C48F45E40515D3A2411A--588444a89dcc.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C48F45E40515D3A2411A--588444a89dcc.json"
+    },
+    {
+      "window_id": "SWIN-C54816A173F1AFF2DCD0",
+      "task": "scene-scout/agent-files/tasks/SWIN-C54816A173F1AFF2DCD0--7e53f76bdbb0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C54816A173F1AFF2DCD0--7e53f76bdbb0.json"
+    },
+    {
+      "window_id": "SWIN-C5649DB49E3A26DE929A",
+      "task": "scene-scout/agent-files/tasks/SWIN-C5649DB49E3A26DE929A--6cadea71888c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C5649DB49E3A26DE929A--6cadea71888c.json"
+    },
+    {
+      "window_id": "SWIN-C62035F658E467D50ECF",
+      "task": "scene-scout/agent-files/tasks/SWIN-C62035F658E467D50ECF--2621b8077f1e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C62035F658E467D50ECF--2621b8077f1e.json"
+    },
+    {
+      "window_id": "SWIN-C756DB270F3E54B1704C",
+      "task": "scene-scout/agent-files/tasks/SWIN-C756DB270F3E54B1704C--c886ac1dd1b8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C756DB270F3E54B1704C--c886ac1dd1b8.json"
+    },
+    {
+      "window_id": "SWIN-C77B4C9551EAE063704A",
+      "task": "scene-scout/agent-files/tasks/SWIN-C77B4C9551EAE063704A--5f01136ee354.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C77B4C9551EAE063704A--5f01136ee354.json"
+    },
+    {
+      "window_id": "SWIN-C77D4DB28310DBFFFD59",
+      "task": "scene-scout/agent-files/tasks/SWIN-C77D4DB28310DBFFFD59--5030917904d1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C77D4DB28310DBFFFD59--5030917904d1.json"
+    },
+    {
+      "window_id": "SWIN-C7CEA464768974555F77",
+      "task": "scene-scout/agent-files/tasks/SWIN-C7CEA464768974555F77--2c1cd5e8afbb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C7CEA464768974555F77--2c1cd5e8afbb.json"
+    },
+    {
+      "window_id": "SWIN-C7F5BEBE41E3B593A672",
+      "task": "scene-scout/agent-files/tasks/SWIN-C7F5BEBE41E3B593A672--8f42db58ba7d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C7F5BEBE41E3B593A672--8f42db58ba7d.json"
+    },
+    {
+      "window_id": "SWIN-C81BC13FAD73B7F6F17B",
+      "task": "scene-scout/agent-files/tasks/SWIN-C81BC13FAD73B7F6F17B--6dbdb12486eb.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C81BC13FAD73B7F6F17B--6dbdb12486eb.json"
+    },
+    {
+      "window_id": "SWIN-C8246CC9E7204DBC0196",
+      "task": "scene-scout/agent-files/tasks/SWIN-C8246CC9E7204DBC0196--fbfb8c34ea43.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C8246CC9E7204DBC0196--fbfb8c34ea43.json"
+    },
+    {
+      "window_id": "SWIN-C886E52576946F2E2DEF",
+      "task": "scene-scout/agent-files/tasks/SWIN-C886E52576946F2E2DEF--91724a64f09b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C886E52576946F2E2DEF--91724a64f09b.json"
+    },
+    {
+      "window_id": "SWIN-C8CD25203A888A9C23C5",
+      "task": "scene-scout/agent-files/tasks/SWIN-C8CD25203A888A9C23C5--98c7457ebfd8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C8CD25203A888A9C23C5--98c7457ebfd8.json"
+    },
+    {
+      "window_id": "SWIN-C8CE9D3294AD82DCE583",
+      "task": "scene-scout/agent-files/tasks/SWIN-C8CE9D3294AD82DCE583--2deebdc1a0ca.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C8CE9D3294AD82DCE583--2deebdc1a0ca.json"
+    },
+    {
+      "window_id": "SWIN-C8F3EE5CCAF769466E97",
+      "task": "scene-scout/agent-files/tasks/SWIN-C8F3EE5CCAF769466E97--28811d6e2bf9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C8F3EE5CCAF769466E97--28811d6e2bf9.json"
+    },
+    {
+      "window_id": "SWIN-C93BF97A65D96118033F",
+      "task": "scene-scout/agent-files/tasks/SWIN-C93BF97A65D96118033F--22218bc70ad8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C93BF97A65D96118033F--22218bc70ad8.json"
+    },
+    {
+      "window_id": "SWIN-C96BDB6E14FC278FA591",
+      "task": "scene-scout/agent-files/tasks/SWIN-C96BDB6E14FC278FA591--091c9914f21e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C96BDB6E14FC278FA591--091c9914f21e.json"
+    },
+    {
+      "window_id": "SWIN-C98C4C2859D1CBCBA887",
+      "task": "scene-scout/agent-files/tasks/SWIN-C98C4C2859D1CBCBA887--320132e9673b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C98C4C2859D1CBCBA887--320132e9673b.json"
+    },
+    {
+      "window_id": "SWIN-C9C6C6F96557D237AD2F",
+      "task": "scene-scout/agent-files/tasks/SWIN-C9C6C6F96557D237AD2F--ae88305eae01.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-C9C6C6F96557D237AD2F--ae88305eae01.json"
+    },
+    {
+      "window_id": "SWIN-CA4C916CAB0835204030",
+      "task": "scene-scout/agent-files/tasks/SWIN-CA4C916CAB0835204030--6d35614790ed.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CA4C916CAB0835204030--6d35614790ed.json"
+    },
+    {
+      "window_id": "SWIN-CAB82E2DC1AD8E884100",
+      "task": "scene-scout/agent-files/tasks/SWIN-CAB82E2DC1AD8E884100--b28e187c8b04.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CAB82E2DC1AD8E884100--b28e187c8b04.json"
+    },
+    {
+      "window_id": "SWIN-CB4264CEF46ABA1EF045",
+      "task": "scene-scout/agent-files/tasks/SWIN-CB4264CEF46ABA1EF045--c60b9f1fa35d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CB4264CEF46ABA1EF045--c60b9f1fa35d.json"
+    },
+    {
+      "window_id": "SWIN-CBA02905678142F79BE4",
+      "task": "scene-scout/agent-files/tasks/SWIN-CBA02905678142F79BE4--5de44dbb6c8a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CBA02905678142F79BE4--5de44dbb6c8a.json"
+    },
+    {
+      "window_id": "SWIN-CC30C13D802BAE508138",
+      "task": "scene-scout/agent-files/tasks/SWIN-CC30C13D802BAE508138--5fc15931fb52.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CC30C13D802BAE508138--5fc15931fb52.json"
+    },
+    {
+      "window_id": "SWIN-CC5B690E68987B6EFC1A",
+      "task": "scene-scout/agent-files/tasks/SWIN-CC5B690E68987B6EFC1A--ef8267d23e4f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CC5B690E68987B6EFC1A--ef8267d23e4f.json"
+    },
+    {
+      "window_id": "SWIN-CC7FCA5A593404BC6947",
+      "task": "scene-scout/agent-files/tasks/SWIN-CC7FCA5A593404BC6947--b15e6db3cec2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CC7FCA5A593404BC6947--b15e6db3cec2.json"
+    },
+    {
+      "window_id": "SWIN-CC9DEFBA64DF8781E63F",
+      "task": "scene-scout/agent-files/tasks/SWIN-CC9DEFBA64DF8781E63F--c7f53d450587.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CC9DEFBA64DF8781E63F--c7f53d450587.json"
+    },
+    {
+      "window_id": "SWIN-CCD55E51CC06E80CB497",
+      "task": "scene-scout/agent-files/tasks/SWIN-CCD55E51CC06E80CB497--13ea2c220986.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CCD55E51CC06E80CB497--13ea2c220986.json"
+    },
+    {
+      "window_id": "SWIN-CD34E3DD0FC46924B28F",
+      "task": "scene-scout/agent-files/tasks/SWIN-CD34E3DD0FC46924B28F--3142055c7452.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CD34E3DD0FC46924B28F--3142055c7452.json"
+    },
+    {
+      "window_id": "SWIN-CF4B0C075BEF64890BA6",
+      "task": "scene-scout/agent-files/tasks/SWIN-CF4B0C075BEF64890BA6--b7f1c7b4538b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CF4B0C075BEF64890BA6--b7f1c7b4538b.json"
+    },
+    {
+      "window_id": "SWIN-CFD5B4607AEADD6581F3",
+      "task": "scene-scout/agent-files/tasks/SWIN-CFD5B4607AEADD6581F3--09d4bc6b04a8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CFD5B4607AEADD6581F3--09d4bc6b04a8.json"
+    },
+    {
+      "window_id": "SWIN-CFFC6B763DD3A4A82B34",
+      "task": "scene-scout/agent-files/tasks/SWIN-CFFC6B763DD3A4A82B34--973e54a1fc7a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-CFFC6B763DD3A4A82B34--973e54a1fc7a.json"
+    },
+    {
+      "window_id": "SWIN-D0B8591D9420C751EA3B",
+      "task": "scene-scout/agent-files/tasks/SWIN-D0B8591D9420C751EA3B--100cd1b3b73c.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D0B8591D9420C751EA3B--100cd1b3b73c.json"
+    },
+    {
+      "window_id": "SWIN-D17F837DBC24A9BA8573",
+      "task": "scene-scout/agent-files/tasks/SWIN-D17F837DBC24A9BA8573--a2453145187b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D17F837DBC24A9BA8573--a2453145187b.json"
+    },
+    {
+      "window_id": "SWIN-D1DE7B9E701DCED37CA8",
+      "task": "scene-scout/agent-files/tasks/SWIN-D1DE7B9E701DCED37CA8--824a516de3e4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D1DE7B9E701DCED37CA8--824a516de3e4.json"
+    },
+    {
+      "window_id": "SWIN-D1F63F633D0C646FD9C4",
+      "task": "scene-scout/agent-files/tasks/SWIN-D1F63F633D0C646FD9C4--3d33b8d9f88a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D1F63F633D0C646FD9C4--3d33b8d9f88a.json"
+    },
+    {
+      "window_id": "SWIN-D322DD3E40104057C88B",
+      "task": "scene-scout/agent-files/tasks/SWIN-D322DD3E40104057C88B--6183a1c0afac.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D322DD3E40104057C88B--6183a1c0afac.json"
+    },
+    {
+      "window_id": "SWIN-D327405C6315547E8CE0",
+      "task": "scene-scout/agent-files/tasks/SWIN-D327405C6315547E8CE0--9babc70a5fe0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D327405C6315547E8CE0--9babc70a5fe0.json"
+    },
+    {
+      "window_id": "SWIN-D3C11D37946E6A9627EB",
+      "task": "scene-scout/agent-files/tasks/SWIN-D3C11D37946E6A9627EB--5e6359e59a92.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D3C11D37946E6A9627EB--5e6359e59a92.json"
+    },
+    {
+      "window_id": "SWIN-D4018A6DEED59F39720E",
+      "task": "scene-scout/agent-files/tasks/SWIN-D4018A6DEED59F39720E--7dbb151f5af0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D4018A6DEED59F39720E--7dbb151f5af0.json"
+    },
+    {
+      "window_id": "SWIN-D474CD4024866A1028FF",
+      "task": "scene-scout/agent-files/tasks/SWIN-D474CD4024866A1028FF--00a3d14a1658.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D474CD4024866A1028FF--00a3d14a1658.json"
+    },
+    {
+      "window_id": "SWIN-D4BF9E07B49CBE85BD2D",
+      "task": "scene-scout/agent-files/tasks/SWIN-D4BF9E07B49CBE85BD2D--1d9c06015f5d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D4BF9E07B49CBE85BD2D--1d9c06015f5d.json"
+    },
+    {
+      "window_id": "SWIN-D5F7DC64D973BB3FB739",
+      "task": "scene-scout/agent-files/tasks/SWIN-D5F7DC64D973BB3FB739--27cf31050c64.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D5F7DC64D973BB3FB739--27cf31050c64.json"
+    },
+    {
+      "window_id": "SWIN-D63F7CFE4A2BF455E0B4",
+      "task": "scene-scout/agent-files/tasks/SWIN-D63F7CFE4A2BF455E0B4--cdce38fad59a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D63F7CFE4A2BF455E0B4--cdce38fad59a.json"
+    },
+    {
+      "window_id": "SWIN-D64B1DFA50EF3ED8ECEA",
+      "task": "scene-scout/agent-files/tasks/SWIN-D64B1DFA50EF3ED8ECEA--75001c78c4cd.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D64B1DFA50EF3ED8ECEA--75001c78c4cd.json"
+    },
+    {
+      "window_id": "SWIN-D72CEFE275A76C624F7D",
+      "task": "scene-scout/agent-files/tasks/SWIN-D72CEFE275A76C624F7D--fb38efd9ad16.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D72CEFE275A76C624F7D--fb38efd9ad16.json"
+    },
+    {
+      "window_id": "SWIN-D7884157584DB6A30E59",
+      "task": "scene-scout/agent-files/tasks/SWIN-D7884157584DB6A30E59--2fa0391c4642.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D7884157584DB6A30E59--2fa0391c4642.json"
+    },
+    {
+      "window_id": "SWIN-D7FCD903F40F284E2DD3",
+      "task": "scene-scout/agent-files/tasks/SWIN-D7FCD903F40F284E2DD3--49d0c67991bd.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D7FCD903F40F284E2DD3--49d0c67991bd.json"
+    },
+    {
+      "window_id": "SWIN-D8603C677F727BAFDF24",
+      "task": "scene-scout/agent-files/tasks/SWIN-D8603C677F727BAFDF24--2ce84e11e6be.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D8603C677F727BAFDF24--2ce84e11e6be.json"
+    },
+    {
+      "window_id": "SWIN-D8A5E3550293A72F949E",
+      "task": "scene-scout/agent-files/tasks/SWIN-D8A5E3550293A72F949E--170e76a06a38.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D8A5E3550293A72F949E--170e76a06a38.json"
+    },
+    {
+      "window_id": "SWIN-D8E6E5684AD06E17B908",
+      "task": "scene-scout/agent-files/tasks/SWIN-D8E6E5684AD06E17B908--c5fca09b9272.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-D8E6E5684AD06E17B908--c5fca09b9272.json"
+    },
+    {
+      "window_id": "SWIN-DA6A431271BE6FEDAFF4",
+      "task": "scene-scout/agent-files/tasks/SWIN-DA6A431271BE6FEDAFF4--1ea8e457fbb9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DA6A431271BE6FEDAFF4--1ea8e457fbb9.json"
+    },
+    {
+      "window_id": "SWIN-DA815617F62912EF3140",
+      "task": "scene-scout/agent-files/tasks/SWIN-DA815617F62912EF3140--eefeaa25c4b4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DA815617F62912EF3140--eefeaa25c4b4.json"
+    },
+    {
+      "window_id": "SWIN-DA912305230AD6D448B4",
+      "task": "scene-scout/agent-files/tasks/SWIN-DA912305230AD6D448B4--57607497fb66.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DA912305230AD6D448B4--57607497fb66.json"
+    },
+    {
+      "window_id": "SWIN-DAB5830CFCA4A0B5EA11",
+      "task": "scene-scout/agent-files/tasks/SWIN-DAB5830CFCA4A0B5EA11--cba118c6c04f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DAB5830CFCA4A0B5EA11--cba118c6c04f.json"
+    },
+    {
+      "window_id": "SWIN-DAFCE0E3DFCEA922247B",
+      "task": "scene-scout/agent-files/tasks/SWIN-DAFCE0E3DFCEA922247B--0d7239ee1031.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DAFCE0E3DFCEA922247B--0d7239ee1031.json"
+    },
+    {
+      "window_id": "SWIN-DB298E88328F889FD982",
+      "task": "scene-scout/agent-files/tasks/SWIN-DB298E88328F889FD982--e9a729c016a2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DB298E88328F889FD982--e9a729c016a2.json"
+    },
+    {
+      "window_id": "SWIN-DB53D34625C1BA97F68E",
+      "task": "scene-scout/agent-files/tasks/SWIN-DB53D34625C1BA97F68E--d93c21757185.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DB53D34625C1BA97F68E--d93c21757185.json"
+    },
+    {
+      "window_id": "SWIN-DBB94D46FD69D4D78492",
+      "task": "scene-scout/agent-files/tasks/SWIN-DBB94D46FD69D4D78492--4fdcccb52cc6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DBB94D46FD69D4D78492--4fdcccb52cc6.json"
+    },
+    {
+      "window_id": "SWIN-DC82FA66B5BF8741919B",
+      "task": "scene-scout/agent-files/tasks/SWIN-DC82FA66B5BF8741919B--731a681ea123.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DC82FA66B5BF8741919B--731a681ea123.json"
+    },
+    {
+      "window_id": "SWIN-DD3A999E7DD4A18B26DA",
+      "task": "scene-scout/agent-files/tasks/SWIN-DD3A999E7DD4A18B26DA--320f0a796462.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DD3A999E7DD4A18B26DA--320f0a796462.json"
+    },
+    {
+      "window_id": "SWIN-DDB6934DE0D89D6A17FC",
+      "task": "scene-scout/agent-files/tasks/SWIN-DDB6934DE0D89D6A17FC--f170e3927c5f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DDB6934DE0D89D6A17FC--f170e3927c5f.json"
+    },
+    {
+      "window_id": "SWIN-DDFC693A11173924BBF8",
+      "task": "scene-scout/agent-files/tasks/SWIN-DDFC693A11173924BBF8--715e0ccdf586.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DDFC693A11173924BBF8--715e0ccdf586.json"
+    },
+    {
+      "window_id": "SWIN-DE32180BFB9313A6D656",
+      "task": "scene-scout/agent-files/tasks/SWIN-DE32180BFB9313A6D656--bc1915aa24cd.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DE32180BFB9313A6D656--bc1915aa24cd.json"
+    },
+    {
+      "window_id": "SWIN-DF44DFE0160EC6B2CA8F",
+      "task": "scene-scout/agent-files/tasks/SWIN-DF44DFE0160EC6B2CA8F--39ee4d33a1e6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-DF44DFE0160EC6B2CA8F--39ee4d33a1e6.json"
+    },
+    {
+      "window_id": "SWIN-E00E02CEE16206D8E957",
+      "task": "scene-scout/agent-files/tasks/SWIN-E00E02CEE16206D8E957--968ac35cd9bf.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E00E02CEE16206D8E957--968ac35cd9bf.json"
+    },
+    {
+      "window_id": "SWIN-E0E3FD4C13B3477ED600",
+      "task": "scene-scout/agent-files/tasks/SWIN-E0E3FD4C13B3477ED600--bab25efa4622.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E0E3FD4C13B3477ED600--bab25efa4622.json"
+    },
+    {
+      "window_id": "SWIN-E1BFB3837DD9447C2E23",
+      "task": "scene-scout/agent-files/tasks/SWIN-E1BFB3837DD9447C2E23--2babe4e8ac7b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E1BFB3837DD9447C2E23--2babe4e8ac7b.json"
+    },
+    {
+      "window_id": "SWIN-E1D5E5417A9EBDAB45FD",
+      "task": "scene-scout/agent-files/tasks/SWIN-E1D5E5417A9EBDAB45FD--7ed931190925.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E1D5E5417A9EBDAB45FD--7ed931190925.json"
+    },
+    {
+      "window_id": "SWIN-E21183A9F02DDE0F9548",
+      "task": "scene-scout/agent-files/tasks/SWIN-E21183A9F02DDE0F9548--23d1c1d2beea.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E21183A9F02DDE0F9548--23d1c1d2beea.json"
+    },
+    {
+      "window_id": "SWIN-E21D0DD6D0E4D48A6B09",
+      "task": "scene-scout/agent-files/tasks/SWIN-E21D0DD6D0E4D48A6B09--35ac58da3568.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E21D0DD6D0E4D48A6B09--35ac58da3568.json"
+    },
+    {
+      "window_id": "SWIN-E22B57839F34F09A7BC8",
+      "task": "scene-scout/agent-files/tasks/SWIN-E22B57839F34F09A7BC8--765a7ef7cabf.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E22B57839F34F09A7BC8--765a7ef7cabf.json"
+    },
+    {
+      "window_id": "SWIN-E2E0A2760A07DC998EC1",
+      "task": "scene-scout/agent-files/tasks/SWIN-E2E0A2760A07DC998EC1--3470eb5d313b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E2E0A2760A07DC998EC1--3470eb5d313b.json"
+    },
+    {
+      "window_id": "SWIN-E4F0F49EBA63FDE495A6",
+      "task": "scene-scout/agent-files/tasks/SWIN-E4F0F49EBA63FDE495A6--944e7083f1e0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E4F0F49EBA63FDE495A6--944e7083f1e0.json"
+    },
+    {
+      "window_id": "SWIN-E590FFE22C036F074C8F",
+      "task": "scene-scout/agent-files/tasks/SWIN-E590FFE22C036F074C8F--7bbf3ec8a591.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E590FFE22C036F074C8F--7bbf3ec8a591.json"
+    },
+    {
+      "window_id": "SWIN-E59CC08BE60BB0DEAECF",
+      "task": "scene-scout/agent-files/tasks/SWIN-E59CC08BE60BB0DEAECF--8ac214469cf3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E59CC08BE60BB0DEAECF--8ac214469cf3.json"
+    },
+    {
+      "window_id": "SWIN-E5B0566A854F7F79909A",
+      "task": "scene-scout/agent-files/tasks/SWIN-E5B0566A854F7F79909A--8cee63e66527.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E5B0566A854F7F79909A--8cee63e66527.json"
+    },
+    {
+      "window_id": "SWIN-E5F2E8CC00A6AE39AD78",
+      "task": "scene-scout/agent-files/tasks/SWIN-E5F2E8CC00A6AE39AD78--26c09d278994.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E5F2E8CC00A6AE39AD78--26c09d278994.json"
+    },
+    {
+      "window_id": "SWIN-E6B597F3AC3AAE2B9282",
+      "task": "scene-scout/agent-files/tasks/SWIN-E6B597F3AC3AAE2B9282--61f0401818a6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E6B597F3AC3AAE2B9282--61f0401818a6.json"
+    },
+    {
+      "window_id": "SWIN-E6DB2F0978DB39F31C6D",
+      "task": "scene-scout/agent-files/tasks/SWIN-E6DB2F0978DB39F31C6D--b290db0fe998.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E6DB2F0978DB39F31C6D--b290db0fe998.json"
+    },
+    {
+      "window_id": "SWIN-E7459D42B618D4E1AAF4",
+      "task": "scene-scout/agent-files/tasks/SWIN-E7459D42B618D4E1AAF4--161ef8b485a0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E7459D42B618D4E1AAF4--161ef8b485a0.json"
+    },
+    {
+      "window_id": "SWIN-E761064BF422EA71C35E",
+      "task": "scene-scout/agent-files/tasks/SWIN-E761064BF422EA71C35E--3a99a4dbc050.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E761064BF422EA71C35E--3a99a4dbc050.json"
+    },
+    {
+      "window_id": "SWIN-E7A6C34EB1EA04D54663",
+      "task": "scene-scout/agent-files/tasks/SWIN-E7A6C34EB1EA04D54663--c741a4df212f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E7A6C34EB1EA04D54663--c741a4df212f.json"
+    },
+    {
+      "window_id": "SWIN-E7F3CA2B3255CE462C18",
+      "task": "scene-scout/agent-files/tasks/SWIN-E7F3CA2B3255CE462C18--4fb46cb88e36.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E7F3CA2B3255CE462C18--4fb46cb88e36.json"
+    },
+    {
+      "window_id": "SWIN-E8710348ADCCDB19E71C",
+      "task": "scene-scout/agent-files/tasks/SWIN-E8710348ADCCDB19E71C--dbef9dbc6d21.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E8710348ADCCDB19E71C--dbef9dbc6d21.json"
+    },
+    {
+      "window_id": "SWIN-E903CFEE6C8643DF46F8",
+      "task": "scene-scout/agent-files/tasks/SWIN-E903CFEE6C8643DF46F8--0cbd858accbf.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E903CFEE6C8643DF46F8--0cbd858accbf.json"
+    },
+    {
+      "window_id": "SWIN-E9667028F93681DAFAA6",
+      "task": "scene-scout/agent-files/tasks/SWIN-E9667028F93681DAFAA6--0e5cd241ad6e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-E9667028F93681DAFAA6--0e5cd241ad6e.json"
+    },
+    {
+      "window_id": "SWIN-EA2BF3440272AA8D09C5",
+      "task": "scene-scout/agent-files/tasks/SWIN-EA2BF3440272AA8D09C5--70be4f7fb993.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EA2BF3440272AA8D09C5--70be4f7fb993.json"
+    },
+    {
+      "window_id": "SWIN-EA2E7D881E5E5DF9BAFC",
+      "task": "scene-scout/agent-files/tasks/SWIN-EA2E7D881E5E5DF9BAFC--44cde37a7e33.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EA2E7D881E5E5DF9BAFC--44cde37a7e33.json"
+    },
+    {
+      "window_id": "SWIN-EAE5FE43971951A08503",
+      "task": "scene-scout/agent-files/tasks/SWIN-EAE5FE43971951A08503--caeacf676660.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EAE5FE43971951A08503--caeacf676660.json"
+    },
+    {
+      "window_id": "SWIN-EBA027DD0EB12F6F511B",
+      "task": "scene-scout/agent-files/tasks/SWIN-EBA027DD0EB12F6F511B--c18c8ddfdb8f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EBA027DD0EB12F6F511B--c18c8ddfdb8f.json"
+    },
+    {
+      "window_id": "SWIN-EC002FB34A825CCA19F8",
+      "task": "scene-scout/agent-files/tasks/SWIN-EC002FB34A825CCA19F8--802de7b2df48.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EC002FB34A825CCA19F8--802de7b2df48.json"
+    },
+    {
+      "window_id": "SWIN-ED7BDEE4568D16E6D3A5",
+      "task": "scene-scout/agent-files/tasks/SWIN-ED7BDEE4568D16E6D3A5--e509bbfd19e2.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-ED7BDEE4568D16E6D3A5--e509bbfd19e2.json"
+    },
+    {
+      "window_id": "SWIN-EDA179A4EA209E5EE9F3",
+      "task": "scene-scout/agent-files/tasks/SWIN-EDA179A4EA209E5EE9F3--55168e281c93.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EDA179A4EA209E5EE9F3--55168e281c93.json"
+    },
+    {
+      "window_id": "SWIN-EE558E6E41A09B4F2094",
+      "task": "scene-scout/agent-files/tasks/SWIN-EE558E6E41A09B4F2094--e724dad56ee0.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EE558E6E41A09B4F2094--e724dad56ee0.json"
+    },
+    {
+      "window_id": "SWIN-EE87176ADFBEC7D133A6",
+      "task": "scene-scout/agent-files/tasks/SWIN-EE87176ADFBEC7D133A6--dfd7ae01b9d6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EE87176ADFBEC7D133A6--dfd7ae01b9d6.json"
+    },
+    {
+      "window_id": "SWIN-EEDC1CB66D3B3EF71EEE",
+      "task": "scene-scout/agent-files/tasks/SWIN-EEDC1CB66D3B3EF71EEE--6a10c0ceb471.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EEDC1CB66D3B3EF71EEE--6a10c0ceb471.json"
+    },
+    {
+      "window_id": "SWIN-EF652D27F652E2AFBD7E",
+      "task": "scene-scout/agent-files/tasks/SWIN-EF652D27F652E2AFBD7E--25b447ee7474.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EF652D27F652E2AFBD7E--25b447ee7474.json"
+    },
+    {
+      "window_id": "SWIN-EFDCE3897175DA4B14C8",
+      "task": "scene-scout/agent-files/tasks/SWIN-EFDCE3897175DA4B14C8--8a9171017126.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-EFDCE3897175DA4B14C8--8a9171017126.json"
+    },
+    {
+      "window_id": "SWIN-F01A6F006E8F3AD0F07D",
+      "task": "scene-scout/agent-files/tasks/SWIN-F01A6F006E8F3AD0F07D--61560973056e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F01A6F006E8F3AD0F07D--61560973056e.json"
+    },
+    {
+      "window_id": "SWIN-F06712A0EAF725F2C59D",
+      "task": "scene-scout/agent-files/tasks/SWIN-F06712A0EAF725F2C59D--9307682ad6b5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F06712A0EAF725F2C59D--9307682ad6b5.json"
+    },
+    {
+      "window_id": "SWIN-F09E5CD3F578F7446EE0",
+      "task": "scene-scout/agent-files/tasks/SWIN-F09E5CD3F578F7446EE0--e8c6023a90f4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F09E5CD3F578F7446EE0--e8c6023a90f4.json"
+    },
+    {
+      "window_id": "SWIN-F0C53465BE6847120B41",
+      "task": "scene-scout/agent-files/tasks/SWIN-F0C53465BE6847120B41--29dccb524469.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F0C53465BE6847120B41--29dccb524469.json"
+    },
+    {
+      "window_id": "SWIN-F12936B2DD67092AFED4",
+      "task": "scene-scout/agent-files/tasks/SWIN-F12936B2DD67092AFED4--1cafd792ff62.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F12936B2DD67092AFED4--1cafd792ff62.json"
+    },
+    {
+      "window_id": "SWIN-F1AB0054875830C65D31",
+      "task": "scene-scout/agent-files/tasks/SWIN-F1AB0054875830C65D31--ee106b308c58.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F1AB0054875830C65D31--ee106b308c58.json"
+    },
+    {
+      "window_id": "SWIN-F2A97F9AED084A4FEFB9",
+      "task": "scene-scout/agent-files/tasks/SWIN-F2A97F9AED084A4FEFB9--29fb94b29e6b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F2A97F9AED084A4FEFB9--29fb94b29e6b.json"
+    },
+    {
+      "window_id": "SWIN-F2B7673FDB3DFA3E60E6",
+      "task": "scene-scout/agent-files/tasks/SWIN-F2B7673FDB3DFA3E60E6--dfc51556a854.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F2B7673FDB3DFA3E60E6--dfc51556a854.json"
+    },
+    {
+      "window_id": "SWIN-F30E3851025329209F67",
+      "task": "scene-scout/agent-files/tasks/SWIN-F30E3851025329209F67--e97a5bbde136.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F30E3851025329209F67--e97a5bbde136.json"
+    },
+    {
+      "window_id": "SWIN-F3D3445A3754AB342669",
+      "task": "scene-scout/agent-files/tasks/SWIN-F3D3445A3754AB342669--6302492be0ba.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F3D3445A3754AB342669--6302492be0ba.json"
+    },
+    {
+      "window_id": "SWIN-F418497906236D6F40EF",
+      "task": "scene-scout/agent-files/tasks/SWIN-F418497906236D6F40EF--a3c0b52d2dd3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F418497906236D6F40EF--a3c0b52d2dd3.json"
+    },
+    {
+      "window_id": "SWIN-F41CD3217788FC03085C",
+      "task": "scene-scout/agent-files/tasks/SWIN-F41CD3217788FC03085C--c64db6afdf85.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F41CD3217788FC03085C--c64db6afdf85.json"
+    },
+    {
+      "window_id": "SWIN-F481AD757FD7D408C693",
+      "task": "scene-scout/agent-files/tasks/SWIN-F481AD757FD7D408C693--2331cd36dbbe.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F481AD757FD7D408C693--2331cd36dbbe.json"
+    },
+    {
+      "window_id": "SWIN-F4DFCD1E183584480B6F",
+      "task": "scene-scout/agent-files/tasks/SWIN-F4DFCD1E183584480B6F--8001ca6729b9.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F4DFCD1E183584480B6F--8001ca6729b9.json"
+    },
+    {
+      "window_id": "SWIN-F51E2D9430601ADE0734",
+      "task": "scene-scout/agent-files/tasks/SWIN-F51E2D9430601ADE0734--95b0699b387a.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F51E2D9430601ADE0734--95b0699b387a.json"
+    },
+    {
+      "window_id": "SWIN-F54F37E1B672758B6565",
+      "task": "scene-scout/agent-files/tasks/SWIN-F54F37E1B672758B6565--6e7a8d636416.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F54F37E1B672758B6565--6e7a8d636416.json"
+    },
+    {
+      "window_id": "SWIN-F5627E0BFB69CE155B1D",
+      "task": "scene-scout/agent-files/tasks/SWIN-F5627E0BFB69CE155B1D--0e52bf8d2ca6.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F5627E0BFB69CE155B1D--0e52bf8d2ca6.json"
+    },
+    {
+      "window_id": "SWIN-F5A38C1B5ABB5889025C",
+      "task": "scene-scout/agent-files/tasks/SWIN-F5A38C1B5ABB5889025C--f66c3151fb01.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F5A38C1B5ABB5889025C--f66c3151fb01.json"
+    },
+    {
+      "window_id": "SWIN-F5E5ADB1C3E238461BB2",
+      "task": "scene-scout/agent-files/tasks/SWIN-F5E5ADB1C3E238461BB2--dc1e146bd101.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F5E5ADB1C3E238461BB2--dc1e146bd101.json"
+    },
+    {
+      "window_id": "SWIN-F6046AAEE1748EB94C68",
+      "task": "scene-scout/agent-files/tasks/SWIN-F6046AAEE1748EB94C68--b7bcecaa5f23.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F6046AAEE1748EB94C68--b7bcecaa5f23.json"
+    },
+    {
+      "window_id": "SWIN-F63408F64049792DE57C",
+      "task": "scene-scout/agent-files/tasks/SWIN-F63408F64049792DE57C--d8cdad84b510.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F63408F64049792DE57C--d8cdad84b510.json"
+    },
+    {
+      "window_id": "SWIN-F6C6FD26BB9EA8F6FFF0",
+      "task": "scene-scout/agent-files/tasks/SWIN-F6C6FD26BB9EA8F6FFF0--559c9afe2bd5.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F6C6FD26BB9EA8F6FFF0--559c9afe2bd5.json"
+    },
+    {
+      "window_id": "SWIN-F6FBED4A99813F39FA1B",
+      "task": "scene-scout/agent-files/tasks/SWIN-F6FBED4A99813F39FA1B--2cf94c6341d8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F6FBED4A99813F39FA1B--2cf94c6341d8.json"
+    },
+    {
+      "window_id": "SWIN-F716810FBCD7DE8988E6",
+      "task": "scene-scout/agent-files/tasks/SWIN-F716810FBCD7DE8988E6--32c8d19121f1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F716810FBCD7DE8988E6--32c8d19121f1.json"
+    },
+    {
+      "window_id": "SWIN-F78B6EBBC17CB2A93F95",
+      "task": "scene-scout/agent-files/tasks/SWIN-F78B6EBBC17CB2A93F95--b5d357ac4de4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F78B6EBBC17CB2A93F95--b5d357ac4de4.json"
+    },
+    {
+      "window_id": "SWIN-F78C1294DB025D8C748E",
+      "task": "scene-scout/agent-files/tasks/SWIN-F78C1294DB025D8C748E--497dea184b43.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F78C1294DB025D8C748E--497dea184b43.json"
+    },
+    {
+      "window_id": "SWIN-F8076197D474793C2A14",
+      "task": "scene-scout/agent-files/tasks/SWIN-F8076197D474793C2A14--369fec68fe7f.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F8076197D474793C2A14--369fec68fe7f.json"
+    },
+    {
+      "window_id": "SWIN-F80B758285C55485E813",
+      "task": "scene-scout/agent-files/tasks/SWIN-F80B758285C55485E813--7f8574ebf239.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F80B758285C55485E813--7f8574ebf239.json"
+    },
+    {
+      "window_id": "SWIN-F821B8969F619E1A6983",
+      "task": "scene-scout/agent-files/tasks/SWIN-F821B8969F619E1A6983--a5553c921777.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F821B8969F619E1A6983--a5553c921777.json"
+    },
+    {
+      "window_id": "SWIN-F82BDE8C1E282FAC5A89",
+      "task": "scene-scout/agent-files/tasks/SWIN-F82BDE8C1E282FAC5A89--2cf07dab5782.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F82BDE8C1E282FAC5A89--2cf07dab5782.json"
+    },
+    {
+      "window_id": "SWIN-F86ADB07BED652C2FBC3",
+      "task": "scene-scout/agent-files/tasks/SWIN-F86ADB07BED652C2FBC3--b7445889f569.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F86ADB07BED652C2FBC3--b7445889f569.json"
+    },
+    {
+      "window_id": "SWIN-F940187602076D076E79",
+      "task": "scene-scout/agent-files/tasks/SWIN-F940187602076D076E79--7605a89dcc12.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F940187602076D076E79--7605a89dcc12.json"
+    },
+    {
+      "window_id": "SWIN-F9437E20C90D5BCB8F71",
+      "task": "scene-scout/agent-files/tasks/SWIN-F9437E20C90D5BCB8F71--a07ffdd59b14.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F9437E20C90D5BCB8F71--a07ffdd59b14.json"
+    },
+    {
+      "window_id": "SWIN-F97150DC29DABC4E10D3",
+      "task": "scene-scout/agent-files/tasks/SWIN-F97150DC29DABC4E10D3--0f60c42bdae4.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F97150DC29DABC4E10D3--0f60c42bdae4.json"
+    },
+    {
+      "window_id": "SWIN-F9E62A6FE76FCD866657",
+      "task": "scene-scout/agent-files/tasks/SWIN-F9E62A6FE76FCD866657--07fe27476227.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-F9E62A6FE76FCD866657--07fe27476227.json"
+    },
+    {
+      "window_id": "SWIN-FA6E4C3272CD5421C549",
+      "task": "scene-scout/agent-files/tasks/SWIN-FA6E4C3272CD5421C549--b129113da759.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FA6E4C3272CD5421C549--b129113da759.json"
+    },
+    {
+      "window_id": "SWIN-FA866C6EEB2BEE2A2867",
+      "task": "scene-scout/agent-files/tasks/SWIN-FA866C6EEB2BEE2A2867--c1e1760925ae.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FA866C6EEB2BEE2A2867--c1e1760925ae.json"
+    },
+    {
+      "window_id": "SWIN-FB38A37A0566A6E88AA2",
+      "task": "scene-scout/agent-files/tasks/SWIN-FB38A37A0566A6E88AA2--52a831d745c1.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FB38A37A0566A6E88AA2--52a831d745c1.json"
+    },
+    {
+      "window_id": "SWIN-FBA3A6D911FEC43CA03C",
+      "task": "scene-scout/agent-files/tasks/SWIN-FBA3A6D911FEC43CA03C--34fe750a607d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FBA3A6D911FEC43CA03C--34fe750a607d.json"
+    },
+    {
+      "window_id": "SWIN-FBC545464B72C341EBB2",
+      "task": "scene-scout/agent-files/tasks/SWIN-FBC545464B72C341EBB2--504a8be368a8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FBC545464B72C341EBB2--504a8be368a8.json"
+    },
+    {
+      "window_id": "SWIN-FC2BF7A72258223CACE0",
+      "task": "scene-scout/agent-files/tasks/SWIN-FC2BF7A72258223CACE0--ebf7fda0a196.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FC2BF7A72258223CACE0--ebf7fda0a196.json"
+    },
+    {
+      "window_id": "SWIN-FC5F774BB5A159955761",
+      "task": "scene-scout/agent-files/tasks/SWIN-FC5F774BB5A159955761--b720d2c92c48.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FC5F774BB5A159955761--b720d2c92c48.json"
+    },
+    {
+      "window_id": "SWIN-FC7148B829C5BA5BB57B",
+      "task": "scene-scout/agent-files/tasks/SWIN-FC7148B829C5BA5BB57B--d391aad3203e.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FC7148B829C5BA5BB57B--d391aad3203e.json"
+    },
+    {
+      "window_id": "SWIN-FC8DA902AF44E8415823",
+      "task": "scene-scout/agent-files/tasks/SWIN-FC8DA902AF44E8415823--072cb73aa691.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FC8DA902AF44E8415823--072cb73aa691.json"
+    },
+    {
+      "window_id": "SWIN-FC98118FF1E63742A1D1",
+      "task": "scene-scout/agent-files/tasks/SWIN-FC98118FF1E63742A1D1--e182473cd528.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FC98118FF1E63742A1D1--e182473cd528.json"
+    },
+    {
+      "window_id": "SWIN-FCD68BFE9F36E5FAD6B0",
+      "task": "scene-scout/agent-files/tasks/SWIN-FCD68BFE9F36E5FAD6B0--cbab9a72ed85.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FCD68BFE9F36E5FAD6B0--cbab9a72ed85.json"
+    },
+    {
+      "window_id": "SWIN-FDBE1899DD0FE4A2EBD0",
+      "task": "scene-scout/agent-files/tasks/SWIN-FDBE1899DD0FE4A2EBD0--2ee8cad86ab3.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FDBE1899DD0FE4A2EBD0--2ee8cad86ab3.json"
+    },
+    {
+      "window_id": "SWIN-FDDFF4F5B8B9F15AFBC9",
+      "task": "scene-scout/agent-files/tasks/SWIN-FDDFF4F5B8B9F15AFBC9--2d8f20e7cb82.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FDDFF4F5B8B9F15AFBC9--2d8f20e7cb82.json"
+    },
+    {
+      "window_id": "SWIN-FE063572D204D1199CA1",
+      "task": "scene-scout/agent-files/tasks/SWIN-FE063572D204D1199CA1--8cb7bde8685d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FE063572D204D1199CA1--8cb7bde8685d.json"
+    },
+    {
+      "window_id": "SWIN-FE4D261075E0F0B41DEA",
+      "task": "scene-scout/agent-files/tasks/SWIN-FE4D261075E0F0B41DEA--65e016bfc803.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FE4D261075E0F0B41DEA--65e016bfc803.json"
+    },
+    {
+      "window_id": "SWIN-FE7959D43A2B57DA5297",
+      "task": "scene-scout/agent-files/tasks/SWIN-FE7959D43A2B57DA5297--8a148f54ff53.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FE7959D43A2B57DA5297--8a148f54ff53.json"
+    },
+    {
+      "window_id": "SWIN-FEA863C40BF191B11D21",
+      "task": "scene-scout/agent-files/tasks/SWIN-FEA863C40BF191B11D21--cf4679e2587b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FEA863C40BF191B11D21--cf4679e2587b.json"
+    },
+    {
+      "window_id": "SWIN-FF156C17C2FD72F871A5",
+      "task": "scene-scout/agent-files/tasks/SWIN-FF156C17C2FD72F871A5--915f1b45d812.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FF156C17C2FD72F871A5--915f1b45d812.json"
+    },
+    {
+      "window_id": "SWIN-FF22F0263E2E5F4E5533",
+      "task": "scene-scout/agent-files/tasks/SWIN-FF22F0263E2E5F4E5533--58e920ec63a8.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FF22F0263E2E5F4E5533--58e920ec63a8.json"
+    },
+    {
+      "window_id": "SWIN-FF2BDED8F418AE0032EC",
+      "task": "scene-scout/agent-files/tasks/SWIN-FF2BDED8F418AE0032EC--1fe8d878307b.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FF2BDED8F418AE0032EC--1fe8d878307b.json"
+    },
+    {
+      "window_id": "SWIN-FF6E02AEB6EAE237EF34",
+      "task": "scene-scout/agent-files/tasks/SWIN-FF6E02AEB6EAE237EF34--ed1aef6a991d.json",
+      "answer": "scene-scout/agent-files/answers/SWIN-FF6E02AEB6EAE237EF34--ed1aef6a991d.json"
+    }
+  ]
+}
+EXIT:3
