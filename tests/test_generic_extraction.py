@@ -518,6 +518,16 @@ def test_agent_files_materialize_all_tasks_resume_and_detect_tampering(
             now=NOW,
         )
     assert pending.value.pending_count >= 2
+    first_task = json.loads(pending.value.pending[0].task_path.read_text(encoding="utf-8"))
+    assert first_task["input"]["profile"]["evidence_policy"] == {
+        "by_kind": {
+            "PLACE": {
+                "required_groups": [["/name"]],
+                "exempt_paths": ["/kind"],
+            }
+        }
+    }
+    assert "RFC 6901 JSON Pointer" in first_task["instructions"]
     for item in pending.value.pending:
         item.answer_path.write_text('{"records": []}\n', encoding="utf-8")
 

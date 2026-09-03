@@ -619,6 +619,7 @@ def _task_input(
             "profile_id": profile.profile_id,
             "profile_version": profile.profile_version,
             "extraction_profile_hash": profile.extraction_profile_hash,
+            "evidence_policy": profile.evidence_policy,
         },
         "text_snapshot": {
             "text_snapshot_id": snapshot["text_snapshot_id"],

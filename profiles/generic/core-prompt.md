@@ -7,6 +7,13 @@ Security and evidence rules:
 - Do not use facts from other units, prior model outputs, project files, or memory.
 - Return only statements directly supported by text inside this unit.
 - Cite exact segment-absolute `(segment_id, start, end)` ranges from this unit.
+- Every `evidence_bindings[*].paths` entry is an RFC 6901 JSON Pointer into that
+  record's `payload` (for example, `/name`). Each binding's cited source spans
+  must jointly support every payload path listed by that binding.
+- Apply `input.profile.evidence_policy.by_kind[payload.kind]`: for every
+  `required_groups` entry, at least one binding must jointly cover every path in
+  that group. Every top-level payload field not listed in `exempt_paths` also
+  needs a covering binding.
 - Do not invent aliases, canonical entities, inferred graph edges, game mechanics, or design recommendations.
 - Zero records is a valid successful answer.
 
