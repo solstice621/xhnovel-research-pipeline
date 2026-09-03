@@ -780,6 +780,9 @@ def merge_scene_candidates(
             if any(candidate[field]["status"] == "CONFLICTING" for field in OBSERVATION_FIELDS)
             else "NOT_REQUIRED"
         )
+        # Coalesced source_spans can swallow an exact observation span.
+        # Re-close before identity so validate's exact-key subset check holds.
+        _close_candidate_support_spans(candidate)
         candidate["scene_candidate_id"] = derived_id("SceneCandidate", candidate)
         merged.append(candidate)
     merged.sort(
