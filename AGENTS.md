@@ -86,6 +86,12 @@ Do not infer rights from technical accessibility.
 - Full-text storage must continue to require `may_store_full_text=true`.
 
 Fail closed when rights, identity, or required artifacts are ambiguous.
+Source-quality official or licensed status is different: `edition_status=UNKNOWN`
+means that status is unproven and is eligible when `textual_completeness=COMPLETE`.
+Declare `UNOFFICIAL_COPY` only when unauthorized or infringing status is positively
+established; that combination remains ineligible even if complete. A publisher
+licence is not required. `rights.basis` must still be an explicit non-`UNKNOWN`
+claim such as `FAIR_USE_RESEARCH`.
 
 ### Agent-files is an executor seam, not another pipeline
 
@@ -211,7 +217,8 @@ fail closed on:
 - unknown record kinds or fields where schemas are strict;
 - ambiguous work identity;
 - missing or corrupt CAS artifacts;
-- rights uncertainty;
+- rights uncertainty (`rights.basis=UNKNOWN` or missing storage/model permission);
+- positively declared unauthorized copies (`UNOFFICIAL_COPY`) and incomplete source text;
 - source/Handoff lineage mismatches;
 - task tampering;
 - unsupported executor combinations.
@@ -272,7 +279,7 @@ Do not introduce any of the following as incidental work:
 - a custom multi-agent scheduler or worker registry;
 - a crawler/search engine for Phase 0;
 - browser automation for commercial novel sites;
-- automatic downloading of rights-unknown full text;
+- automatic downloading of full text whose `rights.basis` is `UNKNOWN`;
 - a second evidence database for Phase 0 leads;
 - direct web-lead → `SceneCandidate` promotion;
 - chapter narrowing from free-text hints;
