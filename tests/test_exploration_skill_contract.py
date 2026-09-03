@@ -27,6 +27,7 @@ PHASE0_KINDS = {
     "ResearchLead",
     "HandoffBuildRequest",
     "SourceDeclaration",
+    "OperatorAttestation",
     "EvidenceHandoff",
     "HandoffAttemptEvent",
     "EvidenceHandoffExecutionReceipt",
@@ -209,6 +210,20 @@ def test_exploration_is_host_managed_not_a_new_runtime():
         text = path.read_text(encoding="utf-8").lower()
         assert "scheduler" in text and "worker registry" in text
         assert re.search(r"must not gain|does not manage|do not.+add", text, re.DOTALL)
+
+
+def test_standing_operator_attestation_is_operator_authored_not_agent_written():
+    skill = SKILL.read_text(encoding="utf-8")
+    docs = DOC.read_text(encoding="utf-8")
+    for text in (skill, docs):
+        assert "operator-attestation.json" in text
+        assert "operator_attestation_id" in text
+    step_four = skill.split("5. **Prepare through the product boundary.**", 1)[0]
+    assert "4. **Resolve a source.**" in step_four
+    assert "omit" in step_four.casefold()
+    assert "must not write" in skill.casefold()
+    assert "must not write" in docs.casefold()
+    assert "behavior is unchanged" in docs.casefold() or "fail-closes" in docs.casefold()
 
 
 def test_real_pilot_targets_are_preserved_as_lead_quality_gates():

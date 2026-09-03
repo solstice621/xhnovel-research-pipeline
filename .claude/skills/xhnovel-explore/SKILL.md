@@ -53,10 +53,15 @@ running a new exploration. The frozen trust boundary remains
 3. **Select for diversity.** Deduplicate the explicit Lead set and prefer distinct
    works and interaction families. Do not discard incompatible work/source
    identities merely to force one group.
-4. **Resolve a source.** Admit only a concrete source with an explicit rights basis,
-   storage/model permissions, and Tier A/B source-quality declarations. If no such
-   source is available, retain the Lead as `UNRESOLVED` or `BLOCKED_BY_RIGHTS` and
-   do not download or execute unknown-rights commercial full text.
+4. **Resolve a source.** Admit only a concrete source with storage/model
+   permissions, Tier A/B source-quality declarations, and a non-`UNKNOWN` rights
+   basis. Rights may be supplied inline on the SourceDeclaration, or omitted when a
+   standing `operator-attestation.json` is already at the Phase 0 work root;
+   `prepare-handoff` then auto-fills `rights` and binds `operator_attestation_id`.
+   That attestation must be authored by the operator; the host agent must not write
+   it. If no such source is available, retain the Lead as `UNRESOLVED` or
+   `BLOCKED_BY_RIGHTS` and do not download or execute unknown-rights commercial
+   full text.
 5. **Prepare through the product boundary.** Put the sealed Brief, compatible Leads,
    SourceDeclaration, and `requested_at` into the preparation input, then run:
 
@@ -103,6 +108,8 @@ Do not:
 
 - promote web/search material directly into evidence;
 - infer rights from accessibility or download rights-unknown commercial full text;
+- write `operator-attestation.json` or otherwise attest rights on the operator's
+  behalf;
 - copy Lead prose, character names, URLs, chapter guesses, expected events, or
   location hints into the discovery brief, native tasks, or candidates;
 - create custom windows, prompts, schemas, `SceneCandidate`s, citation repairs, or

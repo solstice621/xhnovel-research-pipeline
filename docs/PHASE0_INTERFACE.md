@@ -272,7 +272,11 @@ a content-bound builder input) supplying everything WorkRef/SourceRef/rights/qua
 resolution needs: the work resolution declaration (basis-specific identity payload),
 the source spec, rights, source quality, resolution basis, and a user-confirmation
 artifact where applicable. rights/quality/work mapping are derived **from this
-declaration**, never guessed by the builder.
+declaration**, never guessed by the builder. `prepare-handoff` may apply a standing
+`operator-attestation.json` at the Phase 0 work root as the default rights
+declaration: it pre-fills a missing `rights` block and binds
+`operator_attestation_id`. Without that file, prepare still requires an explicit
+rights object and fail-closes; the builder does not infer rights from accessibility.
 
 **(c) Exact hash/ID formulas** (because `object_hash`'s default `omit` does **not**
 cover Phase 0's new self-hash fields — `hashing.py:11-18`, so they would otherwise

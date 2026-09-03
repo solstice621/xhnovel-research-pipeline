@@ -195,6 +195,30 @@ Do not download a rights-unknown commercial full text. If the host cannot establ
 a concrete source plus all required declarations, report the Lead as `UNRESOLVED`
 or `BLOCKED_BY_RIGHTS`. That is a valid exploration result, not a failed Pilot.
 
+## Standing operator attestation
+
+The operator may place one standing `operator-attestation.json` at the Phase 0 work
+root (for example `.runtime/exploration/run-001/operator-attestation.json`). That
+file is an operator-authored rights basis. xhnovel never infers it from HTTP 200, a
+readable path, or a search snippet, and a host agent must not write it on the
+operator's behalf.
+
+When the file is present and valid, `prepare-handoff`:
+
+- auto-fills a missing `source_declaration.rights` block from the attestation;
+- binds `operator_attestation_id` on the sealed `SourceDeclaration`;
+- stores the attestation in the Phase 0 CAS and at
+  `operator-attestations/<attestation_id>.json`.
+
+When the preparation input already contains `rights`, they must match the
+attestation exactly (`E-PHASE0-ATTEST-MISMATCH` otherwise). Replay of a declaration
+that binds an `operator_attestation_id` still requires the same standing file at the
+Phase 0 root (`E-PHASE0-ATTEST-BIND`).
+
+When the file is absent, behavior is unchanged: prepare still requires an explicit
+rights object and fail-closes. The builder still never guesses rights; it only
+projects the sealed `SourceDeclaration` into the ordinary Novel Spec.
+
 ## Preparation input and Handoff
 
 The host provides a single preparation JSON object with these top-level fields.
@@ -224,6 +248,7 @@ The command owns all of the following:
 
 ```text
 seal Brief and Leads
+-> apply standing operator attestation if present
 -> validate SourceDeclaration
 -> write canonical Phase 0 CAS objects
 -> create content-bound HandoffBuildRequest
@@ -361,6 +386,8 @@ Keep the entire exploration run together:
   planning-compilation-receipt.json
   planning-manifest.json
 .runtime/exploration/<run-id>/
+  operator-attestation.json          # optional; operator-authored, never agent-written
+  operator-attestations/
   objects/
   brief.json
   leads/

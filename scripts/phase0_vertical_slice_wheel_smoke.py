@@ -292,6 +292,14 @@ def _validate_fixture(fixture_root: Path) -> dict[str, Any]:
     assert preparation["source_declaration"]["source"]["path"] == "novel.txt"
     assert "CC0" in (fixture_root / "RIGHTS.md").read_text(encoding="utf-8")
     assert (fixture_root / "novel.txt").read_text(encoding="utf-8").count("第") >= 3
+    attestation_path = fixture_root / "operator-attestation.json"
+    assert attestation_path.is_file()
+    attestation = _read_json(attestation_path)
+    assert attestation["record_kind"] == "OPERATOR_ATTESTATION"
+    assert attestation["basis"] == rights["basis"]
+    assert attestation["may_store_full_text"] is True
+    assert attestation["may_send_to_external_model"] is True
+    assert attestation["may_export_excerpts"] == rights["may_export_excerpts"]
     return preparation
 
 
@@ -348,6 +356,13 @@ def run_acceptance(
 
     preparation_path = input_root / "preparation-input.json"
     phase0_root = output_root / "phase0"
+    phase0_root.mkdir(parents=True)
+    attestation_src = fixture_root / "operator-attestation.json"
+    shutil.copy2(attestation_src, phase0_root / "operator-attestation.json")
+    attested_preparation = _read_json(preparation_path)
+    attested_preparation["source_declaration"].pop("rights", None)
+    _write_json(preparation_path, attested_preparation)
+    standing_attestation_id = _read_json(attestation_src)["attestation_id"]
     prepare_args = (
         "prepare-handoff",
         str(preparation_path),
@@ -383,6 +398,15 @@ def run_acceptance(
     assert len(lead_paths) == 3
     assert len(declaration_paths) == 1
     assert len(build_request_paths) == 1
+    declaration = _read_json(declaration_paths[0])
+    attestation = _read_json(phase0_root / "operator-attestation.json")
+    assert declaration["operator_attestation_id"] == standing_attestation_id
+    assert declaration["rights"] == {
+        "basis": attestation["basis"],
+        "may_store_full_text": attestation["may_store_full_text"],
+        "may_send_to_external_model": attestation["may_send_to_external_model"],
+        "may_export_excerpts": attestation["may_export_excerpts"],
+    }
     assert len(handoff["motivating_lead_ids"]) == 3
     assert handoff["motivating_lead_ids"] == sorted(handoff["motivating_lead_ids"])
     assert all(
@@ -539,6 +563,7 @@ def run_acceptance(
             ),
             "handoff_id": handoff["handoff_id"],
             "handoff_path": _relative(handoff_path, output_root),
+            "standing_attestation_id": standing_attestation_id,
             "replay_status": "PASS",
         },
         "execution": {
