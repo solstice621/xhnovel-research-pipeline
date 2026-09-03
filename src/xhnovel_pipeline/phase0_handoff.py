@@ -8,6 +8,7 @@ without allowing a lead or location hint to become evidence.
 from __future__ import annotations
 
 import copy
+import json
 import pathlib
 import re
 from dataclasses import dataclass
@@ -43,6 +44,14 @@ _SUPPORTED_SOURCE_KIND = {
     "site": "site",
     "static-site": "site",
 }
+
+STANDALONE_ATTESTATION_FILENAME = "operator-attestation.json"
+ATTESTATION_RIGHTS_BASES = (
+    "USER_AUTHORIZED_LOCAL_COPY",
+    "PUBLIC_DOMAIN",
+    "LICENSED",
+    "FAIR_USE_RESEARCH",
+)
 
 
 @dataclass(frozen=True)
@@ -669,6 +678,7 @@ def make_source_declaration(
     source_quality: dict[str, Any],
     edition_label: str,
     declared_at: str,
+    operator_attestation_id: str | None = None,
 ) -> dict[str, Any]:
     work_copy = copy.deepcopy(work)
     if not isinstance(work_copy, dict):
@@ -742,6 +752,12 @@ def make_source_declaration(
             message="edition_label must be non-empty",
         ),
     }
+    if operator_attestation_id is not None:
+        base["operator_attestation_id"] = _nonempty(
+            operator_attestation_id,
+            code="E-PHASE0-SOURCE",
+            message="operator_attestation_id must be non-empty",
+        )
     declaration_hash = _phase0_object_hash(
         base,
         omit=(),
@@ -788,6 +804,116 @@ def validate_source_declaration(declaration: dict[str, Any]) -> dict[str, Any]:
             "source declaration identity changed",
         )
     return copy.deepcopy(declaration)
+
+
+def make_operator_attestation(
+    *,
+    basis: str,
+    may_export_excerpts: bool,
+    attested_by: str,
+    scope: str,
+    attested_at: str,
+) -> dict[str, Any]:
+    """Seal one operator-attested standing rights basis.
+
+    The attestation is authored by the operator, never inferred by xhnovel. It
+    binds a non-UNKNOWN rights basis and storage/model-egress permission that may
+    be applied automatically to SourceDeclarations prepared below it.
+    """
+    if basis not in ATTESTATION_RIGHTS_BASES:
+        raise ValidationError(
+            "E-PHASE0-ATTEST",
+            "operator attestation basis must be an explicit non-UNKNOWN rights basis",
+        )
+    if not isinstance(may_export_excerpts, bool):
+        raise ValidationError("E-PHASE0-ATTEST", "may_export_excerpts must be boolean")
+    base = {
+        "schema_version": SCHEMA_VERSION,
+        "record_kind": "OPERATOR_ATTESTATION",
+        "basis": basis,
+        "may_store_full_text": True,
+        "may_send_to_external_model": True,
+        "may_export_excerpts": may_export_excerpts,
+        "attested_by": _nonempty(
+            attested_by,
+            code="E-PHASE0-ATTEST",
+            message="attested_by must be non-empty",
+        ),
+        "scope": _nonempty(
+            scope,
+            code="E-PHASE0-ATTEST",
+            message="scope must be non-empty",
+        ),
+    }
+    attestation_hash = _phase0_object_hash(
+        base,
+        omit=(),
+        code="E-PHASE0-ATTEST",
+        label="operator attestation",
+    )
+    attestation_id = _phase0_derived_id(
+        "OperatorAttestation",
+        {"attestation_hash": attestation_hash},
+        code="E-PHASE0-ATTEST",
+        label="operator attestation",
+    )
+    record = {
+        **base,
+        "attestation_id": attestation_id,
+        "attestation_hash": attestation_hash,
+        "attested_at": attested_at,
+    }
+    validate_schema("OperatorAttestation", record)
+    return record
+
+
+def validate_operator_attestation(record: dict[str, Any]) -> dict[str, Any]:
+    validate_schema("OperatorAttestation", record)
+    payload = {
+        key: copy.deepcopy(value)
+        for key, value in record.items()
+        if key not in {"attestation_id", "attestation_hash", "attested_at"}
+    }
+    expected_hash = object_hash(payload, omit=())
+    expected_id = derived_id("OperatorAttestation", {"attestation_hash": expected_hash})
+    if (
+        record["attestation_hash"] != expected_hash
+        or record["attestation_id"] != expected_id
+    ):
+        raise ValidationError(
+            "E-PHASE0-ATTEST-BIND",
+            "operator attestation identity changed",
+        )
+    return copy.deepcopy(record)
+
+
+def load_standalone_attestation(
+    phase0_root: pathlib.Path | str,
+) -> dict[str, Any] | None:
+    """Load and validate the standing ``operator-attestation.json`` at a Phase 0 root."""
+    path = pathlib.Path(phase0_root) / STANDALONE_ATTESTATION_FILENAME
+    if not path.is_file():
+        return None
+    try:
+        record = json.loads(path.read_bytes().decode("utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValidationError(
+            "E-PHASE0-ATTEST",
+            f"invalid operator attestation file: {exc}",
+        ) from exc
+    if not isinstance(record, dict):
+        raise ValidationError("E-PHASE0-ATTEST", "operator attestation must be an object")
+    return validate_operator_attestation(record)
+
+
+def attestation_rights(attestation: dict[str, Any]) -> dict[str, Any]:
+    """Project a validated standing attestation into a declaration rights block."""
+    return {
+        "basis": attestation["basis"],
+        "may_store_full_text": attestation["may_store_full_text"],
+        "may_send_to_external_model": attestation["may_send_to_external_model"],
+        "may_export_excerpts": attestation["may_export_excerpts"],
+    }
 
 
 def _lead_matches_work(lead: dict[str, Any], work_ref: dict[str, Any]) -> bool:

@@ -112,6 +112,7 @@
       ]
     },
     "rights": {"$ref": "phase0-defs.schema.json#/$defs/rights"},
+    "operator_attestation_id": {"$ref": "phase0-defs.schema.json#/$defs/opa_id"},
     "source_quality": {"$ref": "phase0-defs.schema.json#/$defs/source_quality"},
     "edition_label": {"type": "string", "minLength": 1},
     "declaration_hash": {"$ref": "defs.schema.json#/$defs/sha256"},

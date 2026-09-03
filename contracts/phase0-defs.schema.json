@@ -9,6 +9,7 @@
     "sref_id": {"type": "string", "pattern": "^SREF-[A-Z0-9][A-Z0-9._:-]{1,}$"},
     "hbr_id": {"type": "string", "pattern": "^HBR-[A-Z0-9][A-Z0-9._:-]{1,}$"},
     "sdl_id": {"type": "string", "pattern": "^SDL-[A-Z0-9][A-Z0-9._:-]{1,}$"},
+    "opa_id": {"type": "string", "pattern": "^OPA-[A-Z0-9][A-Z0-9._:-]{1,}$"},
     "eho_id": {"type": "string", "pattern": "^EHO-[A-Z0-9][A-Z0-9._:-]{1,}$"},
     "hat_id": {"type": "string", "pattern": "^HAT-[A-Z0-9][A-Z0-9._:-]{1,}$"},
     "hev_id": {"type": "string", "pattern": "^HEV-[A-Z0-9][A-Z0-9._:-]{1,}$"},

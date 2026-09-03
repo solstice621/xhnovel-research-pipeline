@@ -40,6 +40,7 @@ PREFIXES = {
     "SourceRef": "SREF-",
     "HandoffBuildRequest": "HBR-",
     "SourceDeclaration": "SDL-",
+    "OperatorAttestation": "OPA-",
     "EvidenceHandoff": "EHO-",
     "HandoffAttempt": "HAT-",
     "HandoffAttemptEvent": "HEV-",

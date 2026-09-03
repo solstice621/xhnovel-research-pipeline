@@ -220,6 +220,22 @@ def _success_receipt():
     }
 
 
+def _operator_attestation():
+    return {
+        "schema_version": "0.2-draft",
+        "record_kind": "OPERATOR_ATTESTATION",
+        "attestation_id": "OPA-ATTEST1",
+        "basis": "FAIR_USE_RESEARCH",
+        "may_store_full_text": True,
+        "may_send_to_external_model": True,
+        "may_export_excerpts": False,
+        "attested_by": "operator-test",
+        "scope": "个人研究",
+        "attestation_hash": HASH_A,
+        "attested_at": NOW,
+    }
+
+
 def _planning_seed():
     return {
         "seed_id": "SD-AAAAAAAAAAAAAAAAAAAA",
@@ -373,6 +389,7 @@ def _planning_receipt():
         ("ResearchLead", _lead),
         ("HandoffBuildRequest", _build_request),
         ("SourceDeclaration", _source_declaration),
+        ("OperatorAttestation", _operator_attestation),
         ("EvidenceHandoff", _handoff),
         ("HandoffAttemptEvent", _started_event),
         ("EvidenceHandoffExecutionReceipt", _success_receipt),
@@ -425,6 +442,7 @@ def test_research_lead_rejects_non_lead_sources():
         ("ResearchLead", _lead),
         ("HandoffBuildRequest", _build_request),
         ("SourceDeclaration", _source_declaration),
+        ("OperatorAttestation", _operator_attestation),
         ("EvidenceHandoff", _handoff),
         ("HandoffAttemptEvent", _started_event),
         ("EvidenceHandoffExecutionReceipt", _success_receipt),
@@ -538,6 +556,7 @@ def test_phase0_hashes_reject_placeholders():
         ("ResearchLead", _lead, "lead_id"),
         ("HandoffBuildRequest", _build_request, "build_request_id"),
         ("SourceDeclaration", _source_declaration, "source_declaration_id"),
+        ("OperatorAttestation", _operator_attestation, "attestation_id"),
         ("EvidenceHandoff", _handoff, "handoff_id"),
         ("HandoffAttemptEvent", _started_event, "event_id"),
         ("EvidenceHandoffExecutionReceipt", _success_receipt, "receipt_id"),
@@ -610,6 +629,7 @@ def test_success_receipt_rejects_prefix_only_downstream_ids(field):
 def test_phase0_kinds_stay_out_of_core_catalog():
     records = {
         "ResearchLead": _lead(),
+        "OperatorAttestation": _operator_attestation(),
         "ResearchIntake": _research_intake(),
         "NeutralPlanningInput": _neutral_input(),
         "NeutralPlanningExecution": _neutral_execution(),
@@ -634,6 +654,7 @@ def test_phase0_kinds_stay_out_of_core_catalog():
         ("SourceRef", "SREF-"),
         ("HandoffBuildRequest", "HBR-"),
         ("SourceDeclaration", "SDL-"),
+        ("OperatorAttestation", "OPA-"),
         ("EvidenceHandoff", "EHO-"),
         ("HandoffAttempt", "HAT-"),
         ("HandoffAttemptEvent", "HEV-"),

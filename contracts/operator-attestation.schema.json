@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/operator-attestation.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_kind",
+    "attestation_id",
+    "basis",
+    "may_store_full_text",
+    "may_send_to_external_model",
+    "may_export_excerpts",
+    "attested_by",
+    "scope",
+    "attestation_hash",
+    "attested_at"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "defs.schema.json#/$defs/schema_version"},
+    "record_kind": {"const": "OPERATOR_ATTESTATION"},
+    "attestation_id": {"$ref": "phase0-defs.schema.json#/$defs/opa_id"},
+    "basis": {
+      "enum": [
+        "USER_AUTHORIZED_LOCAL_COPY",
+        "PUBLIC_DOMAIN",
+        "LICENSED",
+        "FAIR_USE_RESEARCH"
+      ]
+    },
+    "may_store_full_text": {"const": true},
+    "may_send_to_external_model": {"const": true},
+    "may_export_excerpts": {"type": "boolean"},
+    "attested_by": {"type": "string", "minLength": 1},
+    "scope": {"type": "string", "minLength": 1},
+    "attestation_hash": {"$ref": "defs.schema.json#/$defs/sha256"},
+    "attested_at": {"$ref": "defs.schema.json#/$defs/iso_datetime"}
+  }
+}

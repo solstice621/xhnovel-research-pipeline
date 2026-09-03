@@ -27,7 +27,9 @@ from .novel_spec import (
 from .phase0_common import write_immutable
 from .phase0_handoff import (
     HandoffGroup,
+    attestation_rights,
     group_leads_for_source,
+    load_standalone_attestation,
     make_exploration_brief,
     make_research_lead,
     make_source_declaration,
@@ -35,6 +37,7 @@ from .phase0_handoff import (
     validate_exploration_brief,
     validate_research_lead,
     validate_source_declaration,
+    validate_operator_attestation,
     work_ref_from_declaration,
 )
 from .ranking import normalize_work_title
@@ -107,6 +110,7 @@ def _record_validator(kind: str) -> Callable[[dict[str, Any]], dict[str, Any]]:
         "ExplorationBrief": validate_exploration_brief,
         "ResearchLead": validate_research_lead,
         "SourceDeclaration": validate_source_declaration,
+        "OperatorAttestation": validate_operator_attestation,
         "HandoffBuildRequest": validate_handoff_build_request,
     }
     try:
@@ -482,6 +486,12 @@ def resolve_validated_handoff_input(
     store = ArtifactStore(root / "objects")
     request_artifact_id = handoff["builder"]["build_request_artifact_id"]
     request = read_phase0_record(store, request_artifact_id, "HandoffBuildRequest")
+    declaration = read_phase0_record(
+        store,
+        request["source_declaration_artifact_id"],
+        "SourceDeclaration",
+    )
+    _verify_declaration_attestation(root, declaration)
     expected_builder = {
         "build_id": PHASE0_HANDOFF_BUILDER_ID,
         "build_request_artifact_id": request_artifact_id,
@@ -542,6 +552,32 @@ def resolve_validated_handoff_input(
         handoff=copy.deepcopy(handoff),
         execution_spec=copy.deepcopy(validated_spec.effective_spec),
     )
+
+
+def _verify_declaration_attestation(
+    root: pathlib.Path,
+    declaration: dict[str, Any],
+) -> None:
+    """Ensure a declared attestation reference still resolves and matches rights."""
+    attestation_id = declaration.get("operator_attestation_id")
+    if attestation_id is None:
+        return
+    if not isinstance(attestation_id, str):
+        raise ValidationError(
+            "E-PHASE0-ATTEST-BIND",
+            "source declaration attestation id is invalid",
+        )
+    attestation = load_standalone_attestation(root)
+    if attestation is None or attestation["attestation_id"] != attestation_id:
+        raise ValidationError(
+            "E-PHASE0-ATTEST-BIND",
+            "source declaration binds an absent or different operator attestation",
+        )
+    if declaration["rights"] != attestation_rights(attestation):
+        raise ValidationError(
+            "E-PHASE0-ATTEST-BIND",
+            "source declaration rights conflict with the operator attestation",
+        )
 
 
 def validate_evidence_handoff(
@@ -627,6 +663,7 @@ def _seal_declaration(
     value: dict[str, Any],
     *,
     input_dir: pathlib.Path,
+    attestation: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if "source_declaration_id" in value:
         return validate_source_declaration(value)
@@ -638,6 +675,9 @@ def _seal_declaration(
         "edition_label",
         "declared_at",
     }
+    supplied = set(value)
+    if supplied == required - {"rights"} and attestation is not None:
+        value = {**value, "rights": attestation_rights(attestation)}
     if set(value) != required:
         raise ValidationError(
             "E-PHASE0-PREPARE",
@@ -666,6 +706,14 @@ def _seal_declaration(
         source_path = pathlib.Path(source["path"]).expanduser()
         if not source_path.is_absolute():
             source["path"] = str((input_dir / source_path).resolve())
+    operator_attestation_id: str | None = None
+    if attestation is not None:
+        if value["rights"] != attestation_rights(attestation):
+            raise ValidationError(
+                "E-PHASE0-ATTEST-MISMATCH",
+                "declared rights conflict with the standing operator attestation",
+            )
+        operator_attestation_id = attestation["attestation_id"]
     return make_source_declaration(
         work=work,
         source=source,
@@ -673,6 +721,7 @@ def _seal_declaration(
         source_quality=value["source_quality"],
         edition_label=value["edition_label"],
         declared_at=value["declared_at"],
+        operator_attestation_id=operator_attestation_id,
     )
 
 
@@ -694,6 +743,8 @@ def prepare_handoff_from_input(
         raise ValidationError("E-PHASE0-PREPARE", "leads must be a non-empty array")
     if not isinstance(value["source_declaration"], dict):
         raise ValidationError("E-PHASE0-PREPARE", "source_declaration must be an object")
+    root = pathlib.Path(phase0_root)
+    attestation = load_standalone_attestation(root)
     brief = _seal_brief(value["brief"])
     leads = [
         _seal_lead(item, brief["brief_id"])
@@ -706,6 +757,7 @@ def prepare_handoff_from_input(
     declaration = _seal_declaration(
         value["source_declaration"],
         input_dir=path.parent,
+        attestation=attestation,
     )
     root = pathlib.Path(phase0_root)
     store = ArtifactStore(root / "objects")
@@ -718,6 +770,14 @@ def prepare_handoff_from_input(
         "SourceDeclaration",
         declaration,
     )
+    if attestation is not None:
+        put_phase0_record(store, "OperatorAttestation", attestation)
+        _write_immutable(
+            root
+            / "operator-attestations"
+            / f"{attestation['attestation_id']}.json",
+            _json_bytes(attestation),
+        )
     _write_immutable(root / "brief.json", _json_bytes(brief))
     for lead in leads:
         _write_immutable(

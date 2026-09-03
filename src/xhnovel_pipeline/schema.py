@@ -43,6 +43,7 @@ SCHEMA_BY_TYPE = {
     "ResearchLead": "research-lead.schema.json",
     "HandoffBuildRequest": "handoff-build-request.schema.json",
     "SourceDeclaration": "source-declaration.schema.json",
+    "OperatorAttestation": "operator-attestation.schema.json",
     "EvidenceHandoff": "evidence-handoff.schema.json",
     "HandoffAttemptEvent": "handoff-attempt-event.schema.json",
     "EvidenceHandoffExecutionReceipt": "evidence-handoff-execution-receipt.schema.json",
