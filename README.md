@@ -26,14 +26,12 @@ may contain zero candidates.
 
 Rights and trust are explicit. Technical access never implies permission. The
 research command requires a declared non-`UNKNOWN` rights basis,
-`may_store_full_text: true`, and `may_send_to_external_model: true`.
-Phase 0 exploration may reuse one standing `operator-attestation.json` at the
-work root: the operator declares rights once, directly or through an explicitly
-authorized agent, and `prepare-handoff` auto-applies them to each
-SourceDeclaration. Delegation must be explicit and recorded; the acting agent
-cannot infer or self-grant it. Only source quality classified as Tier A or B is
-eligible for event-scene discovery; Tier D content remains `lead-only` and is
-never sent to the Scene Scout.
+`may_store_full_text: true`, and `may_send_to_external_model: true`. Only source
+quality classified as Tier A or B is eligible for event-scene discovery; Tier D
+content remains `lead-only` and is never sent to the Scene Scout.
+A publisher licence is not required: `COMPLETE` plus `UNKNOWN` edition status
+is Tier B. `UNOFFICIAL_COPY` is excluded only as a positive unauthorized
+declaration, and incomplete text remains Tier D.
 The send and export boundaries first validate the complete Bundle → Snapshot →
 Ingestion lineage, including induced members and deterministic triage, then
 re-resolve rights from the immutable ingestion spec. Export manifests mark the
