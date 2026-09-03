@@ -34,8 +34,10 @@ SourceDeclaration. Delegation must be explicit and recorded; the acting agent
 cannot infer or self-grant it. Source quality is independent: `COMPLETE` plus
 `OFFICIAL` is Tier A; `COMPLETE` plus `PUBLISHED_EDITION`,
 `USER_VERIFIED_COPY`, or `UNKNOWN` is Tier B. `UNOFFICIAL_COPY` and incomplete
-text remain Tier D / lead-only. A publisher licence is not required merely to
-classify an otherwise complete source whose official status is unproven.
+text remain Tier D / lead-only. These semantics are identified as
+`novel-source-classifier-v2` in generated assessments. A publisher licence is
+not required merely to classify an otherwise complete source whose official
+status is unproven.
 The send and export boundaries first validate the complete Bundle → Snapshot →
 Ingestion lineage, including induced members and deterministic triage, then
 re-resolve rights from the immutable ingestion spec. Export manifests mark the
