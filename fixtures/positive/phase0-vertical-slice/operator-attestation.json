@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.2-draft",
+  "record_kind": "OPERATOR_ATTESTATION",
+  "basis": "LICENSED",
+  "may_store_full_text": true,
+  "may_send_to_external_model": true,
+  "may_export_excerpts": true,
+  "attested_by": "xhnovel-fixture-operator",
+  "scope": "Phase 0 vertical-slice fixture; CC0 licensed test work",
+  "attestation_id": "OPA-99C85A138D342D13F94C",
+  "attestation_hash": "sha256:8409d515d8e96d2f33e80339929a2874f13f3a3321e14a6e27b3c110de26ee4d",
+  "attested_at": "2026-09-02T00:00:00Z"
+}

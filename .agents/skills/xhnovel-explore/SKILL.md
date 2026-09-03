@@ -53,10 +53,18 @@ running a new exploration. The frozen trust boundary remains
 3. **Select for diversity.** Deduplicate the explicit Lead set and prefer distinct
    works and interaction families. Do not discard incompatible work/source
    identities merely to force one group.
-4. **Resolve a source.** Admit only a concrete source with an explicit rights basis,
-   storage/model permissions, and Tier A/B source-quality declarations. If no such
-   source is available, retain the Lead as `UNRESOLVED` or `BLOCKED_BY_RIGHTS` and
-   do not download or execute unknown-rights commercial full text.
+4. **Resolve a source.** Admit only a concrete source with storage/model
+   permissions, Tier A/B source-quality declarations, and a non-`UNKNOWN` rights
+   basis. Rights may be supplied inline on the SourceDeclaration, or omitted when a
+   standing `operator-attestation.json` is already at the Phase 0 work root;
+   `prepare-handoff` then auto-fills `rights` and binds `operator_attestation_id`.
+   The operator may author it directly or explicitly authorize a host agent to
+   create and sign it on the operator's behalf. An agent must preserve the
+   principal, delegation scope, and its own identity in the attestation; it must
+   never infer or self-grant authorization. If no such source is available, retain
+   the Lead as `UNRESOLVED` or
+   `BLOCKED_BY_RIGHTS` and do not download or execute unknown-rights commercial
+   full text.
 5. **Prepare through the product boundary.** Put the sealed Brief, compatible Leads,
    SourceDeclaration, and `requested_at` into the preparation input, then run:
 
@@ -103,6 +111,8 @@ Do not:
 
 - promote web/search material directly into evidence;
 - infer rights from accessibility or download rights-unknown commercial full text;
+- write `operator-attestation.json` without an explicit operator delegation, or
+  infer/self-grant rights from accessibility, prior runs, or project context;
 - copy Lead prose, character names, URLs, chapter guesses, expected events, or
   location hints into the discovery brief, native tasks, or candidates;
 - create custom windows, prompts, schemas, `SceneCandidate`s, citation repairs, or

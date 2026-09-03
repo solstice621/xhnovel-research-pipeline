@@ -31,6 +31,11 @@ def test_vertical_slice_fixture_is_complete_and_explicitly_licensed():
         "edition_status": "USER_VERIFIED_COPY",
         "textual_completeness": "COMPLETE",
     }
+    attestation = json.loads(
+        (FIXTURE / "operator-attestation.json").read_text(encoding="utf-8")
+    )
+    assert attestation["basis"] == "LICENSED"
+    assert attestation["attested_by"] == "xhnovel-fixture-operator"
     assert "CC0" in (FIXTURE / "RIGHTS.md").read_text(encoding="utf-8")
     novel = (FIXTURE / "novel.txt").read_text(encoding="utf-8")
     assert all(chapter in novel for chapter in ("第一章", "第二章", "第三章"))
@@ -67,6 +72,7 @@ def test_vertical_slice_crosses_public_cli_and_preserves_audit_bundle(tmp_path):
     assert report["phase0"]["handoff_count"] == 1
     assert report["phase0"]["lead_source_roles"] == ["LEAD_ONLY"]
     assert report["phase0"]["location_hint_leak_count"] == 0
+    assert str(report["phase0"]["standing_attestation_id"]).startswith("OPA-")
     assert report["phase0"]["replay_status"] == "PASS"
     assert report["execution"]["pass1_status"] == "WAITING_FOR_AGENT"
     assert report["execution"]["pass2_status"] == "SUCCEEDED"
