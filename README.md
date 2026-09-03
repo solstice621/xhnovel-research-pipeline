@@ -20,9 +20,10 @@ TXT / directory / EPUB / bounded static site
 
 Scene Scout output is not a verified fact or a formal claim. Every known or
 conflicting field must cite an exact normalized-text `(segment_id, start, end)`
-span; conflicting fields carry at least two values. Unknown observations have
-no values or support. Conflicts become `NEEDS_ADJUDICATION`. A successful run
-may contain zero candidates.
+span; conflicting fields carry at least two values. Merged candidates retain each
+observation's exact support span even when their broader scene spans coalesce.
+Unknown observations have no values or support. Conflicts become
+`NEEDS_ADJUDICATION`. A successful run may contain zero candidates.
 
 Rights and trust are explicit. Technical access never implies permission. The
 research command requires a declared non-`UNKNOWN` rights basis,
