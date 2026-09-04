@@ -10,15 +10,39 @@
     "reviewer_kind",
     "reviewer_id",
     "labels_artifact_id",
+    "source_packet_set_hash",
     "units"
   ],
   "properties": {
-    "schema_version": {"const": "geography-gold-review/v1"},
+    "schema_version": {"const": "geography-gold-review/v2"},
     "sample_id": {"const": "GEOGOLD-B-20260904"},
-    "review_state": {"enum": ["ANNOTATION_DRAFT", "HUMAN_ACCEPTED"]},
-    "reviewer_kind": {"enum": ["HOST_AGENT", "HUMAN"]},
+    "review_state": {"enum": ["ANNOTATION_DRAFT", "MODEL_ADJUDICATED"]},
+    "reviewer_kind": {"enum": ["HOST_AGENT", "MODEL"]},
     "reviewer_id": {"type": "string", "minLength": 1},
-    "labels_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "review_policy": {"const": "dual-model-adjudication/v1"},
+    "source_packet_set_hash": {"$ref": "#/$defs/sha256"},
+    "input_labels_artifact_id": {"$ref": "#/$defs/sha256"},
+    "labels_artifact_id": {"$ref": "#/$defs/sha256"},
+    "review_output_artifact_id": {"$ref": "#/$defs/sha256"},
+    "disputes_artifact_id": {"$ref": "#/$defs/sha256"},
+    "disputed_count": {"type": "integer", "minimum": 0},
+    "forbidden_inputs": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "baseline_answers"},
+        {"const": "candidate_answers"},
+        {"const": "capacity_statistics"}
+      ],
+      "items": false,
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "model_reviews": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/model_review"}
+    },
     "reviewed_at": {
       "type": "string",
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
@@ -47,11 +71,65 @@
   },
   "allOf": [
     {
-      "if": {"properties": {"review_state": {"const": "HUMAN_ACCEPTED"}}},
+      "if": {"properties": {"review_state": {"const": "ANNOTATION_DRAFT"}}},
+      "then": {"properties": {"reviewer_kind": {"const": "HOST_AGENT"}}}
+    },
+    {
+      "if": {"properties": {"review_state": {"const": "MODEL_ADJUDICATED"}}},
       "then": {
-        "properties": {"reviewer_kind": {"const": "HUMAN"}},
-        "required": ["reviewed_at"]
+        "properties": {"reviewer_kind": {"const": "MODEL"}},
+        "required": [
+          "review_policy",
+          "input_labels_artifact_id",
+          "review_output_artifact_id",
+          "disputes_artifact_id",
+          "disputed_count",
+          "forbidden_inputs",
+          "model_reviews",
+          "reviewed_at"
+        ]
       }
     }
-  ]
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "model_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "execution_id",
+        "model_provider",
+        "model_id",
+        "review_prompt_file",
+        "review_prompt_artifact_id",
+        "input_artifact_ids",
+        "review_output_file",
+        "review_output_artifact_id",
+        "completed_at"
+      ],
+      "properties": {
+        "role": {
+          "enum": ["BLIND_EXTRACTOR", "DRAFT_AUDITOR", "DIFFERENCE_ADJUDICATOR"]
+        },
+        "execution_id": {"type": "string", "minLength": 1},
+        "model_provider": {"type": "string", "minLength": 1},
+        "model_id": {"type": "string", "minLength": 1},
+        "review_prompt_file": {"type": "string", "minLength": 1},
+        "review_prompt_artifact_id": {"$ref": "#/$defs/sha256"},
+        "input_artifact_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/sha256"}
+        },
+        "review_output_file": {"type": "string", "minLength": 1},
+        "review_output_artifact_id": {"$ref": "#/$defs/sha256"},
+        "completed_at": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+        }
+      }
+    }
+  }
 }

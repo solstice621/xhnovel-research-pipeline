@@ -1,11 +1,25 @@
 {
-  "schema_version": "geography-gold-sample/v1",
+  "schema_version": "geography-gold-sample/v2",
   "sample_id": "GEOGOLD-B-20260904",
   "status": "FROZEN_SAMPLE",
-  "protocol_version": "geography-gold/v1",
+  "protocol_version": "geography-model-reference/v2",
+  "protocol": {
+    "protocol_commit": "7f359ea7a9ac30dcf168db6c59d965b025d42708",
+    "protocol_artifact_id": "sha256:a85188690ed46458a1d96e7bee582694f2158d5f0ffa88a4da91dd5db87094b6",
+    "review_policy": "dual-model-adjudication/v1",
+    "compiler_artifact_id": "sha256:a3f4ce33dceaa5e37770a62ea9ed1438c0c28b5ba979d2bda2e88590960b12af",
+    "schema_artifact_ids": {
+      "label": "sha256:cb5a172a63db8d9a308886661480e8a206a4c52c9b5f7759eb90548c60f91c0a",
+      "review": "sha256:75fc1dfd5e2cff9dae4e89ebcaa2ebd93b31a983c800288989a545f5bfa58306",
+      "annotation": "sha256:9ea848c4f65a6e7b8f5ca75f8f38e359a410d17fdc311651703da6342a479569",
+      "unique": "sha256:e2565087f22c9b29b002aafd1eb687d2ebca9b21b7cb13ab12e2833ec987ede7",
+      "dispute": "sha256:59987d711e54cf013b39409f259dc10c0939761647b12a6a65295ca56d723daa",
+      "manifest": "sha256:2f6d015e2b9cd1bbbb90657c7c025468acfcb33373f62e15ccd3498b3153f871"
+    }
+  },
   "baseline": {
     "engine_commit": "6cc794fd6ad2632f1d26d00a9bf027634617c751",
-    "evidence_commit": "f37bbf8",
+    "evidence_commit": "f37bbf88b135b3629d7790f39189aae4a29c1d7a",
     "extraction_build_id": "XBLD-04EEF485082B283CE18B",
     "extraction_build_hash": "sha256:b8eccf770453c309826557045c40ffdce3217139525f2c06d47cfc84290dc32e",
     "profile_id": "xhnovel.geography",
@@ -28,10 +42,13 @@
     }
   },
   "selection": {
-    "source_manifest": "codex/tmp-geography-capacity-stats@f37bbf8:docs/spikes/geography-capacity-stats/experiment-sample.json",
+    "source_selection_commit": "f37bbf88b135b3629d7790f39189aae4a29c1d7a",
+    "source_selection_manifest_path": "docs/spikes/geography-capacity-stats/experiment-sample.json",
+    "source_selection_manifest_artifact_id": "sha256:66e159f2131896e196a15fa3822810227b567f65a23e1cd3a9b9bd65bd44bec6",
     "source_seed": 20260904,
+    "selection_algorithm_id": "experiment-b-control/v1",
+    "strata": [[1, 169], [170, 338], [339, 507], [508, 676]],
     "required_ordinals": [5, 310, 395, 426, 513, 596],
-    "random_control_rule": "minimum sha256(seed NUL experiment-b-control/v1 NUL stratum NUL unit_id) among the three frozen A-1 random draws in each stratum",
     "random_control_ordinals": [102, 233, 467, 604]
   },
   "source_packet": {

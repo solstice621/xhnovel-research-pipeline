@@ -1,19 +1,21 @@
-"""Prepare and compile the runtime-only Experiment B geography gold set.
+"""Prepare and compile the runtime-only Experiment B geography reference set.
 
 This is deliberately spike tooling, not a second extraction path.  ``prepare``
 copies only source material already embedded in frozen native agent tasks into
 content-bound source packets.  ``validate`` and ``derive`` consume blind labels,
-while ``freeze`` and ``validate-frozen`` enforce the human-acceptance transition.
+while ``freeze`` and ``validate-frozen`` enforce the model-adjudication transition.
 No command inspects executor answers or extraction observations.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import pathlib
 import re
+import subprocess
 import sys
 import tempfile
 from dataclasses import dataclass
@@ -28,10 +30,26 @@ from xhnovel_pipeline.paths import repo_root
 
 SOURCE_SCHEMA_VERSION = "geography-gold-source/v1"
 LABEL_SCHEMA_VERSION = "geography-gold-label/v1"
-REVIEW_SCHEMA_VERSION = "geography-gold-review/v1"
-ANNOTATION_SCHEMA_VERSION = "geography-gold-annotation/v1"
+REVIEW_SCHEMA_VERSION = "geography-gold-review/v2"
+ANNOTATION_SCHEMA_VERSION = "geography-gold-annotation/v2"
 UNIQUE_SCHEMA_VERSION = "geography-gold-unique/v1"
-GOLD_MANIFEST_SCHEMA_VERSION = "geography-gold-manifest/v1"
+DISPUTE_SCHEMA_VERSION = "geography-gold-dispute/v1"
+GOLD_MANIFEST_SCHEMA_VERSION = "geography-gold-manifest/v2"
+SAMPLE_SCHEMA_VERSION = "geography-gold-sample/v2"
+PROTOCOL_VERSION = "geography-model-reference/v2"
+REVIEW_POLICY = "dual-model-adjudication/v1"
+SELECTION_ALGORITHM_ID = "experiment-b-control/v1"
+MODEL_REVIEW_ROLES = {
+    "BLIND_EXTRACTOR",
+    "DRAFT_AUDITOR",
+    "DIFFERENCE_ADJUDICATOR",
+}
+FORBIDDEN_REVIEW_INPUTS = (
+    "baseline_answers",
+    "candidate_answers",
+    "capacity_statistics",
+)
+CONTROL_STRATA = ((1, 169), (170, 338), (339, 507), (508, 676))
 AGENT_PROTOCOL = "xhnovel-generic-agent-files-v1"
 
 class GoldValidationError(Exception):
@@ -46,7 +64,9 @@ class GoldValidationError(Exception):
 class GoldInputs:
     sample: dict[str, Any]
     packets: dict[str, dict[str, Any]]
+    input_labels: list[dict[str, Any]]
     labels: list[dict[str, Any]]
+    disputes: list[dict[str, Any]]
     review: dict[str, Any]
     annotations: list[dict[str, Any]]
     unique_rows: list[dict[str, Any]]
@@ -137,15 +157,16 @@ def _canonical_jsonl(rows: Iterable[dict[str, Any]]) -> bytes:
     return b"".join(canonical_dumps(row) + b"\n" for row in rows)
 
 
-def _write_immutable(path: pathlib.Path, data: bytes) -> None:
+def _write_immutable(path: pathlib.Path, data: bytes) -> bool:
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists():
         if not path.is_file() or path.read_bytes() != data:
             raise GoldValidationError(
                 "E-GOLD-IMMUTABLE", f"refusing to overwrite different content: {path}"
             )
-        return
+        return False
     descriptor, temporary_name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
+    created = False
     try:
         with os.fdopen(descriptor, "wb") as handle:
             handle.write(data)
@@ -153,6 +174,7 @@ def _write_immutable(path: pathlib.Path, data: bytes) -> None:
             os.fsync(handle.fileno())
         try:
             os.link(temporary_name, path)
+            created = True
         except FileExistsError:
             if not path.is_file() or path.read_bytes() != data:
                 raise GoldValidationError(
@@ -163,6 +185,59 @@ def _write_immutable(path: pathlib.Path, data: bytes) -> None:
             os.unlink(temporary_name)
         except OSError:
             pass
+    return created
+
+
+def _write_immutable_set(entries: list[tuple[pathlib.Path, bytes]]) -> None:
+    """Commit an immutable output set with the final entry as its commit marker.
+
+    There is no portable filesystem primitive for atomically replacing several
+    unrelated paths.  We therefore preflight the complete set, reject mixed
+    existing/missing states, write the manifest last, and roll back every file
+    created by this invocation if an in-process write fails.  Consumers only
+    recognize a set whose final manifest exists and validates.
+    """
+
+    if not entries:
+        raise GoldValidationError("E-GOLD-OUTPUT", "immutable output set is empty")
+    normalized = [path.resolve(strict=False) for path, _ in entries]
+    if len(normalized) != len(set(normalized)):
+        raise GoldValidationError("E-GOLD-OUTPUT", "immutable output paths must be distinct")
+
+    exists = [path.exists() for path, _ in entries]
+    if any(exists) and not all(exists):
+        raise GoldValidationError(
+            "E-GOLD-PARTIAL",
+            "refusing a mixed existing/missing frozen output set",
+        )
+    if all(exists):
+        for path, data in entries:
+            if not path.is_file() or path.read_bytes() != data:
+                raise GoldValidationError(
+                    "E-GOLD-IMMUTABLE", f"refusing to overwrite different content: {path}"
+                )
+        return
+
+    created: list[pathlib.Path] = []
+    try:
+        for path, data in entries:
+            if _write_immutable(path, data):
+                created.append(path)
+    except BaseException:
+        rollback_failures: list[pathlib.Path] = []
+        for path in reversed(created):
+            try:
+                path.unlink()
+            except FileNotFoundError:
+                pass
+            except OSError:
+                rollback_failures.append(path)
+        if rollback_failures:
+            rendered = ", ".join(str(path) for path in rollback_failures)
+            raise GoldValidationError(
+                "E-GOLD-ROLLBACK", f"could not remove partial outputs: {rendered}"
+            ) from None
+        raise
 
 
 def merge_label_drafts(
@@ -176,8 +251,19 @@ def merge_label_drafts(
         raise GoldValidationError("E-GOLD-INPUT", "at least one draft input is required")
     sample = _read_json(sample_path, label="sample manifest")
     _validate_sample(sample)
+    label_schema_file = label_schema_path or sample_path.parent / "geography-gold-label.schema.json"
+    _verify_bound_artifact(
+        label_schema_file,
+        sample["protocol"]["schema_artifact_ids"]["label"],
+        label="label schema",
+    )
+    _verify_bound_artifact(
+        pathlib.Path(__file__).resolve(),
+        sample["protocol"]["compiler_artifact_id"],
+        label="geography gold compiler",
+    )
     label_schema = _load_schema(
-        label_schema_path or sample_path.parent / "geography-gold-label.schema.json",
+        label_schema_file,
         label="gold label schema",
     )
     sample_order = {unit["unit_id"]: index for index, unit in enumerate(sample["units"])}
@@ -236,6 +322,7 @@ def _validate_sample(sample: dict[str, Any]) -> None:
             "sample_id",
             "status",
             "protocol_version",
+            "protocol",
             "baseline",
             "selection",
             "source_packet",
@@ -243,13 +330,46 @@ def _validate_sample(sample: dict[str, Any]) -> None:
         },
         label="sample",
     )
-    if sample["schema_version"] != "geography-gold-sample/v1":
+    if sample["schema_version"] != SAMPLE_SCHEMA_VERSION:
         raise GoldValidationError("E-GOLD-SAMPLE", "unsupported sample schema_version")
-    if sample["status"] != "FROZEN_SAMPLE" or sample["protocol_version"] != "geography-gold/v1":
-        raise GoldValidationError("E-GOLD-SAMPLE", "sample is not the frozen v1 protocol")
+    if sample["status"] != "FROZEN_SAMPLE" or sample["protocol_version"] != PROTOCOL_VERSION:
+        raise GoldValidationError("E-GOLD-SAMPLE", "sample is not the frozen v2 protocol")
     sample_id = sample["sample_id"]
     if sample_id != "GEOGOLD-B-20260904":
         raise GoldValidationError("E-GOLD-SAMPLE", "unexpected frozen sample_id")
+
+    protocol = sample["protocol"]
+    if not isinstance(protocol, dict):
+        raise GoldValidationError("E-GOLD-SAMPLE", "protocol must be an object")
+    _exact_keys(
+        protocol,
+        {
+            "protocol_commit",
+            "protocol_artifact_id",
+            "review_policy",
+            "compiler_artifact_id",
+            "schema_artifact_ids",
+        },
+        label="sample.protocol",
+    )
+    if (
+        not isinstance(protocol["protocol_commit"], str)
+        or not re.fullmatch(r"[0-9a-f]{40}", protocol["protocol_commit"])
+        or protocol["review_policy"] != REVIEW_POLICY
+    ):
+        raise GoldValidationError("E-GOLD-SAMPLE", "invalid protocol identity")
+    for field in ("protocol_artifact_id", "compiler_artifact_id"):
+        _require_hash(protocol[field], label=f"sample.protocol.{field}")
+    schema_artifacts = protocol["schema_artifact_ids"]
+    if not isinstance(schema_artifacts, dict):
+        raise GoldValidationError("E-GOLD-SAMPLE", "schema_artifact_ids must be an object")
+    _exact_keys(
+        schema_artifacts,
+        {"label", "review", "annotation", "unique", "dispute", "manifest"},
+        label="sample.protocol.schema_artifact_ids",
+    )
+    for field, value in schema_artifacts.items():
+        _require_hash(value, label=f"sample.protocol.schema_artifact_ids.{field}")
 
     baseline = sample["baseline"]
     if not isinstance(baseline, dict):
@@ -286,6 +406,13 @@ def _validate_sample(sample: dict[str, Any]) -> None:
         "input_spec_hash",
     ):
         _require_hash(baseline[field], label=f"sample.baseline.{field}")
+    for field in ("engine_commit", "evidence_commit"):
+        if not isinstance(baseline[field], str) or not re.fullmatch(
+            r"[0-9a-f]{40}", baseline[field]
+        ):
+            raise GoldValidationError(
+                "E-GOLD-SAMPLE", f"sample.baseline.{field} must be a full commit"
+            )
     for field in (
         "eligible_character_count",
         "chapter_count",
@@ -345,23 +472,35 @@ def _validate_sample(sample: dict[str, Any]) -> None:
     _exact_keys(
         selection,
         {
-            "source_manifest",
+            "source_selection_commit",
+            "source_selection_manifest_path",
+            "source_selection_manifest_artifact_id",
             "source_seed",
+            "selection_algorithm_id",
+            "strata",
             "required_ordinals",
-            "random_control_rule",
             "random_control_ordinals",
         },
         label="sample.selection",
     )
     if (
-        not isinstance(selection["source_manifest"], str)
-        or not selection["source_manifest"]
-        or not isinstance(selection["random_control_rule"], str)
-        or not selection["random_control_rule"]
+        not isinstance(selection["source_selection_commit"], str)
+        or not re.fullmatch(r"[0-9a-f]{40}", selection["source_selection_commit"])
+        or not isinstance(selection["source_selection_manifest_path"], str)
+        or not selection["source_selection_manifest_path"]
+        or pathlib.PurePosixPath(selection["source_selection_manifest_path"]).is_absolute()
+        or ".." in pathlib.PurePosixPath(selection["source_selection_manifest_path"]).parts
+        or selection["selection_algorithm_id"] != SELECTION_ALGORITHM_ID
         or not isinstance(selection["source_seed"], int)
         or isinstance(selection["source_seed"], bool)
     ):
         raise GoldValidationError("E-GOLD-SAMPLE", "invalid selection provenance")
+    _require_hash(
+        selection["source_selection_manifest_artifact_id"],
+        label="sample.selection.source_selection_manifest_artifact_id",
+    )
+    if selection["strata"] != [list(bounds) for bounds in CONTROL_STRATA]:
+        raise GoldValidationError("E-GOLD-SAMPLE", "selection strata differ from frozen policy")
     for field in ("required_ordinals", "random_control_ordinals"):
         values = selection[field]
         if (
@@ -375,10 +514,14 @@ def _validate_sample(sample: dict[str, Any]) -> None:
             raise GoldValidationError("E-GOLD-SAMPLE", f"invalid selection {field}")
     if set(selection["required_ordinals"]) & set(selection["random_control_ordinals"]):
         raise GoldValidationError("E-GOLD-SAMPLE", "required and control ordinals overlap")
+    if len(selection["required_ordinals"]) != 6 or len(selection["random_control_ordinals"]) != 4:
+        raise GoldValidationError(
+            "E-GOLD-SAMPLE", "sample requires exactly six anchors and four controls"
+        )
 
     units = sample["units"]
-    if not isinstance(units, list) or not units:
-        raise GoldValidationError("E-GOLD-SAMPLE", "sample.units must be non-empty")
+    if not isinstance(units, list) or len(units) != 10:
+        raise GoldValidationError("E-GOLD-SAMPLE", "sample.units must contain exactly ten rows")
     seen_ids: set[str] = set()
     seen_ordinals: set[int] = set()
     for index, unit in enumerate(units):
@@ -424,6 +567,8 @@ def _validate_sample(sample: dict[str, Any]) -> None:
             "unit_text_artifact_id",
         ):
             _require_hash(unit[field], label=f"{unit_id}.{field}")
+        if unit["stratum"] not in {f"{start}-{end}" for start, end in CONTROL_STRATA}:
+            raise GoldValidationError("E-GOLD-SAMPLE", f"invalid stratum for {unit_id}")
         if (
             not isinstance(unit["text_length"], int)
             or isinstance(unit["text_length"], bool)
@@ -447,6 +592,172 @@ def _validate_sample(sample: dict[str, Any]) -> None:
         raise GoldValidationError(
             "E-GOLD-SAMPLE", "random-control rows do not match frozen control ordinals"
         )
+    controls_by_stratum: dict[str, int] = {}
+    required_ordinals = set(selection["required_ordinals"])
+    for unit in units:
+        if unit["selection"] == "random-control":
+            controls_by_stratum[unit["stratum"]] = controls_by_stratum.get(unit["stratum"], 0) + 1
+        elif unit["ordinal"] not in required_ordinals:
+            raise GoldValidationError(
+                "E-GOLD-SAMPLE", "non-control row is absent from required_ordinals"
+            )
+    expected_strata = {f"{start}-{end}" for start, end in CONTROL_STRATA}
+    if controls_by_stratum != {stratum: 1 for stratum in expected_strata}:
+        raise GoldValidationError("E-GOLD-SAMPLE", "sample requires one control per stratum")
+
+
+def _verify_bound_artifact(path: pathlib.Path, expected: str, *, label: str) -> None:
+    try:
+        data = path.read_bytes()
+    except OSError as exc:
+        raise GoldValidationError("E-GOLD-CONTRACT", f"cannot read {label}: {path}") from exc
+    if artifact_id_for(data) != expected:
+        raise GoldValidationError("E-GOLD-CONTRACT", f"{label} differs from frozen identity")
+
+
+def _verify_compilation_contracts(
+    sample: dict[str, Any],
+    *,
+    protocol_path: pathlib.Path,
+    label_schema_path: pathlib.Path,
+    review_schema_path: pathlib.Path,
+    annotation_schema_path: pathlib.Path,
+    unique_schema_path: pathlib.Path,
+    dispute_schema_path: pathlib.Path,
+    manifest_schema_path: pathlib.Path | None = None,
+) -> None:
+    protocol = sample["protocol"]
+    _verify_bound_artifact(
+        protocol_path, protocol["protocol_artifact_id"], label="protocol document"
+    )
+    _verify_bound_artifact(
+        pathlib.Path(__file__).resolve(),
+        protocol["compiler_artifact_id"],
+        label="geography gold compiler",
+    )
+    paths = {
+        "label": label_schema_path,
+        "review": review_schema_path,
+        "annotation": annotation_schema_path,
+        "unique": unique_schema_path,
+        "dispute": dispute_schema_path,
+    }
+    if manifest_schema_path is not None:
+        paths["manifest"] = manifest_schema_path
+    for name, path in paths.items():
+        _verify_bound_artifact(
+            path,
+            protocol["schema_artifact_ids"][name],
+            label=f"{name} schema",
+        )
+
+
+def _selection_score(seed: int, stratum: str, unit_id: str) -> str:
+    value = f"{seed}\0{SELECTION_ALGORITHM_ID}\0{stratum}\0{unit_id}".encode("utf-8")
+    return hashlib.sha256(value).hexdigest()
+
+
+def _read_git_blob(repository_root: pathlib.Path, commit: str, path: str) -> bytes:
+    try:
+        completed = subprocess.run(
+            ["git", "-C", str(repository_root), "show", f"{commit}:{path}"],
+            check=False,
+            capture_output=True,
+        )
+    except OSError as exc:
+        raise GoldValidationError("E-GOLD-SELECTION", "cannot execute git") from exc
+    if completed.returncode != 0:
+        raise GoldValidationError(
+            "E-GOLD-SELECTION", "cannot read the frozen source-selection manifest"
+        )
+    return completed.stdout
+
+
+def verify_sample_selection(
+    *, sample_path: pathlib.Path, repository_root: pathlib.Path
+) -> list[dict[str, Any]]:
+    sample = _read_json(sample_path, label="sample manifest")
+    _validate_sample(sample)
+    selection = sample["selection"]
+    raw = _read_git_blob(
+        repository_root,
+        selection["source_selection_commit"],
+        selection["source_selection_manifest_path"],
+    )
+    if artifact_id_for(raw) != selection["source_selection_manifest_artifact_id"]:
+        raise GoldValidationError(
+            "E-GOLD-SELECTION", "source-selection manifest artifact differs"
+        )
+    manifest = _decode_json(raw, label="source-selection manifest")
+    if not isinstance(manifest, dict) or manifest.get("schema_version") != "experiment-sample/v1":
+        raise GoldValidationError("E-GOLD-SELECTION", "unsupported source-selection manifest")
+    provenance = manifest.get("provenance")
+    selected = manifest.get("selected")
+    if not isinstance(provenance, dict) or not isinstance(selected, list):
+        raise GoldValidationError("E-GOLD-SELECTION", "source-selection manifest is incomplete")
+    if (
+        provenance.get("seed") != selection["source_seed"]
+        or provenance.get("strata") != selection["strata"]
+    ):
+        raise GoldValidationError("E-GOLD-SELECTION", "source-selection policy differs")
+
+    random_rows = [row for row in selected if isinstance(row, dict) and row.get("selection") == "random"]
+    if len(random_rows) != 12:
+        raise GoldValidationError(
+            "E-GOLD-SELECTION", "source-selection manifest must contain twelve random draws"
+        )
+    seen_candidate_ordinals: set[int] = set()
+    seen_candidate_ids: set[str] = set()
+    chosen: list[dict[str, Any]] = []
+    sample_controls = {
+        unit["stratum"]: unit for unit in sample["units"] if unit["selection"] == "random-control"
+    }
+    for start, end in CONTROL_STRATA:
+        stratum = f"{start}-{end}"
+        candidates = [row for row in random_rows if row.get("stratum") == stratum]
+        if len(candidates) != 3:
+            raise GoldValidationError(
+                "E-GOLD-SELECTION", f"stratum {stratum} must contain three random draws"
+            )
+        for row in candidates:
+            ordinal = row.get("ordinal")
+            unit_id = row.get("unit_id")
+            if (
+                not isinstance(ordinal, int)
+                or isinstance(ordinal, bool)
+                or not start <= ordinal <= end
+                or not isinstance(unit_id, str)
+                or not re.fullmatch(r"XUNIT-[A-Z0-9]{20}", unit_id)
+                or ordinal in seen_candidate_ordinals
+                or unit_id in seen_candidate_ids
+            ):
+                raise GoldValidationError(
+                    "E-GOLD-SELECTION", f"invalid random draw in stratum {stratum}"
+                )
+            seen_candidate_ordinals.add(ordinal)
+            seen_candidate_ids.add(unit_id)
+        winner = min(
+            candidates,
+            key=lambda row: _selection_score(selection["source_seed"], stratum, row["unit_id"]),
+        )
+        control = sample_controls[stratum]
+        if winner["ordinal"] != control["ordinal"] or winner["unit_id"] != control["unit_id"]:
+            raise GoldValidationError(
+                "E-GOLD-SELECTION", f"control selection differs in stratum {stratum}"
+            )
+        chosen.append(
+            {
+                "stratum": stratum,
+                "ordinal": winner["ordinal"],
+                "unit_id": winner["unit_id"],
+                "selection_hash": _selection_score(
+                    selection["source_seed"], stratum, winner["unit_id"]
+                ),
+            }
+        )
+    if {row["ordinal"] for row in chosen} != set(selection["random_control_ordinals"]):
+        raise GoldValidationError("E-GOLD-SELECTION", "control ordinal set differs")
+    return chosen
 
 
 def _validate_snapshot(snapshot: dict[str, Any], sample: dict[str, Any]) -> set[str]:
@@ -782,9 +1093,21 @@ def prepare_source_packets(
     snapshot_path: pathlib.Path,
     tasks_dir: pathlib.Path,
     output_dir: pathlib.Path,
+    protocol_path: pathlib.Path | None = None,
 ) -> list[pathlib.Path]:
     sample = _read_json(sample_path, label="sample manifest")
     _validate_sample(sample)
+    protocol = sample["protocol"]
+    _verify_bound_artifact(
+        protocol_path or sample_path.parent / "experiment-b-plan.md",
+        protocol["protocol_artifact_id"],
+        label="protocol document",
+    )
+    _verify_bound_artifact(
+        pathlib.Path(__file__).resolve(),
+        protocol["compiler_artifact_id"],
+        label="geography gold compiler",
+    )
     snapshot = _read_canonical_document(snapshot_path, label="NovelTextSnapshot")
     snapshot_segment_ids = _validate_snapshot(snapshot, sample)
     if not tasks_dir.is_dir():
@@ -873,6 +1196,17 @@ def _load_source_packets(
             raise GoldValidationError("E-GOLD-SOURCE-HASH", f"unit text differs for {unit_id}")
         packets[unit_id] = packet
     return packets
+
+
+def _source_packet_records(sample: dict[str, Any]) -> tuple[list[dict[str, Any]], str]:
+    records = [
+        {
+            "unit_id": unit["unit_id"],
+            "source_packet_artifact_id": unit["source_packet_hash"],
+        }
+        for unit in sample["units"]
+    ]
+    return records, object_hash({"source_packets": records}, omit=())
 
 
 def _pointer_exists(payload: dict[str, Any], pointer: str) -> bool:
@@ -1131,12 +1465,57 @@ def _compile_annotations(
     return annotations, {unit_id: (values[0], values[1]) for unit_id, values in counts.items()}
 
 
+def _verified_review_artifact(
+    root: pathlib.Path, relative: str, expected: str, *, label: str
+) -> pathlib.Path:
+    path_value = pathlib.PurePosixPath(relative)
+    if path_value.is_absolute() or ".." in path_value.parts or not path_value.parts:
+        raise GoldValidationError("E-GOLD-REVIEW", f"unsafe {label} path")
+    root_resolved = root.resolve()
+    path = root.joinpath(*path_value.parts)
+    try:
+        resolved = path.resolve(strict=True)
+    except OSError as exc:
+        raise GoldValidationError("E-GOLD-REVIEW", f"missing {label} artifact") from exc
+    if not resolved.is_relative_to(root_resolved) or not resolved.is_file() or path.is_symlink():
+        raise GoldValidationError("E-GOLD-REVIEW", f"unsafe {label} artifact")
+    _verify_bound_artifact(resolved, expected, label=label)
+    return resolved
+
+
+def _verify_model_review_artifacts(
+    review: dict[str, Any], review_artifacts_dir: pathlib.Path
+) -> None:
+    if not review_artifacts_dir.is_dir():
+        raise GoldValidationError("E-GOLD-REVIEW", "model review artifacts directory is missing")
+    seen_paths: set[pathlib.Path] = set()
+    for entry in review["model_reviews"]:
+        role = entry["role"]
+        for kind in ("prompt", "output"):
+            path = _verified_review_artifact(
+                review_artifacts_dir,
+                entry[f"review_{kind}_file"],
+                entry[f"review_{kind}_artifact_id"],
+                label=f"{role} {kind}",
+            )
+            if path in seen_paths:
+                raise GoldValidationError(
+                    "E-GOLD-REVIEW", "model review prompt/output paths must be distinct"
+                )
+            seen_paths.add(path)
+
+
 def _validate_review(
     *,
     sample: dict[str, Any],
     review: dict[str, Any],
     review_schema: dict[str, Any],
     labels_artifact_id: str,
+    source_packet_set_hash: str,
+    input_labels_artifact_id: str | None,
+    disputes_artifact_id: str | None,
+    disputed_count: int,
+    review_artifacts_dir: pathlib.Path | None,
     counts: dict[str, tuple[int, int]],
     allow_draft: bool,
 ) -> tuple[str, tuple[str, ...]]:
@@ -1147,8 +1526,10 @@ def _validate_review(
         raise GoldValidationError("E-GOLD-REVIEW", "review sample_id differs")
     if review.get("labels_artifact_id") != labels_artifact_id:
         raise GoldValidationError("E-GOLD-REVIEW", "review labels_artifact_id differs")
+    if review.get("source_packet_set_hash") != source_packet_set_hash:
+        raise GoldValidationError("E-GOLD-REVIEW", "review source_packet_set_hash differs")
     state = review["review_state"]
-    if state != "HUMAN_ACCEPTED" and not allow_draft:
+    if state != "MODEL_ADJUDICATED" and not allow_draft:
         raise GoldValidationError(
             "E-GOLD-NOT-ACCEPTED", "draft labels require the explicit --allow-draft flag"
         )
@@ -1175,15 +1556,68 @@ def _validate_review(
             raise GoldValidationError("E-GOLD-REVIEW", f"review counts differ for {unit_id}")
         if not entry["review_complete"]:
             incomplete.append(unit_id)
-    if state == "HUMAN_ACCEPTED":
-        if review["reviewer_kind"] != "HUMAN":
+    if state == "MODEL_ADJUDICATED":
+        if review["reviewer_kind"] != "MODEL" or review.get("review_policy") != REVIEW_POLICY:
             raise GoldValidationError(
-                "E-GOLD-NOT-ACCEPTED", "HUMAN_ACCEPTED requires reviewer_kind HUMAN"
+                "E-GOLD-NOT-ACCEPTED",
+                "MODEL_ADJUDICATED requires the frozen model review policy",
             )
         if incomplete:
             raise GoldValidationError(
-                "E-GOLD-NOT-ACCEPTED", "HUMAN_ACCEPTED requires every unit review_complete"
+                "E-GOLD-NOT-ACCEPTED",
+                "MODEL_ADJUDICATED requires every unit review_complete",
             )
+        if tuple(review.get("forbidden_inputs", ())) != FORBIDDEN_REVIEW_INPUTS:
+            raise GoldValidationError("E-GOLD-REVIEW", "forbidden input declaration differs")
+        if review.get("input_labels_artifact_id") != input_labels_artifact_id:
+            raise GoldValidationError("E-GOLD-REVIEW", "input labels artifact differs")
+        if (
+            review.get("disputes_artifact_id") != disputes_artifact_id
+            or review.get("disputed_count") != disputed_count
+        ):
+            raise GoldValidationError("E-GOLD-REVIEW", "dispute artifact or count differs")
+        model_reviews = review.get("model_reviews", [])
+        by_role = {entry["role"]: entry for entry in model_reviews}
+        execution_ids = [entry["execution_id"] for entry in model_reviews]
+        output_ids = [entry["review_output_artifact_id"] for entry in model_reviews]
+        if (
+            set(by_role) != MODEL_REVIEW_ROLES
+            or len(by_role) != len(model_reviews)
+            or len(execution_ids) != len(set(execution_ids))
+            or len(output_ids) != len(set(output_ids))
+        ):
+            raise GoldValidationError(
+                "E-GOLD-REVIEW", "model review roles, executions, or outputs are not unique"
+            )
+        blind = by_role["BLIND_EXTRACTOR"]
+        auditor = by_role["DRAFT_AUDITOR"]
+        adjudicator = by_role["DIFFERENCE_ADJUDICATOR"]
+        expected_inputs = {
+            "BLIND_EXTRACTOR": {source_packet_set_hash},
+            "DRAFT_AUDITOR": {
+                source_packet_set_hash,
+                review["input_labels_artifact_id"],
+            },
+            "DIFFERENCE_ADJUDICATOR": {
+                source_packet_set_hash,
+                blind["review_output_artifact_id"],
+                auditor["review_output_artifact_id"],
+            },
+        }
+        for role, expected in expected_inputs.items():
+            if set(by_role[role]["input_artifact_ids"]) != expected:
+                raise GoldValidationError(
+                    "E-GOLD-REVIEW", f"{role} input artifact set differs"
+                )
+        if review["review_output_artifact_id"] != adjudicator["review_output_artifact_id"]:
+            raise GoldValidationError(
+                "E-GOLD-REVIEW", "top-level review output is not the adjudicator output"
+            )
+        if review_artifacts_dir is None:
+            raise GoldValidationError(
+                "E-GOLD-INPUT", "model adjudication requires review artifact bytes"
+            )
+        _verify_model_review_artifacts(review, review_artifacts_dir)
     return state, tuple(incomplete)
 
 
@@ -1236,40 +1670,137 @@ def _derive_unique(annotations: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return rows
 
 
+def _validate_input_labels(
+    *,
+    rows: list[dict[str, Any]],
+    sample: dict[str, Any],
+    label_schema: dict[str, Any],
+) -> set[str]:
+    sample_units = {unit["unit_id"] for unit in sample["units"]}
+    artifact_ids: set[str] = set()
+    for index, row in enumerate(rows, start=1):
+        _schema_validate(label_schema, row, label=f"input label line {index}")
+        if row.get("schema_version") != LABEL_SCHEMA_VERSION:
+            raise GoldValidationError("E-GOLD-LABEL", f"unsupported input label line {index}")
+        if row.get("sample_id") != sample["sample_id"] or row.get("unit_id") not in sample_units:
+            raise GoldValidationError("E-GOLD-LABEL", f"input label lineage differs at line {index}")
+        artifact_id = artifact_id_for(canonical_dumps(row))
+        if artifact_id in artifact_ids:
+            raise GoldValidationError("E-GOLD-LABEL", f"duplicate input label at line {index}")
+        artifact_ids.add(artifact_id)
+    return artifact_ids
+
+
+def _validate_disputes(
+    *,
+    rows: list[dict[str, Any]],
+    sample: dict[str, Any],
+    dispute_schema: dict[str, Any],
+    candidate_label_artifact_ids: set[str],
+) -> None:
+    sample_units = {unit["unit_id"] for unit in sample["units"]}
+    seen_ids: set[str] = set()
+    for index, row in enumerate(rows, start=1):
+        _schema_validate(dispute_schema, row, label=f"dispute line {index}")
+        if (
+            row.get("schema_version") != DISPUTE_SCHEMA_VERSION
+            or row.get("sample_id") != sample["sample_id"]
+            or row.get("unit_id") not in sample_units
+        ):
+            raise GoldValidationError("E-GOLD-DISPUTE", f"dispute lineage differs at line {index}")
+        identity = {key: value for key, value in row.items() if key != "dispute_id"}
+        if row["dispute_id"] != _derived_id("GEODSP-", identity):
+            raise GoldValidationError("E-GOLD-DISPUTE", f"dispute id differs at line {index}")
+        if row["dispute_id"] in seen_ids:
+            raise GoldValidationError("E-GOLD-DISPUTE", f"duplicate dispute id at line {index}")
+        seen_ids.add(row["dispute_id"])
+        if not set(row["candidate_label_artifact_ids"]) & candidate_label_artifact_ids:
+            raise GoldValidationError(
+                "E-GOLD-DISPUTE", f"dispute has no bound candidate label at line {index}"
+            )
+
+
 def load_and_validate(
     *,
     sample_path: pathlib.Path,
     source_dir: pathlib.Path,
+    input_labels_path: pathlib.Path | None,
     labels_path: pathlib.Path,
+    disputes_path: pathlib.Path | None,
     review_path: pathlib.Path,
+    review_artifacts_dir: pathlib.Path | None,
     label_schema_path: pathlib.Path | None = None,
     review_schema_path: pathlib.Path | None = None,
     annotation_schema_path: pathlib.Path | None = None,
+    unique_schema_path: pathlib.Path | None = None,
+    dispute_schema_path: pathlib.Path | None = None,
+    protocol_path: pathlib.Path | None = None,
     allow_draft: bool = False,
 ) -> GoldInputs:
     sample = _read_json(sample_path, label="sample manifest")
     _validate_sample(sample)
     schema_root = sample_path.parent
-    label_schema = _load_schema(
-        label_schema_path or schema_root / "geography-gold-label.schema.json",
-        label="gold label schema",
+    label_schema_file = label_schema_path or schema_root / "geography-gold-label.schema.json"
+    review_schema_file = review_schema_path or schema_root / "geography-gold-review.schema.json"
+    annotation_schema_file = (
+        annotation_schema_path or schema_root / "geography-gold-annotation.schema.json"
     )
-    review_schema = _load_schema(
-        review_schema_path or schema_root / "geography-gold-review.schema.json",
-        label="gold review schema",
+    unique_schema_file = unique_schema_path or schema_root / "geography-gold-unique.schema.json"
+    dispute_schema_file = (
+        dispute_schema_path or schema_root / "geography-gold-dispute.schema.json"
     )
-    annotation_schema = _load_schema(
-        annotation_schema_path or schema_root / "geography-gold-annotation.schema.json",
-        label="gold annotation schema",
+    _verify_compilation_contracts(
+        sample,
+        protocol_path=protocol_path or schema_root / "experiment-b-plan.md",
+        label_schema_path=label_schema_file,
+        review_schema_path=review_schema_file,
+        annotation_schema_path=annotation_schema_file,
+        unique_schema_path=unique_schema_file,
+        dispute_schema_path=dispute_schema_file,
     )
+    label_schema = _load_schema(label_schema_file, label="gold label schema")
+    review_schema = _load_schema(review_schema_file, label="gold review schema")
+    annotation_schema = _load_schema(annotation_schema_file, label="gold annotation schema")
+    unique_schema = _load_schema(unique_schema_file, label="gold unique schema")
+    dispute_schema = _load_schema(dispute_schema_file, label="gold dispute schema")
     packets = _load_source_packets(sample, source_dir)
+    _, source_packet_set_hash = _source_packet_records(sample)
     labels_bytes, labels = _read_canonical_jsonl(labels_path, label="gold labels")
     review = _read_json(review_path, label="review manifest")
 
     review_state = review.get("review_state")
-    if review_state not in {"ANNOTATION_DRAFT", "HUMAN_ACCEPTED"}:
+    if review_state not in {"ANNOTATION_DRAFT", "MODEL_ADJUDICATED"}:
         # Produce a stable error before deriving rows with an invalid state.
         raise GoldValidationError("E-GOLD-REVIEW", "unknown review_state")
+    input_labels_bytes = b""
+    input_labels: list[dict[str, Any]] = []
+    disputes_bytes = b""
+    disputes: list[dict[str, Any]] = []
+    if review_state == "MODEL_ADJUDICATED":
+        if input_labels_path is None or disputes_path is None:
+            raise GoldValidationError(
+                "E-GOLD-INPUT", "model adjudication requires input labels and disputes"
+            )
+        input_labels_bytes, input_labels = _read_canonical_jsonl(
+            input_labels_path, label="input labels"
+        )
+        disputes_bytes, disputes = _read_canonical_jsonl(disputes_path, label="disputes")
+    input_label_ids = _validate_input_labels(
+        rows=input_labels,
+        sample=sample,
+        label_schema=label_schema,
+    )
+    final_label_ids = _validate_input_labels(
+        rows=labels,
+        sample=sample,
+        label_schema=label_schema,
+    )
+    _validate_disputes(
+        rows=disputes,
+        sample=sample,
+        dispute_schema=dispute_schema,
+        candidate_label_artifact_ids=input_label_ids | final_label_ids,
+    )
     annotations, counts = _compile_annotations(
         sample=sample,
         packets=packets,
@@ -1283,16 +1814,27 @@ def load_and_validate(
         review=review,
         review_schema=review_schema,
         labels_artifact_id=artifact_id_for(labels_bytes),
+        source_packet_set_hash=source_packet_set_hash,
+        input_labels_artifact_id=(
+            artifact_id_for(input_labels_bytes) if input_labels_path is not None else None
+        ),
+        disputes_artifact_id=(artifact_id_for(disputes_bytes) if disputes_path is not None else None),
+        disputed_count=len(disputes),
+        review_artifacts_dir=review_artifacts_dir,
         counts=counts,
         allow_draft=allow_draft,
     )
     if state != review_state:
         raise GoldValidationError("E-GOLD-REVIEW", "review state changed during validation")
     unique_rows = _derive_unique(annotations)
+    for index, row in enumerate(unique_rows, start=1):
+        _schema_validate(unique_schema, row, label=f"unique row {index}")
     return GoldInputs(
         sample=sample,
         packets=packets,
+        input_labels=input_labels,
         labels=labels,
+        disputes=disputes,
         review=review,
         annotations=annotations,
         unique_rows=unique_rows,
@@ -1316,36 +1858,38 @@ def _build_frozen_gold_manifest(
     review_path: pathlib.Path,
 ) -> tuple[dict[str, Any], bytes, bytes]:
     if (
-        inputs.review.get("review_state") != "HUMAN_ACCEPTED"
-        or inputs.review.get("reviewer_kind") != "HUMAN"
+        inputs.review.get("review_state") != "MODEL_ADJUDICATED"
+        or inputs.review.get("reviewer_kind") != "MODEL"
         or inputs.incomplete_unit_ids
     ):
         raise GoldValidationError(
             "E-GOLD-NOT-ACCEPTED",
-            "FROZEN_GOLD requires complete HUMAN_ACCEPTED review for every unit",
+            "FROZEN_MODEL_GOLD requires complete MODEL_ADJUDICATED review for every unit",
         )
     annotation_bytes = _canonical_jsonl(inputs.annotations)
     unique_bytes = _canonical_jsonl(inputs.unique_rows)
     labels_bytes = _read_bytes(labels_path, label="gold labels")
-    source_packets: list[dict[str, Any]] = []
-    for sample_unit in inputs.sample["units"]:
-        unit_id = sample_unit["unit_id"]
-        packet_bytes = _read_bytes(
-            source_dir / f"{unit_id}.json", label=f"source packet {unit_id}"
-        )
-        source_packets.append(
-            {
-                "unit_id": unit_id,
-                "source_packet_artifact_id": artifact_id_for(packet_bytes),
-            }
-        )
-    source_packet_set_hash = object_hash({"source_packets": source_packets}, omit=())
+    source_packets, source_packet_set_hash = _source_packet_records(inputs.sample)
     include_count = sum(label["decision"] == "INCLUDE" for label in inputs.labels)
     exclude_count = sum(label["decision"] == "EXCLUDE" for label in inputs.labels)
+    protocol = inputs.sample["protocol"]
+    selection = inputs.sample["selection"]
+    review = inputs.review
     base = {
         "schema_version": GOLD_MANIFEST_SCHEMA_VERSION,
         "sample_id": inputs.sample["sample_id"],
-        "state": "FROZEN_GOLD",
+        "state": "FROZEN_MODEL_GOLD",
+        "review_state": "MODEL_ADJUDICATED",
+        "review_policy": protocol["review_policy"],
+        "protocol_commit": protocol["protocol_commit"],
+        "protocol_artifact_id": protocol["protocol_artifact_id"],
+        "compiler_artifact_id": protocol["compiler_artifact_id"],
+        "schema_artifact_ids": protocol["schema_artifact_ids"],
+        "source_selection_commit": selection["source_selection_commit"],
+        "source_selection_manifest_artifact_id": selection[
+            "source_selection_manifest_artifact_id"
+        ],
+        "selection_algorithm_id": selection["selection_algorithm_id"],
         "text_snapshot_id": inputs.sample["baseline"]["text_snapshot_id"],
         "text_snapshot_hash": inputs.sample["baseline"]["text_snapshot_hash"],
         "sample_manifest_artifact_id": artifact_id_for(
@@ -1354,10 +1898,16 @@ def _build_frozen_gold_manifest(
         "sample_manifest_hash": object_hash(inputs.sample, omit=()),
         "source_packets": source_packets,
         "source_packet_set_hash": source_packet_set_hash,
+        "input_labels_artifact_id": review["input_labels_artifact_id"],
         "labels_artifact_id": artifact_id_for(labels_bytes),
         "review_manifest_artifact_id": artifact_id_for(
             _read_bytes(review_path, label="review manifest")
         ),
+        "review_output_artifact_id": review["review_output_artifact_id"],
+        "disputes_artifact_id": review["disputes_artifact_id"],
+        "disputed_count": review["disputed_count"],
+        "forbidden_inputs": review["forbidden_inputs"],
+        "model_reviews": review["model_reviews"],
         "occurrence_jsonl_artifact_id": artifact_id_for(annotation_bytes),
         "unique_jsonl_artifact_id": artifact_id_for(unique_bytes),
         "counts": {
@@ -1367,6 +1917,7 @@ def _build_frozen_gold_manifest(
             "exclude_count": exclude_count,
             "occurrence_count": len(inputs.annotations),
             "unique_count": len(inputs.unique_rows),
+            "disputed_count": len(inputs.disputes),
         },
     }
     gold_hash = object_hash(base, omit=())
@@ -1382,24 +1933,36 @@ def freeze_gold(
     *,
     sample_path: pathlib.Path,
     source_dir: pathlib.Path,
+    input_labels_path: pathlib.Path,
     labels_path: pathlib.Path,
+    disputes_path: pathlib.Path,
     review_path: pathlib.Path,
+    review_artifacts_dir: pathlib.Path,
     occurrences_out: pathlib.Path,
     unique_out: pathlib.Path,
     manifest_out: pathlib.Path,
     label_schema_path: pathlib.Path | None = None,
     review_schema_path: pathlib.Path | None = None,
     annotation_schema_path: pathlib.Path | None = None,
+    unique_schema_path: pathlib.Path | None = None,
+    dispute_schema_path: pathlib.Path | None = None,
     gold_manifest_schema_path: pathlib.Path | None = None,
+    protocol_path: pathlib.Path | None = None,
 ) -> dict[str, Any]:
     inputs = load_and_validate(
         sample_path=sample_path,
         source_dir=source_dir,
+        input_labels_path=input_labels_path,
         labels_path=labels_path,
+        disputes_path=disputes_path,
         review_path=review_path,
+        review_artifacts_dir=review_artifacts_dir,
         label_schema_path=label_schema_path,
         review_schema_path=review_schema_path,
         annotation_schema_path=annotation_schema_path,
+        unique_schema_path=unique_schema_path,
+        dispute_schema_path=dispute_schema_path,
+        protocol_path=protocol_path,
     )
     manifest, annotation_bytes, unique_bytes = _build_frozen_gold_manifest(
         inputs=inputs,
@@ -1408,15 +1971,23 @@ def freeze_gold(
         labels_path=labels_path,
         review_path=review_path,
     )
-    manifest_schema = _load_schema(
-        gold_manifest_schema_path
-        or sample_path.parent / "geography-gold-manifest.schema.json",
-        label="frozen gold manifest schema",
+    manifest_schema_file = (
+        gold_manifest_schema_path or sample_path.parent / "geography-gold-manifest.schema.json"
     )
+    _verify_bound_artifact(
+        manifest_schema_file,
+        inputs.sample["protocol"]["schema_artifact_ids"]["manifest"],
+        label="manifest schema",
+    )
+    manifest_schema = _load_schema(manifest_schema_file, label="frozen gold manifest schema")
     _schema_validate(manifest_schema, manifest, label="frozen gold manifest")
-    _write_immutable(occurrences_out, annotation_bytes)
-    _write_immutable(unique_out, unique_bytes)
-    _write_immutable(manifest_out, canonical_dumps(manifest) + b"\n")
+    _write_immutable_set(
+        [
+            (occurrences_out, annotation_bytes),
+            (unique_out, unique_bytes),
+            (manifest_out, canonical_dumps(manifest) + b"\n"),
+        ]
+    )
     return manifest
 
 
@@ -1424,24 +1995,36 @@ def validate_frozen_gold(
     *,
     sample_path: pathlib.Path,
     source_dir: pathlib.Path,
+    input_labels_path: pathlib.Path,
     labels_path: pathlib.Path,
+    disputes_path: pathlib.Path,
     review_path: pathlib.Path,
+    review_artifacts_dir: pathlib.Path,
     occurrences_path: pathlib.Path,
     unique_path: pathlib.Path,
     manifest_path: pathlib.Path,
     label_schema_path: pathlib.Path | None = None,
     review_schema_path: pathlib.Path | None = None,
     annotation_schema_path: pathlib.Path | None = None,
+    unique_schema_path: pathlib.Path | None = None,
+    dispute_schema_path: pathlib.Path | None = None,
     gold_manifest_schema_path: pathlib.Path | None = None,
+    protocol_path: pathlib.Path | None = None,
 ) -> dict[str, Any]:
     inputs = load_and_validate(
         sample_path=sample_path,
         source_dir=source_dir,
+        input_labels_path=input_labels_path,
         labels_path=labels_path,
+        disputes_path=disputes_path,
         review_path=review_path,
+        review_artifacts_dir=review_artifacts_dir,
         label_schema_path=label_schema_path,
         review_schema_path=review_schema_path,
         annotation_schema_path=annotation_schema_path,
+        unique_schema_path=unique_schema_path,
+        dispute_schema_path=dispute_schema_path,
+        protocol_path=protocol_path,
     )
     expected, annotation_bytes, unique_bytes = _build_frozen_gold_manifest(
         inputs=inputs,
@@ -1451,11 +2034,15 @@ def validate_frozen_gold(
         review_path=review_path,
     )
     manifest = _read_canonical_document(manifest_path, label="frozen gold manifest")
-    manifest_schema = _load_schema(
-        gold_manifest_schema_path
-        or sample_path.parent / "geography-gold-manifest.schema.json",
-        label="frozen gold manifest schema",
+    manifest_schema_file = (
+        gold_manifest_schema_path or sample_path.parent / "geography-gold-manifest.schema.json"
     )
+    _verify_bound_artifact(
+        manifest_schema_file,
+        inputs.sample["protocol"]["schema_artifact_ids"]["manifest"],
+        label="manifest schema",
+    )
+    manifest_schema = _load_schema(manifest_schema_file, label="frozen gold manifest schema")
     _schema_validate(manifest_schema, manifest, label="frozen gold manifest")
     if manifest != expected:
         raise GoldValidationError(
@@ -1473,14 +2060,23 @@ def _add_compile_inputs(
     *,
     include_allow_draft: bool = False,
     include_gold_manifest_schema: bool = False,
+    require_model_artifacts: bool = False,
 ) -> None:
     parser.add_argument("--sample", type=pathlib.Path, required=True)
     parser.add_argument("--source-dir", type=pathlib.Path, required=True)
+    parser.add_argument("--input-labels", type=pathlib.Path, required=require_model_artifacts)
     parser.add_argument("--labels", type=pathlib.Path, required=True)
+    parser.add_argument("--disputes", type=pathlib.Path, required=require_model_artifacts)
     parser.add_argument("--review-manifest", type=pathlib.Path, required=True)
+    parser.add_argument(
+        "--review-artifacts-dir", type=pathlib.Path, required=require_model_artifacts
+    )
+    parser.add_argument("--protocol-document", type=pathlib.Path)
     parser.add_argument("--label-schema", type=pathlib.Path)
     parser.add_argument("--review-schema", type=pathlib.Path)
     parser.add_argument("--annotation-schema", type=pathlib.Path)
+    parser.add_argument("--unique-schema", type=pathlib.Path)
+    parser.add_argument("--dispute-schema", type=pathlib.Path)
     if include_gold_manifest_schema:
         parser.add_argument("--gold-manifest-schema", type=pathlib.Path)
     if include_allow_draft:
@@ -1503,6 +2099,13 @@ def _parser() -> argparse.ArgumentParser:
     prepare.add_argument("--snapshot", type=pathlib.Path, required=True)
     prepare.add_argument("--tasks-dir", type=pathlib.Path, required=True)
     prepare.add_argument("--output-dir", type=pathlib.Path, required=True)
+    prepare.add_argument("--protocol-document", type=pathlib.Path)
+
+    verify_selection = subparsers.add_parser(
+        "verify-sample-selection", help="replay controls from the pinned A-1 Git manifest"
+    )
+    verify_selection.add_argument("--sample", type=pathlib.Path, required=True)
+    verify_selection.add_argument("--repository-root", type=pathlib.Path, required=True)
 
     validate = subparsers.add_parser("validate", help="validate source, labels, and review closure")
     _add_compile_inputs(validate, include_allow_draft=True)
@@ -1513,17 +2116,22 @@ def _parser() -> argparse.ArgumentParser:
     derive.add_argument("--unique-out", type=pathlib.Path, required=True)
 
     freeze = subparsers.add_parser(
-        "freeze", help="write HUMAN_ACCEPTED occurrence, unique, and FROZEN_GOLD artifacts"
+        "freeze",
+        help="commit MODEL_ADJUDICATED occurrence, unique, and FROZEN_MODEL_GOLD artifacts",
     )
-    _add_compile_inputs(freeze, include_gold_manifest_schema=True)
+    _add_compile_inputs(
+        freeze, include_gold_manifest_schema=True, require_model_artifacts=True
+    )
     freeze.add_argument("--occurrences-out", type=pathlib.Path, required=True)
     freeze.add_argument("--unique-out", type=pathlib.Path, required=True)
     freeze.add_argument("--gold-manifest-out", type=pathlib.Path, required=True)
 
     validate_frozen = subparsers.add_parser(
-        "validate-frozen", help="replay and validate a complete FROZEN_GOLD artifact set"
+        "validate-frozen", help="replay and validate a complete FROZEN_MODEL_GOLD artifact set"
     )
-    _add_compile_inputs(validate_frozen, include_gold_manifest_schema=True)
+    _add_compile_inputs(
+        validate_frozen, include_gold_manifest_schema=True, require_model_artifacts=True
+    )
     validate_frozen.add_argument("--occurrences", type=pathlib.Path, required=True)
     validate_frozen.add_argument("--unique", type=pathlib.Path, required=True)
     validate_frozen.add_argument("--gold-manifest", type=pathlib.Path, required=True)
@@ -1537,6 +2145,7 @@ def _summary(inputs: GoldInputs) -> dict[str, Any]:
     return {
         "sample_id": inputs.sample["sample_id"],
         "review_state": inputs.review["review_state"],
+        "review_policy": inputs.review.get("review_policy"),
         "source_packet_count": len(inputs.packets),
         "label_count": len(inputs.labels),
         "labels_artifact_id": artifact_id_for(labels_bytes),
@@ -1544,6 +2153,7 @@ def _summary(inputs: GoldInputs) -> dict[str, Any]:
         "occurrence_jsonl_artifact_id": artifact_id_for(annotation_bytes),
         "unique_count": len(inputs.unique_rows),
         "unique_jsonl_artifact_id": artifact_id_for(unique_bytes),
+        "disputed_count": len(inputs.disputes),
         "incomplete_unit_ids": list(inputs.incomplete_unit_ids),
     }
 
@@ -1577,6 +2187,7 @@ def main(argv: list[str] | None = None) -> int:
                 args.snapshot,
                 args.tasks_dir,
                 args.output_dir,
+                args.protocol_document,
             )
             print(
                 json.dumps(
@@ -1587,19 +2198,39 @@ def main(argv: list[str] | None = None) -> int:
             )
             return 0
 
+        if args.command == "verify-sample-selection":
+            controls = verify_sample_selection(
+                sample_path=args.sample,
+                repository_root=args.repository_root,
+            )
+            print(
+                json.dumps(
+                    {"selection_algorithm_id": SELECTION_ALGORITHM_ID, "controls": controls},
+                    ensure_ascii=False,
+                    sort_keys=True,
+                )
+            )
+            return 0
+
         if args.command == "freeze":
             manifest = freeze_gold(
                 sample_path=args.sample,
                 source_dir=args.source_dir,
+                input_labels_path=args.input_labels,
                 labels_path=args.labels,
+                disputes_path=args.disputes,
                 review_path=args.review_manifest,
+                review_artifacts_dir=args.review_artifacts_dir,
                 occurrences_out=args.occurrences_out,
                 unique_out=args.unique_out,
                 manifest_out=args.gold_manifest_out,
                 label_schema_path=args.label_schema,
                 review_schema_path=args.review_schema,
                 annotation_schema_path=args.annotation_schema,
+                unique_schema_path=args.unique_schema,
+                dispute_schema_path=args.dispute_schema,
                 gold_manifest_schema_path=args.gold_manifest_schema,
+                protocol_path=args.protocol_document,
             )
             print(
                 json.dumps(
@@ -1618,15 +2249,21 @@ def main(argv: list[str] | None = None) -> int:
             manifest = validate_frozen_gold(
                 sample_path=args.sample,
                 source_dir=args.source_dir,
+                input_labels_path=args.input_labels,
                 labels_path=args.labels,
+                disputes_path=args.disputes,
                 review_path=args.review_manifest,
+                review_artifacts_dir=args.review_artifacts_dir,
                 occurrences_path=args.occurrences,
                 unique_path=args.unique,
                 manifest_path=args.gold_manifest,
                 label_schema_path=args.label_schema,
                 review_schema_path=args.review_schema,
                 annotation_schema_path=args.annotation_schema,
+                unique_schema_path=args.unique_schema,
+                dispute_schema_path=args.dispute_schema,
                 gold_manifest_schema_path=args.gold_manifest_schema,
+                protocol_path=args.protocol_document,
             )
             print(
                 json.dumps(
@@ -1645,11 +2282,17 @@ def main(argv: list[str] | None = None) -> int:
         inputs = load_and_validate(
             sample_path=args.sample,
             source_dir=args.source_dir,
+            input_labels_path=args.input_labels,
             labels_path=args.labels,
+            disputes_path=args.disputes,
             review_path=args.review_manifest,
+            review_artifacts_dir=args.review_artifacts_dir,
             label_schema_path=args.label_schema,
             review_schema_path=args.review_schema,
             annotation_schema_path=args.annotation_schema,
+            unique_schema_path=args.unique_schema,
+            dispute_schema_path=args.dispute_schema,
+            protocol_path=args.protocol_document,
             allow_draft=args.allow_draft,
         )
         if args.command == "derive":

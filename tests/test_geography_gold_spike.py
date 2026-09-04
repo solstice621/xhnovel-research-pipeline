@@ -4,6 +4,7 @@ import copy
 import importlib.util
 import json
 import pathlib
+import subprocess
 import sys
 from typing import Any, Callable
 
@@ -16,6 +17,10 @@ from xhnovel_pipeline.hashing import artifact_id_for, object_hash
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SCRIPT_PATH = ROOT / "scripts" / "spikes" / "geography_gold.py"
 SCHEMA_ROOT = ROOT / "docs" / "spikes" / "geography-capacity-stats"
+PROTOCOL_PATH = SCHEMA_ROOT / "experiment-b-plan.md"
+SAMPLE_ORDINALS = [5, 102, 233, 310, 395, 467, 426, 513, 596, 604]
+CONTROL_ORDINALS = [102, 233, 467, 604]
+REQUIRED_ORDINALS = [5, 310, 395, 426, 513, 596]
 
 _SPEC = importlib.util.spec_from_file_location("geography_gold_spike", SCRIPT_PATH)
 assert _SPEC is not None and _SPEC.loader is not None
@@ -134,8 +139,11 @@ def _task_and_unit(
 
 
 def _fixture(tmp_path: pathlib.Path, *, unit_count: int = 1) -> dict[str, Any]:
-    texts = ["甲城" + "无" * 72 + "甲城", "乙国" + "空" * 74]
-    segment_ids = [f"SEG-TEST-{index + 1:03d}" for index in range(unit_count)]
+    del unit_count  # The frozen contract always carries ten units; callers use the first rows.
+    texts = ["甲城" + "无" * 72 + "甲城", "乙国" + "空" * 74] + [
+        f"测试地{index}" + "空" * 70 for index in range(3, 11)
+    ]
+    segment_ids = [f"SEG-TEST-{index + 1:03d}" for index in range(10)]
     snapshot_body = {
         "schema_version": "novel-text-snapshot/v1",
         "record_kind": "NOVEL_TEXT_SNAPSHOT",
@@ -148,7 +156,7 @@ def _fixture(tmp_path: pathlib.Path, *, unit_count: int = 1) -> dict[str, Any]:
         "segment_ids": segment_ids,
         "source_quality_tier": "B",
         "coverage_use": "source-grounded-semantic-extraction/v0-spike",
-        "eligible_character_count": sum(len(text) for text in texts[:unit_count]),
+        "eligible_character_count": sum(len(text) for text in texts),
         "created_at": "2026-09-04T00:00:00Z",
         "status": "FROZEN",
     }
@@ -162,7 +170,7 @@ def _fixture(tmp_path: pathlib.Path, *, unit_count: int = 1) -> dict[str, Any]:
     snapshot_path.write_bytes(canonical_dumps(snapshot) + b"\n")
     baseline = {
         "engine_commit": "a" * 40,
-        "evidence_commit": "b" * 7,
+        "evidence_commit": "b" * 40,
         "extraction_build_id": "XBLD-" + "A" * 20,
         "extraction_build_hash": artifact_id_for(b"build"),
         "profile_id": "xhnovel.geography",
@@ -183,27 +191,52 @@ def _fixture(tmp_path: pathlib.Path, *, unit_count: int = 1) -> dict[str, Any]:
     tasks_dir = tmp_path / "tasks"
     tasks_dir.mkdir()
     units = []
-    for index in range(unit_count):
+    strata = ["1-169", "1-169", "170-338", "170-338", "339-507", "339-507", "339-507", "508-676", "508-676", "508-676"]
+    for index, ordinal in enumerate(SAMPLE_ORDINALS):
         task, unit = _task_and_unit(
             baseline=baseline,
-            ordinal=index + 1,
+            ordinal=ordinal,
             text=texts[index],
             segment_id=segment_ids[index],
         )
+        unit["selection"] = "random-control" if ordinal in CONTROL_ORDINALS else "test-anchor"
+        unit["stratum"] = strata[index]
         (tasks_dir / f"{unit['unit_id']}--task.json").write_bytes(canonical_dumps(task))
         units.append(unit)
+    protocol_path = tmp_path / "experiment-b-plan.md"
+    protocol_path.write_bytes(PROTOCOL_PATH.read_bytes())
     sample = {
-        "schema_version": "geography-gold-sample/v1",
+        "schema_version": "geography-gold-sample/v2",
         "sample_id": "GEOGOLD-B-20260904",
         "status": "FROZEN_SAMPLE",
-        "protocol_version": "geography-gold/v1",
+        "protocol_version": "geography-model-reference/v2",
+        "protocol": {
+            "protocol_commit": "c" * 40,
+            "protocol_artifact_id": artifact_id_for(protocol_path.read_bytes()),
+            "review_policy": "dual-model-adjudication/v1",
+            "compiler_artifact_id": artifact_id_for(SCRIPT_PATH.read_bytes()),
+            "schema_artifact_ids": {
+                name: artifact_id_for((SCHEMA_ROOT / filename).read_bytes())
+                for name, filename in {
+                    "label": "geography-gold-label.schema.json",
+                    "review": "geography-gold-review.schema.json",
+                    "annotation": "geography-gold-annotation.schema.json",
+                    "unique": "geography-gold-unique.schema.json",
+                    "dispute": "geography-gold-dispute.schema.json",
+                    "manifest": "geography-gold-manifest.schema.json",
+                }.items()
+            },
+        },
         "baseline": baseline,
         "selection": {
-            "source_manifest": "synthetic",
+            "source_selection_commit": "d" * 40,
+            "source_selection_manifest_path": "synthetic/experiment-sample.json",
+            "source_selection_manifest_artifact_id": artifact_id_for(b"synthetic selection"),
             "source_seed": 1,
-            "required_ordinals": list(range(1, unit_count + 1)),
-            "random_control_rule": "synthetic",
-            "random_control_ordinals": [],
+            "selection_algorithm_id": "experiment-b-control/v1",
+            "strata": [[1, 169], [170, 338], [339, 507], [508, 676]],
+            "required_ordinals": REQUIRED_ORDINALS,
+            "random_control_ordinals": CONTROL_ORDINALS,
         },
         "source_packet": {
             "schema_version": "geography-gold-source/v1",
@@ -216,7 +249,9 @@ def _fixture(tmp_path: pathlib.Path, *, unit_count: int = 1) -> dict[str, Any]:
     sample_path = tmp_path / "sample.json"
     sample_path.write_text(json.dumps(sample, ensure_ascii=False, indent=2), encoding="utf-8")
     source_dir = tmp_path / "source-packets"
-    gold.prepare_source_packets(sample_path, snapshot_path, tasks_dir, source_dir)
+    gold.prepare_source_packets(
+        sample_path, snapshot_path, tasks_dir, source_dir, protocol_path
+    )
     return {
         "sample": sample,
         "sample_path": sample_path,
@@ -224,6 +259,7 @@ def _fixture(tmp_path: pathlib.Path, *, unit_count: int = 1) -> dict[str, Any]:
         "snapshot_path": snapshot_path,
         "tasks_dir": tasks_dir,
         "source_dir": source_dir,
+        "protocol_path": protocol_path,
         "units": units,
     }
 
@@ -241,19 +277,44 @@ def _write_review(
     *,
     included_counts: list[int],
     excluded_counts: list[int],
-    state: str = "HUMAN_ACCEPTED",
+    state: str = "MODEL_ADJUDICATED",
     complete: list[bool] | None = None,
 ) -> dict[str, Any]:
     units = fixture["units"]
+    included_counts = included_counts + [0] * (len(units) - len(included_counts))
+    excluded_counts = excluded_counts + [0] * (len(units) - len(excluded_counts))
     if complete is None:
         complete = [True] * len(units)
+    else:
+        complete = complete + [True] * (len(units) - len(complete))
+    input_labels_path = path.parent / "input-labels.jsonl"
+    disputes_path = path.parent / "disputes.jsonl"
+    input_labels_path.write_bytes(labels_bytes)
+    disputes_path.write_bytes(b"")
+    fixture["input_labels_path"] = input_labels_path
+    fixture["disputes_path"] = disputes_path
+    review_artifacts_dir = path.parent / "review-artifacts"
+    review_artifacts_dir.mkdir(exist_ok=True)
+    review_artifacts = {
+        "blind-prompt.txt": b"blind prompt",
+        "blind-output.jsonl": b"blind output",
+        "audit-prompt.txt": b"audit prompt",
+        "audit-output.jsonl": b"audit output",
+        "adjudicator-prompt.txt": b"adjudicator prompt",
+        "adjudicator-output.jsonl": b"adjudicator output",
+    }
+    for name, data in review_artifacts.items():
+        (review_artifacts_dir / name).write_bytes(data)
+    fixture["review_artifacts_dir"] = review_artifacts_dir
+    _, source_packet_set_hash = gold._source_packet_records(fixture["sample"])
     review = {
-        "schema_version": "geography-gold-review/v1",
+        "schema_version": "geography-gold-review/v2",
         "sample_id": fixture["sample"]["sample_id"],
         "review_state": state,
-        "reviewer_kind": "HUMAN" if state == "HUMAN_ACCEPTED" else "HOST_AGENT",
+        "reviewer_kind": "MODEL" if state == "MODEL_ADJUDICATED" else "HOST_AGENT",
         "reviewer_id": "test-reviewer",
         "labels_artifact_id": artifact_id_for(labels_bytes),
+        "source_packet_set_hash": source_packet_set_hash,
         "units": [
             {
                 "unit_id": unit["unit_id"],
@@ -264,7 +325,69 @@ def _write_review(
             for index, unit in enumerate(units)
         ],
     }
-    if state == "HUMAN_ACCEPTED":
+    if state == "MODEL_ADJUDICATED":
+        blind_output = artifact_id_for(b"blind output")
+        audit_output = artifact_id_for(b"audit output")
+        adjudicator_output = artifact_id_for(b"adjudicator output")
+        review.update(
+            {
+                "review_policy": "dual-model-adjudication/v1",
+                "input_labels_artifact_id": artifact_id_for(labels_bytes),
+                "review_output_artifact_id": adjudicator_output,
+                "disputes_artifact_id": artifact_id_for(b""),
+                "disputed_count": 0,
+                "forbidden_inputs": [
+                    "baseline_answers",
+                    "candidate_answers",
+                    "capacity_statistics",
+                ],
+                "model_reviews": [
+                    {
+                        "role": "BLIND_EXTRACTOR",
+                        "execution_id": "blind-execution",
+                        "model_provider": "test-provider",
+                        "model_id": "test-model-a",
+                        "review_prompt_file": "blind-prompt.txt",
+                        "review_prompt_artifact_id": artifact_id_for(b"blind prompt"),
+                        "input_artifact_ids": [source_packet_set_hash],
+                        "review_output_artifact_id": blind_output,
+                        "review_output_file": "blind-output.jsonl",
+                        "completed_at": "2026-09-04T00:00:00Z",
+                    },
+                    {
+                        "role": "DRAFT_AUDITOR",
+                        "execution_id": "audit-execution",
+                        "model_provider": "test-provider",
+                        "model_id": "test-model-b",
+                        "review_prompt_file": "audit-prompt.txt",
+                        "review_prompt_artifact_id": artifact_id_for(b"audit prompt"),
+                        "input_artifact_ids": [
+                            source_packet_set_hash,
+                            artifact_id_for(labels_bytes),
+                        ],
+                        "review_output_artifact_id": audit_output,
+                        "review_output_file": "audit-output.jsonl",
+                        "completed_at": "2026-09-04T00:01:00Z",
+                    },
+                    {
+                        "role": "DIFFERENCE_ADJUDICATOR",
+                        "execution_id": "adjudicator-execution",
+                        "model_provider": "test-provider",
+                        "model_id": "test-model-c",
+                        "review_prompt_file": "adjudicator-prompt.txt",
+                        "review_prompt_artifact_id": artifact_id_for(b"adjudicator prompt"),
+                        "input_artifact_ids": [
+                            source_packet_set_hash,
+                            blind_output,
+                            audit_output,
+                        ],
+                        "review_output_artifact_id": adjudicator_output,
+                        "review_output_file": "adjudicator-output.jsonl",
+                        "completed_at": "2026-09-04T00:02:00Z",
+                    },
+                ],
+            }
+        )
         review["reviewed_at"] = "2026-09-04T00:00:00Z"
     path.write_text(json.dumps(review, ensure_ascii=False, indent=2), encoding="utf-8")
     return review
@@ -306,13 +429,55 @@ def _load(
     return gold.load_and_validate(
         sample_path=fixture["sample_path"],
         source_dir=fixture["source_dir"],
+        input_labels_path=fixture.get("input_labels_path"),
         labels_path=labels_path,
+        disputes_path=fixture.get("disputes_path"),
         review_path=review_path,
+        review_artifacts_dir=fixture.get("review_artifacts_dir"),
         label_schema_path=SCHEMA_ROOT / "geography-gold-label.schema.json",
         review_schema_path=SCHEMA_ROOT / "geography-gold-review.schema.json",
         annotation_schema_path=SCHEMA_ROOT / "geography-gold-annotation.schema.json",
+        unique_schema_path=SCHEMA_ROOT / "geography-gold-unique.schema.json",
+        dispute_schema_path=SCHEMA_ROOT / "geography-gold-dispute.schema.json",
+        protocol_path=fixture["protocol_path"],
         allow_draft=allow_draft,
     )
+
+
+def _freeze_case(tmp_path: pathlib.Path) -> dict[str, Any]:
+    fixture = _fixture(tmp_path)
+    unit = fixture["units"][0]
+    labels_path = tmp_path / "labels.jsonl"
+    labels_bytes = _write_labels(labels_path, [_place_label(unit["unit_id"], 10, 12)])
+    review_path = tmp_path / "review.json"
+    _write_review(
+        review_path,
+        fixture,
+        labels_bytes,
+        included_counts=[1],
+        excluded_counts=[0],
+    )
+    return {
+        "fixture": fixture,
+        "labels_path": labels_path,
+        "review_path": review_path,
+        "common": {
+            "sample_path": fixture["sample_path"],
+            "source_dir": fixture["source_dir"],
+            "input_labels_path": fixture["input_labels_path"],
+            "labels_path": labels_path,
+            "disputes_path": fixture["disputes_path"],
+            "review_path": review_path,
+            "review_artifacts_dir": fixture["review_artifacts_dir"],
+            "label_schema_path": SCHEMA_ROOT / "geography-gold-label.schema.json",
+            "review_schema_path": SCHEMA_ROOT / "geography-gold-review.schema.json",
+            "annotation_schema_path": SCHEMA_ROOT / "geography-gold-annotation.schema.json",
+            "unique_schema_path": SCHEMA_ROOT / "geography-gold-unique.schema.json",
+            "dispute_schema_path": SCHEMA_ROOT / "geography-gold-dispute.schema.json",
+            "gold_manifest_schema_path": SCHEMA_ROOT / "geography-gold-manifest.schema.json",
+            "protocol_path": fixture["protocol_path"],
+        },
+    }
 
 
 def test_merge_drafts_is_order_independent_and_rejects_duplicate_rows(tmp_path):
@@ -369,12 +534,14 @@ def test_prepare_replays_both_task_hashes_and_source_closure_without_answers(tmp
     answers_dir = fixture["tasks_dir"].parent / "answers"
     answers_dir.mkdir()
     (answers_dir / "poison.json").write_text("not even json", encoding="utf-8")
-    assert gold.prepare_source_packets(
+    prepared = gold.prepare_source_packets(
         fixture["sample_path"],
         fixture["snapshot_path"],
         fixture["tasks_dir"],
         fixture["source_dir"],
-    ) == [packet_path]
+    )
+    assert len(prepared) == 10
+    assert packet_path in prepared
 
     packet_path.write_bytes(b"different")
     with pytest.raises(gold.GoldValidationError, match="E-GOLD-IMMUTABLE"):
@@ -461,6 +628,12 @@ def test_prepare_rejects_tampered_and_self_consistent_but_wrong_snapshot(tmp_pat
             ),
             "E-GOLD-SOURCE-HASH",
         ),
+        (
+            lambda sample: sample["protocol"].__setitem__(
+                "compiler_artifact_id", artifact_id_for(b"another compiler")
+            ),
+            "E-GOLD-CONTRACT",
+        ),
     ],
 )
 def test_prepare_fails_closed_on_each_frozen_hash(
@@ -483,7 +656,7 @@ def test_prepare_fails_closed_on_each_frozen_hash(
 def test_prepare_rejects_selection_rows_that_do_not_close_over_units(tmp_path):
     fixture = _fixture(tmp_path, unit_count=2)
     sample = copy.deepcopy(fixture["sample"])
-    sample["selection"]["required_ordinals"] = [1]
+    sample["selection"]["required_ordinals"][0] = 999
     tampered = tmp_path / "selection-mismatch.json"
     tampered.write_text(json.dumps(sample), encoding="utf-8")
 
@@ -493,6 +666,103 @@ def test_prepare_rejects_selection_rows_that_do_not_close_over_units(tmp_path):
             fixture["snapshot_path"],
             fixture["tasks_dir"],
             tmp_path / "other-output",
+        )
+
+
+def test_verify_sample_selection_replays_bound_git_blob_and_all_four_minima(tmp_path):
+    fixture = _fixture(tmp_path)
+    repository = tmp_path / "selection-repository"
+    repository.mkdir()
+    subprocess.run(["git", "init", str(repository)], check=True, capture_output=True)
+    subprocess.run(
+        ["git", "-C", str(repository), "config", "user.email", "test@example.invalid"],
+        check=True,
+    )
+    subprocess.run(
+        ["git", "-C", str(repository), "config", "user.name", "Test"], check=True
+    )
+    selected: list[dict[str, Any]] = []
+    controls = {
+        unit["stratum"]: unit
+        for unit in fixture["units"]
+        if unit["selection"] == "random-control"
+    }
+    for stratum_index, (start, end) in enumerate(gold.CONTROL_STRATA, start=1):
+        stratum = f"{start}-{end}"
+        control = controls[stratum]
+        control_score = gold._selection_score(1, stratum, control["unit_id"])
+        selected.append(
+            {
+                "ordinal": control["ordinal"],
+                "unit_id": control["unit_id"],
+                "selection": "random",
+                "stratum": stratum,
+            }
+        )
+        candidate_ordinals = [value for value in range(start, end + 1) if value != control["ordinal"]]
+        added = 0
+        for candidate_number in range(100_000):
+            unit_id = f"XUNIT-{stratum_index}{candidate_number:019d}"
+            if gold._selection_score(1, stratum, unit_id) <= control_score:
+                continue
+            selected.append(
+                {
+                    "ordinal": candidate_ordinals[added],
+                    "unit_id": unit_id,
+                    "selection": "random",
+                    "stratum": stratum,
+                }
+            )
+            added += 1
+            if added == 2:
+                break
+        assert added == 2
+    source_manifest = {
+        "schema_version": "experiment-sample/v1",
+        "provenance": {
+            "seed": 1,
+            "strata": [[1, 169], [170, 338], [339, 507], [508, 676]],
+        },
+        "selected": selected,
+    }
+    manifest_path = repository / "experiment-sample.json"
+    manifest_bytes = json.dumps(source_manifest, indent=2).encode("utf-8")
+    manifest_path.write_bytes(manifest_bytes)
+    subprocess.run(
+        ["git", "-C", str(repository), "add", "experiment-sample.json"], check=True
+    )
+    subprocess.run(
+        ["git", "-C", str(repository), "commit", "-m", "freeze sample"],
+        check=True,
+        capture_output=True,
+    )
+    commit = subprocess.run(
+        ["git", "-C", str(repository), "rev-parse", "HEAD"],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    fixture["sample"]["selection"].update(
+        {
+            "source_selection_commit": commit,
+            "source_selection_manifest_path": "experiment-sample.json",
+            "source_selection_manifest_artifact_id": artifact_id_for(manifest_bytes),
+        }
+    )
+    fixture["sample_path"].write_text(json.dumps(fixture["sample"]), encoding="utf-8")
+
+    result = gold.verify_sample_selection(
+        sample_path=fixture["sample_path"], repository_root=repository
+    )
+    assert [row["ordinal"] for row in result] == CONTROL_ORDINALS
+
+    fixture["sample"]["selection"]["source_selection_manifest_artifact_id"] = artifact_id_for(
+        b"wrong source manifest"
+    )
+    fixture["sample_path"].write_text(json.dumps(fixture["sample"]), encoding="utf-8")
+    with pytest.raises(gold.GoldValidationError, match="artifact differs"):
+        gold.verify_sample_selection(
+            sample_path=fixture["sample_path"], repository_root=repository
         )
 
 
@@ -561,16 +831,26 @@ def test_derive_enriches_spans_positions_and_ids_then_groups_exact_payload(tmp_p
             str(fixture["sample_path"]),
             "--source-dir",
             str(fixture["source_dir"]),
+            "--input-labels",
+            str(fixture["input_labels_path"]),
             "--labels",
             str(labels_path),
+            "--disputes",
+            str(fixture["disputes_path"]),
             "--review-manifest",
             str(review_path),
+            "--review-artifacts-dir",
+            str(fixture["review_artifacts_dir"]),
             "--label-schema",
             str(SCHEMA_ROOT / "geography-gold-label.schema.json"),
             "--review-schema",
             str(SCHEMA_ROOT / "geography-gold-review.schema.json"),
             "--annotation-schema",
             str(SCHEMA_ROOT / "geography-gold-annotation.schema.json"),
+            "--unique-schema",
+            str(SCHEMA_ROOT / "geography-gold-unique.schema.json"),
+            "--dispute-schema",
+            str(SCHEMA_ROOT / "geography-gold-dispute.schema.json"),
             "--occurrences-out",
             str(occurrences_out),
             "--unique-out",
@@ -589,16 +869,26 @@ def test_derive_enriches_spans_positions_and_ids_then_groups_exact_payload(tmp_p
             str(fixture["sample_path"]),
             "--source-dir",
             str(fixture["source_dir"]),
+            "--input-labels",
+            str(fixture["input_labels_path"]),
             "--labels",
             str(labels_path),
+            "--disputes",
+            str(fixture["disputes_path"]),
             "--review-manifest",
             str(review_path),
+            "--review-artifacts-dir",
+            str(fixture["review_artifacts_dir"]),
             "--label-schema",
             str(SCHEMA_ROOT / "geography-gold-label.schema.json"),
             "--review-schema",
             str(SCHEMA_ROOT / "geography-gold-review.schema.json"),
             "--annotation-schema",
             str(SCHEMA_ROOT / "geography-gold-annotation.schema.json"),
+            "--unique-schema",
+            str(SCHEMA_ROOT / "geography-gold-unique.schema.json"),
+            "--dispute-schema",
+            str(SCHEMA_ROOT / "geography-gold-dispute.schema.json"),
             "--occurrences-out",
             str(occurrences_out),
             "--unique-out",
@@ -613,16 +903,26 @@ def test_derive_enriches_spans_positions_and_ids_then_groups_exact_payload(tmp_p
             str(fixture["sample_path"]),
             "--source-dir",
             str(fixture["source_dir"]),
+            "--input-labels",
+            str(fixture["input_labels_path"]),
             "--labels",
             str(labels_path),
+            "--disputes",
+            str(fixture["disputes_path"]),
             "--review-manifest",
             str(review_path),
+            "--review-artifacts-dir",
+            str(fixture["review_artifacts_dir"]),
             "--label-schema",
             str(SCHEMA_ROOT / "geography-gold-label.schema.json"),
             "--review-schema",
             str(SCHEMA_ROOT / "geography-gold-review.schema.json"),
             "--annotation-schema",
             str(SCHEMA_ROOT / "geography-gold-annotation.schema.json"),
+            "--unique-schema",
+            str(SCHEMA_ROOT / "geography-gold-unique.schema.json"),
+            "--dispute-schema",
+            str(SCHEMA_ROOT / "geography-gold-dispute.schema.json"),
             "--occurrences-out",
             str(occurrences_out),
             "--unique-out",
@@ -650,12 +950,18 @@ def test_freeze_writes_and_replays_complete_content_bound_gold_manifest(tmp_path
     common = {
         "sample_path": fixture["sample_path"],
         "source_dir": fixture["source_dir"],
+        "input_labels_path": fixture["input_labels_path"],
         "labels_path": labels_path,
+        "disputes_path": fixture["disputes_path"],
         "review_path": review_path,
+        "review_artifacts_dir": fixture["review_artifacts_dir"],
         "label_schema_path": SCHEMA_ROOT / "geography-gold-label.schema.json",
         "review_schema_path": SCHEMA_ROOT / "geography-gold-review.schema.json",
         "annotation_schema_path": SCHEMA_ROOT / "geography-gold-annotation.schema.json",
+        "unique_schema_path": SCHEMA_ROOT / "geography-gold-unique.schema.json",
+        "dispute_schema_path": SCHEMA_ROOT / "geography-gold-dispute.schema.json",
         "gold_manifest_schema_path": SCHEMA_ROOT / "geography-gold-manifest.schema.json",
+        "protocol_path": fixture["protocol_path"],
     }
     manifest = gold.freeze_gold(
         **common,
@@ -664,14 +970,22 @@ def test_freeze_writes_and_replays_complete_content_bound_gold_manifest(tmp_path
         manifest_out=manifest_path,
     )
 
-    assert manifest["state"] == "FROZEN_GOLD"
+    assert manifest["state"] == "FROZEN_MODEL_GOLD"
+    assert manifest["review_state"] == "MODEL_ADJUDICATED"
+    assert manifest["review_policy"] == "dual-model-adjudication/v1"
+    assert manifest["protocol_commit"] == fixture["sample"]["protocol"]["protocol_commit"]
+    assert manifest["schema_artifact_ids"] == fixture["sample"]["protocol"][
+        "schema_artifact_ids"
+    ]
+    assert {entry["role"] for entry in manifest["model_reviews"]} == gold.MODEL_REVIEW_ROLES
     assert manifest["counts"] == {
-        "unit_count": 1,
+        "unit_count": 10,
         "label_count": 1,
         "include_count": 1,
         "exclude_count": 0,
         "occurrence_count": 1,
         "unique_count": 1,
+        "disputed_count": 0,
     }
     assert artifact_id_for(occurrences_path.read_bytes()) == manifest[
         "occurrence_jsonl_artifact_id"
@@ -683,6 +997,12 @@ def test_freeze_writes_and_replays_complete_content_bound_gold_manifest(tmp_path
         unique_path=unique_path,
         manifest_path=manifest_path,
     ) == manifest
+    assert gold.freeze_gold(
+        **common,
+        occurrences_out=occurrences_path,
+        unique_out=unique_path,
+        manifest_out=manifest_path,
+    ) == manifest
 
     occurrences_path.write_bytes(b"tampered\n")
     with pytest.raises(gold.GoldValidationError, match="occurrence JSONL differs"):
@@ -692,6 +1012,169 @@ def test_freeze_writes_and_replays_complete_content_bound_gold_manifest(tmp_path
             unique_path=unique_path,
             manifest_path=manifest_path,
         )
+
+
+@pytest.mark.parametrize("fail_at", [2, 3])
+def test_freeze_rolls_back_all_new_files_when_a_later_write_fails(
+    tmp_path, monkeypatch, fail_at: int
+):
+    case = _freeze_case(tmp_path)
+    occurrences_path = tmp_path / "failed" / "occurrences.jsonl"
+    unique_path = tmp_path / "failed" / "unique.jsonl"
+    manifest_path = tmp_path / "failed" / "gold-manifest.json"
+    original = gold._write_immutable
+    calls = 0
+
+    def injected_failure(path: pathlib.Path, data: bytes) -> bool:
+        nonlocal calls
+        calls += 1
+        if calls == fail_at:
+            raise OSError("injected write failure")
+        return original(path, data)
+
+    monkeypatch.setattr(gold, "_write_immutable", injected_failure)
+    with pytest.raises(OSError, match="injected write failure"):
+        gold.freeze_gold(
+            **case["common"],
+            occurrences_out=occurrences_path,
+            unique_out=unique_path,
+            manifest_out=manifest_path,
+        )
+    assert not occurrences_path.exists()
+    assert not unique_path.exists()
+    assert not manifest_path.exists()
+
+
+def test_freeze_preflights_mixed_existing_set_before_any_write(tmp_path):
+    case = _freeze_case(tmp_path)
+    occurrences_path = tmp_path / "mixed" / "occurrences.jsonl"
+    unique_path = tmp_path / "mixed" / "unique.jsonl"
+    manifest_path = tmp_path / "mixed" / "gold-manifest.json"
+    manifest_path.parent.mkdir()
+    manifest_path.write_bytes(b"conflicting manifest")
+
+    with pytest.raises(gold.GoldValidationError, match="E-GOLD-PARTIAL"):
+        gold.freeze_gold(
+            **case["common"],
+            occurrences_out=occurrences_path,
+            unique_out=unique_path,
+            manifest_out=manifest_path,
+        )
+    assert not occurrences_path.exists()
+    assert not unique_path.exists()
+    assert manifest_path.read_bytes() == b"conflicting manifest"
+
+
+@pytest.mark.parametrize(
+    ("mutation", "error"),
+    [
+        (
+            lambda review: review["model_reviews"][2].__setitem__(
+                "role", "DRAFT_AUDITOR"
+            ),
+            "roles, executions, or outputs",
+        ),
+        (
+            lambda review: review["model_reviews"][0]["input_artifact_ids"].append(
+                review["input_labels_artifact_id"]
+            ),
+            "BLIND_EXTRACTOR input artifact set differs",
+        ),
+        (
+            lambda review: review.__setitem__(
+                "review_output_artifact_id", artifact_id_for(b"unbound output")
+            ),
+            "top-level review output",
+        ),
+        (
+            lambda review: review.__setitem__(
+                "source_packet_set_hash", artifact_id_for(b"wrong packet set")
+            ),
+            "source_packet_set_hash differs",
+        ),
+        (
+            lambda review: review["model_reviews"][0].__setitem__(
+                "review_prompt_artifact_id", artifact_id_for(b"wrong prompt")
+            ),
+            "BLIND_EXTRACTOR prompt differs",
+        ),
+    ],
+)
+def test_model_adjudication_receipt_fails_closed_on_identity_or_isolation_drift(
+    tmp_path, mutation: Callable[[dict[str, Any]], None], error: str
+):
+    case = _freeze_case(tmp_path)
+    review = json.loads(case["review_path"].read_text(encoding="utf-8"))
+    mutation(review)
+    case["review_path"].write_text(json.dumps(review), encoding="utf-8")
+
+    with pytest.raises(gold.GoldValidationError, match=error):
+        _load(case["fixture"], case["labels_path"], case["review_path"])
+
+
+def test_schema_override_must_match_the_frozen_artifact_identity(tmp_path):
+    case = _freeze_case(tmp_path)
+    weakened = json.loads(
+        (SCHEMA_ROOT / "geography-gold-review.schema.json").read_text(encoding="utf-8")
+    )
+    weakened["additionalProperties"] = True
+    weakened_path = tmp_path / "weakened-review-schema.json"
+    weakened_path.write_text(json.dumps(weakened), encoding="utf-8")
+
+    with pytest.raises(gold.GoldValidationError, match="review schema differs"):
+        gold.load_and_validate(
+            sample_path=case["fixture"]["sample_path"],
+            source_dir=case["fixture"]["source_dir"],
+            input_labels_path=case["fixture"]["input_labels_path"],
+            labels_path=case["labels_path"],
+            disputes_path=case["fixture"]["disputes_path"],
+            review_path=case["review_path"],
+            review_artifacts_dir=case["fixture"]["review_artifacts_dir"],
+            label_schema_path=SCHEMA_ROOT / "geography-gold-label.schema.json",
+            review_schema_path=weakened_path,
+            annotation_schema_path=SCHEMA_ROOT / "geography-gold-annotation.schema.json",
+            unique_schema_path=SCHEMA_ROOT / "geography-gold-unique.schema.json",
+            dispute_schema_path=SCHEMA_ROOT / "geography-gold-dispute.schema.json",
+            protocol_path=case["fixture"]["protocol_path"],
+        )
+
+
+def test_dispute_bytes_count_and_candidate_label_are_content_bound(tmp_path):
+    case = _freeze_case(tmp_path)
+    label = json.loads(case["labels_path"].read_text(encoding="utf-8"))
+    candidate_id = artifact_id_for(canonical_dumps(label))
+    dispute_base = {
+        "schema_version": "geography-gold-dispute/v1",
+        "sample_id": "GEOGOLD-B-20260904",
+        "unit_id": label["unit_id"],
+        "category": "INCLUSION",
+        "candidate_label_artifact_ids": [candidate_id],
+        "resolution": "INCLUDED",
+        "note": "Synthetic contested inclusion.",
+    }
+    dispute = {
+        **dispute_base,
+        "dispute_id": _derived_id("GEODSP-", dispute_base),
+    }
+    dispute_bytes = canonical_dumps(dispute) + b"\n"
+    case["fixture"]["disputes_path"].write_bytes(dispute_bytes)
+    review = json.loads(case["review_path"].read_text(encoding="utf-8"))
+    review["disputes_artifact_id"] = artifact_id_for(dispute_bytes)
+    review["disputed_count"] = 1
+    case["review_path"].write_text(json.dumps(review), encoding="utf-8")
+
+    result = _load(case["fixture"], case["labels_path"], case["review_path"])
+    assert result.disputes == [dispute]
+
+    dispute["candidate_label_artifact_ids"] = [artifact_id_for(b"unknown label")]
+    dispute_base = {key: value for key, value in dispute.items() if key != "dispute_id"}
+    dispute["dispute_id"] = _derived_id("GEODSP-", dispute_base)
+    changed = canonical_dumps(dispute) + b"\n"
+    case["fixture"]["disputes_path"].write_bytes(changed)
+    review["disputes_artifact_id"] = artifact_id_for(changed)
+    case["review_path"].write_text(json.dumps(review), encoding="utf-8")
+    with pytest.raises(gold.GoldValidationError, match="no bound candidate label"):
+        _load(case["fixture"], case["labels_path"], case["review_path"])
 
 
 def test_freeze_rejects_annotation_draft_even_when_every_unit_pass_is_complete(tmp_path):
@@ -713,15 +1196,21 @@ def test_freeze_rejects_annotation_draft_even_when_every_unit_pass_is_complete(t
         gold.freeze_gold(
             sample_path=fixture["sample_path"],
             source_dir=fixture["source_dir"],
+            input_labels_path=fixture["input_labels_path"],
             labels_path=labels_path,
+            disputes_path=fixture["disputes_path"],
             review_path=review_path,
+            review_artifacts_dir=fixture["review_artifacts_dir"],
             occurrences_out=tmp_path / "occurrences.jsonl",
             unique_out=tmp_path / "unique.jsonl",
             manifest_out=tmp_path / "gold-manifest.json",
             label_schema_path=SCHEMA_ROOT / "geography-gold-label.schema.json",
             review_schema_path=SCHEMA_ROOT / "geography-gold-review.schema.json",
             annotation_schema_path=SCHEMA_ROOT / "geography-gold-annotation.schema.json",
+            unique_schema_path=SCHEMA_ROOT / "geography-gold-unique.schema.json",
+            dispute_schema_path=SCHEMA_ROOT / "geography-gold-dispute.schema.json",
             gold_manifest_schema_path=SCHEMA_ROOT / "geography-gold-manifest.schema.json",
+            protocol_path=fixture["protocol_path"],
         )
 
 
@@ -932,7 +1421,7 @@ def test_labels_must_be_canonical_unique_and_review_counts_must_match(tmp_path):
         included_counts=[2],
         excluded_counts=[0],
     )
-    with pytest.raises(gold.GoldValidationError, match="duplicate label"):
+    with pytest.raises(gold.GoldValidationError, match="duplicate .*label"):
         _load(fixture, labels_path, review_path)
 
     labels_bytes = _write_labels(labels_path, [row])

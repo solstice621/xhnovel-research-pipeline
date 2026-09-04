@@ -17,10 +17,10 @@
     "unit_position"
   ],
   "properties": {
-    "schema_version": {"const": "geography-gold-annotation/v1"},
+    "schema_version": {"const": "geography-gold-annotation/v2"},
     "sample_id": {"const": "GEOGOLD-B-20260904"},
     "annotation_id": {"type": "string", "pattern": "^GEOANN-[A-Z0-9]{20}$"},
-    "annotation_state": {"enum": ["ANNOTATION_DRAFT", "HUMAN_ACCEPTED"]},
+    "annotation_state": {"enum": ["ANNOTATION_DRAFT", "MODEL_ADJUDICATED"]},
     "unit_id": {"type": "string", "pattern": "^XUNIT-[A-Z0-9]{20}$"},
     "unit_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
     "ordinal": {"type": "integer", "minimum": 1},
