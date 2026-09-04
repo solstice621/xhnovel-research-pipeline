@@ -1139,7 +1139,7 @@ def test_schema_override_must_match_the_frozen_artifact_identity(tmp_path):
         )
 
 
-def test_dispute_bytes_count_and_candidate_label_are_content_bound(tmp_path):
+def test_dispute_rejects_unknown_candidate_even_when_another_candidate_is_bound(tmp_path):
     case = _freeze_case(tmp_path)
     label = json.loads(case["labels_path"].read_text(encoding="utf-8"))
     candidate_id = artifact_id_for(canonical_dumps(label))
@@ -1166,14 +1166,42 @@ def test_dispute_bytes_count_and_candidate_label_are_content_bound(tmp_path):
     result = _load(case["fixture"], case["labels_path"], case["review_path"])
     assert result.disputes == [dispute]
 
-    dispute["candidate_label_artifact_ids"] = [artifact_id_for(b"unknown label")]
+    dispute["candidate_label_artifact_ids"] = [candidate_id, artifact_id_for(b"unknown label")]
     dispute_base = {key: value for key, value in dispute.items() if key != "dispute_id"}
     dispute["dispute_id"] = _derived_id("GEODSP-", dispute_base)
     changed = canonical_dumps(dispute) + b"\n"
     case["fixture"]["disputes_path"].write_bytes(changed)
     review["disputes_artifact_id"] = artifact_id_for(changed)
     case["review_path"].write_text(json.dumps(review), encoding="utf-8")
-    with pytest.raises(gold.GoldValidationError, match="no bound candidate label"):
+    with pytest.raises(gold.GoldValidationError, match="unknown candidate label"):
+        _load(case["fixture"], case["labels_path"], case["review_path"])
+
+
+def test_dispute_rejects_candidate_label_from_another_unit(tmp_path):
+    case = _freeze_case(tmp_path)
+    dispute_unit = case["fixture"]["units"][0]["unit_id"]
+    other_label = _place_label(case["fixture"]["units"][1]["unit_id"], 10, 12)
+    other_candidate_id = artifact_id_for(canonical_dumps(other_label))
+    input_labels = case["fixture"]["input_labels_path"].read_bytes()
+    case["fixture"]["input_labels_path"].write_bytes(
+        input_labels + canonical_dumps(other_label) + b"\n"
+    )
+    dispute_base = {
+        "schema_version": "geography-gold-dispute/v1",
+        "sample_id": "GEOGOLD-B-20260904",
+        "unit_id": dispute_unit,
+        "category": "INCLUSION",
+        "candidate_label_artifact_ids": [other_candidate_id],
+        "resolution": "INCLUDED",
+        "note": "Synthetic cross-unit candidate reference.",
+    }
+    dispute = {
+        **dispute_base,
+        "dispute_id": _derived_id("GEODSP-", dispute_base),
+    }
+    case["fixture"]["disputes_path"].write_bytes(canonical_dumps(dispute) + b"\n")
+
+    with pytest.raises(gold.GoldValidationError, match="candidate label unit differs"):
         _load(case["fixture"], case["labels_path"], case["review_path"])
 
 

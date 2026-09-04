@@ -21,6 +21,7 @@ from .generic_agent_files import (
     generic_agent_task_bytes,
 )
 from .generic_profile import (
+    RECORD_MODE_UNIQUE_PAYLOAD,
     ExtractionProfile,
     load_extraction_profile,
     extraction_assets,
@@ -915,6 +916,16 @@ def validate_model_output(
             "E-GENERIC-MODEL-SCHEMA",
             f"model output: {first.message} at {list(first.path)}",
         )
+    if profile.answer_abi.get("record_mode") == RECORD_MODE_UNIQUE_PAYLOAD:
+        seen_payloads: set[bytes] = set()
+        for index, raw in enumerate(value["records"]):
+            payload_bytes = canonical_dumps(raw["payload"])
+            if payload_bytes in seen_payloads:
+                raise ValidationError(
+                    "E-GENERIC-UNIQUE-PAYLOAD",
+                    f"unit-local exact payload is duplicated at records[{index}]",
+                )
+            seen_payloads.add(payload_bytes)
     observations_by_id: dict[str, dict[str, Any]] = {}
     for raw in value["records"]:
         observation = _observation_from_raw(
