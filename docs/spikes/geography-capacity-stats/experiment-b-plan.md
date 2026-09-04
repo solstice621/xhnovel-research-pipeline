@@ -313,21 +313,16 @@ stable material advantage for 5k units.
 - [x] v2 model-adjudication policy and adversarial rules fixed before extraction changes
 - [x] ten units and four random controls fixed
 - [x] source/task/unit hashes recorded
-- [x] full A-1 selection-manifest identity and recomputation verified by the final tool
-- [x] protocol, schema, unique-row, and compiler identities sealed in the sample
+- [ ] full A-1 selection-manifest identity and recomputation verified by the final tool
+- [ ] protocol, schema, unique-row, and compiler identities sealed in the sample
 - [x] source-only packets independently verified from the qualified snapshot and
   all ten content-bound native tasks; packets remain runtime-only
 - [x] first answer/prediction-blind host-agent annotation draft complete
 - [x] independent source-only host-agent QA pass complete
-- [x] blind extractor model pass recorded
-- [x] draft auditor model pass recorded
-- [x] difference adjudicator pass and dispute set recorded
-- [x] explicit model-adjudication completion recorded for all ten units
-- [x] occurrence and derived unique JSONL hashes frozen
-- [x] no reviewing model received forbidden inputs before adjudication
-- [x] frozen manifest replayed in a fresh process
-
-Checklist closed by `GOLD-159D8DA0B6BFD77182AF`. Isolation and forbidden-input
-status remain operator attestations. Review-only copies of the frozen files
-are on `cursor/geography-capacity-inspection-f136` under
-`docs/spikes/geography-capacity-stats/inspection/`; source packets stay out.
+- [ ] blind extractor model pass recorded
+- [ ] draft auditor model pass recorded
+- [ ] difference adjudicator pass and dispute set recorded
+- [ ] explicit model-adjudication completion recorded for all ten units
+- [ ] occurrence and derived unique JSONL hashes frozen
+- [ ] no reviewing model received forbidden inputs before adjudication
+- [ ] frozen manifest replayed in a fresh process

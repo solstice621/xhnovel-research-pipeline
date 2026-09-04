@@ -25,7 +25,7 @@ a security/correctness hole, or an impossible acceptance condition.
 2. **ABI:** Does `geography-unique-v1` keep `geography-v1` extraction hash
    unchanged, enforce unique payloads, and require
    `COMPLETE`/`OVERFLOW`/`UNCERTAIN`?
-3. **Reference:** Is `GOLD-159D8DA0B6BFD77182AF` a closed model-adjudicated
+3. **Reference:** Is `GOLD-6F9623B825F387835B61` a closed model-adjudicated
    freeze (not human gold), with hashes that match the copied files?
 
 A GitHub-only reviewer can answer (1) from scores + payload-diff, (2) from
@@ -122,6 +122,15 @@ In `frozen/gold-manifest.json`:
   `capacity_statistics`;
 - `disputed_count=56` and `review/disputes.jsonl` has 56 rows,
   `resolution` never `UNRESOLVED`.
+- every `candidate_label_artifact_ids` entry exists in the bound input/final
+  labels and belongs to the dispute's own `unit_id`; one valid ID must not mask
+  an unknown or cross-unit ID.
+
+The last condition is enforced by
+`geography_gold.py::_validate_input_labels` and `_validate_disputes`. Its two
+negative tests cover cross-unit-only and valid-plus-unknown candidate lists.
+The old `GOLD-159D8DA0B6BFD77182AF` identity is superseded because its compiler
+only required a nonempty global-set intersection.
 
 Because `UNRESOLVED=0`, strict / optimistic / conservative unique-gold views
 coincide. If a reviewer finds an unresolved dispute, STOP must be re-scored
@@ -194,6 +203,9 @@ Any one of:
 - Cited-character broadness is not a separate published rate (containment and
   exact-span are).
 - Remote CI is a billing gate, same as `main` since PR #13.
+- The refreeze changed only compiler/sample/manifest identity. All 56 disputes
+  passed the stronger unit-local closure check; occurrence, unique, and A/B
+  score bytes are unchanged.
 
 ## 7. Finding format
 

@@ -2,7 +2,7 @@
 
 > **Status 2026-09-04.** This document is the protocol-correction handoff.
 > It is not the current experiment gate. Experiment B is
-> `FROZEN_MODEL_GOLD` (`GOLD-159D8DA0B6BFD77182AF`); Experiment C STOP'd
+> `FROZEN_MODEL_GOLD` (`GOLD-6F9623B825F387835B61`); Experiment C STOP'd
 > 10k unique-fact. See `experiment-b-result.md`, `experiment-c-result.md`,
 > and the review-only kit in `inspection/README.md`.
 

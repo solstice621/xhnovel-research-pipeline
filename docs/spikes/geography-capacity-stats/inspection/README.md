@@ -7,8 +7,9 @@ catalog.
 **Do not merge this overlay to `main`.** It is a review-only dump of
 Experiment B/C artifacts that PR #14 left runtime-only.
 
-This branch is `cursor/geography-capacity-inspection-f136`, stacked on the
-Experiment C STOP commit. Source packets (`untrusted_text`) stay out.
+This branch is `cursor/geography-capacity-inspection-f136`, stacked on PR #14
+and refreshed after the dispute-candidate closure correction. Source packets
+(`untrusted_text`) stay out.
 
 ## What a reviewer can do here
 
@@ -48,9 +49,13 @@ These copied files match the Experiment B freeze table:
 | `review/disputes.jsonl` | `sha256:52448b4dd05935e47e6d13fb9f0a48384eafad5892257a8e2a3e6f3fca0e6444` |
 
 `frozen/gold-manifest.json` file bytes are
-`sha256:0d0c909eb6225da23907aef74862ea478a3d9fc5aeef2c5c0d710afd8ed68a50`.
-The logical freeze id inside the file is `GOLD-159D8DA0B6BFD77182AF` /
-`gold_hash=sha256:c2ffd3415ef4e235a72c5fc09196a8686e3569f62b6dcdfe9504b8b93fc09522`.
+`sha256:9c1b620bf725fda8cab2c26b2562484126ce734bb0f7df540bf0362dfe68c21a`.
+The logical freeze id inside the file is `GOLD-6F9623B825F387835B61` /
+`gold_hash=sha256:88d8644b2ab676041282315cf45722211a8e81f5cdbd44853e32615d0b64ff25`.
+
+The corrected compiler verifies that every candidate label listed by every
+dispute exists in the bound input/final labels and belongs to that dispute's
+unit. All 56 rows pass; the occurrence, unique, and score bytes are unchanged.
 
 Byte hashes of every file in this directory: `MANIFEST.sha256`.
 
