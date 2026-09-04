@@ -1,39 +1,45 @@
-# Experiment B — blind geography gold plan
+# Experiment B — model-adjudicated geography reference plan
 
-- status: **FROZEN PROTOCOL; HUMAN ANNOTATION PENDING**
-- protocol version: `geography-gold/v1`
+- status: **PROTOCOL RE-FROZEN; MODEL ADJUDICATION PENDING**
+- protocol version: `geography-model-reference/v2`
+- review policy: `dual-model-adjudication/v1`
 - baseline engine: `6cc794fd6ad2632f1d26d00a9bf027634617c751`
 - baseline evidence branch: `f37bbf8`
 - sample manifest: `experiment-b-sample.json`
 - annotator-input schema: `geography-gold-label.schema.json`
 - compiled-occurrence schema: `geography-gold-annotation.schema.json`
-- frozen-gold schema: `geography-gold-manifest.schema.json`
+- compiled-unique schema: `geography-gold-unique.schema.json`
+- frozen-reference schema: `geography-gold-manifest.schema.json`
 
 ## 1. Decision boundary
 
 Experiment B measures the semantic capacity and citation behavior of
-`geography-v1`. It freezes the evaluation set before any capacity or answer-ABI
-implementation change.
+`geography-v1`. It freezes the evaluation set and review policy before any
+capacity or answer-ABI implementation change.
 
-The gold source is frozen unit text only. Baseline or candidate answers, model
+The reference source is frozen unit text only. Baseline or candidate answers, model
 reports, heuristic cue counts, and prior place lists are forbidden annotation
 inputs. Heuristics select controls; they do not establish facts.
 
 This protocol distinguishes three states:
 
-1. `ANNOTATION_DRAFT`: an answer/prediction-blind annotation pass exists but has not been
-   accepted by a human reviewer;
-2. `HUMAN_ACCEPTED`: a human has checked the source packet, inclusions, exclusions,
-   spans, and adversarial decisions;
-3. `FROZEN_GOLD`: every selected unit is `HUMAN_ACCEPTED`, the canonical JSONL
-   bytes and derived unique-payload bytes are hashed, and the hashes are recorded
-   in the gold manifest.
+1. `ANNOTATION_DRAFT`: source-only model annotations may exist, but no complete
+   adjudication receipt exists;
+2. `MODEL_ADJUDICATED`: three recorded, isolated model passes have completed the
+   frozen review policy, every selected unit has been reviewed, and unresolved
+   semantic disputes are explicit rather than silently normalized;
+3. `FROZEN_MODEL_GOLD`: the adjudicated labels, dispute set, occurrence JSONL,
+   unique-payload JSONL, model-review identities, prompts/outputs, protocol,
+   schemas, compiler, and source lineage are content-bound in one manifest.
 
-Agent-produced labels may accelerate review, but they remain
-`ANNOTATION_DRAFT`. They must never be reported as human gold.
+`MODEL_ADJUDICATED` is a trusted operator declaration backed by content hashes;
+the program cannot prove model identity, execution isolation, or which inputs a
+model actually observed. It validates the declared closure and fails closed on
+missing, inconsistent, or malformed receipts. The resulting artifact must be
+reported as a **model-adjudicated reference set**, never as human gold.
 
 No extraction implementation change may use Experiment B results as a frozen
-gold gate until state 3 is reached.
+reference gate until state 3 is reached.
 
 ## 2. Frozen sample
 
@@ -54,6 +60,20 @@ reported-no-overflow saturation, and the extreme occurrence storm.
 The exact unit IDs, task/source hashes, text hashes, and selection strata are in
 `experiment-b-sample.json`. Source text is rights-bound runtime material and is
 not committed.
+
+The sample binds the full 40-character source-selection commit, repository path,
+and exact byte artifact ID of the A-1 manifest, plus
+`selection_algorithm_id=experiment-b-control/v1`. `verify-sample-selection`
+must load that exact Git blob, require exactly three frozen `random` draws in
+each of the four frozen strata, recompute the minimum hash in each stratum, and
+reproduce all four controls. Structural validation separately requires exactly
+six non-control units and four controls, with one control in each stratum.
+
+The sample also binds the final protocol commit and protocol-document artifact
+ID. The label, review, annotation, unique-row, frozen-manifest, and compiler
+artifact IDs are bound before freezing and copied into the frozen manifest.
+Schema-path overrides are permitted for tests and replay only when their bytes
+match those pinned identities; they are not a contract-relaxation mechanism.
 
 ## 3. Runtime-only source packet
 
@@ -90,7 +110,30 @@ request artifact. `semantic_task_artifact_id` hashes the native
 hashes the on-disk generic agent-files packet and therefore matches that task
 file's bytes. Neither field may be relabeled as the other.
 
-## 4. Blind annotation procedure
+## 4. Model adjudication procedure
+
+The frozen `dual-model-adjudication/v1` policy requires three independently
+recorded executions:
+
+1. `BLIND_EXTRACTOR` receives only the ten source packets and the frozen
+   annotation prompt. It performs a complete extraction without access to the
+   existing draft.
+2. `DRAFT_AUDITOR` receives the same source packets, the existing draft labels,
+   and its frozen audit prompt. It checks every inclusion, exclusion, payload,
+   span, and relation, and independently scans the source for omissions.
+3. `DIFFERENCE_ADJUDICATOR` receives the source packets and the first two model
+   outputs. It resolves their differences into final labels while emitting a
+   canonical dispute set for every materially contested fact.
+
+Each receipt records a unique execution ID, model provider and model ID, prompt
+artifact ID, exact input artifact IDs, output artifact ID, and completion time.
+The top-level receipt binds the source-packet set, original draft labels, final
+labels, adjudicator output, dispute set, and the exact forbidden-input list:
+`baseline_answers`, `candidate_answers`, and `capacity_statistics`.
+
+The three execution records are auditable attestations, not proof that an
+external model actually obeyed its isolation envelope. Falsely relabeling an
+unrecorded pass is a protocol violation even if the JSON would otherwise validate.
 
 Annotate one textual occurrence at a time in source order. Do not begin from a
 name list. For each included occurrence, the annotator supplies only `unit_id`,
@@ -101,7 +144,7 @@ name list. For each included occurrence, the annotator supplies only `unit_id`,
 3. bind every non-structural payload field to supporting spans;
 4. record one occurrence even when the same exact payload appeared earlier.
 
-The compiler, not the annotator, derives `unit_hash`, source order,
+The compiler, not any model, derives `unit_hash`, source order,
 `occurrence_ordinal`, annotation ID, unit-relative start/end,
 `start_fraction_ppm`, and the quarter bucket. Quarter buckets use half-open ranges
 `[0,.25)`, `[.25,.50)`, `[.50,.75)`, and `[.75,1]`. Integer parts-per-million
@@ -157,7 +200,7 @@ For wording such as `乌坦城隶属于加玛帝国`, use `PART_OF` only when th
 passage treats `加玛帝国` as territory and the construction asserts geographic
 containment. If the wording establishes only administrative or political
 affiliation, exclude it with reason `POLITICAL_NOT_SPATIAL`. This adversarial
-decision must receive explicit human review wherever it occurs.
+decision must be surfaced to the difference adjudicator wherever it occurs.
 
 ## 6. Deterministic derivation
 
@@ -185,16 +228,31 @@ The derivation script must fail closed on unknown fields, source hashes, duplica
 occurrence IDs, out-of-unit spans, payload-schema violations, or a source packet
 hash mismatch.
 
-`FROZEN_GOLD` is created only from a complete `HUMAN_ACCEPTED` review. Its
-canonical `geography-gold-manifest/v1` binds the exact sample bytes and logical
-hash, ordered source-packet IDs and set hash, label and human-review artifacts,
-derived occurrence and unique JSONL artifacts, and their counts. A fresh-process
-`validate-frozen` replay must reproduce all three frozen output files byte for
-byte; a draft review cannot invoke this transition.
+`FROZEN_MODEL_GOLD` is created only from a complete `MODEL_ADJUDICATED` receipt.
+Its canonical `geography-gold-manifest/v2` binds the exact sample bytes and
+logical hash, ordered source-packet IDs and set hash, original and final labels,
+model review records, dispute set, protocol/schema/compiler identities, derived
+occurrence and unique JSONL artifacts, and their counts. A fresh-process
+`validate-frozen` replay must reproduce the frozen output files byte for byte; a
+draft review cannot invoke this transition.
+
+The occurrence and unique files are immutable content artifacts; the manifest
+is their only commit marker. `freeze` preflights the complete target set before
+writing, writes the manifest last, and removes files created by the invocation
+if any in-process write fails. A mixed existing/missing target set is rejected.
+An operating-system crash can still leave uncommitted orphan files, but consumers
+must not recognize them without a valid manifest.
 
 ## 7. Frozen metrics
 
-Report per unit, per kind, per configuration, and aggregate:
+Report per unit, per kind, and per configuration. Aggregate results must be
+reported separately for the six stress/anchor units and four hash-selected
+controls, followed by an explicitly diagnostic all-ten aggregate. The all-ten
+aggregate is not an unbiased whole-work quality estimate. Capacity decisions may
+weight the stress group; general quality claims must prioritize the controls or
+state a predeclared weighting and uncertainty interval.
+
+For every required cohort, report:
 
 - exact unique-payload recall and precision for `PLACE_MENTION`;
 - exact-name unique recall/precision and `explicit_type` accuracy as separate
@@ -214,6 +272,11 @@ Report per unit, per kind, per configuration, and aggregate:
   executor assertion;
 - run-to-run variance for each scored metric.
 
+Score disputed facts in three views: strict consensus, an optimistic boundary
+that includes unresolved favorable cases, and a conservative boundary that
+excludes them. The capacity decision must state whether its conclusion changes
+across those views.
+
 `OVERFLOW` is a reliable machine-readable witness that the executor asserted it
 knowingly omitted at least one eligible exact payload. The assertion remains
 `UNVERIFIED_EXECUTOR_ASSERTION`: it may trigger a capacity diagnostic but does not
@@ -223,22 +286,22 @@ semantic completeness.
 Zero-denominator precision or recall is reported as `null`, never silently as
 zero or one.
 
-## 8. Experiment C matrix after gold freeze
+## 8. Experiment C matrix after reference freeze
 
-Use the same frozen gold lineage:
+Use the same frozen model-reference lineage:
 
 - A: 10k occurrence-like baseline with raw `maxItems=64`; reuse A-2 where the
   exact selected unit already exists and run missing controls without consulting
-  gold;
+  reference labels;
 - B: 10k unique-fact candidate with unit-local exact-payload consolidation and
   completion ABI;
 - C: 5k unique-fact diagnostic, scored against the deterministic intersection of
-  gold occurrences and each 5k source range;
+  reference occurrences and each 5k source range;
 - D: relation-only diagnostic, explicitly experimental and not a formal Profile
   split.
 
 For at least ordinals `310`, `426`, and `596`, run each stochastic configuration
-three times in fresh executor contexts. Never reuse gold annotations as executor
+three times in fresh executor contexts. Never reuse reference annotations as executor
 answers.
 
 Adaptive splitting remains out of scope unless frozen results show a trigger from
@@ -247,14 +310,19 @@ stable material advantage for 5k units.
 
 ## 9. Freeze checklist
 
-- [x] protocol and adversarial rules fixed before extraction changes
+- [x] v2 model-adjudication policy and adversarial rules fixed before extraction changes
 - [x] ten units and four random controls fixed
 - [x] source/task/unit hashes recorded
+- [ ] full A-1 selection-manifest identity and recomputation verified by the final tool
+- [ ] protocol, schema, unique-row, and compiler identities sealed in the sample
 - [x] source-only packets independently verified from the qualified snapshot and
   all ten content-bound native tasks; packets remain runtime-only
 - [x] first answer/prediction-blind host-agent annotation draft complete
 - [x] independent source-only host-agent QA pass complete
-- [ ] human adjudication of surfaced disagreements complete
-- [ ] explicit human acceptance recorded for all ten units
-- [ ] occurrence and derived unique JSONL hashes recorded
-- [ ] no annotator read baseline or candidate answers before acceptance
+- [ ] blind extractor model pass recorded
+- [ ] draft auditor model pass recorded
+- [ ] difference adjudicator pass and dispute set recorded
+- [ ] explicit model-adjudication completion recorded for all ten units
+- [ ] occurrence and derived unique JSONL hashes frozen
+- [ ] no reviewing model received forbidden inputs before adjudication
+- [ ] frozen manifest replayed in a fresh process
