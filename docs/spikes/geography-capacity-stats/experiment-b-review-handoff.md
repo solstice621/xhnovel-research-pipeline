@@ -1,233 +1,243 @@
-# Geography capacity / completion ABI — review handoff
+# Geography model-reference freeze — remediation review handoff
 
-## 1. Outcome and stage boundary
+## 1. Decision
 
-This branch completes the protocol, sample, validation tooling, and test harness
-needed to create a blind human geography gold set. It does **not** claim that the
-gold set is frozen, and it deliberately does not contain the production
-extraction changes or Experiment C results that depend on that gold.
+The `6cc794f..88cd133` review correctly identified two blockers and four
+reproducibility/methodology issues. This follow-up fixes the committed protocol,
+schemas, compiler, sample closure, and tests. It does **not** promote the 536
+draft labels or claim that Experiment B is frozen.
 
-Current state:
+Current gate:
 
-| Requested stage | State | Evidence / reason |
-| --- | --- | --- |
-| A. Freeze Experiment B protocol | Complete | Frozen plan, ten-unit sample, four strict schemas, deterministic control selection and metric definitions |
-| B. Produce human gold | `ANNOTATION_DRAFT` | Ten source-only packets, host-agent draft, independent source-only QA, and deterministic derived artifacts exist locally; independent human acceptance is still required |
-| C. Minimal production changes | Not started | Frozen protocol prohibits using Experiment B as a gate before `FROZEN_GOLD` |
-| D. Production regression tests | Not started | Depends on C; the branch contains strong tests for the protocol/tooling only |
-| E. Experiment C execution | Not started | Depends on frozen gold and C/D |
-| F. Score against frozen gold | Not started | No human-accepted gold exists yet |
-| G. Final capacity decision | Not started | Would be unsupported before E/F |
-
-This stop is intentional. Agent-produced labels remain unverified draft data
-even after a second source-only QA pass.
+```text
+protocol/tooling: corrected and locally verified
+semantic labels: ANNOTATION_DRAFT
+model adjudication: not yet executed
+frozen reference: absent
+C–G: not started
+```
 
 ## 2. Review lineage
 
 - implementation baseline: `6cc794fd6ad2632f1d26d00a9bf027634617c751`
-- supporting Experiment A evidence branch: `f37bbf8`
-- review branch: `codex/geography-capacity-abi-gold`
-- review range: `6cc794fd6ad2632f1d26d00a9bf027634617c751..HEAD`
-- commits before this handoff report:
-  - `f426754` — freeze Experiment B protocol
-  - `bcd3e7d` — close the gold freeze contract with schemas, tooling, and tests
-  - `a6bb00a` — record the annotation-draft human gate
+- original reviewed head: `88cd133e2f775ecdaa299560445faffcb1d7cfef`
+- corrected protocol freeze: `7f359ea7a9ac30dcf168db6c59d965b025d42708`
+- correction implementation: `5bf21a3`
+- branch: `codex/geography-capacity-abi-gold`
+- follow-up review range: `88cd133e2f775ecdaa299560445faffcb1d7cfef..HEAD`
 
-The worktree also contains an unrelated user-owned untracked file,
-`docs/PHASE_MINUS1_PLAN.md`. It is not part of this branch or review range.
+The unrelated user-owned untracked file `docs/PHASE_MINUS1_PLAN.md` remains
+outside every commit.
 
-## 3. Committed deliverables
+## 3. Finding disposition
 
-### Protocol and contracts
+### Blocker 1 — multi-file freeze was not atomic
 
-- `experiment-b-plan.md`
-  - freezes the decision boundary, blind annotation rules, inclusion/exclusion
-    policy, unique-fact identity, metrics, and Experiment C matrix;
-  - distinguishes `ANNOTATION_DRAFT`, `HUMAN_ACCEPTED`, and `FROZEN_GOLD`;
-  - forbids production extraction changes based on draft annotations.
-- `experiment-b-sample.json`
-  - binds exactly ten 10,000-character units;
-  - contains six required stress/anchor units and four controls selected by a
-    frozen hash rule that reads neither source text nor model answers;
-  - binds snapshot, work, ingestion, input-spec, unit, native semantic-task,
-    executor-request, source-packet, and source-text identities.
-- `geography-gold-label.schema.json`
-  - strict `INCLUDE`/`EXCLUDE` input rows with exact evidence bindings.
-- `geography-gold-annotation.schema.json`
-  - strict compiled occurrence rows with deterministic identity and position.
-- `geography-gold-review.schema.json`
-  - explicit human review state and per-unit completion receipt.
-- `geography-gold-manifest.schema.json`
-  - content-bound closure over the sample, packets, labels, review,
-    occurrences, and unique-payload output.
+Accepted. The old report's claim of an atomic three-file write was false.
 
-### Tooling
+The corrected contract uses the manifest as the only commit marker:
 
-- `scripts/spikes/geography_gold.py`
-  - `prepare`: reconstructs source-only packets from frozen native tasks and the
-    qualified snapshot while validating all lineage and hashes;
-  - `merge-drafts`: combines isolated annotator drafts without promoting them;
-  - `validate`: validates labels and review receipts fail-closed;
-  - `derive`: deterministically compiles included occurrences and unit-local
-    exact-payload unique facts;
-  - `freeze`: permits the state transition only from a complete
-    `HUMAN_ACCEPTED` receipt and writes all three final outputs atomically;
-  - `validate-frozen`: replays a frozen gold set in a fresh process and requires
-    byte-for-byte agreement.
-- `scripts/spikes/geography_capacity_stats.py`
-  - independently replays Experiment A geography counts;
-  - distinguishes raw occurrences, unit-local exact-payload uniqueness, and
-    global exact-payload uniqueness;
-  - treats completion fields only as `UNVERIFIED_EXECUTOR_ASSERTION`;
-  - reports malformed/duplicate cue blocks and missing answer artifacts rather
-    than silently treating them as evidence.
+1. compute and schema-validate every final byte before writing;
+2. require all three targets to be absent, or all three to exist with identical
+   bytes;
+3. reject a mixed existing/missing set with `E-GOLD-PARTIAL` before writing;
+4. write occurrences and unique rows first, then the manifest last;
+5. if any in-process write fails, remove every file created by that invocation;
+6. consumers recognize a frozen set only when the manifest exists and replays.
 
-### Tests
+The implementation does not claim impossible portable multi-path crash
+atomicity. A machine crash may leave orphan content files, but without the final
+manifest they are not a frozen set. Tests inject failures on the second and
+third writes, verify rollback, verify mixed-set preflight, and verify idempotent
+replay of a complete identical set.
 
-- `tests/test_geography_gold_spike.py`
-  - covers packet preparation and tampering, strict schemas, payload/evidence
-    support closure, unit bounds, required relation binding groups, duplicate
-    occurrence rejection, deterministic derivation, review completeness,
-    freeze atomicity, manifest closure, and fresh-process replay.
-- `tests/test_geography_capacity_stats.py`
-  - covers exact-payload counting, kind splits, executor-assertion isolation,
-    response sizing, warning behavior, deterministic output, and strict checks.
+### Blocker 2 — a model cannot honestly produce `HUMAN_ACCEPTED`
 
-## 4. Frozen sample and lineage
-
-The ten sample ordinals are:
+Accepted. Protocol v1 has been superseded by the pre-implementation frozen
+protocol `geography-model-reference/v2`:
 
 ```text
-stress / anchor: 5, 310, 395, 426, 513, 596
-hash-selected controls: 102, 233, 467, 604
+ANNOTATION_DRAFT
+→ MODEL_ADJUDICATED
+→ FROZEN_MODEL_GOLD
 ```
 
-The qualified source lineage is:
+`FROZEN_MODEL_GOLD` means a model-adjudicated reference set, not human gold. The
+frozen `dual-model-adjudication/v1` policy requires:
+
+1. `BLIND_EXTRACTOR`: source packets only;
+2. `DRAFT_AUDITOR`: source packets plus the existing draft, with an independent
+   omission scan;
+3. `DIFFERENCE_ADJUDICATOR`: source packets plus the first two outputs, with an
+   explicit dispute set.
+
+The final receipt binds a unique execution ID, provider, model ID, prompt file
+and hash, exact input hashes, output file and hash, and completion time for each
+pass. Freeze reads and verifies all six prompt/output byte artifacts. It also
+verifies the original draft labels, final labels, dispute JSONL, per-unit counts,
+and the exact forbidden-input declaration.
+
+The protocol is explicit about the remaining trust boundary: software cannot
+prove model identity, execution isolation, or what a model actually observed.
+Those are operator attestations and must not be falsified.
+
+### Important 3 — sample selection lacked machine closure
+
+Fixed. The sample now binds:
+
+- full source commit `f37bbf88b135b3629d7790f39189aae4a29c1d7a`;
+- exact A-1 manifest repository path;
+- raw manifest artifact ID
+  `sha256:66e159f2131896e196a15fa3822810227b567f65a23e1cd3a9b9bd65bd44bec6`;
+- `selection_algorithm_id=experiment-b-control/v1`;
+- seed and the four exact strata.
+
+`verify-sample-selection` reads that exact Git blob, validates the seed/strata,
+requires twelve unique random rows and exactly three per stratum, recomputes all
+four minima, and verifies the sample rows. The real repository replay produced:
+
+| Stratum | Ordinal | Unit |
+| --- | ---: | --- |
+| 1–169 | 102 | `XUNIT-15A2604A648927C67B63` |
+| 170–338 | 233 | `XUNIT-FABCF30DD2F6F77259E5` |
+| 339–507 | 467 | `XUNIT-6DA264A942494F5AAE99` |
+| 508–676 | 604 | `XUNIT-FA40CBB1DF4E1DAA0BFC` |
+
+Structural validation separately requires exactly six anchors, four controls,
+ten total rows, and one control per stratum.
+
+### Important 4 — the stated protocol freeze point was inaccurate
+
+Fixed. `f426754` is retained as history, not treated as the effective v2 freeze.
+The new protocol was committed alone at full SHA
+`7f359ea7a9ac30dcf168db6c59d965b025d42708`, before the v2 implementation and
+before any model-adjudicated result exists. The sample binds that commit and the
+exact protocol-document bytes.
+
+### Important 5 — manifest omitted schemas and compiler identity
+
+Fixed. The sample and final manifest bind exact artifact IDs for:
+
+- protocol document;
+- `geography_gold.py` compiler;
+- label schema;
+- review schema;
+- annotation schema;
+- new unique-row schema;
+- new dispute-row schema;
+- frozen-manifest schema.
+
+CLI schema overrides remain useful for tests and replay, but every supplied file
+must match the pinned byte identity. A relaxed replacement schema is rejected
+with `E-GOLD-CONTRACT`. The final manifest also copies the source-selection
+identity, review policy, three model-review records, original-label hash,
+adjudicator-output hash, dispute hash/count, and forbidden-input declaration.
+
+### Important 6 — remote CI was red
+
+Explained, not green. GitHub's job/check APIs show that both jobs had zero steps,
+`runner_id=0`, and this annotation:
 
 ```text
-text snapshot id: NTS-8A3D80CA9182B92E8368
-text snapshot hash: sha256:5f1b8b15d4a17623b4ff2e72a7517c10897dfbb0c8da2c6c03845d10bec39959
-work id: NWK-F56E9D349D7D1368568B
-ingestion run id: NING-DDAAA77E9454E04BFBCF
-input spec artifact: sha256:fb6f18a74d565ea5d782468b918ca4290d4db783426d4a9574ff846d9c5cb1c6
-input spec hash: sha256:e1899ea0ad2ff99fb31cb888856376a68ce123b7560a39688392245b0b9f8166
+The job was not started because recent account payments have failed or your
+spending limit needs to be increased. Please check the 'Billing & plans'
+section in your settings
 ```
 
-The sample deliberately distinguishes the native semantic-task artifact from
-the on-disk agent-request artifact. The tooling independently reconstructs and
-validates both identities instead of relabeling one as the other.
+This is an account billing/spending-limit gate before runner allocation, not a
+test failure. A green Ubuntu/Windows run still requires the repository owner to
+restore GitHub Actions billing/allowance and rerun CI. No cross-platform green
+claim is made.
 
-## 5. Draft annotation evidence — not committed gold
+### Methodology — ten units are not an unbiased quality sample
 
-Rights-bound source packets and annotation artifacts remain under `.runtime/`
-and are not committed. The current independently QA'd draft is:
+Fixed in the frozen protocol. Experiment C must report:
+
+- every ordinal separately;
+- the six stress/anchor units as one cohort;
+- the four hash-selected controls as another cohort;
+- all ten only as a diagnostic aggregate.
+
+General quality claims must prioritize controls or state predeclared weighting
+and uncertainty. Capacity decisions may emphasize the stress cohort. Disputed
+facts must be scored as strict consensus plus optimistic and conservative
+boundaries, and the decision must state whether it changes across those views.
+
+## 4. Runtime annotation state
+
+The original label bytes are unchanged:
 
 ```text
 labels-draft-v2.jsonl
-  rows: 536 (464 INCLUDE, 72 EXCLUDE)
-  artifact: sha256:69f9dc3f9f3301b12bdc2cbd1dc2a06909f0450cc9a57a8d09ece53f200cc77b
-
-occurrences-draft-v2.jsonl
-  rows: 464
-  artifact: sha256:a6b126b44cf5ee6fa1d45e25bb6aba1c1b513c3c7801fdebf46c2cf848efa319
-
-unique-draft-v2.jsonl
-  rows: 148
-  artifact: sha256:c7869c5a1a609822ee85a8058b5a7beb5d79095296faa6a1a5a7c9db7e6984c1
+536 rows = 464 INCLUDE + 72 EXCLUDE
+sha256:69f9dc3f9f3301b12bdc2cbd1dc2a06909f0450cc9a57a8d09ece53f200cc77b
 ```
 
-All ten units have source-only annotation coverage. Annotators and the QA pass
-were isolated from baseline/candidate answers, statistics, checkpoints, and
-candidate files. Eight semantic disagreements remain explicitly surfaced for
-human adjudication, including organization/site metonymy, spatial versus
-political containment, local antecedents, source typos, and destination versus
-organization usage. The human reviewer must inspect every row and packet, not
-only those eight cases.
-
-The original task handoff contains aggregate/model-report information. A person
-who has read it is therefore not strictly report-blind. The frozen protocol
-requires an independent reviewer who has not seen that material, unless the
-protocol itself is explicitly revised and re-frozen first.
-
-The current draft receipt was tested against `freeze`; it fails with
-`E-GOLD-NOT-ACCEPTED` and writes no frozen outputs.
-
-## 6. Independently replayed Experiment A-2 capacity facts
-
-These are diagnostic baseline counts, not gold-scored quality results:
-
-| Measure | Count |
-| --- | ---: |
-| Raw geography rows | 703 |
-| Sum of unit-local exact-payload unique rows | 179 |
-| Global exact-payload unique rows | 138 |
-| Unit-local duplicates | 524 |
-| Raw `PLACE_MENTION` rows | 669 |
-| Unit-local unique `PLACE_MENTION` rows | 145 |
-| Global unique `PLACE_MENTION` rows | 104 |
-| Raw `SPATIAL_RELATION` rows | 34 |
-| Unit-local/global unique `SPATIAL_RELATION` rows | 34 |
-| Response bytes | 223,369 |
-
-The replay also reports duplicate `geo_cues` blocks and missing sample answers;
-strict `--check` therefore exits non-zero. Completion values are isolated as
-executor assertions and are not presented as semantic completeness evidence.
-
-## 7. Validation performed
-
-At the report-preparation HEAD, the local full suite completed with:
+They have been revalidated under the v2 contract using
+`review-draft-v3.json`, which remains `ANNOTATION_DRAFT`. Because annotation
+schema identity changed, newly derived draft outputs have new byte identities:
 
 ```text
-570 passed in 209.47s
+occurrences-draft-v3.jsonl: 464 rows
+sha256:475f76e06913d49bc61c816c5a002c94f341477cf6cceaf8522e441f3b297296
+
+unique-draft-v3.jsonl: 148 rows
+sha256:f1190735814b71bf73fa41ad3cef53a148e41293049549180b7c66746386ed32
 ```
 
-The required repository checks run during this stage also passed:
+These are not frozen results. No `MODEL_ADJUDICATED` receipt, final labels,
+dispute set, or `FROZEN_MODEL_GOLD` manifest exists.
 
-```bash
-python3 scripts/sync_skills.py --check
-python3 -m pytest
-python3 -m compileall -q src tests scripts
-git diff --check
-python3 -m build --wheel
+The runtime-only review kit is located at:
+
+```text
+.runtime/generic-geography/doupo-v1-44966c9/
+  experiment-b-gold/model-review-v1/
 ```
 
-The final report commit changes documentation only. No Ubuntu/Windows CI result
-is claimed for this branch, and the branch does not claim completion of a
-cross-platform production stage.
+It contains three input-isolated prompts and no fabricated model outputs.
 
-## 8. Requested adversarial review
+## 5. Validation evidence
 
-Review the exact range in section 2. Classify findings as blocker or
-non-blocker, and for each finding provide an exact file/function, reproducible
-scenario, violated invariant, and smallest safe correction.
+The real ten-unit inputs passed:
 
-Focus on:
+- A-1 source-selection Git-blob replay;
+- source-packet reconstruction from the qualified snapshot and ten native tasks;
+- v2 validation and deterministic derivation of all 536 draft labels.
 
-1. whether sample construction can consult text, heuristic scores, or answers;
-2. whether every source packet and task identity is reconstructed from qualified
-   content-bound artifacts;
-3. whether strict schemas and code reject unknown/tampered input consistently;
-4. whether every named payload value and required relation group has exact local
-   support;
-5. whether occurrence identity and unit-local exact-payload derivation are
-   deterministic and avoid semantic/alias merging;
-6. whether a draft or incomplete review can cause any frozen output side effect;
-7. whether the manifest and fresh-process replay close over every final byte;
-8. whether capacity statistics keep executor claims separate from verified
-   evidence;
-9. whether the tests exercise the production primitives rather than duplicate a
-   weaker validation implementation;
-10. whether any committed change crosses the frozen human-gold gate or weakens
-    the repository trust boundaries.
+Repository checks at correction implementation commit preparation:
 
-## 9. Next authorized transition
+```text
+python3 scripts/sync_skills.py --check       PASS
+python3 -m compileall -q src tests scripts  PASS
+python3 -m pytest                           582 passed in 228.54s
+git diff --check                            PASS
+python3 -m build --wheel                    PASS
+```
 
-After an independent human produces canonical `labels-human.jsonl` and a
-complete `HUMAN_ACCEPTED` `review-human.json`, the next sequence is:
+Focused gold-tool tests increased from 23 to 35 and cover the reviewer-reported
+failure modes, model receipt isolation/identity drift, prompt/output byte
+verification, schema pinning, dispute closure, and sample-selection replay.
 
-1. validate human labels and the review receipt without draft allowance;
-2. freeze `occurrences.jsonl`, `unique.jsonl`, and `gold-manifest.json`;
-3. run `validate-frozen` in a fresh process;
-4. only then implement C/D, execute Experiment C, score against frozen gold,
-   and write the actual capacity decision report.
+## 6. Next review request
 
+Review `88cd133..HEAD` and classify findings as blocker or non-blocker. For each
+finding provide an exact file/function, reproducible scenario, violated
+invariant, and smallest safe correction.
+
+Priority targets:
+
+1. `_write_immutable_set` preflight, rollback, race, and commit-marker semantics;
+2. whether `MODEL_ADJUDICATED` can be reached without all three honest records
+   and actual prompt/output bytes;
+3. schema/compiler/protocol identity pinning under CLI override paths;
+4. A-1 Git-blob selection replay and the exact three-draw-per-stratum rule;
+5. unique/dispute schema completeness and deterministic IDs;
+6. manifest replay closure over every model-review and semantic artifact;
+7. whether any wording still misrepresents model reference as human gold;
+8. whether the stress/control and uncertainty-bound methodology is sufficient.
+
+Do not approve the semantic labels from the committed branch alone: the
+rights-bound source packets and label bytes remain runtime-only. C–G must remain
+blocked until a real three-pass model adjudication is completed and
+`validate-frozen` passes in a fresh process.
