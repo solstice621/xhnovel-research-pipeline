@@ -44,6 +44,11 @@ source packets, which this kit does not contain.
 | 6 | `../experiment-b-plan.md` §§7–8 | required metrics and C triggers |
 | 7 | PR #14 unique ABI | `profiles/generic/geography-unique-v1/`, `generic_extraction.py`, `generic_profile.py` |
 
+`../experiment-b-plan.md` is the frozen pre-execution protocol snapshot; its
+pending checklist intentionally preserves that point in time. Execution
+closure is recorded in `../experiment-b-result.md` and
+`frozen/gold-manifest.json`.
+
 `../experiment-b-review-handoff.md` is **historical**. It records the
 protocol-correction review (`88cd133` era). The banner at the top is the
 current gate. Do not treat its section 6 “C–G blocked” paragraph as live.
