@@ -27,11 +27,11 @@ jobs:
           # Build the wheel venv OUTSIDE the checkout so the installed package's
           # __file__ ancestors do not contain the source pyproject.toml+contracts.
           # This is what proves repo_root() resolves installed package data rather
-          # than borrowing the source tree. SMOKE stays an absolute path to the
-          # checked-out script; the smoke itself runs each child with cwd in a
-          # tempdir, never chdir'ing this process (Windows cleanup safety).
+          # than borrowing the source tree. Each smoke runs child processes from a
+          # temporary directory and exercises only the installed wheel.
           VENV="$RUNNER_TEMP/xhnovel-wheel-smoke"
           SMOKE="$GITHUB_WORKSPACE/scripts/agent_files_wheel_smoke.py"
+          GENERIC_SMOKE="$GITHUB_WORKSPACE/scripts/generic_extraction_wheel_smoke.py"
           PHASE0_SMOKE="$GITHUB_WORKSPACE/scripts/phase0_vertical_slice_wheel_smoke.py"
           PHASE_MINUS1_SMOKE="$GITHUB_WORKSPACE/scripts/phase_minus1_wheel_smoke.py"
           PHASE_MINUS1_FIXTURE="$GITHUB_WORKSPACE/fixtures/positive/phase-minus1-planning"
@@ -45,9 +45,11 @@ jobs:
             BIN="$VENV/bin"
           fi
           "$BIN/python" -m pip install "$WHEEL"
-          "$BIN/python" -c "from xhnovel_pipeline.paths import repo_root; root=repo_root(); assert (root/'contracts').is_dir(); assert (root/'profiles').is_dir()"
+          "$BIN/python" -c "from xhnovel_pipeline.paths import repo_root; root=repo_root(); assert (root/'contracts').is_dir(); assert (root/'profiles').is_dir(); assert (root/'contracts'/'generic').is_dir(); assert (root/'profiles'/'generic'/'geography-v1').is_dir()"
           "$BIN/xhnovel-pipeline" --help
+          "$BIN/xhnovel-extract" --help
           "$BIN/python" "$SMOKE"
+          "$BIN/python" "$GENERIC_SMOKE"
           "$BIN/python" "$PHASE_MINUS1_SMOKE" \
             --fixture-root "$PHASE_MINUS1_FIXTURE" \
             --require-wheel

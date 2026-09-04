@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/profiles/generic/secret-realm-v1/payload.schema.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "name"],
+      "properties": {
+        "kind": {"const": "REALM_MENTION"},
+        "name": {"type": "string", "minLength": 1},
+        "explicit_type": {"type": "string", "minLength": 1}
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "realm_name", "access"],
+      "properties": {
+        "kind": {"const": "REALM_ACCESS"},
+        "realm_name": {"type": "string", "minLength": 1},
+        "access": {"enum": ["OPENED", "ENTERED", "EXITED", "CLOSED", "SEALED"]},
+        "actor_name": {"type": "string", "minLength": 1}
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "realm_name", "stake_kind", "item_name"],
+      "properties": {
+        "kind": {"const": "REALM_STAKE"},
+        "realm_name": {"type": "string", "minLength": 1},
+        "stake_kind": {"enum": ["TREASURE", "INHERITANCE", "HAZARD", "RESTRICTION"]},
+        "item_name": {"type": "string", "minLength": 1}
+      }
+    }
+  ]
+}

@@ -17,13 +17,22 @@ class ArtifactStore:
         digest = strip_sha_prefix(artifact_id)
         return self.root / "sha256" / digest[:2] / digest
 
+    @staticmethod
+    def _verify_published(dest: pathlib.Path, artifact_id: str, data: bytes) -> None:
+        try:
+            existing = dest.read_bytes()
+        except OSError as exc:
+            raise ValidationError("E-CAS-VERIFY", f"verify failed for {artifact_id}") from exc
+        if existing != data:
+            raise ValidationError("E-CAS-COLLISION", f"hash collision at {artifact_id}")
+        if sha256_bytes(existing) != strip_sha_prefix(artifact_id):
+            raise ValidationError("E-CAS-VERIFY", f"verify failed for {artifact_id}")
+
     def put(self, data: bytes) -> str:
         artifact_id = artifact_id_for(data)
         dest = self._path(artifact_id)
         if dest.exists():
-            existing = dest.read_bytes()
-            if existing != data:
-                raise ValidationError("E-CAS-COLLISION", f"hash collision at {artifact_id}")
+            self._verify_published(dest, artifact_id, data)
             return artifact_id
         dest.parent.mkdir(parents=True, exist_ok=True)
         fd, tmp_name = tempfile.mkstemp(dir=dest.parent, prefix=".tmp-")
@@ -32,16 +41,21 @@ class ArtifactStore:
                 fh.write(data)
                 fh.flush()
                 os.fsync(fh.fileno())
-            os.replace(tmp_name, dest)
-        except Exception:
+            try:
+                # Publish without replacing an existing CAS object. Concurrent
+                # writers of the same bytes race only on this atomic link: the
+                # winner publishes, and every loser verifies the winner below.
+                # This avoids Windows sharing violations caused by os.replace
+                # while another writer is reading the destination.
+                os.link(tmp_name, dest)
+            except FileExistsError:
+                pass
+        finally:
             try:
                 os.unlink(tmp_name)
             except OSError:
                 pass
-            raise
-        if dest.read_bytes() != data or sha256_bytes(dest.read_bytes()) != strip_sha_prefix(artifact_id):
-            dest.unlink(missing_ok=True)
-            raise ValidationError("E-CAS-VERIFY", f"verify failed for {artifact_id}")
+        self._verify_published(dest, artifact_id, data)
         return artifact_id
 
     def get(self, artifact_id: str) -> bytes:

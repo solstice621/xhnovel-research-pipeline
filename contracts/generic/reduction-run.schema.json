@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/generic/reduction-run.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "record_kind", "reduction_run_id", "reduction_run_hash",
+    "extraction_run_id", "extraction_run_hash", "profile_id", "profile_version",
+    "profile_package_hash", "profile_manifest_artifact_id", "reduction_profile_hash",
+    "reducer_id", "reducer_implementation_hash", "reducer_config", "reducer_config_hash",
+    "input_observations_artifact_id", "input_observation_count", "input_observation_result_hash",
+    "corpus_artifact_id", "corpus_record_count", "corpus_result_hash", "status", "created_at"
+  ],
+  "properties": {
+    "schema_version": {"const": "reduction-run/v1"},
+    "record_kind": {"const": "REDUCTION_RUN"},
+    "reduction_run_id": {"type": "string", "pattern": "^RRUN-[A-Z0-9]{20}$"},
+    "reduction_run_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "extraction_run_id": {"type": "string", "pattern": "^XRUN-"},
+    "extraction_run_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "profile_id": {"type": "string"},
+    "profile_version": {"type": "string"},
+    "profile_package_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "profile_manifest_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "reduction_profile_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "reducer_id": {"const": "exact-payload-dedup/v1"},
+    "reducer_implementation_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "reducer_config": {"type": "object"},
+    "reducer_config_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "input_observations_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "input_observation_count": {"type": "integer", "minimum": 0},
+    "input_observation_result_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "corpus_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "corpus_record_count": {"type": "integer", "minimum": 0},
+    "corpus_result_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "status": {"const": "SUCCEEDED"},
+    "created_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}
+  }
+}

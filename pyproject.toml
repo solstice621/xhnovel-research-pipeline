@@ -19,6 +19,7 @@ dev = ["pytest>=8.0"]
 
 [project.scripts]
 xhnovel-pipeline = "xhnovel_pipeline.cli:main"
+xhnovel-extract = "xhnovel_pipeline.generic_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -34,9 +35,23 @@ xhnovel_pipeline = ["py.typed"]
 "xhnovel_pipeline_data" = ["pyproject.toml", "requirements.lock"]
 "xhnovel_pipeline_data/contracts" = ["contracts/*.json", "contracts/*.md"]
 "xhnovel_pipeline_data/contracts/exports" = ["contracts/exports/*.json"]
+"xhnovel_pipeline_data/contracts/generic" = ["contracts/generic/*.json"]
 "xhnovel_pipeline_data/policies" = ["policies/*.yaml"]
 "xhnovel_pipeline_data/profiles/xuanhuan-gameplay-scene-v1" = [
   "profiles/xuanhuan-gameplay-scene-v1/*.json",
   "profiles/xuanhuan-gameplay-scene-v1/*.yaml",
   "profiles/xuanhuan-gameplay-scene-v1/*.md",
+]
+"xhnovel_pipeline_data/profiles/generic" = ["profiles/generic/*.md"]
+"xhnovel_pipeline_data/profiles/generic/geography-v1" = [
+  "profiles/generic/geography-v1/*.json",
+  "profiles/generic/geography-v1/*.md",
+]
+"xhnovel_pipeline_data/profiles/generic/race-mention-v1" = [
+  "profiles/generic/race-mention-v1/*.json",
+  "profiles/generic/race-mention-v1/*.md",
+]
+"xhnovel_pipeline_data/profiles/generic/secret-realm-v1" = [
+  "profiles/generic/secret-realm-v1/*.json",
+  "profiles/generic/secret-realm-v1/*.md",
 ]

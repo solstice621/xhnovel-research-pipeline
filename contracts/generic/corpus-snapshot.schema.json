@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/generic/corpus-snapshot.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "record_kind", "corpus_snapshot_id", "corpus_snapshot_hash",
+    "text_snapshot_id", "text_snapshot_hash", "extraction_run_id", "extraction_run_hash",
+    "reduction_run_id", "reduction_run_hash", "profile_id", "profile_version",
+    "profile_package_hash", "corpus_artifact_id", "corpus_record_count", "corpus_result_hash",
+    "text_coverage", "semantic_coverage", "artifact_integrity", "exact_runtime",
+    "functional_replay", "semantic_assurance", "status", "created_at"
+  ],
+  "properties": {
+    "schema_version": {"const": "corpus-snapshot/v1"},
+    "record_kind": {"const": "CORPUS_SNAPSHOT"},
+    "corpus_snapshot_id": {"type": "string", "pattern": "^CPS-[A-Z0-9]{20}$"},
+    "corpus_snapshot_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "text_snapshot_id": {"type": "string", "pattern": "^NTS-"},
+    "text_snapshot_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "extraction_run_id": {"type": "string", "pattern": "^XRUN-"},
+    "extraction_run_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "reduction_run_id": {"type": "string", "pattern": "^RRUN-"},
+    "reduction_run_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "profile_id": {"type": "string"},
+    "profile_version": {"type": "string"},
+    "profile_package_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "corpus_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "corpus_record_count": {"type": "integer", "minimum": 0},
+    "corpus_result_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "text_coverage": {"const": "FULL"},
+    "semantic_coverage": {"const": "UNMEASURED"},
+    "artifact_integrity": {"const": "VALID"},
+    "exact_runtime": {"const": "AVAILABLE"},
+    "functional_replay": {"const": "VERIFIED"},
+    "semantic_assurance": {"const": "UNQUALIFIED"},
+    "status": {"const": "FROZEN"},
+    "created_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}
+  }
+}

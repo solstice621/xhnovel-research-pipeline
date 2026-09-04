@@ -178,6 +178,29 @@ Keep these roles separate:
 - when adding a new repository Skill, keep `.agents/skills/...` canonical and the
   `.claude/skills/...` mirror byte-identical through `scripts/sync_skills.py`.
 
+### Codex-only subagent model routing
+
+This section applies only when the host runtime is Codex. Non-Codex hosts must
+ignore it and must not emulate it by calling a separate model API.
+
+- Do not set or assume a repository-wide default subagent model.
+- When the current Codex session is running at the **Ultra** intelligence level,
+  leave ordinary spawned subagents on the normal Codex/default model selection.
+  Do not automatically route them to `luna_batch` solely for throughput or cost.
+- Outside Ultra, when Codex **autonomously** decides to fan out a large homogeneous
+  experimental workload into many independent leaf tasks, use the built-in project
+  custom role `luna_batch` when it is available.
+- Typical `luna_batch` workloads include many independent novel windows, large
+  `agent-files` batches, repetitive corpus extraction/classification, and parallel
+  source/evidence inspection where every worker has the same narrow contract.
+- Keep orchestration, synthesis, adjudication, architecture/design decisions,
+  adversarial review, ambiguous implementation work, and contract-changing work on
+  the parent/default model rather than `luna_batch`.
+- An explicit user request for a particular child model or role overrides this
+  routing policy.
+- If the current Codex runtime cannot select `luna_batch`, fall back to normal Codex
+  subagent behavior. Do not call an external model API to imitate the role.
+
 ## Repository map
 
 Use the existing layer boundaries:
