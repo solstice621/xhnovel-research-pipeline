@@ -74,6 +74,46 @@ def _cohort(ordinal: int) -> str:
     raise ScoreError("E-C-COHORT", f"ordinal {ordinal} is outside the frozen Experiment B sample")
 
 
+def _empty_gold(ordinal: int) -> dict[str, Any]:
+    return {
+        "ordinal": ordinal,
+        "payloads": {kind: set() for kind in KINDS},
+        "names": set(),
+        "typed": {},
+        "earliest_bucket": {},
+    }
+
+
+def attach_occurrence_rows(
+    unique_rows: list[dict[str, Any]],
+    occurrence_rows: list[dict[str, Any]] | None,
+) -> list[dict[str, Any]]:
+    """Join unique gold to occurrence evidence for citation diagnostics.
+
+    Unique rows only store annotation_id + quarter. Citation scoring needs the
+    compiled occurrence evidence_bindings from occurrences.jsonl.
+    """
+
+    if occurrence_rows is None:
+        return unique_rows
+    by_id = {row["annotation_id"]: row for row in occurrence_rows}
+    attached: list[dict[str, Any]] = []
+    for unique in unique_rows:
+        rows = []
+        for occ in unique.get("occurrences", []):
+            annotation_id = occ["annotation_id"]
+            if annotation_id not in by_id:
+                raise ScoreError(
+                    "E-C-GOLD",
+                    f"unique {unique.get('unique_id')} references missing occurrence {annotation_id}",
+                )
+            rows.append(by_id[annotation_id])
+        item = dict(unique)
+        item["occurrence_rows"] = rows
+        attached.append(item)
+    return attached
+
+
 def _gold_by_unit(unique_rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     grouped: dict[str, dict[str, Any]] = {}
     for row in unique_rows:
@@ -225,13 +265,15 @@ def score_unit(
         )
         per_kind[kind] = metrics
     citations = []
-    for row in gold_unique_rows:
-        key = _payload_key(row["payload"])
-        if key not in pred["records_by_payload"]:
-            continue
-        citations.append(
-            _citation_for_match(row.get("occurrence_rows", []), pred["records_by_payload"][key])
-        )
+    citation_ready = any(row.get("occurrence_rows") for row in gold_unique_rows)
+    if citation_ready:
+        for row in gold_unique_rows:
+            key = _payload_key(row["payload"])
+            if key not in pred["records_by_payload"]:
+                continue
+            citations.append(
+                _citation_for_match(row["occurrence_rows"], pred["records_by_payload"][key])
+            )
     supported = [item for item in citations if item["containment"] is True]
     return {
         "ordinal": ordinal,
@@ -251,10 +293,14 @@ def score_unit(
         "explicit_type_accuracy": _type_accuracy(pred["typed"], gold["typed"]),
         "citation": {
             "matched_payloads": len(citations),
-            "containment_rate": _ratio(len(supported), len(citations)),
-            "exact_span_rate": _ratio(
-                sum(1 for item in citations if item["exact_span"]),
-                len(citations),
+            "containment_rate": _ratio(len(supported), len(citations)) if citation_ready else None,
+            "exact_span_rate": (
+                _ratio(
+                    sum(1 for item in citations if item["exact_span"]),
+                    len(citations),
+                )
+                if citation_ready
+                else None
             ),
         },
         "tail_recall": _tail_recall(
@@ -334,7 +380,9 @@ def score_configuration(
     sample: dict[str, Any],
     unique_rows: list[dict[str, Any]],
     answers: dict[str, tuple[bytes, dict[str, Any]]],
+    occurrence_rows: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
+    unique_rows = attach_occurrence_rows(unique_rows, occurrence_rows)
     gold_units = _gold_by_unit(unique_rows)
     gold_rows_by_unit: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in unique_rows:
@@ -345,10 +393,11 @@ def score_configuration(
         if unit_id not in answers:
             raise ScoreError("E-C-ANSWER", f"missing answer for {unit_id}")
         response_bytes, answer = answers[unit_id]
+        gold = gold_units.get(unit_id) or _empty_gold(sample_unit["ordinal"])
         per_unit.append(
             score_unit(
                 sample_unit=sample_unit,
-                gold=gold_units[unit_id],
+                gold=gold,
                 pred=_pred_by_unit(answer),
                 gold_unique_rows=gold_rows_by_unit[unit_id],
                 response_bytes=len(response_bytes),
@@ -375,6 +424,7 @@ def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sample", type=pathlib.Path, required=True)
     parser.add_argument("--unique", type=pathlib.Path, required=True)
+    parser.add_argument("--occurrences", type=pathlib.Path)
     parser.add_argument("--answers-dir", type=pathlib.Path, required=True)
     parser.add_argument("--output", type=pathlib.Path)
     return parser
@@ -385,12 +435,20 @@ def main(argv: list[str] | None = None) -> int:
     try:
         sample = json.loads(args.sample.read_text(encoding="utf-8"))
         unique_rows = _load_jsonl(args.unique, label="unique gold")
+        occurrence_rows = (
+            _load_jsonl(args.occurrences, label="occurrence gold") if args.occurrences else None
+        )
         answers: dict[str, tuple[bytes, dict[str, Any]]] = {}
         for unit in sample["units"]:
             path = args.answers_dir / stats._safe_answer_filename(unit["unit_id"])
             data, value = stats._load_json(path, label="answer")
             answers[unit["unit_id"]] = (data, value)
-        result = score_configuration(sample=sample, unique_rows=unique_rows, answers=answers)
+        result = score_configuration(
+            sample=sample,
+            unique_rows=unique_rows,
+            answers=answers,
+            occurrence_rows=occurrence_rows,
+        )
         encoded = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
         if args.output:
             args.output.write_text(encoded, encoding="utf-8")
