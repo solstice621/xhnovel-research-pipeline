@@ -1,5 +1,9 @@
 # Geography capacity inspection kit
 
+**Reviewers: start at [REVIEW.md](REVIEW.md).** That file is the ordered
+guide (questions, commands, overturn conditions). This README is the kit
+catalog.
+
 **Do not merge this overlay to `main`.** It is a review-only dump of
 Experiment B/C artifacts that PR #14 left runtime-only.
 
