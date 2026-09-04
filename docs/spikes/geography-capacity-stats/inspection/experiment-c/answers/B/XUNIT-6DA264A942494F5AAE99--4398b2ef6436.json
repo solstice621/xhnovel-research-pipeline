@@ -1,0 +1,368 @@
+{
+ "records": [
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹域"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-001",
+       "start": 159,
+       "end": 161
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹域",
+    "explicit_type": "域"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name",
+      "/explicit_type"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-001",
+       "start": 159,
+       "end": 161
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "圣丹城"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-002",
+       "start": 1207,
+       "end": 1210
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "圣丹城",
+    "explicit_type": "城"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name",
+      "/explicit_type"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-002",
+       "start": 1207,
+       "end": 1210
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "圣丹城",
+    "explicit_type": "圣地"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-002",
+       "start": 1506,
+       "end": 1509
+      }
+     ]
+    },
+    {
+     "paths": [
+      "/explicit_type"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-002",
+       "start": 1519,
+       "end": 1521
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "斗气大陆"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-002",
+       "start": 903,
+       "end": 907
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "斗气大陆",
+    "explicit_type": "大陆"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name",
+      "/explicit_type"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-002",
+       "start": 903,
+       "end": 907
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-002",
+       "start": 1376,
+       "end": 1378
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "叶城"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-DA70774F4F547C278239-001",
+       "start": 181,
+       "end": 183
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "叶城",
+    "explicit_type": "城"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name",
+      "/explicit_type"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-DA70774F4F547C278239-001",
+       "start": 181,
+       "end": 183
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "中州"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-DA70774F4F547C278239-001",
+       "start": 454,
+       "end": 456
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "密室"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-3D47B1796F47DD42100E-001",
+       "start": 931,
+       "end": 933
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "炼丹室"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-3D47B1796F47DD42100E-002",
+       "start": 1255,
+       "end": 1258
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "前院"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-DA70774F4F547C278239-001",
+       "start": 756,
+       "end": 758
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "大厅"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-DA70774F4F547C278239-002",
+       "start": 947,
+       "end": 949
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "石亭"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-002",
+       "start": 1471,
+       "end": 1473
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "院落"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-5355A9FC8ECDBE0CB410-002",
+       "start": 1465,
+       "end": 1467
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "completion": {
+  "status": "COMPLETE"
+ }
+}

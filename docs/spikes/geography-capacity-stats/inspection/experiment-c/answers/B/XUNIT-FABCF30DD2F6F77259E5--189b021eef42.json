@@ -1,0 +1,191 @@
+{
+  "records": [
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "内院"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-95D63147D677C9AF748A-003",
+              "start": 325,
+              "end": 327
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天焚炼气塔"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-588D5C2F7717BFD3F29D-001",
+              "start": 115,
+              "end": 120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "黑角域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-588D5C2F7717BFD3F29D-001",
+              "start": 624,
+              "end": 627
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "黑角域",
+        "explicit_type": "域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-588D5C2F7717BFD3F29D-001",
+              "start": 624,
+              "end": 627
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "迦南学院"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-588D5C2F7717BFD3F29D-002",
+              "start": 1183,
+              "end": 1187
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "混乱地域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-588D5C2F7717BFD3F29D-002",
+              "start": 994,
+              "end": 998
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "深山山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-588D5C2F7717BFD3F29D-002",
+              "start": 572,
+              "end": 576
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "深山山脉",
+        "explicit_type": "山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-588D5C2F7717BFD3F29D-002",
+              "start": 572,
+              "end": 576
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "磐门"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-CECBB3162467A4F97F82-001",
+              "start": 100,
+              "end": 102
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "completion": {
+    "status": "COMPLETE"
+  }
+}

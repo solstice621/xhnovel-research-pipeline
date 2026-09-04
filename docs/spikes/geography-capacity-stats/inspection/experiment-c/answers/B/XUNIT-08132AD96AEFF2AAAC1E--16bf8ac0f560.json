@@ -1,0 +1,899 @@
+{
+  "records": [
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "中州"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-001",
+              "start": 323,
+              "end": 325
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "中州",
+        "explicit_type": "地方"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-002",
+              "start": 1401,
+              "end": 1407
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "黑角域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-001",
+              "start": 326,
+              "end": 329
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "黑角域",
+        "explicit_type": "域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-001",
+              "start": 326,
+              "end": 329
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-001",
+              "start": 331,
+              "end": 335
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国",
+        "explicit_type": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-001",
+              "start": 331,
+              "end": 335
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "西北地域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-001",
+              "start": 1074,
+              "end": 1078
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "西北地域",
+        "explicit_type": "地域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-001",
+              "start": 1074,
+              "end": 1078
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "内院"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-001",
+              "start": 1400,
+              "end": 1402
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天涯城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-002",
+              "start": 1180,
+              "end": 1183
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天涯城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-002",
+              "start": 1180,
+              "end": 1183
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天涯城",
+        "explicit_type": "城市"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-002",
+              "start": 1177,
+              "end": 1187
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "中州大陆"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-002",
+              "start": 1257,
+              "end": 1261
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "中州大陆",
+        "explicit_type": "大陆"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-002",
+              "start": 1257,
+              "end": 1261
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天擎"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-001",
+              "start": 42,
+              "end": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天擎",
+        "explicit_type": "山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-001",
+              "start": 40,
+              "end": 47
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天擎山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-001",
+              "start": 119,
+              "end": 123
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天擎山脉",
+        "explicit_type": "山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-001",
+              "start": 119,
+              "end": 123
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "空间虫洞"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-002",
+              "start": 1198,
+              "end": 1202
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "城中心"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-DD939819872E17F5188A-002",
+              "start": 369,
+              "end": 372
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "星陨阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 720,
+              "end": 723
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "星陨阁",
+        "explicit_type": "阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 720,
+              "end": 723
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "万剑阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 724,
+              "end": 727
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "万剑阁",
+        "explicit_type": "阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 724,
+              "end": 727
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "黄泉阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 728,
+              "end": 731
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "黄泉阁",
+        "explicit_type": "阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 728,
+              "end": 731
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 732,
+              "end": 735
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷阁",
+        "explicit_type": "阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 732,
+              "end": 735
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "焚炎谷"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 312,
+              "end": 315
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "焚炎谷",
+        "explicit_type": "谷"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 312,
+              "end": 315
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "天涯城",
+        "relation": "LOCATED_IN",
+        "object_name": "天擎"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-001",
+              "start": 22,
+              "end": 49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "天涯城",
+        "relation": "LOCATED_IN",
+        "object_name": "天擎山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-001",
+              "start": 119,
+              "end": 127
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "天涯城",
+        "relation": "CONNECTED_TO",
+        "object_name": "中州"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-AA2C72E00FEED9635FFE-002",
+              "start": 1163,
+              "end": 1206
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "空间虫洞",
+        "relation": "LOCATED_IN",
+        "object_name": "天涯城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-DD939819872E17F5188A-002",
+              "start": 1225,
+              "end": 1235
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "空间虫洞",
+        "relation": "LOCATED_IN",
+        "object_name": "城中心"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-DD939819872E17F5188A-002",
+              "start": 369,
+              "end": 381
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "空间虫洞",
+        "relation": "CONNECTED_TO",
+        "object_name": "中州"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-001",
+              "start": 66,
+              "end": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "空间虫洞",
+        "relation": "LOCATED_IN",
+        "object_name": "中州"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-001",
+              "start": 565,
+              "end": 578
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "星陨阁",
+        "relation": "LOCATED_IN",
+        "object_name": "中州"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 720,
+              "end": 754
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "万剑阁",
+        "relation": "LOCATED_IN",
+        "object_name": "中州"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 724,
+              "end": 754
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "黄泉阁",
+        "relation": "LOCATED_IN",
+        "object_name": "中州"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 728,
+              "end": 754
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "风雷阁",
+        "relation": "LOCATED_IN",
+        "object_name": "中州"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-EB462148568FBD92A91F-002",
+              "start": 732,
+              "end": 754
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "completion": {
+    "status": "COMPLETE"
+  }
+}

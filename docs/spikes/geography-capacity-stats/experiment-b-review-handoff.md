@@ -1,5 +1,11 @@
 # Geography model-reference freeze — remediation review handoff
 
+> **Status 2026-09-04.** This document is the protocol-correction handoff.
+> It is not the current experiment gate. Experiment B is
+> `FROZEN_MODEL_GOLD` (`GOLD-159D8DA0B6BFD77182AF`); Experiment C STOP'd
+> 10k unique-fact. See `experiment-b-result.md`, `experiment-c-result.md`,
+> and the review-only kit in `inspection/README.md`.
+
 ## 1. Decision
 
 The `6cc794f..88cd133` review correctly identified two blockers and four
