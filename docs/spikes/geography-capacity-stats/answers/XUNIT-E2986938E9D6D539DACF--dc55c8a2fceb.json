@@ -1,0 +1,344 @@
+{
+ "records": [
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "加玛帝国"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-637EAADE3F6D6C3D492C-001",
+       "start": 193,
+       "end": 211
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "加玛帝国"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EEC7B018417B55E83E50-001",
+       "start": 690,
+       "end": 704
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "加玛帝国"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EEC7B018417B55E83E50-001",
+       "start": 1171,
+       "end": 1185
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "加玛帝国"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EEC7B018417B55E83E50-002",
+       "start": 418,
+       "end": 428
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "加玛帝国"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EEC7B018417B55E83E50-002",
+       "start": 1112,
+       "end": 1125
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "加玛帝国"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-8CB2318D966A07324433-002",
+       "start": 1054,
+       "end": 1071
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "加玛帝国"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-8CB2318D966A07324433-002",
+       "start": 1202,
+       "end": 1218
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "加玛帝国"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EF585ACED671FD2F72C3-001",
+       "start": 668,
+       "end": 683
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "帝都"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EF585ACED671FD2F72C3-001",
+       "start": 693,
+       "end": 714
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "云岚山"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EEC7B018417B55E83E50-001",
+       "start": 288,
+       "end": 298
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "云岚山"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-8CB2318D966A07324433-001",
+       "start": 1010,
+       "end": 1025
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "云岚山"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EEC7B018417B55E83E50-002",
+       "start": 277,
+       "end": 295
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "云岚宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EEC7B018417B55E83E50-001",
+       "start": 324,
+       "end": 340
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "云岚宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EEC7B018417B55E83E50-001",
+       "start": 567,
+       "end": 577
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "云岚宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-8CB2318D966A07324433-001",
+       "start": 1242,
+       "end": 1251
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "云岚宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EF585ACED671FD2F72C3-001",
+       "start": 101,
+       "end": 111
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "云岚宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-EEC7B018417B55E83E50-002",
+       "start": 1244,
+       "end": 1254
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

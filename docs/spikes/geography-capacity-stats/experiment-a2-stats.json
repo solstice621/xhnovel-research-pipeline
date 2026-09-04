@@ -1,0 +1,246 @@
+{
+  "schema_version": "experiment-a2-stats/v1",
+  "provenance": {
+    "engine_commit": "6cc794f",
+    "build_id": "XBLD-04EEF485082B283CE18B",
+    "answers": "work-qualified-6cc794f answers (13 units, native validation: 13 completed, 0 failed)",
+    "identified_counts_source": "executor final reports (subagent messages, not machine artifacts); ord 438 report lost in transport"
+  },
+  "per_unit": [
+    {
+      "ordinal": 5,
+      "unit_id": "XUNIT-A67A64F7D2DA595F35EE",
+      "emitted": 64,
+      "unique_payloads": 24,
+      "distinct_names": 20,
+      "kinds": {
+        "SPATIAL_RELATION": 4,
+        "PLACE_MENTION": 60
+      },
+      "identified_total": 75,
+      "identified_mentions": 71,
+      "identified_relations": 4,
+      "omitted_mentions_reported": 11,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 151,
+      "unit_id": "XUNIT-F389874669BC07B7F647",
+      "emitted": 54,
+      "unique_payloads": 6,
+      "distinct_names": 5,
+      "kinds": {
+        "SPATIAL_RELATION": 1,
+        "PLACE_MENTION": 53
+      },
+      "identified_total": 54,
+      "identified_mentions": 53,
+      "identified_relations": 1,
+      "omitted_mentions_reported": 0,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 156,
+      "unit_id": "XUNIT-616936097B19E4019322",
+      "emitted": 51,
+      "unique_payloads": 18,
+      "distinct_names": 14,
+      "kinds": {
+        "PLACE_MENTION": 47,
+        "SPATIAL_RELATION": 4
+      },
+      "identified_total": 51,
+      "identified_mentions": 47,
+      "identified_relations": 4,
+      "omitted_mentions_reported": 0,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 163,
+      "unit_id": "XUNIT-789B73CE702B9E103663",
+      "emitted": 55,
+      "unique_payloads": 10,
+      "distinct_names": 8,
+      "kinds": {
+        "PLACE_MENTION": 53,
+        "SPATIAL_RELATION": 2
+      },
+      "identified_total": 55,
+      "identified_mentions": 53,
+      "identified_relations": 2,
+      "omitted_mentions_reported": 0,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 290,
+      "unit_id": "XUNIT-4150F2BC7C93C84A5A54",
+      "emitted": 50,
+      "unique_payloads": 18,
+      "distinct_names": 13,
+      "kinds": {
+        "PLACE_MENTION": 47,
+        "SPATIAL_RELATION": 3
+      },
+      "identified_total": 50,
+      "identified_mentions": 47,
+      "identified_relations": 3,
+      "omitted_mentions_reported": 0,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 301,
+      "unit_id": "XUNIT-E2986938E9D6D539DACF",
+      "emitted": 17,
+      "unique_payloads": 4,
+      "distinct_names": 4,
+      "kinds": {
+        "PLACE_MENTION": 17
+      },
+      "identified_total": 17,
+      "identified_mentions": 17,
+      "identified_relations": 0,
+      "omitted_mentions_reported": 0,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 310,
+      "unit_id": "XUNIT-F62C01B618A1D3782CEB",
+      "emitted": 64,
+      "unique_payloads": 18,
+      "distinct_names": 15,
+      "kinds": {
+        "SPATIAL_RELATION": 3,
+        "PLACE_MENTION": 61
+      },
+      "identified_total": 68,
+      "identified_mentions": 65,
+      "identified_relations": 3,
+      "omitted_mentions_reported": 4,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 395,
+      "unit_id": "XUNIT-08132AD96AEFF2AAAC1E",
+      "emitted": 64,
+      "unique_payloads": 12,
+      "distinct_names": 8,
+      "kinds": {
+        "PLACE_MENTION": 62,
+        "SPATIAL_RELATION": 2
+      },
+      "identified_total": 82,
+      "identified_mentions": 80,
+      "identified_relations": 2,
+      "omitted_mentions_reported": 18,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 426,
+      "unit_id": "XUNIT-E28DEF5742CAC5B53927",
+      "emitted": 64,
+      "unique_payloads": 26,
+      "distinct_names": 15,
+      "kinds": {
+        "SPATIAL_RELATION": 7,
+        "PLACE_MENTION": 57
+      },
+      "identified_total": 69,
+      "identified_mentions": 62,
+      "identified_relations": 7,
+      "omitted_mentions_reported": 5,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 438,
+      "unit_id": "XUNIT-AA04BE0F32EA97CD0817",
+      "emitted": 64,
+      "unique_payloads": 10,
+      "distinct_names": 7,
+      "kinds": {
+        "SPATIAL_RELATION": 3,
+        "PLACE_MENTION": 61
+      },
+      "identified_total": null,
+      "identified_mentions": null,
+      "identified_relations": null,
+      "omitted_mentions_reported": null,
+      "omitted_relations_reported": null
+    },
+    {
+      "ordinal": 513,
+      "unit_id": "XUNIT-7E362A3E3E7C883BF15A",
+      "emitted": 64,
+      "unique_payloads": 11,
+      "distinct_names": 7,
+      "kinds": {
+        "SPATIAL_RELATION": 4,
+        "PLACE_MENTION": 60
+      },
+      "identified_total": 64,
+      "identified_mentions": 60,
+      "identified_relations": 4,
+      "omitted_mentions_reported": 0,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 596,
+      "unit_id": "XUNIT-CA7E10D63957D03B1AF7",
+      "emitted": 64,
+      "unique_payloads": 14,
+      "distinct_names": 13,
+      "kinds": {
+        "SPATIAL_RELATION": 1,
+        "PLACE_MENTION": 63
+      },
+      "identified_total": 185,
+      "identified_mentions": 184,
+      "identified_relations": 1,
+      "omitted_mentions_reported": 121,
+      "omitted_relations_reported": 0
+    },
+    {
+      "ordinal": 600,
+      "unit_id": "XUNIT-0875487C74127A4E61A4",
+      "emitted": 28,
+      "unique_payloads": 8,
+      "distinct_names": 8,
+      "kinds": {
+        "PLACE_MENTION": 28
+      },
+      "identified_total": 28,
+      "identified_mentions": 28,
+      "identified_relations": 0,
+      "omitted_mentions_reported": 0,
+      "omitted_relations_reported": 0
+    }
+  ],
+  "aggregate": {
+    "units": 13,
+    "raw_saturation_units_emitted_at_64": [
+      5,
+      310,
+      395,
+      426,
+      438,
+      513,
+      596
+    ],
+    "confirmed_raw_overflow_units_identified_gt64": [
+      5,
+      310,
+      395,
+      426,
+      596
+    ],
+    "emitted_p50": 64,
+    "emitted_max": 64,
+    "unique_payloads_p50": 12,
+    "unique_payloads_max": 26,
+    "unique_payloads_min": 4,
+    "distinct_names_max": 20,
+    "relations_emitted_total": 34,
+    "relations_omitted_total": 0,
+    "omitted_mentions_total_reported": 159,
+    "max_identified_occurrences": 185
+  }
+}
