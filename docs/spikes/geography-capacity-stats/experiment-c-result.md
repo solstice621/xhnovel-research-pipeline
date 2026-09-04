@@ -1,8 +1,8 @@
 # Experiment C — 10k occurrence-like vs unique-fact capacity result
 
 - status: **10k unique-fact is sufficient; STOP**
-- frozen reference: `GOLD-159D8DA0B6BFD77182AF` /
-  `sha256:c2ffd3415ef4e235a72c5fc09196a8686e3569f62b6dcdfe9504b8b93fc09522`
+- frozen reference: `GOLD-6F9623B825F387835B61` /
+  `sha256:88d8644b2ab676041282315cf45722211a8e81f5cdbd44853e32615d0b64ff25`
 - scorer: `scripts/spikes/geography_experiment_c.py` joined to occurrence gold
 - A: `geography-v1` occurrence-like, `maxItems=64` (six stress answers reused from A-2)
 - B: `xhnovel.geography.unique` 10k unique-fact + completion ABI
@@ -11,6 +11,11 @@
   stress unit.
 
 Answers and gold JSONL stay runtime-only. This document is counts and rates only.
+
+After the dispute-to-candidate-label closure fix, A and B were replayed against
+the new frozen identity. Both score files were byte-identical to the original
+run1 scores because all 56 disputes were already correctly bound and the 628
+occurrence / 189 unique reference rows did not change.
 
 ## 1. Decision
 
