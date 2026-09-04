@@ -1,11 +1,11 @@
 # Experiment B — model-adjudicated geography reference result
 
 - status: **FROZEN_MODEL_GOLD**
-- gold_id: `GOLD-159D8DA0B6BFD77182AF`
-- gold_hash: `sha256:c2ffd3415ef4e235a72c5fc09196a8686e3569f62b6dcdfe9504b8b93fc09522`
+- gold_id: `GOLD-6F9623B825F387835B61`
+- gold_hash: `sha256:88d8644b2ab676041282315cf45722211a8e81f5cdbd44853e32615d0b64ff25`
 - sample: `GEOGOLD-B-20260904`
 - protocol: `geography-model-reference/v2` / `dual-model-adjudication/v1`
-- compiler: `sha256:a3f4ce33dceaa5e37770a62ea9ed1438c0c28b5ba979d2bda2e88590960b12af`
+- compiler: `sha256:afe9c9df21c05706b2b2535a09bab108476a6579fab3ba9db95eb4a836b6cf0e`
 - review policy freeze commit: `7f359ea7a9ac30dcf168db6c59d965b025d42708`
 
 This is a **model-adjudicated reference set**, not human gold. Source packets,
@@ -19,7 +19,7 @@ Fresh-process `validate-frozen` reproduced the frozen set (`PASS`).
 
 | Artifact | Identity |
 | --- | --- |
-| gold manifest | `GOLD-159D8DA0B6BFD77182AF` / `sha256:c2ffd3415ef4e235a72c5fc09196a8686e3569f62b6dcdfe9504b8b93fc09522` |
+| gold manifest | `GOLD-6F9623B825F387835B61` / `sha256:88d8644b2ab676041282315cf45722211a8e81f5cdbd44853e32615d0b64ff25` |
 | source packet set | `sha256:925b633c08d802c183f8962f45bdc5735c096770d2e2021a7c21a34af0ddd365` |
 | input labels (HOST_AGENT draft) | `sha256:f9b2f6eb9bd5765903da4de6bb126e860af95818d2af156703fbcc90aa548f88` |
 | final labels | `sha256:3cc8124d5e84f41638f39c7c4f37cd78a04606a0324b1daf7b6c336f79c270c8` |
@@ -33,6 +33,13 @@ Fresh-process `validate-frozen` reproduced the frozen set (`PASS`).
 Three isolated model receipts (`cursor` / `cursor-grok-4.6-high`) are bound in
 the manifest. Forbidden inputs remain
 `baseline_answers`, `candidate_answers`, `capacity_statistics`.
+
+The earlier `GOLD-159D8DA0B6BFD77182AF` identity is superseded. Its compiler
+proved only that each dispute list intersected the global candidate-label set.
+The corrected compiler requires every listed candidate label to exist and to
+belong to the dispute's own unit. All 56 existing disputes passed that stronger
+closure check, and a fresh-process replay produced the identity above. The
+occurrence and unique JSONL bytes are unchanged.
 
 ## 2. Compiled counts
 

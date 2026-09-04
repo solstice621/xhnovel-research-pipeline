@@ -7,7 +7,7 @@
     "protocol_commit": "7f359ea7a9ac30dcf168db6c59d965b025d42708",
     "protocol_artifact_id": "sha256:a85188690ed46458a1d96e7bee582694f2158d5f0ffa88a4da91dd5db87094b6",
     "review_policy": "dual-model-adjudication/v1",
-    "compiler_artifact_id": "sha256:a3f4ce33dceaa5e37770a62ea9ed1438c0c28b5ba979d2bda2e88590960b12af",
+    "compiler_artifact_id": "sha256:afe9c9df21c05706b2b2535a09bab108476a6579fab3ba9db95eb4a836b6cf0e",
     "schema_artifact_ids": {
       "label": "sha256:cb5a172a63db8d9a308886661480e8a206a4c52c9b5f7759eb90548c60f91c0a",
       "review": "sha256:75fc1dfd5e2cff9dae4e89ebcaa2ebd93b31a983c800288989a545f5bfa58306",

@@ -1675,9 +1675,9 @@ def _validate_input_labels(
     rows: list[dict[str, Any]],
     sample: dict[str, Any],
     label_schema: dict[str, Any],
-) -> set[str]:
+) -> dict[str, str]:
     sample_units = {unit["unit_id"] for unit in sample["units"]}
-    artifact_ids: set[str] = set()
+    artifact_units: dict[str, str] = {}
     for index, row in enumerate(rows, start=1):
         _schema_validate(label_schema, row, label=f"input label line {index}")
         if row.get("schema_version") != LABEL_SCHEMA_VERSION:
@@ -1685,10 +1685,10 @@ def _validate_input_labels(
         if row.get("sample_id") != sample["sample_id"] or row.get("unit_id") not in sample_units:
             raise GoldValidationError("E-GOLD-LABEL", f"input label lineage differs at line {index}")
         artifact_id = artifact_id_for(canonical_dumps(row))
-        if artifact_id in artifact_ids:
+        if artifact_id in artifact_units:
             raise GoldValidationError("E-GOLD-LABEL", f"duplicate input label at line {index}")
-        artifact_ids.add(artifact_id)
-    return artifact_ids
+        artifact_units[artifact_id] = row["unit_id"]
+    return artifact_units
 
 
 def _validate_disputes(
@@ -1696,7 +1696,7 @@ def _validate_disputes(
     rows: list[dict[str, Any]],
     sample: dict[str, Any],
     dispute_schema: dict[str, Any],
-    candidate_label_artifact_ids: set[str],
+    candidate_label_units: dict[str, str],
 ) -> None:
     sample_units = {unit["unit_id"] for unit in sample["units"]}
     seen_ids: set[str] = set()
@@ -1714,9 +1714,16 @@ def _validate_disputes(
         if row["dispute_id"] in seen_ids:
             raise GoldValidationError("E-GOLD-DISPUTE", f"duplicate dispute id at line {index}")
         seen_ids.add(row["dispute_id"])
-        if not set(row["candidate_label_artifact_ids"]) & candidate_label_artifact_ids:
+        candidate_ids = row["candidate_label_artifact_ids"]
+        if any(candidate_id not in candidate_label_units for candidate_id in candidate_ids):
             raise GoldValidationError(
-                "E-GOLD-DISPUTE", f"dispute has no bound candidate label at line {index}"
+                "E-GOLD-DISPUTE",
+                f"dispute references unknown candidate label at line {index}",
+            )
+        if any(candidate_label_units[candidate_id] != row["unit_id"] for candidate_id in candidate_ids):
+            raise GoldValidationError(
+                "E-GOLD-DISPUTE",
+                f"dispute candidate label unit differs at line {index}",
             )
 
 
@@ -1785,12 +1792,12 @@ def load_and_validate(
             input_labels_path, label="input labels"
         )
         disputes_bytes, disputes = _read_canonical_jsonl(disputes_path, label="disputes")
-    input_label_ids = _validate_input_labels(
+    input_label_units = _validate_input_labels(
         rows=input_labels,
         sample=sample,
         label_schema=label_schema,
     )
-    final_label_ids = _validate_input_labels(
+    final_label_units = _validate_input_labels(
         rows=labels,
         sample=sample,
         label_schema=label_schema,
@@ -1799,7 +1806,7 @@ def load_and_validate(
         rows=disputes,
         sample=sample,
         dispute_schema=dispute_schema,
-        candidate_label_artifact_ids=input_label_ids | final_label_ids,
+        candidate_label_units=input_label_units | final_label_units,
     )
     annotations, counts = _compile_annotations(
         sample=sample,
