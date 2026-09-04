@@ -25,13 +25,18 @@ def _run(args: list[str], *, expected: int) -> dict:
         raise AssertionError(f"stdout was not JSON:\n{result.stdout}") from exc
 
 
-def _complete_pending(manifest: dict) -> None:
+def _complete_pending(manifest: dict, *, completion: bool = False) -> None:
     assert manifest["status"] == "WAITING_FOR_AGENT"
     assert manifest["pending_count"] >= 1
+    body = (
+        '{"records": [], "completion": {"status": "COMPLETE"}}\n'
+        if completion
+        else '{"records": []}\n'
+    )
     for item in manifest["pending"]:
         path = pathlib.Path(item["answer"])
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text('{"records": []}\n', encoding="utf-8")
+        path.write_text(body, encoding="utf-8")
 
 
 def main() -> int:
@@ -72,10 +77,10 @@ def main() -> int:
 
         listed = _run(["list-profiles", "--json"], expected=0)
         refs = {item["ref"] for item in listed}
-        assert {"geography-v1", "race-mention-v1"} <= refs
+        assert {"geography-v1", "geography-unique-v1", "race-mention-v1"} <= refs
 
         snapshot_ids: list[str] = []
-        for profile in ("geography-v1", "race-mention-v1"):
+        for profile in ("geography-v1", "geography-unique-v1", "race-mention-v1"):
             pending = _run(
                 [
                     "run",
@@ -89,7 +94,7 @@ def main() -> int:
                 ],
                 expected=3,
             )
-            _complete_pending(pending)
+            _complete_pending(pending, completion=profile == "geography-unique-v1")
             completed = _run(
                 [
                     "run",

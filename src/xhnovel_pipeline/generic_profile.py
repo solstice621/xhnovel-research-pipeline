@@ -16,6 +16,13 @@ from .paths import repo_root
 PROFILE_MANIFEST_VERSION = "extraction-profile/v1"
 PROFILE_SCHEMA_PATH = pathlib.Path("contracts/generic/extraction-profile-manifest.schema.json")
 CORE_PROMPT_PATH = pathlib.Path("profiles/generic/core-prompt.md")
+RECORD_MODE_OCCURRENCE = "OCCURRENCE"
+RECORD_MODE_UNIQUE_PAYLOAD = "UNIQUE_PAYLOAD"
+COMPLETION_STATUSES = ("COMPLETE", "OVERFLOW", "UNCERTAIN")
+DEFAULT_ANSWER_ABI = {
+    "record_mode": RECORD_MODE_OCCURRENCE,
+    "completion_required": False,
+}
 
 _RESERVED_PAYLOAD_FIELDS = {
     "observation_id",
@@ -81,6 +88,13 @@ class ExtractionProfile:
     @property
     def reduction(self) -> dict[str, Any]:
         return copy.deepcopy(self.manifest["reduction"])
+
+    @property
+    def answer_abi(self) -> dict[str, Any]:
+        configured = self.manifest.get("answer_abi")
+        if not isinstance(configured, dict):
+            return copy.deepcopy(DEFAULT_ANSWER_ABI)
+        return copy.deepcopy(configured)
 
     @property
     def instructions(self) -> str:
@@ -262,18 +276,18 @@ def load_extraction_profile(
     package_hash = profile_package_hash_from_assets(
         manifest_bytes, prompt_bytes, payload_schema_bytes
     )
-    extraction_profile_hash = object_hash(
-        {
-            "profile_id": manifest["profile_id"],
-            "profile_version": manifest["profile_version"],
-            "prompt_artifact_id": artifact_id_for(prompt_bytes),
-            "payload_schema_artifact_id": artifact_id_for(payload_schema_bytes),
-            "unit_policy": manifest["unit_policy"],
-            "limits": manifest["limits"],
-            "evidence_policy": manifest["evidence_policy"],
-        },
-        omit=(),
-    )
+    extraction_body: dict[str, Any] = {
+        "profile_id": manifest["profile_id"],
+        "profile_version": manifest["profile_version"],
+        "prompt_artifact_id": artifact_id_for(prompt_bytes),
+        "payload_schema_artifact_id": artifact_id_for(payload_schema_bytes),
+        "unit_policy": manifest["unit_policy"],
+        "limits": manifest["limits"],
+        "evidence_policy": manifest["evidence_policy"],
+    }
+    if "answer_abi" in manifest:
+        extraction_body["answer_abi"] = manifest["answer_abi"]
+    extraction_profile_hash = object_hash(extraction_body, omit=())
     reduction_profile_hash = object_hash(
         {
             "profile_id": manifest["profile_id"],
@@ -313,7 +327,7 @@ def _embedded_payload_schema(profile: ExtractionProfile) -> dict[str, Any]:
 
 def output_schema_for(profile: ExtractionProfile) -> dict[str, Any]:
     maximum = int(profile.limits["max_records_per_unit"])
-    return {
+    schema: dict[str, Any] = {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "additionalProperties": False,
@@ -365,6 +379,17 @@ def output_schema_for(profile: ExtractionProfile) -> dict[str, Any]:
             }
         },
     }
+    if profile.answer_abi.get("completion_required"):
+        schema["required"] = ["records", "completion"]
+        schema["properties"]["completion"] = {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["status"],
+            "properties": {
+                "status": {"enum": list(COMPLETION_STATUSES)},
+            },
+        }
+    return schema
 
 
 

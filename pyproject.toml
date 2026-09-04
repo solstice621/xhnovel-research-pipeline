@@ -47,6 +47,10 @@ xhnovel_pipeline = ["py.typed"]
   "profiles/generic/geography-v1/*.json",
   "profiles/generic/geography-v1/*.md",
 ]
+"xhnovel_pipeline_data/profiles/generic/geography-unique-v1" = [
+  "profiles/generic/geography-unique-v1/*.json",
+  "profiles/generic/geography-unique-v1/*.md",
+]
 "xhnovel_pipeline_data/profiles/generic/race-mention-v1" = [
   "profiles/generic/race-mention-v1/*.json",
   "profiles/generic/race-mention-v1/*.md",

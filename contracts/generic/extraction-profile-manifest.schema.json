@@ -87,6 +87,15 @@
           "properties": {"record_version": {"type": "integer", "minimum": 1}}
         }
       }
+    },
+    "answer_abi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_mode", "completion_required"],
+      "properties": {
+        "record_mode": {"enum": ["OCCURRENCE", "UNIQUE_PAYLOAD"]},
+        "completion_required": {"type": "boolean"}
+      }
     }
   }
 }
