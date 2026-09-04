@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/docs/spikes/geography-capacity-stats/geography-gold-manifest.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "gold_id",
+    "gold_hash",
+    "sample_id",
+    "state",
+    "text_snapshot_id",
+    "text_snapshot_hash",
+    "sample_manifest_artifact_id",
+    "sample_manifest_hash",
+    "source_packets",
+    "source_packet_set_hash",
+    "labels_artifact_id",
+    "review_manifest_artifact_id",
+    "occurrence_jsonl_artifact_id",
+    "unique_jsonl_artifact_id",
+    "counts"
+  ],
+  "properties": {
+    "schema_version": {"const": "geography-gold-manifest/v1"},
+    "gold_id": {"type": "string", "pattern": "^GOLD-[A-F0-9]{20}$"},
+    "gold_hash": {"$ref": "#/$defs/sha256"},
+    "sample_id": {"const": "GEOGOLD-B-20260904"},
+    "state": {"const": "FROZEN_GOLD"},
+    "text_snapshot_id": {"type": "string", "pattern": "^NTS-[A-Z0-9]{20}$"},
+    "text_snapshot_hash": {"$ref": "#/$defs/sha256"},
+    "sample_manifest_artifact_id": {"$ref": "#/$defs/sha256"},
+    "sample_manifest_hash": {"$ref": "#/$defs/sha256"},
+    "source_packets": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["unit_id", "source_packet_artifact_id"],
+        "properties": {
+          "unit_id": {"type": "string", "pattern": "^XUNIT-[A-Z0-9]{20}$"},
+          "source_packet_artifact_id": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    },
+    "source_packet_set_hash": {"$ref": "#/$defs/sha256"},
+    "labels_artifact_id": {"$ref": "#/$defs/sha256"},
+    "review_manifest_artifact_id": {"$ref": "#/$defs/sha256"},
+    "occurrence_jsonl_artifact_id": {"$ref": "#/$defs/sha256"},
+    "unique_jsonl_artifact_id": {"$ref": "#/$defs/sha256"},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit_count",
+        "label_count",
+        "include_count",
+        "exclude_count",
+        "occurrence_count",
+        "unique_count"
+      ],
+      "properties": {
+        "unit_count": {"type": "integer", "minimum": 1},
+        "label_count": {"type": "integer", "minimum": 0},
+        "include_count": {"type": "integer", "minimum": 0},
+        "exclude_count": {"type": "integer", "minimum": 0},
+        "occurrence_count": {"type": "integer", "minimum": 0},
+        "unique_count": {"type": "integer", "minimum": 0}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+  }
+}

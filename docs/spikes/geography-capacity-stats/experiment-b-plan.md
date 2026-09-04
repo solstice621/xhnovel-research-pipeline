@@ -5,7 +5,9 @@
 - baseline engine: `6cc794fd6ad2632f1d26d00a9bf027634617c751`
 - baseline evidence branch: `f37bbf8`
 - sample manifest: `experiment-b-sample.json`
-- annotation schema: `geography-gold-annotation.schema.json`
+- annotator-input schema: `geography-gold-label.schema.json`
+- compiled-occurrence schema: `geography-gold-annotation.schema.json`
+- frozen-gold schema: `geography-gold-manifest.schema.json`
 
 ## 1. Decision boundary
 
@@ -19,7 +21,7 @@ inputs. Heuristics select controls; they do not establish facts.
 
 This protocol distinguishes three states:
 
-1. `ANNOTATION_DRAFT`: a source-blind annotation pass exists but has not been
+1. `ANNOTATION_DRAFT`: an answer/prediction-blind annotation pass exists but has not been
    accepted by a human reviewer;
 2. `HUMAN_ACCEPTED`: a human has checked the source packet, inclusions, exclusions,
    spans, and adversarial decisions;
@@ -82,27 +84,39 @@ The packet is valid only when its canonical object hash and concatenated UTF-8
 text artifact ID match the frozen sample manifest. Source text remains untrusted
 data and must never be executed as instructions.
 
+The sample distinguishes the core semantic task artifact from the executor
+request artifact. `semantic_task_artifact_id` hashes the native
+`{instructions,input,schema_name,schema}` object; `agent_request_artifact_id`
+hashes the on-disk generic agent-files packet and therefore matches that task
+file's bytes. Neither field may be relabeled as the other.
+
 ## 4. Blind annotation procedure
 
 Annotate one textual occurrence at a time in source order. Do not begin from a
-name list. For each included occurrence:
+name list. For each included occurrence, the annotator supplies only `unit_id`,
+`payload`, and exact evidence bindings:
 
 1. copy the exact geography payload without alias normalization;
 2. cite the smallest sufficient segment-absolute span or spans;
 3. bind every non-structural payload field to supporting spans;
-4. calculate the occurrence's start position in the concatenated unit;
-5. assign the quarter bucket using half-open ranges `[0,.25)`, `[.25,.50)`,
-   `[.50,.75)`, and `[.75,1]`;
-6. record one occurrence even when the same exact payload appeared earlier.
+4. record one occurrence even when the same exact payload appeared earlier.
+
+The compiler, not the annotator, derives `unit_hash`, source order,
+`occurrence_ordinal`, annotation ID, unit-relative start/end,
+`start_fraction_ppm`, and the quarter bucket. Quarter buckets use half-open ranges
+`[0,.25)`, `[.25,.50)`, `[.50,.75)`, and `[.75,1]`. Integer parts-per-million
+position avoids non-canonical floating-point values.
 
 Repeated text produced by sliding-window overlap is still one occurrence within
 the selected unit. Boilerplate, navigation text, advertisements, chapter titles,
 and metadata are eligible only if they themselves make an in-scope fictional
 geography statement; mere site or book names are excluded.
 
-Record difficult negative examples separately with an exclusion reason. The
-negative list is an audit aid, not an assertion that every possible negative span
-was exhaustively enumerated.
+Record difficult negative examples as `EXCLUDE` label rows with a proposed
+payload, exact source spans, and a reason code. Exclusions remain in the raw label
+audit file and do not enter compiled occurrences. The negative list is an audit
+aid, not an assertion that every possible negative span was exhaustively
+enumerated.
 
 ## 5. Geography inclusion rules
 
@@ -171,15 +185,26 @@ The derivation script must fail closed on unknown fields, source hashes, duplica
 occurrence IDs, out-of-unit spans, payload-schema violations, or a source packet
 hash mismatch.
 
+`FROZEN_GOLD` is created only from a complete `HUMAN_ACCEPTED` review. Its
+canonical `geography-gold-manifest/v1` binds the exact sample bytes and logical
+hash, ordered source-packet IDs and set hash, label and human-review artifacts,
+derived occurrence and unique JSONL artifacts, and their counts. A fresh-process
+`validate-frozen` replay must reproduce all three frozen output files byte for
+byte; a draft review cannot invoke this transition.
+
 ## 7. Frozen metrics
 
 Report per unit, per kind, per configuration, and aggregate:
 
 - exact unique-payload recall and precision for `PLACE_MENTION`;
+- exact-name unique recall/precision and `explicit_type` accuracy as separate
+  diagnostics, so an optional type error is not hidden inside one FP plus one FN;
 - exact unique-payload recall and precision for `SPATIAL_RELATION`;
-- citation correctness: for an exact-matched payload, every required binding is
-  in-unit and at least one predicted support span overlaps a gold occurrence span
-  for the same required paths;
+- citation correctness: for an exact-matched payload, each required path/group
+  must have a predicted binding covering it whose support contains one complete
+  minimal gold support set for the same path/group at one annotated occurrence;
+  report exact-span, containment, and cited-character broadness separately, and
+  never count a one-character or unrelated-path overlap as correct;
 - tail-position recall by the quarter containing the unique payload's earliest
   occurrence (this avoids penalizing unique-fact output for not citing every later
   duplicate occurrence);
@@ -189,8 +214,11 @@ Report per unit, per kind, per configuration, and aggregate:
   executor assertion;
 - run-to-run variance for each scored metric.
 
-`OVERFLOW` is a reliable witness that the executor knowingly omitted at least one
-eligible exact payload. `COMPLETE` is not proof of semantic completeness.
+`OVERFLOW` is a reliable machine-readable witness that the executor asserted it
+knowingly omitted at least one eligible exact payload. The assertion remains
+`UNVERIFIED_EXECUTOR_ASSERTION`: it may trigger a capacity diagnostic but does not
+verify the omitted payload or any self-reported count. `COMPLETE` is not proof of
+semantic completeness.
 
 Zero-denominator precision or recall is reported as `null`, never silently as
 zero or one.
@@ -222,7 +250,8 @@ stable material advantage for 5k units.
 - [x] protocol and adversarial rules fixed before extraction changes
 - [x] ten units and four random controls fixed
 - [x] source/task/unit hashes recorded
-- [ ] source-only packets independently verified
+- [x] source-only packets independently verified from the qualified snapshot and
+  all ten content-bound native tasks; packets remain runtime-only
 - [ ] first blind annotation pass complete
 - [ ] second pass or adjudication complete
 - [ ] explicit human acceptance recorded for all ten units

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/docs/spikes/geography-capacity-stats/geography-gold-review.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sample_id",
+    "review_state",
+    "reviewer_kind",
+    "reviewer_id",
+    "labels_artifact_id",
+    "units"
+  ],
+  "properties": {
+    "schema_version": {"const": "geography-gold-review/v1"},
+    "sample_id": {"const": "GEOGOLD-B-20260904"},
+    "review_state": {"enum": ["ANNOTATION_DRAFT", "HUMAN_ACCEPTED"]},
+    "reviewer_kind": {"enum": ["HOST_AGENT", "HUMAN"]},
+    "reviewer_id": {"type": "string", "minLength": 1},
+    "labels_artifact_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "reviewed_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "units": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "unit_id",
+          "review_complete",
+          "included_count",
+          "excluded_count"
+        ],
+        "properties": {
+          "unit_id": {"type": "string", "pattern": "^XUNIT-[A-Z0-9]{20}$"},
+          "review_complete": {"type": "boolean"},
+          "included_count": {"type": "integer", "minimum": 0},
+          "excluded_count": {"type": "integer", "minimum": 0},
+          "note": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"review_state": {"const": "HUMAN_ACCEPTED"}}},
+      "then": {
+        "properties": {"reviewer_kind": {"const": "HUMAN"}},
+        "required": ["reviewed_at"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/docs/spikes/geography-capacity-stats/geography-gold-label.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "sample_id", "unit_id", "decision"],
+  "properties": {
+    "schema_version": {"const": "geography-gold-label/v1"},
+    "sample_id": {"const": "GEOGOLD-B-20260904"},
+    "unit_id": {"type": "string", "pattern": "^XUNIT-[A-Z0-9]{20}$"},
+    "decision": {"enum": ["INCLUDE", "EXCLUDE"]},
+    "payload": {"$ref": "#/$defs/payload"},
+    "evidence_bindings": {"$ref": "#/$defs/evidence_bindings"},
+    "proposed_payload": {"$ref": "#/$defs/payload"},
+    "source_spans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/label_source_span"}
+    },
+    "reason_code": {
+      "enum": [
+        "ORGANIZATION_NOT_PLACE",
+        "PERSON_OR_GROUP_NOT_PLACE",
+        "GENERIC_OR_UNNAMED_SPACE",
+        "POLITICAL_NOT_SPATIAL",
+        "OWNERSHIP_NOT_SPATIAL",
+        "TRAVEL_SEQUENCE_NOT_RELATION",
+        "INFERRED_NOT_EXPLICIT",
+        "BOILERPLATE_OR_METADATA",
+        "OTHER"
+      ]
+    },
+    "note": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"decision": {"const": "INCLUDE"}}},
+      "then": {
+        "required": ["payload", "evidence_bindings"],
+        "not": {
+          "anyOf": [
+            {"required": ["proposed_payload"]},
+            {"required": ["source_spans"]},
+            {"required": ["reason_code"]}
+          ]
+        }
+      }
+    },
+    {
+      "if": {"properties": {"decision": {"const": "EXCLUDE"}}},
+      "then": {
+        "required": ["proposed_payload", "source_spans", "reason_code"],
+        "not": {
+          "anyOf": [
+            {"required": ["payload"]},
+            {"required": ["evidence_bindings"]}
+          ]
+        }
+      }
+    },
+    {
+      "if": {"properties": {"reason_code": {"const": "OTHER"}}, "required": ["reason_code"]},
+      "then": {"required": ["note"]}
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {"const": "INCLUDE"},
+          "payload": {"properties": {"kind": {"const": "PLACE_MENTION"}}}
+        },
+        "required": ["decision", "payload"]
+      },
+      "then": {
+        "properties": {
+          "evidence_bindings": {
+            "contains": {
+              "properties": {"paths": {"contains": {"const": "/name"}}},
+              "required": ["paths"]
+            },
+            "minContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {"const": "INCLUDE"},
+          "payload": {"properties": {"kind": {"const": "SPATIAL_RELATION"}}}
+        },
+        "required": ["decision", "payload"]
+      },
+      "then": {
+        "properties": {
+          "evidence_bindings": {
+            "contains": {
+              "properties": {
+                "paths": {
+                  "allOf": [
+                    {"contains": {"const": "/subject_name"}},
+                    {"contains": {"const": "/relation"}},
+                    {"contains": {"const": "/object_name"}}
+                  ]
+                }
+              },
+              "required": ["paths"]
+            },
+            "minContains": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "payload": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "name"],
+          "properties": {
+            "kind": {"const": "PLACE_MENTION"},
+            "name": {"type": "string", "minLength": 1},
+            "explicit_type": {"type": "string", "minLength": 1}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "subject_name", "relation", "object_name"],
+          "properties": {
+            "kind": {"const": "SPATIAL_RELATION"},
+            "subject_name": {"type": "string", "minLength": 1},
+            "relation": {
+              "enum": ["LOCATED_IN", "PART_OF", "NEAR", "OUTSIDE", "CONNECTED_TO"]
+            },
+            "object_name": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "label_source_span": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segment_id", "start", "end"],
+      "properties": {
+        "segment_id": {"type": "string", "pattern": "^SEG-"},
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 1}
+      }
+    },
+    "evidence_bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["paths", "source_spans"],
+        "properties": {
+          "paths": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "pattern": "^/"}
+          },
+          "source_spans": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"$ref": "#/$defs/label_source_span"}
+          }
+        }
+      }
+    }
+  }
+}
