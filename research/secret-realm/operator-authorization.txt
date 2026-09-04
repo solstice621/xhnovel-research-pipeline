@@ -1,0 +1,9 @@
+Operator Zihan Qiu (qiuzihan32@163.com) authorized this local agent (Codex, model GLM, session of 2026-09-03) with the message 「我授权署名，等会你帮我自动去网上尽力寻找各类玄幻小说，我要睡觉了，之后不要问我任何问题，你尽力自己解决」 at 2026-09-03 (local session time, Asia/Shanghai).
+
+Scope of this authorization, as recorded by the agent:
+
+1. Reuse of the operator-authorized local copy of 《斗破苍穹》 (1663 chapter files, ~15.3 MB) originally materialized for exploration run-003/run-004 under the standing operator attestation OPA-89478E55445209B7F25B, for a new secret-realm generic extraction research run.
+2. Open-web search for other xuanhuan (玄幻) novel works and their secret-realm plot materials, recording findings as Phase 0 lead-only records.
+3. Fetching full text of additional xuanhuan novels from the open web into this local research workspace for the operator's personal research use, with provenance (source URL and fetch time) recorded per work. The agent attests that downloads are performed on the operator's instruction and kept local to this workspace; rights basis for each fetched work is recorded as declared by the operator instruction above and must be re-resolved before any model egress or export.
+
+The agent is the attested_by party; this is not a forged personal signature of the operator.

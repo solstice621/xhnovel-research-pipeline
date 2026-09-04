@@ -1,0 +1,49 @@
+{
+  "exploration": "secret-realm-plotlines-v1",
+  "recorded_at": "2026-09-04T00:00:00Z",
+  "status_label": "UNVERIFIED_LEAD",
+  "role": "LEAD_ONLY",
+  "note": "Bibliographic leads from host-agent genre knowledge + open-web probes. Leads are NOT evidence; nothing here proves a scene occurred in the novel text. Rights basis for each work is UNKNOWN until an operator-authorized local copy is resolved and recorded.",
+  "research_question": "玄幻小说中的秘境类情节：有界特殊空间（秘境/洞府/遗迹/禁地/小世界/古界/古墓/秘库/传承之地）的提及、开启/进入/离开/关闭/封印事件，以及与秘境明确相连的宝物/传承/凶险/禁制。",
+  "leads": [
+    {"work": "完美世界", "author": "辰东", "hypothesis": "石村/百断山脉/虚神界/仙古遗迹等秘境贯穿全书，含明确的开启与闯入事件", "confidence": "high", "rights": "UNKNOWN"},
+    {"work": "遮天", "author": "辰东", "hypothesis": "荒古禁地/不死山/太初古矿/成仙地等禁地体系为叙事骨架", "confidence": "high", "rights": "UNKNOWN"},
+    {"work": "斗罗大陆", "author": "唐家三少", "hypothesis": "杀戮之都/海神岛/星斗大森林等有界试炼地", "confidence": "high", "rights": "UNKNOWN"},
+    {"work": "武动乾坤", "author": "天蚕土豆", "hypothesis": "远古秘藏与宗派遗迹驱动主线", "confidence": "high", "rights": "UNKNOWN"},
+    {"work": "大主宰", "author": "天蚕土豆", "hypothesis": "灵路/北灵境等试炼秘境", "confidence": "medium", "rights": "UNKNOWN"},
+    {"work": "凡人修仙传", "author": "忘语", "hypothesis": "虚天殿/昆吾山等修仙秘境探险", "confidence": "high", "rights": "UNKNOWN"},
+    {"work": "仙逆", "author": "耳根", "hypothesis": "古神之地/古修士洞府", "confidence": "medium", "rights": "UNKNOWN"},
+    {"work": "一念永恒", "author": "耳根", "hypothesis": "宗门禁地与古修遗迹", "confidence": "medium", "rights": "UNKNOWN"},
+    {"work": "圣墟", "author": "辰东", "hypothesis": "地球禁区/史前遗迹", "confidence": "medium", "rights": "UNKNOWN"},
+    {"work": "神墓", "author": "辰东", "hypothesis": "神墓/魔窟禁地体系", "confidence": "medium", "rights": "UNKNOWN"},
+    {"work": "莽荒纪", "author": "我吃西红柿", "hypothesis": "上古遗迹与大夏秘境", "confidence": "medium", "rights": "UNKNOWN"},
+    {"work": "吞噬星空", "author": "我吃西红柿", "hypothesis": "古迹/飞船遗迹（科幻玄幻混合，秘境形态不同）", "confidence": "low-medium", "rights": "UNKNOWN"}
+  ],
+  "resolved_sources": [
+    {"work": "斗破苍穹", "author": "天蚕土豆", "rights": "FAIR_USE_RESEARCH (operator-authorized local copy, see operator-authorization.txt)", "status": "EXTRACTED", "corpus_snapshot_id": "CPS-E51BC95C48E837D06B2F"},
+    {"work": "完美世界", "author": "辰东", "bibliographic_evidence": "百度百科: 2013年起连载起点中文网, 658.45万字, 共2014章", "fetched_from": "quanben.io /n/wanmeishijie/ (2014 chapters, AMP TOC at /amp/n/wanmeishijie/list.html)", "fetched_at": "2026-09-04", "rights": "FAIR_USE_RESEARCH (operator-authorized local fetch for personal research, see operator-authorization.txt)", "status": "FETCHED_FOR_INGESTION"}
+  ],
+  "source_availability_notes": [
+    {
+      "site": "quanben.io",
+      "verified_at": "2026-09-04",
+      "facts": "HTTPS reachable from this environment; hosts full chapter lists under /n/<slug>/ with AMP TOC at /amp/n/<slug>/list.html; chapter bodies in div#content of /n/<slug>/<page>.html; TOC entry count may differ slightly from canonical chapter counts (完美世界: 2010 TOC entries vs 百度百科 2014 chapters; 7 declared chapter numbers missing).",
+      "known_works_seen": ["斗破苍穹 (/n/doupocangqiong/)", "完美世界 (/n/wanmeishijie/)", "凡人修仙传 (/n/fanrenxiuxianzhuan/)", "傲世丹神", "绝世武神", "异世灵武天下", "绝世唐门", "盛世嫡妃", "雪中悍刀行"],
+      "rate_limit_observed": " bursts of urllib-style fetches triggered SSL-handshake throttling; curl with ~1.2s/chapter pacing completed 1943 chapters without terminal failure",
+      "technical_access_is_not_rights": "true",
+      "rights_note": "Site reachability proves nothing about permissions. Each work still requires an explicit operator authorization record before ingestion/model egress."
+    },
+    {
+      "site": "www.shubaobiquge.com",
+      "verified_at": "2026-09-04",
+      "facts": "Reachable (the origin of the authorized 斗破苍穹 copy); current catalog is mostly derivative/fanfic works; original bestsellers not found via site search; POST search endpoint /search.html with field 369koolearn.",
+      "rights_note": "Same caution: reachability ≠ rights."
+    },
+    {
+      "site": "unreachable hosts (HTTP 000/transport errors from this environment)",
+      "hosts": ["www.xbiquge.la", "www.bqgui.cc", "www.ibiquges.info", "www.81book.com", "www.uukanshu.com", "www.69shu.pro", "m.xbiquge.la", "www.ibiquge.info", "www.vbiquge.com"],
+      "redirect_only": ["www.69shu.com (301)", "www.xbiquge.tw (301)", "www.biquwx.la (301)", "www.kunnu.com (301)"],
+      "paid_official": ["dushu.baidu.com (200)", "www.qidian.com (202)"]
+    }
+  ]
+}
