@@ -1,0 +1,754 @@
+{
+  "scope": {
+    "answers_found": 24,
+    "budget_per_unit": 64,
+    "note": "first-pilot engineering answers (pre-6cc794f task ABI, multi-task worker contexts); not qualified semantic evidence"
+  },
+  "totals": {
+    "raw_records": 573,
+    "unique_payloads": 191,
+    "duplicate_records": 382,
+    "dup_ratio": 0.6667,
+    "kinds_raw": {
+      "PLACE_MENTION": 548,
+      "SPATIAL_RELATION": 25
+    },
+    "kinds_unique": {
+      "PLACE_MENTION": 166,
+      "SPATIAL_RELATION": 25
+    }
+  },
+  "per_unit_raw_histogram": {
+    "0-9": 3,
+    "10-19": 9,
+    "20-31": 6,
+    "32-47": 3,
+    "48-63": 3
+  },
+  "units_at_or_over_budget": [],
+  "dense_units_raw_ge_32": [
+    {
+      "ordinal": 1,
+      "unit_id": "XUNIT-B34F79B3E974364CBBEF",
+      "raw_records": 36,
+      "unique_payloads": 14,
+      "kinds_raw": {
+        "PLACE_MENTION": 36
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 14
+      },
+      "dup_payload_detail": {
+        "塔戈尔": 4,
+        "加玛帝国": 10,
+        "大千世界": 6,
+        "云岚宗": 3,
+        "龙岛": 3,
+        "乌坦城": 2
+      }
+    },
+    {
+      "ordinal": 3,
+      "unit_id": "XUNIT-EB247DB1C8325AC4E77A",
+      "raw_records": 51,
+      "unique_payloads": 15,
+      "kinds_raw": {
+        "PLACE_MENTION": 48,
+        "SPATIAL_RELATION": 3
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 12,
+        "SPATIAL_RELATION": 3
+      },
+      "dup_payload_detail": {
+        "花宗": 8,
+        "加玛帝国": 2,
+        "魔兽山脉": 2,
+        "斗气大陆": 10,
+        "萧界": 3,
+        "斗帝洞府": 2,
+        "斗帝遗迹": 2,
+        "古界": 2,
+        "天墓": 14
+      }
+    },
+    {
+      "ordinal": 4,
+      "unit_id": "XUNIT-68BE7D4B5072099F9F8C",
+      "raw_records": 52,
+      "unique_payloads": 17,
+      "kinds_raw": {
+        "PLACE_MENTION": 48,
+        "SPATIAL_RELATION": 4
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 13,
+        "SPATIAL_RELATION": 4
+      },
+      "dup_payload_detail": {
+        "天墓": 18,
+        "斗气大陆": 13,
+        "萧界": 2,
+        "加玛帝国": 3,
+        "乌坦城": 2,
+        "中州": 2,
+        "双帝山脉": 2
+      }
+    },
+    {
+      "ordinal": 5,
+      "unit_id": "XUNIT-537666CB0B99D13EBFB3",
+      "raw_records": 63,
+      "unique_payloads": 29,
+      "kinds_raw": {
+        "PLACE_MENTION": 53,
+        "SPATIAL_RELATION": 10
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 19,
+        "SPATIAL_RELATION": 10
+      },
+      "dup_payload_detail": {
+        "斗气大陆": 16,
+        "双帝山脉": 2,
+        "中州": 6,
+        "魂界": 5,
+        "加玛帝国": 5,
+        "青山镇": 2,
+        "乌坦城": 2,
+        "西北地域": 4
+      }
+    },
+    {
+      "ordinal": 6,
+      "unit_id": "XUNIT-7BDAA6CBC2CF1C2DCEAD",
+      "raw_records": 37,
+      "unique_payloads": 11,
+      "kinds_raw": {
+        "PLACE_MENTION": 36,
+        "SPATIAL_RELATION": 1
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 10,
+        "SPATIAL_RELATION": 1
+      },
+      "dup_payload_detail": {
+        "斗气大陆": 6,
+        "中州": 6,
+        "异火广场": 15,
+        "联盟总部": 2,
+        "迦南学院": 2
+      }
+    },
+    {
+      "ordinal": 7,
+      "unit_id": "XUNIT-55E794B561E5E80474C2",
+      "raw_records": 38,
+      "unique_payloads": 6,
+      "kinds_raw": {
+        "PLACE_MENTION": 38
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 6
+      },
+      "dup_payload_detail": {
+        "斗气大陆": 5,
+        "中州": 26,
+        "异火广场": 4
+      }
+    }
+  ],
+  "evidence_span_decile_distribution": {
+    "0-10%": 50,
+    "10-20%": 47,
+    "20-30%": 55,
+    "30-40%": 48,
+    "40-50%": 57,
+    "50-60%": 48,
+    "60-70%": 106,
+    "70-80%": 68,
+    "80-90%": 47,
+    "90-100%": 47
+  },
+  "per_unit": [
+    {
+      "ordinal": 1,
+      "unit_id": "XUNIT-B34F79B3E974364CBBEF",
+      "window_chars": 10000,
+      "raw_records": 36,
+      "unique_payloads": 14,
+      "duplicate_records": 22,
+      "kinds_raw": {
+        "PLACE_MENTION": 36
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 14
+      },
+      "dup_payload_detail": {
+        "塔戈尔": 4,
+        "加玛帝国": 10,
+        "大千世界": 6,
+        "云岚宗": 3,
+        "龙岛": 3,
+        "乌坦城": 2
+      }
+    },
+    {
+      "ordinal": 2,
+      "unit_id": "XUNIT-1F3DD38C8EC1384D26C9",
+      "window_chars": 10000,
+      "raw_records": 26,
+      "unique_payloads": 8,
+      "duplicate_records": 18,
+      "kinds_raw": {
+        "PLACE_MENTION": 26
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 8
+      },
+      "dup_payload_detail": {
+        "大千世界": 3,
+        "中州": 4,
+        "斗气大陆": 4,
+        "萧家": 2,
+        "花宗": 9,
+        "魔兽山脉": 2
+      }
+    },
+    {
+      "ordinal": 3,
+      "unit_id": "XUNIT-EB247DB1C8325AC4E77A",
+      "window_chars": 10000,
+      "raw_records": 51,
+      "unique_payloads": 15,
+      "duplicate_records": 36,
+      "kinds_raw": {
+        "PLACE_MENTION": 48,
+        "SPATIAL_RELATION": 3
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 12,
+        "SPATIAL_RELATION": 3
+      },
+      "dup_payload_detail": {
+        "花宗": 8,
+        "加玛帝国": 2,
+        "魔兽山脉": 2,
+        "斗气大陆": 10,
+        "萧界": 3,
+        "斗帝洞府": 2,
+        "斗帝遗迹": 2,
+        "古界": 2,
+        "天墓": 14
+      }
+    },
+    {
+      "ordinal": 4,
+      "unit_id": "XUNIT-68BE7D4B5072099F9F8C",
+      "window_chars": 10000,
+      "raw_records": 52,
+      "unique_payloads": 17,
+      "duplicate_records": 35,
+      "kinds_raw": {
+        "PLACE_MENTION": 48,
+        "SPATIAL_RELATION": 4
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 13,
+        "SPATIAL_RELATION": 4
+      },
+      "dup_payload_detail": {
+        "天墓": 18,
+        "斗气大陆": 13,
+        "萧界": 2,
+        "加玛帝国": 3,
+        "乌坦城": 2,
+        "中州": 2,
+        "双帝山脉": 2
+      }
+    },
+    {
+      "ordinal": 5,
+      "unit_id": "XUNIT-537666CB0B99D13EBFB3",
+      "window_chars": 10000,
+      "raw_records": 63,
+      "unique_payloads": 29,
+      "duplicate_records": 34,
+      "kinds_raw": {
+        "PLACE_MENTION": 53,
+        "SPATIAL_RELATION": 10
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 19,
+        "SPATIAL_RELATION": 10
+      },
+      "dup_payload_detail": {
+        "斗气大陆": 16,
+        "双帝山脉": 2,
+        "中州": 6,
+        "魂界": 5,
+        "加玛帝国": 5,
+        "青山镇": 2,
+        "乌坦城": 2,
+        "西北地域": 4
+      }
+    },
+    {
+      "ordinal": 6,
+      "unit_id": "XUNIT-7BDAA6CBC2CF1C2DCEAD",
+      "window_chars": 10000,
+      "raw_records": 37,
+      "unique_payloads": 11,
+      "duplicate_records": 26,
+      "kinds_raw": {
+        "PLACE_MENTION": 36,
+        "SPATIAL_RELATION": 1
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 10,
+        "SPATIAL_RELATION": 1
+      },
+      "dup_payload_detail": {
+        "斗气大陆": 6,
+        "中州": 6,
+        "异火广场": 15,
+        "联盟总部": 2,
+        "迦南学院": 2
+      }
+    },
+    {
+      "ordinal": 7,
+      "unit_id": "XUNIT-55E794B561E5E80474C2",
+      "window_chars": 10000,
+      "raw_records": 38,
+      "unique_payloads": 6,
+      "duplicate_records": 32,
+      "kinds_raw": {
+        "PLACE_MENTION": 38
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 6
+      },
+      "dup_payload_detail": {
+        "斗气大陆": 5,
+        "中州": 26,
+        "异火广场": 4
+      }
+    },
+    {
+      "ordinal": 8,
+      "unit_id": "XUNIT-65A144868AC82ADE8288",
+      "window_chars": 10000,
+      "raw_records": 21,
+      "unique_payloads": 7,
+      "duplicate_records": 14,
+      "kinds_raw": {
+        "PLACE_MENTION": 21
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 7
+      },
+      "dup_payload_detail": {
+        "中州": 6,
+        "斗气大陆": 10
+      }
+    },
+    {
+      "ordinal": 9,
+      "unit_id": "XUNIT-8FEA6598F10983F95BB2",
+      "window_chars": 10000,
+      "raw_records": 17,
+      "unique_payloads": 7,
+      "duplicate_records": 10,
+      "kinds_raw": {
+        "PLACE_MENTION": 16,
+        "SPATIAL_RELATION": 1
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 6,
+        "SPATIAL_RELATION": 1
+      },
+      "dup_payload_detail": {
+        "乌坦城": 4,
+        "加玛帝国": 4,
+        "斗气大陆": 5
+      }
+    },
+    {
+      "ordinal": 10,
+      "unit_id": "XUNIT-89803E09E8E6536A0C72",
+      "window_chars": 10000,
+      "raw_records": 19,
+      "unique_payloads": 7,
+      "duplicate_records": 12,
+      "kinds_raw": {
+        "PLACE_MENTION": 19
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 7
+      },
+      "dup_payload_detail": {
+        "斗气大陆": 7,
+        "加玛帝国": 3,
+        "云岚宗": 5
+      }
+    },
+    {
+      "ordinal": 11,
+      "unit_id": "XUNIT-ED0A286B6023213F50EC",
+      "window_chars": 10000,
+      "raw_records": 23,
+      "unique_payloads": 5,
+      "duplicate_records": 18,
+      "kinds_raw": {
+        "PLACE_MENTION": 22,
+        "SPATIAL_RELATION": 1
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 4,
+        "SPATIAL_RELATION": 1
+      },
+      "dup_payload_detail": {
+        "斗气大陆": 11,
+        "加玛帝国": 6,
+        "乌坦城": 4
+      }
+    },
+    {
+      "ordinal": 12,
+      "unit_id": "XUNIT-19955C403EC97DD5EC29",
+      "window_chars": 10000,
+      "raw_records": 17,
+      "unique_payloads": 2,
+      "duplicate_records": 15,
+      "kinds_raw": {
+        "PLACE_MENTION": 17
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 2
+      },
+      "dup_payload_detail": {
+        "斗气大陆": 11,
+        "乌坦城": 6
+      }
+    },
+    {
+      "ordinal": 13,
+      "unit_id": "XUNIT-646BA6E6A8993FFE6EC5",
+      "window_chars": 10000,
+      "raw_records": 11,
+      "unique_payloads": 3,
+      "duplicate_records": 8,
+      "kinds_raw": {
+        "PLACE_MENTION": 11
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 3
+      },
+      "dup_payload_detail": {
+        "斗气大陆": 4,
+        "斗技堂": 6
+      }
+    },
+    {
+      "ordinal": 14,
+      "unit_id": "XUNIT-1595806E2F0CBB68C880",
+      "window_chars": 10000,
+      "raw_records": 17,
+      "unique_payloads": 7,
+      "duplicate_records": 10,
+      "kinds_raw": {
+        "PLACE_MENTION": 16,
+        "SPATIAL_RELATION": 1
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 6,
+        "SPATIAL_RELATION": 1
+      },
+      "dup_payload_detail": {
+        "斗技堂": 3,
+        "斗气大陆": 4,
+        "加玛帝国": 5,
+        "乌坦城": 2
+      }
+    },
+    {
+      "ordinal": 15,
+      "unit_id": "XUNIT-72CC5E5D9662EEB5AE3B",
+      "window_chars": 10000,
+      "raw_records": 20,
+      "unique_payloads": 7,
+      "duplicate_records": 13,
+      "kinds_raw": {
+        "PLACE_MENTION": 20
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 7
+      },
+      "dup_payload_detail": {
+        "鉴宝室": 2,
+        "乌坦城": 12,
+        "加玛帝国": 2
+      }
+    },
+    {
+      "ordinal": 16,
+      "unit_id": "XUNIT-5593B92EBA7849810EEC",
+      "window_chars": 10000,
+      "raw_records": 7,
+      "unique_payloads": 3,
+      "duplicate_records": 4,
+      "kinds_raw": {
+        "PLACE_MENTION": 7
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 3
+      },
+      "dup_payload_detail": {
+        "加玛帝国": 2,
+        "云岚宗": 3,
+        "斗气阁": 2
+      }
+    },
+    {
+      "ordinal": 17,
+      "unit_id": "XUNIT-F73CBF7372E4B30C7D56",
+      "window_chars": 10000,
+      "raw_records": 2,
+      "unique_payloads": 2,
+      "duplicate_records": 0,
+      "kinds_raw": {
+        "PLACE_MENTION": 2
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 2
+      },
+      "dup_payload_detail": {}
+    },
+    {
+      "ordinal": 18,
+      "unit_id": "XUNIT-049C2064329782FD586E",
+      "window_chars": 10000,
+      "raw_records": 10,
+      "unique_payloads": 5,
+      "duplicate_records": 5,
+      "kinds_raw": {
+        "PLACE_MENTION": 9,
+        "SPATIAL_RELATION": 1
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 4,
+        "SPATIAL_RELATION": 1
+      },
+      "dup_payload_detail": {
+        "斗技堂": 3,
+        "乌坦城": 4
+      }
+    },
+    {
+      "ordinal": 19,
+      "unit_id": "XUNIT-3383CDDADC73A1B57E8E",
+      "window_chars": 10000,
+      "raw_records": 15,
+      "unique_payloads": 6,
+      "duplicate_records": 9,
+      "kinds_raw": {
+        "PLACE_MENTION": 14,
+        "SPATIAL_RELATION": 1
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 5,
+        "SPATIAL_RELATION": 1
+      },
+      "dup_payload_detail": {
+        "乌坦城": 7,
+        "迦南学院": 2,
+        "加玛帝国": 3
+      }
+    },
+    {
+      "ordinal": 20,
+      "unit_id": "XUNIT-DB40D4C3DCC48B0FA86A",
+      "window_chars": 10000,
+      "raw_records": 3,
+      "unique_payloads": 2,
+      "duplicate_records": 1,
+      "kinds_raw": {
+        "PLACE_MENTION": 3
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 2
+      },
+      "dup_payload_detail": {
+        "斗技堂": 2
+      }
+    },
+    {
+      "ordinal": 21,
+      "unit_id": "XUNIT-F1A5F091F5FCA3D146A0",
+      "window_chars": 10000,
+      "raw_records": 28,
+      "unique_payloads": 10,
+      "duplicate_records": 18,
+      "kinds_raw": {
+        "PLACE_MENTION": 27,
+        "SPATIAL_RELATION": 1
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 9,
+        "SPATIAL_RELATION": 1
+      },
+      "dup_payload_detail": {
+        "斗气阁": 14,
+        "后山": 2,
+        "火道第三条路": 2,
+        "火道": 4
+      }
+    },
+    {
+      "ordinal": 22,
+      "unit_id": "XUNIT-624E55A1ECD0BF3B3C3A",
+      "window_chars": 10000,
+      "raw_records": 17,
+      "unique_payloads": 6,
+      "duplicate_records": 11,
+      "kinds_raw": {
+        "PLACE_MENTION": 17
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 6
+      },
+      "dup_payload_detail": {
+        "斗气阁": 9,
+        "乌坦城": 3,
+        "萧家": 2
+      }
+    },
+    {
+      "ordinal": 23,
+      "unit_id": "XUNIT-88398178BAF66C8E1BBC",
+      "window_chars": 10000,
+      "raw_records": 28,
+      "unique_payloads": 7,
+      "duplicate_records": 21,
+      "kinds_raw": {
+        "PLACE_MENTION": 27,
+        "SPATIAL_RELATION": 1
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 6,
+        "SPATIAL_RELATION": 1
+      },
+      "dup_payload_detail": {
+        "乌坦城": 8,
+        "米特尔拍卖场": 2,
+        "鉴宝室": 2,
+        "加玛帝国": 2,
+        "斗气大陆": 3,
+        "迦南学院": 10
+      }
+    },
+    {
+      "ordinal": 24,
+      "unit_id": "XUNIT-6D68E0BACE1D72E887FB",
+      "window_chars": 10000,
+      "raw_records": 15,
+      "unique_payloads": 5,
+      "duplicate_records": 10,
+      "kinds_raw": {
+        "PLACE_MENTION": 15
+      },
+      "kinds_unique": {
+        "PLACE_MENTION": 5
+      },
+      "dup_payload_detail": {
+        "乌坦城": 8,
+        "候客厅": 4
+      }
+    }
+  ],
+  "pilot_wide_names": {
+    "distinct_place_names": 60,
+    "mention_records": 548,
+    "mentions_per_distinct_name": 9.1,
+    "top_names": [
+      [
+        "斗气大陆",
+        113
+      ],
+      [
+        "乌坦城",
+        69
+      ],
+      [
+        "中州",
+        52
+      ],
+      [
+        "加玛帝国",
+        49
+      ],
+      [
+        "天墓",
+        34
+      ],
+      [
+        "斗气阁",
+        29
+      ],
+      [
+        "异火广场",
+        19
+      ],
+      [
+        "花宗",
+        17
+      ],
+      [
+        "迦南学院",
+        16
+      ],
+      [
+        "斗技堂",
+        15
+      ],
+      [
+        "云岚宗",
+        13
+      ],
+      [
+        "大千世界",
+        9
+      ]
+    ]
+  },
+  "distribution": {
+    "median_raw_per_unit": 19.5,
+    "mean_raw_per_unit": 23.9,
+    "max_raw_per_unit": 63
+  },
+  "dense_ordinal5_context": {
+    "first_segment_snapshot_index": 28,
+    "snapshot_segment_total": 5230,
+    "location": "early Wutan-city arc (world-setting dense window)",
+    "worker_reported_direct_candidates": "~83 (spike-notes.md, not machine-recorded)",
+    "retained": {
+      "raw": 63,
+      "unique": 29
+    },
+    "upper_bound_unique_if_all_omitted_were_unique": "<=49"
+  },
+  "caveats": [
+    "sample = 24/676 units (3.6%), novel-prefix ordinals 1-24, not a random sample",
+    "host-agent worker answers, not API model answers; ordinals 1-9 used multi-task worker contexts (isolation correction)",
+    "worker was instructed to prioritize under the 64 cap, so raw emission is biased downward on dense units; true dup ratio is likely higher",
+    "ordinal-5 omitted ~20 candidates are not machine-recorded; overflow manifests are not part of the current answer ABI",
+    "span deciles describe emitted records, not gold recall"
+  ],
+  "reading": {
+    "dominant_capacity_consumer": "exact duplicate PLACE_MENTION payloads (66.7% of all emitted records; 69.7% for mentions, 0% for relations)",
+    "after_in_response_dedup": "23/24 units <=31 unique payloads; dense ordinal 5 = 29 unique (<=49 upper bound), all far below 64",
+    "decision_table_row": "matches '>64 is mostly duplicate payloads -> in-unit consolidation' as first-line fix",
+    "still_required": "dense-window gold experiments across the whole book (esp. world-intro chapters) before freezing; 3.6% prefix sample cannot clear the whole work"
+  }
+}
