@@ -252,8 +252,9 @@ stable material advantage for 5k units.
 - [x] source/task/unit hashes recorded
 - [x] source-only packets independently verified from the qualified snapshot and
   all ten content-bound native tasks; packets remain runtime-only
-- [ ] first blind annotation pass complete
-- [ ] second pass or adjudication complete
+- [x] first answer/prediction-blind host-agent annotation draft complete
+- [x] independent source-only host-agent QA pass complete
+- [ ] human adjudication of surfaced disagreements complete
 - [ ] explicit human acceptance recorded for all ten units
 - [ ] occurrence and derived unique JSONL hashes recorded
 - [ ] no annotator read baseline or candidate answers before acceptance
