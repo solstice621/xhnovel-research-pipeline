@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/docs/spikes/geography-capacity-stats/geography-gold-manifest.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "gold_id",
+    "gold_hash",
+    "sample_id",
+    "state",
+    "review_state",
+    "review_policy",
+    "protocol_commit",
+    "protocol_artifact_id",
+    "compiler_artifact_id",
+    "schema_artifact_ids",
+    "source_selection_commit",
+    "source_selection_manifest_artifact_id",
+    "selection_algorithm_id",
+    "text_snapshot_id",
+    "text_snapshot_hash",
+    "sample_manifest_artifact_id",
+    "sample_manifest_hash",
+    "source_packets",
+    "source_packet_set_hash",
+    "input_labels_artifact_id",
+    "labels_artifact_id",
+    "review_manifest_artifact_id",
+    "review_output_artifact_id",
+    "disputes_artifact_id",
+    "disputed_count",
+    "forbidden_inputs",
+    "model_reviews",
+    "occurrence_jsonl_artifact_id",
+    "unique_jsonl_artifact_id",
+    "counts"
+  ],
+  "properties": {
+    "schema_version": {"const": "geography-gold-manifest/v2"},
+    "gold_id": {"type": "string", "pattern": "^GOLD-[A-F0-9]{20}$"},
+    "gold_hash": {"$ref": "#/$defs/sha256"},
+    "sample_id": {"const": "GEOGOLD-B-20260904"},
+    "state": {"const": "FROZEN_MODEL_GOLD"},
+    "review_state": {"const": "MODEL_ADJUDICATED"},
+    "review_policy": {"const": "dual-model-adjudication/v1"},
+    "protocol_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "protocol_artifact_id": {"$ref": "#/$defs/sha256"},
+    "compiler_artifact_id": {"$ref": "#/$defs/sha256"},
+    "schema_artifact_ids": {"$ref": "#/$defs/schema_artifact_ids"},
+    "source_selection_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "source_selection_manifest_artifact_id": {"$ref": "#/$defs/sha256"},
+    "selection_algorithm_id": {"const": "experiment-b-control/v1"},
+    "text_snapshot_id": {"type": "string", "pattern": "^NTS-[A-Z0-9]{20}$"},
+    "text_snapshot_hash": {"$ref": "#/$defs/sha256"},
+    "sample_manifest_artifact_id": {"$ref": "#/$defs/sha256"},
+    "sample_manifest_hash": {"$ref": "#/$defs/sha256"},
+    "source_packets": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["unit_id", "source_packet_artifact_id"],
+        "properties": {
+          "unit_id": {"type": "string", "pattern": "^XUNIT-[A-Z0-9]{20}$"},
+          "source_packet_artifact_id": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    },
+    "source_packet_set_hash": {"$ref": "#/$defs/sha256"},
+    "input_labels_artifact_id": {"$ref": "#/$defs/sha256"},
+    "labels_artifact_id": {"$ref": "#/$defs/sha256"},
+    "review_manifest_artifact_id": {"$ref": "#/$defs/sha256"},
+    "review_output_artifact_id": {"$ref": "#/$defs/sha256"},
+    "disputes_artifact_id": {"$ref": "#/$defs/sha256"},
+    "disputed_count": {"type": "integer", "minimum": 0},
+    "forbidden_inputs": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "baseline_answers"},
+        {"const": "candidate_answers"},
+        {"const": "capacity_statistics"}
+      ],
+      "items": false,
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "model_reviews": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/model_review"}
+    },
+    "occurrence_jsonl_artifact_id": {"$ref": "#/$defs/sha256"},
+    "unique_jsonl_artifact_id": {"$ref": "#/$defs/sha256"},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit_count",
+        "label_count",
+        "include_count",
+        "exclude_count",
+        "occurrence_count",
+        "unique_count",
+        "disputed_count"
+      ],
+      "properties": {
+        "unit_count": {"type": "integer", "minimum": 1},
+        "label_count": {"type": "integer", "minimum": 0},
+        "include_count": {"type": "integer", "minimum": 0},
+        "exclude_count": {"type": "integer", "minimum": 0},
+        "occurrence_count": {"type": "integer", "minimum": 0},
+        "unique_count": {"type": "integer", "minimum": 0},
+        "disputed_count": {"type": "integer", "minimum": 0}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "schema_artifact_ids": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "review", "annotation", "unique", "dispute", "manifest"],
+      "properties": {
+        "label": {"$ref": "#/$defs/sha256"},
+        "review": {"$ref": "#/$defs/sha256"},
+        "annotation": {"$ref": "#/$defs/sha256"},
+        "unique": {"$ref": "#/$defs/sha256"},
+        "dispute": {"$ref": "#/$defs/sha256"},
+        "manifest": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "model_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "execution_id",
+        "model_provider",
+        "model_id",
+        "review_prompt_file",
+        "review_prompt_artifact_id",
+        "input_artifact_ids",
+        "review_output_file",
+        "review_output_artifact_id",
+        "completed_at"
+      ],
+      "properties": {
+        "role": {
+          "enum": ["BLIND_EXTRACTOR", "DRAFT_AUDITOR", "DIFFERENCE_ADJUDICATOR"]
+        },
+        "execution_id": {"type": "string", "minLength": 1},
+        "model_provider": {"type": "string", "minLength": 1},
+        "model_id": {"type": "string", "minLength": 1},
+        "review_prompt_file": {"type": "string", "minLength": 1},
+        "review_prompt_artifact_id": {"$ref": "#/$defs/sha256"},
+        "input_artifact_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/sha256"}
+        },
+        "review_output_file": {"type": "string", "minLength": 1},
+        "review_output_artifact_id": {"$ref": "#/$defs/sha256"},
+        "completed_at": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+        }
+      }
+    }
+  }
+}

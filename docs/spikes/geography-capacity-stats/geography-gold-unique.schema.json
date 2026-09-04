@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/docs/spikes/geography-capacity-stats/geography-gold-unique.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sample_id",
+    "annotation_state",
+    "unit_id",
+    "unit_hash",
+    "ordinal",
+    "unique_id",
+    "unique_hash",
+    "payload",
+    "payload_hash",
+    "occurrences"
+  ],
+  "properties": {
+    "schema_version": {"const": "geography-gold-unique/v1"},
+    "sample_id": {"const": "GEOGOLD-B-20260904"},
+    "annotation_state": {"enum": ["ANNOTATION_DRAFT", "MODEL_ADJUDICATED"]},
+    "unit_id": {"type": "string", "pattern": "^XUNIT-[A-Z0-9]{20}$"},
+    "unit_hash": {"$ref": "#/$defs/sha256"},
+    "ordinal": {"type": "integer", "minimum": 1},
+    "unique_id": {"type": "string", "pattern": "^GEOUNIQ-[A-Z0-9]{20}$"},
+    "unique_hash": {"$ref": "#/$defs/sha256"},
+    "payload": {"$ref": "#/$defs/payload"},
+    "payload_hash": {"$ref": "#/$defs/sha256"},
+    "occurrences": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["annotation_id", "position_bucket"],
+        "properties": {
+          "annotation_id": {"type": "string", "pattern": "^GEOANN-[A-Z0-9]{20}$"},
+          "position_bucket": {"enum": ["Q1", "Q2", "Q3", "Q4"]}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "payload": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "name"],
+          "properties": {
+            "kind": {"const": "PLACE_MENTION"},
+            "name": {"type": "string", "minLength": 1},
+            "explicit_type": {"type": "string", "minLength": 1}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "subject_name", "relation", "object_name"],
+          "properties": {
+            "kind": {"const": "SPATIAL_RELATION"},
+            "subject_name": {"type": "string", "minLength": 1},
+            "relation": {
+              "enum": ["LOCATED_IN", "PART_OF", "NEAR", "OUTSIDE", "CONNECTED_TO"]
+            },
+            "object_name": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    }
+  }
+}
