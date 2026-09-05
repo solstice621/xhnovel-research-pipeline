@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/generic-extraction-handoff.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "handoff_id",
+    "handoff_hash",
+    "definition_id",
+    "resolution_id",
+    "motivating_lead_ids",
+    "work_ref",
+    "source_ref",
+    "selected_profile",
+    "localization",
+    "novel_spec",
+    "builder",
+    "readiness",
+    "contains_evidence",
+    "requested_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "defs.schema.json#/$defs/schema_version"
+    },
+    "handoff_id": {
+      "type": "string",
+      "pattern": "^GEH-[A-F0-9]{20}$"
+    },
+    "handoff_hash": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "definition_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resolution_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "motivating_lead_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "work_ref": {
+      "$ref": "phase0-defs.schema.json#/$defs/work_ref"
+    },
+    "source_ref": {
+      "$ref": "phase0-defs.schema.json#/$defs/source_ref"
+    },
+    "selected_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_ref",
+        "profile_id",
+        "profile_version",
+        "package_hash",
+        "extraction_profile_hash",
+        "reduction_profile_hash"
+      ],
+      "properties": {
+        "profile_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "extraction_profile_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "reduction_profile_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        }
+      }
+    },
+    "localization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy",
+        "execution_scope",
+        "hint_refs"
+      ],
+      "properties": {
+        "policy": {
+          "const": "LEAD_ONLY_NOT_EXECUTOR_INPUT"
+        },
+        "execution_scope": {
+          "const": "FULL_WORK"
+        },
+        "hint_refs": {
+          "type": "array",
+          "minItems": 0,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "lead_id",
+              "hint_indexes"
+            ],
+            "properties": {
+              "lead_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "hint_indexes": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "novel_spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "raw_artifact_id",
+        "expected_input_spec_hash"
+      ],
+      "properties": {
+        "path": {
+          "const": "novel-spec.json"
+        },
+        "raw_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/artifact_id"
+        },
+        "expected_input_spec_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        }
+      }
+    },
+    "builder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "build_id",
+        "source_tree_hash",
+        "contract_hash",
+        "build_request_artifact_id",
+        "definition_artifact_id",
+        "resolution_artifact_id",
+        "work_lead_artifact_ids",
+        "source_declaration_artifact_id"
+      ],
+      "properties": {
+        "build_id": {
+          "const": "generic-handoff-builder-v1"
+        },
+        "source_tree_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "contract_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "build_request_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/artifact_id"
+        },
+        "definition_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/artifact_id"
+        },
+        "resolution_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/artifact_id"
+        },
+        "work_lead_artifact_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "defs.schema.json#/$defs/artifact_id"
+          }
+        },
+        "source_declaration_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/artifact_id"
+        }
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "rights_basis",
+        "may_store_full_text",
+        "may_send_to_external_model",
+        "source_quality_tier"
+      ],
+      "properties": {
+        "status": {
+          "const": "READY_FOR_XHNOVEL"
+        },
+        "rights_basis": {
+          "enum": [
+            "USER_AUTHORIZED_LOCAL_COPY",
+            "PUBLIC_DOMAIN",
+            "LICENSED",
+            "FAIR_USE_RESEARCH"
+          ]
+        },
+        "may_store_full_text": {
+          "const": true
+        },
+        "may_send_to_external_model": {
+          "const": true
+        },
+        "source_quality_tier": {
+          "enum": [
+            "A",
+            "B"
+          ]
+        }
+      }
+    },
+    "contains_evidence": {
+      "const": false
+    },
+    "requested_at": {
+      "$ref": "defs.schema.json#/$defs/iso_datetime"
+    }
+  }
+}

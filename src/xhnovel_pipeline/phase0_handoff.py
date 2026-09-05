@@ -18,7 +18,7 @@ from .constants import SCHEMA_VERSION
 from .errors import ValidationError
 from .hashing import object_hash
 from .ids import derived_id
-from .novel_spec import ValidatedDirectResearchSpec
+from .novel_spec import ValidatedDirectResearchSpec, ValidatedGenericResearchSpec
 from .phase0_common import (
     nonempty,
     phase0_derived_id,
@@ -284,7 +284,7 @@ def _bind_source_metadata(
 
 def source_ref_from_validated(
     declaration: dict[str, Any],
-    validated: ValidatedDirectResearchSpec,
+    validated: ValidatedDirectResearchSpec | ValidatedGenericResearchSpec,
     work_ref: dict[str, Any],
 ) -> dict[str, Any]:
     """Derive source identity from the path-resolved, adapter-validated source config."""

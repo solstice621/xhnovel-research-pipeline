@@ -1,0 +1,365 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/generic-handoff-attempt-event.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "generic-handoff-attempt/v1"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^GEV-[A-F0-9]{20}$"
+    },
+    "event_hash": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "handoff_id": {
+      "type": "string",
+      "pattern": "^GEH-[A-F0-9]{20}$"
+    },
+    "handoff_hash": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "attempt_id": {
+      "type": "string",
+      "pattern": "^GAT-[A-F0-9]{20}$"
+    },
+    "attempt_ordinal": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "invocation_ordinal": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "state": {
+      "enum": [
+        "STARTED",
+        "WAITING_FOR_AGENT",
+        "PARTIAL_RETRYABLE",
+        "SUCCEEDED",
+        "FAILED"
+      ]
+    },
+    "previous_event_artifact_id": {
+      "oneOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "invocation_start_artifact_id": {
+      "oneOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "work_dir": {
+      "type": "string",
+      "minLength": 1
+    },
+    "binding": {
+      "$ref": "#/$defs/binding"
+    },
+    "recorded_at": {
+      "$ref": "defs.schema.json#/$defs/iso_datetime"
+    },
+    "detail": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_hash",
+    "sequence",
+    "handoff_id",
+    "handoff_hash",
+    "attempt_id",
+    "attempt_ordinal",
+    "invocation_ordinal",
+    "state",
+    "previous_event_artifact_id",
+    "invocation_start_artifact_id",
+    "work_dir",
+    "binding",
+    "recorded_at",
+    "detail"
+  ],
+  "$defs": {
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "input_spec_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "profile_package_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "extraction_build_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "executor": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "type": "string",
+              "minLength": 1
+            },
+            "build_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model": {
+              "type": "string",
+              "minLength": 1
+            },
+            "response_format": {
+              "type": "string",
+              "minLength": 1
+            },
+            "endpoint": {
+              "type": "string",
+              "minLength": 1
+            },
+            "timeout_ms": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "max_attempts": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "build_id",
+            "model",
+            "response_format",
+            "endpoint",
+            "timeout_ms",
+            "max_attempts"
+          ]
+        },
+        "extraction_build_id": {
+          "type": "string",
+          "pattern": "^XBLD-[A-F0-9]{20}$"
+        }
+      },
+      "required": [
+        "input_spec_hash",
+        "profile_package_hash",
+        "extraction_build_hash",
+        "executor",
+        "extraction_build_id"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "STARTED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "recovery": {
+                "enum": [
+                  "NORMAL",
+                  "RESUME",
+                  "RETRY"
+                ]
+              }
+            },
+            "required": [
+              "recovery"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "WAITING_FOR_AGENT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "pending_count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "pending": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "unit_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "task": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "answer": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "unit_id",
+                    "task",
+                    "answer"
+                  ]
+                }
+              },
+              "checkpoint_path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "checkpoint_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "failed_unit_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "failures": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "pending_count",
+              "pending",
+              "checkpoint_path",
+              "checkpoint_artifact_id",
+              "failed_unit_count",
+              "failures"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "PARTIAL_RETRYABLE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "failed_unit_count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "checkpoint_path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "checkpoint_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "failures": {
+                "type": "object",
+                "minProperties": 1
+              }
+            },
+            "required": [
+              "failed_unit_count",
+              "checkpoint_path",
+              "checkpoint_artifact_id",
+              "failures"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "SUCCEEDED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "receipt_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              }
+            },
+            "required": [
+              "receipt_artifact_id"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "FAILED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "receipt_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              }
+            },
+            "required": [
+              "receipt_artifact_id"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

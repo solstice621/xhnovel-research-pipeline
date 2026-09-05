@@ -26,6 +26,7 @@ from .novel_assessment import declared_rights, declared_source_quality, source_q
 __all__ = [
     "SpecValidationPurpose",
     "ValidatedDirectResearchSpec",
+    "ValidatedGenericResearchSpec",
     "check_spec_object",
     "check_source_object",
     "check_source_catalog",
@@ -41,6 +42,7 @@ __all__ = [
     "source_quality_tier",
     "validate_direct_research_spec",
     "load_validated_direct_research_spec",
+    "validate_generic_research_spec",
 ]
 
 _SCENE_SCOUT_OPTION_KEYS = {
@@ -99,6 +101,22 @@ class ValidatedDirectResearchSpec:
     source_quality_tier: str
     discovery_brief: str
     scene_scout_config: dict[str, int]
+    limits: dict[str, int]
+    strict_order: bool
+    execution_scope: str = "FULL_WORK"
+
+
+@dataclass(frozen=True)
+class ValidatedGenericResearchSpec:
+    """Source-only preflight, with no Scene or research-question projection."""
+
+    effective_spec: dict[str, Any]
+    resolved_spec_hash: str
+    source_kind: str
+    normalized_source_spec: dict[str, Any]
+    rights: dict[str, Any]
+    source_quality: dict[str, str]
+    source_quality_tier: str
     limits: dict[str, int]
     strict_order: bool
     execution_scope: str = "FULL_WORK"
@@ -188,6 +206,7 @@ def _normalized_source(
     source: dict[str, Any],
     *,
     purpose: SpecValidationPurpose,
+    require_source_access: bool = True,
 ) -> tuple[str, dict[str, Any]]:
     from .novel_adapters import adapter_from_spec
 
@@ -233,6 +252,8 @@ def _normalized_source(
             )
         path = path.resolve()
         source_copy["path"] = str(path)
+        if not require_source_access:
+            return source_kind, source_copy
         if source_kind == "directory":
             if not path.is_dir():
                 raise ValidationError("E-NOVEL-SOURCE", f"missing chapter directory {path}")
@@ -243,6 +264,66 @@ def _normalized_source(
             raise ValidationError("E-NOVEL-SOURCE", f"missing text file {path}")
 
     return source_kind, source_copy
+
+
+def validate_generic_research_spec(
+    spec: dict[str, Any],
+    *,
+    require_source_access: bool = True,
+) -> ValidatedGenericResearchSpec:
+    """Compose strict Generic Handoff checks using the existing source primitives.
+
+    Completed-handoff replay can disable only the local source existence check.
+    Rights, source quality, adapter configuration and canonical whole-spec identity
+    remain mandatory. Scene call sites keep their original defaults and ordering.
+    """
+    from .schema import validate_schema
+
+    check_spec_object(spec)
+    if set(spec) - {"source", "rights", "source_quality", "limits", "strict_order"}:
+        raise ValidationError("E-GENERIC-SPEC", "generic novel spec contains non-ingestion fields")
+    check_source_object(spec.get("source"))
+    limits_raw = spec.get("limits", {})
+    check_limits_object(limits_raw)
+    if set(limits_raw) - {"max_chapters", "max_bytes"}:
+        raise ValidationError("E-NOVEL-LIMIT", "generic limits contain unsupported fields")
+    limits = {
+        "max_chapters": input_limit(limits_raw, "max_chapters", 100_000, minimum=1),
+        "max_bytes": input_limit(limits_raw, "max_bytes", 500_000_000, minimum=0),
+    }
+    strict_order = spec.get("strict_order", False)
+    check_strict_order(strict_order)
+    rights = declared_rights(spec, require_storage=True, require_external_model=True)
+    quality = declared_source_quality(spec)
+    tier = source_quality_tier(quality)
+    if tier not in {"A", "B"}:
+        raise ValidationError("E-HANDOFF-QUALITY", "evidence handoff requires Tier A or Tier B source quality")
+    kind, source = _normalized_source(
+        spec["source"],
+        purpose=SpecValidationPurpose.EVIDENCE_HANDOFF,
+        require_source_access=require_source_access,
+    )
+    effective = {
+        "source": source,
+        "rights": rights,
+        "source_quality": quality,
+        "limits": limits,
+        "strict_order": strict_order,
+    }
+    # Reuse the SourceDeclaration source schema; unknown adapter fields cannot
+    # smuggle search hints, Profile settings or chapter scopes through source.
+    validate_schema("GenericNovelSpec", effective)
+    return ValidatedGenericResearchSpec(
+        effective_spec=effective,
+        resolved_spec_hash=object_hash(effective, omit=()),
+        source_kind=kind,
+        normalized_source_spec=source,
+        rights=rights,
+        source_quality=quality,
+        source_quality_tier=tier,
+        limits=limits,
+        strict_order=strict_order,
+    )
 
 
 def _validated_request(

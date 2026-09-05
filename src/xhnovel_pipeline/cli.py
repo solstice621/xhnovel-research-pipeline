@@ -23,6 +23,7 @@ from .novel_workflow import (
     validated_famous_novel_spec,
 )
 from .paths import repo_root
+from .observation_cli import add_observation_parsers, handle_observation_command
 from .phase0_builder import prepare_handoff_from_input, validate_evidence_handoff
 from .phase0_execution import execute_evidence_handoff
 from .phase0_planning import (
@@ -200,6 +201,7 @@ def _parser() -> argparse.ArgumentParser:
     locate.add_argument("--work-dir", type=pathlib.Path, required=True)
     locate.add_argument("--window", required=True)
     locate.add_argument("--quote", required=True)
+    add_observation_parsers(sub)
     return parser
 
 
@@ -208,6 +210,9 @@ def main(argv: list[str] | None = None) -> int:
     root = repo_root()
     work_dir: pathlib.Path | None = None
     try:
+        observation_result = handle_observation_command(args, root=root)
+        if observation_result is not None:
+            return observation_result
         if args.cmd == "validate":
             catalog = _catalog_from_json(args.catalog)
             store = ArtifactStore(args.store)

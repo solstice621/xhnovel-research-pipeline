@@ -22,6 +22,15 @@ The repository currently has two trust domains:
 The repository does **not** currently treat search leads as evidence, and it does
 not yet make `MechanismCandidate` objects part of the core evidence contract.
 
+Observation research adds a parallel GenericExtractionHandoff path over existing
+generic Profiles. ObservationDefinition, ProfileResolution, WorkLeads, campaigns
+and execution receipts remain outside the evidence Catalog. Its hard execution
+interface is the strict source-only Generic Novel Spec; observation goals and
+search hints must not enter native generic tasks or build identity. See
+`docs/OBSERVATION_RESEARCH_ARCHITECTURE.md` and
+`docs/OBSERVATION_RESEARCH_WORKFLOW.md`. Stage A reuses reviewed built-in Profiles;
+new Profile admission, semantic qualification and Analyzer remain separate stages.
+
 ## Load-bearing invariants
 
 These are architectural constraints, not suggestions.

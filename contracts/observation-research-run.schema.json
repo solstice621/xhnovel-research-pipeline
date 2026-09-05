@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/observation-research-run.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "observation-research/v1"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^ORUN-[A-F0-9]{20}$"
+    },
+    "run_hash": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "definition_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "definition_id": {
+      "type": "string",
+      "pattern": "^ODEF-[A-F0-9]{20}$"
+    },
+    "resolution_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "resolution_id": {
+      "type": "string",
+      "pattern": "^PRES-[A-F0-9]{20}$"
+    },
+    "intake_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "neutral_input_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "seeds": {
+      "type": "array",
+      "items": {
+        "$ref": "phase0-defs.schema.json#/$defs/sealed_user_seed"
+      }
+    },
+    "search_strategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "queries": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 0,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "selection_rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "queries",
+        "selection_rationale"
+      ]
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target_works": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_search_rounds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_source_attempts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_full_work_attempts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_resume_invocations": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "target_works",
+        "max_search_rounds",
+        "max_source_attempts",
+        "max_full_work_attempts",
+        "max_resume_invocations"
+      ]
+    },
+    "budget_authoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "host": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "assurance": {
+          "enum": [
+            "HOST_ISOLATED_ATTESTED",
+            "NOT_PROVEN"
+          ]
+        },
+        "isolation_claim": {
+          "enum": [
+            "FRESH_SUBAGENT_NO_SEED_PAYLOAD",
+            "HOST_ISOLATION_UNAVAILABLE",
+            "CONTEXT_NOT_ISOLATED",
+            "OPERATOR_DID_NOT_ATTEST"
+          ]
+        }
+      },
+      "required": [
+        "host",
+        "input_artifact_id",
+        "assurance",
+        "isolation_claim"
+      ]
+    },
+    "audit_assurance": {
+      "const": "HOST_RECORDED_ACTIVITY_ONLY"
+    },
+    "frozen_at": {
+      "$ref": "defs.schema.json#/$defs/iso_datetime"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "run_hash",
+    "definition_artifact_id",
+    "definition_id",
+    "resolution_artifact_id",
+    "resolution_id",
+    "intake_artifact_id",
+    "neutral_input_artifact_id",
+    "seeds",
+    "search_strategy",
+    "budget",
+    "budget_authoring",
+    "audit_assurance",
+    "frozen_at"
+  ]
+}

@@ -57,6 +57,16 @@ SCHEMA_BY_TYPE = {
     "ExplorationPlan": "exploration-plan.schema.json",
     "ExplorationPlanCompileRequest": "exploration-plan-compile-request.schema.json",
     "PlanningCompilationReceipt": "planning-compilation-receipt.schema.json",
+    "ObservationDefinition": "observation-definition.schema.json",
+    "ProfileResolution": "profile-resolution.schema.json",
+    "ObservationWorkLead": "observation-work-lead.schema.json",
+    "GenericNovelSpec": "generic-novel-spec.schema.json",
+    "GenericHandoffBuildRequest": "generic-handoff-build-request.schema.json",
+    "GenericExtractionHandoff": "generic-extraction-handoff.schema.json",
+    "GenericHandoffAttemptEvent": "generic-handoff-attempt-event.schema.json",
+    "GenericExtractionExecutionReceipt": "generic-execution-receipt.schema.json",
+    "ObservationResearchRun": "observation-research-run.schema.json",
+    "ObservationResearchEvent": "observation-research-event.schema.json",
 }
 
 _sessions: ContextVar[dict | None] = ContextVar("schema_validation_session", default=None)
