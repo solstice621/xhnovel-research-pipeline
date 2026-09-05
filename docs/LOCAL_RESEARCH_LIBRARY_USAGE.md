@@ -133,6 +133,19 @@ search-text/read-product/show-evidence 的 `--include-text` 必须同时具备�
 
 ## 5. 报告、状态与恢复
 
+恢复或准备报告时使用
+[宿主连续执行流程](HOST_RESEARCH_CONTINUATION.md)中的 `research-status`：
+
+```bash
+python scripts/research_library.py --library-root L research-status RESEARCH_RECORD_ID --planning-root P
+```
+
+它直接读取不可变登记并调用原生验证器，不刷新索引或推进执行。可重复提供
+`--legacy-root OLD_P` 和 `--acquisition-root SOURCE_RUN` 检查未登记的旧材料与
+来源尝试。旧材料不自动成为本次来源；错误保留在结果中，其他记录继续检查。
+待办 locator 的文件数量不等于原生已消费结果；通过原 wrapper 恢复后取得真实待办。
+观察研究仍使用原生 campaign report 判断 Definition、Profile 和预算。
+
 历史 TXT/EPUB 研究没有 source-acquisition 封存清单时，使用原址归档入口：
 
 ```bash

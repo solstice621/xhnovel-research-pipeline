@@ -11,6 +11,10 @@ works or other exploration seeds influence that Brief.
 Read [`docs/PHASE0_EXPLORATION.md`](../../../docs/PHASE0_EXPLORATION.md) before a
 new run. Planning feeds the existing Phase 0 boundary; it does not replace it.
 
+For checkout startup and end-to-end continuation, read the shared
+[host continuation guide](../../../docs/HOST_RESEARCH_CONTINUATION.md).
+Use its checkout launcher for the native CLI commands below.
+
 ## Trust boundary
 
 - The neutral worker receives only the sealed `NeutralPlanningInput`: its
@@ -36,6 +40,12 @@ new run. Planning feeds the existing Phase 0 boundary; it does not replace it.
    byte-identical text may use `USER_VERBATIM_NO_SEEDS`. Record typed genre
    include/exclude scope and its honest `scope_origin`. Intake seeds may use only
    `USER_SUPPLIED` or `USER_CONFIRMED` provenance.
+   Prefer the verbatim path when the request already has no seeds and supplies a
+   usable scope. A request saying “玄幻” supplies that genre; do not add “仙侠” or
+   exclusions merely to fill an example. Ask for clarification when a required
+   distinction changes the research, not just to obtain a CONFIRMED label.
+   If a changed summary needs confirmation, combine its wording and scope in one
+   question and reuse the answer for subsequent stages.
 
 2. **Seal the intake and projection.** Run:
 
@@ -116,6 +126,9 @@ new run. Planning feeds the existing Phase 0 boundary; it does not replace it.
    Stop at planning only when that is the user's requested scope. The shared
    [source workflow](../../../docs/SOURCE_ACQUISITION_WORKFLOW.md) supplies the
    subsequent acquisition steps; do not start source search before neutral planning.
+   Reconcile the saved planning with the library's `research-status` view, then
+   perform the next source or execution action. Missing sources start source work;
+   they do not require a new user instruction to proceed.
 
 ## Hard prohibitions
 

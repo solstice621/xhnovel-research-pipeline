@@ -1449,14 +1449,13 @@ def _receipt_record_fields(
 
 
 @schema_validation_session()
-def validate_planning_handoff(
+def validate_planning_compilation(
     receipt_path: pathlib.Path,
-    handoff_path: pathlib.Path,
     *,
     planning_root: pathlib.Path,
-    phase0_root: pathlib.Path,
     repo_root: pathlib.Path,
 ) -> dict[str, Any]:
+    """Replay planning before a source or Handoff exists, using the same closure."""
     receipt = validate_planning_receipt(
         _read_json(pathlib.Path(receipt_path), label="planning compilation receipt")
     )
@@ -1538,6 +1537,21 @@ def validate_planning_handoff(
             "E-PLANNING-RECEIPT-REPLAY",
             "planning compilation receipt differs from exact replay",
         )
+    return receipt
+
+
+@schema_validation_session()
+def validate_planning_handoff(
+    receipt_path: pathlib.Path,
+    handoff_path: pathlib.Path,
+    *,
+    planning_root: pathlib.Path,
+    phase0_root: pathlib.Path,
+    repo_root: pathlib.Path,
+) -> dict[str, Any]:
+    receipt = validate_planning_compilation(
+        receipt_path, planning_root=planning_root, repo_root=repo_root,
+    )
     validated_handoff = resolve_validated_handoff_input(
         pathlib.Path(handoff_path),
         phase0_root=pathlib.Path(phase0_root),

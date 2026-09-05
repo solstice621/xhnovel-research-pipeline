@@ -13,6 +13,12 @@ the run, and emits final artifacts. You only answer the native tasks it generate
 
 This mode needs **no model API key**. Do not look for one.
 
+For checkout startup and research recovery, use the
+[host continuation guide](../../../docs/HOST_RESEARCH_CONTINUATION.md).
+If tasks came from `execute-handoff` or a campaign wrapper, keep that exact
+wrapper and its Handoff/P/W binding throughout; the standalone commands below
+apply to a standalone `research-novel` run.
+
 ## The two-pass flow
 
 Run the pipeline once, fill in the tasks it materializes, then run the identical
@@ -30,6 +36,9 @@ xhnovel-pipeline research-novel <spec.json> --executor agent-files --work-dir W
 - The command prints a JSON manifest on stdout and also writes it to
   `W/scene-scout/agent-files/pending.json`. Either source lists the pending
   windows and, for each, its `task` and `answer` paths (relative to `W`).
+  A saved manifest is a locator, not proof of the current pending count. On
+  recovery rerun the same native wrapper to check its frozen inputs and obtain
+  the pending set before answering.
 
 ### Answer each task
 
@@ -53,6 +62,13 @@ features. Write only the structured answer object to the task's `answer_file`
 or candidates conforming to the task's `output.schema`. A valid **zero-candidate**
 answer is legitimate. Do not add an audit wrapper, provider id, token count, or
 HTTP metadata.
+
+For a large pending set, complete bounded batches and let the native wrapper
+consume them. Preserve rejected attempts and use the wrapper's retry semantics.
+Track actual host limits separately from the frozen research/source budgets.
+When an actual limit is reached, save the exact resume command and remaining
+work with the execution report. Do not ask the user to answer tasks or to confirm
+routine continuation, and do not create empty answers for unread tasks.
 
 ### Resolving exact source offsets
 

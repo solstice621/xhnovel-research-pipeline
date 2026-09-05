@@ -17,6 +17,12 @@ returned READY_FOR_XHNOVEL / WAITING_FOR_AGENT. Preserve requests expressly limi
 to design, discovery or source preparation. Use the shared
 [source workflow](../../../docs/SOURCE_ACQUISITION_WORKFLOW.md) at the source stage.
 
+Use the [host continuation guide](../../../docs/HOST_RESEARCH_CONTINUATION.md)
+for checkout startup and recovery. Reconcile library source/execution records
+alongside the native campaign report; that campaign remains authoritative for
+Definition, Profile and budget. A blocked work does not stop independent eligible
+work, and WAITING_FOR_AGENT requires host completion of native tasks.
+
 
 Use the [local chapter library workflow](../../../docs/LOCAL_RESEARCH_LIBRARY_USAGE.md)
 for source reuse and result registration. For a new research task, capture the user

@@ -23,6 +23,12 @@ Read the shared [source workflow](../../../docs/SOURCE_ACQUISITION_WORKFLOW.md)
 when a selected work needs a source; having no local text starts that workflow,
 not an immediate handback to the user.
 
+Read the [host continuation guide](../../../docs/HOST_RESEARCH_CONTINUATION.md)
+for the checkout launcher, `research-status` reconciliation and actual stopping
+conditions. Use it after planning, when recovering a research and before a final
+status claim. Treat a status view's suggested actions as pointers to the existing
+native workflows, not as validated source evidence.
+
 
 Use the [local chapter library workflow](../../../docs/LOCAL_RESEARCH_LIBRARY_USAGE.md)
 for source reuse and result registration. For a new research task, capture the user
@@ -72,6 +78,11 @@ evidence, and library operations never replace campaign events or FULL_WORK.
 3. **Select for diversity.** Deduplicate the explicit Lead set and prefer distinct
    works and interaction families. Do not discard incompatible work/source
    identities merely to force one group.
+   Old Leads are a candidate pool: reselect against this Plan's scope, budget and
+   diversity, preserve their old provenance, and record exclusions. An old
+   Brief/Handoff does not become this research by changing a label. Within that
+   selection, choose routine work order yourself, starting with compatible
+   resumable executions or verified local sources.
 4. **Resolve a source.** Before drafting the SourceDeclaration, ensure the
    exploration work root contains the standing `operator-attestation.json`.
    If it is absent, copy the canonical standing attestation from

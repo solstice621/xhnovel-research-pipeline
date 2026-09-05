@@ -442,6 +442,10 @@ class Library:
                                 outcome=outcome, error=error)
         return {**self._publish(validation), "outcome": outcome, "validation": result}
 
+    def research_status(self, research_id, **kwargs):
+        from research_status import research_status
+        return research_status(self, research_id, **kwargs)
+
     def _inventory(self):
         result, issues = {}, []
         directory = self.path("records/sha256")
@@ -658,6 +662,13 @@ def main(argv=None):
     for name in ("verify", "show"):
         commands.add_parser(name).add_argument("record_id")
     commands.add_parser("reindex")
+    p = commands.add_parser("research-status")
+    p.add_argument("research_id")
+    p.add_argument("--planning-root")
+    p.add_argument("--attestation-root")
+    p.add_argument("--legacy-root", action="append", default=[])
+    p.add_argument("--acquisition-root", action="append", default=[])
+    p.add_argument("--work-ref-id", action="append", default=[])
     for name in ("list-works", "list-sources", "list-research", "list-executions", "list-products", "list-reports"):
         p = commands.add_parser(name)
         p.add_argument("--query"); p.add_argument("--work-ref-id"); p.add_argument("--source-revision"); p.add_argument("--research-id")
