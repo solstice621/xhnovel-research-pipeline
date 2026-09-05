@@ -227,7 +227,8 @@ Acceptance:
 
 - all old tests pass;
 - agent-files integration tests pass;
-- GitHub Actions succeeds on Linux and Windows.
+- tests and installed-wheel smoke checks pass on Linux and Windows (run manually
+  now that GitHub Actions CI is not configured).
 
 ### Stage 3 — CLI, exact locator, and two-pass workflow (DONE)
 

@@ -206,5 +206,6 @@ locate licensed full text automatically.
 Work-directory locking uses `fcntl` on POSIX and `msvcrt` on Windows. Runtime
 contracts, policies, prompts, and schemas are included in the wheel under
 `xhnovel_pipeline_data`; `repo_root()` resolves either a source checkout or an
-installed distribution. CI runs pytest on Linux and Windows and performs a
-clean wheel-install/CLI/resource smoke test on both platforms.
+installed distribution. GitHub Actions CI is not configured. For cross-platform
+verification, manually run pytest and a clean wheel-install/CLI/resource smoke
+test on Linux and Windows, recording the tested commit and results.
