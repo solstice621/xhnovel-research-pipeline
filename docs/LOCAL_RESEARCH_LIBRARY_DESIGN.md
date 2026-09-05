@@ -14,13 +14,14 @@
 下一次研究同一本书时可以复用原文；已有研究结果先作为历史成果返回，是否能
 回答新问题必须另行判断，不能因为书名相同就跳过执行。
 
-**章节和整本 TXT 同时保存：封存章节是研究输入，整本 TXT 是自动生成的阅读、
-检索和导出视图。** 不让用户在二者之间选择，也不维护两份可独立编辑的正文。
+**原文按逻辑章节保存，直接用于研究、跨章节检索和证据回查。** 统一管理靠作品、
+版本和章节索引实现；本方案不生成整本 TXT，不提供整本拼接或整本导出功能。
+最初取得的 TXT/EPUB 等原始输入仍作为 provenance 保留，不能因调整管理设计而删除。
 
 | 对象 | 用户能做什么 | 权威来源 |
 | --- | --- | --- |
 | 作品 | 按书名、作者、别名查书，查看所有来源版本 | 原生 WorkRef 身份；别名只用于查找 |
-| 原文版本 | 看章节、读整本 TXT、检查完整性和版本差异 | 已封存来源及其原始材料、目录和审查依据 |
+| 原文版本 | 查看和检索章节、检查完整性和版本差异 | 已封存来源及其原始材料、目录和审查依据 |
 | 研究记录 | 查看某个需求使用的版本、Profile、执行进度和失败原因 | 原生需求、Handoff、执行事件和回执 |
 | 研究产物 | 查场景候选、观察记录和报告，返回原文核对 | 原生 Catalog/CAS、corpus、export 与报告依据 |
 
@@ -34,16 +35,16 @@
 
 | 当前代码 | 已有行为 | 本设计补足 |
 | --- | --- | --- |
-| `scripts/source_acquisition.py::chapter_view/seal/validate_sealed` | 逻辑章排序、分页合章、逐章 TXT、全树摘要和审查回放 | 跨研究登记；封存之后自动生成整本阅读视图 |
+| `scripts/source_acquisition.py::chapter_view/seal/validate_sealed` | 逻辑章排序、分页合章、逐章 TXT、全树摘要和审查回放 | 跨研究登记和章节索引 |
 | `novel_adapters.py::DirectoryNovelAdapter` | 自然排序逐章输入；冻结发现时的字节摘要 | 复用其输入，不另写章节适配器 |
-| `novel_adapters.py::TextNovelAdapter` | 按正则重新识别标题并 strip 正文，前置内容独立处理 | 不把拼接 TXT 自动重新导入为相同证据版本 |
+| `novel_adapters.py::TextNovelAdapter` | 按正则重新识别标题并 strip 正文，前置内容独立处理 | 已有 TXT 输入保留原始材料和原生解析结果，不通过拼接重新导入 |
 | `parse.py::normalize_text/parse_text` | NFKC、空白折叠；语义 span 位于 Segment 的规范化文本 | 分开保存原始字节、原文字符和规范化证据坐标 |
 | `novel_workflow.py` | 输出 Scene Catalog、候选、export 和 run summary | 跨研究查找这些原生产物 |
 | `generic_extraction.py`、`observation_campaign.py` | 输出 corpus、snapshot、reduction 和报告索引 | 登记、筛选、回到原生证据 |
 | `phase0_execution.py`、`generic_handoff_execution.py` | 回执、历史、恢复绑定实际研究目录 | 新运行预先使用稳定路径，旧运行保留原址 |
 
 全文已有本地存储，但目前主要归属于各次研究目录。缺的是统一发现、版本登记、
-整本阅读文件及产物入口；不需要替换核心证据存储。
+跨章节检索及产物入口；不需要替换核心证据存储。
 
 ## 3. 接入位置与职责
 
@@ -55,7 +56,7 @@ flowchart TD
     C -->|无| E[现有找源 获取 核验 封存]
     E --> D
     D --> G[普通 Novel Spec 与原生 Handoff]
-    G --> F[登记原文版本并生成整本 TXT]
+    G --> F[登记原文版本与章节索引]
     G --> H[原生冻结 FULL_WORK 执行 验证与重放]
     H --> I[登记原生研究产物与报告引用]
     F --> J[本地统一查询入口]
@@ -63,15 +64,15 @@ flowchart TD
     J --> K[按原生引用返回章节与精确证据]
 ```
 
-宿主 Skill 负责连续推进和语义判断。新增宿主脚本负责登记、确定性派生、查询、
+宿主 Skill 负责连续推进和语义判断。新增宿主脚本负责登记、章节查询、
 索引重建及调用已有验证器；它不启动搜索代理、浏览器、模型调用或后台任务。
 `src/xhnovel_pipeline/` 继续独占原生冻结、窗口、答案校验、合并、重放与导出。
 库内记录不加入核心 `Catalog.ID_FIELDS`，不把 Phase 0 Lead 升格为证据。
 
 实现需要少量确定性代码；prompt 负责“何时查库、何时继续研究”，不能承担
-文件原子提交、摘要校验、版本索引和偏移映射的正确性。
+文件原子提交、摘要校验、版本索引和证据引用验证的正确性。
 
-库界面分别显示“来源封存”“原生冻结”“原生执行”“产物登记”和“阅读视图”状态。
+库界面分别显示“来源封存”“原生冻结”“原生执行”和“产物登记”状态。
 SOURCE_SEALED 不等于 NATIVE_FROZEN；WAITING_FOR_AGENT 只表示原生任务已产生，
 也不等于研究完成。这些是既有状态的展示，不新增宿主执行状态机。
 
@@ -95,16 +96,12 @@ L/
     chapter-view.json
     coverage-report.json
     source-manifest.json
-  views/<source-revision>/<view-digest>/ # 独立派生包，不写进 sealed 树
-    fulltext.txt
-    chapter-map.json
-    view-manifest.json
   research/<research-id>/
     phase0/                            # 场景分支的 P
     campaign/                          # 观察分支的 R
     native/<execution-slot>/           # 该执行的 W；内部由原生流程管理
     reports/                           # 有原生产物引用的本次报告
-  staging/                             # 未发布派生包，查询不可见
+  staging/                             # 登记和索引的未提交文件，查询不可见
 ```
 
 P/R 是各分支自己的准备根，只创建实际需要的分支。W 中继续保留原生
@@ -117,7 +114,23 @@ SQLite 只保存可回放登记的投影和查询加速数据，任何“可用�
 第一版不合并多个研究的 CAS，不做全局物理去重，也不硬链接仍会修改的获取文件。
 同一来源在原生运行中的存储重复可以接受，先保证回放和故障恢复。
 
-### 4.1 身份与登记契约
+### 4.1 原文具体放在哪里
+
+新托管来源分为三层：
+
+- 取得和续传：`L/acquisition/<acquisition-id>/`，使用已有 `raw/`、`chapters/`、
+  receipts 和目录文件；这里的文件数量不自动代表完整全书。
+- 合格封存：`L/sources/sealed/<manifest-digest>/chapters/`，一逻辑章一个 TXT，
+  同级保留 `chapter-view.json`、来源 manifest、质量审查和 provenance。
+- 原生证据：`L/research/<research-id>/native/<execution-slot>/ingestion/objects/`，
+  按内容摘要存放，必须经原生 Catalog/CAS 读取；不另复制成供人工编辑的章节集。
+
+库根是长期数据目录，研究 worktree 是代码目录，两者分离。作品查询入口用
+WorkRef 指向版本摘要目录，不用书名直接作为唯一目录键；不同版本不会互相覆盖。
+这些是待实施路径，现存 `.runtime/` 材料不会因此自动迁移。用户可以通过登记查看
+某书的实际原址或托管位置，打开对应章节；跨章节检索直接遍历经过校验的章节序列。
+
+### 4.2 身份与登记契约
 
 新增格式统称 `host-research-library-v1`，严格 JSON schema，拒绝未知字段。
 schema 放在 `contracts/host_library/`，由宿主脚本显式加载，不接入核心 schema/Catalog
@@ -128,7 +141,6 @@ artifact ID。记录可引用原生 artifact ID，但必须同时保存原生 st
 | --- | --- |
 | WorkRegistration | 完整 WorkRef、生成它的已验证声明引用；复用 `work_ref_from_declaration`，禁止另写书名哈希身份算法 |
 | SourceRegistration | work_ref_id、source_revision、来源根、MANAGED/EXTERNAL_REFERENCE、manifest/目录摘要、原生声明或获取准入引用、权限及审查依据引用、兼容获取实现版本 |
-| ViewRegistration | source_revision、view_manifest 摘要与根目录、变换版本；只是派生内容，无 COMPLETE 授权能力 |
 | ResearchRegistration | 需求/Brief/Definition 与 ProfileResolution 引用、实际 P/R/W、Handoff 引用、source_revision 集合、原生执行引用、版本/build 绑定 |
 | ProductRegistration | SCENE_CANDIDATES/GENERIC_CORPUS/REPORT 类型、研究引用、原生 run/snapshot/profile/Catalog/CAS/回执引用、产物摘要和原生保证状态 |
 | ValidationReceipt | 被检记录摘要、实际验证器版本、输入闭包摘要、时间、成功或具体失败；旧 PASS 不覆盖当前重验 |
@@ -152,68 +164,44 @@ artifact ID。记录可引用原生 artifact ID，但必须同时保存原生 st
 来源可保留并登记历史研究，但进入此复用入口前需按现有获取流程明确导入、核验和
 封存。不能通过伪造 SourceDeclaration 或修改旧回执把它包装成已封存来源。
 
-## 5. 章节与整本 TXT 的确定规则
+## 5. 章节保存、检索与证据定位
 
-### 5.1 为什么两者都保留
+### 5.1 沿用封存的逻辑章
 
-| 形态 | 优点 | 单独使用的代价 | 本设计用途 |
-| --- | --- | --- | --- |
-| 逐章 TXT | 逐章恢复、缺口可见、变更范围小、天然对应原生输入 | 人工阅读与外部软件导入不便 | 封存基础和默认研究输入 |
-| 整本 TXT | 打开即读、全文查找、交付方便 | 单文件变化影响全书摘要；重新分章可能漂移 | 自动派生阅读文件 |
-| 最初取得的 TXT/EPUB/页面 | 保留取得时的真实字节与来源 | 不一定适合直接定位语义 span | provenance 原始材料，长期保留 |
+“分章节”指逻辑章，不是网页分页。现有 `chapter_view` 已按可信目录把同章分页
+合并，并保留 `page_spans`；库不重复处理分页、不猜章号、不创建第二套目录。
 
-“分章节”指逻辑章，不是网页分页。现有 chapter_view 已按目录把同章分页合并，
-并保留 page_spans。全书生成在此之后发生，不重复处理分页或猜章号。
+1. 来源登记调用 `validate_sealed`，从验证后的 `chapter-view.json` 读取显式
+   ordinal/key/file_name/sha256 顺序，核对与原生 Directory 适配器顺序相同。
+2. 阅读和检索按此顺序读取精确封存章节字节，核对摘要和长度。不 trim、不纠错、
+   不重新编码、不改换行。未编号番外、卷内重置章号和同名章均保留，不静默去重。
+3. 查询返回 source_revision、chapter key、ordinal、原文文件引用和章内范围。
+   全书检索在有界读取下逐章执行，结果分页并标明是否截断；无需合并文件。
+4. 原生冻结后，通过该运行实际章节序列、来源定位和 CAS 字节一致性建立绑定，
+   再使用原生 SourceChapter/Segment 引用。重复正文不能只按哈希猜章节身份。
+5. 未完成获取保留逐章落盘、缺口清单和原生恢复状态，不生成整本或 partial 拼接
+   文件；也不能因为已取得章节可以搜索，就声明 COMPLETE 或进入 FULL_WORK Handoff。
 
-### 5.2 fulltext-concat-v1
+章节索引是已验证目录的投影，不是第二份可独立编辑的正文。索引缺失可以重建；
+封存字节变化必须是新来源版本。已有 source manifest 校验完整目录树，库的登记与
+索引文件保存在 `records/`、`index/`，不得追加到既有 sealed 树内。
 
-只对已通过 `validate_sealed` 的完整封存源发布正式 `fulltext.txt`：
-
-1. 从验证后的 `chapter-view.json` 读取显式 ordinal/key/file_name/sha256 顺序。
-   再确认该顺序等于原生 Directory 适配器发现顺序；禁止用标题正则或文件系统
-   遍历顺序重排。序号、番外和重复章名均以目录为准，不静默去重。
-2. 每章读取精确封存字节 `C_i`，校验摘要，严格 UTF-8 解码；不 trim、不 NFKC、
-   不纠错、不删标题、不改换行。现有派生章的格式是 `title + "\n\n" + body + "\n"`。
-   不兼容编码/格式必须报错，不能 replacement decode 后继续。
-3. 固定 `SEP = b"\n\n"`，整书字节为 `SEP.join([C_1, ..., C_n])`。不添加书名页、
-   版权声明、机器标记、BOM 或新的末尾分隔符。章内及既有尾换行保持原样。
-4. 同时生成 chapter-map，每项保留 key、ordinal、title、role、file_name、chapter
-   SHA-256，以及全书中的 `byte_start/end`、`codepoint_start/end`。均为零基、
-   左闭右开；codepoint 是 Python Unicode 字符，不是 UTF-16 code unit 或显示字形。
-   章间分隔符独立记录为非源内容，不属于任何章节或证据。
-5. 校验每个 byte slice 与 `C_i` 逐字节相等，每个 codepoint slice 重新编码与
-   `C_i` 相等；所有区间按目录单调、不重叠，和分隔符一起完整覆盖全书。
-6. view-manifest 包含格式/变换版本、source_revision、chapter-view 文件摘要、
-   chapter-map/fulltext 的摘要和长度、总章数及分隔符字节。内容身份不含时间、
-   机器绝对路径。完整包写入 staging，校验后原子发布到 manifest 摘要命名目录。
-
-map 只映射封存章节到整本 TXT，不凭空生成 native chapter_id/segment_id。
-原生冻结后，通过该运行实际章节序列、来源定位和 CAS 字节一致性建立绑定，
-再使用原生 SourceChapter/Segment 引用。重复正文不得按文本哈希单独猜章节。
-
-封存目录是全树校验闭包，**新增一个 fulltext.txt 进去也会使当前 validate_sealed
-失败**。因此 views 必须是旁路派生目录。即使派生生成失败，已合格来源仍可进入
-原生研究；库显示 VIEW_FAILED，稍后独立重建，不能把该状态写成获取失败。
-
-可为未完成获取生成单独的 `fulltext.partial.txt` 预览（第二阶段），必须绑定一次
-已取得条目的固定快照，带缺章清单、PARTIAL 和非准入标识。文件正文不插入缺章
-占位词；缺口只在侧车清单中表示。它不登记成 COMPLETE、不能用于 FULL_WORK
-Handoff，也不会覆盖正式完整版本。当前少量已下载章节仍是待续传材料。
-
-### 5.3 三种偏移不能混用
+### 5.2 章内原文位置与规范化证据分开
 
 | 坐标 | 定义 | 可提供的保证 |
 | --- | --- | --- |
-| 全书 byte/codepoint | 上述拼接文件中的位置 | 精确回到封存章节字节/字符 |
+| 章节原文 byte/codepoint | 指定章节文件中的位置，零基、左闭右开 | 精确回到该章字节/字符；返回字段需明确坐标类型 |
 | Segment source_locator | 原生解析器给出的原文行/块定位 | 回到原文块，取决于具体解析器 |
 | 证据 start/end | `Segment.normalized_text` 中的字符范围 | 原生校验通过后的精确规范化证据 |
 
-NFKC 可把 `Ａ` 变成 `A`，把组合字符合并，也会折叠连续空格。
-因此不能把规范化 span 加上章起点就当作全文 TXT 的精确字符位置。
-第一版证据查看器读取原生 CAS/Catalog 并校验后，在规范化 Segment 内准确标注
-span；整本 TXT 默认只导航到对应章，原生 text locator 校验通过时可定位到原文行。
-除非原始行与规范化文本确实逐字符一致且 locator 已回放，否则不声称原文字符级
-高亮。后续若需完整双向字符映射，必须单独设计可重放变换，不能搜索相似句修偏移。
+codepoint 是 Python Unicode 字符，不是 UTF-16 code unit 或显示字形。
+NFKC 可把 `Ａ` 变成 `A`、合并组合字符，规范化还会折叠连续空格，因此不能把
+规范化 span 当作章节文件的相同字符位置。
+
+第一版证据查看器读取并校验原生 CAS/Catalog，在规范化 Segment 内准确标注 span，
+并提供对应章节入口；原生 text locator 回放通过时可定位到原文行。除非原始行与
+规范化文本确实逐字符一致且 locator 已回放，否则不声称原文字符级高亮。需要更细
+字符映射时须单独设计可重放变换，不能搜索相似句修偏移。
 
 ## 6. 查库、选源与结果复用
 
@@ -227,7 +215,7 @@ span；整本 TXT 默认只导航到对应章，原生 text locator 校验通过
    质量等级；再用有依据的保真度审查；仍等价时按 source_revision 排序并披露选择。
    需求明确的版本失效时不偷偷换源，保留失败原因再按需求范围处理。
 4. 若没有合格来源，继续现有获取工作流及既定预算；有可恢复断点就恢复。
-   封存成功后先 prepare 取得原生声明，再登记来源并生成视图，继续 freeze/execute，
+   封存成功后先 prepare 取得原生声明，再登记来源及章节索引，继续 freeze/execute，
    不因“取书完成”停住。库登记重用真实声明，不自行补造原生身份。
 5. 本地复用仍记录本次实际来源尝试。Generic 用真实附加登记/核验材料作为
    `source_input_artifact_id`，记录 SOURCE_STARTED；成功准备并冻结才记录
@@ -239,7 +227,7 @@ span；整本 TXT 默认只导航到对应章，原生 text locator 校验通过
 历史获取脚本把自身文件 SHA 纳入 binding。库不得自动执行来源包里携带的代码，
 不得修改 binding 绕过不兼容。只能使用已核验的仓库实现版本回放；该版本不可用时
 显示 VALIDATOR_UNAVAILABLE，或把原始材料明确重新导入为新版本。第一阶段尽量
-不改获取脚本，避免为增加视图功能而使既有 source-run 失配。
+不改获取脚本，避免为增加管理功能而使既有 source-run 失配。
 
 ### 6.2 复用分层
 
@@ -274,7 +262,7 @@ ProductRegistration
   → candidate support 或 corpus record source_spans
   → 对应 ingestion、SourceChapter、Segment 与 CAS
   → normalized_text_hash + [start,end) + 原生校验
-  → 规范化原文高亮 + 对应封存章节 / 全书阅读入口
+  → 规范化原文高亮 + 对应封存章节入口
 ```
 
 Scene 保留逐 observation 的 support，Generic 保留原生 reduction/member 关系；
@@ -285,24 +273,24 @@ Scene 保留逐 observation 的 support，Generic 保留原生 reduction/member 
 
 沿用原生声明与 standing attestation：技术可读不等于允许存储或发送模型。
 来源复用不重签、不扩大既有声明；冲突或 UNKNOWN 不能仅因“已经在本地”而放行。
-库中的私有整本阅读视图遵守全文存储权限；导出到交付包、模型读取、摘录报告分别
-执行适用的出口权限。`may_export_excerpts=false` 时不能用“整本 TXT 导出”绕过限制。
+章节原文遵守全文存储权限；模型读取、摘录报告和产物导出分别执行适用的出口
+权限。`may_export_excerpts=false` 时不能通过查询接口导出原文摘录。
 权限不明时查询最多返回允许的元数据，文本展示/模型上下文/导出均不得隐式放行。
 
 | 故障/变化 | 处理方式 |
 | --- | --- |
 | 未封存、缺章或未通过保真度 | 保留 acquisition 状态；不发布可复用 SourceRegistration |
 | 源文件或 CAS 损坏 | 当前验证失败并阻止正文/证据使用；不相信旧 PASS 或索引摘要 |
-| 派生中断/磁盘满 | staging 不可见；既有 sealed 不变；重试按相同输入生成同一视图 |
+| 登记中断/磁盘满 | staging 不可见；既有 sealed 不变；按相同输入补登记或重建索引 |
 | 并发登记同一输入 | 不可变文件原子发布，已存在则核验；短索引事务，不增加任务队列 |
 | SQLite 缺失/损坏/落后 | 从 records 和原生闭包重建；新索引整体切换，旧的已提交索引保持可读 |
 | 目录引用失效 | 显示 MISSING_PATH，不按同名书重新绑定、不把另一份 corpus 当旧产物 |
 | 原生 WAITING/FAILED/中断 | 仅投影原生状态；通过同一原生命令和对应 resume/retry 继续 |
 
-记录、map 和 manifest 路径必须拒绝越界、重复、绝对子路径和符号链接逃逸。
+记录、章节索引和 manifest 路径必须拒绝越界、重复、绝对子路径和符号链接逃逸。
 外部根只接受显式登记的本地路径，读取不执行源文本或配置中的指令。查询缓存中的
 正文不得成为验证兜底；第一版只缓存元数据，需要文本时重新验证并从权威内容读取。
-新写操作先检查空间并流式处理全文，失败不覆盖已发布包。
+新写操作先检查空间，失败不覆盖已发布记录；原文查询有界逐章读取。
 
 迁移采用“新数据固定位置，旧数据原址登记”：
 
@@ -311,7 +299,7 @@ Scene 保留逐 observation 的 support，Generic 保留原生 reduction/member 
   默认不复制、移动、修改 Spec 或重签；需要新托管来源时显式复制并重新准入，产生
   新的路径绑定。文本相同不意味着原生 SourceRef/input_spec_hash/执行 ID 相同。
 - 备份必须覆盖 L 以及登记的外部依赖清单。第一版恢复保证限于原绝对路径；不同
-  根目录的可移植回放未实现。恢复后重验并重建索引，不能只备份 SQLite 或整本 TXT。
+  根目录的可移植回放未实现。恢复后重验并重建索引，不能只备份 SQLite 或章节正文而丢掉 provenance 和原生闭包。
   活跃研究需暂停写入或使用一致性快照后备份，逐文件复制中的半个 checkpoint
   不能声明为可恢复备份。
 - 不提供自动删除、历史清理、覆盖旧版本和跨机器透明迁移。暂时隐藏某记录可用
@@ -319,14 +307,13 @@ Scene 保留逐 observation 的 support，Generic 保留原生 reduction/member 
 
 ## 8. 第一版边界和完成判据
 
-第一版包含：宿主登记脚本、严格宿主记录格式、稳定目录、合格封存源复用、整本
-TXT 和 chapter-map、原生产物登记及证据查看、可重建元数据索引、Skill 自动接入。
-分章节与整本 TXT 在完整版本上共同交付；partial 预览可随后增加。
+第一版包含：宿主登记脚本、严格宿主记录格式、稳定目录、合格封存源复用、逐章
+查询、原生产物登记及证据查看、可重建元数据索引、Skill 自动接入。
 
-第一版不包含：图形界面、向量数据库、跨研究语义缓存、原生 CAS 全局迁移、章节
+第一版不包含：整本 TXT 生成或导出、图形界面、向量数据库、跨研究语义缓存、原生 CAS 全局迁移、章节
 缩窗、机制编译器、C2 浏览器实现或新爬虫。它们不是当前管理问题的必要前置。
 
-实施完成应能演示：一次研究自动取得并登记一个完整来源；生成可校验整本 TXT；
+实施完成应能演示：一次研究自动取得并登记一个完整来源，按章节读取和检索；
 原生执行完成后可从统一入口查产物并核对规范化证据；第二个不同研究需求复用
 同一来源且不重复下载，依然独立执行原生语义流程；清空索引后可以恢复上述关联。
 合成数据验证与真实小说运行分别报告，文件下载或任务生成不能代替研究完成。

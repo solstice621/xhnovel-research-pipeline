@@ -7,12 +7,12 @@
 
 ## 1. 实施顺序
 
-优先做“封存原文可复用 + 自动整本 TXT”，再接产物入口，最后验证自动研究全过程。
+优先做“封存章节原文可复用 + 统一索引”，再接产物入口，最后验证自动研究全过程。
 每个阶段独立提交，保持已审阅历史。沿用已有获取与原生执行能力，不重写下载器。
 
 | 阶段 | 交付与负责层 | 完成门槛 |
 | --- | --- | --- |
-| L1 原文登记与整本视图 | `scripts/research_library.py`；`contracts/host_library/`；来源/视图测试 | 合成封存源可登记、回放、生成 TXT/map；缺章、篡改、歧义和越界均被拒绝 |
+| L1 原文登记与章节索引 | `scripts/research_library.py`；`contracts/host_library/`；来源/索引测试 | 合成封存源可登记、回放和逐章查询；缺章、篡改、歧义和越界均被拒绝 |
 | L2 查询与原生产物 | 同一宿主脚本扩展；仅在确有需要时抽取原生公共验证入口 | Scene/Generic 原生完成产物可登记、查询、回到精确 support；失败与零结果正确区分 |
 | L3 自动研究接入 | canonical explore/observe Skills、同步镜像、工作流文档和集成测试 | 本地命中继续原生执行，未命中继续现有获取，预算和任务等待语义不变 |
 | L4 迁移与真实试运行 | 宿主操作、版本化验收报告；运行数据留库中 | 旧材料原址登记、索引重建、斗破首个完整来源和首个端到端研究分别验收 |
@@ -22,7 +22,7 @@ L1—L3 是代码实施完成门槛；L4 是真实数据和运行验收，受真
 斗破先跑通端到端，其余作品按已冻结研究范围、预算分批推进；单纯验证库接入时，
 其余书只到来源层，不能把这个测试范围当成已完成用户的全部研究。
 
-## 2. L1：原文版本、整本 TXT 与索引
+## 2. L1：原文版本与章节索引
 
 ### 改动范围
 
@@ -30,10 +30,10 @@ L1—L3 是代码实施完成门槛；L4 是真实数据和运行验收，受真
   schema 与宿主资源不自动进入 core wheel；脚本必须从可信 checkout 定位并校验其版本。
 - 复用获取脚本的 `validate_sealed`、现有规范 JSON/hash/原子写 primitives 和
   `DirectoryNovelAdapter`。新功能不修改已封存来源，也尽量不修改获取脚本本身。
-- 先建立 source/view/validation 登记及 WorkRef 连接，再生成视图和 SQLite 投影。
+- 先建立 source/validation 登记及 WorkRef 连接，再生成章节和 SQLite 元数据投影。
   WorkRef 必须来自原生已验证声明；仅导入章目录不足以伪造一个书目身份。
-- 正式阅读包严格按 `fulltext-concat-v1` 生成；partial 预览是 L1 后续小提交，
-  使用独立记录类型和文件名，第一版准入验收不依赖它。
+- 直接使用现有封存章节和 `chapter-view.json`，不生成整本 TXT、不增加拼接导出
+  接口。未完成获取保留逐章文件和缺口状态，原始输入 TXT/EPUB 作为 provenance 保留。
 
 ### 拟议 CLI 契约（尚未实现）
 
@@ -44,7 +44,6 @@ L1—L3 是代码实施完成门槛；L4 是真实数据和运行验收，受真
 | --- | --- | --- |
 | `init` | 固定绝对根目录 | 初始 library.json；重复同配置幂等，不迁移已有库 |
 | `register-source S --declaration D --native-root P_OR_R` | 已封存源、已验证普通声明及其原生根 | 来源登记 ID、核验结果、source_revision；不调用模型 |
-| `build-view SOURCE_ID` | 合格登记来源 | TXT/map/manifest 包及登记；不改 S |
 | `list-works` / `list-sources --work WORK_REF_ID` | 精确身份或元数据筛选 | 候选、版本和当前验证状态；来源优选由宿主说明 |
 | `verify RECORD_ID` | 某项登记 | 重放相关来源/产物闭包，输出验证回执 |
 | `reindex` | records 与仍可读取的原生根 | 重建 SQLite；缺失/损坏记录列为不可用，不丢失错误 |
@@ -60,8 +59,8 @@ paths、issues。宿主操作失败码独立于原生退出码；建议 0 成功
 WAITING_FOR_AGENT。具体错误记录原生 code/message，恢复动作由原生契约决定。
 
 登记先原子发布不可变文件，再事务更新索引；中断最多留下未被索引的有效登记。
-重试或 reindex 可恢复。派生包采用 staging → 验证 → 原子发布 → 登记顺序。
-源文件、manifest、map、长度和摘要任何不一致都拒绝发布，不覆盖现有正确包。
+重试或 reindex 可恢复。登记文件采用 staging → 验证 → 原子发布顺序。
+源文件、manifest、目录、长度和摘要任何不一致都拒绝发布，不覆盖现有正确记录。
 
 ## 3. L2：研究与产物入口
 
@@ -73,7 +72,7 @@ WAITING_FOR_AGENT。具体错误记录原生 code/message，恢复动作由原�
 | `register-product INPUT` | 分 Scene/Generic/Report 验证真实产物，发布登记；重复相同输入幂等 |
 | `list-research` / `list-products` | 按作品、来源版本、需求、Profile、产物类型和原生状态过滤 |
 | `search-text SOURCE_ID --query TEXT --limit N` | 有界逐章字面搜索，返回 TEXT_MATCH、原文坐标和截断标识 |
-| `show-evidence PRODUCT_ID --record-id NATIVE_RECORD_ID` | 原生闭包校验；列出每项 support 的规范化 span 及章/阅读入口 |
+| `show-evidence PRODUCT_ID --record-id NATIVE_RECORD_ID` | 原生闭包校验；列出每项 support 的规范化 span 及对应章节入口 |
 
 输入文件是宿主登记契约，schema 需明确每种分支的必需字段。已有原生 ID/回执路径
 必须读取并验证，不接受自述 COMPLETE、手算 candidate ID 或任意 quote 字段。
@@ -89,8 +88,8 @@ WAITING_FOR_AGENT。具体错误记录原生 code/message，恢复动作由原�
   公共入口抽取并保留验证顺序和错误语义，执行受影响测试，不能写简化版验证器。
 - REPORT 保存产物引用及内容摘要；执行保证、物理覆盖、语义覆盖从原生状态继承，
   不把 DRAFT/UNVERIFIED 或 UNQUALIFIED 升为事实保证。
-- search-text 的 TXT 字符位置与 show-evidence 的 Segment 位置使用不同字段名。
-  用户查看证据时规范化文本准确高亮，整书默认章级导航，不做模糊引文修补。
+- search-text 的章节文件字符位置与 show-evidence 的 Segment 位置使用不同字段名。
+  用户查看证据时规范化文本准确高亮，并提供章节入口，不做模糊引文修补。
 
 ## 4. L3：自动接入
 
@@ -100,8 +99,8 @@ WAITING_FOR_AGENT。具体错误记录原生 code/message，恢复动作由原�
 Skill 到 AGENTS.md，也不在 runtime 加入 agent scheduler。
 
 宿主操作顺序为：中立需求冻结 → 本次绑定/全库查询 → 来源重验或获取 → 原生
-prepare 返回声明 → 登记来源/生成 TXT → freeze → 原生语义执行 → 原生验证 →
-登记产物 → 报告。来源命中前不能静默改写已冻结需求，源登记和视图生成不能把
+prepare 返回声明 → 登记来源及章节索引 → freeze → 原生语义执行 → 原生验证 →
+登记产物 → 报告。来源命中前不能静默改写已冻结需求，源登记不能把
 先前仅“源准备”的用户请求扩大成完整研究。
 
 对观察 campaign，本地来源准入也必须 attach 实际材料并记 SOURCE_STARTED，
@@ -117,10 +116,10 @@ prepare/freeze 成功后 SOURCE_FINISHED；不通过更换 root 或操作 ID 重
    manifest 与实现版本。对现有斗破材料重新读取实际进度，报告里的 136/1646
    仅为历史线索；不得把目录中“有文件”视为已验收。
 2. 未完整材料继续用现有 source-run 恢复。若版本不兼容，用可信历史 checkout
-   或明确新导入；不能改 binding。可在后续 partial 预览功能下生成带缺口清单的 TXT。
+   或明确新导入；不能改 binding。保留逐章文件及缺口清单，不做整本拼接。
 3. 合格封存源和已完成原生研究以 EXTERNAL_REFERENCE 原址登记，不移动旧目录。
    新研究先固定 L 中的路径；记录所有外部依赖供备份。
-4. 首本真实完成覆盖/质量核验后生成正式整本 TXT 并核对 map。依需求冻结的范围
+4. 首本真实完成覆盖/质量核验后登记章节目录并验证跨章节查询。依需求冻结的范围
    完成一次原生端到端研究，登记产物和规范化证据；原文获得与语义完成分开记状态。
 5. 再发起不同研究需求验证复用同一源、不重复下载、不误复用旧语义结果。若只是
    库功能验收，用完整合成书完成此步骤即可；真实大规模模型任务需计入研究预算。
@@ -129,7 +128,8 @@ prepare/freeze 成功后 SOURCE_FINISHED；不通过更换 root 或操作 ID 重
 
 ## 6. 验收矩阵
 
-下面是必须落实的行为测试，不是已经通过的测试清单。
+下面是必须落实的行为测试，不是已经通过的测试清单。首次设计的 A07、A10、A24
+对应整本派生功能，随该功能删除；其余 ID 保留，现有 21 项有效验收。
 
 | ID | 场景 | 通过条件 |
 | --- | --- | --- |
@@ -137,13 +137,11 @@ prepare/freeze 成功后 SOURCE_FINISHED；不通过更换 root 或操作 ID 重
 | A02 | 同名不同作者/identity basis | 只给候选，不静默合并或挑另一书继续 |
 | A03 | 少一章/审查未解决/连载当前快照 | 不能登记为可复用完整来源或产生完整 Handoff |
 | A04 | 封存目录额外文件/篡改章/篡改清单 | 当前验证失败；旧 PASS 不放行 |
-| A05 | 未编号番外、章号重置、同名章、分页章 | map 保持明确阅读序和页→章关系，无正则重切/去重 |
-| A06 | 中文、emoji、组合字符、连续空格 | byte/codepoint 双区间精确回取原章；不得以 UTF-16 索引混算 |
-| A07 | 重建两次/更换机器时间 | 相同源与变换得到相同 TXT/map/view-manifest 摘要 |
-| A08 | 写入中断、空间不足、并发构建 | sealed 未改变；未提交包不可见；恢复不覆盖正确结果 |
-| A09 | map 缺项/重叠/越界/路径逃逸 | 不发布、不通过查询兜底 |
-| A10 | 源已合格但 view 生成失败 | 原生研究仍可推进，阅读视图失败独立报告 |
-| A11 | NFKC/空白造成规范化长度变化 | 精确高亮 native span；不声称 TXT 相同位置就是证据 |
+| A05 | 未编号番外、章号重置、同名章、分页章 | 现有 chapter-view 保持明确阅读序和页→章关系，无正则重切/去重 |
+| A06 | 中文、emoji、组合字符、连续空格 | 章内查询 codepoint 区间精确回取命中；字节范围另算，不得以 UTF-16 索引混算 |
+| A08 | 写入中断、空间不足、并发登记 | sealed 未改变；未提交记录不可见；恢复不覆盖正确结果 |
+| A09 | 章节索引缺项/重复/越界/路径逃逸 | 重建或拒绝，不通过不完整查询结果兜底 |
+| A11 | NFKC/空白造成规范化长度变化 | 精确高亮 native span；不声称章节文件相同位置就是证据 |
 | A12 | Scene/Generic 多 support、跨章、重复正文 | 每项经 native lineage 定位；不按相同文本猜绑定 |
 | A13 | UNKNOWN/缺存储许可/缺模型许可/禁摘录 | 各出口遵守对应权限，不因本地存在而默认授权 |
 | A14 | 原生成功但零结果 | 可登记成功执行，查询解释零条，不伪造观察 |
@@ -155,12 +153,11 @@ prepare/freeze 成功后 SOURCE_FINISHED；不通过更换 root 或操作 ID 重
 | A20 | 查已有结果与要求新研究 | 历史成果可读；跨研究相似结果不伪装为新 campaign 成功 |
 | A21 | Generic 本地来源命中/失败/恢复 | SOURCE_STARTED/FINISHED、预算与原生 resume/retry 均闭合 |
 | A22 | search-text 命中/无命中/截断 | TEXT_MATCH 标签；无证据升格或研究章节缩小 |
-| A23 | 原始 TXT/EPUB 和派生全文 | 原始字节仍在 provenance；派生全文不替代 native 输入 |
-| A24 | partial 预览（后续） | 独立命名、固定快照、缺口清单、不得通过 COMPLETE 准入 |
+| A23 | 原始 TXT/EPUB 和封存章节 | 原始字节仍在 provenance；使用已验证章节目录，不重新拼接或分章 |
 
 ## 7. 验证与发布
 
-- L1 跑新增来源/视图测试和受影响的获取测试；L2 跑对应 Scene/Generic 闭包与
+- L1 跑新增来源/章节索引测试和受影响的获取测试；L2 跑对应 Scene/Generic 闭包与
   宿主入口测试。触及共享 runtime、多阶段或 contracts 时按 AGENTS 要求跑全套。
 - L3 跑 Skill 文档/接缝测试及 `python scripts/sync_skills.py --check`。
 - 每阶段运行 `git diff --check`。改变安装包资源或 installed-runtime 时才增加
@@ -169,11 +166,14 @@ prepare/freeze 成功后 SOURCE_FINISHED；不通过更换 root 或操作 ID 重
 - 交付固定提交 SHA、实际测试结果、剩余限制；设计探针、合成端到端和真实全书
   验收分别记录。源冻结、任务生成、语义执行和最终报告完成各有独立证据。
 
-## 8. 本次设计交付的验证记录
+## 8. 设计验证记录
 
-本次仅核对当前实现并验证章节拼接/坐标设计，不实现上述命令，不迁移真实小说，
-不启动语义研究。以下探针在本地 macOS/Python 上实际执行；不能用它们声明
-A01—A24 已实施通过。
+### 8.1 首次设计探针存档
+
+以下是在首次设计提交 `f3321bab538d809fa932c74550ddc4ba81928daf` 上执行的本地
+合成探针。整本拼接已从当前方案删除，相关结果仅保留作历史审计，不是待实施功能。
+目录分章、规范化坐标和封存完整性结论仍适用。探针没有迁移真实小说、启动语义
+研究或实现 library 命令，不能用它们声明上面的 21 项验收已实施通过。
 
 | 设计探针 | 实际结果 |
 | --- | --- |
@@ -194,3 +194,12 @@ tests/test_exploration_skill_contract.py` 实际结果为 **27 passed**；新文
 解决。`git diff --check` 通过，提交时另检查暂存差异。
 Ubuntu/Windows、真实全书和原生语义执行本次均未运行；安装行为未修改，无新增
 wheel 验收要求。
+
+### 8.2 当前章节方案修订
+
+当前方案只保留章节原文、章节索引、来源复用和产物关联；移除整本生成、导出、
+ViewRegistration、build-view、独立全文映射包及其验收项。README 和 PR 描述同步。
+本次只修改设计文档，实际原文和原生输入文件均未删除或移动。当前修订重跑上述
+文档契约检查，实际为 **27 passed**；4 个相对链接、代码围栏、21 项有效验收 ID
+及整本功能接口移除检查均通过，`git diff --check` 通过。未重新运行已退出当前
+范围的拼接探针，未运行真实小说研究。

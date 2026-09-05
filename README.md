@@ -109,7 +109,7 @@ deterministic tool; automatic progression is implemented in the host Skills.
 
 The [local research library design](docs/LOCAL_RESEARCH_LIBRARY_DESIGN.md) and
 [implementation plan](docs/LOCAL_RESEARCH_LIBRARY_PLAN.md) describe planned source
-reuse, derived whole-book TXT views, and a unified entry point for native results.
+reuse, chapter-based storage and search, and a unified entry point for native results.
 These library features are designed but not implemented.
 
 The [observation research architecture](docs/OBSERVATION_RESEARCH_ARCHITECTURE.md)
