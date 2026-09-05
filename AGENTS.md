@@ -203,6 +203,7 @@ Important architecture and operating documents include:
 - `docs/OBSERVATION_RESEARCH_WORKFLOW.md`
 - `docs/SOURCE_ACQUISITION_DESIGN.md`
 - `docs/SOURCE_ACQUISITION_WORKFLOW.md`
+- `docs/HOST_RESEARCH_CONTINUATION.md`
 - `docs/LOCAL_RESEARCH_LIBRARY_DESIGN.md`
 - `docs/LOCAL_RESEARCH_LIBRARY_USAGE.md`
 - `.agents/skills/xhnovel-plan/SKILL.md`
@@ -266,6 +267,8 @@ Use the existing layer boundaries:
 - `scripts/source_acquisition.py` — bounded host acquisition, import, review, sealing,
   and ordinary native Handoff/ingestion integration.
 - `scripts/research_library.py` — host source/product registration, lookup, and replay.
+- `scripts/research_status.py` — reconciliation from registrations and native validators.
+- `scripts/xhnovel.py` — checkout-bound native CLI launcher and environment diagnosis.
 - `.agents/skills/` — canonical host-agent workflow Skills.
 - `.claude/skills/` — generated Claude Code mirrors.
 - `tests/` — unit, integration, replay, adversarial, and CLI regressions.
@@ -364,6 +367,10 @@ Do not weaken existing closure checks for convenience.
 - Keep acquisition and library orchestration in the existing host tools. They
   connect to ordinary Scene/Generic Handoffs and native ingestion; they must not
   introduce alternate semantic tasks, schedulers, or compiler state machines.
+- For library-backed selected works, preserve `prepare-scene-work` integration
+  with source and execution registration; scene Leads remain optional. Keep
+  `research-status` a reconciliation view, not an atomic snapshot, evidence record,
+  or replacement for the Observation campaign's scope and budget checks.
 - Acquisition `seal` requires replayed coverage and fidelity checks to pass.
   Source sealing is distinct from native freezing, semantic execution, and product
   registration. Preserve unresolved checks and compatible-version recovery.

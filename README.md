@@ -163,6 +163,14 @@ exploration only. See [Phase -1 planning](docs/PHASE0_EXPLORATION.md#phase--1-fr
 for input isolation and planning-to-Handoff lineage. Observation research uses
 its own Definition and ProfileResolution path described below.
 
+Already-selected works do not require web scene hypotheses before preparation.
+For library research with sealed planning and a complete sealed source, use
+`prepare-scene-work` in the [host continuation guide](docs/HOST_RESEARCH_CONTINUATION.md).
+It prepares the ordinary Handoff and registers the source and execution, returning
+the native commands to continue. The same guide covers the checkout launcher
+`python scripts/xhnovel.py` and `research-status` reconciliation before resuming or
+reporting completion; Observation still uses its native campaign report.
+
 For a research request, the host Skills continue through source discovery,
 acquisition/import, completeness and fidelity review, source freezing, native
 task completion and reporting. The host owns the commands and configuration;
