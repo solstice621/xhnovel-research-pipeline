@@ -1341,13 +1341,15 @@ def prepare_source(sealed: Path, planning_input: Path, phase0_root: Path) -> dic
     if sealed == phase0_root or sealed in phase0_root.parents:
         fail("Phase 0 output must be outside the sealed source")
     options = read_json(planning_input)
-    fields(options, {"format_version", "brief", "leads", "planning"}, label="planning input")
+    fields(options, {"format_version", "brief", "planning"}, {"leads"}, label="planning input")
     if options["format_version"] != FORMAT:
         fail("unsupported planning input version")
     brief = validate_exploration_brief(json.loads(checked_ref(options["brief"], planning_input.parent)[1]))
-    leads = json.loads(checked_ref(options["leads"], planning_input.parent)[1])
-    if not isinstance(leads, list) or not leads:
-        fail("planning input requires a nonempty explicit Lead list")
+    # A selected, sealed work can enter FULL_WORK research without a web scene hypothesis.
+    leads = (json.loads(checked_ref(options["leads"], planning_input.parent)[1])
+             if "leads" in options else [])
+    if not isinstance(leads, list):
+        fail("planning input Lead list must be an array")
     planning = options["planning"]
     planning_root, receipt_path = None, None
     if planning is not None:

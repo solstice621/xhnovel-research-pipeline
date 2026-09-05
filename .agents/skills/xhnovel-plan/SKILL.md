@@ -1,6 +1,6 @@
 ---
 name: xhnovel-plan
-description: Turn a natural-language xhnovel research goal into auditable Phase -1 intake, neutral-frame, and strategy drafts, then seal and deterministically compile them into an ExplorationPlan and ExplorationBrief. Use before Phase 0 open-world exploration; do not use it to search for scenes or answer Scene Scout tasks.
+description: Turn a natural-language xhnovel research goal into auditable Phase -1 intake, neutral-frame, and strategy drafts, then seal and deterministically compile them into an ExplorationPlan and ExplorationBrief. Use before work selection and full-text research, including known works; do not use it to search for scenes or answer Scene Scout tasks.
 ---
 
 # xhnovel Phase -1 planning
@@ -117,8 +117,11 @@ Use its checkout launcher for the native CLI commands below.
    CAS together.
 
 7. **Hand off to Phase 0.** Invoke `xhnovel-explore` with the sealed Brief as the
-   formal search question and the sealed Plan's seeds/diversity as host-only search
-   steering. After Phase 0 prepares an EvidenceHandoff, close the lineage with
+   formal research question and the sealed Plan's seeds/diversity as host-only
+   work-selection guidance. Already-selected works can go directly to source
+   reuse/acquisition and full-text research; finding web scenes is optional.
+   The existing `target_leads` fields do not require filling a quota of scene
+   hypotheses. Keep the frozen budget and report work/Lead counts separately. After Phase 0 prepares an EvidenceHandoff, close the lineage with
    `validate-planning-handoff` as described there.
    When the user requested research, continue in the same host task through that
    Skill's source acquisition, native execution and reporting. Sealing a Plan or

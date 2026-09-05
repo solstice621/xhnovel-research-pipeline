@@ -25,7 +25,7 @@
 已有外部原文和 W 原址登记，不移动或重签；单纯源准备请求仍按其授权范围停止。
 
 先完成所属研究 Skill 的中立需求冻结及预算，之后才开始搜索。保留真实的
-作品身份、全部 Lead/WorkLead 及其未解决状态，不从章节猜测缩小全书范围。
+作品身份、已选作品、已有 Lead/WorkLead 及其未解决状态，不从章节猜测缩小全书范围。
 
 读取 [工具使用说明](SOURCE_ACQUISITION_USAGE.md)，按上述固定位置建立独立
 来源配置、目录、依据和 source-run；已有外部运行保留其位置。宿主从实际资料生成这些文件；配置引用的
@@ -72,8 +72,10 @@ path/sha256 是本地文件摘要，核心 artifact ID 仍只能由原生工具�
 
 ## 3. 场景研究分支
 
-宿主创建使用说明中的 planning-input：引用已冻结 Brief、完整兼容 Lead 列表，
-以及适用的 Phase -1 receipt/root。不要根据来源重新编写 discovery_brief。
+宿主创建使用说明中的 planning-input：引用已冻结 Brief 和适用的 Phase -1
+receipt/root。作品已选定时直接准备来源，不要求上网找具体情节；`leads` 字段
+可以省略。若已有情节线索，则引用完整兼容列表并保留校验。不要根据来源或
+线索重新编写 discovery_brief。
 设 P 为该来源的 Phase 0 准备目录，W 为后续原生研究目录：
 
 ```bash

@@ -28,8 +28,8 @@ ResearchIntake
   -> isolated neutral frame + host attestation
   -> seed-aware ExplorationPlan
   -> deterministic ExplorationBrief + replayable planning receipt
-open-web exploration guided by Plan seeds/diversity
-  -> ResearchLead[]                          UNVERIFIED_LEAD / LEAD_ONLY
+work selection from user choices, local corpus or Plan-guided bibliographic search
+  -> optional ResearchLead[]                UNVERIFIED_LEAD / LEAD_ONLY
   -> SourceDeclaration                      rights and quality declared separately
   -> prepare-handoff                        deterministic CAS-backed replay
   -> validate-planning-handoff              fixed-build Brief-lineage replay
@@ -126,7 +126,27 @@ location hints discovered later are tainted Lead metadata. The builder does not
 project them into the Novel Spec or native Scene Scout tasks. Execution remains
 `FULL_WORK` even when a Lead claims to know a location.
 
-## Explore for falsifiable Leads
+## Select works before looking for scenes
+
+For already-selected works or an existing corpus, proceed directly to full-source
+reuse/acquisition. A concrete web scene hypothesis is not a prerequisite. For an
+open-ended question, choose works using the frozen scope, author/genre diversity,
+publication context and source availability; a bounded web search can help find
+works and editions. Record the shortlist and selection reasons in the host report.
+
+The normal path is selected work + frozen Brief + validated SourceDeclaration →
+ordinary Handoff → FULL_WORK native research. Preparation accepts omitted `leads`
+or `leads: []`; it creates no placeholder ResearchLead. Identity, rights, source
+quality, CAS, spec-hash closure and execution receipts still apply in full.
+
+Web scene search is optional when it materially helps select unknown works.
+After selecting a work, further scene hunting does not reduce its mandatory full
+scan. Retain existing relevant Leads when supplied; do not fabricate any to fill
+an exploration target. The existing budget fields remain frozen, and host reports
+separate selected-work counts from optional Lead counts. Assess interaction-family
+diversity from actual findings after scanning; work metadata alone cannot prove it.
+
+## Optional exploration for falsifiable Leads
 
 Use the sealed `exploration-brief.json` as the formal search question. Use the
 sealed Plan's seeds and diversity only to steer host search. The host agent may use
@@ -155,7 +175,7 @@ careful; the host review owns that semantic check.
 
 ## Diversity and grouping
 
-Deduplicate an explicit closed set before source execution. Prefer heterogeneity
+Deduplicate an explicit selected-work set before source execution. Prefer heterogeneity
 across:
 
 - works and authors;
@@ -166,7 +186,7 @@ across:
 
 Do not merge works by title resemblance alone or silently discard incompatible
 identity/source declarations. The builder resolves the frozen WorkRef/SourceRef
-identity basis and performs deterministic N-to-one grouping for compatible Leads.
+identity basis and groups any supplied compatible Leads for one work/source.
 Prepare a separate build input for each incompatible work/source group.
 
 The planning receipt does not prove that resulting Leads followed the Plan's seeds
@@ -247,6 +267,11 @@ draft:
 }
 ```
 
+`leads` may be omitted or an empty array for a selected work. When present, every
+Lead is still validated and bound; it is never silently discarded to fit a source.
+A null or malformed value is rejected. `brief` and `source_declaration` remain
+required; the latter owns the selected work's resolved identity and source facts.
+
 Draft shapes must match the Phase 0 constructors and contracts under `contracts/`.
 Relative local source paths resolve against this preparation file's directory.
 
@@ -260,7 +285,7 @@ xhnovel-pipeline prepare-handoff preparation-input.json \
 The command owns all of the following:
 
 ```text
-seal Brief and Leads
+seal Brief and any supplied Leads
 -> apply standing operator attestation if present
 -> validate SourceDeclaration
 -> write canonical Phase 0 CAS objects
@@ -283,7 +308,7 @@ records into the core Catalog.
 
 ## Planning-to-Handoff closure
 
-After exploration produces Leads and `prepare-handoff` creates the Handoff, replay
+After work selection and `prepare-handoff` create the Handoff, replay
 the complete Phase -1 lineage before semantic execution:
 
 ```bash
@@ -428,7 +453,7 @@ promotes Lead material to evidence.
 
 ## Exploration report
 
-Report each Lead independently from execution state:
+Report every selected work independently from optional Lead confirmation:
 
 - `UNRESOLVED` or `BLOCKED_BY_RIGHTS` when no eligible source exists;
 - `PREPARED_NOT_EXECUTED` when a Handoff has no STARTED marker;
@@ -440,7 +465,8 @@ Do not call Lead-to-candidate yield “recall.” Use
 `lead_resolution_rate`, `lead_confirmation_yield`, or
 `lead_to_evidence_conversion_rate`.
 
-For the real open-world Pilot, target at least 12 qualified ResearchLeads across at
+The following quota applies only to an explicitly requested web-Lead quality Pilot,
+not normal selected-work research. For that Pilot, target at least 12 qualified ResearchLeads across at
 least four works and three interaction families, with no more than two first-round
 Leads per work. Each Pilot Lead needs a concrete scene hint and at least one
 location hint. These are exploration-quality targets only; they do not relax rights

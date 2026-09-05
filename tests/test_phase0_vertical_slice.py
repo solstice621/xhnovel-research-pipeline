@@ -7,6 +7,8 @@ import os
 import subprocess
 import sys
 
+import pytest
+
 from xhnovel_pipeline.paths import repo_root
 
 
@@ -41,7 +43,8 @@ def test_vertical_slice_fixture_is_complete_and_explicitly_licensed():
     assert all(chapter in novel for chapter in ("第一章", "第二章", "第三章"))
 
 
-def test_vertical_slice_crosses_public_cli_and_preserves_audit_bundle(tmp_path):
+@pytest.mark.parametrize("without_leads", [False, True])
+def test_vertical_slice_crosses_public_cli_and_preserves_audit_bundle(tmp_path, without_leads):
     output_root = tmp_path / "acceptance"
     env = dict(os.environ)
     env["OPENAI_API_KEY"] = "must-not-be-used"
@@ -53,6 +56,7 @@ def test_vertical_slice_crosses_public_cli_and_preserves_audit_bundle(tmp_path):
             str(FIXTURE),
             "--output-root",
             str(output_root),
+            *(["--without-leads"] if without_leads else []),
         ],
         cwd=ROOT,
         env=env,
@@ -67,10 +71,10 @@ def test_vertical_slice_crosses_public_cli_and_preserves_audit_bundle(tmp_path):
         (output_root / "acceptance-report.json").read_text(encoding="utf-8")
     )
     assert report["status"] == "PASS"
-    assert report["phase0"]["lead_count"] == 3
-    assert report["phase0"]["motivating_lead_count"] == 3
+    assert report["phase0"]["lead_count"] == (0 if without_leads else 3)
+    assert report["phase0"]["motivating_lead_count"] == (0 if without_leads else 3)
     assert report["phase0"]["handoff_count"] == 1
-    assert report["phase0"]["lead_source_roles"] == ["LEAD_ONLY"]
+    assert report["phase0"]["lead_source_roles"] == ([] if without_leads else ["LEAD_ONLY"])
     assert report["phase0"]["location_hint_leak_count"] == 0
     assert str(report["phase0"]["standing_attestation_id"]).startswith("OPA-")
     assert report["phase0"]["replay_status"] == "PASS"

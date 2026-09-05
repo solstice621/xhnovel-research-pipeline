@@ -68,6 +68,25 @@ Read the dimensions separately:
 - A deleted acquisition cache is not a resumable source. A separate retained text
   may enter a new import and quality review, but is not automatically COMPLETE.
 
+## Choose works, then research the complete text
+
+User-selected works and local corpora go directly to source reuse/acquisition.
+With no selected works, choose a bounded shortlist using scope, author/genre
+diversity and source availability. Web scene descriptions are optional aids to
+that selection. They neither replace nor narrow the subsequent FULL_WORK scan.
+Do not invent a scene hypothesis or external URL to prepare a selected source.
+
+For Scene `source_acquisition.py prepare`, the planning input requires `brief`
+and `planning` references but `leads` is optional. Its normal work-first shape is
+shown in [source acquisition usage](SOURCE_ACQUISITION_USAGE.md). Direct native
+`prepare-handoff` also accepts omitted `leads` or an empty array; the validated
+SourceDeclaration still binds the selected work, rights and complete source.
+
+Record selected, scanned and unresolved works independently from optional Lead
+counts. Review interaction diversity against actual findings after full scanning.
+This changes the Scene entrypoint; Observation retains its existing WorkLead and
+campaign contracts, which already separate work selection from native extraction.
+
 ## Choose the next action
 
 Within the frozen selection budget, scope and diversity, prefer compatible
@@ -77,7 +96,7 @@ works. The host chooses routine ordering without asking which book to start.
 
 | Current fact | Host action |
 |---|---|
-| Plan sealed, no local text | Select candidates and begin the shared source workflow |
+| Plan sealed, no local text | Use selected works or choose works, then begin the shared source workflow |
 | Source present, quality unresolved | Perform the bounded import/review/verification |
 | Handoff ready | Freeze and execute with the same declared P/W |
 | WAITING_FOR_AGENT | Read and answer native tasks; rerun the same wrapper |

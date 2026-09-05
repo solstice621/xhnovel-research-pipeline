@@ -12,8 +12,9 @@ The repository currently has two trust domains:
 
 1. **Phase 0 — exploration**
    - Host agents may search broadly and reason heuristically.
-   - Output is `UNVERIFIED_LEAD` / `LEAD_ONLY` material.
-   - Phase 0 proposes where a useful scene *might* exist.
+   - Select works and resolve sources for full-work research.
+   - Optional scene hypotheses are `UNVERIFIED_LEAD` / `LEAD_ONLY` material.
+   - Already-selected works do not require web scene hypotheses before preparation.
 2. **Evidence Compiler**
    - Starts from a concrete source with explicit rights and source-quality declarations.
    - Ingests, freezes, segments, windows, semantically scouts, validates, merges,

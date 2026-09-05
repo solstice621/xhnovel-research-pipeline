@@ -214,13 +214,17 @@ planning-input 只接受下列结构，不接受用户手填 source_declaration/
 {
   "format_version": "source-acquisition-v1",
   "brief": {"path": "<existing-sealed-brief.json>", "sha256": "<actual-sha256>"},
-  "leads": {"path": "<explicit-compatible-leads-list.json>", "sha256": "<actual-sha256>"},
   "planning": {
     "root": "<existing-planning-root>",
     "receipt": {"path": "<planning-compilation-receipt.json>", "sha256": "<actual-sha256>"}
   }
 }
 ~~~
+
+已选定作品无需先找网上情节或创建 leads.json。上述输入直接使用已核验来源的
+作品身份进入 FULL_WORK 研究。若确有可复用的情节线索，可添加可选字段
+`"leads": {"path": "<compatible-leads-list.json>", "sha256": "<actual-sha256>"}`；
+该文件也可以是空数组。提供的线索仍逐项校验，不会进入原生语义任务。
 
 只有没有 Phase -1 lineage 的旧式 Brief 才使用 planning=null；
 这种输入不声称 Phase -1 规划闭包。工具保留整个显式 Lead 列表，

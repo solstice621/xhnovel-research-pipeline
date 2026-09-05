@@ -1,8 +1,8 @@
 """Deterministic Phase 0 Evidence-Handoff construction and replay.
 
 Open-world exploration remains agentic and lead-only. This module starts only once
-an ExplorationBrief, one or more ResearchLeads, and a SourceDeclaration are ready to
-be content-bound. It projects the ordinary Novel Spec consumed by ``research-novel``
+an ExplorationBrief, a SourceDeclaration, and any optional ResearchLeads are ready
+to be content-bound. It projects the ordinary Novel Spec consumed by ``research-novel``
 and proves that no lead text or location hint entered that execution input.
 """
 
@@ -161,10 +161,10 @@ def make_handoff_build_request(
     requested_at: str,
 ) -> dict[str, Any]:
     lead_ids = sorted(set(research_lead_artifact_ids))
-    if not lead_ids or len(lead_ids) != len(research_lead_artifact_ids):
+    if len(lead_ids) != len(research_lead_artifact_ids):
         raise ValidationError(
             "E-PHASE0-BUILD-REQUEST",
-            "research_lead_artifact_ids must be non-empty and unique",
+            "research_lead_artifact_ids must be unique",
         )
     base = {
         "schema_version": SCHEMA_VERSION,
@@ -727,15 +727,17 @@ def prepare_handoff_from_input(
     """Seal one operational exploration input, build, persist, and replay a Handoff."""
     path = pathlib.Path(input_path)
     value = _read_json(path, label="Phase 0 preparation input")
-    if set(value) != {"brief", "leads", "source_declaration", "requested_at"}:
+    required = {"brief", "source_declaration", "requested_at"}
+    if not required <= set(value) or set(value) - required - {"leads"}:
         raise ValidationError(
             "E-PHASE0-PREPARE",
-            "preparation input must contain brief, leads, source_declaration, requested_at",
+            "preparation input requires brief, source_declaration, requested_at; leads is optional",
         )
     if not isinstance(value["brief"], dict):
         raise ValidationError("E-PHASE0-PREPARE", "brief must be an object")
-    if not isinstance(value["leads"], list) or not value["leads"]:
-        raise ValidationError("E-PHASE0-PREPARE", "leads must be a non-empty array")
+    raw_leads = value.get("leads", [])
+    if not isinstance(raw_leads, list):
+        raise ValidationError("E-PHASE0-PREPARE", "leads must be an array when supplied")
     if not isinstance(value["source_declaration"], dict):
         raise ValidationError("E-PHASE0-PREPARE", "source_declaration must be an object")
     root = pathlib.Path(phase0_root)
@@ -747,7 +749,7 @@ def prepare_handoff_from_input(
         else (_ for _ in ()).throw(
             ValidationError("E-PHASE0-PREPARE", "lead must be an object")
         )
-        for item in value["leads"]
+        for item in raw_leads
     ]
     declaration = _seal_declaration(
         value["source_declaration"],

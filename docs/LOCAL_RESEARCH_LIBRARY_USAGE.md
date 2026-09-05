@@ -79,7 +79,7 @@ python scripts/research_library.py --library-root L register-source S --protocol
 新版本只能明确重新取得/导入，或使用可信兼容 checkout 执行旧版本。
 
 复用已登记源的新研究仍需在自己的 P/R prepare 新 Handoff，保留新的需求和
-完整 Lead 集合；不能把原来 Handoff 的语义问题拿来替代新问题。此时无需为
+已有的完整 Lead 集合（无情节线索时可省略）；不能把原来 Handoff 的语义问题拿来替代新问题。此时无需为
 同一源重复登记，allocate-execution 会验证新的 Handoff 与已登记来源的连接。
 Scene/Generic 准入可分别登记同一个来源版本，普通 Spec 仍保持各自的分支契约。
 

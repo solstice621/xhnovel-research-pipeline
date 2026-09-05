@@ -15,9 +15,13 @@ This mode needs **no model API key**. Do not look for one.
 
 For checkout startup and research recovery, use the
 [host continuation guide](../../../docs/HOST_RESEARCH_CONTINUATION.md).
-If tasks came from `execute-handoff` or a campaign wrapper, keep that exact
-wrapper and its Handoff/P/W binding throughout; the standalone commands below
-apply to a standalone `research-novel` run.
+Choose the execution entrypoint before materializing tasks. When the research has
+an EvidenceHandoff (including a selected work with no scene Leads), use
+`execute-handoff HANDOFF --executor agent-files --work-dir W` for both passes.
+A registered library execution needs that wrapper's authoritative receipt.
+Keep its Handoff/P/W binding throughout. For a campaign, keep its campaign wrapper.
+Only a task explicitly started as standalone, with no Handoff/campaign binding,
+uses `research-novel SPEC --executor agent-files --work-dir W`.
 
 For a complete research request backed by a local library, this executor is only
 one stage. Before execution, use the continuation guide's `allocate-execution`
@@ -32,7 +36,7 @@ command again.
 ### Pass 1 — materialize tasks
 
 ```bash
-xhnovel-pipeline research-novel <spec.json> --executor agent-files --work-dir W
+xhnovel-pipeline execute-handoff <handoff.json> --executor agent-files --work-dir W
 ```
 
 - **Exit code 3 is `WAITING_FOR_AGENT` — this is success, not failure.** It means
@@ -94,21 +98,22 @@ spans. **You** decide which occurrence is semantically intended.
 Rerun the **identical** command:
 
 ```bash
-xhnovel-pipeline research-novel <spec.json> --executor agent-files --work-dir W
+xhnovel-pipeline execute-handoff <handoff.json> --executor agent-files --work-dir W
 ```
 
 - Exit 0 = done: xhnovel consumed your answers through the production
-  validate/merge/replay path and wrote `scene-candidates.json` (its path is the
-  last stdout line). Already-completed windows are restored from the checkpoint
-  and not re-asked.
-- Exit 1 = a real error. Read stderr for the code and recover accordingly:
-  - `E-SCENE-PARTIAL` (e.g. an out-of-window citation): the answer was rejected but
-    kept in the audit chain. **Fix the offending answer and rerun** the identical
-    command — a corrected rerun creates the next attempt on the existing
-    `retry_of` chain.
-  - `E-AGENT-TASK-TAMPER`: a task file's bytes changed after it was written. Editing
-    the answer will **not** clear this. **Restore the original task bytes** (do not
-    hand-edit tasks), or regenerate tasks in a clean `--work-dir`, then rerun.
+  validate/merge/replay path. `execute-handoff` returns the authoritative execution
+  receipt; follow its run IDs to `scene-candidates.json`. Already-completed windows
+  are restored from the checkpoint and not re-asked.
+- Exit 1 = a real error. Preserve the error and rejected answers. For a Handoff,
+  inspect its attempt history: after terminal FAILED, fix the stated cause and
+  invoke the same Handoff/P/W with native `--retry`; do not erase the failed attempt.
+  A standalone `research-novel` run retains its own same-command retry behavior.
+  - `E-SCENE-PARTIAL`: inspect the rejected citation/schema output, correct only
+    the host answer, and use the enclosing wrapper's retry contract.
+  - `E-AGENT-TASK-TAMPER`: editing an answer cannot clear changed task bytes. Restore
+    a known original task copy; if a new execution is required, allocate it through
+    the library/native contract and retain the failed execution's provenance.
 
 ### Validate
 

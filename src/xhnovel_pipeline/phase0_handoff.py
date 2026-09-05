@@ -56,7 +56,7 @@ ATTESTATION_RIGHTS_BASES = (
 
 @dataclass(frozen=True)
 class HandoffGroup:
-    """One brief + one resolved work/source + N motivating leads."""
+    """One brief + one resolved work/source + optional motivating leads."""
 
     brief_id: str
     work_ref: dict[str, Any]
@@ -941,7 +941,7 @@ def group_leads_for_source(
     declaration: dict[str, Any],
     validated_spec: ValidatedDirectResearchSpec,
 ) -> HandoffGroup:
-    """Validate and group N Leads into one work/source/brief execution unit."""
+    """Bind one work/source/brief execution unit and validate any optional Leads."""
     brief = validate_exploration_brief(brief)
     declaration = validate_source_declaration(declaration)
     work_ref = work_ref_from_declaration(declaration)
@@ -957,8 +957,6 @@ def group_leads_for_source(
         )
     source_ref = source_ref_from_validated(declaration, validated_spec, work_ref)
     checked = [validate_research_lead(lead) for lead in leads]
-    if not checked:
-        raise ValidationError("E-PHASE0-GROUP", "handoff group requires at least one lead")
     for lead in checked:
         if lead["brief_id"] != brief["brief_id"]:
             raise ValidationError("E-PHASE0-GROUP", "lead belongs to another exploration brief")

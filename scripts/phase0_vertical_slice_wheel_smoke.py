@@ -340,6 +340,7 @@ def run_acceptance(
     output_root: Path,
     *,
     require_wheel: bool,
+    without_leads: bool = False,
 ) -> Path:
     fixture_root = fixture_root.resolve()
     if output_root.exists():
@@ -361,6 +362,8 @@ def run_acceptance(
     shutil.copy2(attestation_src, phase0_root / "operator-attestation.json")
     attested_preparation = _read_json(preparation_path)
     attested_preparation["source_declaration"].pop("rights", None)
+    if without_leads:
+        attested_preparation.pop("leads")
     _write_json(preparation_path, attested_preparation)
     standing_attestation_id = _read_json(attestation_src)["attestation_id"]
     prepare_args = (
@@ -395,7 +398,7 @@ def run_acceptance(
         (phase0_root / "source-declarations").glob("SDL-*.json")
     )
     build_request_paths = sorted((phase0_root / "build-requests").glob("HBR-*.json"))
-    assert len(lead_paths) == 3
+    assert len(lead_paths) == (0 if without_leads else 3)
     assert len(declaration_paths) == 1
     assert len(build_request_paths) == 1
     declaration = _read_json(declaration_paths[0])
@@ -407,7 +410,7 @@ def run_acceptance(
         "may_send_to_external_model": attestation["may_send_to_external_model"],
         "may_export_excerpts": attestation["may_export_excerpts"],
     }
-    assert len(handoff["motivating_lead_ids"]) == 3
+    assert len(handoff["motivating_lead_ids"]) == (0 if without_leads else 3)
     assert handoff["motivating_lead_ids"] == sorted(handoff["motivating_lead_ids"])
     assert all(
         set(item) == {"lead_id", "hint_indexes"}
@@ -556,7 +559,7 @@ def run_acceptance(
             "build_request_count": len(build_request_paths),
             "handoff_count": 1,
             "motivating_lead_count": len(handoff["motivating_lead_ids"]),
-            "lead_source_roles": ["LEAD_ONLY"],
+            "lead_source_roles": ["LEAD_ONLY"] if lead_paths else [],
             "location_hint_leak_count": 0,
             "cas_object_count": sum(
                 1 for path in (phase0_root / "objects").rglob("*") if path.is_file()
@@ -597,6 +600,8 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--fixture-root", type=Path, default=FIXTURE_ROOT)
     parser.add_argument("--output-root", type=Path, default=None)
     parser.add_argument("--require-wheel", action="store_true")
+    parser.add_argument("--without-leads", action="store_true",
+                        help="research the selected fixture work without any scene Leads")
     return parser
 
 
@@ -607,6 +612,7 @@ def main(argv: list[str] | None = None) -> int:
             args.fixture_root,
             args.output_root.resolve(),
             require_wheel=args.require_wheel,
+            without_leads=args.without_leads,
         )
         print("OK: Phase 0 deterministic vertical slice")
         print(report)
@@ -616,6 +622,7 @@ def main(argv: list[str] | None = None) -> int:
             args.fixture_root,
             Path(raw) / "acceptance",
             require_wheel=args.require_wheel,
+            without_leads=args.without_leads,
         )
         print("OK: Phase 0 deterministic vertical slice")
         print(report)

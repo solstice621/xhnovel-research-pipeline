@@ -1,12 +1,13 @@
 ---
 name: xhnovel-explore
-description: Discover works and concrete scene leads for an xhnovel gameplay research question, acquire and verify full-work sources as a host step, and continue through native preparation and research. Use for Phase 0 open-world exploration, not merely for completing already-generated Scene Scout tasks.
+description: Select works for an xhnovel research question, acquire or reuse complete sources, and continue through native full-work research and reporting. Use for Phase 0 work selection, known works or local corpora; open-world exploration and web scene leads are optional. For already-generated Scene Scout tasks use xhnovel-agent-files.
 ---
 
-# xhnovel open-world exploration
+# xhnovel work selection and full-text research
 
-Turn an open gameplay-research question into auditable `UNVERIFIED_LEAD` records
-and, only where a legitimate source is available, an Evidence Compiler run.
+Turn a gameplay-research question and selected works into full-work research.
+When an eligible source is available, prepare and execute the Evidence Compiler.
+Optional web scene hypotheses remain auditable `UNVERIFIED_LEAD` records.
 
 > Leads guide research. Only validated source text with exact lineage becomes
 > evidence.
@@ -69,22 +70,34 @@ evidence, and library operations never replace campaign events or FULL_WORK.
    this is not machine-verified because Leads carry no trusted genre
    classification. A legacy already-sealed Phase 0 Brief remains valid, but it
    cannot claim Phase -1 planning lineage without the matching receipt and Plan.
-1. **Explore openly.** Use the host's search and research tools to find notable
-   works and concrete, falsifiable scene hypotheses. Preserve raw locators and
-   label every external source `role = LEAD_ONLY`.
-2. **Build Leads.** Record bibliographic work claims, a hypothesis-framed scene
-   summary, relevance, interaction tags, and source-backed location hints. Do not
-   say the novel text has proved anything.
-3. **Select for diversity.** Deduplicate the explicit Lead set and prefer distinct
-   works and interaction families. Do not discard incompatible work/source
-   identities merely to force one group.
-   Old Leads are a candidate pool: reselect against this Plan's scope, budget and
-   diversity, preserve their old provenance, and record exclusions. An old
-   Brief/Handoff does not become this research by changing a label. Within that
-   selection, choose routine work order yourself, starting with compatible
-   resumable executions or verified local sources.
-4. **Resolve a source.** Before drafting the SourceDeclaration, ensure the
-   exploration work root contains the standing `operator-attestation.json`.
+1. **Select works.** If the user already selected works or supplied a corpus, use
+   those works and proceed to source reuse/acquisition. No web scene search is
+   required. Otherwise choose a bounded work shortlist from the Plan's scope and
+   seeds, considering genre, authors, publication context, diversity and source
+   availability. Search for bibliographic identity or sources as needed. Record
+   the selected works, rationale and unresolved sources in the research report.
+   Keep explicit user-selected works even when their sources are harder to obtain.
+2. **Use scene Leads only when helpful for selection.** Existing reviews or web
+   scene hypotheses may help decide which unknown works merit a full scan. Do not
+   search for or invent a concrete scene merely to unlock an already-selected
+   work. With no such hypotheses, omit `leads` from preparation or pass `[]`.
+   If Leads are supplied, preserve the complete compatible set and its locators
+   as `LEAD_ONLY`; all existing identity, provenance and isolation checks apply.
+3. **Choose execution order and track coverage.** Deduplicate selected works by
+   explicit identity. Prefer compatible existing executions, then verified local
+   sources, then bounded acquisition. Preserve the frozen scope, budgets and
+   diversity objectives. Book metadata can support work diversity; interaction
+   diversity must be assessed from actual full-text findings, not invented hints.
+   Report selected works and optional Lead counts separately. Do not manufacture
+   Leads to fill `target_leads`, or claim findings exist before scanning. Old
+   Handoffs belong to their original Brief; prepare a new binding for a new goal.
+4. **Resolve a source.** For an already sealed acquisition source, call the shared
+   `prepare` workflow; it copies that source's validated original attestation into
+   P. Do not first seed P with a different repository default. Preserve any existing
+   attestation and inspect an actual conflict instead of overwriting it.
+
+   For direct SourceDeclaration preparation without a sealed acquisition source,
+   ensure the exploration work root contains the standing `operator-attestation.json`.
    If it is absent, copy the canonical standing attestation from
    `attestations/operator-attestation.json` at the repo root into the work root.
    The copy must stay content-identical with the same `attestation_id`.
@@ -109,7 +122,7 @@ evidence, and library operations never replace campaign events or FULL_WORK.
    closure; do not prepare a second Handoff with fresh timestamps. An already
    admitted source may follow the ordinary preparation path below. Handle missing
    pages, access refusal and unknown quality as the shared workflow specifies;
-   continue other eligible works within scope instead of dropping their Leads.
+   continue other eligible works within scope instead of dropping those selected works.
 
    Admit a concrete source when storage/model permissions
    are declared, `textual_completeness` is `COMPLETE`, and rights have a
@@ -122,10 +135,10 @@ evidence, and library operations never replace campaign events or FULL_WORK.
    text is complete, never as Tier A.
    Never infer or self-grant authorization. `FAIR_USE_RESEARCH` and
    `USER_AUTHORIZED_LOCAL_COPY` are valid operator-claimed bases, not publisher
-   licences. If no eligible source is available after bounded source work, retain the Lead as `UNRESOLVED`
+   licences. If no eligible source is available after bounded source work, retain the selected work as `UNRESOLVED`
    or `BLOCKED_BY_RIGHTS`; do not download or execute text whose rights basis is
    `UNKNOWN`. Incomplete text remains ineligible regardless of edition status.
-5. **Prepare through the product boundary.** Put the sealed Brief, compatible Leads,
+5. **Prepare through the product boundary.** Put the sealed Brief, optional compatible Leads,
    SourceDeclaration, and `requested_at` into the preparation input, then run:
 
    ```bash
@@ -163,8 +176,9 @@ evidence, and library operations never replace campaign events or FULL_WORK.
 8. **Validate and report.** Require the planning closure (when applicable), the
    SUCCEEDED receipt, exact
    `expected_input_spec_hash` closure, fresh-process `validate all`, and preserved
-   Phase 0/core artifacts before reporting evidence results. Report blocked and
-   unresolved Leads alongside attempted Leads so they cannot disappear from the
+   Phase 0/core artifacts before reporting evidence results. Report
+   all selected works, including unresolved sources and works with zero findings,
+   alongside optional Lead dispositions so they cannot disappear from the
    denominator.
 
 ## Hard prohibitions

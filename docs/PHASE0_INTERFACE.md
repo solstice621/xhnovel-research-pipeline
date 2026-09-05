@@ -29,7 +29,7 @@ The single hard interface is a generated, valid Novel Spec:
 ```text
 ExplorationBrief
         ↓
-ResearchLead[]                      (agent-authored, UNVERIFIED_LEAD)
+optional ResearchLead[]             (agent-authored, UNVERIFIED_LEAD)
         ↓
 group by work + source + discovery brief
         ↓
@@ -198,8 +198,8 @@ recorded in an exploration report, not by mutating the Lead.
 
 ### `EvidenceHandoff` = an execution-eligibility certificate
 
-Answers "which Leads jointly motivated studying this specific text, and does this
-text already meet every condition to run the existing Evidence Compiler?" It is
+Answers "which selected work/source is being studied, which optional Leads
+motivated it, and does this text meet every condition to run the Evidence Compiler?" It is
 **not** evidence and proves no Lead true. Hence `motivating_lead_ids`, never
 `confirmed_lead_ids`.
 
@@ -233,9 +233,15 @@ text already meet every condition to run the existing Evidence Compiler?" It is
 }
 ```
 
-**Handoff exists only in the READY state.** Unresolved source → only Leads + an
-exploration report. Insufficient rights → Leads + `BLOCKED_BY_RIGHTS` disposition.
-Ambiguous work → Leads + `AMBIGUOUS` disposition. Only when everything is satisfied
+A selected work may have no scene Leads: build requests and Handoffs then retain
+empty `research_lead_artifact_ids`, `motivating_lead_ids` and `hint_refs`. The
+SourceDeclaration still binds the work identity and source. Existing nonempty Lead
+sets retain their original identities and full replay checks. The builder creates
+no placeholder Lead and does not project selection rationale into semantic tasks.
+
+**Handoff exists only in the READY state.** Unresolved source → a selected-work
+report and any optional Leads. Insufficient rights → `BLOCKED_BY_RIGHTS` disposition.
+Ambiguous work → `AMBIGUOUS` disposition. Only when everything is satisfied
 is a Handoff generated. `readiness.status` is therefore always `READY_FOR_XHNOVEL`,
 and it means only **preflight readiness** — eligibility to *attempt* the compiler.
 It is not content binding (see Design 5 and the receipt section).
@@ -248,7 +254,7 @@ authoritative rule is:
 > `validate_evidence_handoff()` deterministically **replays** that constructor from
 > content-bound inputs and compares the result byte-for-byte to the stored Handoff.
 
-`validate_evidence_handoff()` must: read the build request, the Brief, all Leads,
+`validate_evidence_handoff()` must: read the build request, the Brief, all supplied Leads,
 and the SourceDeclaration (by their `*_artifact_id`); re-resolve WorkRef and
 SourceRef; re-group `motivating_lead_ids`; re-derive rights/quality readiness;
 regenerate the Novel Spec; re-run `load_novel_spec`; recompute

@@ -699,3 +699,26 @@ def test_transport_rejects_nonpublic_target_without_retry_loop(tmp_path):
     result = run.acquire(send=sender(run.clock, [acq.Response(None, b"", error="E-SSRF-IP")], calls))
     assert result["acquisition"] == "EXTRACTION_FAILED"
     assert len(calls) == 1
+
+
+@pytest.mark.parametrize("explicit_empty", [False, True])
+def test_prepare_selected_sealed_work_without_web_lead_file(tmp_path, explicit_empty):
+    sealed, _, options_path = prepared_fixture(tmp_path)
+    options = acq.read_json(options_path)
+    if explicit_empty:
+        options["leads"] = acq.ref(write_json(tmp_path / "empty-leads.json", []))
+    else:
+        del options["leads"]
+    options_path = write_json(tmp_path / "selected-work.json", options)
+    p = tmp_path / "selected-phase0"
+    result = acq.prepare_source(sealed, options_path, p)
+    handoff = acq.read_json(Path(result["handoff_path"]))
+    assert handoff["motivating_lead_ids"] == []
+    assert handoff["localization"]["execution_scope"] == "FULL_WORK"
+    assert not (p / "leads").exists()
+    assert acq.prepare_source(sealed, options_path, p) == result
+    # An optional supplied list is still binding; it cannot be silently dropped.
+    options["leads"] = acq.read_json(tmp_path / "planning-input.json")["leads"]
+    write_json(options_path, options)
+    with pytest.raises(acq.AcquisitionError, match="different frozen inputs"):
+        acq.prepare_source(sealed, options_path, p)

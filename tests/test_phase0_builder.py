@@ -515,3 +515,44 @@ def test_prepare_input_is_fail_closed_and_idempotent(tmp_path):
     bad["gold"] = {"expected": "ownership transfer"}
     with pytest.raises(ValidationError, match="E-PHASE0-PREPARE"):
         prepare_handoff_from_input(_write_input(tmp_path, bad, "bad.json"), tmp_path / "bad")
+
+
+@pytest.mark.parametrize("omit", [False, True])
+def test_selected_work_prepares_without_scene_leads(tmp_path, omit):
+    source = tmp_path / "book.txt"
+    source.write_text("第一章 天门\n林舟取得法器，但禁制仍阻止他使用。", encoding="utf-8")
+    with_leads = prepare_handoff_from_input(_write_input(tmp_path, _input(source), "with.json"), tmp_path / "with")
+    draft = _input(source)
+    if omit:
+        del draft["leads"]
+    else:
+        draft["leads"] = []
+    prepared = prepare_handoff_from_input(_write_input(tmp_path, draft, "selected.json"), tmp_path / "selected")
+    replayed = validate_evidence_handoff(prepared.handoff_path)
+    assert replayed["motivating_lead_ids"] == []
+    assert replayed["builder"]["research_lead_artifact_ids"] == []
+    assert replayed["localization"]["hint_refs"] == []
+    assert replayed["localization"]["execution_scope"] == "FULL_WORK"
+    assert replayed["work_ref"] == with_leads.handoff["work_ref"]
+    assert replayed["source_ref"] == with_leads.handoff["source_ref"]
+    assert replayed["novel_spec"]["expected_input_spec_hash"] == with_leads.handoff["novel_spec"]["expected_input_spec_hash"]
+    assert not (tmp_path / "selected/leads").exists()
+    # The source declaration remains authoritative even with no motivating Leads.
+    artifact = prepared.handoff["builder"]["source_declaration_artifact_id"]
+    store = ArtifactStore(tmp_path / "selected/objects")
+    assert read_phase0_record(store, artifact, "SourceDeclaration")["work"]["canonical_title"] == "测试仙途"
+    tampered = copy.deepcopy(prepared.handoff)
+    tampered["work_ref"]["canonical_title"] = "另一部作品"
+    _write_visible_handoff(prepared.handoff_path, _reseal_handoff(tampered))
+    with pytest.raises(ValidationError):
+        validate_evidence_handoff(prepared.handoff_path)
+
+
+@pytest.mark.parametrize("leads", [None, {}, "unverified scene"])
+def test_optional_leads_does_not_accept_invalid_supplied_shape(tmp_path, leads):
+    source = tmp_path / "book.txt"
+    source.write_text("第一章 天门\n林舟触发机关。", encoding="utf-8")
+    draft = _input(source)
+    draft["leads"] = leads
+    with pytest.raises(ValidationError, match="leads must be an array"):
+        prepare_handoff_from_input(_write_input(tmp_path, draft), tmp_path / "phase0")

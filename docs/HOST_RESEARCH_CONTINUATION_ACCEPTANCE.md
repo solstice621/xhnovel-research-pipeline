@@ -63,6 +63,21 @@ failed or incomplete scenario. Preserve the run, fix only demonstrated problems,
 and rerun a fresh scenario. Do not claim all long-form research is reliable from
 two small-source successes.
 
+## Selected-work entrypoint acceptance
+
+For work-first workflow changes, create a separate fixture with a sealed complete
+source and compiled planning but no ResearchLead, prepared Handoff, registered
+source or execution. Give a fresh host only the already-selected work, library /
+planning / sealed-source locations and normal research request. Do not provide a
+scene hypothesis, expected semantic answer, dummy reference URL or gold.
+
+The host should prepare from that source, allocate W, use `execute-handoff` for
+both passes, and validate/register its product and final report. Replay the final
+Handoff to verify empty Lead references and FULL_WORK scope. Inspect the tool trace
+for fabricated Lead records, avoidable scene searches, direct `research-novel`
+execution and user handback. Mark the result according to actual behavior.
+This fixture checks the known-work route, not open-ended work-selection quality.
+
 ## Regression and integration
 
 Run the focused `test_research_status.py` tests, affected planning/library/

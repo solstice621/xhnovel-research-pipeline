@@ -678,3 +678,21 @@ def test_execution_lock_rejects_concurrent_entry_on_the_current_platform(tmp_pat
                 now=NOW,
             )
     assert not list((execution_dir / "started-markers").glob("*.json"))
+
+
+def test_selected_work_without_leads_runs_and_resumes_native_handoff(tmp_path):
+    source = tmp_path / "selected.txt"
+    source.write_text("第一章 天门\n林舟触发天门机关，山路随之开启。", encoding="utf-8")
+    draft = _input(source)
+    del draft["leads"]
+    prepared = prepare_handoff_from_input(_write_input(tmp_path, draft), tmp_path / "phase0")
+    work = tmp_path / "native"
+    completed = _complete_agent_execution(prepared, work)
+    assert completed.status == "SUCCEEDED"
+    history = validate_handoff_execution_history(prepared.handoff_path, phase0_root=tmp_path / "phase0")
+    assert len(history) == 1
+    assert history[0].state == "SUCCEEDED"
+    assert any(event["state"] == "WAITING_FOR_AGENT" for event in history[0].events)
+    assert history[0].receipt["expected_input_spec_hash"] == history[0].receipt["actual_input_spec_hash"]
+    assert history[0].receipt["validate_all"] == "PASS"
+    assert prepared.handoff["motivating_lead_ids"] == []
