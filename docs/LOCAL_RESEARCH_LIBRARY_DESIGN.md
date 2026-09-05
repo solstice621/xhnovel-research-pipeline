@@ -1,7 +1,8 @@
 # 本地原文库与研究产物管理设计 v1
 
 - 日期：2026-09-05。
-- 状态：**设计完成，待实施**。本文的 library 命令、索引和自动接入点尚未实现。
+- 状态：**L1—L3 已实现，全量 856 项测试通过**；真实材料迁移和全书研究验收另行报告。
+- 实际命令及返回值：[LOCAL_RESEARCH_LIBRARY_USAGE.md](LOCAL_RESEARCH_LIBRARY_USAGE.md)。
 - 核对基线：`104f0028116d29deb29b78adb64e8f94700d0707`（已包含原文获取及研究流程接入）。
 - 实施阶段与验收：[LOCAL_RESEARCH_LIBRARY_PLAN.md](LOCAL_RESEARCH_LIBRARY_PLAN.md)。
 - 既有执行流程：[SOURCE_ACQUISITION_WORKFLOW.md](SOURCE_ACQUISITION_WORKFLOW.md)。
@@ -79,8 +80,8 @@ SOURCE_SEALED 不等于 NATIVE_FROZEN；WAITING_FOR_AGENT 只表示原生任务�
 ## 4. 稳定目录与权威数据
 
 使用显式配置的绝对库根 `L`。建议个人默认位置 `~/Documents/xhnovel-library`，
-可通过未来的 `--library-root` 或 `XHNOVEL_LIBRARY_ROOT` 指定；两者冲突时命令行优先。
-本文不创建该目录。实际初始化只创建一次配置，记录解析后的根目录；研究恢复时
+可通过 `--library-root` 或 `XHNOVEL_LIBRARY_ROOT` 指定；两者冲突时命令行优先。
+工具通过 init 创建该目录。实际初始化只创建一次配置，记录解析后的根目录；研究恢复时
 必须与原登记一致，不能因环境变量变化自动切换。持久库不放在临时 worktree 内。
 
 ```text
@@ -88,6 +89,7 @@ L/
   library.json                         # 格式版本、library_id、固定根目录
   records/sha256/<prefix>/<digest>.json # 不可变宿主登记和验证记录
   index/library.sqlite                 # 可删除、可重建的查询索引
+  bindings/executions/*.json            # 原生 Handoff 到执行目录的不可变绑定
   acquisition/<acquisition-id>/         # 现有 source-run，可恢复工作状态
   sources/sealed/<manifest-digest>/     # 现有 seal 的完整输出，保持原样
     chapters/*.txt
@@ -97,16 +99,19 @@ L/
     coverage-report.json
     source-manifest.json
   research/<research-id>/
-    phase0/                            # 场景分支的 P
+    request.json                       # 用户需求元数据，非原生规划替代
+    phase0/<source-revision>/           # 每来源独立的场景准备根 P
     campaign/                          # 观察分支的 R
-    native/<execution-slot>/           # 该执行的 W；内部由原生流程管理
-    reports/                           # 有原生产物引用的本次报告
+    works/<work-ref-id>/<source-revision>/<execution-id>/
+      native/                          # 该执行的 W；内部由原生流程管理
+      reports/                         # 本次执行报告
+    reports/                           # 整项研究汇总报告
   staging/                             # 登记和索引的未提交文件，查询不可见
 ```
 
 P/R 是各分支自己的准备根，只创建实际需要的分支。W 中继续保留原生
 `ingestion/objects`、Catalog、任务、checkpoint 和 research/generic-extraction 目录。
-library_id、research-id 和 execution-slot 是宿主寻址标识，不是伪造的核心 run ID；
+library_id、research-id 和 execution-id 是宿主寻址标识，不是伪造的核心 run ID；
 它们在首次分配后记录并固定，恢复不得重新分配。
 
 SQLite 只保存可回放登记的投影和查询加速数据，任何“可用于证据”的判断必须
@@ -122,12 +127,12 @@ SQLite 只保存可回放登记的投影和查询加速数据，任何“可用�
   receipts 和目录文件；这里的文件数量不自动代表完整全书。
 - 合格封存：`L/sources/sealed/<manifest-digest>/chapters/`，一逻辑章一个 TXT，
   同级保留 `chapter-view.json`、来源 manifest、质量审查和 provenance。
-- 原生证据：`L/research/<research-id>/native/<execution-slot>/ingestion/objects/`，
+- 原生证据：`L/research/<research-id>/works/<work-ref-id>/<source-revision>/<execution-id>/native/ingestion/objects/`，
   按内容摘要存放，必须经原生 Catalog/CAS 读取；不另复制成供人工编辑的章节集。
 
 库根是长期数据目录，研究 worktree 是代码目录，两者分离。作品查询入口用
 WorkRef 指向版本摘要目录，不用书名直接作为唯一目录键；不同版本不会互相覆盖。
-这些是待实施路径，现存 `.runtime/` 材料不会因此自动迁移。用户可以通过登记查看
+上述为工具实际分配路径，现存 `.runtime/` 材料不会因此自动迁移。用户可以通过登记查看
 某书的实际原址或托管位置，打开对应章节；跨章节检索直接遍历经过校验的章节序列。
 
 ### 4.2 身份与登记契约
@@ -139,15 +144,18 @@ artifact ID。记录可引用原生 artifact ID，但必须同时保存原生 st
 
 | 记录 | 必需内容与约束 |
 | --- | --- |
-| WorkRegistration | 完整 WorkRef、生成它的已验证声明引用；复用 `work_ref_from_declaration`，禁止另写书名哈希身份算法 |
-| SourceRegistration | work_ref_id、source_revision、来源根、MANAGED/EXTERNAL_REFERENCE、manifest/目录摘要、原生声明或获取准入引用、权限及审查依据引用、兼容获取实现版本 |
-| ResearchRegistration | 需求/Brief/Definition 与 ProfileResolution 引用、实际 P/R/W、Handoff 引用、source_revision 集合、原生执行引用、版本/build 绑定 |
-| ProductRegistration | SCENE_CANDIDATES/GENERIC_CORPUS/REPORT 类型、研究引用、原生 run/snapshot/profile/Catalog/CAS/回执引用、产物摘要和原生保证状态 |
-| ValidationReceipt | 被检记录摘要、实际验证器版本、输入闭包摘要、时间、成功或具体失败；旧 PASS 不覆盖当前重验 |
+| 来源记录中的 WorkRef | 直接读取原生 Handoff 回放得到的完整 WorkRef；原生 builder 使用 `work_ref_from_declaration`，库不新增身份算法或独立 Work 记录 |
+| source 记录 | work_ref_id、source_revision、来源根、MANAGED/EXTERNAL_REFERENCE、manifest/目录摘要、原生声明或获取准入引用、权限及审查依据引用、兼容获取实现版本 |
+| research 记录 | 用户需求 JSON 字节摘要、名称、首次固定的 key 与 research_id；不替代原生规划 |
+| execution 记录 | research/source 登记 ID、原生 Handoff 文件及摘要、P/R、Spec hash、作品/来源版本、execution_id、固定 W；原生需求及 Profile 通过 Handoff 闭包回放 |
+| external-execution 记录 | 旧 TXT/EPUB 等原生执行的 research、Handoff、P/R/W、WorkRef 和 SourceRef 引用；必须有真实原生历史，不创建可复用 source 记录 |
+| product 记录 | SCENE_CANDIDATES/GENERIC_CORPUS、执行登记 ID、原生回执引用、原生 run ID、Profile、产物摘要和数量；其余闭包从回执回放 |
+| report 记录 | 报告文件及摘要、research 登记 ID、execution/product 登记 ID；始终 HOST_AUTHORED |
+| validation 记录 | 被检记录摘要、实际验证器版本、输入闭包摘要、时间、成功或具体失败；旧 PASS 不覆盖当前重验 |
 
 记录采用 tagged union，Scene 与 Generic 必需字段分别定义，不能用一组任意 nullable
-字段接受不完整闭包。运行尚未成功可登记位置和原生事件；ProductRegistration 只有
-对应产物经过适用原生验证后才能发布。失败报告可登记为 REPORT，明确失败状态，
+字段接受不完整闭包。运行尚未成功可登记位置和原生事件；product 记录只有
+对应产物经过适用原生验证后才能发布。失败报告可登记为 report，关联原生执行状态，
 不得带成功 corpus/candidate 指针。合法的零结果研究仍可登记为成功执行。
 
 `source_revision = SHA256(source-manifest.json 的原始字节)`，取 64 位小写十六进制，
@@ -257,7 +265,7 @@ NFKC 可把 `Ａ` 变成 `A`、合并组合字符，规范化还会折叠连续�
 产物查询从登记的、重验通过的原生产物读取字段。证据查看链为：
 
 ```text
-ProductRegistration
+product 记录
   → 原生执行回执 / Catalog / corpus snapshot
   → candidate support 或 corpus record source_spans
   → 对应 ingestion、SourceChapter、Segment 与 CAS
@@ -279,7 +287,7 @@ Scene 保留逐 observation 的 support，Generic 保留原生 reduction/member 
 
 | 故障/变化 | 处理方式 |
 | --- | --- |
-| 未封存、缺章或未通过保真度 | 保留 acquisition 状态；不发布可复用 SourceRegistration |
+| 未封存、缺章或未通过保真度 | 保留 acquisition 状态；不发布可复用 source 记录 |
 | 源文件或 CAS 损坏 | 当前验证失败并阻止正文/证据使用；不相信旧 PASS 或索引摘要 |
 | 登记中断/磁盘满 | staging 不可见；既有 sealed 不变；按相同输入补登记或重建索引 |
 | 并发登记同一输入 | 不可变文件原子发布，已存在则核验；短索引事务，不增加任务队列 |

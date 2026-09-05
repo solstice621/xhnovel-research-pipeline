@@ -1,7 +1,8 @@
 # 本地原文库实施计划 v1
 
 - 日期：2026-09-05。
-- 状态：**设计交付；实施未开始**。下面命令是拟议宿主接口，当前不能运行。
+- 状态：**L1—L3 已实现，全量 856 项测试通过**；L4 真实数据验收独立报告。
+- 实际 CLI：[LOCAL_RESEARCH_LIBRARY_USAGE.md](LOCAL_RESEARCH_LIBRARY_USAGE.md)。以下接口表已按实现更新。
 - 设计依据：[LOCAL_RESEARCH_LIBRARY_DESIGN.md](LOCAL_RESEARCH_LIBRARY_DESIGN.md)。
 - 基线：`104f0028116d29deb29b78adb64e8f94700d0707`。
 
@@ -13,7 +14,7 @@
 | 阶段 | 交付与负责层 | 完成门槛 |
 | --- | --- | --- |
 | L1 原文登记与章节索引 | `scripts/research_library.py`；`contracts/host_library/`；来源/索引测试 | 合成封存源可登记、回放和逐章查询；缺章、篡改、歧义和越界均被拒绝 |
-| L2 查询与原生产物 | 同一宿主脚本扩展；仅在确有需要时抽取原生公共验证入口 | Scene/Generic 原生完成产物可登记、查询、回到精确 support；失败与零结果正确区分 |
+| L2 查询与原生产物 | 同一宿主脚本扩展；复用现有公开原生验证入口 | Scene/Generic 原生完成产物可登记、查询、回到精确 support；失败与零结果正确区分 |
 | L3 自动研究接入 | canonical explore/observe Skills、同步镜像、工作流文档和集成测试 | 本地命中继续原生执行，未命中继续现有获取，预算和任务等待语义不变 |
 | L4 迁移与真实试运行 | 宿主操作、版本化验收报告；运行数据留库中 | 旧材料原址登记、索引重建、斗破首个完整来源和首个端到端研究分别验收 |
 
@@ -35,7 +36,7 @@ L1—L3 是代码实施完成门槛；L4 是真实数据和运行验收，受真
 - 直接使用现有封存章节和 `chapter-view.json`，不生成整本 TXT、不增加拼接导出
   接口。未完成获取保留逐章文件和缺口状态，原始输入 TXT/EPUB 作为 provenance 保留。
 
-### 拟议 CLI 契约（尚未实现）
+### 实际 CLI 契约
 
 统一入口为 `python scripts/research_library.py --library-root L SUBCOMMAND`。
 以下路径和 ID 均由宿主从真实记录填入，不要求用户手写 JSON。
@@ -43,18 +44,19 @@ L1—L3 是代码实施完成门槛；L4 是真实数据和运行验收，受真
 | 子命令 | 输入 | 确定性输出/副作用 |
 | --- | --- | --- |
 | `init` | 固定绝对根目录 | 初始 library.json；重复同配置幂等，不迁移已有库 |
-| `register-source S --declaration D --native-root P_OR_R` | 已封存源、已验证普通声明及其原生根 | 来源登记 ID、核验结果、source_revision；不调用模型 |
-| `list-works` / `list-sources --work WORK_REF_ID` | 精确身份或元数据筛选 | 候选、版本和当前验证状态；来源优选由宿主说明 |
+| `register-source S --protocol SCENE_OR_GENERIC --handoff H --native-root P_OR_R` | 已封存源、原生 Handoff 及其原生根 | 来源登记 ID、核验结果、source_revision；不调用模型 |
+| `list-works` / `list-sources --work-ref-id WORK_REF_ID` | 精确身份或元数据筛选 | 候选、版本和当前验证状态；来源优选由宿主说明 |
 | `verify RECORD_ID` | 某项登记 | 重放相关来源/产物闭包，输出验证回执 |
 | `reindex` | records 与仍可读取的原生根 | 重建 SQLite；缺失/损坏记录列为不可用，不丢失错误 |
 
-`register-source` 的 D 是当前原生 builder 真实产生的声明，不能调用者随填
-COMPLETE 即接纳。登记同时验证 D、S 和原生回放的连接。未来若支持封存后但
+`register-source` 从 Handoff 原生回放读取声明和 WorkRef，不能由调用者随填
+COMPLETE 即接纳。登记同时验证 H、S 和原生回放的连接。未来若支持封存后但
 prepare 前的暂存发现记录，应使用独立非准入类型；L1 不以此绕过普通 Handoff。
-宿主工作流可在 prepare 取得 D 后登记，freeze 前后均重新检查要求的闭包。
+宿主工作流在 prepare 取得 H 后登记，freeze 前后均重新检查要求的闭包。
 
-所有命令 stdout 给出结构化 JSON：format_version、command、outcome、record_refs、
-paths、issues。宿主操作失败码独立于原生退出码；建议 0 成功、1 校验/输入错误、
+所有命令 stdout 给出结构化 JSON：format_version、command，以及成功时的 result
+或失败时的 error/code；具体记录、路径和 issues 位于 result。宿主操作失败码独立
+于原生退出码：0 成功、1 校验/输入错误、
 2 环境/IO 错误、4 明确未就绪。不得把 3 用作宿主“成功”，也不吞掉原生
 WAITING_FOR_AGENT。具体错误记录原生 code/message，恢复动作由原生契约决定。
 
@@ -64,17 +66,21 @@ WAITING_FOR_AGENT。具体错误记录原生 code/message，恢复动作由原�
 
 ## 3. L2：研究与产物入口
 
-### 拟议接口
+### 实际接口
 
 | 子命令 | 行为 |
 | --- | --- |
-| `register-research INPUT` | 记录实际 P/R/W、需求/Profile/Handoff/来源引用；不复制或改写原生事件 |
-| `register-product INPUT` | 分 Scene/Generic/Report 验证真实产物，发布登记；重复相同输入幂等 |
-| `list-research` / `list-products` | 按作品、来源版本、需求、Profile、产物类型和原生状态过滤 |
+| `new-research REQUEST --key KEY --name NAME` | 首次捕获用户需求元数据并分配稳定研究根，随后在对应 P/R 冻结原生规划；旧根可原址引用 |
+| `allocate-execution RESEARCH_ID SOURCE_ID --handoff H --native-root P_OR_R --key KEY` | 绑定本次原生 Handoff，分配任务→作品→来源版本→执行的 native/reports 目录；可用 --work-dir 登记已有外部 W |
+| `register-external-execution RESEARCH_ID --protocol SCENE_OR_GENERIC --handoff OLD_H --native-root OLD_P_OR_R --work-dir OLD_W` | 归档已有真实历史的原生 TXT/EPUB 执行，不创建可复用 source，不搬动旧文件 |
+| `register-product EXECUTION_ID --receipt NATIVE_RECEIPT` | 分 Scene/Generic 验证真实产物，发布登记；重复相同输入幂等 |
+| `list-research` / `list-products` | 按作品、来源版本、研究登记 ID 精确筛选，并用 --query 检索记录元数据 |
 | `search-text SOURCE_ID --query TEXT --limit N` | 有界逐章字面搜索，返回 TEXT_MATCH、原文坐标和截断标识 |
+| `read-product PRODUCT_ID --query TEXT --offset N --limit N` | 重验原生产物后分页查原生 record ID 和 source_spans；默认不输出摘录 |
+| `register-report RESEARCH_ID REPORT --executions EXECUTION_ID --products PRODUCT_ID` | 登记 HOST_AUTHORED 报告与真实执行/产物引用，允许失败报告不附产品 |
 | `show-evidence PRODUCT_ID --record-id NATIVE_RECORD_ID` | 原生闭包校验；列出每项 support 的规范化 span 及对应章节入口 |
 
-输入文件是宿主登记契约，schema 需明确每种分支的必需字段。已有原生 ID/回执路径
+工具生成严格宿主登记记录，schema 明确每种记录的必需字段。已有原生 ID/回执路径
 必须读取并验证，不接受自述 COMPLETE、手算 candidate ID 或任意 quote 字段。
 先列元数据再按需要读取正文；默认产物导出沿用原生 OFFSETS_ONLY/权限策略。
 
@@ -98,8 +104,8 @@ WAITING_FOR_AGENT。具体错误记录原生 code/message，恢复动作由原�
 [SOURCE_ACQUISITION_WORKFLOW.md](SOURCE_ACQUISITION_WORKFLOW.md)。不要复制整套
 Skill 到 AGENTS.md，也不在 runtime 加入 agent scheduler。
 
-宿主操作顺序为：中立需求冻结 → 本次绑定/全库查询 → 来源重验或获取 → 原生
-prepare 返回声明 → 登记来源及章节索引 → freeze → 原生语义执行 → 原生验证 →
+宿主操作顺序为：捕获用户需求并分配稳定研究根 → 原生中立需求冻结 → 本次绑定/全库查询 → 来源重验或获取 → 原生
+prepare 返回声明 → 登记来源及章节索引 → allocate-execution 分配 W → freeze → 原生语义执行 → 原生验证 →
 登记产物 → 报告。来源命中前不能静默改写已冻结需求，源登记不能把
 先前仅“源准备”的用户请求扩大成完整研究。
 

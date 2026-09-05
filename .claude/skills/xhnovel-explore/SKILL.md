@@ -23,6 +23,17 @@ Read the shared [source workflow](../../../docs/SOURCE_ACQUISITION_WORKFLOW.md)
 when a selected work needs a source; having no local text starts that workflow,
 not an immediate handback to the user.
 
+
+Use the [local chapter library workflow](../../../docs/LOCAL_RESEARCH_LIBRARY_USAGE.md)
+for source reuse and result registration. For a new research task, capture the user
+request as metadata and allocate its stable library research directory before
+native planning; existing P/R roots remain in place. Only after neutral planning
+is frozen, query local sources and verify a matching version before reuse. Prepare
+this research's ordinary Handoff, register the source, and use allocate-execution's
+work_dir for native freeze/execution. Complete native validation before registering
+products and the final report. A metadata hit is NOT_CHECKED, a text match is not
+evidence, and library operations never replace campaign events or FULL_WORK.
+
 ## Trust boundary
 
 - Search results, snippets, encyclopedias, reviews, rankings, forums, and other

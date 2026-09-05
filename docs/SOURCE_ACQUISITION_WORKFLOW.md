@@ -11,11 +11,21 @@
 
 ## 1. 开始条件与文件归属
 
+统一原文和产物管理使用 [本地库命令](LOCAL_RESEARCH_LIBRARY_USAGE.md)。新研究先
+用用户需求元数据运行 new-research，得到固定 P/R 基础路径，再执行原生规划冻结；
+旧研究保留已有 P/R。需求冻结后先查当前绑定及库中来源，verify 成功且身份/版本
+适用才可复用。列表 NOT_CHECKED 不代表合格，缺源继续以下获取流程。
+
+新 source-run 放库返回的 acquisition_root 下，seal 放 sealed_output。prepare
+取得普通 Handoff 后 register-source，allocate-execution 返回的 work_dir 作为 W；
+随后 freeze 和 execute。原生成功后 register-product，最终报告 register-report。
+已有外部原文和 W 原址登记，不移动或重签；单纯源准备请求仍按其授权范围停止。
+
 先完成所属研究 Skill 的中立需求冻结及预算，之后才开始搜索。保留真实的
 作品身份、全部 Lead/WorkLead 及其未解决状态，不从章节猜测缩小全书范围。
 
-读取 [工具使用说明](SOURCE_ACQUISITION_USAGE.md)，在当前研究目录下建立独立
-来源配置、目录、依据和 source-run。宿主从实际资料生成这些文件；配置引用的
+读取 [工具使用说明](SOURCE_ACQUISITION_USAGE.md)，按上述固定位置建立独立
+来源配置、目录、依据和 source-run；已有外部运行保留其位置。宿主从实际资料生成这些文件；配置引用的
 path/sha256 是本地文件摘要，核心 artifact ID 仍只能由原生工具产生。
 
 新研究根目录缺少 standing attestation 时，从仓库
