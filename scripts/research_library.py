@@ -242,6 +242,49 @@ class Library:
             fail("source registration differs from replay", "E-LIBRARY-INTEGRITY")
         return resolved, run
 
+    def prepare_scene_work(self, research_id, sealed, *, key, planning_root=None, leads=None):
+        """Compose native preparation and library registration for one selected work.
+
+        Repeating the same inputs resumes publication. No source acquisition,
+        native execution, task answering, or alternative evidence logic lives here.
+        """
+        from xhnovel_pipeline.phase0_planning import validate_planning_compilation
+
+        research = self.load(research_id, "research")
+        self.validate(research_id)
+        paths = self.research_paths(research)
+        planning_root = checked_path(planning_root or paths["phase0_base"])
+        receipt = planning_root / "planning-compilation-receipt.json"
+        validate_planning_compilation(receipt, planning_root=planning_root, repo_root=ROOT)
+        sealed = checked_path(sealed)
+        options = {"format_version": acq.FORMAT,
+                   "brief": acq.ref(planning_root / "exploration-brief.json"),
+                   "planning": {"root": str(planning_root), "receipt": acq.ref(receipt)}}
+        if leads is not None:
+            options["leads"] = acq.ref(checked_path(leads))
+        preparation_key = digest(encoded({"sealed": str(sealed), "planning_input": options, "key": key}))
+        directory = checked_path(Path(paths["phase0_base"]) / "prepared" / preparation_key)
+        options_path = directory / "planning-input.json"
+        write_immutable(options_path, encoded(options))
+        native_root = directory / "phase0"
+        prepared = acq.prepare_source(sealed, options_path, native_root)
+        source = self.register_source(sealed, protocol="SCENE", handoff=prepared["handoff_path"],
+                                      native_root=native_root)
+        execution = self.allocate_execution(research_id, source["record_id"],
+                                            handoff=prepared["handoff_path"], native_root=native_root, key=key)
+        work = execution["record"]["work_dir"]
+        return {"source": source, "execution": execution,
+                "native_state": self.execution_status(execution["record"]),
+                "commands": {
+                    "freeze": [sys.executable, str(ROOT / "scripts/source_acquisition.py"), "freeze",
+                               str(sealed), prepared["handoff_path"], "--phase0-root", str(native_root),
+                               "--research-root", work],
+                    "execute": [sys.executable, str(ROOT / "scripts/xhnovel.py"), "execute-handoff",
+                                prepared["handoff_path"], "--executor", "agent-files", "--work-dir", work],
+                    "status": [sys.executable, str(ROOT / "scripts/research_library.py"),
+                               "--library-root", str(self.root), "research-status", research_id,
+                               "--planning-root", str(planning_root)]}}
+
     def allocate_execution(self, research_id, source_id, *, handoff, native_root, key, work_dir=None):
         research = self.load(research_id, "research")
         self.validate(research_id)
@@ -645,6 +688,9 @@ def main(argv=None):
     commands.add_parser("init")
     p = commands.add_parser("new-research")
     p.add_argument("request"); p.add_argument("--key", required=True); p.add_argument("--name", required=True)
+    p = commands.add_parser("prepare-scene-work")
+    p.add_argument("research_id"); p.add_argument("sealed"); p.add_argument("--key", required=True)
+    p.add_argument("--planning-root"); p.add_argument("--leads")
     p = commands.add_parser("register-source")
     p.add_argument("sealed"); p.add_argument("--protocol", choices=["SCENE", "GENERIC"], required=True)
     p.add_argument("--handoff", required=True); p.add_argument("--native-root", required=True)

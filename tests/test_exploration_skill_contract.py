@@ -48,7 +48,10 @@ def _cli_source() -> str:
 
 
 def _real_flags() -> set[str]:
-    return set(re.findall(r'add_argument\(\s*"(--[a-z0-9-]+)"', _cli_source()))
+    # The workflow documents both the native CLI and the shipped host entrypoints.
+    sources = [_cli_source(), *(path.read_text(encoding="utf-8") for path in (
+        ROOT / "scripts/research_library.py", ROOT / "scripts/source_acquisition.py"))]
+    return set(re.findall(r'add_argument\(\s*"(--[a-z0-9-]+)"', "\n".join(sources)))
 
 
 def _real_subcommands() -> set[str]:

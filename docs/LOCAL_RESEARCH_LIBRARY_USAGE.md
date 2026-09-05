@@ -50,6 +50,26 @@ L/
 库不生成整本 TXT。最初取得的 TXT/EPUB 仍是原始材料，不能因此删除；全书查找逐章
 执行。书名、主题、日期、状态供索引筛选，不继续增加目录层级。
 
+## 已选作品的默认入口
+
+已冻结规划且已有完整封存来源时，直接运行：
+
+```bash
+python scripts/research_library.py --library-root L prepare-scene-work RESEARCH_RECORD_ID SEALED_SOURCE --planning-root P --key WORK_KEY
+```
+
+P 是已有规划根；省略时使用该研究的 `phase0_base`。命令复用原生 prepare，
+保留封存来源自己的权限声明，并完成来源登记、执行分配。无需预先找网上情节、
+写 Lead 列表、复制默认 attestation 或选择 W；若确有已有线索，使用 `--leads FILE`。
+相同输入重复调用会恢复登记，不会丢弃已发布记录或另建原生任务。
+
+返回 `result.source`、`result.execution`、`result.native_state`，以及 freeze、
+execute、status 的精确参数数组。按照 `commands` 运行，保留 execution.record_id，
+在 execution.paths.reports_dir 写报告。原生成功后仍须 register-product 和
+register-report；最后通过 research-status 核对登记和研究覆盖。
+
+以下独立命令用于已有执行、外部目录及细分操作；新研究通常无需手工串联前三步。
+
 ## 2. 查库和来源登记
 
 ```bash

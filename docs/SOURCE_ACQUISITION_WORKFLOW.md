@@ -72,6 +72,11 @@ path/sha256 是本地文件摘要，核心 artifact ID 仍只能由原生工具�
 
 ## 3. 场景研究分支
 
+库中的已选作品优先使用 `research_library.py prepare-scene-work`，它调用本分支
+的原生准备并完成来源登记、执行分配；随后运行返回的 freeze/execute 参数数组。
+不先复制仓库默认 attestation，也不自行分配 P/W。原生成功后登记产物及报告。
+以下步骤用于没有库登记上下文的独立执行或已有底层操作的恢复。
+
 宿主创建使用说明中的 planning-input：引用已冻结 Brief 和适用的 Phase -1
 receipt/root。作品已选定时直接准备来源，不要求上网找具体情节；`leads` 字段
 可以省略。若已有情节线索，则引用完整兼容列表并保留校验。不要根据来源或

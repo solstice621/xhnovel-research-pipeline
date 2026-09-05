@@ -9,6 +9,25 @@ Turn a gameplay-research question and selected works into full-work research.
 When an eligible source is available, prepare and execute the Evidence Compiler.
 Optional web scene hypotheses remain auditable `UNVERIFIED_LEAD` records.
 
+For a selected sealed source in a local research library, use this entrypoint:
+
+```bash
+python scripts/research_library.py --library-root L prepare-scene-work RESEARCH_RECORD_ID SEALED_SOURCE --planning-root P --key WORK_KEY
+```
+
+P is the existing compiled planning root. This command performs native source
+preparation, source registration and managed execution allocation. Follow its
+returned `commands.freeze` and `commands.execute` using the exact returned paths;
+keep `execution.record_id` for delivery. It does not run semantic tasks. Do not
+first create another P/W or copy a repository attestation into the preparation
+root; the sealed source's validated attestation is preserved by preparation.
+
+After native success, use the returned receipt with `register-product`, write the
+report under `execution.paths.reports_dir`, then `register-report` with both the
+execution and product record IDs. Run the returned status command before a final
+response. A native success or Markdown report without those registrations leaves
+a library-backed research task incomplete.
+
 > Leads guide research. Only validated source text with exact lineage becomes
 > evidence.
 
@@ -91,9 +110,10 @@ evidence, and library operations never replace campaign events or FULL_WORK.
    Report selected works and optional Lead counts separately. Do not manufacture
    Leads to fill `target_leads`, or claim findings exist before scanning. Old
    Handoffs belong to their original Brief; prepare a new binding for a new goal.
-4. **Resolve a source.** For an already sealed acquisition source, call the shared
-   `prepare` workflow; it copies that source's validated original attestation into
-   P. Do not first seed P with a different repository default. Preserve any existing
+4. **Resolve a source.** For a library-backed sealed source, use
+   `prepare-scene-work` above; it also handles steps 5–6 and fixes the execution W.
+   For standalone sealed sources, call the shared `prepare` workflow; it copies
+   that source's validated original attestation into P. Do not first seed P with a different repository default. Preserve any existing
    attestation and inspect an actual conflict instead of overwriting it.
 
    For direct SourceDeclaration preparation without a sealed acquisition source,

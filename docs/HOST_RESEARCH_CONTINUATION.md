@@ -21,6 +21,29 @@ dependencies or change global Python configuration. Doctor reports the interpret
 module paths and native source-tree hash. Missing dependencies are an environment
 issue, not a reason to ask the user to redefine the research.
 
+## Prepare a selected work in the library
+
+Once planning and a complete source are sealed, use the single library entrypoint:
+
+```bash
+python scripts/research_library.py --library-root L prepare-scene-work RESEARCH_RECORD_ID SEALED_SOURCE --planning-root P --key WORK_KEY
+```
+
+It validates planning, calls the existing source preparation, registers the source
+and allocates a managed execution. No scene Lead file is needed. Optional `--leads`
+accepts an existing compatible Lead-list file. P defaults to this research's
+`phase0_base` when omitted; use the actual existing planning root on recovery.
+The returned `commands` are exact argument arrays for native freeze, execution and
+status; the returned `execution.record_id` and `execution.paths` own W and reports.
+Repeat the same inputs to recover interrupted registration. Semantic execution
+still belongs to `execute-handoff`; this command generates no answers or report.
+
+Do not stop after native success: register the product from its actual receipt,
+write/register the final report with the execution/product IDs, then reconcile.
+Manual `prepare` / `register-source` / `allocate-execution` remain available for
+standalone, legacy and advanced workflows; new library-backed selected works should
+use `prepare-scene-work` so execution registration cannot be skipped accidentally.
+
 ## Reconcile before continuing or stopping
 
 Allocate a new research with the local library before neutral planning. Preserve

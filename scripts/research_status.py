@@ -214,14 +214,17 @@ def research_status(library, research_id, *, planning_root=None, legacy_root=(),
                       "sealed_path": record["sealed_path"], "source_revision": record["source_revision"],
                       "handoff": record["handoff"], "native_root": record["native_root"],
                       "research_binding": "CANDIDATE_ONLY", "next_action": "MATCH_AND_PREPARE_SOURCE"}
+            linked = [eid for eid, e in selected.items() if e["kind"] == "execution"
+                      and e["source_record_id"] == rid]
+            if linked:
+                result.update(research_binding="LINKED_TO_RESEARCH", execution_record_ids=linked,
+                              next_action="CHECK_LINKED_EXECUTIONS")
             if (planning.get("validation") == "VALIDATED" and record["protocol"] == "SCENE"
                     and Path(record["native_root"]) == planning_root):
                 validate_planning_handoff(
                     planning_root / "planning-compilation-receipt.json",
                     Path(record["handoff"]["path"]), planning_root=planning_root,
                     phase0_root=planning_root, repo_root=lib.ROOT)
-                linked = [eid for eid, e in selected.items() if e["kind"] == "execution"
-                          and e["source_record_id"] == rid]
                 result.update(research_binding="PREPARED_FOR_SUPPLIED_PLANNING",
                               execution_record_ids=linked,
                               next_action="CHECK_LINKED_EXECUTIONS" if linked else "ALLOCATE_EXECUTION")
