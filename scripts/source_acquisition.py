@@ -605,7 +605,9 @@ class Run:
         accepted = self.accepted() if accepted is None else accepted
         existing = accepted.get(k)
         if existing:
-            if existing["body_sha256"] != digest(body.encode()) or existing["title"] != title:
+            accepted_attempt = read_json(child(self.root, existing["attempt"]["path"]))
+            if accepted_attempt["raw"]["sha256"] != attempt["raw"]["sha256"]:
+                self._state("SOURCE_CHANGED", entry=k)
                 fail("new response differs from accepted source", "E-ACQUISITION-SOURCE-CHANGED")
             return
         target = self.root / f"chapters/{k}.txt"
@@ -647,7 +649,9 @@ class Run:
             "format_version": FORMAT, "run_dir": str(self.root), "expected_entries": len(self.entries),
             "accepted_entries": len(accepted), "missing_entries": [k for k in self.entries if k not in accepted],
             "last_accepted_at": timestamp(latest) if latest is not None else None,
-            "acquisition": "ENTRIES_ACQUIRED" if len(accepted) == len(self.entries) else state.get("reason", "PARTIAL"),
+            "acquisition": state["reason"] if state.get("reason") == "SOURCE_CHANGED" else (
+                "ENTRIES_ACQUIRED" if len(accepted) == len(self.entries) else state.get("reason", "PARTIAL")
+            ),
             "retry_not_before_ms": state.get("retry_not_before_ms"),
             "eta_seconds": None,
             "coverage": "NOT_CHECKED", "native_freeze": "NOT_RUN", "research": "NOT_RUN",
@@ -842,6 +846,371 @@ class Run:
         return status
 
 
+def safe_filename(ordinal: int, title: str, chapter_key: str) -> str:
+    cleaned = re.sub(r'[<>:"/\\|?*\x00-\x1f]', " ", unicodedata.normalize("NFC", title))
+    cleaned = re.sub(r"\s+", " ", cleaned).strip(" .")
+    # Preserve original title in the manifest; bound filename bytes, not chars.
+    while len(cleaned.encode("utf-8")) > 160:
+        cleaned = cleaned[:-1]
+    suffix = hashlib.sha256(chapter_key.encode()).hexdigest()[:10]
+    return f"{ordinal:06d}__{cleaned or 'untitled'}__{suffix}.txt"
+
+
+def sample_plan(cat: dict) -> dict:
+    chapters = [c["key"] for c in cat["chapters"] if c["role"] == "MAIN"]
+    if not chapters:
+        chapters = [c["key"] for c in cat["chapters"]]
+    selected = set(chapters if len(chapters) <= 13 else (chapters[0], chapters[len(chapters) // 2], chapters[-1]))
+    catalog_hash = object_digest(cat)
+    if len(chapters) > 13:
+        for i in range(5):
+            group = chapters[len(chapters) * i // 5:len(chapters) * (i + 1) // 5]
+            candidates = sorted(group, key=lambda k: object_digest([catalog_hash, i, k]))
+            selected.update([k for k in candidates if k not in selected][:2])
+    return {
+        "format_version": FORMAT, "catalog_sha256": catalog_hash,
+        "method": "endpoints-plus-five-strata-v1",
+        "chapter_keys": [k for k in chapters if k in selected],
+        "lead_metadata_consumed": False,
+    }
+
+
+def chapter_view(run: Run) -> tuple[dict, dict[str, bytes]]:
+    accepted = run.accepted()
+    rows, payloads = [], {}
+    for ordinal, ch in enumerate(run.cat["chapters"], 1):
+        if any(k not in accepted for k in ch["entry_keys"]):
+            continue
+        title = ch["title"] or accepted[ch["entry_keys"][0]]["title"]
+        pages, spans = [], []
+        cursor = len(title) + 2
+        for k in ch["entry_keys"]:
+            data = checked_ref(accepted[k]["derived"], run.root, run.limits["max_response_bytes"] * 2)[1]
+            body = data.decode("utf-8").partition("\n\n")[2].rstrip("\n")
+            pages.append(body)
+            spans.append({"entry": k, "body_start_char": cursor, "body_end_char": cursor + len(body)})
+            cursor += len(body) + 2
+        body = "\n\n".join(pages)
+        data = Run.derived_bytes(title, body)
+        name = safe_filename(ordinal, title, ch["key"])
+        rows.append({
+            "key": ch["key"], "ordinal": ordinal, "title": title, "role": ch["role"],
+            "entry_keys": ch["entry_keys"], "page_spans": spans, "file_name": name,
+            "sha256": digest(data), "byte_length": len(data), "body_sha256": digest(body.encode()),
+        })
+        payloads[ch["key"]] = data
+    view = {
+        "format_version": FORMAT, "binding_sha256": object_digest(run.binding),
+        "accepted": [
+            {"entry": k, "record_sha256": digest(read_bytes(run.root / f"accepted/{k}.json"))}
+            for k in run.entries if k in accepted
+        ],
+        "chapters": rows,
+    }
+    return view, payloads
+
+
+def anomaly_scan(view: dict, payloads: dict[str, bytes]) -> tuple[list[dict], list[list[str]]]:
+    signals = []
+    duplicates = defaultdict(list)
+    paragraph_owners = defaultdict(set)
+    def signal(code, chapter, details):
+        item = {"code": code, "chapter": chapter, "details": details}
+        signals.append({"signal_id": object_digest(item), **item})
+    sizes = []
+    for row in view["chapters"]:
+        body = payloads[row["key"]].decode().partition("\n\n")[2].strip()
+        sizes.append(len(body))
+        normalized_body = "".join(unicodedata.normalize("NFC", body).split())
+        duplicates[digest(normalized_body.encode())].append(row["key"])
+        if len(body) < 200:
+            signal("SHORT_CHAPTER", row["key"], {"chars": len(body)})
+        for token in ("\ufffd", "**", "本章未完", "下一页继续", "请关闭广告", "验证码"):
+            if token in body:
+                signal("TEXT_ANOMALY", row["key"], {"token": token, "occurrences": body.count(token)})
+        # Long repeated paragraphs flag near-duplicate chapters without inventing
+        # an accuracy rate. This is a diagnostic, not a completeness proof.
+        for p in body.splitlines():
+            normalized = "".join(p.split())
+            if len(normalized) >= 128:
+                paragraph_owners[digest(normalized.encode())].add(row["key"])
+    if sizes:
+        median = sorted(sizes)[len(sizes) // 2]
+        for row, size in zip(view["chapters"], sizes):
+            if size > max(10_000, median * 5) or size * 5 < median:
+                signal("LENGTH_OUTLIER", row["key"], {"chars": size, "median_chars": median})
+    for paragraph_hash, owners in sorted(paragraph_owners.items()):
+        if len(owners) > 1:
+            for owner in sorted(owners):
+                signal("REPEATED_LONG_PARAGRAPH", owner, {"paragraph_sha256": paragraph_hash, "chapters": sorted(owners)})
+    return signals, [keys for keys in duplicates.values() if len(keys) > 1]
+
+
+def review_template(run: Run) -> dict:
+    view, payloads = chapter_view(run)
+    plan = sample_plan(run.cat)
+    anomalies, _ = anomaly_scan(view, payloads)
+    blank = lambda: {"status": "UNRESOLVED", "reason": "Not reviewed.", "evidence": []}
+    return {
+        "format_version": FORMAT, "view_sha256": object_digest(view),
+        "sample_plan_sha256": object_digest(plan),
+        "reviewer": "UNASSIGNED", "reviewed_at": "NOT_REVIEWED",
+        "samples": {k: blank() for k in plan["chapter_keys"]},
+        "anomalies": {s["signal_id"]: blank() for s in anomalies},
+        "limitations": "No independent fidelity review has been completed.",
+    }
+
+
+def validate_review(review: dict, run: Run, view: dict, anomalies: list[dict], base: Path):
+    fields(review, {
+        "format_version", "view_sha256", "sample_plan_sha256", "reviewer", "reviewed_at",
+        "samples", "anomalies", "limitations",
+    }, label="quality review")
+    if review["format_version"] != FORMAT or review["view_sha256"] != object_digest(view) or review["sample_plan_sha256"] != object_digest(sample_plan(run.cat)):
+        fail("quality review belongs to different source bytes or sample plan", "E-ACQUISITION-REVIEW-BIND")
+    string(review["reviewer"], "reviewer")
+    string(review["limitations"], "quality limitations")
+    try:
+        dt = datetime.fromisoformat(review["reviewed_at"].replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            raise ValueError("timezone missing")
+    except (AttributeError, ValueError):
+        fail("quality review requires an actual timestamp")
+    fields(review["samples"], set(sample_plan(run.cat)["chapter_keys"]), label="sample judgments")
+    fields(review["anomalies"], {s["signal_id"] for s in anomalies}, label="anomaly judgments")
+    for item in [*review["samples"].values(), *review["anomalies"].values()]:
+        verdict(item, base)
+    if review["reviewer"] == "UNASSIGNED":
+        fail("quality review must name the host reviewer")
+
+
+def verify(run: Run, review_path: Path | None = None, *, persist: bool = True) -> dict:
+    """Recompute physical checks; semantic judgments stay explicit host claims."""
+    view, payloads = chapter_view(run)
+    plan = sample_plan(run.cat)
+    anomalies, duplicates = anomaly_scan(view, payloads)
+    missing = [k for k in run.entries if k not in {r["entry"] for r in view["accepted"]}]
+    checks = {name: a["status"] for name, a in run.cat["assessments"].items()}
+    checks["entry_coverage"] = "UNRESOLVED" if missing else "PASS"
+    checks["duplicate_bodies"] = "FAIL" if duplicates else "PASS"
+    checks["explicit_chapter_titles"] = "PASS" if all(c["title"] is not None for c in run.cat["chapters"]) else "UNRESOLVED"
+    checks["logical_chapter_coverage"] = "PASS" if len(view["chapters"]) == len(run.cat["chapters"]) else "UNRESOLVED"
+    changed_entries = [
+        k for k in run.entries
+        if len({a["raw"]["sha256"] for a in run.attempts(k) if a["result"] == "FETCHED"}) > 1
+    ]
+    checks["source_consistency"] = "FAIL" if changed_entries else "PASS"
+    quality = "UNRESOLVED"
+    review = None
+    if review_path is not None:
+        review = read_json(review_path)
+        validate_review(review, run, view, anomalies, review_path.parent)
+        judgments = [*review["samples"].values(), *review["anomalies"].values()]
+        quality = "FAIL" if any(v["status"] == "FAIL" for v in judgments) else (
+            "PASS" if all(v["status"] == "PASS" for v in judgments) else "UNRESOLVED"
+        )
+    checks["fidelity"] = quality
+    overall = "FAIL" if "FAIL" in checks.values() else "PASS" if set(checks.values()) == {"PASS"} else "UNRESOLVED"
+    result = {
+        "format_version": FORMAT, "view_sha256": object_digest(view),
+        "sample_plan_sha256": object_digest(plan), "checks": checks, "result": overall,
+        "missing_entries": missing, "changed_entries": changed_entries, "duplicate_bodies": duplicates, "anomalies": anomalies,
+        "sample_denominator": len(plan["chapter_keys"]),
+        "quality_review_sha256": object_digest(review) if review is not None else None,
+        "quality_claim": "HOST_REVIEWED" if quality == "PASS" else "NOT_ESTABLISHED",
+        "limits": "Structural replay and sampled host review do not prove semantic accuracy or whole-work completeness independently.",
+    }
+    if persist:
+        put_json(run.root / "quality/sample-plan.json", plan)
+        put_json(run.root / f"quality/verification-history/{object_digest(result).split(':')[1]}.json", result)
+        put_json(run.root / "coverage-report.json", result, mutable=True)
+    return result
+
+
+def comparison_text(text: str) -> str:
+    return " ".join(unicodedata.normalize("NFC", text).split())
+
+
+def edit_distance(a: str, b: str, *, max_cells: int = 20_000_000) -> int | None:
+    if a == b:
+        return 0
+    prefix = 0
+    for x, y in zip(a, b):
+        if x != y:
+            break
+        prefix += 1
+    a, b = a[prefix:], b[prefix:]
+    suffix = 0
+    for x, y in zip(reversed(a), reversed(b)):
+        if x != y:
+            break
+        suffix += 1
+    if suffix:
+        a, b = a[:-suffix], b[:-suffix]
+    if len(a) * len(b) > max_cells:
+        return None
+    if len(b) > len(a):
+        a, b = b, a
+    previous = list(range(len(b) + 1))
+    for i, x in enumerate(a, 1):
+        current = [i]
+        for j, y in enumerate(b, 1):
+            current.append(min(current[-1] + 1, previous[j] + 1, previous[j - 1] + (x != y)))
+        previous = current
+    return previous[-1]
+
+
+def compare_sources(left: Run, right: Run, alignment_path: Path | None = None) -> dict:
+    lv, lp = chapter_view(left)
+    rv, rp = chapter_view(right)
+    if left.cfg["work"] != right.cfg["work"]:
+        fail("source comparison requires the same work identity")
+    titles = defaultdict(list)
+    for row in rv["chapters"]:
+        titles[comparison_text(row["title"])].append(row["key"])
+    proposals = [
+        {"left": row["key"], "right_candidates": titles[comparison_text(row["title"])]}
+        for row in lv["chapters"]
+    ]
+    rows, used_left, used_right = [], set(), set()
+    if alignment_path:
+        alignment = read_json(alignment_path)
+        fields(alignment, {"format_version", "left_view_sha256", "right_view_sha256", "groups"}, label="alignment")
+        if alignment["format_version"] != FORMAT or alignment["left_view_sha256"] != object_digest(lv) or alignment["right_view_sha256"] != object_digest(rv):
+            fail("alignment source hashes differ", "E-ACQUISITION-REVIEW-BIND")
+        if not isinstance(alignment["groups"], list):
+            fail("alignment groups must be a list")
+        left_order = {r["key"]: i for i, r in enumerate(lv["chapters"])}
+        right_order = {r["key"]: i for i, r in enumerate(rv["chapters"])}
+        for group in alignment["groups"]:
+            fields(group, {"left", "right", "assessment"}, label="alignment group")
+            verdict(group["assessment"], alignment_path.parent)
+            if group["assessment"]["status"] != "PASS":
+                continue
+            for side, payloads, used, order in ((group["left"], lp, used_left, left_order), (group["right"], rp, used_right, right_order)):
+                if not isinstance(side, list) or not side or any(k not in payloads for k in side):
+                    fail("alignment contains unknown or unavailable chapters")
+                if len(set(side)) != len(side) or used.intersection(side) or sorted(side, key=order.get) != side:
+                    fail("alignment overlaps or changes chapter order")
+                used.update(side)
+            a = comparison_text("\n\n".join(lp[k].decode().partition("\n\n")[2] for k in group["left"]))
+            b = comparison_text("\n\n".join(rp[k].decode().partition("\n\n")[2] for k in group["right"]))
+            distance = edit_distance(a, b)
+            rows.append({
+                "left": group["left"], "right": group["right"], "left_chars": len(a), "right_chars": len(b),
+                "edit_distance": distance, "difference_rate": None if distance is None else {"numerator": distance, "denominator": max(len(a), len(b), 1)},
+                "status": "COMPUTED" if distance is not None else "COMPARISON_BUDGET_EXCEEDED",
+            })
+    return {
+        "format_version": FORMAT, "left_view_sha256": object_digest(lv), "right_view_sha256": object_digest(rv),
+        "metric": "NFC-whitespace-Levenshtein-difference-v1", "is_error_rate": False,
+        "title_proposals": proposals, "aligned_groups": rows,
+        "unaligned_left": [k for k in lp if k not in used_left],
+        "unaligned_right": [k for k in rp if k not in used_right],
+        "limitations": "Matching mirrors may share a damaged source; alignment and fidelity require independent review.",
+    }
+
+
+def copy_review(review: dict, base: Path, destination: Path) -> dict:
+    copied = json.loads(json.dumps(review))
+    for item in [*copied["samples"].values(), *copied["anomalies"].values()]:
+        for i, reference in enumerate(item["evidence"]):
+            _, data = checked_ref(reference, base)
+            name = digest(data).split(":")[1] + ".bin"
+            put(destination / "evidence" / name, data)
+            item["evidence"][i] = {"path": "evidence/" + name, "sha256": digest(data)}
+    return copied
+
+
+def tree_manifest(root: Path, *, omit: set[str] = frozenset()) -> list[dict]:
+    files = []
+    for p in sorted(root.rglob("*")):
+        no_symlinks(p)
+        if p.is_file() and p.relative_to(root).as_posix() not in omit:
+            data = read_bytes(p, MAX_METADATA_BYTES)
+            files.append({"path": p.relative_to(root).as_posix(), "sha256": digest(data), "byte_length": len(data)})
+    return files
+
+
+def seal(run: Run, output: Path, review_path: Path) -> Path:
+    output = no_symlinks(output).resolve()
+    if output == run.root or run.root in output.parents:
+        fail("sealed output must be outside the acquisition run")
+    with _exclusive_work_dir(run.root):
+        report = verify(run, review_path)
+        if report["result"] != "PASS":
+            fail("coverage or fidelity has unresolved/failed checks", "E-ACQUISITION-NOT-READY", pending=True)
+        view, payloads = chapter_view(run)
+        output.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix=".source-staging-", dir=output) as temporary:
+            staging = Path(temporary)
+            for row in view["chapters"]:
+                put(staging / "chapters" / row["file_name"], payloads[row["key"]])
+            # Snapshot only normal files. The host run and original full text
+            # remain untouched; no hard links to active acquisition files.
+            for item in tree_manifest(run.root):
+                if item["path"] == ".novel-work-dir.lock":
+                    continue
+                data = read_bytes(child(run.root, item["path"]))
+                put(child(staging / "provenance/run", item["path"]), data)
+            copied = copy_review(read_json(review_path), review_path.parent, staging / "provenance/quality")
+            copied_review_path = staging / "provenance/quality/review.json"
+            put_json(copied_review_path, copied)
+            # Recompute against the frozen copy, with no dependence on the
+            # original review/evidence or mutable status files.
+            frozen_run = Run(staging / "provenance/run")
+            frozen_report = verify(frozen_run, copied_review_path, persist=False)
+            if frozen_report["result"] != "PASS" or frozen_report["view_sha256"] != report["view_sha256"]:
+                fail("source changed during seal", "E-ACQUISITION-INTEGRITY")
+            native = DirectoryNovelAdapter({"path": str(staging / "chapters"), "title": run.cfg["work"]["title"]}).discover()
+            if [c.title for c in native.chapters] != [Path(row["file_name"]).stem for row in view["chapters"]]:
+                fail("native adapter reading order differs", "E-ACQUISITION-ORDER")
+            put_json(staging / "coverage-report.json", frozen_report)
+            put_json(staging / "chapter-view.json", view)
+            manifest = {
+                "format_version": FORMAT, "work": run.cfg["work"], "source": run.cfg["source"],
+                "view_sha256": object_digest(view),
+                "sealed_at": timestamp(run.clock.now_ms()),
+                "files": tree_manifest(staging),
+            }
+            data = canonical_dumps(manifest) + b"\n"
+            name = digest(data).split(":")[1]
+            put(staging / "source-manifest.json", data)
+            target = output / name
+            if target.exists():
+                validate_sealed(target)
+            else:
+                os.rename(staging, target)
+                sync_directory(output)
+            validate_sealed(target)
+            return target
+
+
+def validate_sealed(path: Path) -> tuple[dict, Run]:
+    path = no_symlinks(path).resolve()
+    data = read_bytes(path / "source-manifest.json")
+    manifest = read_json(path / "source-manifest.json")
+    fields(manifest, {"format_version", "work", "source", "view_sha256", "sealed_at", "files"}, label="source manifest")
+    if manifest["format_version"] != FORMAT or path.name != digest(data).split(":")[1]:
+        fail("sealed source identity mismatch", "E-ACQUISITION-INTEGRITY")
+    observed = tree_manifest(path, omit={"source-manifest.json"})
+    if observed != manifest["files"]:
+        fail("sealed files differ from manifest", "E-ACQUISITION-INTEGRITY")
+    run = Run(path / "provenance/run")
+    if manifest["work"] != run.cfg["work"] or manifest["source"] != run.cfg["source"]:
+        fail("sealed source identity differs from acquisition", "E-ACQUISITION-INTEGRITY")
+    report = verify(run, path / "provenance/quality/review.json", persist=False)
+    if report["result"] != "PASS" or report != read_json(path / "coverage-report.json"):
+        fail("sealed quality/coverage cannot be replayed", "E-ACQUISITION-INTEGRITY")
+    view, payloads = chapter_view(run)
+    if view != read_json(path / "chapter-view.json") or object_digest(view) != manifest["view_sha256"]:
+        fail("sealed chapter manifest differs", "E-ACQUISITION-INTEGRITY")
+    for row in view["chapters"]:
+        if read_bytes(path / "chapters" / row["file_name"]) != payloads[row["key"]]:
+            fail("sealed chapter differs from replayed derivation", "E-ACQUISITION-INTEGRITY")
+    return manifest, run
+
+
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description=__doc__)
     sub = result.add_subparsers(dest="command", required=True)
@@ -852,6 +1221,18 @@ def parser() -> argparse.ArgumentParser:
             cmd.add_argument("input", type=Path)
     cmd = sub.add_parser("status")
     cmd.add_argument("run", type=Path)
+    for name in ("verify", "review-template", "seal"):
+        cmd = sub.add_parser(name)
+        cmd.add_argument("run", type=Path)
+        if name in {"verify", "seal"}:
+            cmd.add_argument("--review", type=Path, required=name == "seal")
+        if name in {"review-template", "seal"}:
+            cmd.add_argument("--output", type=Path, required=True)
+    cmd = sub.add_parser("compare")
+    cmd.add_argument("left", type=Path)
+    cmd.add_argument("right", type=Path)
+    cmd.add_argument("--alignment", type=Path)
+    cmd.add_argument("--output", type=Path, required=True)
     return result
 
 
@@ -864,11 +1245,27 @@ def main(argv=None) -> int:
             result = {"status": "CONFIG_VALID", "expected_entries": len(cat["entries"]), "network_requested": False}
         elif args.command == "status":
             result = Run(args.run).status()
+        elif args.command == "verify":
+            run = Run(args.run)
+            with _exclusive_work_dir(run.root):
+                result = verify(run, args.review)
+        elif args.command == "review-template":
+            run = Run(args.run)
+            with _exclusive_work_dir(run.root):
+                result = review_template(run)
+                put_json(args.output, result)
+        elif args.command == "compare":
+            result = compare_sources(Run(args.left), Run(args.right), args.alignment)
+            put_json(args.output, result)
+        elif args.command == "seal":
+            result = {"status": "LOCAL_SOURCE_SEALED", "path": str(seal(Run(args.run), args.output, args.review))}
         else:
             run = Run.initialize(args.config)
             result = run.import_local(args.input) if args.command == "import-local" else run.acquire()
         print(json.dumps(result, ensure_ascii=False, indent=2))
         if args.command in {"acquire", "import-local"} and result["missing_entries"]:
+            return 4
+        if args.command == "verify" and result["result"] != "PASS":
             return 4
         return 0
     except (ValidationError, OSError, ValueError) as exc:

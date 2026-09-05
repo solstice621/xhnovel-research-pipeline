@@ -245,6 +245,8 @@ def test_t18_changed_import_preserves_both_raw_versions(tmp_path):
         run.import_local(inputs)
     assert len(list((run.root / "raw/p1").glob("*.bin"))) == 2
     assert run.status()["accepted_entries"] == 1
+    assert run.status()["acquisition"] == "SOURCE_CHANGED"
+    assert acq.verify(run)["checks"]["source_consistency"] == "FAIL"
 
 
 def test_t19_journal_tail_is_audited_and_rebuilt(tmp_path):
@@ -318,3 +320,195 @@ def test_t37_c2_is_never_implicitly_activated(tmp_path):
     run = acq.Run.initialize(config)
     with pytest.raises(acq.AcquisitionError, match="BROWSER"):
         run.acquire(send=lambda *_: pytest.fail("C2 must not silently use C1"))
+
+
+def reviewed(run, tmp_path):
+    value = acq.review_template(run)
+    value["reviewer"] = "synthetic-fixture-reviewer"
+    value["reviewed_at"] = "2026-09-05T12:00:00Z"
+    value["limitations"] = "Constructed synthetic fixture; not a real novel evaluation."
+    evidence = tmp_path / "review-basis.txt"
+    evidence.write_text("The test fixture intentionally contains complete, short, distinct chapters.", encoding="utf-8")
+    for assessment in [*value["samples"].values(), *value["anomalies"].values()]:
+        assessment.update(status="PASS", reason="Explicit synthetic fixture construction.", evidence=[acq.ref(evidence)])
+    return write_json(tmp_path / "review.json", value)
+
+
+def test_t11_duplicate_body_cannot_be_approved_by_review(tmp_path):
+    config, inputs = fixture_config(tmp_path, count=4)
+    for p in inputs.iterdir():
+        title = p.read_text().partition("\n")[0]
+        p.write_text(title + "\n\nIdentical body copied to every chapter.\n")
+    run = acq.Run.initialize(config)
+    run.import_local(inputs)
+    report = acq.verify(run, reviewed(run, tmp_path))
+    assert report["result"] == "FAIL"
+    assert report["checks"]["duplicate_bodies"] == "FAIL"
+    with pytest.raises(acq.AcquisitionError, match="NOT-READY"):
+        acq.seal(run, tmp_path / "sealed", tmp_path / "review.json")
+
+
+@pytest.mark.parametrize("missing", ["0001.txt", "0002.txt", "0003.txt"])
+def test_t12_t23_missing_endpoints_or_middle_block_seal(tmp_path, missing):
+    config, inputs = fixture_config(tmp_path)
+    (inputs / missing).unlink()
+    run = acq.Run.initialize(config)
+    run.import_local(inputs)
+    report = acq.verify(run, reviewed(run, tmp_path))
+    assert report["result"] == "UNRESOLVED"
+    assert report["checks"]["entry_coverage"] == "UNRESOLVED"
+    with pytest.raises(acq.AcquisitionError, match="NOT-READY"):
+        acq.seal(run, tmp_path / "sealed", tmp_path / "review.json")
+
+
+def test_t13_catalog_guessed_from_ids_cannot_self_promote(tmp_path):
+    config, inputs = fixture_config(tmp_path, assessment="UNRESOLVED")
+    run = acq.Run.initialize(config)
+    run.import_local(inputs)
+    assert acq.verify(run, reviewed(run, tmp_path))["result"] == "UNRESOLVED"
+
+
+def test_t14_pages_are_assembled_only_when_all_are_present(tmp_path):
+    config, inputs = fixture_config(tmp_path, count=2)
+    def group(cat):
+        cat["chapters"] = [{"key": "c1", "title": "第1章 合成1", "entry_keys": ["p1", "p2"], "role": "MAIN"}]
+    mutate_catalog(config, group)
+    second = (inputs / "0002.txt").read_bytes()
+    (inputs / "0002.txt").unlink()
+    run = acq.Run.initialize(config)
+    run.import_local(inputs)
+    assert acq.chapter_view(run)[0]["chapters"] == []
+    (inputs / "0002.txt").write_bytes(second)
+    run.import_local(inputs)
+    view, payloads = acq.chapter_view(run)
+    assert len(view["chapters"]) == 1
+    text = payloads["c1"].decode()
+    assert "第1件物品" in text and "第2件物品" in text
+    for page in view["chapters"][0]["page_spans"]:
+        assert text[page["body_start_char"]:page["body_end_char"]]
+
+
+def test_t16_duplicate_titles_remain_multiple_alignment_proposals(tmp_path):
+    left_root, right_root = tmp_path / "left", tmp_path / "right"
+    left_root.mkdir()
+    right_root.mkdir()
+    lc, li = fixture_config(left_root, count=2)
+    rc, ri = fixture_config(right_root, count=2)
+    for config, inputs in ((lc, li), (rc, ri)):
+        def rename(cat):
+            for e in cat["entries"]:
+                e["expected_title"] = "相同标题"
+            for c in cat["chapters"]:
+                c["title"] = "相同标题"
+        mutate_catalog(config, rename)
+        for p in inputs.iterdir():
+            p.write_text("相同标题\n" + p.read_text().partition("\n")[2])
+    left, right = acq.Run.initialize(lc), acq.Run.initialize(rc)
+    left.import_local(li)
+    right.import_local(ri)
+    report = acq.compare_sources(left, right)
+    assert report["title_proposals"][0]["right_candidates"] == ["c1", "c2"]
+    assert report["aligned_groups"] == []
+    assert report["unaligned_left"] == ["c1", "c2"]
+
+
+def test_t17_t29_shared_bad_text_is_not_automatically_fidelity_pass(tmp_path):
+    config, inputs = fixture_config(tmp_path, count=1)
+    p = inputs / "0001.txt"
+    p.write_text(p.read_text() + "\n本章未完 **")
+    run = acq.Run.initialize(config)
+    run.import_local(inputs)
+    report = acq.verify(run)
+    assert report["checks"]["fidelity"] == "UNRESOLVED"
+    assert any(a["details"].get("token") == "**" for a in report["anomalies"])
+
+
+def test_t22_t24_seal_replays_and_does_not_depend_on_original_run(tmp_path):
+    config, inputs = fixture_config(tmp_path)
+    run = acq.Run.initialize(config)
+    run.import_local(inputs)
+    review = reviewed(run, tmp_path)
+    sealed = acq.seal(run, tmp_path / "sealed", review)
+    manifest, _ = acq.validate_sealed(sealed)
+    assert manifest["view_sha256"] == acq.object_digest(acq.chapter_view(run)[0])
+    native = acq.DirectoryNovelAdapter({"path": str(sealed / "chapters")}).discover()
+    assert [ch.declared_number for ch in native.chapters] == [1, 2, 3]
+    (run.root / "chapters/p1.txt").write_text("changed original")
+    acq.validate_sealed(sealed)
+    target = next((sealed / "chapters").glob("*.txt"))
+    target.write_text(target.read_text() + "changed sealed")
+    with pytest.raises(acq.AcquisitionError, match="sealed files differ"):
+        acq.validate_sealed(sealed)
+
+
+def test_t24_review_binds_actual_accepted_bytes(tmp_path):
+    config, inputs = fixture_config(tmp_path)
+    run = acq.Run.initialize(config)
+    second = (inputs / "0002.txt").read_bytes()
+    (inputs / "0002.txt").unlink()
+    run.import_local(inputs)
+    stale = reviewed(run, tmp_path)
+    (inputs / "0002.txt").write_bytes(second)
+    run.import_local(inputs)
+    with pytest.raises(acq.AcquisitionError, match="REVIEW-BIND"):
+        acq.verify(run, stale)
+
+
+def test_t27_sampling_cannot_consume_lead_metadata(tmp_path):
+    config, _ = fixture_config(tmp_path, count=50)
+    cat = acq.read_json(Path(acq.read_json(config)["catalog"]["path"]))
+    plan = acq.sample_plan(cat)
+    assert len(plan["chapter_keys"]) <= 13
+    assert len(plan["chapter_keys"]) == len(set(plan["chapter_keys"]))
+    assert {"c1", "c26", "c50"} <= set(plan["chapter_keys"])
+    assert plan["lead_metadata_consumed"] is False
+    cfg = acq.read_json(config)
+    cfg["lead_hints"] = ["第1章", "evil instruction"]
+    write_json(config, cfg)
+    with pytest.raises(acq.ValidationError, match="invalid field set"):
+        acq.Run.initialize(config)
+
+
+def test_t28_difference_metric_is_not_an_error_rate(tmp_path):
+    lroot, rroot = tmp_path / "left", tmp_path / "right"
+    lroot.mkdir()
+    rroot.mkdir()
+    lc, li = fixture_config(lroot, count=1)
+    rc, ri = fixture_config(rroot, count=1)
+    (ri / "0001.txt").write_text((ri / "0001.txt").read_text().replace("走向", "离开"))
+    left, right = acq.Run.initialize(lc), acq.Run.initialize(rc)
+    left.import_local(li)
+    right.import_local(ri)
+    evidence = lroot / "fixture-basis.txt"
+    alignment = {
+        "format_version": acq.FORMAT,
+        "left_view_sha256": acq.object_digest(acq.chapter_view(left)[0]),
+        "right_view_sha256": acq.object_digest(acq.chapter_view(right)[0]),
+        "groups": [{
+            "left": ["c1"], "right": ["c1"],
+            "assessment": {"status": "PASS", "reason": "Same synthetic chapter.", "evidence": [acq.ref(evidence)]},
+        }],
+    }
+    report = acq.compare_sources(left, right, write_json(tmp_path / "alignment.json", alignment))
+    assert report["is_error_rate"] is False
+    assert report["aligned_groups"][0]["edit_distance"] == 2
+    assert report["unaligned_left"] == []
+
+
+def test_edit_distance_handles_unicode_and_bounded_work():
+    assert acq.edit_distance("甲乙丙", "甲丁丙") == 1
+    assert acq.edit_distance("", "ab") == 2
+    assert acq.edit_distance("abc", "abc") == 0
+    assert acq.edit_distance("abcdef", "uvwxyz", max_cells=2) is None
+
+
+def test_review_requires_evidence_not_just_a_pass_string(tmp_path):
+    config, inputs = fixture_config(tmp_path, count=1)
+    run = acq.Run.initialize(config)
+    run.import_local(inputs)
+    review_path = reviewed(run, tmp_path)
+    value = acq.read_json(review_path)
+    value["samples"]["c1"]["evidence"] = []
+    write_json(review_path, value)
+    with pytest.raises(acq.AcquisitionError, match="evidence"):
+        acq.verify(run, review_path)
