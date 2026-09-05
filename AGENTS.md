@@ -19,9 +19,19 @@ The repository currently has two trust domains:
    - Starts from a concrete source with explicit rights and source-quality declarations.
    - Ingests, freezes, segments, windows, semantically scouts, validates, merges,
      replays, and exports auditable `SceneCandidate` artifacts.
+   - Also supports Profile-based Generic extraction over `NovelTextSnapshot` and
+     `ExtractionUnit` artifacts, with deterministic reduction into `CorpusSnapshot`
+     and source-grounded domain records.
 
 The repository does **not** currently treat search leads as evidence, and it does
 not yet make `MechanismCandidate` objects part of the core evidence contract.
+Manual mechanism research belongs under `docs/mechanisms/`. Keep source material,
+web leads, design hypotheses, and adopted design choices distinguishable; these
+notes do not change native evidence status or introduce compiler record kinds.
+
+Phase -1 precedes planned Scene exploration: host-authored intake, neutral frame,
+and strategy drafts are sealed and compiled into ExplorationPlan and
+ExplorationBrief. Planning records remain outside the evidence Catalog.
 
 Observation research adds a parallel GenericExtractionHandoff path over existing
 generic Profiles. ObservationDefinition, ProfileResolution, WorkLeads, campaigns
@@ -66,6 +76,19 @@ They must not be injected into:
 For Phase 0 v0.1, execution scope is `FULL_WORK`. Do not silently narrow the
 Evidence Compiler to chapters inferred from lead hints.
 
+### Planning inputs must preserve seed isolation
+
+- Phase -1 neutral planning consumes only the sealed `NeutralPlanningInput`.
+  Do not expose intake seeds, the verbatim request, intake identity, search results,
+  or seed-bearing conversation context through alternate inputs.
+- The neutral frame owns the research question, evidence discovery brief, and
+  selection budget. Subsequent strategy may derive exploration seeds and diversity
+  but must not rewrite that frame or inject seeds into the formal Brief.
+- Keep isolation attestations truthful. `HOST_ISOLATED_ATTESTED` records a host
+  attestation, not cryptographic proof; unavailable isolation remains `NOT_PROVEN`.
+- Preserve native sealing, compilation, CAS, and planning-to-Handoff replay.
+  See `docs/PHASE0_EXPLORATION.md` for the contract and the plan Skill for execution.
+
 ### The hard interface is the Novel Spec
 
 Phase 0 must hand the Evidence Compiler an ordinary, valid Novel Spec. It must not
@@ -94,6 +117,10 @@ Do not infer rights from technical accessibility.
 - External semantic execution must continue to require an explicit non-`UNKNOWN`
   rights basis and `may_send_to_external_model=true`.
 - Full-text storage must continue to require `may_store_full_text=true`.
+- Preserve existing standing operator attestations unchanged. When one is present,
+  omitted SourceDeclaration rights are filled from it and explicit rights must
+  match exactly; preserve `E-PHASE0-ATTEST-MISMATCH` on conflict. Do not re-sign or
+  alter an attestation to make a run pass. The source workflow owns reuse steps.
 
 Fail closed when rights, identity, or required artifacts are ambiguous.
 Source-quality official or licensed status is different: `edition_status=UNKNOWN`
@@ -106,10 +133,11 @@ must still be an explicit non-`UNKNOWN` claim such as `FAIR_USE_RESEARCH`.
 
 ### Agent-files is an executor seam, not another pipeline
 
-`agent-files` lets the current host code agent perform semantic Scene Scout judgment.
+`agent-files` lets the current host code agent perform native Scene Scout or
+Generic extraction judgment.
 It does not authorize a second research implementation.
 
-Agent-file answers must still pass the native path:
+Scene agent-file answers must still pass the native path:
 
 ```text
 SceneWindow
@@ -122,6 +150,10 @@ SceneWindow
 → replay
 → SceneCandidate / export
 ```
+
+Generic answers follow the existing ExtractionUnit task, payload/source-span
+validation, deterministic reduction, and corpus replay path. Neither executor
+allows host-authored final corpora to bypass native validation.
 
 Do not add:
 
@@ -167,8 +199,16 @@ Important architecture and operating documents include:
 - `docs/EXPERIMENT_PROTOCOL.md`
 - `docs/AGENT_EXECUTION.md`
 - `docs/AGENT_FILES_EXECUTOR.md`
+- `docs/OBSERVATION_RESEARCH_ARCHITECTURE.md`
+- `docs/OBSERVATION_RESEARCH_WORKFLOW.md`
+- `docs/SOURCE_ACQUISITION_DESIGN.md`
+- `docs/SOURCE_ACQUISITION_WORKFLOW.md`
+- `docs/LOCAL_RESEARCH_LIBRARY_DESIGN.md`
+- `docs/LOCAL_RESEARCH_LIBRARY_USAGE.md`
+- `.agents/skills/xhnovel-plan/SKILL.md`
 - `.agents/skills/xhnovel-explore/SKILL.md`
 - `.agents/skills/xhnovel-agent-files/SKILL.md`
+- `.agents/skills/xhnovel-observe/SKILL.md`
 
 If a task intentionally changes a frozen invariant, update the contract, architecture
 text, implementation, and adversarial tests together. Do not create a prose-only
@@ -218,9 +258,14 @@ Use the existing layer boundaries:
 
 - `src/xhnovel_pipeline/` — deterministic runtime, validators, orchestration, IDs.
 - `contracts/` — machine-readable object contracts.
+- `contracts/host_library/` — host library registration schemas, outside the core Catalog.
 - `policies/` — versioned policy inputs.
 - `profiles/` — versioned semantic prompt/schema profiles.
 - `docs/` — architecture, experiment, and operating design.
+- `docs/mechanisms/` — manual world-system and mechanism research notes.
+- `scripts/source_acquisition.py` — bounded host acquisition, import, review, sealing,
+  and ordinary native Handoff/ingestion integration.
+- `scripts/research_library.py` — host source/product registration, lookup, and replay.
 - `.agents/skills/` — canonical host-agent workflow Skills.
 - `.claude/skills/` — generated Claude Code mirrors.
 - `tests/` — unit, integration, replay, adversarial, and CLI regressions.
@@ -228,6 +273,8 @@ Use the existing layer boundaries:
 
 Prefer extending the layer that already owns a responsibility instead of adding a
 new abstraction layer.
+The host library defaults to `~/Documents/xhnovel-library`; its generated records,
+sources, and native executions remain operational data outside source control.
 
 ## Change discipline
 
@@ -301,10 +348,42 @@ Do not weaken existing closure checks for convenience.
 - EvidenceBundle creation owns deterministic source-quality/triage selection.
 - Scene Scout owns native windows, semantic tasks, evidence validation, merge, and
   replay.
-- `validate all` must remain sufficient to validate a completed core research output
-  in a fresh process.
+- `xhnovel-pipeline validate all` must remain sufficient to validate completed
+  Scene Catalog/CAS outputs in a fresh process.
+- Generic extraction owns its native tasks, exact source support, reduction, and
+  corpus replay. Use `xhnovel-extract validate` for completed Generic work directories;
+  Scene `validate all` does not validate Generic corpora.
+- Planning, Handoffs, execution receipts, campaigns, and library records require
+  their respective native validators. A core output check alone does not establish
+  those outer lineage and completion claims.
 - The API executor and `agent-files` executor are two native executors over the same
   semantic contract, not separate research pipelines.
+
+## Host source acquisition and library boundaries
+
+- Keep acquisition and library orchestration in the existing host tools. They
+  connect to ordinary Scene/Generic Handoffs and native ingestion; they must not
+  introduce alternate semantic tasks, schedulers, or compiler state machines.
+- Acquisition `seal` requires replayed coverage and fidelity checks to pass.
+  Source sealing is distinct from native freezing, semantic execution, and product
+  registration. Preserve unresolved checks and compatible-version recovery.
+- The library's immutable records and verified native dependencies are authoritative;
+  SQLite is a rebuildable metadata projection. `NOT_CHECKED` listings and old PASS
+  records cannot substitute for current source verification or product replay.
+- Chapter search returns `TEXT_MATCH` only. Preserve FULL_WORK scope and keep hits
+  out of neutral requirements, native prompts, and evidence support generation.
+- Register products only from successful, replayable native execution receipts.
+  Preserve the receipt's selected corpus and field-level source support. Registered
+  reports remain `HOST_AUTHORED`; registration does not certify their semantics.
+- Preserve existing frozen P/R/W paths and bindings. Reusing a source for a new
+  research request still requires that request's ordinary Handoff and execution;
+  do not turn a historical result into a new completion claim.
+- Keep chapter sources and original provenance; do not generate full-book TXT as
+  a library feature. Host tools and host library schemas require a trusted checkout
+  and are not core wheel assets.
+
+Use the shared source workflow and library usage documents for command sequences;
+do not duplicate their Skill procedures here.
 
 ## Non-goals unless separately approved
 

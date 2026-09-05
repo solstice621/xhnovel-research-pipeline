@@ -33,7 +33,11 @@ EXAMPLE = ROOT / "examples" / "novel-direct.json"
 
 def _real_flags() -> set[str]:
     """Every long option accepted by the real CLI parsers, harvested from source."""
-    text = (ROOT / "src" / "xhnovel_pipeline" / "cli.py").read_text(encoding="utf-8")
+    # README documents both native CLIs, including the observation subcommands.
+    text = "\n".join(
+        (ROOT / "src" / "xhnovel_pipeline" / name).read_text(encoding="utf-8")
+        for name in ("cli.py", "generic_cli.py", "observation_cli.py")
+    )
     return set(re.findall(r'add_argument\(\s*"(--[a-z0-9-]+)"', text))
 
 
