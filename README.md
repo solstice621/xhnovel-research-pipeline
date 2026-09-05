@@ -111,7 +111,9 @@ The [local research library design](docs/LOCAL_RESEARCH_LIBRARY_DESIGN.md) and
 [implementation plan](docs/LOCAL_RESEARCH_LIBRARY_PLAN.md) describe source reuse, chapter-based storage and search, and a unified entry point
 for native results. The host [library commands](docs/LOCAL_RESEARCH_LIBRARY_USAGE.md)
 register sealed sources, allocate research/work/source/execution directories, and
-replay native results before evidence lookup. Full-book TXT generation is not included.
+replay native results before evidence lookup. [Shared acquisition](docs/SHARED_ACQUISITION_PLAN.md)
+lets a later research task skip a busy source and work on another book, then reuse
+the verified source. Full-book TXT generation is not included.
 
 The [observation research architecture](docs/OBSERVATION_RESEARCH_ARCHITECTURE.md)
 and [build plan](docs/OBSERVATION_RESEARCH_BUILD_PLAN.md) define the workflow:

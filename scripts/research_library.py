@@ -641,6 +641,16 @@ def main(argv=None):
     commands.add_parser("init")
     p = commands.add_parser("new-research")
     p.add_argument("request"); p.add_argument("--key", required=True); p.add_argument("--name", required=True)
+    p = commands.add_parser("shared-acquire")
+    p.add_argument("research_id"); p.add_argument("config"); p.add_argument("--work-ref", required=True)
+    p.add_argument("--input")
+    for name in ("shared-status", "shared-resume", "shared-seal"):
+        p = commands.add_parser(name)
+        p.add_argument("research_id"); p.add_argument("acquisition_id")
+        if name == "shared-resume":
+            p.add_argument("--input")
+        elif name == "shared-seal":
+            p.add_argument("--review", required=True)
     p = commands.add_parser("register-source")
     p.add_argument("sealed"); p.add_argument("--protocol", choices=["SCENE", "GENERIC"], required=True)
     p.add_argument("--handoff", required=True); p.add_argument("--native-root", required=True)
@@ -676,6 +686,16 @@ def main(argv=None):
         library = Library.initialize(root) if command == "init" else Library(root)
         if command == "init":
             result = library.config
+        elif command.startswith("shared-"):
+            from shared_acquisition import SharedAcquisition
+            shared = SharedAcquisition(library, args.pop("research_id"))
+            action = command[7:]
+            if action == "status":
+                result = shared.resume(**args, inspect=True)
+            else:
+                result = getattr(shared, action)(**args)
+            print(json.dumps({"format_version": FORMAT, "command": command, "result": result}, ensure_ascii=False, indent=2))
+            return 4 if result["status"] in {"BUSY_SKIPPED", "PARTIAL", "INITIALIZATION_REQUIRED"} else 0
         elif command.startswith("list-"):
             kinds = {"works": "source", "sources": "source", "research": "research", "executions": "execution", "products": "product", "reports": "report"}
             result = library.list_records(kinds[command[5:]], **args)

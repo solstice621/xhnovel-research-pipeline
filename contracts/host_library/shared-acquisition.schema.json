@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format_version",
+    "library_id",
+    "acquisition_id",
+    "work_ref",
+    "config",
+    "acquisition_script_sha256"
+  ],
+  "properties": {
+    "format_version": {
+      "const": "host-shared-acquisition-v1"
+    },
+    "library_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acquisition_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "work_ref": {
+      "type": "object"
+    },
+    "config": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "acquisition_script_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}
