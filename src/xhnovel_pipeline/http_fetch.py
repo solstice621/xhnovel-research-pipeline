@@ -14,7 +14,6 @@ from .user_agent import USER_AGENT
 
 MAX_BYTES = 2_000_000
 MAX_REDIRECTS = 5
-MAX_RATIO = 50
 DECOMPRESSION_CHUNK_SIZE = 64 * 1024
 
 
@@ -193,22 +192,16 @@ def _maybe_decompress(raw: bytes, enc: str, *, max_bytes: int) -> bytes:
     if enc in {"", "identity"}:
         return raw
     if enc == "gzip":
-        ratio_limit = len(raw) * MAX_RATIO
-        output_limit = min(max_bytes, ratio_limit)
         output = bytearray()
         try:
             with gzip.GzipFile(fileobj=io.BytesIO(raw)) as stream:
                 while True:
-                    remaining = output_limit - len(output)
+                    remaining = max_bytes - len(output)
                     chunk = stream.read(min(DECOMPRESSION_CHUNK_SIZE, remaining + 1))
                     if not chunk:
                         break
                     output.extend(chunk)
-                    if len(output) > output_limit:
-                        if ratio_limit < max_bytes:
-                            raise ValidationError(
-                                "E-BOMB", f"decompression ratio exceeds {MAX_RATIO}:1"
-                            )
+                    if len(output) > max_bytes:
                         raise ValidationError(
                             "E-TOO-LARGE", f"decompressed response over {max_bytes}"
                         )

@@ -105,6 +105,59 @@ def _interrupt_local_ingestion(monkeypatch, adapter_type, spec, work_dir):
     monkeypatch.setattr(adapter_type, "fetch_chapter", original_fetch)
 
 
+def test_successful_ingestion_only_snapshots_initial_and_final_state(tmp_path, monkeypatch):
+    source = tmp_path / "chapters"
+    source.mkdir()
+    for ordinal in range(1, 9):
+        (source / f"{ordinal}.txt").write_text(f"第{ordinal}章\n正文 {ordinal}。", encoding="utf-8")
+    spec = {"source": {"kind": "directory", "path": str(source), "title": "测试小说"}}
+    original_write = novel_ingest._write_checkpoint
+    completed_counts = []
+
+    def count_snapshot(path, state):
+        completed_counts.append(len(state["completed"]))
+        original_write(path, state)
+
+    monkeypatch.setattr(novel_ingest, "_write_checkpoint", count_snapshot)
+    result = run_novel_ingestion(spec, tmp_path / "run", repo_root=repo_root(), now=NOW)
+
+    assert completed_counts == [0, 8]
+    validate_novel_ingestion(result["catalog"], result["store"])
+
+
+def test_abrupt_interruption_recovers_completed_markers_without_refetch(tmp_path, monkeypatch):
+    source = tmp_path / "chapters"
+    source.mkdir()
+    for ordinal in range(1, 4):
+        (source / f"{ordinal}.txt").write_text(f"第{ordinal}章\n正文 {ordinal}。", encoding="utf-8")
+    spec = {"source": {"kind": "directory", "path": str(source), "title": "测试小说"}}
+    work_dir = tmp_path / "run"
+    original_marker = novel_ingest._write_completion_marker
+    original_fetch = DirectoryNovelAdapter.fetch_chapter
+    fetched = []
+
+    def record_fetch(adapter, chapter):
+        fetched.append(chapter.chapter_key)
+        return original_fetch(adapter, chapter)
+
+    def interrupt_after_marker(*args):
+        original_marker(*args)
+        if len(fetched) == 2:
+            raise KeyboardInterrupt("process stopped before checkpoint")
+
+    monkeypatch.setattr(DirectoryNovelAdapter, "fetch_chapter", record_fetch)
+    with monkeypatch.context() as patch:
+        patch.setattr(novel_ingest, "_write_completion_marker", interrupt_after_marker)
+        with pytest.raises(KeyboardInterrupt, match="process stopped"):
+            run_novel_ingestion(spec, work_dir, repo_root=repo_root(), now=NOW)
+    assert json.loads((work_dir / "ingestion-checkpoint.json").read_text())["completed"] == {}
+
+    result = run_novel_ingestion(spec, work_dir, repo_root=repo_root(), now=NOW)
+
+    assert len(fetched) == len(set(fetched)) == 3
+    validate_novel_ingestion(result["catalog"], result["store"])
+
+
 def test_ingest_text_materializes_auditable_chapters_and_detects_duplicate(tmp_path):
     source = tmp_path / "chapters"
     source.mkdir()

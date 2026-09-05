@@ -2,9 +2,7 @@ from __future__ import annotations
 
 import copy
 import json
-import os
 import pathlib
-import tempfile
 from concurrent.futures import Future, ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from typing import Any, Protocol
@@ -12,7 +10,9 @@ from typing import Any, Protocol
 from jsonschema import Draft202012Validator
 
 from .canonical import canonical_dumps
+from .catalog import Catalog, indexed_catalog
 from .errors import PipelineError, ValidationError
+from .file_io import atomic_write, write_immutable
 from .generic_agent_files import (
     GENERIC_AGENT_FILES_EXECUTOR_KIND,
     GenericAgentResponsePending,
@@ -45,6 +45,7 @@ from .novel_assessment import declared_rights, declared_source_quality, source_q
 from .novel_ingest import run_novel_ingestion, validate_novel_ingestion
 from .paths import repo_root
 from .runtime import repository_commit
+from .schema import schema_validation_session
 from .store import ArtifactStore
 
 GENERIC_CORE_VERSION = "generic-extraction/v0.1"
@@ -190,30 +191,11 @@ def _logical_result_hash(records: list[dict[str, Any]], hash_field: str) -> str:
 
 
 def _atomic_write(path: pathlib.Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    fd, temp_name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
-    try:
-        with os.fdopen(fd, "wb") as handle:
-            handle.write(data)
-            handle.flush()
-            os.fsync(handle.fileno())
-        os.replace(temp_name, path)
-    except Exception:
-        try:
-            os.unlink(temp_name)
-        except OSError:
-            pass
-        raise
+    atomic_write(path, data)
 
 
 def _write_immutable(path: pathlib.Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        with path.open("xb") as handle:
-            handle.write(data)
-    except FileExistsError:
-        if not path.is_file() or path.read_bytes() != data:
-            raise ValidationError("E-IMMUTABLE-OUTPUT", f"refusing to overwrite {path}")
+    write_immutable(path, data)
 
 
 def _schema_path(root: pathlib.Path, kind: str) -> pathlib.Path:
@@ -282,6 +264,7 @@ def _source_spec_from_ingestion(
     return value
 
 
+@indexed_catalog
 def build_novel_text_snapshot(
     catalog: Any,
     store: ArtifactStore,
@@ -528,6 +511,8 @@ def _generic_engine_source_hash(root: pathlib.Path) -> str:
         source_root = pathlib.Path(__file__).resolve().parent
     names = (
         "canonical.py",
+        "catalog.py",
+        "file_io.py",
         "generic_agent_files.py",
         "generic_extraction.py",
         "generic_profile.py",
@@ -536,6 +521,7 @@ def _generic_engine_source_hash(root: pathlib.Path) -> str:
         "novel_assessment.py",
         "novel_ingest.py",
         "parse.py",
+        "schema.py",
         "store.py",
     )
     files: list[dict[str, str]] = []
@@ -1086,8 +1072,6 @@ def _execute_unit(
             schema_name=profile.schema_name,
             schema=schema,
         )
-    except GenericAgentResponsePending:
-        raise
     except ModelCallError as exc:
         if exc.request_bytes != request_bytes:
             raise ValidationError("E-GENERIC-REQUEST", "executor failure request differs") from exc
@@ -1110,7 +1094,9 @@ def _execute_unit(
             "error_code": exc.code,
             "error_message": str(exc),
         }
-    except PipelineError as exc:
+    except ValidationError as exc:
+        if exc.code != "E-GENERIC-AGENT-ANSWER":
+            raise
         return {
             "status": "FAILED",
             "unit_id": unit["unit_id"],
@@ -1137,7 +1123,9 @@ def _execute_unit(
             profile=profile,
             catalog=catalog,
         )
-    except PipelineError as exc:
+    except ValidationError as exc:
+        if not exc.code.startswith("E-GENERIC-"):
+            raise
         attempts = _attempt_records_from_traces(
             unit_id=unit["unit_id"],
             build=build,
@@ -1301,7 +1289,6 @@ def _reconstruct_from_checkpoint(
         for artifact_field in (
             "task_artifact_id",
             "request_artifact_id",
-            "output_artifact_id",
         ):
             store.verify(unit_result[artifact_field])
         if unit_result.get("provider_response_artifact_id"):
@@ -1382,18 +1369,6 @@ def _run_extraction_units(
                     result = future.result()
                 except GenericAgentResponsePending as exc:
                     pending_answers.append(exc.pending)
-                    continue
-                except Exception as exc:
-                    if isinstance(exc, PipelineError):
-                        code = exc.code
-                    else:
-                        code = "E-GENERIC-EXECUTOR"
-                    checkpoint["failed"][unit_id] = {
-                        "attempts": checkpoint["failed"].get(unit_id, {}).get("attempts", []),
-                        "error_code": code,
-                        "error_message": str(exc),
-                    }
-                    _write_checkpoint(paths.checkpoint_path, checkpoint)
                     continue
                 if result["status"] == "SUCCEEDED":
                     checkpoint["completed"][unit_id] = {
@@ -1542,6 +1517,7 @@ def _load_cached_extraction(
     return run, unit_results, attempts, observations
 
 
+@schema_validation_session()
 def run_generic_extraction(
     spec: dict[str, Any],
     work_dir: pathlib.Path,
@@ -1564,38 +1540,113 @@ def run_generic_extraction(
         now=now,
     )
     catalog = ingestion_result["catalog"]
-    store = ingestion_result["store"]
-    ingestion = ingestion_result["ingestion"]
-    if ingestion["status"] == "FAILED":
-        raise ValidationError("E-GENERIC-INGESTION", "failed ingestion cannot enter extraction")
+    with catalog.indexed():
+        store = ingestion_result["store"]
+        ingestion = ingestion_result["ingestion"]
+        if ingestion["status"] == "FAILED":
+            raise ValidationError("E-GENERIC-INGESTION", "failed ingestion cannot enter extraction")
 
-    profile = load_extraction_profile(
-        profile_ref,
-        root=root,
-        profiles_root=profiles_root,
-    )
-    snapshot = build_novel_text_snapshot(catalog, store, ingestion, spec, root=root)
-    build = build_extraction_build(
-        profile, executor, store, root=root, created_at=snapshot["created_at"]
-    )
-    paths = _paths_for(work_dir, profile, build)
-    _write_immutable(paths.snapshot_path, _canonical_json_bytes(snapshot))
-    _write_immutable(paths.extraction_build_path, _canonical_json_bytes(build))
+        profile = load_extraction_profile(
+            profile_ref,
+            root=root,
+            profiles_root=profiles_root,
+        )
+        snapshot = build_novel_text_snapshot(catalog, store, ingestion, spec, root=root)
+        build = build_extraction_build(
+            profile, executor, store, root=root, created_at=snapshot["created_at"]
+        )
+        paths = _paths_for(work_dir, profile, build)
+        _write_immutable(paths.snapshot_path, _canonical_json_bytes(snapshot))
+        _write_immutable(paths.extraction_build_path, _canonical_json_bytes(build))
 
-    units, coverage = build_extraction_units(snapshot, catalog, profile)
-    cached = _load_cached_extraction(
-        paths=paths,
-        snapshot=snapshot,
-        build=build,
-        profile=profile,
-        units=units,
-        coverage=coverage,
-        catalog=catalog,
-        store=store,
-        root=root,
-    )
-    if cached is not None:
-        run, unit_results, attempts, observations = cached
+        units, coverage = build_extraction_units(snapshot, catalog, profile)
+        cached = _load_cached_extraction(
+            paths=paths,
+            snapshot=snapshot,
+            build=build,
+            profile=profile,
+            units=units,
+            coverage=coverage,
+            catalog=catalog,
+            store=store,
+            root=root,
+        )
+        if cached is not None:
+            run, unit_results, attempts, observations = cached
+            return GenericExtractionResult(
+                catalog=catalog,
+                store=store,
+                ingestion=ingestion,
+                snapshot=snapshot,
+                profile=profile,
+                build=build,
+                run=run,
+                units=units,
+                unit_results=unit_results,
+                attempts=attempts,
+                observations=observations,
+                paths=paths,
+                reused_extraction=True,
+            )
+
+        unit_results, attempts, observations, checkpoint_artifact_id = _run_extraction_units(
+            paths=paths,
+            snapshot=snapshot,
+            build=build,
+            units=units,
+            profile=profile,
+            catalog=catalog,
+            store=store,
+            executor=executor,
+            recorded_at=now,
+        )
+        for attempt in attempts:
+            _validate_generic_schema("ModelAttemptV2", attempt, root=root)
+
+        units_bytes = _canonical_jsonl_bytes(units)
+        unit_results_bytes = _canonical_jsonl_bytes(unit_results)
+        attempts_bytes = _canonical_jsonl_bytes(attempts)
+        observations_bytes = _canonical_jsonl_bytes(observations)
+        units_artifact_id = _artifact_and_write(store, paths.units_path, units_bytes)
+        unit_results_artifact_id = _artifact_and_write(
+            store, paths.unit_results_path, unit_results_bytes
+        )
+        attempts_artifact_id = _artifact_and_write(store, paths.attempts_path, attempts_bytes)
+        observations_artifact_id = _artifact_and_write(
+            store, paths.observations_path, observations_bytes
+        )
+        run = _build_extraction_run(
+            snapshot=snapshot,
+            build=build,
+            profile=profile,
+            units_artifact_id=units_artifact_id,
+            units=units,
+            unit_results_artifact_id=unit_results_artifact_id,
+            unit_results=unit_results,
+            attempts_artifact_id=attempts_artifact_id,
+            attempts=attempts,
+            observations_artifact_id=observations_artifact_id,
+            observations=observations,
+            checkpoint_artifact_id=checkpoint_artifact_id,
+            coverage=coverage,
+            created_at=now,
+        )
+        _validate_generic_schema("ExtractionRun", run, root=root)
+        _write_immutable(paths.extraction_run_path, _canonical_json_bytes(run))
+        validate_generic_extraction_artifacts(
+            snapshot=snapshot,
+            build=build,
+            run=run,
+            units=units,
+            unit_results=unit_results,
+            attempts=attempts,
+            observations=observations,
+            coverage=coverage,
+            profile=profile,
+            catalog=catalog,
+            store=store,
+            root=root,
+        )
         return GenericExtractionResult(
             catalog=catalog,
             store=store,
@@ -1609,82 +1660,8 @@ def run_generic_extraction(
             attempts=attempts,
             observations=observations,
             paths=paths,
-            reused_extraction=True,
+            reused_extraction=False,
         )
-
-    unit_results, attempts, observations, checkpoint_artifact_id = _run_extraction_units(
-        paths=paths,
-        snapshot=snapshot,
-        build=build,
-        units=units,
-        profile=profile,
-        catalog=catalog,
-        store=store,
-        executor=executor,
-        recorded_at=now,
-    )
-    for attempt in attempts:
-        _validate_generic_schema("ModelAttemptV2", attempt, root=root)
-
-    units_bytes = _canonical_jsonl_bytes(units)
-    unit_results_bytes = _canonical_jsonl_bytes(unit_results)
-    attempts_bytes = _canonical_jsonl_bytes(attempts)
-    observations_bytes = _canonical_jsonl_bytes(observations)
-    units_artifact_id = _artifact_and_write(store, paths.units_path, units_bytes)
-    unit_results_artifact_id = _artifact_and_write(
-        store, paths.unit_results_path, unit_results_bytes
-    )
-    attempts_artifact_id = _artifact_and_write(store, paths.attempts_path, attempts_bytes)
-    observations_artifact_id = _artifact_and_write(
-        store, paths.observations_path, observations_bytes
-    )
-    run = _build_extraction_run(
-        snapshot=snapshot,
-        build=build,
-        profile=profile,
-        units_artifact_id=units_artifact_id,
-        units=units,
-        unit_results_artifact_id=unit_results_artifact_id,
-        unit_results=unit_results,
-        attempts_artifact_id=attempts_artifact_id,
-        attempts=attempts,
-        observations_artifact_id=observations_artifact_id,
-        observations=observations,
-        checkpoint_artifact_id=checkpoint_artifact_id,
-        coverage=coverage,
-        created_at=now,
-    )
-    _validate_generic_schema("ExtractionRun", run, root=root)
-    _write_immutable(paths.extraction_run_path, _canonical_json_bytes(run))
-    validate_generic_extraction_artifacts(
-        snapshot=snapshot,
-        build=build,
-        run=run,
-        units=units,
-        unit_results=unit_results,
-        attempts=attempts,
-        observations=observations,
-        coverage=coverage,
-        profile=profile,
-        catalog=catalog,
-        store=store,
-        root=root,
-    )
-    return GenericExtractionResult(
-        catalog=catalog,
-        store=store,
-        ingestion=ingestion,
-        snapshot=snapshot,
-        profile=profile,
-        build=build,
-        run=run,
-        units=units,
-        unit_results=unit_results,
-        attempts=attempts,
-        observations=observations,
-        paths=paths,
-        reused_extraction=False,
-    )
 
 
 
@@ -1721,8 +1698,6 @@ def _validate_attempt_identity(
         or attempt["request_artifact_id"] != result["request_artifact_id"]
     ):
         raise ValidationError("E-GENERIC-ATTEMPT", "model attempt lineage differs")
-    store.verify(attempt["task_artifact_id"])
-    store.verify(attempt["request_artifact_id"])
     if attempt["response_artifact_id"] is not None:
         store.verify(attempt["response_artifact_id"])
 
@@ -1829,11 +1804,6 @@ def _validate_unit_results_and_attempts(
             or result["result_hash"] != object_hash(body, omit=())
         ):
             raise ValidationError("E-GENERIC-REPLAY", "unit result identity differs")
-        for field in ("task_artifact_id", "request_artifact_id", "output_artifact_id"):
-            store.verify(result[field])
-        if result["provider_response_artifact_id"] is not None:
-            store.verify(result["provider_response_artifact_id"])
-
         chain = []
         for attempt_id in result["attempt_ids"]:
             attempt = attempts_by_id.get(attempt_id)
@@ -1988,20 +1958,9 @@ def validate_generic_extraction_artifacts(
     ):
         raise ValidationError("E-GENERIC-REPLAY", "run counts or logical hashes differ")
 
-    units_by_id = {unit["unit_id"]: unit for unit in units}
-    attempts_by_id = {attempt["attempt_id"]: attempt for attempt in attempts}
-    observations_by_id = {observation["observation_id"]: observation for observation in observations}
-    if len(attempts_by_id) != len(attempts) or len(observations_by_id) != len(observations):
-        raise ValidationError("E-GENERIC-REPLAY", "duplicate attempt or observation identity")
     replayed_observations: dict[str, dict[str, Any]] = {}
     schema = output_schema_for(profile)
-    for result in unit_results:
-        unit = units_by_id.get(result["unit_id"])
-        if unit is None:
-            raise ValidationError("E-GENERIC-REPLAY", "unit result references unknown unit")
-        body = {key: value for key, value in result.items() if key != "result_hash"}
-        if result["result_hash"] != object_hash(body, omit=()):
-            raise ValidationError("E-GENERIC-REPLAY", "unit result hash differs")
+    for unit, result in zip(units, unit_results, strict=True):
         input_value = _task_input(snapshot, unit, profile, catalog)
         task_bytes = _task_bytes(
             instructions=profile.instructions,
@@ -2020,10 +1979,6 @@ def validate_generic_extraction_artifacts(
             raise ValidationError("E-GENERIC-REPLAY", "semantic task differs")
         if store.get(result["request_artifact_id"]) != request_bytes:
             raise ValidationError("E-GENERIC-REPLAY", "executor request differs")
-        for attempt_id in result["attempt_ids"]:
-            attempt = attempts_by_id.get(attempt_id)
-            if attempt is None or attempt["subject_id"] != unit["unit_id"]:
-                raise ValidationError("E-GENERIC-REPLAY", "attempt lineage differs")
         unit_observations = _observations_from_output_artifact(
             output_artifact_id=result["output_artifact_id"],
             unit=unit,
@@ -2065,6 +2020,7 @@ def validate_generic_extraction_artifacts(
         raise ValidationError("E-GENERIC-ASSURANCE", "unqualified extraction was promoted")
 
 
+@schema_validation_session()
 def run_generic_reduction(
     extraction: GenericExtractionResult,
     *,
@@ -2318,6 +2274,7 @@ def validate_generic_corpus(
         raise ValidationError("E-GENERIC-CORPUS", "corpus snapshot differs")
 
 
+@schema_validation_session()
 def run_generic_corpus_workflow(
     spec: dict[str, Any],
     work_dir: pathlib.Path,
@@ -2342,6 +2299,7 @@ def run_generic_corpus_workflow(
     return run_generic_reduction(extraction, root=root, now=now)
 
 
+@schema_validation_session()
 def validate_generic_work_dir(
     spec: dict[str, Any],
     work_dir: pathlib.Path,
@@ -2356,126 +2314,133 @@ def validate_generic_work_dir(
 
     root = (root or repo_root()).resolve()
     work_dir = pathlib.Path(work_dir)
-    ingestion_result = run_novel_ingestion(
-        spec,
-        work_dir / "ingestion",
-        repo_root=root,
-        fetcher=fetcher,
-        now=now,
-    )
-    catalog = ingestion_result["catalog"]
-    store = ingestion_result["store"]
-    ingestion = ingestion_result["ingestion"]
-    profile = load_extraction_profile(profile_ref, root=root, profiles_root=profiles_root)
     snapshot_path = work_dir / "generic-extraction" / "novel-text-snapshot.json"
     if not snapshot_path.is_file():
         raise ValidationError("E-GENERIC-VALIDATE", f"missing {snapshot_path}")
     snapshot = _parse_canonical_json_bytes(snapshot_path.read_bytes(), label="NovelTextSnapshot")
-    validate_novel_text_snapshot(snapshot, catalog, store, ingestion, spec, root=root)
-    expected_units, coverage = build_extraction_units(snapshot, catalog, profile)
+    _validate_generic_schema("NovelTextSnapshot", snapshot, root=root)
+    ingestion_root = work_dir / "ingestion"
+    catalog_path = (
+        ingestion_root / "ingestions" / snapshot["ingestion_run_id"] / "catalog.json"
+    )
+    try:
+        catalog_data = json.loads(catalog_path.read_bytes())
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValidationError("E-GENERIC-VALIDATE", f"cannot load {catalog_path}") from exc
+    catalog = Catalog.from_mapping(catalog_data)
+    with catalog.indexed():
+        store = ArtifactStore(ingestion_root / "objects")
+        ingestion = catalog.get("NovelIngestionRun", snapshot["ingestion_run_id"])
+        profile = load_extraction_profile(profile_ref, root=root, profiles_root=profiles_root)
+        validate_novel_text_snapshot(snapshot, catalog, store, ingestion, spec, root=root)
+        _, coverage = build_extraction_units(snapshot, catalog, profile)
 
-    profile_root = work_dir / "generic-extraction" / "profiles" / profile.slug
-    extraction_roots = sorted((profile_root / "extractions").glob("XBLD-*"))
-    if not extraction_roots:
-        raise ValidationError("E-GENERIC-VALIDATE", f"no completed extraction under {profile_root}")
-    results: list[GenericCorpusResult] = []
-    for extraction_root in extraction_roots:
-        build = _parse_canonical_json_bytes(
-            (extraction_root / "extraction-build.json").read_bytes(),
-            label="ExtractionBuild",
-        )
-        if build.get("extraction_profile_hash") != profile.extraction_profile_hash:
-            continue
-        run = _parse_canonical_json_bytes(
-            (extraction_root / "extraction-run.json").read_bytes(),
-            label="ExtractionRun",
-        )
-        units = _parse_canonical_jsonl_bytes(
-            (extraction_root / "units.jsonl").read_bytes(), label="units"
-        )
-        unit_results = _parse_canonical_jsonl_bytes(
-            (extraction_root / "unit-results.jsonl").read_bytes(), label="unit results"
-        )
-        attempts = _parse_canonical_jsonl_bytes(
-            (extraction_root / "attempts.jsonl").read_bytes(), label="attempts"
-        )
-        observations = _parse_canonical_jsonl_bytes(
-            (extraction_root / "observations.jsonl").read_bytes(), label="observations"
-        )
-        validate_generic_extraction_artifacts(
-            snapshot=snapshot,
-            build=build,
-            run=run,
-            units=units,
-            unit_results=unit_results,
-            attempts=attempts,
-            observations=observations,
-            coverage=coverage,
-            profile=profile,
-            catalog=catalog,
-            store=store,
-            root=root,
-        )
-        paths = GenericRunPaths(
-            shared_root=work_dir / "generic-extraction",
-            snapshot_path=snapshot_path,
-            profile_root=profile_root,
-            extraction_root=extraction_root,
-            extraction_build_path=extraction_root / "extraction-build.json",
-            extraction_run_path=extraction_root / "extraction-run.json",
-            units_path=extraction_root / "units.jsonl",
-            unit_results_path=extraction_root / "unit-results.jsonl",
-            attempts_path=extraction_root / "attempts.jsonl",
-            observations_path=extraction_root / "observations.jsonl",
-            checkpoint_path=extraction_root / "checkpoint.json",
-        )
-        extraction = GenericExtractionResult(
-            catalog=catalog,
-            store=store,
-            ingestion=ingestion,
-            snapshot=snapshot,
-            profile=profile,
-            build=build,
-            run=run,
-            units=units,
-            unit_results=unit_results,
-            attempts=attempts,
-            observations=observations,
-            paths=paths,
-            reused_extraction=True,
-        )
-        reduction_roots = sorted((extraction_root / "reductions").glob("RRUN-*"))
-        for reduction_root in reduction_roots:
-            reduction_run = _parse_canonical_json_bytes(
-                (reduction_root / "reduction-run.json").read_bytes(),
-                label="ReductionRun",
+        profile_root = work_dir / "generic-extraction" / "profiles" / profile.slug
+        extraction_roots = sorted((profile_root / "extractions").glob("XBLD-*"))
+        if not extraction_roots:
+            raise ValidationError("E-GENERIC-VALIDATE", f"no completed extraction under {profile_root}")
+        results: list[GenericCorpusResult] = []
+        for extraction_root in extraction_roots:
+            run_path = extraction_root / "extraction-run.json"
+            # A run is published last. Pending/interrupted extractions have no
+            # corpus to validate, including a crash before build publication.
+            if not run_path.exists() and not (extraction_root / "reductions").exists():
+                continue
+            build = _parse_canonical_json_bytes(
+                (extraction_root / "extraction-build.json").read_bytes(),
+                label="ExtractionBuild",
             )
-            corpus_snapshot = _parse_canonical_json_bytes(
-                (reduction_root / "corpus-snapshot.json").read_bytes(),
-                label="CorpusSnapshot",
+            if build.get("extraction_profile_hash") != profile.extraction_profile_hash:
+                continue
+            if not run_path.is_file():
+                raise ValidationError("E-GENERIC-VALIDATE", f"missing {run_path}")
+            run = _parse_canonical_json_bytes(run_path.read_bytes(), label="ExtractionRun")
+            units = _parse_canonical_jsonl_bytes(
+                (extraction_root / "units.jsonl").read_bytes(), label="units"
             )
-            records = _parse_canonical_jsonl_bytes(
-                (reduction_root / "corpus.jsonl").read_bytes(), label="corpus"
+            unit_results = _parse_canonical_jsonl_bytes(
+                (extraction_root / "unit-results.jsonl").read_bytes(), label="unit results"
             )
-            validate_generic_corpus(
-                extraction=extraction,
-                reduction_run=reduction_run,
-                corpus_snapshot=corpus_snapshot,
-                records=records,
+            attempts = _parse_canonical_jsonl_bytes(
+                (extraction_root / "attempts.jsonl").read_bytes(), label="attempts"
+            )
+            observations = _parse_canonical_jsonl_bytes(
+                (extraction_root / "observations.jsonl").read_bytes(), label="observations"
+            )
+            validate_generic_extraction_artifacts(
+                snapshot=snapshot,
+                build=build,
+                run=run,
+                units=units,
+                unit_results=unit_results,
+                attempts=attempts,
+                observations=observations,
+                coverage=coverage,
+                profile=profile,
+                catalog=catalog,
+                store=store,
                 root=root,
             )
-            results.append(
-                GenericCorpusResult(
+            paths = GenericRunPaths(
+                shared_root=work_dir / "generic-extraction",
+                snapshot_path=snapshot_path,
+                profile_root=profile_root,
+                extraction_root=extraction_root,
+                extraction_build_path=extraction_root / "extraction-build.json",
+                extraction_run_path=extraction_root / "extraction-run.json",
+                units_path=extraction_root / "units.jsonl",
+                unit_results_path=extraction_root / "unit-results.jsonl",
+                attempts_path=extraction_root / "attempts.jsonl",
+                observations_path=extraction_root / "observations.jsonl",
+                checkpoint_path=extraction_root / "checkpoint.json",
+            )
+            extraction = GenericExtractionResult(
+                catalog=catalog,
+                store=store,
+                ingestion=ingestion,
+                snapshot=snapshot,
+                profile=profile,
+                build=build,
+                run=run,
+                units=units,
+                unit_results=unit_results,
+                attempts=attempts,
+                observations=observations,
+                paths=paths,
+                reused_extraction=True,
+            )
+            reduction_roots = sorted((extraction_root / "reductions").glob("RRUN-*"))
+            for reduction_root in reduction_roots:
+                reduction_run = _parse_canonical_json_bytes(
+                    (reduction_root / "reduction-run.json").read_bytes(),
+                    label="ReductionRun",
+                )
+                corpus_snapshot = _parse_canonical_json_bytes(
+                    (reduction_root / "corpus-snapshot.json").read_bytes(),
+                    label="CorpusSnapshot",
+                )
+                records = _parse_canonical_jsonl_bytes(
+                    (reduction_root / "corpus.jsonl").read_bytes(), label="corpus"
+                )
+                validate_generic_corpus(
                     extraction=extraction,
                     reduction_run=reduction_run,
                     corpus_snapshot=corpus_snapshot,
-                    corpus_records=records,
-                    reduction_root=reduction_root,
-                    reduction_run_path=reduction_root / "reduction-run.json",
-                    corpus_path=reduction_root / "corpus.jsonl",
-                    corpus_snapshot_path=reduction_root / "corpus-snapshot.json",
+                    records=records,
+                    root=root,
                 )
-            )
-    if not results:
-        raise ValidationError("E-GENERIC-VALIDATE", "no completed CorpusSnapshot found")
-    return results
+                results.append(
+                    GenericCorpusResult(
+                        extraction=extraction,
+                        reduction_run=reduction_run,
+                        corpus_snapshot=corpus_snapshot,
+                        corpus_records=records,
+                        reduction_root=reduction_root,
+                        reduction_run_path=reduction_root / "reduction-run.json",
+                        corpus_path=reduction_root / "corpus.jsonl",
+                        corpus_snapshot_path=reduction_root / "corpus-snapshot.json",
+                    )
+                )
+        if not results:
+            raise ValidationError("E-GENERIC-VALIDATE", "no completed CorpusSnapshot found")
+        return results

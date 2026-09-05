@@ -2,14 +2,13 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
 import pathlib
 import re
-import tempfile
 from dataclasses import dataclass
 from typing import Any
 
 from .canonical import canonical_dumps
+from .file_io import write_immutable
 from .errors import PipelineError, ValidationError
 from .model_api import ModelAttemptTrace, ModelCallError, ModelCallResult
 
@@ -72,27 +71,7 @@ def _safe_stem(unit_id: str) -> str:
 
 
 def _write_immutable(path: pathlib.Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    if path.exists():
-        if not path.is_file() or path.read_bytes() != data:
-            raise ValidationError("E-GENERIC-AGENT-TAMPER", f"task differs: {path}")
-        return
-    fd, temp_name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
-    try:
-        with os.fdopen(fd, "wb") as handle:
-            handle.write(data)
-            handle.flush()
-            os.fsync(handle.fileno())
-        try:
-            os.link(temp_name, path)
-        except FileExistsError:
-            if not path.is_file() or path.read_bytes() != data:
-                raise ValidationError("E-GENERIC-AGENT-TAMPER", f"task differs: {path}")
-    finally:
-        try:
-            os.unlink(temp_name)
-        except OSError:
-            pass
+    write_immutable(path, data, code="E-GENERIC-AGENT-TAMPER", message=f"task differs: {path}")
 
 
 def generic_agent_task_packet(

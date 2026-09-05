@@ -39,10 +39,12 @@ text remain Tier D / lead-only. These semantics are identified as
 `novel-source-classifier-v2` in generated assessments. A publisher licence is
 not required merely to classify an otherwise complete source whose official
 status is unproven.
-The send and export boundaries first validate the complete Bundle → Snapshot →
-Ingestion lineage, including induced members and deterministic triage, then
-re-resolve rights from the immutable ingestion spec. Export manifests mark the
-audit closure `WITHHELD_BY_RIGHTS` when excerpts may not be distributed.
+The send and export boundaries validate the complete Bundle → Snapshot → Ingestion
+lineage, including induced members and deterministic triage, and read rights from
+the immutable ingestion spec. A full validation checks each core stage once;
+nested export checks reuse that validated lineage. Free-text evidence is not
+filtered by a vocabulary blacklist. Export manifests mark the audit closure
+`WITHHELD_BY_RIGHTS` when excerpts may not be distributed.
 
 Quick start:
 

@@ -11,6 +11,7 @@ import pathlib
 from typing import Any
 
 from .errors import ValidationError
+from .file_io import write_immutable as _publish_immutable
 from .hashing import object_hash
 from .ids import derived_id
 
@@ -73,10 +74,4 @@ def sorted_strings(values: Any, *, code: str, field: str) -> list[str]:
 
 
 def write_immutable(path: pathlib.Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        with path.open("xb") as handle:
-            handle.write(data)
-    except FileExistsError:
-        if path.read_bytes() != data:
-            raise ValidationError("E-IMMUTABLE-OUTPUT", f"refusing to overwrite {path}")
+    _publish_immutable(path, data)

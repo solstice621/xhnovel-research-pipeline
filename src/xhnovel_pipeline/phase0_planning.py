@@ -35,7 +35,7 @@ from .phase0_common import (
 from .phase0_handoff import make_exploration_brief, validate_exploration_brief
 from .ranking import normalize_work_title
 from .runtime import repository_commit
-from .schema import validate_schema
+from .schema import schema_validation_session, validate_schema
 from .store import ArtifactStore
 
 
@@ -901,7 +901,10 @@ def _validate_plan_bindings(
 def compile_exploration_brief(plan: dict[str, Any]) -> dict[str, Any]:
     """Compile only neutral-frame semantics and typed hard scope into a Brief."""
 
-    plan = validate_exploration_plan(plan)
+    return _compile_validated_exploration_brief(validate_exploration_plan(plan))
+
+
+def _compile_validated_exploration_brief(plan: dict[str, Any]) -> dict[str, Any]:
     frame = plan["neutral_frame"]
     scope = {
         "genres": copy.deepcopy(plan["explicit_scope"]["genres"]["include"]),
@@ -1021,6 +1024,7 @@ def _receipt_identity_payload(value: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+@schema_validation_session()
 def make_planning_receipt(
     *,
     intake: dict[str, Any],
@@ -1046,23 +1050,18 @@ def make_planning_receipt(
         neutral_execution=neutral_execution,
         plan=plan,
     )
-    if compile_exploration_brief(plan) != brief:
+    if _compile_validated_exploration_brief(plan) != brief:
         raise ValidationError("E-PLANNING-BRIEF-BIND", "brief differs from deterministic plan compile")
     artifact_ids = {
-        "intake_artifact_id": put_planning_record(store, "ResearchIntake", intake),
-        "neutral_input_artifact_id": put_planning_record(
-            store, "NeutralPlanningInput", neutral_input
-        ),
-        "neutral_frame_artifact_id": put_planning_record(
-            store, "NeutralResearchFrame", neutral_frame
-        ),
-        "neutral_execution_artifact_id": put_planning_record(
-            store, "NeutralPlanningExecution", neutral_execution
-        ),
-        "plan_artifact_id": put_planning_record(store, "ExplorationPlan", plan),
-        "compiled_brief_artifact_id": put_planning_record(
-            store, "ExplorationBrief", brief
-        ),
+        field: store.put(canonical_dumps(record))
+        for field, record in (
+            ("intake_artifact_id", intake),
+            ("neutral_input_artifact_id", neutral_input),
+            ("neutral_frame_artifact_id", neutral_frame),
+            ("neutral_execution_artifact_id", neutral_execution),
+            ("plan_artifact_id", plan),
+            ("compiled_brief_artifact_id", brief),
+        )
     }
     build = planning_compiler_build(repo_root)
     base = {
@@ -1183,6 +1182,7 @@ def _update_manifest(root: pathlib.Path, additions: dict[str, Any]) -> dict[str,
     return manifest
 
 
+@schema_validation_session()
 def seal_intake_from_draft(
     input_path: pathlib.Path,
     planning_root: pathlib.Path,
@@ -1243,6 +1243,7 @@ def seal_intake_from_draft(
     )
 
 
+@schema_validation_session()
 def seal_neutral_frame_from_drafts(
     frame_draft_path: pathlib.Path,
     attestation_path: pathlib.Path,
@@ -1328,6 +1329,7 @@ def seal_neutral_frame_from_drafts(
     )
 
 
+@schema_validation_session()
 def compile_exploration_plan_from_request(
     request_path: pathlib.Path,
     planning_root: pathlib.Path,
@@ -1446,6 +1448,7 @@ def _receipt_record_fields(
     }
 
 
+@schema_validation_session()
 def validate_planning_handoff(
     receipt_path: pathlib.Path,
     handoff_path: pathlib.Path,
@@ -1507,7 +1510,7 @@ def validate_planning_handoff(
             neutral_execution=execution,
             plan=plan,
         )
-        if compile_exploration_brief(plan) != brief:
+        if _compile_validated_exploration_brief(plan) != brief:
             raise ValidationError(
                 "E-PLANNING-BRIEF-BIND",
                 "stored brief differs from deterministic plan compile",

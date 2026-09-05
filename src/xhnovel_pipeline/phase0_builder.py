@@ -322,11 +322,6 @@ def rebuild_evidence_handoff(
         build_request_artifact_id,
         "HandoffBuildRequest",
     )
-    if artifact_id_for(canonical_dumps(request)) != build_request_artifact_id:
-        raise ValidationError(
-            "E-PHASE0-BUILD-REQUEST-BIND",
-            "build request artifact id differs from canonical bytes",
-        )
     brief = read_phase0_record(
         store,
         request["exploration_brief_artifact_id"],

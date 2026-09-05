@@ -30,6 +30,7 @@ MAX_SITE_LINK_CHARS = 8_192
 _ADAPTER_BUILD_SOURCE_NAMES = (
     "novel_adapters.py",
     "novel_ingest.py",
+    "file_io.py",
     "parse.py",
     "http_fetch.py",
     "urls.py",

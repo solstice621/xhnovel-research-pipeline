@@ -72,7 +72,9 @@ SceneWindows or model calls.
 
 Ingestion writes source bytes to a content-addressed store and records discovery,
 fetch receipts, parsed documents, and segments. Checkpoints are integrity-bound
-to the input specification and adapter build.
+to the input specification and adapter build. Each completed chapter publishes
+an immutable completion marker. The full checkpoint is saved at start, completion,
+or error; resume recovers intervening chapters from those markers without refetching.
 
 Important parsing rules:
 
@@ -133,9 +135,13 @@ model analysis call.
 ## Concurrency, failure, and accounting
 
 Scene calls use a bounded thread pool (`max_workers` defaults to 8 and is capped
-at 64). A checkpoint is atomically rewritten after each completed future.
-Failures are isolated: all other submitted windows finish, the checkpoint is
-marked `PARTIAL`, and the command exits with `E-SCENE-PARTIAL`.
+at 64). A checkpoint is atomically rewritten when a window records a result or
+failure. Agent tasks still waiting for answers do not rewrite unchanged state.
+Model-call and answer-validation failures are isolated: all other submitted
+windows finish, the checkpoint is marked `PARTIAL`, and the command exits with
+`E-SCENE-PARTIAL`. Programming errors and integrity failures propagate with their
+original errors. Transport retries are limited to transient network failures and
+retryable HTTP statuses; deterministic size or configuration failures are not retried.
 
 On the next run, successful windows are loaded from CAS and only incomplete or
 failed windows are submitted again. Attempt ordinals and `retry_of` chains span

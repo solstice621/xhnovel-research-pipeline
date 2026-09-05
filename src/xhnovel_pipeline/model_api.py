@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import errno
+import http.client
 import json
 import os
+import socket
 import time
 import urllib.error
 import urllib.request
@@ -22,6 +25,24 @@ Transport = Callable[[str, dict[str, str], bytes, float], tuple[int, dict[str, s
 
 API_EXECUTOR_KIND = "API"
 OPENAI_RESPONSES_FORMAT = "OPENAI_RESPONSES"
+
+
+def _retryable_transport_error(error: BaseException) -> bool:
+    if isinstance(error, ValidationError):
+        if error.code != "E-MODEL-UNREACHABLE":
+            return False
+        return error.__cause__ is None or _retryable_transport_error(error.__cause__)
+    if isinstance(error, urllib.error.URLError):
+        return isinstance(error.reason, BaseException) and _retryable_transport_error(error.reason)
+    if isinstance(error, (TimeoutError, ConnectionError, http.client.IncompleteRead)):
+        return True
+    return isinstance(error, OSError) and error.errno in {
+        errno.EAGAIN,
+        errno.ENETUNREACH,
+        errno.EHOSTUNREACH,
+        errno.ETIMEDOUT,
+        socket.EAI_AGAIN,
+    }
 
 
 class SceneScoutExecutor(Protocol):
@@ -208,12 +229,13 @@ class OpenAIResponsesClient:
                 status, _, response_bytes = self.transport(
                     self.endpoint, headers, request_bytes, self.timeout
                 )
-            except Exception as exc:
+            except (ValidationError, OSError, urllib.error.URLError, http.client.IncompleteRead) as exc:
                 code = getattr(exc, "code", "E-MODEL-UNREACHABLE")
+                retryable = _retryable_transport_error(exc) and attempt < self.max_attempts
                 attempts.append(
                     ModelAttemptTrace(
                         ordinal=attempt,
-                        status="RETRYABLE" if attempt < self.max_attempts else "FAILED",
+                        status="RETRYABLE" if retryable else "FAILED",
                         http_status=None,
                         response_bytes=b"",
                         error_code=code,
@@ -222,7 +244,7 @@ class OpenAIResponsesClient:
                         usage=_response_usage(None),
                     )
                 )
-                if attempt < self.max_attempts:
+                if retryable:
                     time.sleep(min(2 ** (attempt - 1), 4))
                     continue
                 raise ModelCallError(

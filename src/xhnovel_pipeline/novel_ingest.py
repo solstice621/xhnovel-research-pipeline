@@ -4,14 +4,14 @@ import json
 import os
 import pathlib
 import re
-import tempfile
 from contextlib import contextmanager
 from typing import Any
 from urllib.parse import urlparse
 
-from .catalog import Catalog
+from .catalog import Catalog, indexed_catalog
 from .constants import SCHEMA_VERSION
 from .errors import ValidationError
+from .file_io import atomic_write, write_immutable
 from .hashing import artifact_id_for, object_hash, sorted_ids
 from .ids import derived_id
 from .novel_adapters import ChapterRef, WorkMetadata, adapter_from_spec
@@ -24,7 +24,7 @@ from .novel_spec import (
     input_limit,
 )
 from .parse import parse_artifact, parser_build_id_for
-from .schema import validate_schema
+from .schema import schema_validation_session, validate_schema
 from .store import ArtifactStore
 
 
@@ -88,20 +88,7 @@ def _json_bytes(value: Any) -> bytes:
 
 
 def _atomic_write(path: pathlib.Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    fd, tmp_name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
-    try:
-        with os.fdopen(fd, "wb") as handle:
-            handle.write(data)
-            handle.flush()
-            os.fsync(handle.fileno())
-        os.replace(tmp_name, path)
-    except Exception:
-        try:
-            os.unlink(tmp_name)
-        except OSError:
-            pass
-        raise
+    atomic_write(path, data)
 
 
 @contextmanager
@@ -174,13 +161,7 @@ def _write_checkpoint(path: pathlib.Path, state: dict[str, Any]) -> None:
 
 
 def _write_immutable(path: pathlib.Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        with path.open("xb") as handle:
-            handle.write(data)
-    except FileExistsError:
-        if path.read_bytes() != data:
-            raise ValidationError("E-IMMUTABLE-OUTPUT", f"refusing to overwrite {path}")
+    write_immutable(path, data)
 
 
 def _artifact_record(
@@ -208,7 +189,7 @@ def _artifact_record(
 
 
 def _add_artifact_once(catalog: Catalog, record: dict[str, Any]) -> None:
-    if not any(item["artifact_id"] == record["artifact_id"] for item in catalog.all("Artifact")):
+    if not catalog.contains("Artifact", record["artifact_id"]):
         catalog.add("Artifact", record)
 
 
@@ -541,7 +522,7 @@ def _materialize_site_attempts(
 ) -> None:
     for receipt in receipts:
         source = _site_source_record(receipt)
-        if not any(item["source_id"] == source["source_id"] for item in catalog.all("Source")):
+        if not catalog.contains("Source", source["source_id"]):
             catalog.add("Source", source)
         raw_artifact_id = receipt["raw_artifact_id"]
         if raw_artifact_id is not None:
@@ -1177,6 +1158,7 @@ def load_novel_spec(path: pathlib.Path) -> dict[str, Any]:
     return spec
 
 
+@schema_validation_session()
 def run_novel_ingestion(
     spec: dict[str, Any],
     work_dir: pathlib.Path,
@@ -1188,7 +1170,8 @@ def run_novel_ingestion(
     store: ArtifactStore | None = None,
 ) -> dict[str, Any]:
     work_dir = pathlib.Path(work_dir)
-    with _exclusive_work_dir(work_dir):
+    catalog = catalog or Catalog()
+    with _exclusive_work_dir(work_dir), catalog.indexed():
         return _run_novel_ingestion_unlocked(
             spec,
             work_dir,
@@ -1320,7 +1303,7 @@ def _run_novel_ingestion_unlocked(
             completed[ref.chapter_key] = result
             state["site_attempt_receipt_ids"] = attempt_journal.receipt_ids if attempt_journal else []
             state.pop("last_error", None)
-            _write_checkpoint(checkpoint_path, state)
+            # Each durable completion marker already restores this result on resume.
         except Exception as exc:
             state["site_attempt_receipt_ids"] = attempt_journal.receipt_ids if attempt_journal else []
             state["last_error"] = {
@@ -1554,7 +1537,7 @@ def _run_novel_ingestion_unlocked(
         status = "IGNORED" if ignored else "DUPLICATE" if previous_chapter_id else "READY"
         if not ignored and not previous_chapter_id:
             normalized_seen[normalized_content_hash] = chapter_id
-        if not any(item["document_id"] == document_id for item in catalog.all("ParsedDocument")):
+        if not catalog.contains("ParsedDocument", document_id):
             catalog.add("ParsedDocument", parsed["document"])
             output_hash = object_hash({"document": parsed["document"], "segments": parsed["segments"]})
             parse_identity = {
@@ -1663,6 +1646,8 @@ def _run_novel_ingestion_unlocked(
     }
 
 
+@schema_validation_session()
+@indexed_catalog
 def validate_novel_ingestion(catalog: Catalog, store: ArtifactStore) -> None:
     for kind in (
         "NovelWork",

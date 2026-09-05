@@ -9,6 +9,7 @@ from .canonical import canonical_dumps
 from .catalog import Catalog
 from .constants import SCHEMA_VERSION
 from .errors import ValidationError
+from .file_io import write_immutable
 from .hashing import object_hash
 from .ids import derived_id
 from .ranking import normalize_work_title
@@ -290,10 +291,5 @@ def write_source_resolution(
     }
     for name, data in payloads.items():
         path = output_dir / name
-        try:
-            with path.open("xb") as handle:
-                handle.write(data)
-        except FileExistsError:
-            if path.read_bytes() != data:
-                raise ValidationError("E-IMMUTABLE-OUTPUT", f"refusing to overwrite {path}")
+        write_immutable(path, data)
     return output_dir

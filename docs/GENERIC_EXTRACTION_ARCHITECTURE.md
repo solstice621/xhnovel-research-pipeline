@@ -265,7 +265,7 @@ The loader must keep only cheap, load-bearing checks:
 - all referenced files enter CAS;
 - package content hash is part of build identity;
 - the same `profile_id + profile_version` cannot silently refer to different bytes in one execution/cache context;
-- payload schemas cannot define core-owned envelope fields.
+- model answers cannot set core-owned envelope fields; fields inside `payload` are domain data and may use names such as `status` or `observation_id`.
 
 v0.1 does not support `reducer.py`, shell hooks, dynamic imports, network hooks, custom source loaders, or Profile-selected model endpoints. This is a v0.1 limitation, not a permanent constitutional ban.
 
@@ -475,7 +475,9 @@ Each Profile has its own:
 - CorpusSnapshot;
 - output directory.
 
-A failed geography run does not invalidate a completed interaction run over the same `NovelTextSnapshot`.
+A failed geography run does not invalidate a completed interaction run over the same `NovelTextSnapshot`. A pending or interrupted extraction also does not invalidate an existing completed corpus for the same Profile. `extraction-run.json` is published after the extraction outputs; validation skips unpublished extractions. A reduction directory requires its extraction run, so deleting that run is still corruption.
+
+Completed-corpus validation loads the ingestion catalog named by `NovelTextSnapshot` and replays its frozen CAS closure. It does not rediscover or reread the original source. Source-change detection remains part of ingestion and resume.
 
 v0.1 does not need a `NovelCompileManifest`. A multi-Profile summary can be introduced later as a regenerable view when a real multi-Profile CLI exists.
 
@@ -632,7 +634,7 @@ Expected result: identities change or checkpoint reuse fails closed; output orde
 - cite a valid offset with the wrong text hash;
 - omit evidence for a required group;
 - use one source span to support an unrelated payload;
-- return payload fields reserved by the core.
+- attempt to set core-owned fields outside `payload` (a domain `payload.status` must remain valid and cannot change the outer `status=DRAFT` / `verification=UNVERIFIED`).
 
 Expected result: integrity violations fail; semantic overreach remains visible for review and qualification rather than being silently promoted.
 

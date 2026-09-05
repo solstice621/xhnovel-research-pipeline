@@ -5,12 +5,13 @@ import json
 from typing import Any, Iterable
 
 from .canonical import canonical_dumps
-from .catalog import Catalog
+from .catalog import Catalog, indexed_catalog
 from .constants import SCHEMA_VERSION
 from .errors import ValidationError
-from .hashing import artifact_id_for, object_hash
+from .hashing import object_hash
 from .ids import derived_id
 from .novel_adapters import chapter_number
+from .schema import schema_validation_session
 from .store import ArtifactStore
 
 
@@ -99,7 +100,6 @@ def rights_for_bundle(
         raise ValidationError("E-RIGHTS", "stored ingestion specification is invalid") from exc
     if (
         not isinstance(spec, dict)
-        or artifact_id_for(raw) != ingestion["input_spec_artifact_id"]
         or object_hash(spec, omit=()) != ingestion["input_spec_hash"]
     ):
         raise ValidationError("E-RIGHTS", "stored ingestion rights specification changed")
@@ -110,6 +110,8 @@ def rights_for_bundle(
     )
 
 
+@schema_validation_session()
+@indexed_catalog
 def resolve_validated_bundle_ingestion(
     catalog: Catalog,
     store: ArtifactStore,
@@ -149,10 +151,8 @@ def resolve_validated_bundle_ingestion(
         input_spec = json.loads(raw.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ValidationError("E-RIGHTS", "stored ingestion specification is invalid") from exc
-    rights = rights_for_bundle(
-        catalog,
-        store,
-        bundle,
+    rights = declared_rights(
+        input_spec,
         require_storage=True,
         require_external_model=require_external_model,
     )

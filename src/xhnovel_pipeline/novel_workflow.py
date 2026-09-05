@@ -6,7 +6,7 @@ import pathlib
 from typing import Any
 
 from .bundle_ops import bundle_from_snapshot
-from .catalog import Catalog
+from .catalog import Catalog, indexed_catalog
 from .constants import PROFILE_ID, SCHEMA_VERSION
 from .runtime import repository_commit
 from .errors import ValidationError
@@ -17,12 +17,11 @@ from .novel_assessment import (
     declared_rights,
     declared_source_quality,
     deterministic_triage_assessment,
-    resolve_validated_bundle_ingestion,
+    rights_for_bundle,
 )
 from .novel_ingest import (
     novel_ingestion_artifact_ids,
     run_novel_ingestion,
-    validate_novel_ingestion,
 )
 from .novel_selection import (
     resolve_ranked_source,
@@ -37,11 +36,10 @@ from .scene_scout import (
     run_scene_scout,
     scene_scout_artifact_ids,
     scene_scout_distributable_artifact_ids,
-    validate_scene_scouts,
 )
-from .schema import validate_schema
+from .schema import schema_validation_session, validate_schema
 from .store import ArtifactStore
-from .validate import validate_collection, validate_evidence, validate_export
+from .validate import validate_all, validate_collection, validate_evidence
 
 
 def validated_famous_novel_spec(
@@ -92,18 +90,14 @@ def _json_bytes(value: Any) -> bytes:
 
 
 def _write_immutable_outputs(output_dir: pathlib.Path, outputs: dict[str, bytes]) -> None:
+    from .file_io import write_immutable
+
     paths = {name: output_dir / name for name in outputs}
     for name, path in paths.items():
         if path.exists() and path.read_bytes() != outputs[name]:
             raise ValidationError("E-IMMUTABLE-OUTPUT", f"refusing to overwrite {path}")
-    output_dir.mkdir(parents=True, exist_ok=True)
     for name, path in paths.items():
-        try:
-            with path.open("xb") as handle:
-                handle.write(outputs[name])
-        except FileExistsError:
-            if path.read_bytes() != outputs[name]:
-                raise ValidationError("E-IMMUTABLE-OUTPUT", f"refusing to overwrite {path}")
+        write_immutable(path, outputs[name])
 
 
 def _request_from_spec(
@@ -146,7 +140,28 @@ def _request_from_spec(
     return {**base, "request_id": derived_id("ResearchRequest", identity)}
 
 
+@indexed_catalog
 def prepare_novel_evidence_bundle(
+    catalog: Catalog,
+    store: ArtifactStore,
+    ingestion: dict[str, Any],
+    spec: dict[str, Any],
+    *,
+    repo_root: pathlib.Path,
+    now: str,
+    selection_context: dict[str, Any] | None = None,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    result = _prepare_novel_evidence_bundle(
+        catalog, store, ingestion, spec,
+        repo_root=repo_root, now=now, selection_context=selection_context,
+    )
+    validate_collection(catalog, store)
+    validate_evidence(catalog, store)
+    return result
+
+
+@indexed_catalog
+def _prepare_novel_evidence_bundle(
     catalog: Catalog,
     store: ArtifactStore,
     ingestion: dict[str, Any],
@@ -256,8 +271,6 @@ def prepare_novel_evidence_bundle(
         schema_version=SCHEMA_VERSION,
     )
     catalog.add("EvidenceBundle", bundle)
-    validate_collection(catalog, store)
-    validate_evidence(catalog, store)
     return reviewed_snapshot, bundle
 
 
@@ -270,8 +283,7 @@ def _make_unqualified_export(
     repo_root: pathlib.Path,
     now: str,
 ) -> dict[str, Any]:
-    lineage = resolve_validated_bundle_ingestion(catalog, store, bundle)
-    rights = lineage["rights"]
+    rights = rights_for_bundle(catalog, store, bundle, require_storage=True)
     distributable_ids = (
         set(scene_scout_distributable_artifact_ids(catalog, scout))
         if rights["may_export_excerpts"]
@@ -366,6 +378,7 @@ def _make_unqualified_export(
     return export
 
 
+@schema_validation_session()
 def run_novel_research(
     spec: dict[str, Any],
     work_dir: pathlib.Path,
@@ -390,7 +403,7 @@ def run_novel_research(
     )
     catalog = ingestion_result["catalog"]
     store = ingestion_result["store"]
-    snapshot, bundle = prepare_novel_evidence_bundle(
+    snapshot, bundle = _prepare_novel_evidence_bundle(
         catalog,
         store,
         ingestion_result["ingestion"],
@@ -419,15 +432,7 @@ def run_novel_research(
         repo_root=repo_root,
         now=scout["run"]["created_at"],
     )
-    validate_novel_ingestion(catalog, store)
-    validate_collection(catalog, store)
-    validate_evidence(catalog, store)
-    validate_scene_scouts(catalog, store, repo_root=repo_root)
-    if catalog.all("NovelRankingRun"):
-        validate_fame_ranking(catalog, store)
-    if catalog.all("NovelSourceResolution"):
-        validate_source_resolutions(catalog, store)
-    validate_export(catalog, store)
+    validate_all(catalog, store)
     output_dir = work_dir / "research" / scout["run"]["scene_scout_run_id"]
     outputs = {
         "catalog.json": _json_bytes(

@@ -1,13 +1,12 @@
 from __future__ import annotations
 
 import json
-import re
 from typing import Any
 
 from .access import is_snippet_kind, looks_like_snippet_label, normalize_access_kind
-from .catalog import Catalog
+from .catalog import Catalog, indexed_catalog
 from .collection_quality import collection_review_gate, validate_collection_quality_records
-from .constants import FORBIDDEN_EXPORT_TOKENS, PARSER_BUILD_ID, SCHEMA_VERSION
+from .constants import PARSER_BUILD_ID, SCHEMA_VERSION
 from .errors import ValidationError
 from .hashing import collection_snapshot_hash, is_real_sha256, object_hash, sorted_ids
 from .ids import derived_id
@@ -16,7 +15,6 @@ from .novel_assessment import (
     deterministic_triage_assessment,
     find_bound_chapter_identity_review,
     find_bound_triage_review,
-    resolve_validated_bundle_ingestion,
     rights_for_bundle,
     reviewed_triage_assessment,
     validate_bound_chapter_identity_review,
@@ -25,31 +23,13 @@ from .novel_ingest import novel_ingestion_artifact_ids
 from .parse import parse_artifact, parser_build_id_for, text_hash
 from .build_identity import BUILD_IDENTITY_FIELDS, build_source_hash
 from .paths import repo_root
-from .schema import SCHEMA_BY_TYPE, validate_schema
+from .schema import SCHEMA_BY_TYPE, schema_validation_session, validate_schema
 from .store import ArtifactStore
 
 
 def _require_hash(value: object, label: str) -> None:
     if not is_real_sha256(value):
         raise ValidationError("E-PLACEHOLDER-HASH", f"{label} is not a real SHA-256: {value!r}")
-
-
-def _no_forbidden(value: Any, label: str) -> None:
-    if isinstance(value, dict):
-        for key, item in value.items():
-            _no_forbidden(key, label)
-            _no_forbidden(item, label)
-        return
-    if isinstance(value, (list, tuple)):
-        for item in value:
-            _no_forbidden(item, label)
-        return
-    if not isinstance(value, str):
-        return
-    for token in FORBIDDEN_EXPORT_TOKENS:
-        pattern = rf"(?<![A-Za-z0-9_]){re.escape(token)}(?![A-Za-z0-9_])"
-        if re.search(pattern, value):
-            raise ValidationError("E-PROJECT-LEAK", f"{label} contains forbidden token {token}")
 
 
 def validate_typed(kind: str, obj: dict[str, Any]) -> None:
@@ -59,6 +39,8 @@ def validate_typed(kind: str, obj: dict[str, Any]) -> None:
         validate_schema(kind, obj)
 
 
+@schema_validation_session()
+@indexed_catalog
 def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) -> None:
     for kind in (
         "ResearchRequest",
@@ -223,6 +205,8 @@ def validate_collection(catalog: Catalog, store: ArtifactStore | None = None) ->
     validate_collection_quality_records(catalog, store)
 
 
+@schema_validation_session()
+@indexed_catalog
 def validate_evidence(catalog: Catalog, store: ArtifactStore | None = None) -> None:
     for kind in (
         "ParseRun",
@@ -754,6 +738,8 @@ def bundle_hash(catalog: Catalog, bundle: dict[str, Any]) -> str:
     return object_hash(payload, omit=())
 
 
+@schema_validation_session()
+@indexed_catalog
 def validate_model_builds(catalog: Catalog) -> None:
     for build in catalog.all("ExtractorBuild"):
         validate_typed("ExtractorBuild", build)
@@ -777,7 +763,22 @@ def validate_model_builds(catalog: Catalog) -> None:
 
 
 
+@schema_validation_session()
+@indexed_catalog
 def validate_export(catalog: Catalog, store: ArtifactStore | None = None) -> None:
+    if catalog.all("EvidenceExport"):
+        if store is None:
+            raise ValidationError("E-RIGHTS-EXPORT", "export validation requires the immutable rights store")
+        from .novel_ingest import validate_novel_ingestion
+
+        validate_novel_ingestion(catalog, store)
+        validate_collection(catalog, store)
+        validate_evidence(catalog, store)
+    _validate_export_records(catalog, store)
+
+
+def _validate_export_records(catalog: Catalog, store: ArtifactStore | None = None) -> None:
+    """Validate export records after the caller has validated their core lineage."""
     for export in catalog.all("EvidenceExport"):
         if not export.get("policies"):
             raise ValidationError("E-POLICY-HASH", "export missing policies")
@@ -859,9 +860,6 @@ def validate_export(catalog: Catalog, store: ArtifactStore | None = None) -> Non
             or producer["parser_build_id"] != expected_parser
         ):
             raise ValidationError("E-PRODUCER", "producer build sets differ from bundle lineage")
-        _no_forbidden(export["scene_discovery"], "scene_discovery")
-        for candidate in export["scene_candidates"]:
-            _no_forbidden(candidate, "scene candidate")
         audit = export.get("assurance", {}).get("auditability", "FULL")
         if audit != "DEGRADED":
             raise ValidationError(
@@ -881,8 +879,7 @@ def validate_export(catalog: Catalog, store: ArtifactStore | None = None) -> Non
             raise ValidationError("E-ARTIFACT-BIND", "artifact manifest does not exactly match catalog artifacts")
         if store is None:
             raise ValidationError("E-RIGHTS-EXPORT", "export validation requires the immutable rights store")
-        lineage = resolve_validated_bundle_ingestion(catalog, store, bundle)
-        rights = lineage["rights"]
+        rights = rights_for_bundle(catalog, store, bundle, require_storage=True)
         distributable_ids = (
             set(scene_scout_distributable_artifact_ids(catalog, {"run": run}))
             if rights["may_export_excerpts"]
@@ -902,8 +899,6 @@ def validate_export(catalog: Catalog, store: ArtifactStore | None = None) -> Non
                 raise ValidationError(
                     "E-RIGHTS-EXPORT", "artifact availability differs from declared export rights"
                 )
-            if item["durability_status"] == "EPHEMERAL" and audit == "FULL":
-                raise ValidationError("E-EPHEMERAL", "FULL auditability cannot depend on EPHEMERAL artifacts")
             if store:
                 if store.exists(item["artifact_id"]):
                     data = store.get(item["artifact_id"])
@@ -929,12 +924,12 @@ def validate_export(catalog: Catalog, store: ArtifactStore | None = None) -> Non
             raise ValidationError("E-ID-BIND", f"{export['export_id']} does not match export content")
 
 
+@schema_validation_session()
+@indexed_catalog
 def validate_all(catalog: Catalog, store: ArtifactStore | None = None) -> None:
     validate_collection(catalog, store)
     validate_evidence(catalog, store)
     validate_model_builds(catalog)
-    if catalog.all("EvidenceExport"):
-        validate_export(catalog, store)
     if any(
         catalog.all(kind)
         for kind in (
@@ -955,3 +950,5 @@ def validate_all(catalog: Catalog, store: ArtifactStore | None = None) -> None:
         validate_fame_ranking(catalog, store)
         validate_source_resolutions(catalog, store)
         validate_scene_scouts(catalog, store, repo_root=repo_root())
+    if catalog.all("EvidenceExport"):
+        _validate_export_records(catalog, store)

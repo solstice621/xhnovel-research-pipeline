@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import io
 import json
+import ssl
 import urllib.error
 
 import pytest
@@ -223,6 +224,8 @@ def test_default_transport_surfaces_redirect_without_following(monkeypatch):
 
 
 def test_default_transport_rejects_oversize_response(monkeypatch):
+    calls = []
+
     class Response:
         status = 200
         headers = {}
@@ -238,6 +241,7 @@ def test_default_transport_rejects_oversize_response(monkeypatch):
 
     class Opener:
         def open(self, request, timeout):
+            calls.append(request)
             return Response()
 
     monkeypatch.setattr(model_api.urllib.request, "build_opener", lambda handler: Opener())
@@ -252,6 +256,77 @@ def test_default_transport_rejects_oversize_response(monkeypatch):
         )
 
     assert exc.value.code == "E-MODEL-RESPONSE-SIZE"
+    assert len(calls) == 1
+    assert [attempt.status for attempt in exc.value.attempts] == ["FAILED"]
+
+
+@pytest.mark.parametrize("failure", [TimeoutError("timeout"), urllib.error.URLError(TimeoutError())])
+def test_responses_client_retries_transient_transport_errors_with_trace(monkeypatch, failure):
+    calls = []
+    sleeps = []
+
+    def transport(*args):
+        calls.append(args)
+        if len(calls) == 1:
+            raise failure
+        return 200, {}, b'{"output_text": "{\\"ok\\": true}"}'
+
+    monkeypatch.setattr(model_api.time, "sleep", sleeps.append)
+    client = OpenAIResponsesClient(model="model", api_key="key", transport=transport)
+    result = client.generate_json(
+        instructions="x", input_value={}, schema_name="x", schema={"type": "object"}
+    )
+
+    assert result.value == {"ok": True}
+    assert [attempt.status for attempt in result.attempts] == ["RETRYABLE", "SUCCEEDED"]
+    assert sleeps == [1]
+    assert len(calls) == 2
+
+
+@pytest.mark.parametrize(
+    "failure",
+    [
+        ValidationError("E-MODEL-RESPONSE-SIZE", "too large"),
+        PermissionError("permission denied"),
+        urllib.error.URLError(ssl.SSLCertVerificationError("certificate verification failed")),
+    ],
+)
+def test_responses_client_does_not_retry_permanent_transport_errors(monkeypatch, failure):
+    calls = []
+
+    def transport(*args):
+        calls.append(args)
+        raise failure
+
+    monkeypatch.setattr(model_api.time, "sleep", lambda _: pytest.fail("unexpected retry"))
+    client = OpenAIResponsesClient(model="model", api_key="key", transport=transport)
+    with pytest.raises(model_api.ModelCallError) as exc:
+        client.generate_json(
+            instructions="x", input_value={}, schema_name="x", schema={"type": "object"}
+        )
+
+    assert len(calls) == 1
+    assert [attempt.status for attempt in exc.value.attempts] == ["FAILED"]
+    assert exc.value.__cause__ is failure
+
+
+def test_responses_client_propagates_programming_errors_without_retry(monkeypatch):
+    calls = []
+    failure = TypeError("transport implementation error")
+
+    def transport(*args):
+        calls.append(args)
+        raise failure
+
+    monkeypatch.setattr(model_api.time, "sleep", lambda _: pytest.fail("unexpected retry"))
+    client = OpenAIResponsesClient(model="model", api_key="key", transport=transport)
+    with pytest.raises(TypeError) as exc:
+        client.generate_json(
+            instructions="x", input_value={}, schema_name="x", schema={"type": "object"}
+        )
+
+    assert exc.value is failure
+    assert len(calls) == 1
 
 
 def test_responses_client_rejects_redirect_without_following():

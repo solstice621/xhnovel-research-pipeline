@@ -12,18 +12,18 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 import pathlib
 import re
 import subprocess
 import sys
-import tempfile
 from dataclasses import dataclass
 from typing import Any, Iterable
 
 from jsonschema import Draft202012Validator
 
 from xhnovel_pipeline.canonical import canonical_dumps
+from xhnovel_pipeline.errors import ValidationError
+from xhnovel_pipeline.file_io import write_immutable
 from xhnovel_pipeline.hashing import artifact_id_for, is_real_sha256, object_hash
 from xhnovel_pipeline.paths import repo_root
 
@@ -158,44 +158,26 @@ def _canonical_jsonl(rows: Iterable[dict[str, Any]]) -> bytes:
 
 
 def _write_immutable(path: pathlib.Path, data: bytes) -> bool:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    if path.exists():
-        if not path.is_file() or path.read_bytes() != data:
-            raise GoldValidationError(
-                "E-GOLD-IMMUTABLE", f"refusing to overwrite different content: {path}"
-            )
-        return False
-    descriptor, temporary_name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
-    created = False
     try:
-        with os.fdopen(descriptor, "wb") as handle:
-            handle.write(data)
-            handle.flush()
-            os.fsync(handle.fileno())
-        try:
-            os.link(temporary_name, path)
-            created = True
-        except FileExistsError:
-            if not path.is_file() or path.read_bytes() != data:
-                raise GoldValidationError(
-                    "E-GOLD-IMMUTABLE", f"refusing to overwrite different content: {path}"
-                )
-    finally:
-        try:
-            os.unlink(temporary_name)
-        except OSError:
-            pass
-    return created
+        return write_immutable(
+            path,
+            data,
+            code="E-GOLD-IMMUTABLE",
+            message=f"refusing to overwrite different content: {path}",
+        )
+    except ValidationError as exc:
+        raise GoldValidationError(
+            exc.code, f"refusing to overwrite different content: {path}"
+        ) from exc
 
 
 def _write_immutable_set(entries: list[tuple[pathlib.Path, bytes]]) -> None:
     """Commit an immutable output set with the final entry as its commit marker.
 
     There is no portable filesystem primitive for atomically replacing several
-    unrelated paths.  We therefore preflight the complete set, reject mixed
-    existing/missing states, write the manifest last, and roll back every file
-    created by this invocation if an in-process write fails.  Consumers only
-    recognize a set whose final manifest exists and validates.
+    unrelated paths.  We preflight existing bytes, finish interrupted sets whose
+    manifest is absent, and write that manifest last.  Consumers only recognize
+    a set whose final manifest exists and validates.
     """
 
     if not entries:
@@ -205,39 +187,21 @@ def _write_immutable_set(entries: list[tuple[pathlib.Path, bytes]]) -> None:
         raise GoldValidationError("E-GOLD-OUTPUT", "immutable output paths must be distinct")
 
     exists = [path.exists() for path, _ in entries]
-    if any(exists) and not all(exists):
+    if exists[-1] and not all(exists):
         raise GoldValidationError(
             "E-GOLD-PARTIAL",
-            "refusing a mixed existing/missing frozen output set",
+            "completed manifest has missing frozen outputs",
         )
+    for (path, data), present in zip(entries, exists):
+        if present and (not path.is_file() or path.read_bytes() != data):
+            raise GoldValidationError(
+                "E-GOLD-IMMUTABLE", f"refusing to overwrite different content: {path}"
+            )
     if all(exists):
-        for path, data in entries:
-            if not path.is_file() or path.read_bytes() != data:
-                raise GoldValidationError(
-                    "E-GOLD-IMMUTABLE", f"refusing to overwrite different content: {path}"
-                )
         return
 
-    created: list[pathlib.Path] = []
-    try:
-        for path, data in entries:
-            if _write_immutable(path, data):
-                created.append(path)
-    except BaseException:
-        rollback_failures: list[pathlib.Path] = []
-        for path in reversed(created):
-            try:
-                path.unlink()
-            except FileNotFoundError:
-                pass
-            except OSError:
-                rollback_failures.append(path)
-        if rollback_failures:
-            rendered = ", ".join(str(path) for path in rollback_failures)
-            raise GoldValidationError(
-                "E-GOLD-ROLLBACK", f"could not remove partial outputs: {rendered}"
-            ) from None
-        raise
+    for path, data in entries:
+        _write_immutable(path, data)
 
 
 def merge_label_drafts(

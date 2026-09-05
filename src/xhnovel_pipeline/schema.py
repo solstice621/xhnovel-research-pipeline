@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import pathlib
+from contextlib import contextmanager
+from contextvars import ContextVar
 from typing import Any
 
 from jsonschema import Draft202012Validator
@@ -57,6 +59,21 @@ SCHEMA_BY_TYPE = {
     "PlanningCompilationReceipt": "planning-compilation-receipt.schema.json",
 }
 
+_sessions: ContextVar[dict | None] = ContextVar("schema_validation_session", default=None)
+
+
+@contextmanager
+def schema_validation_session():
+    """Reuse schema assets within one operation; reload them for the next one."""
+    if _sessions.get() is not None:
+        yield
+        return
+    token = _sessions.set({})
+    try:
+        yield
+    finally:
+        _sessions.reset(token)
+
 
 def _schema_refs(value: Any):
     if isinstance(value, dict):
@@ -98,11 +115,17 @@ def validate_schema_resources(*, root: pathlib.Path | None = None) -> None:
 
 
 def validate_schema(kind: str, obj: dict[str, Any], *, root: pathlib.Path | None = None) -> None:
-    root = root or repo_root()
-    rel = SCHEMA_BY_TYPE[kind]
-    path = root / "contracts" / rel
-    schema = json.loads(path.read_text(encoding="utf-8"))
-    validator = Draft202012Validator(schema, registry=_registry(root / "contracts"))
+    root = (root or repo_root()).resolve()
+    sessions = _sessions.get()
+    cache = sessions if sessions is not None else {}
+    if root not in cache:
+        cache[root] = (_registry(root / "contracts"), {})
+    registry, validators = cache[root]
+    if kind not in validators:
+        path = root / "contracts" / SCHEMA_BY_TYPE[kind]
+        schema = json.loads(path.read_text(encoding="utf-8"))
+        validators[kind] = Draft202012Validator(schema, registry=registry)
+    validator = validators[kind]
     errors = sorted(validator.iter_errors(obj), key=lambda e: list(e.path))
     if errors:
         first = errors[0]

@@ -2,13 +2,12 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
 import pathlib
 import re
-import tempfile
 from typing import Any
 
 from .canonical import canonical_dumps
+from .file_io import write_immutable
 from .errors import PipelineError, ValidationError
 from .model_api import (
     MAX_MODEL_RESPONSE_BYTES,
@@ -204,27 +203,7 @@ def locate_quote_in_task(task: dict[str, Any], quote: str) -> list[dict[str, Any
 
 
 def _write_immutable(path: pathlib.Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    if path.exists():
-        if not path.is_file() or path.read_bytes() != data:
-            raise ValidationError("E-AGENT-TASK-TAMPER", f"agent task differs: {path}")
-        return
-    fd, temp_name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
-    try:
-        with os.fdopen(fd, "wb") as handle:
-            handle.write(data)
-            handle.flush()
-            os.fsync(handle.fileno())
-        try:
-            os.link(temp_name, path)
-        except FileExistsError:
-            if not path.is_file() or path.read_bytes() != data:
-                raise ValidationError("E-AGENT-TASK-TAMPER", f"agent task differs: {path}")
-    finally:
-        try:
-            os.unlink(temp_name)
-        except OSError:
-            pass
+    write_immutable(path, data, code="E-AGENT-TASK-TAMPER", message=f"agent task differs: {path}")
 
 
 class AgentFileExecutor:

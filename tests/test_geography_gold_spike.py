@@ -1015,7 +1015,7 @@ def test_freeze_writes_and_replays_complete_content_bound_gold_manifest(tmp_path
 
 
 @pytest.mark.parametrize("fail_at", [2, 3])
-def test_freeze_rolls_back_all_new_files_when_a_later_write_fails(
+def test_freeze_resumes_published_files_when_a_later_write_fails(
     tmp_path, monkeypatch, fail_at: int
 ):
     case = _freeze_case(tmp_path)
@@ -1040,9 +1040,21 @@ def test_freeze_rolls_back_all_new_files_when_a_later_write_fails(
             unique_out=unique_path,
             manifest_out=manifest_path,
         )
-    assert not occurrences_path.exists()
-    assert not unique_path.exists()
+    assert occurrences_path.exists()
+    assert unique_path.exists() == (fail_at == 3)
     assert not manifest_path.exists()
+    first_bytes = occurrences_path.read_bytes()
+
+    gold.freeze_gold(
+        **case["common"],
+        occurrences_out=occurrences_path,
+        unique_out=unique_path,
+        manifest_out=manifest_path,
+    )
+
+    assert occurrences_path.read_bytes() == first_bytes
+    assert unique_path.exists()
+    assert manifest_path.exists()
 
 
 def test_freeze_preflights_mixed_existing_set_before_any_write(tmp_path):
@@ -1063,6 +1075,31 @@ def test_freeze_preflights_mixed_existing_set_before_any_write(tmp_path):
     assert not occurrences_path.exists()
     assert not unique_path.exists()
     assert manifest_path.read_bytes() == b"conflicting manifest"
+
+
+def test_immutable_set_resumes_matching_outputs_before_manifest(tmp_path):
+    entries = [
+        (tmp_path / "occurrences.jsonl", b"occurrences\n"),
+        (tmp_path / "unique.jsonl", b"unique\n"),
+        (tmp_path / "manifest.json", b"manifest\n"),
+    ]
+    entries[0][0].write_bytes(entries[0][1])
+
+    gold._write_immutable_set(entries)
+
+    assert [path.read_bytes() for path, _ in entries] == [data for _, data in entries]
+
+
+def test_immutable_set_checks_existing_content_before_resuming(tmp_path):
+    partial = tmp_path / "occurrences.jsonl"
+    partial.write_bytes(b"different\n")
+    manifest = tmp_path / "manifest.json"
+
+    with pytest.raises(gold.GoldValidationError, match="E-GOLD-IMMUTABLE"):
+        gold._write_immutable_set([(partial, b"expected\n"), (manifest, b"manifest\n")])
+
+    assert partial.read_bytes() == b"different\n"
+    assert not manifest.exists()
 
 
 @pytest.mark.parametrize(

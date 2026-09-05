@@ -10,9 +10,7 @@ from __future__ import annotations
 
 import copy
 import json
-import os
 import pathlib
-import tempfile
 from contextlib import contextmanager
 from dataclasses import dataclass
 from typing import Any, Callable
@@ -20,6 +18,7 @@ from typing import Any, Callable
 from .agent_files import AGENT_FILES_EXECUTOR_KIND, AgentResponsesPending
 from .catalog import Catalog
 from .constants import SCHEMA_VERSION
+from .file_io import write_immutable
 from .errors import PipelineError, SchemaError, ValidationError
 from .hashing import object_hash
 from .ids import derived_id
@@ -66,28 +65,12 @@ def _json_bytes(value: Any) -> bytes:
 
 
 def _atomic_write_immutable(path: pathlib.Path, data: bytes) -> None:
-    """Publish complete bytes once without an overwrite window on POSIX or Windows."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    fd, temp_name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
-    temp_path = pathlib.Path(temp_name)
-    try:
-        with os.fdopen(fd, "wb") as handle:
-            handle.write(data)
-            handle.flush()
-            os.fsync(handle.fileno())
-        try:
-            os.link(temp_path, path)
-        except FileExistsError:
-            if path.read_bytes() != data:
-                raise ValidationError(
-                    "E-HANDOFF-ATTEMPT-IMMUTABLE",
-                    f"refusing to overwrite immutable execution record {path}",
-                )
-    finally:
-        try:
-            temp_path.unlink()
-        except FileNotFoundError:
-            pass
+    write_immutable(
+        path,
+        data,
+        code="E-HANDOFF-ATTEMPT-IMMUTABLE",
+        message=f"refusing to overwrite immutable execution record {path}",
+    )
 
 
 @contextmanager

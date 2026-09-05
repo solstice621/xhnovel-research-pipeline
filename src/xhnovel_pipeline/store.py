@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-import os
 import pathlib
-import tempfile
 
 from .errors import ValidationError
-from .hashing import artifact_id_for, sha256_bytes, strip_sha_prefix
+from .file_io import publish_immutable
+from .hashing import artifact_id_for, strip_sha_prefix
 
 
 class ArtifactStore:
@@ -25,8 +24,6 @@ class ArtifactStore:
             raise ValidationError("E-CAS-VERIFY", f"verify failed for {artifact_id}") from exc
         if existing != data:
             raise ValidationError("E-CAS-COLLISION", f"hash collision at {artifact_id}")
-        if sha256_bytes(existing) != strip_sha_prefix(artifact_id):
-            raise ValidationError("E-CAS-VERIFY", f"verify failed for {artifact_id}")
 
     def put(self, data: bytes) -> str:
         artifact_id = artifact_id_for(data)
@@ -34,27 +31,10 @@ class ArtifactStore:
         if dest.exists():
             self._verify_published(dest, artifact_id, data)
             return artifact_id
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        fd, tmp_name = tempfile.mkstemp(dir=dest.parent, prefix=".tmp-")
         try:
-            with os.fdopen(fd, "wb") as fh:
-                fh.write(data)
-                fh.flush()
-                os.fsync(fh.fileno())
-            try:
-                # Publish without replacing an existing CAS object. Concurrent
-                # writers of the same bytes race only on this atomic link: the
-                # winner publishes, and every loser verifies the winner below.
-                # This avoids Windows sharing violations caused by os.replace
-                # while another writer is reading the destination.
-                os.link(tmp_name, dest)
-            except FileExistsError:
-                pass
-        finally:
-            try:
-                os.unlink(tmp_name)
-            except OSError:
-                pass
+            publish_immutable(dest, data)
+        except FileExistsError:
+            pass
         self._verify_published(dest, artifact_id, data)
         return artifact_id
 

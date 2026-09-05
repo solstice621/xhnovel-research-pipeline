@@ -88,7 +88,7 @@ def test_auto_encoding_fails_closed_when_legacy_bytes_are_ambiguous():
     assert exc.value.code == "E-TEXT-ENCODING-AMBIGUOUS"
 
 
-@pytest.mark.parametrize("changed_dependency", ["parse.py", "novel_ingest.py"])
+@pytest.mark.parametrize("changed_dependency", ["parse.py", "novel_ingest.py", "file_io.py"])
 def test_adapter_build_identity_changes_with_transitive_implementation_bytes(
     tmp_path, monkeypatch, changed_dependency
 ):

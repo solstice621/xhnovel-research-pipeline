@@ -52,7 +52,7 @@ def test_profile_rejects_remote_schema_reference(tmp_path: pathlib.Path) -> None
         load_extraction_profile("profile", root=ROOT, profiles_root=profiles_root)
 
 
-def test_profile_rejects_path_escape_and_core_owned_payload_fields(tmp_path: pathlib.Path) -> None:
+def test_profile_rejects_path_escape(tmp_path: pathlib.Path) -> None:
     profiles_root, profile_dir = _copy_geography(tmp_path, "escape")
     manifest_path = profile_dir / "profile.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -62,20 +62,32 @@ def test_profile_rejects_path_escape_and_core_owned_payload_fields(tmp_path: pat
     with pytest.raises(ValidationError, match="E-PROFILE-PATH"):
         load_extraction_profile("escape", root=ROOT, profiles_root=profiles_root)
 
-    profiles_root, profile_dir = _copy_geography(tmp_path / "reserved", "reserved")
+
+
+def test_payload_can_use_names_owned_by_outer_envelope(tmp_path: pathlib.Path) -> None:
+    profiles_root, profile_dir = _copy_geography(tmp_path, "domain-state")
     schema_path = profile_dir / "payload.schema.json"
     schema_path.write_text(
         json.dumps(
             {
                 "type": "object",
-                "properties": {"observation_id": {"type": "string"}},
+                "properties": {
+                    "observation_id": {"type": "string"},
+                    "status": {"type": "string"},
+                    "verification": {"type": "string"},
+                },
             }
         )
         + "\n",
         encoding="utf-8",
     )
-    with pytest.raises(ValidationError, match="E-PROFILE-RESERVED"):
-        load_extraction_profile("reserved", root=ROOT, profiles_root=profiles_root)
+    profile = load_extraction_profile("domain-state", root=ROOT, profiles_root=profiles_root)
+    payload = {"observation_id": "domain-id", "status": "ACTIVE", "verification": "CHECKED"}
+    assert Draft202012Validator(profile.payload_schema).is_valid(payload)
+    envelope_schema = output_schema_for(profile)["properties"]["records"]["items"]
+    assert not Draft202012Validator(envelope_schema).is_valid(
+        {"payload": payload, "evidence_bindings": [], "status": "ACTIVE"}
+    )
 
 
 def _schema_kind_consts(profile: object) -> set[str]:

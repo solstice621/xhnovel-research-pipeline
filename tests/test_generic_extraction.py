@@ -9,6 +9,7 @@ from typing import Any, Callable
 import pytest
 
 from xhnovel_pipeline.canonical import canonical_dumps
+from xhnovel_pipeline.errors import ValidationError
 from xhnovel_pipeline.generic_agent_files import (
     GenericAgentFileExecutor,
     GenericAgentResponsesPending,
@@ -559,7 +560,7 @@ def test_agent_files_materialize_all_tasks_resume_and_detect_tampering(
         item.answer_path.write_text('{"records": []}\n', encoding="utf-8")
     first_task = tamper_pending.value.pending[0].task_path
     first_task.write_text("tampered", encoding="utf-8")
-    with pytest.raises(GenericExtractionPartial) as tampered:
+    with pytest.raises(ValidationError, match="E-GENERIC-AGENT-TAMPER"):
         run_generic_corpus_workflow(
             spec,
             tamper_work,
@@ -569,6 +570,106 @@ def test_agent_files_materialize_all_tasks_resume_and_detect_tampering(
             root=ROOT,
             now=NOW,
         )
-    assert "E-GENERIC-AGENT-TAMPER" in {
-        entry["error_code"] for entry in tampered.value.failed.values()
-    }
+
+
+def test_completed_corpus_validates_offline_alongside_pending_extraction(
+    tmp_path: pathlib.Path,
+) -> None:
+    spec = _write_novel(tmp_path / "novel")
+    profiles_root = tmp_path / "profiles"
+    _write_profile(profiles_root, "geography", profile_id="test.geography", kind="PLACE")
+    work_dir = tmp_path / "work"
+    completed = run_generic_corpus_workflow(
+        spec, work_dir, profile_ref="geography", profiles_root=profiles_root,
+        executor=CountingApiExecutor(_combined_answer), root=ROOT, now=NOW,
+    )
+    with pytest.raises(GenericAgentResponsesPending):
+        run_generic_corpus_workflow(
+            spec, work_dir, profile_ref="geography", profiles_root=profiles_root,
+            executor=GenericAgentFileExecutor(tmp_path / "agent-files", model_label="pending"),
+            root=ROOT, now=NOW,
+        )
+    (completed.extraction.paths.extraction_root.parent / "XBLD-unpublished").mkdir()
+    pathlib.Path(spec["source"]["path"]).rename(tmp_path / "archived-chapters")
+    validated = validate_generic_work_dir(
+        spec, work_dir, profile_ref="geography", profiles_root=profiles_root,
+        root=ROOT, now=NOW,
+    )
+    assert [result.corpus_snapshot for result in validated] == [completed.corpus_snapshot]
+
+    # A completed reduction cannot be hidden by deleting its extraction marker.
+    completed.extraction.paths.extraction_run_path.unlink()
+    with pytest.raises(ValidationError, match="E-GENERIC-VALIDATE: missing"):
+        validate_generic_work_dir(
+            spec, work_dir, profile_ref="geography", profiles_root=profiles_root,
+            root=ROOT, now=NOW,
+        )
+
+
+def test_offline_validation_rejects_corrupt_ingestion_cas(tmp_path: pathlib.Path) -> None:
+    spec = _write_novel(tmp_path / "novel")
+    completed = run_generic_corpus_workflow(
+        spec, tmp_path / "work", profile_ref="geography-v1",
+        executor=CountingApiExecutor(lambda _: {"records": []}), root=ROOT, now=NOW,
+    )
+    artifact_id = completed.extraction.ingestion["input_spec_artifact_id"]
+    completed.extraction.store._path(artifact_id).write_bytes(b"corrupt")
+    with pytest.raises(ValidationError, match="E-ARTIFACT-CORRUPT"):
+        validate_generic_work_dir(
+            spec, tmp_path / "work", profile_ref="geography-v1", root=ROOT, now=NOW,
+        )
+
+
+@pytest.mark.parametrize("failure", [TypeError("executor bug"), ValidationError("E-ARTIFACT-CORRUPT", "corrupt")])
+def test_executor_integrity_and_programming_failures_propagate(
+    tmp_path: pathlib.Path, failure: Exception,
+) -> None:
+    spec = _write_novel(tmp_path / "novel")
+
+    def fail(_: dict[str, Any]) -> dict[str, Any]:
+        raise failure
+
+    with pytest.raises(type(failure), match=str(failure)) as caught:
+        run_generic_corpus_workflow(
+            spec, tmp_path / "work", profile_ref="geography-v1",
+            executor=CountingApiExecutor(fail), root=ROOT, now=NOW,
+        )
+    assert caught.value is failure
+
+
+def test_domain_payload_state_cannot_promote_observation(tmp_path: pathlib.Path) -> None:
+    spec = _write_novel(tmp_path / "novel")
+    profiles_root = tmp_path / "profiles"
+    profile_dir = _write_profile(
+        profiles_root, "geography", profile_id="test.geography", kind="PLACE",
+    )
+    schema_path = profile_dir / "payload.schema.json"
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    schema["properties"].update({
+        "status": {"type": "string"},
+        "verification": {"type": "string"},
+        "observation_id": {"type": "string"},
+    })
+    schema_path.write_text(json.dumps(schema), encoding="utf-8")
+
+    def answer(input_value: dict[str, Any]) -> dict[str, Any]:
+        value = _combined_answer(input_value)
+        for record in value["records"]:
+            record["payload"].update({
+                "status": "ACTIVE", "verification": "CHECKED", "observation_id": "domain-id",
+            })
+            record["evidence_bindings"][0]["paths"] += [
+                "/status", "/verification", "/observation_id",
+            ]
+        return value
+
+    completed = run_generic_corpus_workflow(
+        spec, tmp_path / "work", profile_ref="geography", profiles_root=profiles_root,
+        executor=CountingApiExecutor(answer), root=ROOT, now=NOW,
+    )
+    assert completed.extraction.observations
+    for observation in completed.extraction.observations:
+        assert observation["payload"]["status"] == "ACTIVE"
+        assert observation["status"] == "DRAFT"
+        assert observation["verification"] == "UNVERIFIED"
+        assert observation["observation_id"] != "domain-id"

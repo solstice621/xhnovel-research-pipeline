@@ -3,7 +3,6 @@ from __future__ import annotations
 import json
 import os
 import pathlib
-import tempfile
 from contextlib import contextmanager, nullcontext
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any
@@ -22,9 +21,10 @@ from .agent_files import (
 
 from .build_identity import BUILD_IDENTITY_FIELDS, build_source_hash
 from .canonical import canonical_dumps
-from .catalog import Catalog
+from .catalog import Catalog, indexed_catalog
 from .constants import MODEL_EXECUTOR_BUILD_ID, PROFILE_ID, SCHEMA_VERSION
-from .errors import ValidationError
+from .errors import PipelineError, ValidationError
+from .file_io import atomic_write
 from .hashing import artifact_id_for, object_hash, sorted_ids
 from .ids import derived_id
 from .model_api import (
@@ -43,7 +43,7 @@ from .novel_spec import (
     check_scene_window_params,
 )
 from .runtime import repository_commit
-from .schema import validate_schema
+from .schema import schema_validation_session, validate_schema
 from .store import ArtifactStore
 
 DEFAULT_WINDOW_CHARS = 10_000
@@ -78,20 +78,7 @@ INTEGRITY_HARD_ABORT_CODES = frozenset(
 
 
 def _atomic_write(path: pathlib.Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    fd, temp_name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
-    try:
-        with os.fdopen(fd, "wb") as handle:
-            handle.write(data)
-            handle.flush()
-            os.fsync(handle.fileno())
-        os.replace(temp_name, path)
-    except Exception:
-        try:
-            os.unlink(temp_name)
-        except OSError:
-            pass
-        raise
+    atomic_write(path, data)
 
 
 def _lock_file_handle(handle: Any) -> None:
@@ -193,7 +180,19 @@ def _put_artifact(
     created_at: str,
 ) -> str:
     artifact_id = store.put(data)
-    if artifact_id not in catalog.ids("Artifact"):
+    _register_artifact(catalog, artifact_id, data, media_type=media_type, created_at=created_at)
+    return artifact_id
+
+
+def _register_artifact(
+    catalog: Catalog,
+    artifact_id: str,
+    data: bytes,
+    *,
+    media_type: str,
+    created_at: str,
+) -> None:
+    if not catalog.contains("Artifact", artifact_id):
         catalog.add(
             "Artifact",
             {
@@ -206,7 +205,6 @@ def _put_artifact(
                 "created_at": created_at,
             },
         )
-    return artifact_id
 
 
 def _persist_model_attempts(
@@ -947,7 +945,7 @@ def _run_scene_scout_locked(
     run_created_at = state["created_at"]
     stored_build = (
         catalog.get("ExtractorBuild", build["extractor_build_id"])
-        if build["extractor_build_id"] in catalog.ids("ExtractorBuild")
+        if catalog.contains("ExtractorBuild", build["extractor_build_id"])
         else None
     )
     if stored_build is not None:
@@ -971,10 +969,9 @@ def _run_scene_scout_locked(
         }:
             raise ValidationError("E-SCENE-CHECKPOINT", "completed window checkpoint is invalid")
         for artifact_id in completed.values():
-            store.verify(artifact_id)
-            _put_artifact(
+            _register_artifact(
                 catalog,
-                store,
+                artifact_id,
                 store.get(artifact_id),
                 media_type="application/json",
                 created_at=created_at,
@@ -1014,6 +1011,7 @@ def _run_scene_scout_locked(
                     call = future.result()
                 except AgentResponsePending as exc:
                     pending_responses[window_id] = exc
+                    continue
                 except ModelCallError as exc:
                     _persist_model_attempts(
                         catalog,
@@ -1028,7 +1026,7 @@ def _run_scene_scout_locked(
                         "error_code": exc.code,
                         "error_message": str(exc),
                     }
-                except Exception as exc:
+                except PipelineError as exc:
                     if getattr(exc, "code", None) in INTEGRITY_HARD_ABORT_CODES:
                         raise
                     state["failures"][window_id] = {
@@ -1041,7 +1039,7 @@ def _run_scene_scout_locked(
                         _validate_scout_output(
                             catalog, call.value, output_schema=output_schema, window=window
                         )
-                    except Exception as exc:
+                    except PipelineError as exc:
                         if getattr(exc, "code", None) in INTEGRITY_HARD_ABORT_CODES:
                             raise
                         last = traces[-1]
@@ -1240,6 +1238,8 @@ def _run_scene_scout_locked(
     }
 
 
+@schema_validation_session()
+@indexed_catalog
 def run_scene_scout(
     catalog: Catalog,
     store: ArtifactStore,
@@ -1313,6 +1313,8 @@ def scene_scout_distributable_artifact_ids(
     return sorted_ids(ids)
 
 
+@schema_validation_session()
+@indexed_catalog
 def validate_scene_scouts(
     catalog: Catalog,
     store: ArtifactStore,
@@ -1348,7 +1350,6 @@ def validate_scene_scouts(
         ):
             raise ValidationError("E-SCENE-REPLAY", "scene scout build/request lineage differs")
         catalog.get("Artifact", run["checkpoint_artifact_id"])
-        store.verify(run["checkpoint_artifact_id"])
         try:
             checkpoint = json.loads(store.get(run["checkpoint_artifact_id"]).decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
@@ -1398,7 +1399,6 @@ def validate_scene_scouts(
         ):
             validate_schema("ModelAttempt", attempt)
             catalog.get("Artifact", receipt_artifact_id)
-            store.verify(receipt_artifact_id)
             if store.get(receipt_artifact_id) != canonical_dumps(attempt):
                 raise ValidationError("E-SCENE-ATTEMPT", "model attempt receipt differs")
             identity = {key: value for key, value in attempt.items() if key != "attempt_id"}
@@ -1458,7 +1458,6 @@ def validate_scene_scouts(
         ):
             for artifact_id in (request_artifact_id, response_artifact_id):
                 catalog.get("Artifact", artifact_id)
-                store.verify(artifact_id)
             request_bytes = store.get(request_artifact_id)
             response_bytes = store.get(response_artifact_id)
             expected_input = _window_input(

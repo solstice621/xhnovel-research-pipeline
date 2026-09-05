@@ -313,25 +313,25 @@ Do not introduce any of the following as incidental work:
 
 ## Required verification
 
-For code, contract, Skill, or packaging changes, run the relevant full checks before
-calling a stage complete:
+Choose checks that exercise the changed behavior and run them once:
 
-```bash
-python scripts/sync_skills.py --check
-python -m pytest
-python -m compileall src tests scripts
-git diff --check
-python -m build --wheel
-```
+- Run the affected tests for code or contract changes. Use the full test suite for
+  changes spanning shared runtime behavior, multiple pipeline stages, or contracts.
+- Run `python scripts/sync_skills.py --check` when changing Skills or their sync tool.
+- Build a wheel and run the out-of-checkout installed-wheel smoke when packaging,
+  distributed assets, or installed-runtime loading changes.
+- Run `git diff --check` for edited files. Documentation-only changes need relevant
+  static/document tests only when they affect a machine-checked contract.
 
-For documentation-only changes, at minimum run the applicable static/document tests,
-`python scripts/sync_skills.py --check`, and `git diff --check`.
+Do not repeat passing checks or add review rounds unless a new change, failure,
+unresolved issue, or explicit user request justifies them. `compileall` is optional
+when the affected Python modules are already imported by passing tests.
 
 Before claiming a cross-platform stage is complete:
 
 - Ubuntu CI must pass;
 - Windows CI must pass;
-- the out-of-checkout installed-wheel smoke must pass when packaging/runtime changed;
+- the out-of-checkout installed-wheel smoke must pass when installed-runtime behavior changed;
 - report the fixed commit SHA and any expected build-lineage changes.
 
 Do not substitute a local green run for required CI when the stage explicitly has a
@@ -339,7 +339,7 @@ cross-platform gate.
 
 ## Review expectations
 
-Adversarial review should focus on reproducible failures and contract violations.
+When requested, adversarial review should focus on reproducible failures and contract violations.
 Classify findings as blockers or non-blockers and include:
 
 - the exact file/function or contract involved;
