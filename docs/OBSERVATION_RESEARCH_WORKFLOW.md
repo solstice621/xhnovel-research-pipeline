@@ -175,8 +175,10 @@ Never author or re-sign authorization per run.
 
 Rights, access, identity and source quality are checked separately. Required
 storage and model permissions must be explicit. `COMPLETE` text with
-`edition_status=UNKNOWN` can be eligible; positively declared `UNOFFICIAL_COPY`
-cannot. Preparation materializes a source-only complete Novel Spec. No search
+`edition_status=UNKNOWN` or positively declared `UNOFFICIAL_COPY` can be eligible
+at Tier B under the current operator research policy; only `OFFICIAL` reaches
+Tier A. Non-COMPLETE text remains ineligible. Preparation materializes a
+source-only complete Novel Spec. No search
 query, Profile, lead hint or observation definition is passed into that spec.
 
 ```text

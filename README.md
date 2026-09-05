@@ -114,4 +114,6 @@ Results remain `UNQUALIFIED`, coverage `UNMEASURED`. Scene Scout retains its
 separate query-sensitive path. See the build plan for the actual validation gates;
 implementation availability does not by itself close those gates. The
 [Stage A validation record](docs/OBSERVATION_RESEARCH_STAGE_A_VALIDATION.md) maps
-the implemented boundaries to tests and records the retained cross-platform gate.
+the implemented boundaries to tests. The Ubuntu/Windows CI workflow is removed;
+on 2026-09-05 the user retired A-24 as a Stage A gate. Local checks remain required,
+and unexecuted platforms are not claimed as verified.

@@ -58,11 +58,46 @@ agent-files or controlled API test executors; no external model API is called.
 | Skill validation and canonical/mirror sync | PASS (quick_validate and sync_skills --check) |
 | Diff and document links | PASS; 99 local documentation/Skill links resolved |
 | New wheel and five out-of-checkout installed smokes | All five PASS; installed source/assets outside checkout, no PYTHONPATH or API key |
-| Ubuntu / Windows at final fixed SHA | NOT RUN; A-24 remains open, manual execution is permitted |
+| Ubuntu / Windows at final fixed SHA | NOT RUN; A-24 RETIRED_BY_USER on 2026-09-05, no longer a merge/completion gate |
 
 The targeted and full-suite counts overlap and must not be added. Source changes
 after a passing check require relevant checks again; this ledger must not transfer
 the original `ff523ef` test/canary results to the changed runtime.
+
+## Acceptance change and integration
+
+On 2026-09-05 the user requested removal of the Ubuntu/Windows GitHub validation
+flow and merge of PR #17. A-24 is RETIRED_BY_USER; it is not a passing platform
+check. GitHub reports the removed CI workflow (`345467671`, `.github/workflows/ci.yml`)
+as `deleted`, and all 165 historical runs are completed. Local verification
+requirements remain in [the build plan](OBSERVATION_RESEARCH_BUILD_PLAN.md).
+
+Before merge, the branch incorporates main `bee3123` (PR #18, explicit
+UNOFFICIAL_COPY Tier B policy) in integration commit
+`c1f7c557e868889e06da2aee0f0d55308565f6b9`. The observation workflow text and
+Handoff tests are aligned with that existing policy: complete declared copies
+retain UNOFFICIAL_COPY and Tier B through replay; unknown completeness still
+rejects. No additional production-source or contract change was needed.
+
+| Combined-code check on macOS / Python 3.12.8 | Result |
+| --- | --- |
+| Full suite at integration source | 760 passed, 1 failed in 189.28 s; the failure was the obsolete UNOFFICIAL_COPY rejection expectation |
+| Handoff suite after correcting that expectation and adding positive replay coverage | 37 passed in 17.68 s; includes the replacement unknown-completeness rejection and new Tier B admission case |
+| Skill sync | PASS; main's canonical/mirror update is retained |
+| Fresh wheel and all five installed smokes | PASS; source/assets loaded outside checkout with no PYTHONPATH or model API key |
+
+The full-suite and focused counts overlap. There is no claim of a second full
+suite run after the test-only correction. Production source and package assets
+are unchanged from the combined-code full suite and wheel; final commit-byte
+parity and documentation checks are recorded in PR #17. Git commit changes can
+still change build identity, so source and installed identities remain distinct.
+
+The combined-code wheel SHA-256 is
+`ba20be591b175ce7deac05ce62bb791137ff804d11490b9afd5540b23131b02b`.
+Installed smoke durations: agent-files 2.488 s, generic extraction 3.502 s,
+Phase -1 1.671 s, Phase 0 5.245 s, observation research 42.545 s.
+This evidence is retained in `.runtime/observation-stage-a-merge/`; the earlier
+761-test and wheel evidence above remains tied to the review fix.
 
 ## Remaining scope
 

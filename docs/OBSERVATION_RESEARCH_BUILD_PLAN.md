@@ -1,6 +1,6 @@
 # 观察研究入口：构建与验证方案
 
-- 状态：**阶段 A 已开始实施；完成状态以测试、实际宿主切片及固定提交的双平台 CI 为准。阶段 B/C 尚未实施。**
+- 状态：**阶段 A 已实现并完成审查修复；交付证据见验收记录。2026-09-05 按用户要求取消 A-24 双平台验收门槛，不再等待 GitHub CI；适用的本地测试、安装验证和宿主切片证据要求保留。阶段 B/C 尚未实施。**
 - 日期：2026-09-05。
 - 实施集成基线：`3372edd47666175db9f6a17bee1b8446635ce355`；纳入其 standing attestation 更新，按用户决定保留 CI 移除。
 - 代码基线：`eca4c7e41b99ec8966111ff11f2ced11c4d16eaf`。
@@ -110,7 +110,7 @@ xhnovel-pipeline validate-generic-execution <receipt> --research-root <research-
 xhnovel-pipeline observation-research <init|attach|record|execute|report|validate> ...
 ```
 
-seal 命令只负责确定性处理，不调用模型或自动规划。execute 的 API executor 也使用同一闭合路径；CI 用可控替身验证接口，不访问真实模型端点。原生 generic CLI 的退出语义应保留，Handoff JSON 额外说明失败阶段及恢复要求。
+seal 命令只负责确定性处理，不调用模型或自动规划。execute 的 API executor 也使用同一闭合路径；本地测试用可控替身验证接口，不访问真实模型端点。原生 generic CLI 的退出语义应保留，Handoff JSON 额外说明失败阶段及恢复要求。
 
 ## 7. A4：最小宿主 Skill 与交付
 
@@ -179,15 +179,15 @@ Skill 只消费原生 generic task 内的 instructions/input/schema，不能照�
 | A-21 | 地理与种族同一交接路径 | 无领域硬编码；各自保持 UNQUALIFIED / UNMEASURED |
 | A-22 | 原有 Scene 工作流和所有现有 regression | 原契约/行为/错误语义保持，完整测试集通过 |
 | A-23 | wheel 安装后执行已有 smokes 及新增观察研究 smoke | checkout 外资产加载、两遍执行、验证和报告成立 |
-| A-24 | Ubuntu 与 Windows 对同一固定 SHA 执行适用检查，可手动运行 | 两个平台均通过，才关闭跨平台 gate |
+| A-24（已取消） | 原要求为 Ubuntu 与 Windows 对同一固定 SHA 执行适用检查 | `RETIRED_BY_USER`：2026-09-05 用户取消此合并及阶段完成门槛；两个平台仍为 NOT RUN，不标为 PASS |
 
 新契约测试还必须覆盖 ID/hash 伪造、父引用错绑、非法状态转换、预算重复事件、重复回执与幂等性。只有源码变化不会影响语义的预期 build-lineage 变化，应在报告中解释，不反复重开已通过阶段。
 
 ## 10. 构建、测试和 CI
 
-原设计基线的 CI 包含 Ubuntu / Windows、Python 3.11、完整 pytest、Skill 同步、wheel 与已有四条安装 smoke。实施期间 main 的 `4ba032d` 提交移除了 CI，用户明确要求沿用这一变更。因此本阶段不重建 GitHub Actions，A-24 双平台 gate 保留未完成；本地结果不替代它。
+原设计基线的 CI 包含 Ubuntu / Windows、Python 3.11、完整 pytest、Skill 同步、wheel 与已有四条安装 smoke。main 的 `4ba032d` 提交已删除 `.github/workflows/ci.yml`；GitHub 工作流 `345467671` 的状态已核实为 `deleted`，没有未结束的运行。
 
-按当前 AGENTS，Ubuntu / Windows 证据可以来自手动执行，无需恢复 GitHub Actions；记录同一固定 SHA、环境、命令和结果。审查修复及新增 crash/concurrency/budget 回归见 [修复验收记录](OBSERVATION_RESEARCH_REVIEW_FIX_VALIDATION.md)。
+2026-09-05 用户进一步明确要求关闭这项 GitHub 验收流程并合并，因此 A-24 改为 `RETIRED_BY_USER`，不再是阶段 A 的合并或完成门槛。除非用户重新要求，不恢复该 CI 工作流或将双平台检查重新设为门槛。此决定取消验收要求，不生成平台测试证据；Ubuntu / Windows 保持 NOT RUN。源码测试、Skill 同步及适用的安装验证仍须手动执行。审查修复及新增 crash/concurrency/budget 回归见 [修复验收记录](OBSERVATION_RESEARCH_REVIEW_FIX_VALIDATION.md)。
 
 按改动运行一次相应检查：
 
@@ -212,7 +212,7 @@ wheel 在 checkout 外的新临时目录和虚拟环境安装。沿用以下已�
 
 新增 smoke 必须至少产生一个有引用的非空观察，并覆盖一个非地理 Profile；全部空回答只能证明部分路由。fixture 回答是固定验收输入，不证明实时搜索或模型语义质量。新增 contracts 根文件已被分发 glob 覆盖时验证实际 wheel 内容；若增加新目录或 Profile，显式更新分发清单并验证全部引用资产。
 
-阶段报告记录固定 SHA、实际 CI job、测试结果、wheel hash、安装 smoke、Skill 同步结果、完整切片路径、已知限制与预期 build ID 变化。只有本地通过时标为本地验证完成，不关闭双平台 CI gate。
+阶段报告记录固定 SHA、实际执行环境及命令、测试结果、wheel hash、安装 smoke、Skill 同步结果、完整切片路径、已知限制与预期 build ID 变化。A-24 明确记录为已取消；本地通过只证明本地验证，不证明未运行的平台。
 
 ## 11. 阶段 B：独立质量验证协议
 
@@ -238,4 +238,4 @@ wheel 在 checkout 外的新临时目录和虚拟环境安装。沿用以下已�
 
 阶段 A 实现前重点审查四条：研究对象是否进入了原生执行身份；新 Handoff 是否绕过旧来源/权限原语；共享目录与中断是否可正确恢复；报告是否只从完整台账与指定原生产物派生。
 
-阶段 A 的产品能力必须等 schema、实现、相关回归、宿主切片与双平台 gate 逐项通过后再宣布完成。实施记录应与本设计分开，保留未通过或未执行的验收项。
+阶段 A 的产品能力仍需 schema、实现、相关回归、适用安装验证与宿主切片证据支持。A-24 已按用户决定取消，不阻止合并或阶段交付。实施记录与本设计分开，明确区分已通过、未执行和已取消的验收项；语义质量仍由阶段 B 独立验证。

@@ -126,7 +126,7 @@ def test_generic_preflight_rejects_non_ingestion_fields(tmp_path, field):
         validate_generic_research_spec(spec)
 
 
-@pytest.mark.parametrize("change", ["unknown_rights", "storage", "egress", "infringing", "partial", "missing_path"])
+@pytest.mark.parametrize("change", ["unknown_rights", "storage", "egress", "unknown_completeness", "partial", "missing_path"])
 def test_prepare_keeps_rights_quality_and_access_gates(tmp_path, change):
     research_root = tmp_path / "research"
     source_path = tmp_path / "novel.txt"
@@ -136,12 +136,25 @@ def test_prepare_keeps_rights_quality_and_access_gates(tmp_path, change):
     if change == "unknown_rights": declaration["rights"]["basis"] = "UNKNOWN"
     if change == "storage": declaration["rights"]["may_store_full_text"] = False
     if change == "egress": declaration["rights"]["may_send_to_external_model"] = False
-    if change == "infringing": declaration["source_quality"]["edition_status"] = "UNOFFICIAL_COPY"
+    if change == "unknown_completeness": declaration["source_quality"]["textual_completeness"] = "UNKNOWN"
     if change == "partial": declaration["source_quality"]["textual_completeness"] = "PARTIAL"
     if change == "missing_path": source_path.unlink()
     with pytest.raises((ValidationError, SchemaError)):
         prepare_generic_handoff_from_input(value, research_root)
     assert not (research_root / "handoffs").exists()
+
+
+def test_complete_unofficial_copy_preserves_declared_status_and_tier_b(tmp_path):
+    research_root = tmp_path / "research"
+    source_path = tmp_path / "novel.txt"
+    source_path.write_text("第一章 测试\n测试内容。\n", encoding="utf-8")
+    value = handoff_input(research_root, source_path)
+    quality = value["source_declaration"]["source_quality"]
+    quality["edition_status"] = "UNOFFICIAL_COPY"
+    prepared = prepare_generic_handoff_from_input(value, research_root)
+    assert prepared["novel_spec"]["source_quality"] == quality
+    assert prepared["handoff"]["readiness"]["source_quality_tier"] == "B"
+    assert validate_generic_handoff(prepared["handoff_path"], research_root) == prepared["handoff"]
 
 
 def test_offline_replay_needs_cas_not_original_source_or_visible_copies(tmp_path):

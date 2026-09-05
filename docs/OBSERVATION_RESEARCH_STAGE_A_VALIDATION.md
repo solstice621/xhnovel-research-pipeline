@@ -7,8 +7,9 @@ Original results below do not qualify the changed v2 runtime.
 
 This is an implementation evidence record for the acceptance matrix in
 [OBSERVATION_RESEARCH_BUILD_PLAN.md](OBSERVATION_RESEARCH_BUILD_PLAN.md), not a
-change to its gates. Local fixture tests support the contracts and execution
-behavior listed below. They do not establish semantic precision/recall or a
+substitute for its gates. A-24 was explicitly retired by the user on 2026-09-05;
+that acceptance change is reflected below. Local fixture tests support the
+contracts and execution behavior listed below. They do not establish semantic precision/recall or a
 completed live research run.
 
 ## Baseline and release identity
@@ -23,15 +24,15 @@ completed live research run.
 | Full-suite local result | 743 passed in 171.16 s in the isolated checkout; later affected Generic tests: 61 passed in 42.22 s. Final test-only campaign additions also passed: 15 tests in 18.79 s. No production source changed after the aggregate run |
 | Wheel filename / SHA-256 | `xhnovel_pipeline-0.2.0.dev0-py3-none-any.whl` / `902afe4f8d15fd764edb18ef89c81969af9a7d5cb6b723e58d2cc9d26490ab11` |
 | Installed-wheel smoke result and artifact directory | All five PASS; `/private/tmp/xhnovel-stage-a-installed-smokes`; package/data roots outside both checkouts, installed `repository_commit=unknown-dev` |
-| Ubuntu CI job / SHA / result | `PENDING`: CI configuration was removed in the retained baseline; no job result is claimed |
-| Windows CI job / SHA / result | `PENDING`: same limitation as Ubuntu |
+| Ubuntu CI job / SHA / result | `NOT_RUN`: workflow removed; A-24 retired by the user, not passed |
+| Windows CI job / SHA / result | `NOT_RUN`: workflow removed; A-24 retired by the user, not passed |
 | Skill sync and diff check | Both passed in the isolated implementation; no canonical/mirror drift |
 | Live host research canary / output directory | Actual host search and complete 《促織》 / 《夜叉國》 source admission passed. Post-commit native execution receipts and report are delivered separately under `.runtime/observation-stage-a-canary/`. These are operator-authored acceptance stimuli, not human-verbatim research requests or semantic gold. |
 
-The user chose to retain the baseline's CI removal. This record does not restore
-CI or replace A-24 with a local run. Cross-platform completion remains open until
-the required evidence is available or the acceptance contract is explicitly
-changed.
+On 2026-09-05 the user explicitly retired A-24 and requested merge without this
+GitHub validation workflow. A-24 is RETIRED_BY_USER and is no longer a Stage A
+merge or completion gate. The CI workflow is deleted; no unexecuted platform is
+marked PASS. Local verification requirements and semantic-quality limits remain.
 
 Source changes, the final Git commit and included runtime bytes can change native
 build IDs and Handoff builder lineage. That is expected. Test runs made before
@@ -67,8 +68,9 @@ The final aggregate run is recorded separately above.
 
 “Covered by local tests” below means the specific assertions have executed on the
 development host. It does not close the fixed-SHA full-suite, installed-wheel,
-live-canary or dual-platform gates. Some rows use complementary unit and integration
-tests rather than one test that exercises every layer.
+or live-canary requirements; the former dual-platform gate is retired. Some rows
+use complementary unit and integration tests rather than one test that exercises
+every layer.
 
 | Case | Production and named test evidence | Status |
 | --- | --- | --- |
@@ -83,7 +85,7 @@ tests rather than one test that exercises every layer.
 | **A-09 — retryable partial and budget** | [Execution wrapper](../src/xhnovel_pipeline/generic_handoff_execution.py) preserves rejected attempts; [campaign reducer](../src/xhnovel_pipeline/observation_campaign.py) budgets continuation. [Execution tests](../tests/test_generic_handoff_execution.py): `test_rejected_answers_remain_audited_after_partial_correction`; [campaign tests](../tests/test_observation_campaign.py): `test_execution_requires_reservation_and_resume_budget`; [boundary tests](../tests/test_generic_execution_boundaries.py): `test_partial_releases_native_work_dir_lock`. | Covered by complementary local tests, L2/L7 |
 | **A-10 — interruption during a continuation** | [Native invocation journal](../src/xhnovel_pipeline/generic_handoff_execution.py) and [campaign reservation recovery](../src/xhnovel_pipeline/observation_campaign.py) use the new STARTED marker. [Execution tests](../tests/test_generic_handoff_execution.py): `test_interruption_on_continuation_requires_explicit_recovery`; [campaign tests](../tests/test_observation_campaign.py): `test_interrupted_native_call_requires_explicit_resume_and_consumes_resume_budget`, `test_recovery_cannot_absorb_unrecorded_native_continuation`, `test_reservation_cannot_adopt_different_native_executor`. | Covered by local tests, L2/L3/L7 |
 | **A-11 — tampered task/checkpoint/CAS or changed configuration** | [Native validation](../src/xhnovel_pipeline/generic_extraction.py) is reused by the wrapper. [Execution tests](../tests/test_generic_handoff_execution.py): `test_audit_or_checkpoint_tampering_fails_closed`, `test_resume_rejects_actual_executor_or_directory_drift`; [native tests](../tests/test_generic_extraction.py): `test_agent_files_materialize_all_tasks_resume_and_detect_tampering`; [Handoff tests](../tests/test_generic_handoff.py): `test_missing_cas_dependency_fails_closed`, `test_profile_package_drift_rejects_old_handoff`. | Covered by complementary local tests, L2/L6/L11 |
-| **A-12 — shared native work directory** | [Native lock](../src/xhnovel_pipeline/generic_extraction.py): `generic_work_dir_lock`; all three public mutation entry points participate. [Boundary tests](../tests/test_generic_execution_boundaries.py): `test_public_mutations_contend_across_processes`, `test_lock_token_requires_live_same_thread_same_directory_owner`, `test_pending_releases_lock_and_outer_owner_can_publish_after_validation`; [execution tests](../tests/test_generic_handoff_execution.py): `test_handoff_and_direct_caller_share_native_work_dir_lock`. | Covered locally across processes/public APIs, L1–L2; Windows execution pending A-24 |
+| **A-12 — shared native work directory** | [Native lock](../src/xhnovel_pipeline/generic_extraction.py): `generic_work_dir_lock`; all three public mutation entry points participate. [Boundary tests](../tests/test_generic_execution_boundaries.py): `test_public_mutations_contend_across_processes`, `test_lock_token_requires_live_same_thread_same_directory_owner`, `test_pending_releases_lock_and_outer_owner_can_publish_after_validation`; [execution tests](../tests/test_generic_handoff_execution.py): `test_handoff_and_direct_caller_share_native_work_dir_lock`. | Covered locally across processes/public APIs, L1–L2; Windows NOT_RUN; A-24 retired |
 | **A-13 — old success, new pending, multiple reductions** | [Selected validator](../src/xhnovel_pipeline/generic_extraction.py): `validate_selected_generic_corpus`; exact receipt validation checks the selected corpus's package too. [Boundary tests](../tests/test_generic_execution_boundaries.py): `test_exact_corpus_offline_with_multiple_reductions_and_new_pending`, `test_exact_selector_rejects_cross_binding_and_path_escape`; [execution tests](../tests/test_generic_handoff_execution.py): `test_current_pending_and_source_failure_never_use_older_native_success`. | Covered by local tests, L2 |
 | **A-14 — fresh-process offline replay** | [Receipt validation](../src/xhnovel_pipeline/generic_handoff_execution.py): `validate_generic_execution` uses frozen closure. [Execution tests](../tests/test_generic_handoff_execution.py): `test_two_pass_selected_receipt_cached_success_and_offline_replay` removes the source and validates in a subprocess; `test_runtime_change_rejects_old_attempt_and_completed_replay` rejects a different runtime. [CLI test](../tests/test_observation_cli.py): `test_observation_cli_full_slice_keeps_nonempty_zero_and_offline_results`. | Covered by local source-runtime tests, L4/L10/L11; installed-runtime proof also passed in A-23 |
 | **A-15 — zero observations** | [Execution wrapper](../src/xhnovel_pipeline/generic_handoff_execution.py) only publishes success after selected validation. [Execution tests](../tests/test_generic_handoff_execution.py): `test_two_pass_selected_receipt_cached_success_and_offline_replay` zero variant; [campaign tests](../tests/test_observation_campaign.py): `test_full_campaign_two_pass_stop_report_and_offline_validation` zero variant; [CLI fixture](../tests/test_observation_cli.py) separately asserts counts `[1, 1, 0]`. | Covered by local tests, L2/L7/L10; zero is a completed count, not a missing result |
@@ -95,7 +97,7 @@ tests rather than one test that exercises every layer.
 | **A-21 — geography and race share one route** | Generic [Handoff](../src/xhnovel_pipeline/generic_handoff.py), [executor wrapper](../src/xhnovel_pipeline/generic_handoff_execution.py), [CLI](../src/xhnovel_pipeline/observation_cli.py). [Handoff tests](../tests/test_generic_handoff.py): `test_geography_and_race_handoffs_use_identical_source_spec`; [execution tests](../tests/test_generic_handoff_execution.py): `test_two_pass_selected_receipt_cached_success_and_offline_replay`; [CLI fixture](../tests/test_observation_cli.py) checks both Profiles and unchanged assurance. | Covered by local tests, L4/L6/L10; not a semantic benchmark |
 | **A-22 — original Scene workflow / complete regressions** | Shared spec/source primitives remain in [novel_spec.py](../src/xhnovel_pipeline/novel_spec.py) and [phase0_handoff.py](../src/xhnovel_pipeline/phase0_handoff.py); Scene CLI remains separate. L14 ran the complete suite; L15 covers later Generic test-only additions against unchanged production source. | Covered by local full-suite and affected tests, L14/L15; final isolated campaign additions: 15 passed in 18.79 s; original delivery SHA recorded above, without claiming a full-suite rerun at that SHA |
 | **A-23 — installed wheel and all smokes** | [New smoke](../scripts/observation_research_wheel_smoke.py) and [fixture](../fixtures/positive/observation-research/) cover two-pass geography/race, nonempty + zero, report and offline subprocess validation. L10 proves source CLI execution only. Existing four wheel smokes remain required by the build plan. | Original delivery PASS: the wheel/hash and all five installed smokes are recorded above; 137 installed code/data files were compared to immutable Git blobs at `ff523ef`. The wheel was built before that commit; this is byte parity, not a rerun at the source Git identity |
-| **A-24 — Ubuntu and Windows, same fixed SHA** | The acceptance condition is unchanged by local green runs. The retained baseline has no configured CI workflow. | `PENDING_PLATFORM`: neither Ubuntu nor Windows has recorded passing checks at the fixed SHA; manual verification is permitted, GitHub Actions is not required |
+| **A-24 — retired Ubuntu/Windows gate** | User explicitly removed this requirement on 2026-09-05; the GitHub CI workflow is deleted. | `RETIRED_BY_USER`: not required for Stage A merge/completion; both platforms remain NOT_RUN, with no cross-platform verification claim |
 
 ## Residual gates and limits
 
@@ -118,7 +120,9 @@ tests rather than one test that exercises every layer.
 
 ## Original delivery evidence
 
-These values close the original checklist; later runtime changes require new evidence:
+These values preserve the original checklist at delivery time, before A-24 was
+retired. Historical PENDING / stage_a_complete values below are not current merge
+gates. Later runtime changes require new evidence:
 
 ```text
 implementation_branch = feat/observation-research-stage-a-delivery
