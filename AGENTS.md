@@ -327,15 +327,16 @@ Do not repeat passing checks or add review rounds unless a new change, failure,
 unresolved issue, or explicit user request justifies them. `compileall` is optional
 when the affected Python modules are already imported by passing tests.
 
-Before claiming a cross-platform stage is complete:
+GitHub Actions CI is not configured. Run the applicable checks manually and
+record their results. Before claiming a cross-platform stage is complete:
 
-- Ubuntu CI must pass;
-- Windows CI must pass;
+- the applicable tests must pass on Ubuntu;
+- the applicable tests must pass on Windows;
 - the out-of-checkout installed-wheel smoke must pass when installed-runtime behavior changed;
 - report the fixed commit SHA and any expected build-lineage changes.
 
-Do not substitute a local green run for required CI when the stage explicitly has a
-cross-platform gate.
+Do not substitute a single-platform green run for verification on both platforms
+when the stage explicitly has a cross-platform gate.
 
 ## Review expectations
 
