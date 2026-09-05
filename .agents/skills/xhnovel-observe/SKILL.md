@@ -80,7 +80,8 @@ interactive scenes; this Skill consumes native **generic** task packets.
     PARTIAL_RETRYABLE. Use `--resume` only for an interrupted invocation. Keep work directory, Profile and complete executor
     configuration unchanged. A `PARTIAL_RETRYABLE` run retains native failure and
     checkpoint evidence. Other failures need diagnosis; `--retry` starts a new
-    failed-attempt ordinal, it is not a bypass. Changed source/build/executor may
+    attempt after FAILED or interruption and consumes full-work budget; `--resume`
+    consumes resume budget. Never combine the flags. Changed source/build/executor may
     require a new run. Follow pending paths returned by each invocation.
 14. `SUCCEEDED` must have a validated exact execution receipt. Zero records is a
     valid successful corpus, never a substitute for missing output. Reinvoking a
@@ -91,6 +92,10 @@ interactive scenes; this Skill consumes native **generic** task packets.
     Preserve R, every native W, and their CAS together. Deliver all dispositions,
     unresolved requirements, corpus counts, source locations, profile scope and
     quality limitations. Export raw quotations only if source rights allow it.
+    For `MIXED` summaries, read all source/current execution status arrays and
+    historical invocation statuses; one successful handoff cannot erase another
+    handoff's failure or interruption. Follow the workflow's v2 recovery guidance
+    if an external native invocation intervened after a prestart crash.
 
 ## Boundaries to retain
 

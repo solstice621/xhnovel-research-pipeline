@@ -5,7 +5,7 @@
   "additionalProperties": false,
   "properties": {
     "schema_version": {
-      "const": "generic-handoff-attempt/v1"
+      "const": "generic-handoff-attempt/v2"
     },
     "event_id": {
       "type": "string",
@@ -190,10 +190,21 @@
                   "RESUME",
                   "RETRY"
                 ]
+              },
+              "campaign_start_artifact_id": {
+                "oneOf": [
+                  {
+                    "$ref": "defs.schema.json#/$defs/sha256"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               }
             },
             "required": [
-              "recovery"
+              "recovery",
+              "campaign_start_artifact_id"
             ]
           }
         }

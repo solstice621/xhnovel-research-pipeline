@@ -194,6 +194,8 @@ definition/resolution 不进入 ingestion、NovelTextSnapshot、ExtractionBuild�
 
 锁顺序固定为：外层 Handoff → generic work-dir → 原有 ingestion 锁。公开入口取得锁，内部复用明确的已持锁实现，避免嵌套重复加锁。Handoff 保持 generic 锁直到指定产物验证和终态回执发布完成；正常 WAITING/PARTIAL 返回后释放，宿主可以回答原生任务。独立目录可以并行，共享目录冲突明确拒绝/报告，不增加后台排队、lease 或调度器。
 
+campaign 执行时的完整锁顺序为 campaign → Handoff → generic work-dir → ingestion。campaign 在读取 native predecessor 前取得 Handoff 锁，直到 native return 登记为 campaign finish 后才释放；native wrapper 仅复用同进程、同线程、同目录且仍存活的显式 token。executor 配置/descriptor 解析不创建任务目录，agent-files 的 materialization 在 reservation 发布及 native 锁取得后发生，其 OSError 记为 FAILED_PRESTART。
+
 ## 7. 尝试状态机与回执
 
 准备状态、执行状态、记录数量、语义质量分开表达。拟定执行状态：
@@ -214,6 +216,14 @@ definition/resolution 不进入 ingestion、NovelTextSnapshot、ExtractionBuild�
 agent-files 的 model label 是宿主声明，不是管线对后台实际模型版本的证明。记录可获得的宿主执行信息并如实限定评估范围，不能从标签相同推出语义执行完全相同。
 
 每一次初始调用或续跑都先追加唯一 invocation-start 标记，再匹配一次 invocation-return，不能靠历史上出现过 WAITING 就推断当前仍在正常等待。中断恢复先核验同一 spec、profile/runtime/executor、工作目录、checkpoint 与原生任务链；全部匹配才追加明确的恢复决定和新 invocation-start，继续该 attempt。失败后的新 attempt 也不授权忽略 checkpoint 身份。重试/恢复次数受预先声明预算约束。
+
+PR #17 审查修复将 GenericHandoffAttemptEvent 和 ObservationResearchEvent 升为 v2。native STARTED 的 `detail.campaign_start_artifact_id` 必须存在：direct 调用为 null，campaign 调用引用已发布 reservation 的 CAS 内容哈希。native 校验该 reservation 的 journal 字节、handoff、predecessor、目录、recovery 和完整 executor descriptor；campaign 只接受明确属于自己的 native start/return。该字段不进入原生模型任务或 ExtractionBuild。
+
+相邻 STARTED 和相同 executor 不能证明归属。若 reservation 后、native start 前进程中断，随后 direct caller 执行，恢复将记录 FAILED_PRESTART / E-OBSERVATION-EXTERNAL-INVOCATION，不认领其结果；后续未登记 native continuation 仍被拒绝。保留原 campaign 审计记录，外部执行按其原生路径处置；新 campaign 可显式复用已验证成功回执。若没有外部调用，明确恢复可预留新的 full-work attempt。若是自己的 native return 已发布但 campaign finish 丢失，则只补该 finish，不再扣预算。
+
+campaign reservation v2 冻结 `recovery`。执行与回放复用 `plan_generic_invocation`：WAITING/PARTIAL 的正常续跑及 STARTED + resume 消耗 resume 预算；FAILED/STARTED + retry 增加 attempt ordinal，消耗 full-work 预算。此前 FAILED_PRESTART 后的新预留也消耗 full-work 预算。互斥参数和非法 recovery 状态在新预留前拒绝。
+
+journal 只枚举已发布的 `*.json`；writer 在同目录产生的临时文件和 OS 元数据不是事件，进程被杀后无需删除它们即可验证/恢复。正式 JSON 仍要求连续序号、普通文件、非 symlink、canonical bytes、CAS 和哈希链闭合。v1 journal 不会自动升级或被推定有 ownership；旧产物保留原运行时验证，新运行使用 v2。
 
 事件和终态回执不可变，记录单调序号和前序内容引用。checkpoint 的路径只用于定位；如冻结其某次状态，必须复制到 CAS 并绑定 hash，不能将可变路径当作历史证据。完整性错误继续失败关闭。
 
@@ -238,6 +248,8 @@ ObservationResearchRun 放在宿主研究目录，保持在 Catalog 外。采用
 - quality：未评估或引用匹配范围的独立报告；不改写原生 assurance。
 
 final report 由已记录事件与验证过的回执重建，逐一处置所有线索/作品/来源尝试。报告包含候选与执行分母、停止原因、未知项、失败项、零结果，以及完整语料的 artifact/章节/segment/offset 索引。跨作品只做分组与呈现，不做实体合并或规则归纳。
+
+报告 v2 的 `source_statuses` 保留每次来源尝试的不同处置；`execution_statuses` 取每个 handoff 的最新状态，未执行的合格 handoff 为 HANDOFF_READY；`execution_history_statuses` 另存历史 invocation 状态。兼容的摘要列在多个状态并存时显示 MIXED，不以最后一条覆盖其他 handoff。works 按自身 handoff 关联执行，不从共享 lead 的摘要反推。完整 attempts、invocations、失败计数和 corpus 引用继续保留。
 
 SOURCE 不合格时报告无法执行；未发现目标只报告“本次抽取零观察”，不能宣称原文不存在或全书召回完整。Profile 为 SUPERSET 时明确展示原生输出的更广范围。原文摘录分发继续遵守 may_export_excerpts；权限不足时交付允许的索引和状态，不通过报告复制受限原文。
 

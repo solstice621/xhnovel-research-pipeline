@@ -2,14 +2,17 @@
 from __future__ import annotations
 
 import copy
+import os
 import pathlib
+import threading
 from contextlib import contextmanager
+from dataclasses import dataclass
 from typing import Any
 
 from .canonical import canonical_dumps
 from .errors import ValidationError
 from .file_io import write_immutable
-from .generic_agent_files import GENERIC_AGENT_FILES_EXECUTOR_KIND, GenericAgentResponsesPending
+from .generic_agent_files import GENERIC_AGENT_FILES_EXECUTOR_KIND, GenericAgentFileExecutor, GenericAgentResponsesPending
 from .generic_cli import make_generic_executor
 from .generic_extraction import (
     GenericExtractionPartial, build_extraction_build, executor_descriptor,
@@ -34,18 +37,88 @@ RECEIPT_KIND = "GenericExtractionExecutionReceipt"
 RETURN_STATES = {"WAITING_FOR_AGENT", "PARTIAL_RETRYABLE", "SUCCEEDED", "FAILED"}
 
 
+@dataclass(frozen=True)
+class GenericHandoffLockToken:
+    directory: pathlib.Path
+    process_id: int
+    thread_id: int
+
+
+_ACTIVE_HANDOFF_LOCKS: dict[int, GenericHandoffLockToken] = {}
+
+
 @contextmanager
-def _handoff_lock(directory: pathlib.Path):
+def generic_handoff_lock(directory: pathlib.Path, *, lock_token: GenericHandoffLockToken | None = None):
+    """Retain ownership through campaign reservation, native return and publication."""
+    directory = pathlib.Path(directory).resolve()
+    if lock_token is not None:
+        if (_ACTIVE_HANDOFF_LOCKS.get(id(lock_token)) is not lock_token
+                or lock_token.directory != directory or lock_token.process_id != os.getpid()
+                or lock_token.thread_id != threading.get_ident()):
+            raise ValidationError("E-GENERIC-HANDOFF-LOCK-TOKEN", "invalid generic handoff lock token")
+        yield lock_token
+        return
     directory.mkdir(parents=True, exist_ok=True)
     with (directory / ".lock").open("a+b") as handle:
         try:
             _lock_file_handle(handle)
         except OSError as exc:
             raise ValidationError("E-GENERIC-HANDOFF-LOCKED", "handoff is already executing") from exc
+        token = GenericHandoffLockToken(directory, os.getpid(), threading.get_ident())
+        _ACTIVE_HANDOFF_LOCKS[id(token)] = token
         try:
-            yield
+            yield token
         finally:
+            _ACTIVE_HANDOFF_LOCKS.pop(id(token), None)
             _unlock_file_handle(handle)
+
+
+@dataclass(frozen=True)
+class GenericInvocationPlan:
+    attempt_ordinal: int
+    invocation_ordinal: int
+    recovery: str
+    invocation_kind: str
+
+
+def plan_generic_invocation(last: dict[str, Any] | None, *, resume: bool = False, retry: bool = False) -> GenericInvocationPlan:
+    """Pure native transition semantics, shared by execution and campaign replay."""
+    if resume and retry:
+        raise ValidationError("E-GENERIC-RESUME", "choose resume or retry")
+    if last and last["state"] in {"STARTED", "FAILED"}:
+        if last["state"] == "FAILED" and not retry:
+            raise ValidationError("E-GENERIC-RETRY-REQUIRED", "failed attempt requires explicit retry")
+        if last["state"] == "STARTED" and not (resume or retry):
+            raise ValidationError("E-GENERIC-INTERRUPTED", "interrupted invocation requires explicit resume or retry")
+    elif retry or resume:
+        raise ValidationError("E-GENERIC-RESUME", "flags require a failed/interrupted invocation")
+    if last and last["state"] not in {"STARTED", "FAILED", "WAITING_FOR_AGENT", "PARTIAL_RETRYABLE"}:
+        raise ValidationError("E-GENERIC-ATTEMPT-IDENTITY", "completed attempt cannot start another invocation")
+    same_attempt = last is not None and not retry
+    return GenericInvocationPlan(
+        last["attempt_ordinal"] if same_attempt else last["attempt_ordinal"] + 1 if last else 1,
+        last["invocation_ordinal"] + 1 if same_attempt else 1,
+        "RETRY" if retry else "RESUME" if resume else "NORMAL",
+        "RESUME" if same_attempt else "RETRY" if last else "FULL_WORK",
+    )
+
+
+def _validate_campaign_owner(start: dict[str, Any], research_root: pathlib.Path) -> None:
+    owner = start["detail"]["campaign_start_artifact_id"]
+    if owner is None:
+        return
+    reservation = validate_record_identity(get_record(research_root, owner), "ObservationResearchEvent",
+                                           id_field="event_id", hash_field="event_hash")
+    path = research_root / "campaigns" / reservation["run_id"] / "events" / f"{reservation['sequence']:06d}.json"
+    if not path.is_file() or path.is_symlink() or path.read_bytes() != canonical_dumps(reservation):
+        raise ValidationError("E-GENERIC-CAMPAIGN-OWNER", "campaign reservation is not published in its journal")
+    detail = reservation["detail"]
+    if (reservation["event_type"] != "EXECUTION_STARTED"
+            or get_record(research_root, detail["handoff_artifact_id"])["handoff_id"] != start["handoff_id"]
+            or detail["native_before_artifact_id"] != start["previous_event_artifact_id"]
+            or detail["work_dir"] != start["work_dir"] or detail["recovery"] != start["detail"]["recovery"]
+            or detail["executor_request"]["executor_descriptor"] != start["binding"]["executor"]):
+        raise ValidationError("E-GENERIC-CAMPAIGN-OWNER", "native start differs from its campaign reservation")
 
 
 def _binding(resolved: Any, executor: Any, research_root: pathlib.Path, root: pathlib.Path) -> dict[str, Any]:
@@ -140,7 +213,10 @@ def _history(research_root: pathlib.Path, handoff: dict[str, Any]) -> list[tuple
     directory = research_root / "executions" / handoff["handoff_id"] / "events"
     history: list[tuple[str, dict[str, Any]]] = []
     previous = None
-    paths = sorted(directory.iterdir()) if directory.exists() else []
+    # Immutable publication stages dotfiles here. They are not journal entries,
+    # including after SIGKILL; all published JSON entries remain strictly checked.
+    paths = sorted(directory.glob("*.json"))
+    owners = set()
     for ordinal, path in enumerate(paths, 1):
         if not path.is_file() or path.is_symlink():
             raise ValidationError("E-GENERIC-HISTORY", "journal entries must be regular files")
@@ -163,20 +239,21 @@ def _history(research_root: pathlib.Path, handoff: dict[str, Any]) -> list[tuple
         if event["state"] == "STARTED":
             if event["invocation_start_artifact_id"] is not None:
                 raise ValidationError("E-GENERIC-HISTORY", "start event cannot reference itself")
-            if prior is None:
-                valid = (event["attempt_ordinal"] == 1 and event["invocation_ordinal"] == 1
-                         and event["detail"]["recovery"] == "NORMAL")
-            elif event["attempt_id"] == prior["attempt_id"]:
-                valid = (prior["state"] in {"STARTED", "WAITING_FOR_AGENT", "PARTIAL_RETRYABLE"}
-                         and event["attempt_ordinal"] == prior["attempt_ordinal"]
-                         and event["invocation_ordinal"] == prior["invocation_ordinal"] + 1
-                         and event["binding"] == prior["binding"] and event["work_dir"] == prior["work_dir"]
-                         and event["detail"]["recovery"] == ("RESUME" if prior["state"] == "STARTED" else "NORMAL"))
-            else:
-                valid = (prior["state"] in {"STARTED", "FAILED"}
-                         and event["attempt_ordinal"] == prior["attempt_ordinal"] + 1
-                         and event["invocation_ordinal"] == 1
-                         and event["detail"]["recovery"] == "RETRY")
+            try:
+                plan = plan_generic_invocation(prior, resume=event["detail"]["recovery"] == "RESUME",
+                                                retry=event["detail"]["recovery"] == "RETRY")
+            except ValidationError as exc:
+                raise ValidationError("E-GENERIC-HISTORY", "illegal attempt/invocation start") from exc
+            valid = (event["attempt_ordinal"] == plan.attempt_ordinal
+                     and event["invocation_ordinal"] == plan.invocation_ordinal)
+            if plan.invocation_kind == "RESUME":
+                valid = valid and event["binding"] == prior["binding"] and event["work_dir"] == prior["work_dir"]
+            _validate_campaign_owner(event, research_root)
+            owner = event["detail"]["campaign_start_artifact_id"]
+            if owner is not None:
+                if owner in owners:
+                    raise ValidationError("E-GENERIC-HISTORY", "campaign reservation already owns an invocation")
+                owners.add(owner)
             expected_attempt = derived_id("GenericHandoffAttempt", {
                 "handoff_id": event["handoff_id"], "attempt_ordinal": event["attempt_ordinal"],
                 "work_dir": event["work_dir"], "binding": event["binding"],
@@ -241,7 +318,7 @@ def _append_event(research_root: pathlib.Path, handoff: dict[str, Any], history:
                   work_dir: pathlib.Path, binding: dict[str, Any], detail: dict[str, Any],
                   recorded_at: str, start_artifact_id: str | None = None) -> tuple[str, dict[str, Any]]:
     event = seal_record(EVENT_KIND, {
-        "schema_version": "generic-handoff-attempt/v1", "sequence": len(history) + 1,
+        "schema_version": "generic-handoff-attempt/v2", "sequence": len(history) + 1,
         "handoff_id": handoff["handoff_id"], "handoff_hash": handoff["handoff_hash"],
         "attempt_id": attempt_id, "attempt_ordinal": attempt_ordinal,
         "invocation_ordinal": invocation_ordinal, "state": state,
@@ -249,6 +326,8 @@ def _append_event(research_root: pathlib.Path, handoff: dict[str, Any], history:
         "invocation_start_artifact_id": start_artifact_id,
         "work_dir": str(work_dir), "binding": binding, "detail": detail, "recorded_at": recorded_at,
     }, id_field="event_id", hash_field="event_hash")
+    if state == "STARTED":
+        _validate_campaign_owner(event, research_root)
     aid = put_record(research_root, EVENT_KIND, event)
     path = research_root / "executions" / handoff["handoff_id"] / "events" / f"{len(history)+1:06d}.json"
     write_immutable(path, canonical_dumps(event))
@@ -326,7 +405,9 @@ def validate_generic_execution(receipt_or_path: Any, research_root: pathlib.Path
 def execute_generic_handoff(handoff_path: Any, research_root: pathlib.Path, work_dir: pathlib.Path, *,
                             executor_kind: str = "agent-files", executor: Any = None, model: str | None = None,
                             agent_model_label: str = "host-code-agent", root: pathlib.Path | None = None,
-                            resume: bool = False, retry: bool = False, now: str | None = None) -> dict[str, Any]:
+                            resume: bool = False, retry: bool = False, now: str | None = None,
+                            handoff_lock_token: GenericHandoffLockToken | None = None,
+                            campaign_start_artifact_id: str | None = None) -> dict[str, Any]:
     root = root or repo_root()
     research_root, work_dir = pathlib.Path(research_root).resolve(), pathlib.Path(work_dir).resolve()
     resolved = resolve_generic_handoff(handoff_path, research_root, root=root, require_source_access=False)
@@ -334,40 +415,31 @@ def execute_generic_handoff(handoff_path: Any, research_root: pathlib.Path, work
     if resume and retry:
         raise ValidationError("E-GENERIC-RESUME", "choose resume or retry")
     directory = research_root / "executions" / handoff["handoff_id"]
-    with _handoff_lock(directory), generic_work_dir_lock(work_dir) as lock_token:
+    with generic_handoff_lock(directory, lock_token=handoff_lock_token), generic_work_dir_lock(work_dir) as lock_token:
         executor = executor if executor is not None else make_generic_executor(
-            executor_kind, work_dir, resolved.profile_ref, model=model, agent_model_label=agent_model_label, root=root)
+            executor_kind, work_dir, resolved.profile_ref, model=model, agent_model_label=agent_model_label, root=root, materialize=False)
         expected_kind = {"agent-files": GENERIC_AGENT_FILES_EXECUTOR_KIND, "api": API_EXECUTOR_KIND}.get(executor_kind)
         if expected_kind is None or getattr(executor, "executor_kind", None) != expected_kind:
             raise ValidationError("E-GENERIC-EXECUTOR", "executor descriptor does not match chosen native executor")
         if model and (executor_kind != "api" or model != executor.model):
             raise ValidationError("E-GENERIC-EXECUTOR", "model argument differs from native executor")
+        if isinstance(executor, GenericAgentFileExecutor):
+            executor.materialize()
         binding = _binding(resolved, executor, research_root, root)
         history = _history(research_root, handoff)
         last = history[-1][1] if history else None
         if last and last["state"] == "SUCCEEDED":
-            if retry or resume or last["binding"] != binding or last["work_dir"] != str(work_dir):
+            if campaign_start_artifact_id is not None or retry or resume or last["binding"] != binding or last["work_dir"] != str(work_dir):
                 raise ValidationError("E-GENERIC-ATTEMPT-IDENTITY", "completed attempt binding/flags differ")
             receipt = validate_generic_execution(get_record(research_root, last["detail"]["receipt_artifact_id"]), research_root, root=root, work_dir=work_dir)
             return {"status": "SUCCEEDED", "receipt": receipt, "receipt_path": str(record_path(research_root, RECEIPT_KIND, last["detail"]["receipt_artifact_id"])),
                     "receipt_artifact_id": last["detail"]["receipt_artifact_id"], "reused_terminal_receipt": True,
                     "event_artifact_id": history[-1][0], "attempt_id": last["attempt_id"]}
-        if last and last["state"] in {"STARTED", "FAILED"}:
-            if last["state"] == "FAILED" and not retry:
-                raise ValidationError("E-GENERIC-RETRY-REQUIRED", "failed attempt requires explicit retry")
-            if last["state"] == "STARTED" and not (resume or retry):
-                raise ValidationError("E-GENERIC-INTERRUPTED", "interrupted invocation requires explicit resume or retry")
-        elif retry or resume:
-            raise ValidationError("E-GENERIC-RESUME", "flags require a failed/interrupted invocation")
-        same_attempt = last is not None and not retry
-        if same_attempt:
+        plan = plan_generic_invocation(last, resume=resume, retry=retry)
+        if plan.invocation_kind == "RESUME":
             if last["binding"] != binding or last["work_dir"] != str(work_dir):
                 raise ValidationError("E-GENERIC-ATTEMPT-IDENTITY", "resume changed spec/profile/runtime/executor/work-dir")
-            attempt_ordinal = last["attempt_ordinal"]
-            invocation_ordinal = last["invocation_ordinal"] + 1
-        else:
-            attempt_ordinal = last["attempt_ordinal"] + 1 if last else 1
-            invocation_ordinal = 1
+        attempt_ordinal, invocation_ordinal = plan.attempt_ordinal, plan.invocation_ordinal
         attempt_id = derived_id("GenericHandoffAttempt", {
             "handoff_id": handoff["handoff_id"], "attempt_ordinal": attempt_ordinal,
             "work_dir": str(work_dir), "binding": binding,
@@ -375,7 +447,7 @@ def execute_generic_handoff(handoff_path: Any, research_root: pathlib.Path, work
         shared = dict(attempt_id=attempt_id, attempt_ordinal=attempt_ordinal, invocation_ordinal=invocation_ordinal,
                       work_dir=work_dir, binding=binding)
         started_aid, _ = _append_event(research_root, handoff, history, state="STARTED", **shared,
-                                       detail={"recovery": "RETRY" if retry else "RESUME" if resume else "NORMAL"}, recorded_at=now or utc_now())
+                                       detail={"recovery": plan.recovery, "campaign_start_artifact_id": campaign_start_artifact_id}, recorded_at=now or utc_now())
         stage = "SOURCE_PREFLIGHT"
         try:
             resolved = resolve_generic_handoff(handoff_path, research_root, root=root, require_source_access=True)

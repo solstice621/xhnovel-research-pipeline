@@ -201,12 +201,22 @@ adapter, cross-unit context or hidden offset repair is allowed.
 
 For WAITING or PARTIAL_RETRYABLE, repeat the identical command without recovery
 flags. `--resume` is reserved for an interrupted invocation with the same binding;
-`--retry` explicitly starts another failed-attempt ordinal. Successful cached
+`--retry` after FAILED or an interrupted STARTED explicitly creates another attempt
+and consumes full-work budget, even after interruption. `--resume` keeps the same
+attempt and consumes resume budget. Never combine the flags. Successful cached
 invocations also use no recovery flags. The API
 executor uses `--executor api --model MODEL`. An agent model label is a host
 assertion, not authenticated backend identity. Changing build/executor/source
 may invalidate continuation. Concurrent native mutations to the same W are
 locked, including direct generic commands.
+
+Campaign execution owns the Handoff lock from predecessor inspection through
+return publication. Each native STARTED records its exact campaign reservation;
+an external caller after a prestart crash is reported as FAILED_PRESTART, never
+adopted merely because its executor matches. Keep that failed campaign history;
+continue the external invocation through its original route. A new campaign may
+explicitly reuse its validated successful receipt. Writer temporary files left
+by process termination are ignored as non-events; do not edit journal JSON.
 
 For independent Handoff use there is also `execute-generic-handoff HANDOFF
 --research-root R --work-dir W ...`; it does not book campaign budgets.
@@ -216,6 +226,14 @@ xhnovel-pipeline validate-generic-execution RECEIPT --research-root R --work-dir
 xhnovel-pipeline observation-research report RUN --research-root R --output report.json
 xhnovel-pipeline observation-research validate RUN --research-root R --report report.json
 ```
+
+Read `source_statuses`, `execution_statuses` and `execution_history_statuses`
+together with the full attempt/invocation lists. Summary `MIXED` means several
+sources or handoffs have different outcomes. Current execution states use the
+latest invocation per handoff; historical WAITING or FAILED remains in the
+history, without turning a now-successful handoff back into a pending one.
+Event journals and reports use v2 after the PR #17 review fixes. Older v1 archives
+require their original runtime; they are not silently converted to owned v2 runs.
 
 Successful receipts bind exact ingestion, extraction, reduction and corpus IDs.
 Historical validation uses frozen sources and does not require the original TXT

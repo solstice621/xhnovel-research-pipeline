@@ -1,5 +1,10 @@
 # Observation research Stage A validation record
 
+This records the original `ff523ef` delivery evidence. The subsequent PR #17
+review fixes and their new validation are recorded in
+[OBSERVATION_RESEARCH_REVIEW_FIX_VALIDATION.md](OBSERVATION_RESEARCH_REVIEW_FIX_VALIDATION.md).
+Original results below do not qualify the changed v2 runtime.
+
 This is an implementation evidence record for the acceptance matrix in
 [OBSERVATION_RESEARCH_BUILD_PLAN.md](OBSERVATION_RESEARCH_BUILD_PLAN.md), not a
 change to its gates. Local fixture tests support the contracts and execution
@@ -14,7 +19,7 @@ completed live research run.
 | Implementation baseline | `3372edd47666175db9f6a17bee1b8446635ce355` |
 | Source checkout observed during evidence assembly | `/Users/I578130/Desktop/xhnovel-research-pipeline`, branch `main`, uncommitted implementation |
 | Isolated implementation branch / checkout | `feat/observation-research-stage-a-delivery` / `/private/tmp/xhnovel-observation-stage-a-20260905` |
-| Fixed implementation SHA | This is the pre-commit checklist. The fixed delivery SHA and post-commit canary receipts are recorded in the PR / task delivery, without rewriting native build-bound artifacts. |
+| Fixed original implementation SHA | `ff523ef23420dc46fd8eec6c4cc19e716ed9a429`; precommit source and wheel evidence retain their original build identity. |
 | Full-suite local result | 743 passed in 171.16 s in the isolated checkout; later affected Generic tests: 61 passed in 42.22 s. Final test-only campaign additions also passed: 15 tests in 18.79 s. No production source changed after the aggregate run |
 | Wheel filename / SHA-256 | `xhnovel_pipeline-0.2.0.dev0-py3-none-any.whl` / `902afe4f8d15fd764edb18ef89c81969af9a7d5cb6b723e58d2cc9d26490ab11` |
 | Installed-wheel smoke result and artifact directory | All five PASS; `/private/tmp/xhnovel-stage-a-installed-smokes`; package/data roots outside both checkouts, installed `repository_commit=unknown-dev` |
@@ -88,24 +93,22 @@ tests rather than one test that exercises every layer.
 | **A-19 — SUPERSET Profile and excerpt restrictions** | [Report construction](../src/xhnovel_pipeline/observation_campaign.py) declares `COMPLETE_NATIVE_CORPORA_NO_SEMANTIC_FILTER`, preserves Profile fit and emits offsets instead of excerpts. [Campaign test](../tests/test_observation_campaign.py): `test_superset_profile_keeps_full_corpus_and_exports_offsets_without_excerpts` selects a SUPERSET Profile for a places-only requirement, retains both a place and spatial relation in the corpus, and checks offset-only reporting with excerpt export forbidden. | Covered by exact supplemental local test, L13; final isolated campaign suite passed (15 tests in 18.79 s) |
 | **A-20 — reconstruct report and reject forged counts** | [Campaign validation](../src/xhnovel_pipeline/observation_campaign.py) reconstructs from journal and validated receipts. [Campaign tests](../tests/test_observation_campaign.py): `test_full_campaign_two_pass_stop_report_and_offline_validation`, `test_report_forged_count_and_missing_event_rejected`, `test_cached_native_receipt_reused_by_new_campaign_without_budget`; [execution tests](../tests/test_generic_handoff_execution.py): `test_public_event_validation_replays_returns_and_rejects_start_or_wrong_handoff`. | Covered by local tests, L4/L7; corpus corruption remains a validation failure |
 | **A-21 — geography and race share one route** | Generic [Handoff](../src/xhnovel_pipeline/generic_handoff.py), [executor wrapper](../src/xhnovel_pipeline/generic_handoff_execution.py), [CLI](../src/xhnovel_pipeline/observation_cli.py). [Handoff tests](../tests/test_generic_handoff.py): `test_geography_and_race_handoffs_use_identical_source_spec`; [execution tests](../tests/test_generic_handoff_execution.py): `test_two_pass_selected_receipt_cached_success_and_offline_replay`; [CLI fixture](../tests/test_observation_cli.py) checks both Profiles and unchanged assurance. | Covered by local tests, L4/L6/L10; not a semantic benchmark |
-| **A-22 — original Scene workflow / complete regressions** | Shared spec/source primitives remain in [novel_spec.py](../src/xhnovel_pipeline/novel_spec.py) and [phase0_handoff.py](../src/xhnovel_pipeline/phase0_handoff.py); Scene CLI remains separate. L14 ran the complete suite; L15 covers later Generic test-only additions against unchanged production source. | Covered by local full-suite and affected tests, L14/L15; final isolated campaign additions and final SHA binding still to be recorded |
-| **A-23 — installed wheel and all smokes** | [New smoke](../scripts/observation_research_wheel_smoke.py) and [fixture](../fixtures/positive/observation-research/) cover two-pass geography/race, nonempty + zero, report and offline subprocess validation. L10 proves source CLI execution only. Existing four wheel smokes remain required by the build plan. | `PENDING_WHEEL`: isolated wheel, five smoke results and distribution hash not yet recorded |
-| **A-24 — Ubuntu and Windows, same fixed SHA** | The acceptance condition is unchanged by local green runs. The retained baseline has no configured CI workflow. | `PENDING_CI`: no Ubuntu or Windows CI success claimed; requires explicit job evidence for the final SHA |
+| **A-22 — original Scene workflow / complete regressions** | Shared spec/source primitives remain in [novel_spec.py](../src/xhnovel_pipeline/novel_spec.py) and [phase0_handoff.py](../src/xhnovel_pipeline/phase0_handoff.py); Scene CLI remains separate. L14 ran the complete suite; L15 covers later Generic test-only additions against unchanged production source. | Covered by local full-suite and affected tests, L14/L15; final isolated campaign additions: 15 passed in 18.79 s; original delivery SHA recorded above, without claiming a full-suite rerun at that SHA |
+| **A-23 — installed wheel and all smokes** | [New smoke](../scripts/observation_research_wheel_smoke.py) and [fixture](../fixtures/positive/observation-research/) cover two-pass geography/race, nonempty + zero, report and offline subprocess validation. L10 proves source CLI execution only. Existing four wheel smokes remain required by the build plan. | Original delivery PASS: the wheel/hash and all five installed smokes are recorded above; 137 installed code/data files were compared to immutable Git blobs at `ff523ef`. The wheel was built before that commit; this is byte parity, not a rerun at the source Git identity |
+| **A-24 — Ubuntu and Windows, same fixed SHA** | The acceptance condition is unchanged by local green runs. The retained baseline has no configured CI workflow. | `PENDING_PLATFORM`: neither Ubuntu nor Windows has recorded passing checks at the fixed SHA; manual verification is permitted, GitHub Actions is not required |
 
 ## Residual gates and limits
 
-- A-16 and A-19 initially had partial test coverage. Their exact supplemental
-  scenarios passed locally (L13); root still needs to record the isolated campaign
-  rerun alongside the later Generic tests (L15).
-- Full-suite results, Skill synchronization and diff checks passed for the
-  isolated implementation. They still need the final commit/checkout binding;
-  earlier subsets are not substituted for the full-suite run.
-- Source CLI fixtures and the installed-wheel smoke are different checks. The
-  wheel check must prove checkout-independent imports/assets and complete all five
-  smoke scripts, not just rerun the source fixture.
-- The live canary still needs actual host search records, a qualified complete
-  source, native agent-files execution, exact receipts and a reconstructed final
-  report. Fixed fixture answers and simulated search evidence do not satisfy it.
+- A-16 and A-19 supplemental scenarios passed locally; the final campaign suite
+  recorded 15 passed in 18.79 s. Counts overlap the earlier aggregate suite.
+- The original full suite and later affected tests predate the final delivery
+  commit; no fixed-SHA full-suite rerun is claimed here. Installed-wheel byte
+  parity to that commit is separately recorded, not a replacement for test runs.
+- All five original installed smokes passed. Original postcommit canaries for
+  complete 《促織》 and 《夜叉國》 reached SUCCEEDED with 2 geography and 8 race
+  records and offline validation. They were operator-authored acceptance stimuli,
+  not semantic gold or proof of full-length commercial-novel recall. Their local
+  evidence is under `.runtime/observation-stage-a-canary/` and described in PR #17.
 - No semantic quality result is claimed. `UNQUALIFIED` / `UNMEASURED` remain the
   production declarations; Stage B evaluation and Stage C new-Profile admission
   are outside this implementation record.
@@ -113,21 +116,21 @@ tests rather than one test that exercises every layer.
   failure. The matrix records deterministic validation behavior, not an assertion
   that an untrusted actor cannot delete an entire research archive.
 
-## Final evidence slots
+## Original delivery evidence
 
-Root should replace these slots only after the corresponding action completes:
+These values close the original checklist; later runtime changes require new evidence:
 
 ```text
-implementation_branch = PENDING
-implementation_checkout = PENDING
-implementation_sha = PENDING
+implementation_branch = feat/observation-research-stage-a-delivery
+implementation_checkout = /private/tmp/xhnovel-observation-stage-a-20260905
+implementation_sha = ff523ef23420dc46fd8eec6c4cc19e716ed9a429
 full_pytest_command = /private/tmp/xhnovel-observation-test-env/bin/python -m pytest -ra
 full_pytest_result = 743 passed in 171.16s, isolated source snapshot before final test-only additions
 full_pytest_log = /private/tmp/xhnovel-stage-a-full-tests.log
-targeted_post_snapshot_tests = Generic: 61 passed in 42.22s; isolated campaign final result PENDING
-skill_sync_result = PASS reported by root; final commit binding PENDING
-diff_check_result = PASS reported by root; final commit binding PENDING
-wheel_filename = PENDING
+targeted_post_snapshot_tests = Generic: 61 passed in 42.22s; isolated campaign: 15 passed in 18.79s
+skill_sync_result = PASS in isolated delivery checkout; final SHA ff523ef
+diff_check_result = PASS in isolated delivery checkout; final SHA ff523ef
+wheel_filename = xhnovel_pipeline-0.2.0.dev0-py3-none-any.whl
 wheel_sha256 = 902afe4f8d15fd764edb18ef89c81969af9a7d5cb6b723e58d2cc9d26490ab11
 installed_smoke_directory = /private/tmp/xhnovel-stage-a-installed-smokes
 agent_files_wheel_smoke = PASS
@@ -135,10 +138,10 @@ generic_extraction_wheel_smoke = PASS
 phase_minus1_wheel_smoke = PASS
 phase0_vertical_slice_wheel_smoke = PASS
 observation_research_wheel_smoke = PASS
-ubuntu_ci_job_sha_result = PENDING
-windows_ci_job_sha_result = PENDING
-live_canary_directory = PENDING
-live_canary_report_and_receipts = PENDING
+ubuntu_fixed_sha_verification = PENDING
+windows_fixed_sha_verification = PENDING
+live_canary_directory = .runtime/observation-stage-a-canary/
+live_canary_report_and_receipts = geography 2 / race 8, SUCCEEDED and offline validation PASS at ff523ef
 stage_a_complete = false
 ```
 

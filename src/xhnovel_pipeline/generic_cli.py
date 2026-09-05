@@ -74,8 +74,9 @@ def make_generic_executor(
     model: str | None = None,
     agent_model_label: str = "host-code-agent",
     root: pathlib.Path | None = None,
+    *, materialize: bool = True,
 ) -> StructuredExecutor:
-    """Construct the same native executor for the direct CLI and Handoff path."""
+    """Resolve native configuration; optionally defer agent-file publication."""
     if executor_kind == "api":
         if not model:
             raise PipelineError("E-MODEL-CONFIG", "--model is required for --executor api")
@@ -87,6 +88,7 @@ def make_generic_executor(
     return GenericAgentFileExecutor(
         _agent_root(pathlib.Path(work_dir), profile_ref, agent_model_label, root=root),
         model_label=agent_model_label,
+        materialize=materialize,
     )
 
 

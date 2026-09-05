@@ -179,13 +179,15 @@ Skill 只消费原生 generic task 内的 instructions/input/schema，不能照�
 | A-21 | 地理与种族同一交接路径 | 无领域硬编码；各自保持 UNQUALIFIED / UNMEASURED |
 | A-22 | 原有 Scene 工作流和所有现有 regression | 原契约/行为/错误语义保持，完整测试集通过 |
 | A-23 | wheel 安装后执行已有 smokes 及新增观察研究 smoke | checkout 外资产加载、两遍执行、验证和报告成立 |
-| A-24 | Ubuntu 与 Windows CI 对同一固定 SHA | 两个平台均通过，才关闭跨平台 gate |
+| A-24 | Ubuntu 与 Windows 对同一固定 SHA 执行适用检查，可手动运行 | 两个平台均通过，才关闭跨平台 gate |
 
 新契约测试还必须覆盖 ID/hash 伪造、父引用错绑、非法状态转换、预算重复事件、重复回执与幂等性。只有源码变化不会影响语义的预期 build-lineage 变化，应在报告中解释，不反复重开已通过阶段。
 
 ## 10. 构建、测试和 CI
 
 原设计基线的 CI 包含 Ubuntu / Windows、Python 3.11、完整 pytest、Skill 同步、wheel 与已有四条安装 smoke。实施期间 main 的 `4ba032d` 提交移除了 CI，用户明确要求沿用这一变更。因此本阶段不重建 GitHub Actions，A-24 双平台 gate 保留未完成；本地结果不替代它。
+
+按当前 AGENTS，Ubuntu / Windows 证据可以来自手动执行，无需恢复 GitHub Actions；记录同一固定 SHA、环境、命令和结果。审查修复及新增 crash/concurrency/budget 回归见 [修复验收记录](OBSERVATION_RESEARCH_REVIEW_FIX_VALIDATION.md)。
 
 按改动运行一次相应检查：
 

@@ -149,13 +149,18 @@ class GenericAgentFileExecutor:
     timeout = 0.0
     max_attempts = 1
 
-    def __init__(self, root: pathlib.Path, *, model_label: str = "host-code-agent") -> None:
+    def __init__(self, root: pathlib.Path, *, model_label: str = "host-code-agent", materialize: bool = True) -> None:
         if not isinstance(model_label, str) or not model_label.strip():
             raise ValidationError("E-GENERIC-AGENT-CONFIG", "model label must be non-empty")
         self.root = pathlib.Path(root)
         self.tasks_dir = self.root / "tasks"
         self.answers_dir = self.root / "answers"
         self.model = model_label.strip()
+        if materialize:
+            self.materialize()
+
+    def materialize(self) -> None:
+        """Create executor files only after the caller owns its execution boundary."""
         self.tasks_dir.mkdir(parents=True, exist_ok=True)
         self.answers_dir.mkdir(parents=True, exist_ok=True)
         _write_immutable(self.root / "README.md", _AGENT_README.encode("utf-8"))

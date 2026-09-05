@@ -225,8 +225,11 @@ def test_reservation_cannot_adopt_different_native_executor(tmp_path, monkeypatc
     monkeypatch.setattr(campaign, "execute_generic_handoff", real)
     outside = execute_generic_handoff(prepared["handoff_path"], root, tmp_path / "native", agent_model_label="other executor", now=NOW)
     assert outside["status"] == "WAITING_FOR_AGENT"
-    with pytest.raises(ValidationError, match="executor differs"):
-        execute_campaign_handoff(run.record, prepared["handoff_path"], root, tmp_path / "native", now=NOW)
+    rejected = execute_campaign_handoff(run.record, prepared["handoff_path"], root, tmp_path / "native", now=NOW)
+    assert rejected["status"] == "FAILED_PRESTART"
+    assert rejected["error"]["code"] == "E-OBSERVATION-EXTERNAL-INVOCATION"
+    report = validate_observation_research(run.record, root)
+    assert report["execution_invocations"][0]["finish"]["detail"]["native_event_artifact_id"] is None
 
 
 def test_failed_source_then_distinct_source_success_preserves_both_attempts(tmp_path):
@@ -267,7 +270,8 @@ def test_failed_source_then_distinct_source_success_preserves_both_attempts(tmp_
     assert report["counts"]["source_attempts"] == report["budget_used"]["source_attempts"] == 2
     assert report["counts"]["failed_source_attempts"] == 1
     assert report["counts"]["successful_works"] == report["counts"]["successful_receipts"] == 1
-    assert report["leads"][0]["source"] == "ELIGIBLE"
+    assert report["leads"][0]["source"] == "MIXED"
+    assert report["leads"][0]["source_statuses"] == ["BLOCKED_BY_RIGHTS", "ELIGIBLE"]
     assert report["leads"][0]["execution"] == "SUCCEEDED"
     assert len(report["leads"][0]["source_attempt_ids"]) == 2
     assert report["results"][0]["receipt_artifact_id"] == result["receipt_artifact_id"]

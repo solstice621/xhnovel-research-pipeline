@@ -20,7 +20,8 @@ from .generic_extraction import executor_descriptor
 from .generic_cli import make_generic_executor
 from .generic_handoff import resolve_generic_handoff
 from .generic_handoff_execution import (validate_generic_execution_history as native_history, execute_generic_handoff,
-                                        validate_generic_execution, validate_generic_execution_event)
+                                        validate_generic_execution, validate_generic_execution_event,
+                                        generic_handoff_lock, plan_generic_invocation)
 from .hashing import artifact_id_for, object_hash
 from .novel_ingest import _lock_file_handle, _unlock_file_handle
 from .observation_common import (SealedRecord, get_record, publish_record, read_json, record_path,
@@ -123,7 +124,8 @@ def _history(run: dict[str, Any], research_root: pathlib.Path) -> list[tuple[str
     return events
 
 
-def _owned_native_outcome(context, history):
+def _owned_native_outcome(reservation, history):
+    context = reservation["detail"]
     before = context["native_before_artifact_id"]
     positions = [index for index, (aid, _) in enumerate(history) if aid == before] if before is not None else [-1]
     if len(positions) != 1:
@@ -134,9 +136,22 @@ def _owned_native_outcome(context, history):
     start_aid, start = history[index]
     if start["state"] != "STARTED":
         raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "reservation must bind the immediate next native start")
+    if start["detail"]["campaign_start_artifact_id"] != artifact_id_for(canonical_dumps(reservation)):
+        return None  # A direct caller after a prestart crash is not our execution.
     if index + 1 < len(history) and history[index + 1][1]["invocation_start_artifact_id"] == start_aid:
         return history[index + 1]
     return history[index]
+
+
+def _reservation_kind(detail, prior, history):
+    before = detail["native_before_artifact_id"]
+    predecessors = [event for aid, event in history if aid == before] if before is not None else [None]
+    if len(predecessors) != 1:
+        raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "reserved native predecessor is missing")
+    if not prior and predecessors[0] is not None:
+        raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "unrecorded native continuation requires its original campaign")
+    plan = plan_generic_invocation(predecessors[0], resume=detail["recovery"] == "RESUME", retry=detail["recovery"] == "RETRY")
+    return "RETRY" if prior and plan.invocation_kind == "FULL_WORK" else plan.invocation_kind
 
 
 def _check_executor_request(request, event):
@@ -155,18 +170,20 @@ def _native_return(detail: dict[str, Any], started: dict[str, Any], research_roo
     context = started["detail"]
     handoff = get_record(research_root, context["handoff_artifact_id"])
     resolved = resolve_generic_handoff(handoff, research_root, root=root)
+    history = native_history(resolved.handoff, pathlib.Path(research_root), root=root)
     if detail["status"] == "FAILED_PRESTART":
         if detail["native_event_artifact_id"] is not None or detail["receipt_artifact_id"] is not None or detail["error"] is None:
             raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "prestart error cannot claim native evidence")
+        if _owned_native_outcome(started, history) is not None:
+            raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "prestart error cannot hide an owned native invocation")
         return None
     if detail["native_event_artifact_id"] is None or detail["error"] is not None:
         raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "native return requires its authoritative event")
-    history = native_history(resolved.handoff, pathlib.Path(research_root), root=root)
     found = [item for aid, item in history if aid == detail["native_event_artifact_id"]]
     if len(found) != 1:
         raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "native event is not in the authoritative journal")
     event = found[0]
-    owned = _owned_native_outcome(context, history)
+    owned = _owned_native_outcome(started, history)
     if owned is None or owned[0] != detail["native_event_artifact_id"]:
         raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "return does not belong to the reserved native invocation")
     _check_executor_request(context["executor_request"], event)
@@ -257,7 +274,7 @@ def _reduce(run: dict[str, Any], events: list[tuple[str, dict[str, Any]]], resea
             if resolution["decision"] != "REUSE_EXISTING":
                 raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "research has no executable Profile")
             prior = [item for item in state["executions"].values() if item["start"]["detail"]["handoff_artifact_id"] == detail["handoff_artifact_id"]]
-            expected_kind = "FULL_WORK" if not prior else ("RETRY" if prior[-1]["finish"]["detail"]["status"] in {"FAILED", "FAILED_PRESTART"} else "RESUME")
+            expected_kind = _reservation_kind(detail, prior, native_history(source["handoff"], research_root, root=root))
             if detail["invocation_kind"] != expected_kind or (prior and prior[-1]["finish"]["detail"]["status"] == "SUCCEEDED"):
                 raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "invocation budget class differs from prior state")
             budget_key = "resume_invocations" if expected_kind == "RESUME" else "full_work_attempts"
@@ -310,7 +327,7 @@ def _append(run, draft, events, research_root, *, root=None) -> SealedRecord:
             if any(prior[key] != draft[key] for key in ("event_type", "detail")):
                 raise ValidationError("E-OBSERVATION-CAMPAIGN-OPERATION", "operation ID reused with different content")
             return SealedRecord(prior, aid, record_path(research_root, EVENT_KIND, aid))
-    event = seal_record(EVENT_KIND, {**draft, "schema_version": "observation-research-event/v1", "run_id": run["run_id"], "run_hash": run["run_hash"],
+    event = seal_record(EVENT_KIND, {**draft, "schema_version": "observation-research-event/v2", "run_id": run["run_id"], "run_hash": run["run_hash"],
         "sequence": len(events) + 1, "previous_event_artifact_id": events[-1][0] if events else None}, id_field="event_id", hash_field="event_hash")
     aid = artifact_id_for(canonical_dumps(event))
     _reduce(run, events + [(aid, event)], research_root, root=root)
@@ -363,20 +380,22 @@ def _execution_result(finish, research_root):
 def execute_campaign_handoff(run_or_path, handoff_path, research_root, work_dir, *, operation_id=None, root=None,
                              executor_kind="agent-files", executor=None, model=None, agent_model_label="host-code-agent",
                              resume=False, retry=False, now=None) -> dict[str, Any]:
+    if resume and retry:
+        raise ValidationError("E-GENERIC-RESUME", "choose resume or retry")
     research_root, work_dir = pathlib.Path(research_root).resolve(), pathlib.Path(work_dir).resolve()
     run = _run(run_or_path, research_root, root=root)
     handoff = resolve_generic_handoff(handoff_path, research_root, root=root).handoff
     handoff_aid = artifact_id_for(canonical_dumps(handoff))
     if executor is None:
         try:
-            executor = make_generic_executor(executor_kind, work_dir, handoff["selected_profile"]["profile_ref"], model=model, agent_model_label=agent_model_label, root=root)
-        except PipelineError:
+            executor = make_generic_executor(executor_kind, work_dir, handoff["selected_profile"]["profile_ref"], model=model, agent_model_label=agent_model_label, root=root, materialize=False)
+        except (PipelineError, OSError, ValueError):
             # The native wrapper will record the configuration failure after the
             # campaign has durably reserved this invocation.
             pass
     request = {"executor_kind": executor_kind, "model": model, "agent_model_label": agent_model_label,
                "executor_descriptor": executor_descriptor(executor) if executor is not None else None}
-    with _campaign_lock(run, research_root):
+    with _campaign_lock(run, research_root), generic_handoff_lock(research_root / "executions" / handoff["handoff_id"]) as handoff_token:
         events = _history(run, research_root)
         state = _reduce(run, events, research_root, root=root)
         source = next((item for item in reversed(list(state["sources"].values())) if item["finish"] and item["finish"]["detail"]["handoff_artifact_id"] == handoff_aid), None)
@@ -403,7 +422,8 @@ def execute_campaign_handoff(run_or_path, handoff_path, research_root, work_dir,
             # A completed native attempt is verified and attached without claiming
             # a new invocation or consuming the full-work execution budget.
             result = execute_generic_handoff(handoff, research_root, work_dir, executor_kind=executor_kind, executor=executor,
-                model=model, agent_model_label=agent_model_label, root=root, resume=resume, retry=retry, now=now)
+                model=model, agent_model_label=agent_model_label, root=root, resume=resume, retry=retry, now=now,
+                handoff_lock_token=handoff_token)
             reused = _append(run, {"operation_id": operation_id or "reuse:" + handoff["handoff_id"], "event_type": "EXECUTION_REUSED", "recorded_at": now or utc_now(), "detail": {
                 "source_event_artifact_id": source["finish_artifact_id"], "handoff_artifact_id": handoff_aid,
                 "work_dir": str(work_dir), "executor_request": request, "native_event_artifact_id": result["event_artifact_id"],
@@ -416,10 +436,14 @@ def execute_campaign_handoff(run_or_path, handoff_path, research_root, work_dir,
             start = unfinished["start"]
             if start["detail"]["executor_request"] != request or start["detail"]["work_dir"] != str(work_dir):
                 raise ValidationError("E-OBSERVATION-CAMPAIGN-OPERATION", "interrupted invocation parameters differ")
-            owned = _owned_native_outcome(start["detail"], history)
+            owned = _owned_native_outcome(start, history)
             changed = owned is not None
             if changed and owned[1]["state"] != "STARTED":
                 finished = _append(run, _finish_draft(start_aid, start, owned, now=now or utc_now()), events, research_root, root=root)
+                return _execution_result(finished.record, research_root)
+            if not changed and history and history[-1][0] != start["detail"]["native_before_artifact_id"]:
+                error = ValidationError("E-OBSERVATION-EXTERNAL-INVOCATION", "external native invocation followed an interrupted prestart reservation")
+                finished = _append(run, _finish_draft(start_aid, start, None, now=now or utc_now(), error=error), events, research_root, root=root)
                 return _execution_result(finished.record, research_root)
             if not (resume or retry):
                 raise ValidationError("E-OBSERVATION-CAMPAIGN-INTERRUPTED", "interrupted research invocation requires explicit resume or retry")
@@ -433,8 +457,11 @@ def execute_campaign_handoff(run_or_path, handoff_path, research_root, work_dir,
             last_detail = prior[-1][1]["finish"]["detail"]
             if last_detail["native_event_artifact_id"] is not None and history and last_detail["native_event_artifact_id"] != history[-1][0]:
                 raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "unrecorded native continuation cannot consume this campaign's budget")
-        invocation_kind = "FULL_WORK" if not prior else ("RETRY" if prior[-1][1]["finish"]["detail"]["status"] in {"FAILED", "FAILED_PRESTART"} else "RESUME")
+            if last_detail["native_event_artifact_id"] is None and history and history[-1][0] != prior[-1][1]["start"]["detail"]["native_before_artifact_id"]:
+                raise ValidationError("E-OBSERVATION-CAMPAIGN-EXECUTION", "unrecorded native continuation cannot consume this campaign's budget")
         before = history[-1][0] if history else None
+        recovery = "RETRY" if retry else "RESUME" if resume else "NORMAL"
+        invocation_kind = _reservation_kind({"native_before_artifact_id": before, "recovery": recovery}, prior, history)
         if operation_id is None:
             operation_id = "execute:" + object_hash({"run_id": run["run_id"], "handoff": handoff_aid, "before": before,
                 "prior_reservations": len(prior), "request": request, "work_dir": str(work_dir)}, omit=()).removeprefix("sha256:")[:24]
@@ -443,15 +470,16 @@ def execute_campaign_handoff(run_or_path, handoff_path, research_root, work_dir,
             operation_id += ":recovery:" + str(len(prior))
         start = _append(run, {"operation_id": operation_id + ":start", "event_type": "EXECUTION_STARTED", "recorded_at": now or utc_now(), "detail": {
             "source_event_artifact_id": source["finish_artifact_id"], "handoff_artifact_id": handoff_aid, "work_dir": str(work_dir),
-            "invocation_kind": invocation_kind, "native_before_artifact_id": before, "executor_request": request}}, events, research_root, root=root)
+            "invocation_kind": invocation_kind, "recovery": recovery, "native_before_artifact_id": before, "executor_request": request}}, events, research_root, root=root)
         try:
             result = execute_generic_handoff(handoff, research_root, work_dir, executor_kind=executor_kind, executor=executor,
-                model=model, agent_model_label=agent_model_label, root=root, resume=resume, retry=retry, now=now)
+                model=model, agent_model_label=agent_model_label, root=root, resume=resume, retry=retry, now=now,
+                handoff_lock_token=handoff_token, campaign_start_artifact_id=start.artifact_id)
         except (PipelineError, OSError, ValueError) as exc:
             # Prestart failures are audit facts. Never convert failed identity
             # validation into a resumable native partial.
             history = native_history(handoff, research_root, root=root)
-            owned = _owned_native_outcome(start.record["detail"], history)
+            owned = _owned_native_outcome(start.record, history)
             if owned is not None:
                 finished = _append(run, _finish_draft(start.artifact_id, start.record, owned, now=now or utc_now()), events, research_root, root=root)
             else:
@@ -483,6 +511,20 @@ def _result_index(receipt, receipt_aid):
             **copy.deepcopy(target), "index_policy": "OFFSETS_ONLY_NO_EXCERPTS", "evidence_index": index}
 
 
+def _execution_statuses(executions, handoff_ids):
+    latest = dict.fromkeys(handoff_ids, "HANDOFF_READY")
+    historical = set()
+    for item in executions:
+        status = item["finish"]["detail"]["status"] if item["finish"] else "INTERRUPTED"
+        latest[item["start"]["detail"]["handoff_artifact_id"]] = status
+        historical.add(status)
+    return sorted(set(latest.values())), sorted(historical)
+
+
+def _summary_status(statuses, empty):
+    return statuses[0] if len(statuses) == 1 else "MIXED" if statuses else empty
+
+
 def _build_report(run, events, state, research_root):
     results = []
     successful_works = set()
@@ -491,9 +533,10 @@ def _build_report(run, events, state, research_root):
         if item["handoff"]:
             handoff = item["handoff"]
             key = handoff["work_ref"]["work_ref_id"]
-            group = work_groups.setdefault(key, {"work_ref": handoff["work_ref"], "lead_ids": set(), "source_attempt_ids": [], "execution_statuses": []})
+            group = work_groups.setdefault(key, {"work_ref": handoff["work_ref"], "lead_ids": set(), "source_attempt_ids": [], "handoff_artifact_ids": set()})
             group["lead_ids"].update(handoff["motivating_lead_ids"])
             group["source_attempt_ids"].append(item["start"]["event_id"])
+            group["handoff_artifact_ids"].add(item["finish"]["detail"]["handoff_artifact_id"])
     for receipt_aid, receipt in state["receipts"].items():
         if receipt["status"] == "SUCCEEDED":
             handoff = get_record(research_root, receipt["handoff_artifact_id"])
@@ -505,20 +548,26 @@ def _build_report(run, events, state, research_root):
         handoff_ids = {item["finish"]["detail"]["handoff_artifact_id"] for item in sources if item["handoff"]}
         executions = [item for item in state["executions"].values() if item["start"]["detail"]["handoff_artifact_id"] in handoff_ids]
         work_ids = sorted({item["handoff"]["work_ref"]["work_ref_id"] for item in sources if item["handoff"]})
+        source_statuses = sorted({item["finish"]["detail"]["status"] if item["finish"] else "UNRESOLVED" for item in sources})
+        current, historical = _execution_statuses(executions, handoff_ids)
         lead_rows.append({"lead_id": lead_id, "lead_artifact_id": lead["artifact_id"], "work_claim": lead["record"]["work_claim"],
             "discovery": "IDENTITY_RESOLVED" if work_ids else "LEAD_ONLY", "work_ref_ids": work_ids,
-            "source": sources[-1]["finish"]["detail"]["status"] if sources and sources[-1]["finish"] else "UNRESOLVED",
+            "source": _summary_status(source_statuses, "UNRESOLVED"), "source_statuses": source_statuses,
             "source_attempt_ids": [item["start"]["event_id"] for item in sources],
-            "execution": (executions[-1]["finish"]["detail"]["status"] if executions[-1]["finish"] else "INTERRUPTED") if executions else ("HANDOFF_READY" if handoff_ids else "NOT_STARTED"),
+            "execution": _summary_status(current, "HANDOFF_READY" if handoff_ids else "NOT_STARTED"),
+            "execution_statuses": current, "execution_history_statuses": historical,
+            "execution_invocation_ids": [item["start"]["event_id"] for item in executions],
             "quality": {"semantic_assurance": "UNQUALIFIED", "evaluation": "UNMEASURED"}})
     for group in work_groups.values():
         group["lead_ids"] = sorted(group["lead_ids"])
         group["source_attempt_ids"].sort()
-        group["execution_statuses"] = sorted({row["execution"] for row in lead_rows if row["lead_id"] in group["lead_ids"]})
+        group["handoff_artifact_ids"] = sorted(group["handoff_artifact_ids"])
+        executions = [item for item in state["executions"].values() if item["start"]["detail"]["handoff_artifact_id"] in group["handoff_artifact_ids"]]
+        group["execution_statuses"], group["execution_history_statuses"] = _execution_statuses(executions, group["handoff_artifact_ids"])
     unique_corpora = {result["corpus_artifact_id"]: result["corpus_record_count"] for result in results}
     resolution = get_record(research_root, run["resolution_artifact_id"])
     definition = get_record(research_root, run["definition_artifact_id"])
-    report = {"schema_version": "observation-research-report/v1", "run_id": run["run_id"], "run_hash": run["run_hash"],
+    report = {"schema_version": "observation-research-report/v2", "run_id": run["run_id"], "run_hash": run["run_hash"],
         "last_event_artifact_id": events[-1][0] if events else None, "event_count": len(events),
         "status": "STOPPED" if state["stopped"] else "IN_PROGRESS", "stop": state["stopped"],
         "audit_assurance": run["audit_assurance"], "profile_decision": resolution["decision"], "profile_fit": resolution.get("fit"),
