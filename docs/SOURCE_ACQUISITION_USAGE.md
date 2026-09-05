@@ -4,6 +4,10 @@
 从仓库根目录使用 Python 3.11+；依赖沿用项目环境，不新增模型 SDK 或产品 CLI。
 本工具不打入 wheel。C1 的总请求超时目前针对 macOS/POSIX 主线程实现。
 
+研究任务中的宿主应自动调用这些步骤，参见
+[自动原文获取工作流](SOURCE_ACQUISITION_WORKFLOW.md)。以下配置与命令是宿主
+执行接口，不要求用户逐项手动填写；原生 Scene 和 Observation 分别使用对应分支。
+
 ## 1. 已实现范围
 
 - C1：固定有限目录、单请求、实际请求间隔、每跳重定向检查、有限重试、跨进程冷却。
@@ -239,9 +243,21 @@ exit 3=WAITING_FOR_AGENT；完成原生任务后再次执行同一命令。
 FAILED/INTERRUPTED 后按原生规则显式 --retry，原始拒绝答案和 receipt 不得删除。
 最终 SceneCandidate 仍是 DRAFT/UNVERIFIED，validate all 不证明语义解释为真。
 
-## 7. 版本边界
+## 7. 观察研究接入
+
+观察研究使用 `prepare-generic S INPUT --research-root R` 和
+`freeze-generic S HANDOFF --research-root R --work-dir W`。
+INPUT 的严格字段、campaign 来源事件及后续执行见
+[观察研究分支](SOURCE_ACQUISITION_WORKFLOW.md#4-观察研究分支)。
+这两个命令复用封存核验及原生 builder/ingestion，不接收新的语义 prompt，
+也不把观察输入转为 Scene 输入。准备记录按 Handoff 保存在
+R/source-acquisition/，预冻结记录位于 W/source-freeze-receipt.json。
+后续 campaign 必须使用同一 W；准备和冻结均不代表原生执行成功。
+
+## 8. 版本边界
 
 每个 source-run 绑定此宿主脚本的确切字节摘要，封存内容也保留这项绑定。
 更新脚本后，不允许拿新实现静默恢复或重解释旧提交；保留旧版本脚本及运行，
 或把原始材料作为明确的新来源版本重新导入并核验。
-核心编译器代码、schema、Skills 和全书窗口规则均未修改。
+核心编译器代码、schema 和全书窗口规则均未修改。宿主 Skills 已衔接自动获取和
+后续原生执行，工作流范围及停止条件见前述共享流程。

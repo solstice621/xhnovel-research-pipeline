@@ -1313,6 +1313,23 @@ def validate_sealed(path: Path) -> tuple[dict, Run]:
     return manifest, run
 
 
+def source_declaration(run: Run, sealed: Path, declared_at: str) -> dict:
+    """Project the same reviewed local source into either native builder."""
+    work = run.cfg["work"]
+    return {
+        "work": {
+            "canonical_title": work["title"], "author": work["author"], "language": work["language"],
+            "aliases": [], "external_ids": [],
+        },
+        "source": {"kind": "directory", "path": str(sealed / "chapters")},
+        "source_quality": {
+            "edition_status": run.cfg["source"]["edition_status"], "textual_completeness": "COMPLETE",
+        },
+        "edition_label": run.cfg["source"]["edition_label"] + "; host source manifest " + sealed.name,
+        "declared_at": declared_at,
+    }
+
+
 def prepare_source(sealed: Path, planning_input: Path, phase0_root: Path) -> dict:
     from xhnovel_pipeline.phase0_builder import prepare_handoff_from_input, resolve_validated_handoff_input
     from xhnovel_pipeline.phase0_handoff import validate_exploration_brief
@@ -1341,21 +1358,9 @@ def prepare_source(sealed: Path, planning_input: Path, phase0_root: Path) -> dic
         planning_root = no_symlinks(planning_root).resolve()
         receipt_path, _ = checked_ref(planning["receipt"], planning_input.parent)
     now = timestamp(run.clock.now_ms())
-    work = run.cfg["work"]
     payload = {
         "brief": brief, "leads": leads,
-        "source_declaration": {
-            "work": {
-                "canonical_title": work["title"], "author": work["author"], "language": work["language"],
-                "aliases": [], "external_ids": [],
-            },
-            "source": {"kind": "directory", "path": str(sealed / "chapters")},
-            "source_quality": {
-                "edition_status": run.cfg["source"]["edition_status"], "textual_completeness": "COMPLETE",
-            },
-            "edition_label": run.cfg["source"]["edition_label"] + "; host source manifest " + sealed.name,
-            "declared_at": now,
-        },
+        "source_declaration": source_declaration(run, sealed, now),
         "requested_at": now,
     }
     phase0_root.mkdir(parents=True, exist_ok=True)
@@ -1393,10 +1398,45 @@ def prepare_source(sealed: Path, planning_input: Path, phase0_root: Path) -> dic
     return result
 
 
+def prepare_generic_source(sealed: Path, planning_input: Path, research_root: Path) -> dict:
+    """Bridge a sealed host source to the existing observation Handoff."""
+    from xhnovel_pipeline.generic_handoff import prepare_generic_handoff_from_input, resolve_generic_handoff
+
+    sealed = no_symlinks(sealed).resolve()
+    _, run = validate_sealed(sealed)
+    research_root = no_symlinks(research_root).resolve()
+    if research_root == sealed or sealed in research_root.parents:
+        fail("observation outputs must be outside the sealed source")
+    options = read_json(planning_input)
+    fields(options, {
+        "format_version", "definition_artifact_id", "resolution_artifact_id",
+        "work_lead_artifact_ids", "requested_at",
+    }, label="generic planning input")
+    if options["format_version"] != FORMAT:
+        fail("unsupported planning input version")
+    # A caller-frozen time makes preparation idempotent. All semantic records
+    # and their CAS lineage are checked by the native builder, never recreated.
+    payload = {k: v for k, v in options.items() if k != "format_version"}
+    payload["source_declaration"] = source_declaration(run, sealed, options["requested_at"])
+    put(research_root / "operator-attestation.json", read_bytes(run.root / "operator-attestation.json"))
+    prepared = prepare_generic_handoff_from_input(payload, research_root, root=ROOT)
+    resolved = resolve_generic_handoff(Path(prepared["handoff_path"]), research_root, root=ROOT)
+    result = {
+        "format_version": FORMAT, "status": "READY_FOR_XHNOVEL", "protocol": "GENERIC",
+        "sealed_source": str(sealed),
+        "sealed_manifest_sha256": digest(read_bytes(sealed / "source-manifest.json")),
+        "planning_input_sha256": digest(read_bytes(planning_input)),
+        "handoff_path": prepared["handoff_path"], "novel_spec_path": prepared["novel_spec_path"],
+        "handoff_artifact_id": prepared["handoff_artifact_id"],
+        "expected_input_spec_hash": resolved.handoff["novel_spec"]["expected_input_spec_hash"],
+        "native_freeze": "NOT_RUN", "research": "NOT_RUN",
+    }
+    put_json(research_root / "source-acquisition" / (resolved.handoff["handoff_id"] + ".json"), result)
+    return result
+
+
 def freeze_source(sealed: Path, handoff_path: Path, research_root: Path, *, phase0_root: Path | None = None) -> dict:
-    from xhnovel_pipeline.novel_ingest import run_novel_ingestion
     from xhnovel_pipeline.phase0_builder import resolve_validated_handoff_input
-    from xhnovel_pipeline.phase0_handoff import attestation_rights
 
     sealed = no_symlinks(sealed).resolve()
     _, run = validate_sealed(sealed)
@@ -1409,6 +1449,31 @@ def freeze_source(sealed: Path, handoff_path: Path, research_root: Path, *, phas
     if prepared.get("sealed_manifest_sha256") != digest(read_bytes(sealed / "source-manifest.json")) or prepared.get("handoff_path") != str(handoff_path):
         fail("prepared Handoff is not bound to this sealed source", "E-ACQUISITION-PREPARE-BIND")
     resolved = resolve_validated_handoff_input(handoff_path, phase0_root=phase0_root)
+    return freeze_native_source(sealed, run, resolved, prepared, research_root)
+
+
+def freeze_generic_source(sealed: Path, handoff_path: Path, research_root: Path, work_dir: Path) -> dict:
+    from xhnovel_pipeline.generic_handoff import resolve_generic_handoff
+
+    sealed = no_symlinks(sealed).resolve()
+    _, run = validate_sealed(sealed)
+    handoff_path = no_symlinks(handoff_path).resolve()
+    research_root = no_symlinks(research_root).resolve()
+    work_dir = no_symlinks(work_dir).resolve()
+    if work_dir == sealed or sealed in work_dir.parents:
+        fail("native outputs must be outside the sealed source")
+    resolved = resolve_generic_handoff(handoff_path, research_root, root=ROOT)
+    prepared = read_json(research_root / "source-acquisition" / (resolved.handoff["handoff_id"] + ".json"))
+    if prepared.get("sealed_manifest_sha256") != digest(read_bytes(sealed / "source-manifest.json")) or prepared.get("handoff_path") != str(handoff_path):
+        fail("prepared Handoff is not bound to this sealed source", "E-ACQUISITION-PREPARE-BIND")
+    return freeze_native_source(sealed, run, resolved, prepared, work_dir)
+
+
+def freeze_native_source(sealed: Path, run: Run, resolved, prepared: dict, research_root: Path) -> dict:
+    """Share native ingestion and exact source replay across both Handoff kinds."""
+    from xhnovel_pipeline.novel_ingest import run_novel_ingestion
+    from xhnovel_pipeline.phase0_handoff import attestation_rights
+
     spec = resolved.execution_spec
     expected_source = {
         "kind": "directory", "path": str(sealed / "chapters"),
@@ -1496,6 +1561,15 @@ def parser() -> argparse.ArgumentParser:
     cmd.add_argument("handoff", type=Path)
     cmd.add_argument("--research-root", type=Path, required=True)
     cmd.add_argument("--phase0-root", type=Path)
+    cmd = sub.add_parser("prepare-generic")
+    cmd.add_argument("sealed", type=Path)
+    cmd.add_argument("planning_input", type=Path)
+    cmd.add_argument("--research-root", type=Path, required=True)
+    cmd = sub.add_parser("freeze-generic")
+    cmd.add_argument("sealed", type=Path)
+    cmd.add_argument("handoff", type=Path)
+    cmd.add_argument("--research-root", type=Path, required=True)
+    cmd.add_argument("--work-dir", type=Path, required=True)
     return result
 
 
@@ -1526,6 +1600,10 @@ def main(argv=None) -> int:
             result = prepare_source(args.sealed, args.planning_input, args.phase0_root)
         elif args.command == "freeze":
             result = freeze_source(args.sealed, args.handoff, args.research_root, phase0_root=args.phase0_root)
+        elif args.command == "prepare-generic":
+            result = prepare_generic_source(args.sealed, args.planning_input, args.research_root)
+        elif args.command == "freeze-generic":
+            result = freeze_generic_source(args.sealed, args.handoff, args.research_root, args.work_dir)
         else:
             run = Run.initialize(args.config)
             result = run.import_local(args.input) if args.command == "import-local" else run.acquire()
