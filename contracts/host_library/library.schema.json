@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format_version",
+    "library_id",
+    "root"
+  ],
+  "properties": {
+    "format_version": {
+      "const": "host-research-library-v1"
+    },
+    "library_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "root": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
