@@ -32,11 +32,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from xhnovel_pipeline.canonical import canonical_dumps
-from xhnovel_pipeline.errors import ValidationError
+from xhnovel_pipeline.errors import PipelineError, ValidationError
 from xhnovel_pipeline.file_io import atomic_write, write_immutable
 from xhnovel_pipeline.hashing import artifact_id_for
 from xhnovel_pipeline.http_fetch import _request_once
-from xhnovel_pipeline.novel_adapters import DirectoryNovelAdapter, chapter_number
+from xhnovel_pipeline.novel_adapters import DirectoryNovelAdapter, adapter_from_spec, chapter_number
 from xhnovel_pipeline.novel_ingest import _exclusive_work_dir
 from xhnovel_pipeline.phase0_common import require_fields
 from xhnovel_pipeline.phase0_handoff import validate_operator_attestation
@@ -50,6 +50,7 @@ DEFAULT_LIMITS = {
     "slow_start_requests": 20,
     "request_timeout_seconds": 30,
     "max_response_bytes": 2_000_000,
+    "max_input_bytes": 500_000_000,
     "max_attempts_per_entry": 3,
     "max_redirects": 5,
     "max_run_seconds": 1800,
@@ -412,7 +413,7 @@ class Clock:
 
 
 def timestamp(ms: int) -> str:
-    return datetime.fromtimestamp(ms / 1000, timezone.utc).isoformat()
+    return datetime.fromtimestamp(ms / 1000, timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 @dataclass
@@ -539,6 +540,23 @@ class Run:
         if value.get("binding_sha256") != object_digest(self.binding):
             fail("attempt belongs to different frozen inputs", "E-ACQUISITION-INTEGRITY")
 
+    def starts(self) -> list[dict]:
+        values = []
+        for directory in sorted((self.root / "started").iterdir()) if (self.root / "started").exists() else []:
+            if directory.name not in self.entries or not directory.is_dir():
+                fail("STARTED entry outside the catalog", "E-ACQUISITION-INTEGRITY")
+            for i, p in enumerate(sorted(directory.glob("*.json")), 1):
+                value = read_json(p)
+                fields(value, {
+                    "format_version", "binding_sha256", "entry", "ordinal", "requested_url", "channel", "started_at_ms",
+                }, {"source_archive", "archive_ordinal"}, label="STARTED")
+                self._bound(value)
+                if p.name != f"{i:06d}.json" or value["ordinal"] != i or value["entry"] != directory.name:
+                    fail("STARTED sequence differs", "E-ACQUISITION-INTEGRITY")
+                integer(value["started_at_ms"], "started time", minimum=0, maximum=10**16)
+                values.append(value)
+        return values
+
     def attempts(self, entry_key: str) -> list[dict]:
         records = []
         directory = child(self.root, f"attempts/{entry_key}")
@@ -548,7 +566,7 @@ class Run:
                 "format_version", "binding_sha256", "entry", "ordinal", "channel", "requested_url",
                 "started_at_ms", "finished_at_ms", "status", "content_type", "location",
                 "retry_after", "retry_not_before_ms", "raw", "result", "error",
-            }, label="attempt")
+            }, {"source_archive", "archive_ordinal"}, label="attempt")
             self._bound(value)
             if value["entry"] != entry_key or p.name != f"{value['ordinal']:06d}.json":
                 fail("attempt identity mismatch", "E-ACQUISITION-INTEGRITY")
@@ -565,6 +583,8 @@ class Run:
 
     def accepted(self) -> dict[str, dict]:
         result = {}
+        archives = {}
+        self.starts()
         for p in sorted((self.root / "accepted").glob("*.json")):
             k = p.stem
             if k not in self.entries:
@@ -586,6 +606,21 @@ class Run:
                 fail("accepted requires exactly one successful fetch/import", "E-ACQUISITION-INTEGRITY")
             attempt = matches[0]
             _, raw = checked_ref(attempt["raw"], self.root, self.limits["max_response_bytes"])
+            if attempt["channel"] == "LOCAL_ORIGINAL_IMPORT":
+                if "source_archive" not in attempt or "archive_ordinal" not in attempt:
+                    fail("archive import is missing provenance", "E-ACQUISITION-INTEGRITY")
+                archive_ref = attempt["source_archive"]
+                archive_path = child(self.root, archive_ref["path"])
+                archive_key = archive_ref["sha256"]
+                if archive_key not in archives:
+                    _, original = checked_ref(archive_ref, self.root, self.limits["max_input_bytes"])
+                    kind = archive_path.suffix.lstrip(".")
+                    adapter = self.local_adapter(archive_path, kind)
+                    archives[archive_key] = (adapter, adapter.discover().chapters)
+                adapter, chapters = archives[archive_key]
+                index = integer(attempt["archive_ordinal"], "archive ordinal") - 1
+                if index >= len(chapters) or adapter.fetch_chapter(chapters[index])[0] != raw:
+                    fail("imported chapter differs from original local source", "E-ACQUISITION-INTEGRITY")
             title, body = extract(raw, self.cfg["source"]["extractor"], self.entries[k]["expected_title"])
             _, actual = checked_ref(value["derived"], self.root, self.limits["max_response_bytes"] * 2)
             if actual != self.derived_bytes(title, body) or value["title"] != title or value["body_sha256"] != digest(body.encode()):
@@ -606,7 +641,7 @@ class Run:
         existing = accepted.get(k)
         if existing:
             accepted_attempt = read_json(child(self.root, existing["attempt"]["path"]))
-            if accepted_attempt["raw"]["sha256"] != attempt["raw"]["sha256"]:
+            if accepted_attempt["raw"]["sha256"] != attempt["raw"]["sha256"] or accepted_attempt.get("source_archive") != attempt.get("source_archive"):
                 self._state("SOURCE_CHANGED", entry=k)
                 fail("new response differs from accepted source", "E-ACQUISITION-SOURCE-CHANGED")
             return
@@ -645,7 +680,7 @@ class Run:
         accepted = self.accepted()
         latest = max((a["committed_at_ms"] for a in accepted.values()), default=None)
         state = read_json(self.root / "state.json") if (self.root / "state.json").exists() else {}
-        return {
+        result = {
             "format_version": FORMAT, "run_dir": str(self.root), "expected_entries": len(self.entries),
             "accepted_entries": len(accepted), "missing_entries": [k for k in self.entries if k not in accepted],
             "last_accepted_at": timestamp(latest) if latest is not None else None,
@@ -656,11 +691,22 @@ class Run:
             "eta_seconds": None,
             "coverage": "NOT_CHECKED", "native_freeze": "NOT_RUN", "research": "NOT_RUN",
         }
+        if result["acquisition"] == "ENTRIES_ACQUIRED":
+            result["eta_seconds"] = 0
+        elif self.cfg["source"]["channel"] == "C1" and len(accepted) >= 5 and latest is not None and self.clock.now_ms() - latest <= 300_000:
+            recent = sorted(accepted.values(), key=lambda a: a["committed_at_ms"])[-50:]
+            started = min(read_json(child(self.root, a["attempt"]["path"]))["started_at_ms"] for a in recent)
+            elapsed = latest - started
+            if elapsed > 0:
+                result["observed_throughput"] = {"accepted_entries": len(recent), "elapsed_ms": elapsed}
+                if result["acquisition"] not in {"COOLDOWN", "NEEDS_ACCESS", "SOURCE_CHANGED", "MISSING"}:
+                    result["eta_seconds"] = math.ceil(len(result["missing_entries"]) * elapsed / len(recent) / 1000)
+        return result
 
     def _state(self, reason: str, **kwargs):
         put_json(self.root / "state.json", {"reason": reason, "at_ms": self.clock.now_ms(), **kwargs}, mutable=True)
 
-    def _start(self, entry: dict, url: str, channel: str) -> dict:
+    def _start(self, entry: dict, url: str, channel: str, **provenance) -> dict:
         directory = self.root / f"started/{entry['key']}"
         starts = list(directory.glob("*.json"))
         ordinal = len(starts) + 1
@@ -673,6 +719,7 @@ class Run:
             "format_version": FORMAT, "binding_sha256": object_digest(self.binding),
             "entry": entry["key"], "ordinal": ordinal, "requested_url": url, "channel": channel,
             "started_at_ms": self.clock.now_ms(),
+            **provenance,
         }
         put_json(directory / f"{ordinal:06d}.json", start)
         return start
@@ -697,6 +744,10 @@ class Run:
     def import_local(self, directory: Path, *, crash=lambda _: None) -> dict:
         directory = no_symlinks(directory).resolve()
         with _exclusive_work_dir(self.root):
+            if directory.is_file():
+                return self._import_book(directory, crash)
+            if not directory.is_dir():
+                fail("local input must be a chapter directory, TXT or EPUB file")
             accepted = self.accepted()
             for entry in self.cat["entries"]:
                 if entry["import_path"] is None:
@@ -715,6 +766,48 @@ class Run:
             put_json(self.root / "status.json", status, mutable=True)
             return status
 
+    def local_adapter(self, path: Path, kind: str):
+        if kind not in {"txt", "epub"}:
+            fail("single-file import supports native TXT/EPUB adapters")
+        return adapter_from_spec({
+            "kind": kind, "path": str(path), "title": self.cfg["work"]["title"],
+            "author": self.cfg["work"]["author"], "language": self.cfg["work"]["language"],
+            "_ingestion_max_bytes": self.limits["max_input_bytes"],
+        })
+
+    def _import_book(self, source: Path, crash) -> dict:
+        kind = source.suffix.casefold().lstrip(".")
+        adapter = self.local_adapter(source, kind)
+        original = read_bytes(source, self.limits["max_input_bytes"])
+        archive_path = self.root / f"imports/{digest(original).split(':')[1]}.{kind}"
+        put(archive_path, original)
+        # Always discover from the preserved copy so concurrent changes to the
+        # operator's original file cannot change an import in flight.
+        adapter = self.local_adapter(archive_path, kind)
+        chapters = adapter.discover().chapters
+        if len(chapters) != len(self.cat["entries"]):
+            fail("native local-book chapter count differs from the fixed catalog", "E-ACQUISITION-ORDER")
+        accepted = self.accepted()
+        for entry, chapter in zip(self.cat["entries"], chapters):
+            if entry["expected_title"] is not None and chapter.title != entry["expected_title"]:
+                fail("native local-book chapter title differs from fixed catalog", "E-ACQUISITION-IDENTITY")
+            raw, media_type, _, _ = adapter.fetch_chapter(chapter)
+            if len(raw) > self.limits["max_response_bytes"]:
+                fail("local chapter exceeds configured response limit", "E-ACQUISITION-SIZE")
+            previous = self.attempts(entry["key"])
+            reusable = next((a for a in previous if a["result"] == "FETCHED" and a["raw"]["sha256"] == digest(raw) and a.get("source_archive", {}).get("sha256") == digest(original)), None)
+            if reusable is None:
+                start = self._start(
+                    entry, source.as_uri() + f"#chapter={chapter.ordinal}", "LOCAL_ORIGINAL_IMPORT",
+                    source_archive={"path": archive_path.relative_to(self.root).as_posix(), "sha256": digest(original)},
+                    archive_ordinal=chapter.ordinal,
+                )
+                reusable = self._record(start, Response(None, raw, content_type=media_type), result="FETCHED", crash=crash)
+            self._commit(entry, reusable, crash, accepted=accepted)
+        result = self.status()
+        put_json(self.root / "status.json", result, mutable=True)
+        return result
+
     def acquire(self, *, send=transport, crash=lambda _: None) -> dict:
         channel = self.cfg["source"]["channel"]
         if channel == "C2":
@@ -728,6 +821,7 @@ class Run:
         limits, clock = self.limits, self.clock
         accepted = self.accepted()
         all_attempts = [a for k in self.entries for a in self.attempts(k)]
+        starts = self.starts()
         latest = max(all_attempts, key=lambda a: a["finished_at_ms"], default=None)
         persisted = read_json(self.root / "state.json") if (self.root / "state.json").exists() else {}
         permanent = {"NEEDS_ACCESS", "MISSING", "EXTRACTION_FAILED", "SOURCE_CHANGED", "ATTEMPTS_EXHAUSTED"}
@@ -746,9 +840,15 @@ class Run:
             return self.status()
         deadline = clock.monotonic_ms() + limits["max_run_seconds"] * 1000
         last_commit = clock.monotonic_ms()
-        last_end = latest["finished_at_ms"] if latest else None
+        terminal_keys = {(a["entry"], a["ordinal"]) for a in all_attempts}
+        interrupted = [s for s in starts if (s["entry"], s["ordinal"]) not in terminal_keys]
+        interrupted_end = max(
+            (s["started_at_ms"] + limits["request_timeout_seconds"] * 1000 for s in interrupted),
+            default=0,
+        )
+        last_end = max(latest["finished_at_ms"] if latest else 0, interrupted_end) or None
         last_end_monotonic = None
-        request_count = len(all_attempts)
+        request_count = len(starts)
         failures = 0
         for a in sorted(all_attempts, key=lambda a: a["finished_at_ms"], reverse=True):
             if a["result"] != "RETRYABLE":
@@ -802,6 +902,8 @@ class Run:
                     result = "COOLDOWN"
                 elif response.status in {404, 410}:
                     result = "MISSING"
+                elif response.error and response.error.startswith("E-SSRF") and response.error != "E-SSRF-DNS":
+                    result = "EXTRACTION_FAILED"
                 elif response.status is None or response.status in {500, 502, 503, 504}:
                     result = "RETRYABLE"
                 elif response.error:
@@ -997,7 +1099,7 @@ def verify(run: Run, review_path: Path | None = None, *, persist: bool = True) -
     checks["logical_chapter_coverage"] = "PASS" if len(view["chapters"]) == len(run.cat["chapters"]) else "UNRESOLVED"
     changed_entries = [
         k for k in run.entries
-        if len({a["raw"]["sha256"] for a in run.attempts(k) if a["result"] == "FETCHED"}) > 1
+        if len({(a["raw"]["sha256"], a.get("source_archive", {}).get("sha256")) for a in run.attempts(k) if a["result"] == "FETCHED"}) > 1
     ]
     checks["source_consistency"] = "FAIL" if changed_entries else "PASS"
     quality = "UNRESOLVED"
@@ -1122,12 +1224,12 @@ def copy_review(review: dict, base: Path, destination: Path) -> dict:
     return copied
 
 
-def tree_manifest(root: Path, *, omit: set[str] = frozenset()) -> list[dict]:
+def tree_manifest(root: Path, *, omit: set[str] = frozenset(), limit: int = 500_000_000) -> list[dict]:
     files = []
     for p in sorted(root.rglob("*")):
         no_symlinks(p)
         if p.is_file() and p.relative_to(root).as_posix() not in omit:
-            data = read_bytes(p, MAX_METADATA_BYTES)
+            data = read_bytes(p, limit)
             files.append({"path": p.relative_to(root).as_posix(), "sha256": digest(data), "byte_length": len(data)})
     return files
 
@@ -1149,9 +1251,9 @@ def seal(run: Run, output: Path, review_path: Path) -> Path:
             # Snapshot only normal files. The host run and original full text
             # remain untouched; no hard links to active acquisition files.
             for item in tree_manifest(run.root):
-                if item["path"] == ".novel-work-dir.lock":
+                if item["path"] == ".novel-ingest.lock":
                     continue
-                data = read_bytes(child(run.root, item["path"]))
+                data = read_bytes(child(run.root, item["path"]), run.limits["max_input_bytes"])
                 put(child(staging / "provenance/run", item["path"]), data)
             copied = copy_review(read_json(review_path), review_path.parent, staging / "provenance/quality")
             copied_review_path = staging / "provenance/quality/review.json"
@@ -1211,6 +1313,158 @@ def validate_sealed(path: Path) -> tuple[dict, Run]:
     return manifest, run
 
 
+def prepare_source(sealed: Path, planning_input: Path, phase0_root: Path) -> dict:
+    from xhnovel_pipeline.phase0_builder import prepare_handoff_from_input, resolve_validated_handoff_input
+    from xhnovel_pipeline.phase0_handoff import validate_exploration_brief
+    from xhnovel_pipeline.phase0_planning import validate_planning_handoff
+
+    sealed = no_symlinks(sealed).resolve()
+    manifest, run = validate_sealed(sealed)
+    phase0_root = no_symlinks(phase0_root).resolve()
+    if sealed == phase0_root or sealed in phase0_root.parents:
+        fail("Phase 0 output must be outside the sealed source")
+    options = read_json(planning_input)
+    fields(options, {"format_version", "brief", "leads", "planning"}, label="planning input")
+    if options["format_version"] != FORMAT:
+        fail("unsupported planning input version")
+    brief = validate_exploration_brief(json.loads(checked_ref(options["brief"], planning_input.parent)[1]))
+    leads = json.loads(checked_ref(options["leads"], planning_input.parent)[1])
+    if not isinstance(leads, list) or not leads:
+        fail("planning input requires a nonempty explicit Lead list")
+    planning = options["planning"]
+    planning_root, receipt_path = None, None
+    if planning is not None:
+        fields(planning, {"root", "receipt"}, label="planning lineage")
+        planning_root = Path(string(planning["root"], "planning root"))
+        if not planning_root.is_absolute():
+            planning_root = planning_input.parent / planning_root
+        planning_root = no_symlinks(planning_root).resolve()
+        receipt_path, _ = checked_ref(planning["receipt"], planning_input.parent)
+    now = timestamp(run.clock.now_ms())
+    work = run.cfg["work"]
+    payload = {
+        "brief": brief, "leads": leads,
+        "source_declaration": {
+            "work": {
+                "canonical_title": work["title"], "author": work["author"], "language": work["language"],
+                "aliases": [], "external_ids": [],
+            },
+            "source": {"kind": "directory", "path": str(sealed / "chapters")},
+            "source_quality": {
+                "edition_status": run.cfg["source"]["edition_status"], "textual_completeness": "COMPLETE",
+            },
+            "edition_label": run.cfg["source"]["edition_label"] + "; host source manifest " + sealed.name,
+            "declared_at": now,
+        },
+        "requested_at": now,
+    }
+    phase0_root.mkdir(parents=True, exist_ok=True)
+    att_bytes = read_bytes(run.root / "operator-attestation.json")
+    put(phase0_root / "operator-attestation.json", att_bytes)
+    input_path = phase0_root / "preparation-input.json"
+    if input_path.exists():
+        old = read_json(input_path)
+        # Resume the same declaration timestamps; never overwrite a conflicting
+        # source/brief/Lead set under an existing preparation path.
+        payload["requested_at"] = old.get("requested_at")
+        payload["source_declaration"]["declared_at"] = old.get("source_declaration", {}).get("declared_at")
+        if payload != old:
+            fail("existing preparation has different frozen inputs", "E-ACQUISITION-PREPARE-BIND")
+    put_json(input_path, payload)
+    prepared = prepare_handoff_from_input(input_path, phase0_root)
+    resolve_validated_handoff_input(prepared.handoff_path, phase0_root=phase0_root)
+    planning_validation = None
+    if planning is not None:
+        planning_validation = validate_planning_handoff(
+            receipt_path, prepared.handoff_path,
+            planning_root=planning_root, phase0_root=phase0_root, repo_root=ROOT,
+        )
+    result = {
+        "format_version": FORMAT, "status": "READY_FOR_XHNOVEL",
+        "sealed_source": str(sealed),
+        "sealed_manifest_sha256": digest(read_bytes(sealed / "source-manifest.json")),
+        "planning_input_sha256": digest(read_bytes(planning_input)),
+        "handoff_path": str(prepared.handoff_path), "novel_spec_path": str(prepared.novel_spec_path),
+        "expected_input_spec_hash": prepared.handoff["novel_spec"]["expected_input_spec_hash"],
+        "planning_validation": planning_validation,
+        "native_freeze": "NOT_RUN", "research": "NOT_RUN",
+    }
+    put_json(phase0_root / "acquisition-prepared.json", result)
+    return result
+
+
+def freeze_source(sealed: Path, handoff_path: Path, research_root: Path, *, phase0_root: Path | None = None) -> dict:
+    from xhnovel_pipeline.novel_ingest import run_novel_ingestion
+    from xhnovel_pipeline.phase0_builder import resolve_validated_handoff_input
+    from xhnovel_pipeline.phase0_handoff import attestation_rights
+
+    sealed = no_symlinks(sealed).resolve()
+    _, run = validate_sealed(sealed)
+    handoff_path = no_symlinks(handoff_path).resolve()
+    research_root = no_symlinks(research_root).resolve()
+    if research_root == sealed or sealed in research_root.parents:
+        fail("native outputs must be outside the sealed source")
+    phase0_root = phase0_root or handoff_path.parents[2]
+    prepared = read_json(phase0_root / "acquisition-prepared.json")
+    if prepared.get("sealed_manifest_sha256") != digest(read_bytes(sealed / "source-manifest.json")) or prepared.get("handoff_path") != str(handoff_path):
+        fail("prepared Handoff is not bound to this sealed source", "E-ACQUISITION-PREPARE-BIND")
+    resolved = resolve_validated_handoff_input(handoff_path, phase0_root=phase0_root)
+    spec = resolved.execution_spec
+    expected_source = {
+        "kind": "directory", "path": str(sealed / "chapters"),
+        "title": run.cfg["work"]["title"], "author": run.cfg["work"]["author"],
+        "language": run.cfg["work"]["language"],
+    }
+    if spec["source"] != expected_source or spec["source_quality"] != {
+        "edition_status": run.cfg["source"]["edition_status"], "textual_completeness": "COMPLETE",
+    }:
+        fail("native spec source differs from sealed source", "E-ACQUISITION-PREPARE-BIND")
+    att = validate_operator_attestation(read_json(run.root / "operator-attestation.json"))
+    if spec["rights"] != attestation_rights(att):
+        fail("native rights differ from standing attestation", "E-ACQUISITION-RIGHTS")
+    result = run_novel_ingestion(
+        spec, research_root / "ingestion", repo_root=ROOT, now=timestamp(run.clock.now_ms()),
+    )
+    ingestion = result["ingestion"]
+    if ingestion["input_spec_hash"] != resolved.handoff["novel_spec"]["expected_input_spec_hash"]:
+        fail("native whole-spec hash differs", "E-ACQUISITION-PREPARE-BIND")
+    view, payloads = chapter_view(run)
+    actual = sorted(result["chapters"], key=lambda c: c["ordinal"])
+    if len(actual) != len(view["chapters"]):
+        fail("native chapter set differs from sealed source", "E-ACQUISITION-INTEGRITY")
+    for chapter, row in zip(actual, view["chapters"]):
+        expected_data = payloads[row["key"]]
+        if (
+            chapter["ordinal"] != row["ordinal"]
+            or chapter["title"] != Path(row["file_name"]).stem
+            or chapter["artifact_id"] != artifact_id_for(expected_data)
+            or result["store"].get(chapter["artifact_id"]) != expected_data
+        ):
+            fail("native CAS source bytes differ from sealed chapters", "E-ACQUISITION-INTEGRITY")
+    order = ingestion["order_validation"]
+    if ingestion["status"] == "FAILED" or any(order[k] for k in (
+        "out_of_order_chapter_ids", "missing_declared_numbers", "duplicate_chapter_ids",
+    )):
+        fail("native ingestion reports hard coverage/order problems", "E-ACQUISITION-ORDER")
+    # A PARTIAL run with unknown-number-only warnings is kept PARTIAL. It is
+    # never relabelled SUCCEEDED or confused with a Handoff execution receipt.
+    output = {
+        "format_version": FORMAT, "status": "NATIVE_SOURCE_FROZEN",
+        "sealed_manifest_sha256": prepared["sealed_manifest_sha256"],
+        "handoff_id": resolved.handoff["handoff_id"],
+        "expected_input_spec_hash": resolved.handoff["novel_spec"]["expected_input_spec_hash"],
+        "ingestion_run_id": ingestion["ingestion_run_id"], "ingestion_status": ingestion["status"],
+        "order_validation": order, "unknown_number_explanation": (
+            run.cat["assessments"]["chapter_relationships"] if ingestion["status"] == "PARTIAL" else None
+        ),
+        "catalog_path": str(result["work_dir"] / "catalog.json"),
+        "store_path": str(research_root / "ingestion/objects"),
+        "research": "NOT_RUN", "semantic_assurance": "UNVERIFIED",
+    }
+    put_json(research_root / "source-freeze-receipt.json", output)
+    return output
+
+
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description=__doc__)
     sub = result.add_subparsers(dest="command", required=True)
@@ -1233,6 +1487,15 @@ def parser() -> argparse.ArgumentParser:
     cmd.add_argument("right", type=Path)
     cmd.add_argument("--alignment", type=Path)
     cmd.add_argument("--output", type=Path, required=True)
+    cmd = sub.add_parser("prepare")
+    cmd.add_argument("sealed", type=Path)
+    cmd.add_argument("planning_input", type=Path)
+    cmd.add_argument("--phase0-root", type=Path, required=True)
+    cmd = sub.add_parser("freeze")
+    cmd.add_argument("sealed", type=Path)
+    cmd.add_argument("handoff", type=Path)
+    cmd.add_argument("--research-root", type=Path, required=True)
+    cmd.add_argument("--phase0-root", type=Path)
     return result
 
 
@@ -1259,6 +1522,10 @@ def main(argv=None) -> int:
             put_json(args.output, result)
         elif args.command == "seal":
             result = {"status": "LOCAL_SOURCE_SEALED", "path": str(seal(Run(args.run), args.output, args.review))}
+        elif args.command == "prepare":
+            result = prepare_source(args.sealed, args.planning_input, args.phase0_root)
+        elif args.command == "freeze":
+            result = freeze_source(args.sealed, args.handoff, args.research_root, phase0_root=args.phase0_root)
         else:
             run = Run.initialize(args.config)
             result = run.import_local(args.input) if args.command == "import-local" else run.acquire()
@@ -1268,7 +1535,7 @@ def main(argv=None) -> int:
         if args.command == "verify" and result["result"] != "PASS":
             return 4
         return 0
-    except (ValidationError, OSError, ValueError) as exc:
+    except (PipelineError, OSError, ValueError) as exc:
         print(str(exc), file=sys.stderr)
         return getattr(exc, "exit_code", 2)
 

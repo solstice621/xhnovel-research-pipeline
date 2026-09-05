@@ -512,3 +512,190 @@ def test_review_requires_evidence_not_just_a_pass_string(tmp_path):
     write_json(review_path, value)
     with pytest.raises(acq.AcquisitionError, match="evidence"):
         acq.verify(run, review_path)
+
+
+def prepared_fixture(tmp_path, *, unnumbered=False):
+    from test_phase0_builder import _input
+    from xhnovel_pipeline.phase0_builder import _seal_brief
+
+    config, inputs = fixture_config(tmp_path, count=1)
+    if unnumbered:
+        def change(cat):
+            cat["entries"][0]["expected_title"] = "结束感言"
+            cat["chapters"][0]["title"] = "结束感言"
+            cat["chapters"][0]["role"] = "SUPPLEMENT"
+        mutate_catalog(config, change)
+        (inputs / "0001.txt").write_text("结束感言\n\n这是合成测试的附属材料，无任何实际小说内容。\n")
+    run = acq.Run.initialize(config)
+    run.import_local(inputs)
+    sealed = acq.seal(run, tmp_path / "sealed", reviewed(run, tmp_path))
+    draft = _input(inputs / "0001.txt")
+    brief = _seal_brief(draft["brief"])
+    brief_path = write_json(tmp_path / "formal-brief.json", brief)
+    leads_path = write_json(tmp_path / "leads.json", draft["leads"])
+    planning_path = write_json(tmp_path / "planning-input.json", {
+        "format_version": acq.FORMAT,
+        "brief": acq.ref(brief_path), "leads": acq.ref(leads_path), "planning": None,
+    })
+    prepared = acq.prepare_source(sealed, planning_path, tmp_path / "phase0")
+    return sealed, prepared, planning_path
+
+
+def test_t25_t32_native_preparation_preserves_brief_and_spec_hash(tmp_path):
+    sealed, prepared, options = prepared_fixture(tmp_path)
+    from xhnovel_pipeline.novel_spec import load_validated_direct_research_spec, SpecValidationPurpose
+    spec = acq.read_json(Path(prepared["novel_spec_path"]))
+    expected_brief = acq.read_json(tmp_path / "formal-brief.json")["evidence_discovery_brief"]
+    assert spec["request"]["discovery_brief"] == expected_brief
+    assert spec["source"]["path"] == str(sealed / "chapters")
+    assert spec["source_quality"]["textual_completeness"] == "COMPLETE"
+    validated = load_validated_direct_research_spec(Path(prepared["novel_spec_path"]), purpose=SpecValidationPurpose.EVIDENCE_HANDOFF)
+    assert validated.resolved_spec_hash == prepared["expected_input_spec_hash"]
+    assert validated.resolved_spec_hash != prepared["sealed_manifest_sha256"]
+    assert acq.prepare_source(sealed, options, tmp_path / "phase0") == prepared
+
+
+def test_t26_partial_native_freeze_retains_true_status(tmp_path):
+    sealed, prepared, _ = prepared_fixture(tmp_path, unnumbered=True)
+    result = acq.freeze_source(sealed, Path(prepared["handoff_path"]), tmp_path / "research", phase0_root=tmp_path / "phase0")
+    assert result["status"] == "NATIVE_SOURCE_FROZEN"
+    assert result["ingestion_status"] == "PARTIAL"
+    assert result["research"] == "NOT_RUN"
+    assert result["unknown_number_explanation"]["status"] == "PASS"
+    assert not list((tmp_path / "research").rglob("SWIN-*.json"))
+
+
+def test_t32_changed_brief_and_extra_request_fields_are_rejected(tmp_path):
+    sealed, prepared, planning = prepared_fixture(tmp_path)
+    spec = acq.read_json(planning)
+    spec["request"] = {"discovery_brief": "evil hint"}
+    write_json(planning, spec)
+    with pytest.raises(acq.ValidationError):
+        acq.prepare_source(sealed, planning, tmp_path / "different-phase0")
+    assert not (tmp_path / "different-phase0/preparation-input.json").exists()
+
+
+def test_t33_t38_t39_t40_native_agent_files_lifecycle_after_prefreeze(tmp_path):
+    from test_phase0_execution import _agent_factory, _answer_all
+    from xhnovel_pipeline.agent_files import AgentResponsesPending
+    from xhnovel_pipeline.phase0_execution import execute_evidence_handoff
+    from xhnovel_pipeline.cli import main as native_main
+
+    sealed, prepared, _ = prepared_fixture(tmp_path)
+    research = tmp_path / "research"
+    frozen = acq.freeze_source(sealed, Path(prepared["handoff_path"]), research, phase0_root=tmp_path / "phase0")
+    with pytest.raises(AgentResponsesPending):
+        execute_evidence_handoff(
+            Path(prepared["handoff_path"]), research, executor="agent-files",
+            extractor_factory=_agent_factory(research), repo_root=acq.ROOT, now="2026-09-05T13:00:00Z",
+        )
+    tasks = list((research / "scene-scout/agent-files/tasks").glob("*.json"))
+    assert tasks
+    native_ingestion = list((research / "ingestion/ingestions").glob("*/novel-ingestion.json"))
+    assert len(native_ingestion) == 1
+    assert acq.read_json(native_ingestion[0])["ingestion_run_id"] == frozen["ingestion_run_id"]
+    task = acq.read_json(tasks[0])
+    answer = tasks[0].parents[1] / task["answer_file"]
+    answer.parent.mkdir(parents=True, exist_ok=True)
+    answer.write_text("{broken json")
+    with pytest.raises(acq.ValidationError):
+        execute_evidence_handoff(
+            Path(prepared["handoff_path"]), research, executor="agent-files",
+            extractor_factory=_agent_factory(research), repo_root=acq.ROOT, now="2026-09-05T13:00:30Z",
+        )
+    _answer_all(research)
+    result = execute_evidence_handoff(
+        Path(prepared["handoff_path"]), research, executor="agent-files",
+        extractor_factory=_agent_factory(research), repo_root=acq.ROOT, now="2026-09-05T13:01:00Z", retry=True,
+    )
+    assert result.status == "SUCCEEDED"
+    catalogs = list((research / "research").glob("*/catalog.json"))
+    assert len(catalogs) == 1
+    assert native_main(["validate", "all", str(catalogs[0]), "--store", str(research / "ingestion/objects")]) == 0
+    # Native CAS damage is rejected; a host receipt cannot override it.
+    row = acq.read_json(sealed / "chapter-view.json")["chapters"][0]
+    data = (sealed / "chapters" / row["file_name"]).read_bytes()
+    store = result.native_result["store"]
+    artifact_id = acq.artifact_id_for(data)
+    assert any(a["status"] == "REJECTED" for a in result.native_result["catalog"].all("ModelAttempt"))
+    stored = store._path(artifact_id)
+    stored.write_bytes(b"damaged")
+    assert native_main(["validate", "all", str(catalogs[0]), "--store", str(research / "ingestion/objects")]) != 0
+
+
+def test_t33_sealed_change_before_freeze_cannot_egress(tmp_path):
+    sealed, prepared, _ = prepared_fixture(tmp_path)
+    chapter = next((sealed / "chapters").glob("*.txt"))
+    chapter.write_text(chapter.read_text() + "changed")
+    with pytest.raises(acq.AcquisitionError, match="sealed files differ"):
+        acq.freeze_source(sealed, Path(prepared["handoff_path"]), tmp_path / "research")
+    assert not (tmp_path / "research").exists()
+
+
+def test_whole_txt_import_uses_native_chapters_and_preserves_original(tmp_path):
+    config, inputs = fixture_config(tmp_path, count=3)
+    book = tmp_path / "book.txt"
+    original = b"\n".join(p.read_bytes() for p in sorted(inputs.iterdir()))
+    book.write_bytes(original)
+    run = acq.Run.initialize(config)
+    assert run.import_local(book)["accepted_entries"] == 3
+    copies = list((run.root / "imports").glob("*.txt"))
+    assert len(copies) == 1 and copies[0].read_bytes() == original
+    assert all(a["channel"] == "LOCAL_ORIGINAL_IMPORT" for k in run.entries for a in run.attempts(k))
+    sealed = acq.seal(run, tmp_path / "sealed", reviewed(run, tmp_path))
+    book.write_text("original later changed")
+    acq.validate_sealed(sealed)
+
+
+def test_whole_local_book_requires_exact_catalog_instead_of_positional_guess(tmp_path):
+    config, inputs = fixture_config(tmp_path, count=3)
+    book = tmp_path / "partial.txt"
+    book.write_bytes((inputs / "0002.txt").read_bytes())
+    run = acq.Run.initialize(config)
+    with pytest.raises(acq.AcquisitionError, match="chapter count"):
+        run.import_local(book)
+    assert not run.accepted()
+
+
+def test_epub_import_uses_native_spine_and_preserves_archive(tmp_path):
+    from test_novel_adapters import _write_epub
+    extractor = {
+        "kind": "HTML", "title_selector": "h1", "body_selector": "body",
+        "exclude_selectors": [], "strip_leading_title": True,
+    }
+    config, _ = fixture_config(tmp_path, count=2, extractor=extractor)
+    def titles(cat):
+        for i, title in enumerate(["第一章 入山", "第二章 拜师"]):
+            cat["entries"][i]["expected_title"] = title
+            cat["chapters"][i]["title"] = title
+    mutate_catalog(config, titles)
+    book = tmp_path / "test.epub"
+    _write_epub(book)
+    run = acq.Run.initialize(config)
+    assert run.import_local(book)["accepted_entries"] == 2
+    assert next((run.root / "imports").glob("*.epub")).read_bytes() == book.read_bytes()
+    acq.validate_sealed(acq.seal(run, tmp_path / "sealed", reviewed(run, tmp_path)))
+
+
+def test_crash_before_attempt_receipt_still_delays_next_request(tmp_path):
+    config, _ = fixture_config(tmp_path, channel="C1", count=1)
+    clock = FakeClock()
+    run = acq.Run.initialize(config, clock)
+    def crash(point):
+        if point == "raw":
+            raise RuntimeError("before receipt")
+    with pytest.raises(RuntimeError):
+        run.acquire(send=lambda *_: chapter(1), crash=crash)
+    calls = []
+    resumed = acq.Run.initialize(config, clock)
+    resumed.acquire(send=sender(clock, [chapter(1)], calls))
+    assert calls[0][2] >= 40_000
+
+
+def test_transport_rejects_nonpublic_target_without_retry_loop(tmp_path):
+    config, _ = fixture_config(tmp_path, channel="C1", count=1)
+    run = acq.Run.initialize(config, FakeClock())
+    calls = []
+    result = run.acquire(send=sender(run.clock, [acq.Response(None, b"", error="E-SSRF-IP")], calls))
+    assert result["acquisition"] == "EXTRACTION_FAILED"
+    assert len(calls) == 1
