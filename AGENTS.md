@@ -22,6 +22,15 @@ The repository currently has two trust domains:
 The repository does **not** currently treat search leads as evidence, and it does
 not yet make `MechanismCandidate` objects part of the core evidence contract.
 
+Observation research adds a parallel GenericExtractionHandoff path over existing
+generic Profiles. ObservationDefinition, ProfileResolution, WorkLeads, campaigns
+and execution receipts remain outside the evidence Catalog. Its hard execution
+interface is the strict source-only Generic Novel Spec; observation goals and
+search hints must not enter native generic tasks or build identity. See
+`docs/OBSERVATION_RESEARCH_ARCHITECTURE.md` and
+`docs/OBSERVATION_RESEARCH_WORKFLOW.md`. Stage A reuses reviewed built-in Profiles;
+new Profile admission, semantic qualification and Analyzer remain separate stages.
+
 ## Load-bearing invariants
 
 These are architectural constraints, not suggestions.
@@ -328,16 +337,24 @@ Do not repeat passing checks or add review rounds unless a new change, failure,
 unresolved issue, or explicit user request justifies them. `compileall` is optional
 when the affected Python modules are already imported by passing tests.
 
-GitHub Actions CI is not configured. Run the applicable checks manually and
-record their results. Before claiming a cross-platform stage is complete:
+The Ubuntu/Windows GitHub Actions CI workflow has been removed. Do not restore
+that workflow or require its checks unless the user explicitly requests it.
+Run the applicable checks above manually and record their results.
+
+On 2026-09-05 the user retired observation Stage A acceptance item A-24.
+Ubuntu/Windows verification is no longer a Stage A merge or completion gate;
+unexecuted platforms remain NOT RUN, not PASS. This does not waive source tests,
+Skill synchronization or applicable installed-wheel checks.
+
+Before making a separate claim of cross-platform verification:
 
 - the applicable tests must pass on Ubuntu;
 - the applicable tests must pass on Windows;
 - the out-of-checkout installed-wheel smoke must pass when installed-runtime behavior changed;
 - report the fixed commit SHA and any expected build-lineage changes.
 
-Do not substitute a single-platform green run for verification on both platforms
-when the stage explicitly has a cross-platform gate.
+Do not substitute a single-platform green run for verification on both platforms.
+An explicitly retired gate must be recorded as retired, not as a passing check.
 
 ## Review expectations
 

@@ -96,3 +96,24 @@ The runtime prompt and structured-output schema are the exact files under
 `profiles/xuanhuan-gameplay-scene-v1/`; their bytes are bound into the model
 build identity. See [docs/NOVEL_WORKFLOW.md](docs/NOVEL_WORKFLOW.md) for the
 input contract, checkpoints, outputs, and trust boundaries.
+
+## Observation-driven research
+
+The [observation research architecture](docs/OBSERVATION_RESEARCH_ARCHITECTURE.md)
+and [build plan](docs/OBSERVATION_RESEARCH_BUILD_PLAN.md) define the workflow:
+research goal → fixed Profile selection → source discovery → native generic
+extraction → an auditable research report. The Stage A implementation adds strict
+planning contracts, Generic Handoffs, resumable execution receipts and campaign
+reports over the existing compiler. Start with the
+[xhnovel-observe Skill](.agents/skills/xhnovel-observe/SKILL.md) or
+[command workflow](docs/OBSERVATION_RESEARCH_WORKFLOW.md).
+
+The host performs semantic planning and searches. Existing Profiles may be reused;
+new Profile admission and independent quality qualification are later stages.
+Results remain `UNQUALIFIED`, coverage `UNMEASURED`. Scene Scout retains its
+separate query-sensitive path. See the build plan for the actual validation gates;
+implementation availability does not by itself close those gates. The
+[Stage A validation record](docs/OBSERVATION_RESEARCH_STAGE_A_VALIDATION.md) maps
+the implemented boundaries to tests. The Ubuntu/Windows CI workflow is removed;
+on 2026-09-05 the user retired A-24 as a Stage A gate. Local checks remain required,
+and unexecuted platforms are not claimed as verified.

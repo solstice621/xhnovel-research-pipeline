@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/generic-handoff-build-request.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "build_request_id",
+    "build_request_hash",
+    "definition_artifact_id",
+    "resolution_artifact_id",
+    "work_lead_artifact_ids",
+    "source_declaration_artifact_id",
+    "requested_at",
+    "execution_scope",
+    "limits",
+    "strict_order"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "defs.schema.json#/$defs/schema_version"
+    },
+    "build_request_id": {
+      "type": "string",
+      "pattern": "^GHB-[A-F0-9]{20}$"
+    },
+    "build_request_hash": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "definition_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/artifact_id"
+    },
+    "resolution_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/artifact_id"
+    },
+    "work_lead_artifact_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "defs.schema.json#/$defs/artifact_id"
+      }
+    },
+    "source_declaration_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/artifact_id"
+    },
+    "requested_at": {
+      "$ref": "defs.schema.json#/$defs/iso_datetime"
+    },
+    "execution_scope": {
+      "const": "FULL_WORK"
+    },
+    "limits": {
+      "$ref": "generic-novel-spec.schema.json#/properties/limits"
+    },
+    "strict_order": {
+      "type": "boolean"
+    },
+    "operator_attestation_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/artifact_id"
+    }
+  }
+}

@@ -54,6 +54,18 @@ PREFIXES = {
     "PlanningCompilationReceipt": "PCR-",
     "Seed": "SD-",
     "PlanningCompilerBuild": "PCB-",
+    # Standalone observation research records; deliberately excluded from Catalog.
+    "ObservationDefinition": "ODEF-",
+    "ObservationRequirement": "OREQ-",
+    "ProfileResolution": "PRES-",
+    "ObservationWorkLead": "OWL-",
+    "GenericHandoffBuildRequest": "GHB-",
+    "GenericExtractionHandoff": "GEH-",
+    "GenericHandoffAttempt": "GAT-",
+    "GenericHandoffAttemptEvent": "GEV-",
+    "GenericExtractionExecutionReceipt": "GER-",
+    "ObservationResearchRun": "ORUN-",
+    "ObservationResearchEvent": "OREV-",
 }
 
 ID_RE = re.compile(r"^[A-Z]{2,5}-[A-Z0-9][A-Z0-9._:-]{1,}$")

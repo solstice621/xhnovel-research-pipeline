@@ -1,0 +1,19 @@
+{
+  "record_kind": "FIXTURE_SEARCH_RESULT",
+  "role": "LEAD_ONLY",
+  "search_was_simulated": true,
+  "results": [
+    {
+      "title": "Fixture Novel",
+      "author": "Fixture Author",
+      "locator": "fixture:observation-research/novel.txt",
+      "snippet": "TAINT_SEARCH_ONLY_7391: a lead may describe a relevant location or race"
+    },
+    {
+      "title": "Fixture Quiet Novel",
+      "author": "Fixture Author",
+      "locator": "fixture:observation-research/zero-novel.txt",
+      "snippet": "TAINT_SEARCH_ONLY_7391: a quiet work retained as a zero-result acceptance case"
+    }
+  ]
+}

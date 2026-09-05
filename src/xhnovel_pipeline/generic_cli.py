@@ -9,6 +9,7 @@ from .errors import PipelineError
 from .generic_agent_files import GenericAgentFileExecutor, GenericAgentResponsesPending
 from .generic_extraction import (
     GenericExtractionPartial,
+    StructuredExecutor,
     generic_engine_source_hash,
     run_generic_corpus_workflow,
     validate_generic_work_dir,
@@ -47,8 +48,11 @@ def _json_stdout(value: object) -> None:
     print(json.dumps(value, ensure_ascii=True, indent=2))
 
 
-def _agent_root(work_dir: pathlib.Path, profile_ref: str, model_label: str) -> pathlib.Path:
-    root = repo_root()
+def _agent_root(
+    work_dir: pathlib.Path, profile_ref: str, model_label: str,
+    *, root: pathlib.Path | None = None,
+) -> pathlib.Path:
+    root = (root or repo_root()).resolve()
     profile = load_extraction_profile(profile_ref, root=root)
     identity = object_hash(
         {
@@ -61,6 +65,31 @@ def _agent_root(work_dir: pathlib.Path, profile_ref: str, model_label: str) -> p
         omit=(),
     ).removeprefix("sha256:")[:20]
     return work_dir / "generic-extraction" / "agent-files" / profile.slug / identity
+
+
+def make_generic_executor(
+    executor_kind: str,
+    work_dir: pathlib.Path,
+    profile_ref: str,
+    model: str | None = None,
+    agent_model_label: str = "host-code-agent",
+    root: pathlib.Path | None = None,
+    *, materialize: bool = True,
+) -> StructuredExecutor:
+    """Resolve native configuration; optionally defer agent-file publication."""
+    if executor_kind == "api":
+        if not model:
+            raise PipelineError("E-MODEL-CONFIG", "--model is required for --executor api")
+        return OpenAIResponsesClient(model=model)
+    if executor_kind != "agent-files":
+        raise PipelineError("E-MODEL-CONFIG", f"unsupported generic executor: {executor_kind}")
+    if model:
+        raise PipelineError("E-MODEL-CONFIG", "--model is not allowed for --executor agent-files")
+    return GenericAgentFileExecutor(
+        _agent_root(pathlib.Path(work_dir), profile_ref, agent_model_label, root=root),
+        model_label=agent_model_label,
+        materialize=materialize,
+    )
 
 
 def _list_profiles(root: pathlib.Path) -> list[dict[str, str]]:
@@ -116,20 +145,10 @@ def main(argv: list[str] | None = None) -> int:
             )
             return 0
 
-        if args.executor == "api":
-            if not args.model:
-                raise PipelineError("E-MODEL-CONFIG", "--model is required for --executor api")
-            executor = OpenAIResponsesClient(model=args.model)
-        else:
-            if args.model:
-                raise PipelineError(
-                    "E-MODEL-CONFIG",
-                    "--model is not allowed for --executor agent-files",
-                )
-            executor = GenericAgentFileExecutor(
-                _agent_root(args.work_dir, args.profile, args.agent_model_label),
-                model_label=args.agent_model_label,
-            )
+        executor = make_generic_executor(
+            args.executor, args.work_dir, args.profile,
+            model=args.model, agent_model_label=args.agent_model_label, root=root,
+        )
         result = run_generic_corpus_workflow(
             spec,
             args.work_dir,

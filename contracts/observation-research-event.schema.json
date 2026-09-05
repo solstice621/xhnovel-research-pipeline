@@ -1,0 +1,596 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/observation-research-event.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "observation-research-event/v2"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^OREV-[A-F0-9]{20}$"
+    },
+    "event_hash": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^ORUN-[A-F0-9]{20}$"
+    },
+    "run_hash": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "previous_event_artifact_id": {
+      "oneOf": [
+        {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "operation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "enum": [
+        "SEARCH_STARTED",
+        "SEARCH_FINISHED",
+        "LEAD_RECORDED",
+        "SOURCE_STARTED",
+        "SOURCE_FINISHED",
+        "EXECUTION_STARTED",
+        "EXECUTION_FINISHED",
+        "STOP",
+        "EXECUTION_REUSED"
+      ]
+    },
+    "detail": {
+      "type": "object"
+    },
+    "recorded_at": {
+      "$ref": "defs.schema.json#/$defs/iso_datetime"
+    }
+  },
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_hash",
+    "run_id",
+    "run_hash",
+    "sequence",
+    "previous_event_artifact_id",
+    "operation_id",
+    "event_type",
+    "detail",
+    "recorded_at"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "SEARCH_STARTED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "query": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "query"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "SEARCH_FINISHED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "start_event_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "outcome": {
+                "enum": [
+                  "COMPLETED",
+                  "FAILED"
+                ]
+              },
+              "result_artifact_ids": {
+                "type": "array",
+                "uniqueItems": true,
+                "minItems": 0,
+                "items": {
+                  "$ref": "defs.schema.json#/$defs/sha256"
+                }
+              },
+              "error": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "start_event_artifact_id",
+              "outcome",
+              "result_artifact_ids",
+              "error"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "LEAD_RECORDED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "lead_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "search_event_artifact_id": {
+                "oneOf": [
+                  {
+                    "$ref": "defs.schema.json#/$defs/sha256"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "lead_artifact_id",
+              "search_event_artifact_id"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "SOURCE_STARTED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "lead_artifact_ids": {
+                "type": "array",
+                "uniqueItems": true,
+                "minItems": 1,
+                "items": {
+                  "$ref": "defs.schema.json#/$defs/sha256"
+                }
+              },
+              "source_input_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256",
+                "description": "Host-recorded attempted input, lead-only audit bytes. Eligibility and source identity are proved independently by the prepared Handoff closure."
+              }
+            },
+            "required": [
+              "lead_artifact_ids",
+              "source_input_artifact_id"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "SOURCE_FINISHED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "start_event_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "status": {
+                "enum": [
+                  "ELIGIBLE",
+                  "UNRESOLVED",
+                  "BLOCKED_BY_RIGHTS",
+                  "INELIGIBLE_QUALITY",
+                  "FAILED"
+                ]
+              },
+              "handoff_artifact_id": {
+                "oneOf": [
+                  {
+                    "$ref": "defs.schema.json#/$defs/sha256"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "start_event_artifact_id",
+              "status",
+              "handoff_artifact_id",
+              "reason"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "EXECUTION_STARTED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_event_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "handoff_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "work_dir": {
+                "type": "string",
+                "minLength": 1
+              },
+              "invocation_kind": {
+                "enum": [
+                  "FULL_WORK",
+                  "RESUME",
+                  "RETRY"
+                ]
+              },
+              "native_before_artifact_id": {
+                "oneOf": [
+                  {
+                    "$ref": "defs.schema.json#/$defs/sha256"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "executor_request": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "executor_kind": {
+                    "enum": [
+                      "agent-files",
+                      "api"
+                    ]
+                  },
+                  "model": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "agent_model_label": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "executor_descriptor": {
+                    "oneOf": [
+                      {
+                        "$ref": "generic-handoff-attempt-event.schema.json#/$defs/binding/properties/executor"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "executor_kind",
+                  "model",
+                  "agent_model_label",
+                  "executor_descriptor"
+                ]
+              },
+              "recovery": {
+                "enum": [
+                  "NORMAL",
+                  "RESUME",
+                  "RETRY"
+                ]
+              }
+            },
+            "required": [
+              "source_event_artifact_id",
+              "handoff_artifact_id",
+              "work_dir",
+              "invocation_kind",
+              "native_before_artifact_id",
+              "executor_request",
+              "recovery"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "EXECUTION_FINISHED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "start_event_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "status": {
+                "enum": [
+                  "WAITING_FOR_AGENT",
+                  "PARTIAL_RETRYABLE",
+                  "INTERRUPTED",
+                  "SUCCEEDED",
+                  "FAILED",
+                  "FAILED_PRESTART"
+                ]
+              },
+              "native_event_artifact_id": {
+                "oneOf": [
+                  {
+                    "$ref": "defs.schema.json#/$defs/sha256"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "receipt_artifact_id": {
+                "oneOf": [
+                  {
+                    "$ref": "defs.schema.json#/$defs/sha256"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "error": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "code": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "message": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "code",
+                      "message"
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "start_event_artifact_id",
+              "status",
+              "native_event_artifact_id",
+              "receipt_artifact_id",
+              "error"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "STOP"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "enum": [
+                  "TARGET_WORKS_REACHED",
+                  "SEARCH_BUDGET_EXHAUSTED",
+                  "SOURCE_BUDGET_EXHAUSTED",
+                  "EXECUTION_BUDGET_EXHAUSTED",
+                  "RESUME_BUDGET_EXHAUSTED",
+                  "NO_USABLE_PROFILE",
+                  "INPUT_REQUIRED",
+                  "USER_STOPPED"
+                ]
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "reason",
+              "rationale"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "EXECUTION_REUSED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_event_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "handoff_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "work_dir": {
+                "type": "string",
+                "minLength": 1
+              },
+              "executor_request": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "executor_kind": {
+                    "enum": [
+                      "agent-files",
+                      "api"
+                    ]
+                  },
+                  "model": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "agent_model_label": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "executor_descriptor": {
+                    "oneOf": [
+                      {
+                        "$ref": "generic-handoff-attempt-event.schema.json#/$defs/binding/properties/executor"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "executor_kind",
+                  "model",
+                  "agent_model_label",
+                  "executor_descriptor"
+                ]
+              },
+              "native_event_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "receipt_artifact_id": {
+                "$ref": "defs.schema.json#/$defs/sha256"
+              },
+              "status": {
+                "const": "SUCCEEDED"
+              }
+            },
+            "required": [
+              "source_event_artifact_id",
+              "handoff_artifact_id",
+              "work_dir",
+              "executor_request",
+              "native_event_artifact_id",
+              "receipt_artifact_id",
+              "status"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

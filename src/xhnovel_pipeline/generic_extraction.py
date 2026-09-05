@@ -2,8 +2,12 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import pathlib
+import re
+import threading
 from concurrent.futures import Future, ThreadPoolExecutor, as_completed
+from contextlib import contextmanager
 from dataclasses import dataclass
 from typing import Any, Protocol
 
@@ -42,7 +46,12 @@ from .model_api import (
     OPENAI_RESPONSES_FORMAT,
 )
 from .novel_assessment import declared_rights, declared_source_quality, source_quality_tier
-from .novel_ingest import run_novel_ingestion, validate_novel_ingestion
+from .novel_ingest import (
+    _lock_file_handle,
+    _unlock_file_handle,
+    run_novel_ingestion,
+    validate_novel_ingestion,
+)
 from .paths import repo_root
 from .runtime import repository_commit
 from .schema import schema_validation_session
@@ -52,6 +61,68 @@ GENERIC_CORE_VERSION = "generic-extraction/v0.1"
 GENERIC_ALLOWED_USE = "source-grounded-semantic-extraction/v0-spike"
 CHECKPOINT_VERSION = "generic-extraction-checkpoint/v1"
 CHECKPOINT_INTEGRITY_FIELD = "integrity_hash"
+GENERIC_WORK_DIR_LOCK_NAME = ".generic-extraction.lock"
+
+
+@dataclass(frozen=True, eq=False)
+class _GenericWorkDirLockToken:
+    work_dir: pathlib.Path
+    process_id: int
+    thread_id: int
+
+
+_ACTIVE_WORK_DIR_LOCKS: dict[int, _GenericWorkDirLockToken] = {}
+
+
+@contextmanager
+def generic_work_dir_lock(
+    work_dir: pathlib.Path,
+    *,
+    lock_token: _GenericWorkDirLockToken | None = None,
+):
+    """Hold the native mutation lock; reuse only an explicit live owner token.
+
+    Handoff callers may retain this context through exact output validation and
+    receipt publication. Tokens cannot cross threads, processes or work dirs and
+    cease to work when the owning context exits. Independent callers fail fast.
+    """
+    work_dir = pathlib.Path(work_dir).resolve()
+    if lock_token is not None:
+        if (
+            _ACTIVE_WORK_DIR_LOCKS.get(id(lock_token)) is not lock_token
+            or lock_token.work_dir != work_dir
+            or lock_token.process_id != os.getpid()
+            or lock_token.thread_id != threading.get_ident()
+        ):
+            raise ValidationError("E-GENERIC-LOCK-TOKEN", "invalid generic work-dir lock token")
+        yield lock_token
+        return
+    work_dir.mkdir(parents=True, exist_ok=True)
+    lock_path = work_dir / GENERIC_WORK_DIR_LOCK_NAME
+    try:
+        handle = lock_path.open("a+b")
+    except OSError as exc:
+        raise ValidationError("E-GENERIC-WORKDIR-LOCK", f"cannot open {lock_path}") from exc
+    locked = False
+    token = _GenericWorkDirLockToken(work_dir, os.getpid(), threading.get_ident())
+    try:
+        try:
+            _lock_file_handle(handle)
+            locked = True
+        except OSError as exc:
+            raise ValidationError(
+                "E-GENERIC-WORKDIR-LOCKED",
+                f"another generic extraction or reduction is already using {work_dir}",
+            ) from exc
+        _ACTIVE_WORK_DIR_LOCKS[id(token)] = token
+        yield token
+    finally:
+        _ACTIVE_WORK_DIR_LOCKS.pop(id(token), None)
+        try:
+            if locked:
+                _unlock_file_handle(handle)
+        finally:
+            handle.close()
 
 _SCHEMA_FILES = {
     "NovelTextSnapshot": "novel-text-snapshot.schema.json",
@@ -243,7 +314,12 @@ def _write_checkpoint(path: pathlib.Path, checkpoint: dict[str, Any]) -> None:
 def _load_checkpoint(path: pathlib.Path) -> dict[str, Any] | None:
     if not path.exists():
         return None
-    checkpoint = _parse_canonical_json_bytes(path.read_bytes(), label="generic checkpoint")
+    return validate_generic_checkpoint_bytes(path.read_bytes())
+
+
+def validate_generic_checkpoint_bytes(data: bytes) -> dict[str, Any]:
+    """Validate frozen checkpoint bytes with the native integrity primitive."""
+    checkpoint = _parse_canonical_json_bytes(data, label="generic checkpoint")
     integrity_hash = checkpoint.get(CHECKPOINT_INTEGRITY_FIELD)
     if not isinstance(integrity_hash, str) or integrity_hash != _checkpoint_hash(checkpoint):
         raise ValidationError("E-GENERIC-CHECKPOINT-INTEGRITY", "checkpoint hash differs")
@@ -537,7 +613,7 @@ def generic_engine_source_hash(root: pathlib.Path | None = None) -> str:
     return _generic_engine_source_hash((root or repo_root()).resolve())
 
 
-def _executor_descriptor(executor: StructuredExecutor) -> dict[str, Any]:
+def executor_descriptor(executor: StructuredExecutor) -> dict[str, Any]:
     timeout = getattr(executor, "timeout", 0.0)
     timeout_ms = int(round(float(timeout) * 1000))
     return {
@@ -549,6 +625,10 @@ def _executor_descriptor(executor: StructuredExecutor) -> dict[str, Any]:
         "timeout_ms": timeout_ms,
         "max_attempts": int(executor.max_attempts),
     }
+
+
+# Preserve the internal name for consumers of older native integration code.
+_executor_descriptor = executor_descriptor
 
 
 def build_extraction_build(
@@ -1528,6 +1608,25 @@ def run_generic_extraction(
     profiles_root: pathlib.Path | None = None,
     now: str,
     fetcher: Any | None = None,
+    lock_token: _GenericWorkDirLockToken | None = None,
+) -> GenericExtractionResult:
+    with generic_work_dir_lock(work_dir, lock_token=lock_token):
+        return _run_generic_extraction_unlocked(
+            spec, work_dir, profile_ref=profile_ref, executor=executor, root=root,
+            profiles_root=profiles_root, now=now, fetcher=fetcher,
+        )
+
+
+def _run_generic_extraction_unlocked(
+    spec: dict[str, Any],
+    work_dir: pathlib.Path,
+    *,
+    profile_ref: str,
+    executor: StructuredExecutor,
+    root: pathlib.Path | None = None,
+    profiles_root: pathlib.Path | None = None,
+    now: str,
+    fetcher: Any | None = None,
 ) -> GenericExtractionResult:
     root = (root or repo_root()).resolve()
     work_dir = pathlib.Path(work_dir)
@@ -2026,6 +2125,17 @@ def run_generic_reduction(
     *,
     root: pathlib.Path | None = None,
     now: str,
+    lock_token: _GenericWorkDirLockToken | None = None,
+) -> GenericCorpusResult:
+    with generic_work_dir_lock(extraction.paths.shared_root.parent, lock_token=lock_token):
+        return _run_generic_reduction_unlocked(extraction, root=root, now=now)
+
+
+def _run_generic_reduction_unlocked(
+    extraction: GenericExtractionResult,
+    *,
+    root: pathlib.Path | None = None,
+    now: str,
 ) -> GenericCorpusResult:
     root = (root or repo_root()).resolve()
     profile = extraction.profile
@@ -2285,18 +2395,20 @@ def run_generic_corpus_workflow(
     profiles_root: pathlib.Path | None = None,
     now: str,
     fetcher: Any | None = None,
+    lock_token: _GenericWorkDirLockToken | None = None,
 ) -> GenericCorpusResult:
-    extraction = run_generic_extraction(
-        spec,
-        work_dir,
-        profile_ref=profile_ref,
-        executor=executor,
-        root=root,
-        profiles_root=profiles_root,
-        now=now,
-        fetcher=fetcher,
-    )
-    return run_generic_reduction(extraction, root=root, now=now)
+    with generic_work_dir_lock(work_dir, lock_token=lock_token):
+        extraction = _run_generic_extraction_unlocked(
+            spec,
+            work_dir,
+            profile_ref=profile_ref,
+            executor=executor,
+            root=root,
+            profiles_root=profiles_root,
+            now=now,
+            fetcher=fetcher,
+        )
+        return _run_generic_reduction_unlocked(extraction, root=root, now=now)
 
 
 @schema_validation_session()
@@ -2311,6 +2423,52 @@ def validate_generic_work_dir(
     fetcher: Any | None = None,
 ) -> list[GenericCorpusResult]:
     """Validate every completed reduction for one built-in Profile without model access."""
+    return _validate_generic_work_dir(
+        spec, work_dir, profile_ref=profile_ref, root=root, profiles_root=profiles_root,
+    )
+
+
+@schema_validation_session()
+def validate_selected_generic_corpus(
+    spec: dict[str, Any],
+    work_dir: pathlib.Path,
+    *,
+    profile_ref: str,
+    extraction_run_id: str,
+    reduction_run_id: str,
+    corpus_snapshot_id: str,
+    root: pathlib.Path | None = None,
+    profiles_root: pathlib.Path | None = None,
+) -> GenericCorpusResult:
+    """Replay one exact completed corpus using frozen source/CAS, without I/O to its origin.
+
+    Other completed reductions and newer pending extractions are not selected.
+    Every selected artifact still traverses the same native production validators
+    used by broad validation, including exact runtime and archived reducer binding.
+    """
+    for prefix, value in (
+        ("XRUN", extraction_run_id), ("RRUN", reduction_run_id), ("CPS", corpus_snapshot_id),
+    ):
+        if not isinstance(value, str) or re.fullmatch(prefix + r"-[0-9A-F]{20}", value) is None:
+            raise ValidationError("E-GENERIC-SELECTED", f"invalid {prefix} selection identity")
+    results = _validate_generic_work_dir(
+        spec, work_dir, profile_ref=profile_ref, root=root, profiles_root=profiles_root,
+        selected=(extraction_run_id, reduction_run_id, corpus_snapshot_id),
+    )
+    if len(results) != 1:
+        raise ValidationError("E-GENERIC-SELECTED", "selected corpus is not unique")
+    return results[0]
+
+
+def _validate_generic_work_dir(
+    spec: dict[str, Any],
+    work_dir: pathlib.Path,
+    *,
+    profile_ref: str,
+    root: pathlib.Path | None = None,
+    profiles_root: pathlib.Path | None = None,
+    selected: tuple[str, str, str] | None = None,
+) -> list[GenericCorpusResult]:
 
     root = (root or repo_root()).resolve()
     work_dir = pathlib.Path(work_dir)
@@ -2339,6 +2497,15 @@ def validate_generic_work_dir(
         extraction_roots = sorted((profile_root / "extractions").glob("XBLD-*"))
         if not extraction_roots:
             raise ValidationError("E-GENERIC-VALIDATE", f"no completed extraction under {profile_root}")
+        if selected is not None:
+            extraction_roots = [
+                path for path in extraction_roots
+                if (path / "reductions" / selected[1]).exists()
+            ]
+            if len(extraction_roots) != 1:
+                raise ValidationError(
+                    "E-GENERIC-SELECTED", "selected reduction must exist under exactly one extraction",
+                )
         results: list[GenericCorpusResult] = []
         for extraction_root in extraction_roots:
             run_path = extraction_root / "extraction-run.json"
@@ -2355,6 +2522,11 @@ def validate_generic_work_dir(
             if not run_path.is_file():
                 raise ValidationError("E-GENERIC-VALIDATE", f"missing {run_path}")
             run = _parse_canonical_json_bytes(run_path.read_bytes(), label="ExtractionRun")
+            if selected is not None and (
+                run.get("extraction_run_id") != selected[0]
+                or build.get("extraction_build_id") != extraction_root.name
+            ):
+                raise ValidationError("E-GENERIC-SELECTED", "selected extraction identity differs")
             units = _parse_canonical_jsonl_bytes(
                 (extraction_root / "units.jsonl").read_bytes(), label="units"
             )
@@ -2410,6 +2582,8 @@ def validate_generic_work_dir(
                 reused_extraction=True,
             )
             reduction_roots = sorted((extraction_root / "reductions").glob("RRUN-*"))
+            if selected is not None:
+                reduction_roots = [path for path in reduction_roots if path.name == selected[1]]
             for reduction_root in reduction_roots:
                 reduction_run = _parse_canonical_json_bytes(
                     (reduction_root / "reduction-run.json").read_bytes(),
@@ -2419,6 +2593,11 @@ def validate_generic_work_dir(
                     (reduction_root / "corpus-snapshot.json").read_bytes(),
                     label="CorpusSnapshot",
                 )
+                if selected is not None and (
+                    reduction_run.get("reduction_run_id") != selected[1]
+                    or corpus_snapshot.get("corpus_snapshot_id") != selected[2]
+                ):
+                    raise ValidationError("E-GENERIC-SELECTED", "selected corpus identity differs")
                 records = _parse_canonical_jsonl_bytes(
                     (reduction_root / "corpus.jsonl").read_bytes(), label="corpus"
                 )

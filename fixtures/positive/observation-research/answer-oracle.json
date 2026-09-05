@@ -1,0 +1,9 @@
+{
+  "oracle_kind": "FIXTURE_ONLY_NOT_SEMANTIC_EVALUATION",
+  "geography-unique-v1": [
+    {"phrase": "青云山", "payload": {"kind": "PLACE_MENTION", "name": "青云山"}, "paths": ["/name"]}
+  ],
+  "race-mention-v1": [
+    {"phrase": "羽族", "payload": {"kind": "RACE_MENTION", "name": "羽族"}, "paths": ["/name"]}
+  ]
+}

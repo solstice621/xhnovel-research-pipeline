@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/observation-work-lead.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "defs.schema.json#/$defs/schema_version"
+    },
+    "lead_id": {
+      "type": "string",
+      "pattern": "^OWL-[A-F0-9]{20}$"
+    },
+    "lead_hash": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "definition_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "definition_id": {
+      "type": "string",
+      "pattern": "^ODEF-[A-F0-9]{20}$"
+    },
+    "assurance": {
+      "const": "UNVERIFIED_LEAD"
+    },
+    "evidence_status": {
+      "const": "LEAD_ONLY"
+    },
+    "work_claim": {
+      "$ref": "phase0-defs.schema.json#/$defs/work_claim"
+    },
+    "relevance_hypothesis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lead_sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "phase0-defs.schema.json#/$defs/lead_source"
+      }
+    },
+    "location_hints": {
+      "type": "array",
+      "items": {
+        "$ref": "phase0-defs.schema.json#/$defs/location_hint"
+      }
+    },
+    "frozen_at": {
+      "$ref": "defs.schema.json#/$defs/iso_datetime"
+    }
+  },
+  "required": [
+    "schema_version",
+    "lead_id",
+    "lead_hash",
+    "definition_artifact_id",
+    "definition_id",
+    "assurance",
+    "evidence_status",
+    "work_claim",
+    "relevance_hypothesis",
+    "lead_sources",
+    "location_hints",
+    "frozen_at"
+  ]
+}

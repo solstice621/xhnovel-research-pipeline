@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/observation-definition.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "$ref": "defs.schema.json#/$defs/schema_version"
+    },
+    "definition_id": {
+      "type": "string",
+      "pattern": "^ODEF-[A-F0-9]{20}$"
+    },
+    "definition_hash": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "intake_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "intake_id": {
+      "type": "string",
+      "pattern": "^RIN-[A-F0-9]{20}$"
+    },
+    "neutral_input_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "neutral_input_id": {
+      "type": "string",
+      "pattern": "^NPI-[A-F0-9]{20}$"
+    },
+    "research_question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inclusion_rules": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "exclusion_rules": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required_distinctions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "requirement_id": {
+            "type": "string",
+            "pattern": "^OREQ-[A-F0-9]{20}$"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "applies_to": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "necessity": {
+            "enum": [
+              "REQUIRED",
+              "OPTIONAL"
+            ]
+          },
+          "locality": {
+            "enum": [
+              "UNIT_LOCAL",
+              "CROSS_UNIT"
+            ]
+          },
+          "origin": {
+            "enum": [
+              "HOST_INTERPRETATION",
+              "NEUTRAL_GOAL",
+              "EXPLICIT_SCOPE"
+            ]
+          },
+          "origin_pointer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin_quote": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "requirement_id",
+          "statement",
+          "applies_to",
+          "necessity",
+          "locality",
+          "origin",
+          "origin_pointer",
+          "origin_quote"
+        ]
+      }
+    },
+    "locality": {
+      "enum": [
+        "UNIT_LOCAL",
+        "MIXED_REQUIRES_DECOMPOSITION",
+        "REQUIRES_CROSS_UNIT_ANALYSIS"
+      ]
+    },
+    "locality_rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decomposition_status": {
+      "enum": [
+        "NOT_REQUIRED",
+        "REQUIRED",
+        "DECOMPOSED"
+      ]
+    },
+    "executable_requirement_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^OREQ-[A-F0-9]{20}$"
+      }
+    },
+    "unresolved_requirement_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^OREQ-[A-F0-9]{20}$"
+      }
+    },
+    "authoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "host": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "assurance": {
+          "enum": [
+            "HOST_ISOLATED_ATTESTED",
+            "NOT_PROVEN"
+          ]
+        },
+        "isolation_claim": {
+          "enum": [
+            "FRESH_SUBAGENT_NO_SEED_PAYLOAD",
+            "HOST_ISOLATION_UNAVAILABLE",
+            "CONTEXT_NOT_ISOLATED",
+            "OPERATOR_DID_NOT_ATTEST"
+          ]
+        }
+      },
+      "required": [
+        "host",
+        "input_artifact_id",
+        "assurance",
+        "isolation_claim"
+      ]
+    },
+    "previous_definition_artifact_id": {
+      "$ref": "defs.schema.json#/$defs/sha256"
+    },
+    "frozen_at": {
+      "$ref": "defs.schema.json#/$defs/iso_datetime"
+    }
+  },
+  "required": [
+    "schema_version",
+    "definition_id",
+    "definition_hash",
+    "intake_artifact_id",
+    "intake_id",
+    "neutral_input_artifact_id",
+    "neutral_input_id",
+    "research_question",
+    "inclusion_rules",
+    "exclusion_rules",
+    "required_distinctions",
+    "requirements",
+    "locality",
+    "locality_rationale",
+    "decomposition_status",
+    "executable_requirement_ids",
+    "unresolved_requirement_ids",
+    "authoring",
+    "frozen_at"
+  ]
+}

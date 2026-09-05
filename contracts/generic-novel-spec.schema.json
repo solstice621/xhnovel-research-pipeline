@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/generic-novel-spec.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source",
+    "rights",
+    "source_quality",
+    "limits",
+    "strict_order"
+  ],
+  "properties": {
+    "source": {
+      "$ref": "source-declaration.schema.json#/properties/source"
+    },
+    "rights": {
+      "$ref": "phase0-defs.schema.json#/$defs/rights"
+    },
+    "source_quality": {
+      "$ref": "phase0-defs.schema.json#/$defs/source_quality"
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_chapters",
+        "max_bytes"
+      ],
+      "properties": {
+        "max_chapters": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "strict_order": {
+      "type": "boolean"
+    }
+  }
+}

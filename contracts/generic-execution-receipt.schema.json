@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/contracts/generic-execution-receipt.schema.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "generic-execution-receipt/v1"
+        },
+        "receipt_id": {
+          "type": "string",
+          "pattern": "^GER-[A-F0-9]{20}$"
+        },
+        "receipt_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "handoff_id": {
+          "type": "string",
+          "pattern": "^GEH-[A-F0-9]{20}$"
+        },
+        "handoff_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "handoff_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "attempt_id": {
+          "type": "string",
+          "pattern": "^GAT-[A-F0-9]{20}$"
+        },
+        "attempt_ordinal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "invocation_ordinal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "invocation_start_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "work_dir": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binding": {
+          "$ref": "generic-handoff-attempt-event.schema.json#/$defs/binding"
+        },
+        "recorded_at": {
+          "$ref": "defs.schema.json#/$defs/iso_datetime"
+        },
+        "status": {
+          "const": "SUCCEEDED"
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "input_spec_hash": {
+              "$ref": "defs.schema.json#/$defs/sha256"
+            },
+            "ingestion_run_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "text_snapshot_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "text_snapshot_hash": {
+              "$ref": "defs.schema.json#/$defs/sha256"
+            },
+            "extraction_build_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "extraction_build_hash": {
+              "$ref": "defs.schema.json#/$defs/sha256"
+            },
+            "extraction_run_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "extraction_run_hash": {
+              "$ref": "defs.schema.json#/$defs/sha256"
+            },
+            "reduction_run_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reduction_run_hash": {
+              "$ref": "defs.schema.json#/$defs/sha256"
+            },
+            "corpus_snapshot_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "corpus_snapshot_hash": {
+              "$ref": "defs.schema.json#/$defs/sha256"
+            },
+            "corpus_artifact_id": {
+              "$ref": "defs.schema.json#/$defs/sha256"
+            },
+            "corpus_record_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "semantic_assurance": {
+              "const": "UNQUALIFIED"
+            },
+            "semantic_coverage": {
+              "const": "UNMEASURED"
+            }
+          },
+          "required": [
+            "input_spec_hash",
+            "ingestion_run_id",
+            "text_snapshot_id",
+            "text_snapshot_hash",
+            "extraction_build_id",
+            "extraction_build_hash",
+            "extraction_run_id",
+            "extraction_run_hash",
+            "reduction_run_id",
+            "reduction_run_hash",
+            "corpus_snapshot_id",
+            "corpus_snapshot_hash",
+            "corpus_artifact_id",
+            "corpus_record_count",
+            "semantic_assurance",
+            "semantic_coverage"
+          ]
+        },
+        "validation": {
+          "const": "PASS"
+        }
+      },
+      "required": [
+        "schema_version",
+        "receipt_id",
+        "receipt_hash",
+        "handoff_id",
+        "handoff_hash",
+        "handoff_artifact_id",
+        "attempt_id",
+        "attempt_ordinal",
+        "invocation_ordinal",
+        "invocation_start_artifact_id",
+        "work_dir",
+        "binding",
+        "recorded_at",
+        "status",
+        "result",
+        "validation"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "generic-execution-receipt/v1"
+        },
+        "receipt_id": {
+          "type": "string",
+          "pattern": "^GER-[A-F0-9]{20}$"
+        },
+        "receipt_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "handoff_id": {
+          "type": "string",
+          "pattern": "^GEH-[A-F0-9]{20}$"
+        },
+        "handoff_hash": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "handoff_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "attempt_id": {
+          "type": "string",
+          "pattern": "^GAT-[A-F0-9]{20}$"
+        },
+        "attempt_ordinal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "invocation_ordinal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "invocation_start_artifact_id": {
+          "$ref": "defs.schema.json#/$defs/sha256"
+        },
+        "work_dir": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binding": {
+          "$ref": "generic-handoff-attempt-event.schema.json#/$defs/binding"
+        },
+        "recorded_at": {
+          "$ref": "defs.schema.json#/$defs/iso_datetime"
+        },
+        "status": {
+          "const": "FAILED"
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "stage": {
+              "type": "string",
+              "minLength": 1
+            },
+            "code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "message": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "stage",
+            "code",
+            "message"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "receipt_id",
+        "receipt_hash",
+        "handoff_id",
+        "handoff_hash",
+        "handoff_artifact_id",
+        "attempt_id",
+        "attempt_ordinal",
+        "invocation_ordinal",
+        "invocation_start_artifact_id",
+        "work_dir",
+        "binding",
+        "recorded_at",
+        "status",
+        "error"
+      ]
+    }
+  ]
+}
