@@ -1,7 +1,8 @@
 # 本地章节原文库使用说明
 
 `scripts/research_library.py` 是宿主侧工具，需在可信仓库 checkout 中运行。
-它管理章节来源与原生产物的引用，不执行取书、模型调用或任务调度。
+它管理章节来源与原生产物的引用；共享获取命令同步调用既有有界取书工具。
+它不执行模型调用或任务调度。
 默认库根为 `~/Documents/xhnovel-library`，可用 `XHNOVEL_LIBRARY_ROOT` 或优先级更高的
 `--library-root` 覆盖。以下 L、ID、P/R/W 和文件路径均由宿主从真实返回值填入。
 
@@ -61,6 +62,11 @@ python scripts/research_library.py --library-root L verify SOURCE_RECORD_ID
 列表的 `validation=NOT_CHECKED` 表示元数据候选，不能据此复用源。只有重新 verify
 成功并与当前需求身份、版本和权限一致的封存源才可选择。多个来源记录可引用同一
 source_revision；这是多次准入引用，不是重复下载。不同身份 basis 不按书名自动合并。
+
+多个研究并行时，使用 [共享获取命令](SHARED_ACQUISITION_PLAN.md)：认领忙则
+返回 BUSY_SKIPPED / TRY_OTHER_WORK，保存引用并立即处理其他作品。全部忙时保存
+WAITING_FOR_SOURCES 报告；后续 shared-status 回查或 shared-resume 接手，不能
+另建同来源下载。shared-seal 发布核验后的共用来源，普通 Handoff 仍由各研究生成。
 
 未命中合格来源时按 [现有获取流程](SOURCE_ACQUISITION_WORKFLOW.md) 继续：来源运行
 放 acquisition_root 下，seal 输出放 sealed_output。旧材料可原址接入；S 是现有

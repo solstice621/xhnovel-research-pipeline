@@ -16,6 +16,11 @@
 旧研究保留已有 P/R。需求冻结后先查当前绑定及库中来源，verify 成功且身份/版本
 适用才可复用。列表 NOT_CHECKED 不代表合格，缺源继续以下获取流程。
 
+新并行研究使用 [共享获取入口](SHARED_ACQUISITION_PLAN.md)，由库固定 source-run。
+BUSY_SKIPPED 时保存返回的 acquisition_id/observation_path，立即处理下一部作品；
+本轮其他作品处理后 shared-status 回查。全部忙则记录 WAITING_FOR_SOURCES，
+不原地等待、轮询或另外下载同一来源。PARTIAL 沿 shared-resume 保留原生冷却/预算。
+
 新 source-run 放库返回的 acquisition_root 下，seal 放 sealed_output。prepare
 取得普通 Handoff 后 register-source，allocate-execution 返回的 work_dir 作为 W；
 随后 freeze 和 execute。原生成功后 register-product，最终报告 register-report。
@@ -47,7 +52,8 @@ path/sha256 是本地文件摘要，核心 artifact ID 仍只能由原生工具�
    主站章数、页面 ID 连续或某个搜索摘要只能作为线索，不能直接证明全书完整。
    未解决项可保持 UNRESOLVED 并进行有界获取；不得用实际已下载文件反推完整目录。
 3. 为选择的来源编写工具配置。已有 TXT/EPUB/章节目录走 C4；符合现有授权和
-   工具范围的有限 URL 清单走 C1。调用 `inspect`，随后 `import-local` 或 `acquire`。
+   工具范围的有限 URL 清单走 C1。调用 `inspect`，随后通过库的 `shared-acquire`
+   执行新获取/导入；已有外部旧运行仍沿底层 `import-local` / `acquire` 原址恢复。
    工具负责真实请求节流、原始材料、逐章提交和状态恢复。它不搜索无限目录，
    不自动轮换来源；宿主也不能用新配置重置同一来源的限流和失败预算。
 4. 根据退出码和状态继续。成功获取全部条目后仍需 `verify`；PARTIAL 时核对
@@ -57,7 +63,8 @@ path/sha256 是本地文件摘要，核心 artifact ID 仍只能由原生工具�
    有界、独立的比较材料，使用显式标题对齐和 `compare`，保留歧义。质量审查由
    当前宿主完成，不默认要求用户逐章批准；没有依据的项保持 UNRESOLVED。
    不把模板批量填 PASS，不修补冻结正文或从 Lead 人名选择质量样本。
-6. `verify --review` 全部通过后执行 `seal`，记录其返回的摘要命名目录 S。
+6. `verify --review` 全部通过后，共享运行执行 `shared-seal`，旧外部运行执行 `seal`，
+   记录其返回的摘要命名目录 S。共享 SEALED 也必须为当前研究 prepare 自己的 Handoff。
    已封存源也须用当前兼容实现回放再接入。脚本版本不兼容时保留旧版本执行，
    或把原始材料作为明确新版本重新导入；不能修改旧 binding 来强行恢复。
 

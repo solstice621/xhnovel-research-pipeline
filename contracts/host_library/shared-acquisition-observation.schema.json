@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format_version",
+    "library_id",
+    "research_record_id",
+    "acquisition_id",
+    "run_dir",
+    "status",
+    "next_action",
+    "observed_at"
+  ],
+  "properties": {
+    "format_version": {
+      "const": "host-shared-acquisition-v1"
+    },
+    "library_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "research_record_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "acquisition_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "run_dir": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "BUSY_SKIPPED",
+        "PARTIAL",
+        "READY_FOR_REVIEW",
+        "SEALED",
+        "INITIALIZATION_REQUIRED"
+      ]
+    },
+    "next_action": {
+      "enum": [
+        "TRY_OTHER_WORK",
+        "REVIEW_SOURCE",
+        "PREPARE_HANDOFF",
+        "RETRY_ACQUIRE"
+      ]
+    },
+    "observed_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "native_status": {
+      "type": "object"
+    },
+    "sealed_path": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

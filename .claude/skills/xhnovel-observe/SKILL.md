@@ -25,7 +25,15 @@ native planning; existing P/R roots remain in place. Only after neutral planning
 is frozen, query local sources and verify a matching version before reuse. Prepare
 this research's ordinary Handoff, register the source, and use allocate-execution's
 work_dir for native freeze/execution. Complete native validation before registering
-products and the final report. A metadata hit is NOT_CHECKED, a text match is not
+products and the final report. For concurrent acquisition, follow the
+[shared acquisition contract](../../../docs/SHARED_ACQUISITION_PLAN.md): use
+shared-acquire for a new source; on BUSY_SKIPPED, save its acquisition reference
+and immediately try the next work. Revisit skipped references after other work;
+if all remaining sources are busy, persist WAITING_FOR_SOURCES and end this pass
+without polling or starting duplicate downloads. Use shared-status/shared-resume
+for the same native checkpoint and shared-seal for publication. Each research
+still prepares its own ordinary Handoff and records its actual campaign events.
+A metadata hit is NOT_CHECKED, a text match is not
 evidence, and library operations never replace campaign events or FULL_WORK.
 
 ## Define before searching
