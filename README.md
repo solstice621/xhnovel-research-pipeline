@@ -99,6 +99,14 @@ input contract, checkpoints, outputs, and trust boundaries.
 
 ## Observation-driven research
 
+For a research request, the host Skills continue through source discovery,
+acquisition/import, completeness and fidelity review, source freezing, native
+task completion and reporting. The host owns the commands and configuration;
+the user need not provide a novel file or restart each stage by default. See the
+[shared source workflow](docs/SOURCE_ACQUISITION_WORKFLOW.md) for both Scene and
+Observation routes and their bounded stop conditions. The compiler remains a
+deterministic tool; automatic progression is implemented in the host Skills.
+
 The [observation research architecture](docs/OBSERVATION_RESEARCH_ARCHITECTURE.md)
 and [build plan](docs/OBSERVATION_RESEARCH_BUILD_PLAN.md) define the workflow:
 research goal → fixed Profile selection → source discovery → native generic

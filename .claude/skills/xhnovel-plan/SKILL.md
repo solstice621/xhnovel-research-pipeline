@@ -110,6 +110,12 @@ new run. Planning feeds the existing Phase 0 boundary; it does not replace it.
    formal search question and the sealed Plan's seeds/diversity as host-only search
    steering. After Phase 0 prepares an EvidenceHandoff, close the lineage with
    `validate-planning-handoff` as described there.
+   When the user requested research, continue in the same host task through that
+   Skill's source acquisition, native execution and reporting. Sealing a Plan or
+   finding that no local novel exists is not completion of the research request.
+   Stop at planning only when that is the user's requested scope. The shared
+   [source workflow](../../../docs/SOURCE_ACQUISITION_WORKFLOW.md) supplies the
+   subsequent acquisition steps; do not start source search before neutral planning.
 
 ## Hard prohibitions
 

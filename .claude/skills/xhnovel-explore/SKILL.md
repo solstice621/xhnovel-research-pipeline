@@ -1,6 +1,6 @@
 ---
 name: xhnovel-explore
-description: Discover works and concrete scene leads for an xhnovel gameplay research question, keep open-web findings lead-only, resolve a rights-declared source, and route eligible work through `prepare-handoff` and `execute-handoff`. Use for Phase 0 open-world exploration, not merely for completing already-generated Scene Scout tasks.
+description: Discover works and concrete scene leads for an xhnovel gameplay research question, acquire and verify full-work sources as a host step, and continue through native preparation and research. Use for Phase 0 open-world exploration, not merely for completing already-generated Scene Scout tasks.
 ---
 
 # xhnovel open-world exploration
@@ -14,6 +14,14 @@ and, only where a legitimate source is available, an Evidence Compiler run.
 Read [`docs/PHASE0_EXPLORATION.md`](../../../docs/PHASE0_EXPLORATION.md) before
 running a new exploration. The frozen trust boundary remains
 [`docs/PHASE0_INTERFACE.md`](../../../docs/PHASE0_INTERFACE.md).
+
+For an end-to-end research request, the host owns source discovery, acquisition,
+configuration, quality review and native execution. Continue across these stages
+without asking the user to run commands, supply a novel file by default, or approve
+each routine step. A request limited to planning or discovery keeps that limit.
+Read the shared [source workflow](../../../docs/SOURCE_ACQUISITION_WORKFLOW.md)
+when a selected work needs a source; having no local text starts that workflow,
+not an immediate handback to the user.
 
 ## Trust boundary
 
@@ -70,6 +78,17 @@ running a new exploration. The frozen trust boundary remains
    the attestation to make preparation pass. Resolve conflicting declarations
    with the operator before preparing.
 
+   Run the shared source workflow in its **Scene** branch: the host creates the
+   bounded source configuration/catalog, imports existing material or performs
+   supported C1 acquisition, reviews coverage/fidelity, then seals the source.
+   The host `prepare` and `freeze` commands call the native builders and ingestion;
+   retain their returned Handoff path and use the same research directory in step 7.
+   They perform steps 5–6 below for acquired sources, including applicable planning
+   closure; do not prepare a second Handoff with fresh timestamps. An already
+   admitted source may follow the ordinary preparation path below. Handle missing
+   pages, access refusal and unknown quality as the shared workflow specifies;
+   continue other eligible works within scope instead of dropping their Leads.
+
    Admit a concrete source when storage/model permissions
    are declared, `textual_completeness` is `COMPLETE`, and rights have a
    non-`UNKNOWN` basis. A publisher licence
@@ -81,7 +100,7 @@ running a new exploration. The frozen trust boundary remains
    text is complete, never as Tier A.
    Never infer or self-grant authorization. `FAIR_USE_RESEARCH` and
    `USER_AUTHORIZED_LOCAL_COPY` are valid operator-claimed bases, not publisher
-   licences. If no eligible source is available, retain the Lead as `UNRESOLVED`
+   licences. If no eligible source is available after bounded source work, retain the Lead as `UNRESOLVED`
    or `BLOCKED_BY_RIGHTS`; do not download or execute text whose rights basis is
    `UNKNOWN`. Incomplete text remains ineligible regardless of edition status.
 5. **Prepare through the product boundary.** Put the sealed Brief, compatible Leads,
@@ -117,6 +136,8 @@ running a new exploration. The frozen trust boundary remains
    [`docs/AGENT_EXECUTION.md`](../../../docs/AGENT_EXECUTION.md), then rerun the
    identical `execute-handoff` command. A terminal failure requires explicit
    `--retry`; never erase or overwrite the earlier attempt.
+   For an end-to-end request, answer the native tasks and continue in the same
+   host task; WAITING_FOR_AGENT is not a request for the user to take over.
 8. **Validate and report.** Require the planning closure (when applicable), the
    SUCCEEDED receipt, exact
    `expected_input_spec_hash` closure, fresh-process `validate all`, and preserved

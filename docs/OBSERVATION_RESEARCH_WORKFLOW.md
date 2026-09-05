@@ -188,6 +188,15 @@ xhnovel-pipeline validate-generic-handoff HANDOFF --research-root R
 
 ## 5. Native two-pass execution and report
 
+For end-to-end requests, source acquisition is a host-owned part of section 4.
+Use the [shared source workflow](SOURCE_ACQUISITION_WORKFLOW.md) to discover,
+acquire/import, verify and seal missing text, then prepare-generic/freeze-generic
+before recording the eligible source. The host creates the input files and
+continues into the campaign execution below; no extra user invocation is needed.
+Record SOURCE_STARTED before acquisition and retain unsuccessful dispositions.
+The normal generic preparation commands above remain the native boundary for
+already admitted sources; do not prepare a second Handoff for an acquired source.
+
 Use the campaign wrapper so budgets and source dispositions remain linked:
 
 ```text

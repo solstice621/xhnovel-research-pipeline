@@ -1,6 +1,6 @@
 ---
 name: xhnovel-observe
-description: Turn an xhnovel observation goal into neutral local requirements, an existing generic Profile selection, host searches, declared full-work sources, native extraction and an auditable research report. Use for automatic observation collection such as geography or race mentions. Does not infer cross-window mechanisms or admit newly generated Profiles.
+description: Turn an xhnovel observation goal into neutral local requirements, an existing generic Profile selection, host searches, automatic source acquisition and verification, native extraction and an auditable research report. Use for automatic observation collection such as geography or race mentions. Does not infer cross-window mechanisms or admit newly generated Profiles.
 ---
 
 # Observation research
@@ -9,6 +9,13 @@ Read [the workflow](../../../docs/OBSERVATION_RESEARCH_WORKFLOW.md) for draft
 shapes and command arguments. The [architecture](../../../docs/OBSERVATION_RESEARCH_ARCHITECTURE.md)
 defines the trust boundary. Use the existing Scene Skills for query-sensitive
 interactive scenes; this Skill consumes native **generic** task packets.
+
+An end-to-end research request includes host source acquisition and completing
+native tasks. The host writes the inputs and runs the commands; do not hand the
+workflow back merely because the user supplied no novel file or because a stage
+returned READY_FOR_XHNOVEL / WAITING_FOR_AGENT. Preserve requests expressly limited
+to design, discovery or source preparation. Use the shared
+[source workflow](../../../docs/SOURCE_ACQUISITION_WORKFLOW.md) at the source stage.
 
 ## Define before searching
 
@@ -49,7 +56,7 @@ interactive scenes; this Skill consumes native **generic** task packets.
    then record `SEARCH_FINISHED`. Seal and record every relevant WorkLead, including
    unresolved candidates. Search data and chapter guesses remain LEAD_ONLY. Search
    tools run on the host; there is no search engine or scheduler in the compiler.
-9. Record each `SOURCE_STARTED` before preparation. Resolve a concrete complete
+9. Record each `SOURCE_STARTED` before acquisition or preparation. Resolve a concrete complete
    source, work identity, technical access, source quality and explicit rights.
    Seed a new R from the repository canonical `attestations/operator-attestation.json`
    when R has no standing attestation. Copy it byte-for-byte; preserve an existing
@@ -57,11 +64,21 @@ interactive scenes; this Skill consumes native **generic** task packets.
    builder binds that standing declaration; explicit rights must match it. Access
    alone grants no storage or model permission. Record unsuccessful source
    attempts and reasons; a failed source must not erase its work from the report.
+   Follow the shared source workflow's **Observation** branch. The host discovers
+   candidate sources, prepares the finite catalog/configuration, imports or
+   acquires text, reviews it and seals an eligible source. Attach the bounded
+   source input and record SOURCE_STARTED before the first acquisition action;
+   retain that event while resuming the same attempt. Preparation of a successful
+   download alone cannot produce an ELIGIBLE source disposition.
 10. Run `prepare-generic-handoff` and `validate-generic-handoff`. Successful
     preparation is eligibility, not frozen evidence or completed research.
     Record `SOURCE_FINISHED` with the actual Handoff artifact; blocked branches
     retain the source input artifact and reason. Execution is FULL_WORK. Do not
     narrow chapters from lead hints or feed hints into native task fields.
+    For acquired sources, host `prepare-generic` performs native preparation and
+    validation; `freeze-generic` verifies the source in the same native W used by
+    step 11. Use returned artifact IDs for SOURCE_FINISHED and proceed. Do not route
+    an observation through a Scene Handoff or create a Scene discovery_brief.
 
 ## Execute and deliver
 
