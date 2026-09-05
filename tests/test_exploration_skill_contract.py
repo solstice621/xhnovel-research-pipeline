@@ -227,6 +227,14 @@ def test_unproven_official_status_is_not_an_eligibility_filter():
     assert "positively established" in docs
 
 
+def test_new_work_roots_seed_the_canonical_standing_attestation():
+    skill = SKILL.read_text(encoding="utf-8")
+    assert "attestations/operator-attestation.json" in skill
+    assert "content-identical" in skill
+    assert re.search(r"same\s+`attestation_id`", skill)
+    assert "never author, edit, or re-sign an attestation per run" in skill.casefold()
+
+
 def test_real_pilot_targets_are_preserved_as_lead_quality_gates():
     text = DOC.read_text(encoding="utf-8")
     assert re.search(r"at least 12 qualified ResearchLeads", text)

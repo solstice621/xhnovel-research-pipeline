@@ -78,6 +78,14 @@ running a new exploration. The frozen trust boundary remains
    xhnovel-pipeline prepare-handoff <preparation-input.json> --work-dir <exploration-dir>
    ```
 
+   The exploration work root must contain the standing `operator-attestation.json`.
+   If it is absent, copy the canonical standing attestation from
+   `attestations/operator-attestation.json` at the repo root into the work root
+   before preparing. The copy must stay content-identical with the same
+   `attestation_id`, so every prepared Handoff replays against the operator's one
+   standing signature. Never author, edit, or re-sign an attestation per run; if
+   the canonical file is missing or invalid, stop and ask the operator.
+
    Never compute IDs/hashes or hand-write the final Handoff. The builder owns CAS,
    grouping, preflight, ordinary Novel Spec projection, and deterministic replay.
 6. **Close Phase -1 → Phase 0 lineage.** For a planned run, validate the receipt

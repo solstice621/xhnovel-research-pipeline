@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.2-draft",
+  "record_kind": "OPERATOR_ATTESTATION",
+  "basis": "FAIR_USE_RESEARCH",
+  "may_store_full_text": true,
+  "may_send_to_external_model": true,
+  "may_export_excerpts": true,
+  "attested_by": "fearless",
+  "scope": "research — all SourceDeclarations prepared under Phase 0 work roots seeded from this standing attestation; principal operator: fearless; file authored by host agent (opencode) on explicit operator delegation",
+  "attestation_id": "OPA-A83701BEA15698D2521C",
+  "attestation_hash": "sha256:3fc19e4138537c7224456c5ecab111b36db10e9104f09387fa80ef1fa50f5a3c",
+  "attested_at": "2026-09-05T03:00:04Z"
+}
