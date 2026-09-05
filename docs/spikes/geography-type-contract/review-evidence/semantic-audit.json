@@ -1,0 +1,137 @@
+{
+  "status": "HOST_AUDIT_NOT_GOLD_ADJUDICATION",
+  "scope": "All unique extra PLACE/REL cases in the first six completed unit groups (5,43,102,233,293,310); not a random error prevalence sample",
+  "reference_mutated": false,
+  "cases": [
+    {
+      "ordinal": 5,
+      "atom": [
+        "PLACE",
+        "天府联盟"
+      ],
+      "category": "ORGANIZATION_PLACE_AMBIGUITY",
+      "status": "UNRESOLVED_REFERENCE_DISAGREEMENT",
+      "reason": "The quoted 去天府联盟 supplies locative use of an organization name. Profile allows explicit locative use; reference excludes this name. This is not sufficient evidence of a hallucinated name."
+    },
+    {
+      "ordinal": 102,
+      "atom": [
+        "REL",
+        "盐城",
+        "LOCATED_IN",
+        "加玛帝国"
+      ],
+      "category": "RELATION_SCOPE_AMBIGUITY",
+      "status": "NEEDS_SEMANTIC_ADJUDICATION",
+      "reason": "Source locates 盐城 in 加玛帝国东部省份. Whether the enclosing empire counts as a directly asserted relation needs a frozen granularity rule."
+    },
+    {
+      "ordinal": 102,
+      "atom": [
+        "PLACE",
+        "云岚宗"
+      ],
+      "category": "ORGANIZATION_PLACE_AMBIGUITY",
+      "status": "NEEDS_SEMANTIC_ADJUDICATION",
+      "reason": "从云岚宗内走出强者 can describe institutional origin or physical departure; source spelling alone does not decide the reading."
+    },
+    {
+      "ordinal": 102,
+      "atom": [
+        "PLACE",
+        "墨家"
+      ],
+      "category": "ORGANIZATION_PLACE_AMBIGUITY",
+      "status": "UNRESOLVED_REFERENCE_DISAGREEMENT",
+      "reason": "去墨家 uses a family name as a destination; residence versus organization is not resolved by exact substring support."
+    },
+    {
+      "ordinal": 233,
+      "atom": [
+        "PLACE",
+        "外院"
+      ],
+      "category": "NAME_BOUNDARY",
+      "status": "NEEDS_SEMANTIC_ADJUDICATION",
+      "reason": "Institutional subsection label may be a generic description rather than the required named place."
+    },
+    {
+      "ordinal": 233,
+      "atom": [
+        "PLACE",
+        "西极大陆"
+      ],
+      "category": "POSSIBLE_REFERENCE_OMISSION",
+      "status": "REFERENCE_REVIEW_CANDIDATE",
+      "reason": "All three independent arms cite 西极大陆上 as a named locative expression. It is absent from frozen name gold; do not silently relabel or count it as proven model error."
+    },
+    {
+      "ordinal": 293,
+      "atom": [
+        "PLACE",
+        "帝"
+      ],
+      "category": "NAME_BOUNDARY_SOURCE_FRAGMENT",
+      "status": "MODEL_INCLUSION_ERROR_RELATIVE_TO_FROZEN_RUBRIC",
+      "reason": "The source endpoint is truncated. Retaining the literal fragment avoids inventing 帝都 but does not establish that 帝 is a complete named place. The dependent NEAR edge is also unsupported as a named-endpoint assertion."
+    },
+    {
+      "ordinal": 310,
+      "atom": [
+        "REL",
+        "大陆西北地带",
+        "PART_OF",
+        "斗气大陆"
+      ],
+      "category": "RELATION_SEMANTICS_NAME_BOUNDARY",
+      "status": "NEEDS_SEMANTIC_ADJUDICATION",
+      "reason": "The geographic descriptor is present, but the relation contract requires two named places; a relative area description may not qualify."
+    },
+    {
+      "ordinal": 310,
+      "atom": [
+        "REL",
+        "萧府",
+        "LOCATED_IN",
+        "加玛圣城"
+      ],
+      "category": "POSSIBLE_REFERENCE_OMISSION",
+      "status": "REFERENCE_REVIEW_CANDIDATE",
+      "reason": "加玛圣城 followed by 坐落在城中心地段极好的萧府 provides a plausible explicit discourse-linked location assertion. Reference disagreement is retained, not repaired."
+    },
+    {
+      "ordinal": 310,
+      "atom": [
+        "REL",
+        "云岚宗",
+        "NEAR",
+        "加玛皇城"
+      ],
+      "category": "RELATION_SEMANTICS_COREFERENCE",
+      "status": "NEEDS_SEMANTIC_ADJUDICATION",
+      "reason": "Near-location wording exists but identifying 庞然大物 and 皇城 uses discourse coreference. Acceptance policy should distinguish this from alias resolution and unstated geographic inference."
+    },
+    {
+      "ordinal": 43,
+      "atom": [
+        "TYPE",
+        "青山镇",
+        "镇子"
+      ],
+      "category": "TYPE_PHRASE_BOUNDARY",
+      "status": "REFERENCE_CONTRACT_AMBIGUITY",
+      "reason": "Reference uses 小小的镇子 while strict/split use 镇子. Both are exact source substrings naming the same category; the rubric does not say whether modifiers belong to the type expression. Scores remain exact and unchanged."
+    },
+    {
+      "ordinal": 293,
+      "atom": [
+        "TYPE",
+        "云岚山",
+        "山峰"
+      ],
+      "category": "TYPE_PHRASE_BOUNDARY",
+      "status": "REFERENCE_CONTRACT_AMBIGUITY",
+      "reason": "Reference uses 一座模糊山峰 while baseline uses 山峰. This is phrase extent disagreement, not evidence that the place category itself is fabricated."
+    }
+  ]
+}

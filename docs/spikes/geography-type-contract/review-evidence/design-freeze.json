@@ -1,0 +1,12 @@
+{
+  "docs/spikes/geography-type-contract/plan.md": "e94e69733299f9c648ab92d6d4e733b89dd0361cab2a5467fce8f9a3688dc8ed",
+  "docs/spikes/geography-type-contract/profiles/split/payload.schema.json": "2c8d2a9108859bc0dce71d523fe76c2d59d8a4d71e5f6daa9a2bdf92b172f301",
+  "docs/spikes/geography-type-contract/profiles/split/prompt.md": "c3abe0b8858fe6966b258d9fdce976f84269fc4f826fff50b0f27e0dcf6b1154",
+  "docs/spikes/geography-type-contract/profiles/split/profile.json": "af99e6515c25cba960c177f43c21e3c4ff1d9c714e36e1152d8bfdf77c4a05a0",
+  "docs/spikes/geography-type-contract/profiles/baseline/payload.schema.json": "25a848ddc886fa0f991de528dff3a9243d8d6b5abe50c6984d8709269c8ed1f9",
+  "docs/spikes/geography-type-contract/profiles/baseline/prompt.md": "6bbd506e6319b7f40b10628a2274eb767e6013c656087324984e6c12fcbee84d",
+  "docs/spikes/geography-type-contract/profiles/baseline/profile.json": "46a37fe5976db79a335ecc2ee3dcdc117abe67aa10a781ef46f5495ba6c50f88",
+  "docs/spikes/geography-type-contract/profiles/strict/payload.schema.json": "97c70c4661a77f90bb0abc8896ee9c53fdc5849a06896d97df59cd3235f1e5c3",
+  "docs/spikes/geography-type-contract/profiles/strict/prompt.md": "1dbbdb6678277ddf30018d685fa439751abaf0a7b040e8b2e11c3829f3b1d6d8",
+  "docs/spikes/geography-type-contract/profiles/strict/profile.json": "f0ea9163610785935323ae59a3a55e287176a0403307b797b263b09836e34174"
+}

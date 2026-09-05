@@ -1,0 +1,2315 @@
+{
+  "cohorts": {
+    "development": {
+      "baseline": {
+        "PLACE": {
+          "tp": 107,
+          "predicted": 111,
+          "gold": 135,
+          "precision": 0.963963963963964,
+          "recall": 0.7925925925925926
+        },
+        "TYPE": {
+          "tp": 11,
+          "predicted": 49,
+          "gold": 36,
+          "precision": 0.22448979591836735,
+          "recall": 0.3055555555555556
+        },
+        "REL": {
+          "tp": 26,
+          "predicted": 33,
+          "gold": 46,
+          "precision": 0.7878787878787878,
+          "recall": 0.5652173913043478
+        },
+        "JOINT_PLACE": {
+          "tp": 57,
+          "predicted": 111,
+          "gold": 135,
+          "precision": 0.5135135135135135,
+          "recall": 0.4222222222222222
+        },
+        "citation": {
+          "matched": 144,
+          "contained": 142,
+          "containment": 0.9861111111111112
+        },
+        "raw_count": 155,
+        "saturated_units": 0,
+        "overflow_units": 0
+      },
+      "strict": {
+        "PLACE": {
+          "tp": 106,
+          "predicted": 113,
+          "gold": 135,
+          "precision": 0.9380530973451328,
+          "recall": 0.7851851851851852
+        },
+        "TYPE": {
+          "tp": 11,
+          "predicted": 28,
+          "gold": 36,
+          "precision": 0.39285714285714285,
+          "recall": 0.3055555555555556
+        },
+        "REL": {
+          "tp": 24,
+          "predicted": 30,
+          "gold": 46,
+          "precision": 0.8,
+          "recall": 0.5217391304347826
+        },
+        "JOINT_PLACE": {
+          "tp": 79,
+          "predicted": 113,
+          "gold": 135,
+          "precision": 0.6991150442477876,
+          "recall": 0.5851851851851851
+        },
+        "citation": {
+          "matched": 141,
+          "contained": 137,
+          "containment": 0.9716312056737588
+        },
+        "raw_count": 164,
+        "saturated_units": 0,
+        "overflow_units": 0
+      },
+      "split": {
+        "PLACE": {
+          "tp": 103,
+          "predicted": 107,
+          "gold": 135,
+          "precision": 0.9626168224299065,
+          "recall": 0.762962962962963
+        },
+        "TYPE": {
+          "tp": 11,
+          "predicted": 29,
+          "gold": 36,
+          "precision": 0.3793103448275862,
+          "recall": 0.3055555555555556
+        },
+        "REL": {
+          "tp": 23,
+          "predicted": 30,
+          "gold": 46,
+          "precision": 0.7666666666666667,
+          "recall": 0.5
+        },
+        "JOINT_PLACE": {
+          "tp": 75,
+          "predicted": 107,
+          "gold": 135,
+          "precision": 0.7009345794392523,
+          "recall": 0.5555555555555556
+        },
+        "citation": {
+          "matched": 137,
+          "contained": 133,
+          "containment": 0.9708029197080292
+        },
+        "raw_count": 166,
+        "saturated_units": 0,
+        "overflow_units": 0
+      }
+    },
+    "development_stress": {
+      "baseline": {
+        "PLACE": {
+          "tp": 85,
+          "predicted": 87,
+          "gold": 102,
+          "precision": 0.9770114942528736,
+          "recall": 0.8333333333333334
+        },
+        "TYPE": {
+          "tp": 10,
+          "predicted": 43,
+          "gold": 32,
+          "precision": 0.23255813953488372,
+          "recall": 0.3125
+        },
+        "REL": {
+          "tp": 26,
+          "predicted": 32,
+          "gold": 44,
+          "precision": 0.8125,
+          "recall": 0.5909090909090909
+        },
+        "JOINT_PLACE": {
+          "tp": 41,
+          "predicted": 87,
+          "gold": 102,
+          "precision": 0.47126436781609193,
+          "recall": 0.4019607843137255
+        },
+        "citation": {
+          "matched": 121,
+          "contained": 119,
+          "containment": 0.9834710743801653
+        },
+        "raw_count": 129,
+        "saturated_units": 0,
+        "overflow_units": 0
+      },
+      "strict": {
+        "PLACE": {
+          "tp": 84,
+          "predicted": 87,
+          "gold": 102,
+          "precision": 0.9655172413793104,
+          "recall": 0.8235294117647058
+        },
+        "TYPE": {
+          "tp": 10,
+          "predicted": 24,
+          "gold": 32,
+          "precision": 0.4166666666666667,
+          "recall": 0.3125
+        },
+        "REL": {
+          "tp": 24,
+          "predicted": 29,
+          "gold": 44,
+          "precision": 0.8275862068965517,
+          "recall": 0.5454545454545454
+        },
+        "JOINT_PLACE": {
+          "tp": 62,
+          "predicted": 87,
+          "gold": 102,
+          "precision": 0.7126436781609196,
+          "recall": 0.6078431372549019
+        },
+        "citation": {
+          "matched": 118,
+          "contained": 114,
+          "containment": 0.9661016949152542
+        },
+        "raw_count": 135,
+        "saturated_units": 0,
+        "overflow_units": 0
+      },
+      "split": {
+        "PLACE": {
+          "tp": 81,
+          "predicted": 82,
+          "gold": 102,
+          "precision": 0.9878048780487805,
+          "recall": 0.7941176470588235
+        },
+        "TYPE": {
+          "tp": 10,
+          "predicted": 24,
+          "gold": 32,
+          "precision": 0.4166666666666667,
+          "recall": 0.3125
+        },
+        "REL": {
+          "tp": 23,
+          "predicted": 29,
+          "gold": 44,
+          "precision": 0.7931034482758621,
+          "recall": 0.5227272727272727
+        },
+        "JOINT_PLACE": {
+          "tp": 59,
+          "predicted": 82,
+          "gold": 102,
+          "precision": 0.7195121951219512,
+          "recall": 0.5784313725490197
+        },
+        "citation": {
+          "matched": 114,
+          "contained": 110,
+          "containment": 0.9649122807017544
+        },
+        "raw_count": 135,
+        "saturated_units": 0,
+        "overflow_units": 0
+      }
+    },
+    "development_control": {
+      "baseline": {
+        "PLACE": {
+          "tp": 22,
+          "predicted": 24,
+          "gold": 33,
+          "precision": 0.9166666666666666,
+          "recall": 0.6666666666666666
+        },
+        "TYPE": {
+          "tp": 1,
+          "predicted": 6,
+          "gold": 4,
+          "precision": 0.16666666666666666,
+          "recall": 0.25
+        },
+        "REL": {
+          "tp": 0,
+          "predicted": 1,
+          "gold": 2,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "JOINT_PLACE": {
+          "tp": 16,
+          "predicted": 24,
+          "gold": 33,
+          "precision": 0.6666666666666666,
+          "recall": 0.48484848484848486
+        },
+        "citation": {
+          "matched": 23,
+          "contained": 23,
+          "containment": 1.0
+        },
+        "raw_count": 26,
+        "saturated_units": 0,
+        "overflow_units": 0
+      },
+      "strict": {
+        "PLACE": {
+          "tp": 22,
+          "predicted": 26,
+          "gold": 33,
+          "precision": 0.8461538461538461,
+          "recall": 0.6666666666666666
+        },
+        "TYPE": {
+          "tp": 1,
+          "predicted": 4,
+          "gold": 4,
+          "precision": 0.25,
+          "recall": 0.25
+        },
+        "REL": {
+          "tp": 0,
+          "predicted": 1,
+          "gold": 2,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "JOINT_PLACE": {
+          "tp": 17,
+          "predicted": 26,
+          "gold": 33,
+          "precision": 0.6538461538461539,
+          "recall": 0.5151515151515151
+        },
+        "citation": {
+          "matched": 23,
+          "contained": 23,
+          "containment": 1.0
+        },
+        "raw_count": 29,
+        "saturated_units": 0,
+        "overflow_units": 0
+      },
+      "split": {
+        "PLACE": {
+          "tp": 22,
+          "predicted": 25,
+          "gold": 33,
+          "precision": 0.88,
+          "recall": 0.6666666666666666
+        },
+        "TYPE": {
+          "tp": 1,
+          "predicted": 5,
+          "gold": 4,
+          "precision": 0.2,
+          "recall": 0.25
+        },
+        "REL": {
+          "tp": 0,
+          "predicted": 1,
+          "gold": 2,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "JOINT_PLACE": {
+          "tp": 16,
+          "predicted": 25,
+          "gold": 33,
+          "precision": 0.64,
+          "recall": 0.48484848484848486
+        },
+        "citation": {
+          "matched": 23,
+          "contained": 23,
+          "containment": 1.0
+        },
+        "raw_count": 31,
+        "saturated_units": 0,
+        "overflow_units": 0
+      }
+    },
+    "holdout": {
+      "baseline": {
+        "PLACE": {
+          "tp": 22,
+          "predicted": 23,
+          "gold": 22,
+          "precision": 0.9565217391304348,
+          "recall": 1.0
+        },
+        "TYPE": {
+          "tp": 2,
+          "predicted": 6,
+          "gold": 6,
+          "precision": 0.3333333333333333,
+          "recall": 0.3333333333333333
+        },
+        "REL": {
+          "tp": 1,
+          "predicted": 1,
+          "gold": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "JOINT_PLACE": {
+          "tp": 15,
+          "predicted": 23,
+          "gold": 22,
+          "precision": 0.6521739130434783,
+          "recall": 0.6818181818181818
+        },
+        "citation": {
+          "matched": 25,
+          "contained": 8,
+          "containment": 0.32
+        },
+        "raw_count": 26,
+        "saturated_units": 0,
+        "overflow_units": 0
+      },
+      "strict": {
+        "PLACE": {
+          "tp": 22,
+          "predicted": 24,
+          "gold": 22,
+          "precision": 0.9166666666666666,
+          "recall": 1.0
+        },
+        "TYPE": {
+          "tp": 2,
+          "predicted": 5,
+          "gold": 6,
+          "precision": 0.4,
+          "recall": 0.3333333333333333
+        },
+        "REL": {
+          "tp": 1,
+          "predicted": 2,
+          "gold": 1,
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "JOINT_PLACE": {
+          "tp": 16,
+          "predicted": 24,
+          "gold": 22,
+          "precision": 0.6666666666666666,
+          "recall": 0.7272727272727273
+        },
+        "citation": {
+          "matched": 25,
+          "contained": 12,
+          "containment": 0.48
+        },
+        "raw_count": 30,
+        "saturated_units": 0,
+        "overflow_units": 0
+      },
+      "split": {
+        "PLACE": {
+          "tp": 22,
+          "predicted": 23,
+          "gold": 22,
+          "precision": 0.9565217391304348,
+          "recall": 1.0
+        },
+        "TYPE": {
+          "tp": 2,
+          "predicted": 4,
+          "gold": 6,
+          "precision": 0.5,
+          "recall": 0.3333333333333333
+        },
+        "REL": {
+          "tp": 0,
+          "predicted": 0,
+          "gold": 1,
+          "precision": null,
+          "recall": 0.0
+        },
+        "JOINT_PLACE": {
+          "tp": 17,
+          "predicted": 23,
+          "gold": 22,
+          "precision": 0.7391304347826086,
+          "recall": 0.7727272727272727
+        },
+        "citation": {
+          "matched": 24,
+          "contained": 11,
+          "containment": 0.4583333333333333
+        },
+        "raw_count": 27,
+        "saturated_units": 0,
+        "overflow_units": 0
+      }
+    }
+  },
+  "acceptance": {
+    "strict": {
+      "status": "INCONCLUSIVE_SMALL_REFERENCE",
+      "reference_size_sufficient": false,
+      "checks": {
+        "PLACE_precision": true,
+        "PLACE_recall": true,
+        "TYPE_precision": false,
+        "TYPE_recall": false,
+        "REL_precision": false,
+        "REL_recall": true,
+        "joint_precision": false,
+        "joint_recall_loss": true,
+        "citation": false,
+        "capacity": true
+      }
+    },
+    "split": {
+      "status": "INCONCLUSIVE_SMALL_REFERENCE",
+      "reference_size_sufficient": false,
+      "checks": {
+        "PLACE_precision": true,
+        "PLACE_recall": true,
+        "TYPE_precision": false,
+        "TYPE_recall": false,
+        "REL_precision": false,
+        "REL_recall": false,
+        "joint_precision": false,
+        "joint_recall_loss": true,
+        "citation": false,
+        "capacity": true
+      }
+    }
+  },
+  "per_unit": [
+    {
+      "key": "baseline/u0005",
+      "ordinal": 5,
+      "cohort": "development",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 22,
+        "predicted": 23,
+        "gold": 22,
+        "precision": 0.9565217391304348,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 20,
+        "gold": 2,
+        "precision": 0.1,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 8,
+        "predicted": 8,
+        "gold": 10,
+        "precision": 1.0,
+        "recall": 0.8
+      },
+      "JOINT_PLACE": {
+        "tp": 4,
+        "predicted": 23,
+        "gold": 22,
+        "precision": 0.17391304347826086,
+        "recall": 0.18181818181818182
+      },
+      "citation": {
+        "matched": 32,
+        "contained": 31,
+        "containment": 0.96875
+      },
+      "raw_count": 31,
+      "completion": "COMPLETE",
+      "answer_hash": "2af94a2f5c2c42032213894aa9efa9d5de751bc0fba05a8f8c3ee45021690ab1",
+      "task_hash": "bf1cb005b277cd4a5097004c0ce3c82c70b91cc606bfa7d93529ade42c2e1813"
+    },
+    {
+      "key": "strict/u0005",
+      "ordinal": 5,
+      "cohort": "development",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 22,
+        "predicted": 23,
+        "gold": 22,
+        "precision": 0.9565217391304348,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 5,
+        "gold": 2,
+        "precision": 0.4,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 7,
+        "predicted": 7,
+        "gold": 10,
+        "precision": 1.0,
+        "recall": 0.7
+      },
+      "JOINT_PLACE": {
+        "tp": 20,
+        "predicted": 23,
+        "gold": 22,
+        "precision": 0.8695652173913043,
+        "recall": 0.9090909090909091
+      },
+      "citation": {
+        "matched": 31,
+        "contained": 28,
+        "containment": 0.9032258064516129
+      },
+      "raw_count": 34,
+      "completion": "COMPLETE",
+      "answer_hash": "34c17db4ccbc295acfbeb1238112bc6bc29f29218cf20ae98f0ae902df4ec4cf",
+      "task_hash": "31ccd10b4cecc954b970ffdc682e77976351d3ec7a9151990b559ad86e8faddf"
+    },
+    {
+      "key": "split/u0005",
+      "ordinal": 5,
+      "cohort": "development",
+      "arm": "split",
+      "PLACE": {
+        "tp": 20,
+        "predicted": 21,
+        "gold": 22,
+        "precision": 0.9523809523809523,
+        "recall": 0.9090909090909091
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 5,
+        "gold": 2,
+        "precision": 0.4,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 6,
+        "predicted": 6,
+        "gold": 10,
+        "precision": 1.0,
+        "recall": 0.6
+      },
+      "JOINT_PLACE": {
+        "tp": 18,
+        "predicted": 21,
+        "gold": 22,
+        "precision": 0.8571428571428571,
+        "recall": 0.8181818181818182
+      },
+      "citation": {
+        "matched": 28,
+        "contained": 26,
+        "containment": 0.9285714285714286
+      },
+      "raw_count": 32,
+      "completion": "COMPLETE",
+      "answer_hash": "20065ce1fc577f52c1f8bab477c222ccf9ce26d3c03a69841792709c294f9f21",
+      "task_hash": "38a204662a8df64d12a270368a3811db7952eca71379a4c60d0beb57b89f5f8c"
+    },
+    {
+      "key": "baseline/u0043",
+      "ordinal": 43,
+      "cohort": "holdout",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 4,
+        "predicted": 4,
+        "gold": 4,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 1,
+        "precision": null,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 3,
+        "predicted": 4,
+        "gold": 4,
+        "precision": 0.75,
+        "recall": 0.75
+      },
+      "citation": {
+        "matched": 4,
+        "contained": 0,
+        "containment": 0.0
+      },
+      "raw_count": 4,
+      "completion": "COMPLETE",
+      "answer_hash": "b9d2f462ebc8bacaa8195ce386ce2ea318b88f0c3da2fa6edc53c7bd40b54b21",
+      "task_hash": "ec6e22f4bd0eeff6e5ca2eb0d0559b171a7512e0cfe5e1b2e8fe5136a00ac7ff"
+    },
+    {
+      "key": "strict/u0043",
+      "ordinal": 43,
+      "cohort": "holdout",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 4,
+        "predicted": 4,
+        "gold": 4,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 2,
+        "gold": 1,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 2,
+        "predicted": 4,
+        "gold": 4,
+        "precision": 0.5,
+        "recall": 0.5
+      },
+      "citation": {
+        "matched": 4,
+        "contained": 0,
+        "containment": 0.0
+      },
+      "raw_count": 5,
+      "completion": "COMPLETE",
+      "answer_hash": "a467763114f0bcf7cb39b67e42d96c91d09939b436cf1a4d17890d5aaae56015",
+      "task_hash": "cb7ae5b836938f83a29277f3f8dbd69b100605e509410aed9d0b67a4f0ce9077"
+    },
+    {
+      "key": "split/u0043",
+      "ordinal": 43,
+      "cohort": "holdout",
+      "arm": "split",
+      "PLACE": {
+        "tp": 4,
+        "predicted": 4,
+        "gold": 4,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 1,
+        "gold": 1,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 3,
+        "predicted": 4,
+        "gold": 4,
+        "precision": 0.75,
+        "recall": 0.75
+      },
+      "citation": {
+        "matched": 4,
+        "contained": 0,
+        "containment": 0.0
+      },
+      "raw_count": 5,
+      "completion": "COMPLETE",
+      "answer_hash": "a5a0f3cf6247336f6ca7f3250cfdb6fe9263dbef923b9f729b57aff37c3b52bb",
+      "task_hash": "6935ec7b4ce84e81bccfc1825283d09487fd4450d3a1510f444989d406aa3781"
+    },
+    {
+      "key": "baseline/u0102",
+      "ordinal": 102,
+      "cohort": "development",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 7,
+        "predicted": 7,
+        "gold": 9,
+        "precision": 1.0,
+        "recall": 0.7777777777777778
+      },
+      "TYPE": {
+        "tp": 1,
+        "predicted": 2,
+        "gold": 1,
+        "precision": 0.5,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 1,
+        "gold": 2,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "JOINT_PLACE": {
+        "tp": 6,
+        "predicted": 7,
+        "gold": 9,
+        "precision": 0.8571428571428571,
+        "recall": 0.6666666666666666
+      },
+      "citation": {
+        "matched": 8,
+        "contained": 8,
+        "containment": 1.0
+      },
+      "raw_count": 8,
+      "completion": "COMPLETE",
+      "answer_hash": "b6435c92a0c87fe53b8868eeb2f88fc24d454a256a729d17418630b194397213",
+      "task_hash": "eb68d03f3761c45c146d62dcff85eb8a4c022cb9c60f5dc79b3e4918040ebf28"
+    },
+    {
+      "key": "strict/u0102",
+      "ordinal": 102,
+      "cohort": "development",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 8,
+        "predicted": 10,
+        "gold": 9,
+        "precision": 0.8,
+        "recall": 0.8888888888888888
+      },
+      "TYPE": {
+        "tp": 1,
+        "predicted": 2,
+        "gold": 1,
+        "precision": 0.5,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 1,
+        "gold": 2,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "JOINT_PLACE": {
+        "tp": 7,
+        "predicted": 10,
+        "gold": 9,
+        "precision": 0.7,
+        "recall": 0.7777777777777778
+      },
+      "citation": {
+        "matched": 9,
+        "contained": 9,
+        "containment": 1.0
+      },
+      "raw_count": 12,
+      "completion": "COMPLETE",
+      "answer_hash": "71e0e1522f43ca05f32d5e051d2f0d4d8d98846c4c1008b31417bdf92b482cb9",
+      "task_hash": "99185742f199d54a26a6e53a399306faf10a68fac3d964a692b0b11617abf05d"
+    },
+    {
+      "key": "split/u0102",
+      "ordinal": 102,
+      "cohort": "development",
+      "arm": "split",
+      "PLACE": {
+        "tp": 8,
+        "predicted": 9,
+        "gold": 9,
+        "precision": 0.8888888888888888,
+        "recall": 0.8888888888888888
+      },
+      "TYPE": {
+        "tp": 1,
+        "predicted": 2,
+        "gold": 1,
+        "precision": 0.5,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 1,
+        "gold": 2,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "JOINT_PLACE": {
+        "tp": 7,
+        "predicted": 9,
+        "gold": 9,
+        "precision": 0.7777777777777778,
+        "recall": 0.7777777777777778
+      },
+      "citation": {
+        "matched": 9,
+        "contained": 9,
+        "containment": 1.0
+      },
+      "raw_count": 12,
+      "completion": "COMPLETE",
+      "answer_hash": "70bd55b087084409cecfbac45f7f56d616d03f7787130399875f67bd37c19ae0",
+      "task_hash": "d3a0a5e437ce2b625c6b62ae7b5417e14dd267006e331cdc5169a62e9e3d9b59"
+    },
+    {
+      "key": "baseline/u0233",
+      "ordinal": 233,
+      "cohort": "development",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 5,
+        "predicted": 7,
+        "gold": 6,
+        "precision": 0.7142857142857143,
+        "recall": 0.8333333333333334
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 2,
+        "gold": 0,
+        "precision": 0.0,
+        "recall": null
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 4,
+        "predicted": 7,
+        "gold": 6,
+        "precision": 0.5714285714285714,
+        "recall": 0.6666666666666666
+      },
+      "citation": {
+        "matched": 5,
+        "contained": 5,
+        "containment": 1.0
+      },
+      "raw_count": 7,
+      "completion": "COMPLETE",
+      "answer_hash": "3d473cba8c5817254432897493667ad411f0da02ee7cbbfb2748a38d4e3479cf",
+      "task_hash": "59e172dc041ee778a8c838e84beaae9f92969a226b7ff440427f4e501a22f764"
+    },
+    {
+      "key": "strict/u0233",
+      "ordinal": 233,
+      "cohort": "development",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 5,
+        "predicted": 6,
+        "gold": 6,
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 5,
+        "predicted": 6,
+        "gold": 6,
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334
+      },
+      "citation": {
+        "matched": 5,
+        "contained": 5,
+        "containment": 1.0
+      },
+      "raw_count": 6,
+      "completion": "COMPLETE",
+      "answer_hash": "f52647f18cea711e5e00192e825988452ebb424f8038f60667a3c96ac3a77dff",
+      "task_hash": "3b343f2595d530d82cb0b3caadbd53ac4448ae87fa9df38f411ba1ccd8fc6ea5"
+    },
+    {
+      "key": "split/u0233",
+      "ordinal": 233,
+      "cohort": "development",
+      "arm": "split",
+      "PLACE": {
+        "tp": 5,
+        "predicted": 6,
+        "gold": 6,
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 5,
+        "predicted": 6,
+        "gold": 6,
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334
+      },
+      "citation": {
+        "matched": 5,
+        "contained": 5,
+        "containment": 1.0
+      },
+      "raw_count": 6,
+      "completion": "COMPLETE",
+      "answer_hash": "f96d391132fb2b13172cc85514016151c7be9a436e604fcf7183bcd0cb55df11",
+      "task_hash": "087eb2e14df1f83f9af72fb349ead26ca199dec39a2c5172c1e471c5c5265f33"
+    },
+    {
+      "key": "baseline/u0293",
+      "ordinal": 293,
+      "cohort": "holdout",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 9,
+        "predicted": 9,
+        "gold": 9,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 3,
+        "gold": 2,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 1,
+        "predicted": 1,
+        "gold": 1,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "JOINT_PLACE": {
+        "tp": 5,
+        "predicted": 9,
+        "gold": 9,
+        "precision": 0.5555555555555556,
+        "recall": 0.5555555555555556
+      },
+      "citation": {
+        "matched": 10,
+        "contained": 5,
+        "containment": 0.5
+      },
+      "raw_count": 10,
+      "completion": "COMPLETE",
+      "answer_hash": "0e5fb85ab382cd57731ae9d02cfc8f75a84412b3ebb21038e9edd33e34534c88",
+      "task_hash": "c38a0054136a3dca027f59f648265ad2f769c61bacdab02e11f9ff71a70ee924"
+    },
+    {
+      "key": "strict/u0293",
+      "ordinal": 293,
+      "cohort": "holdout",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 9,
+        "predicted": 10,
+        "gold": 9,
+        "precision": 0.9,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 2,
+        "precision": null,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 1,
+        "predicted": 2,
+        "gold": 1,
+        "precision": 0.5,
+        "recall": 1.0
+      },
+      "JOINT_PLACE": {
+        "tp": 7,
+        "predicted": 10,
+        "gold": 9,
+        "precision": 0.7,
+        "recall": 0.7777777777777778
+      },
+      "citation": {
+        "matched": 10,
+        "contained": 7,
+        "containment": 0.7
+      },
+      "raw_count": 12,
+      "completion": "COMPLETE",
+      "answer_hash": "07d00424ee7ff8cc381a93d592eea8754dd0971536a8409df8c07b8a9343853d",
+      "task_hash": "3517e3cda071734dd3cbe3b33dba17b1a18e613b59c3f545fc6f4cd82c9569b6"
+    },
+    {
+      "key": "split/u0293",
+      "ordinal": 293,
+      "cohort": "holdout",
+      "arm": "split",
+      "PLACE": {
+        "tp": 9,
+        "predicted": 9,
+        "gold": 9,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 2,
+        "precision": null,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 1,
+        "precision": null,
+        "recall": 0.0
+      },
+      "JOINT_PLACE": {
+        "tp": 7,
+        "predicted": 9,
+        "gold": 9,
+        "precision": 0.7777777777777778,
+        "recall": 0.7777777777777778
+      },
+      "citation": {
+        "matched": 9,
+        "contained": 5,
+        "containment": 0.5555555555555556
+      },
+      "raw_count": 9,
+      "completion": "COMPLETE",
+      "answer_hash": "f38410fccd7dcd0426ffca45174debb96f754ae2d922e34df84ca92dba5c07d5",
+      "task_hash": "e19e0312e4921e204db8d8797b423b0f9c7f08a1d8a397bb6f307878491dd725"
+    },
+    {
+      "key": "baseline/u0310",
+      "ordinal": 310,
+      "cohort": "development",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 16,
+        "predicted": 16,
+        "gold": 20,
+        "precision": 1.0,
+        "recall": 0.8
+      },
+      "TYPE": {
+        "tp": 1,
+        "predicted": 14,
+        "gold": 1,
+        "precision": 0.07142857142857142,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 2,
+        "predicted": 4,
+        "gold": 6,
+        "precision": 0.5,
+        "recall": 0.3333333333333333
+      },
+      "JOINT_PLACE": {
+        "tp": 5,
+        "predicted": 16,
+        "gold": 20,
+        "precision": 0.3125,
+        "recall": 0.25
+      },
+      "citation": {
+        "matched": 19,
+        "contained": 19,
+        "containment": 1.0
+      },
+      "raw_count": 23,
+      "completion": "COMPLETE",
+      "answer_hash": "1cec43aa2886c05720f51ff7c3526092fbc932847fd81ac03e64f96117f59d56",
+      "task_hash": "41a0027b74f37a8f21a1c4507bde70f6c1f0aaf96f463fa9dc24fc180af25a9a"
+    },
+    {
+      "key": "strict/u0310",
+      "ordinal": 310,
+      "cohort": "development",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 15,
+        "predicted": 15,
+        "gold": 20,
+        "precision": 1.0,
+        "recall": 0.75
+      },
+      "TYPE": {
+        "tp": 1,
+        "predicted": 5,
+        "gold": 1,
+        "precision": 0.2,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 2,
+        "predicted": 3,
+        "gold": 6,
+        "precision": 0.6666666666666666,
+        "recall": 0.3333333333333333
+      },
+      "JOINT_PLACE": {
+        "tp": 12,
+        "predicted": 15,
+        "gold": 20,
+        "precision": 0.8,
+        "recall": 0.6
+      },
+      "citation": {
+        "matched": 18,
+        "contained": 18,
+        "containment": 1.0
+      },
+      "raw_count": 22,
+      "completion": "COMPLETE",
+      "answer_hash": "f76b6f7fe82a32381a8f4cadb87cde679767d036f7ec40ab21a643bd386ad2e7",
+      "task_hash": "113235f6b2592ff8b67dfe3cd9c0ef7b5e4d850d2b6a2d3f25c4b14b228b2074"
+    },
+    {
+      "key": "split/u0310",
+      "ordinal": 310,
+      "cohort": "development",
+      "arm": "split",
+      "PLACE": {
+        "tp": 15,
+        "predicted": 15,
+        "gold": 20,
+        "precision": 1.0,
+        "recall": 0.75
+      },
+      "TYPE": {
+        "tp": 1,
+        "predicted": 4,
+        "gold": 1,
+        "precision": 0.25,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 2,
+        "predicted": 4,
+        "gold": 6,
+        "precision": 0.5,
+        "recall": 0.3333333333333333
+      },
+      "JOINT_PLACE": {
+        "tp": 12,
+        "predicted": 15,
+        "gold": 20,
+        "precision": 0.8,
+        "recall": 0.6
+      },
+      "citation": {
+        "matched": 18,
+        "contained": 18,
+        "containment": 1.0
+      },
+      "raw_count": 23,
+      "completion": "COMPLETE",
+      "answer_hash": "8ff1856528df62744844faba0a518cc155ae1683bb80d0d2f2b5f3db03fffaf4",
+      "task_hash": "fe2e7d3e5df1693d35661a2218b39bcc1ae0a750ea0d7d8bff9336c061e090c2"
+    },
+    {
+      "key": "baseline/u0395",
+      "ordinal": 395,
+      "cohort": "development",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 13,
+        "predicted": 14,
+        "gold": 14,
+        "precision": 0.9285714285714286,
+        "recall": 0.9285714285714286
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 6,
+        "predicted": 7,
+        "gold": 9,
+        "precision": 0.8571428571428571,
+        "recall": 0.6666666666666666
+      },
+      "JOINT_PLACE": {
+        "tp": 13,
+        "predicted": 14,
+        "gold": 14,
+        "precision": 0.9285714285714286,
+        "recall": 0.9285714285714286
+      },
+      "citation": {
+        "matched": 21,
+        "contained": 21,
+        "containment": 1.0
+      },
+      "raw_count": 22,
+      "completion": "COMPLETE",
+      "answer_hash": "25b40bd69ec282beef7e62111d77a2b27a6848d986375ff8daf86fcf7395d3ae",
+      "task_hash": "2e27fba06fb417ff844fb1ac593366eca050bfe6ab861a864036b2aaee82ed92"
+    },
+    {
+      "key": "strict/u0395",
+      "ordinal": 395,
+      "cohort": "development",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 13,
+        "predicted": 14,
+        "gold": 14,
+        "precision": 0.9285714285714286,
+        "recall": 0.9285714285714286
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 3,
+        "gold": 2,
+        "precision": 0.6666666666666666,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 6,
+        "predicted": 7,
+        "gold": 9,
+        "precision": 0.8571428571428571,
+        "recall": 0.6666666666666666
+      },
+      "JOINT_PLACE": {
+        "tp": 12,
+        "predicted": 14,
+        "gold": 14,
+        "precision": 0.8571428571428571,
+        "recall": 0.8571428571428571
+      },
+      "citation": {
+        "matched": 21,
+        "contained": 21,
+        "containment": 1.0
+      },
+      "raw_count": 23,
+      "completion": "COMPLETE",
+      "answer_hash": "badb8aae3498717ad703ee955fc9b5bf705a2206e7856d23682e26948c3c193a",
+      "task_hash": "578653cbe7b04fc5765e2d7c13c0253833505f3e1244b7593545bace2ba1bd77"
+    },
+    {
+      "key": "split/u0395",
+      "ordinal": 395,
+      "cohort": "development",
+      "arm": "split",
+      "PLACE": {
+        "tp": 13,
+        "predicted": 13,
+        "gold": 14,
+        "precision": 1.0,
+        "recall": 0.9285714285714286
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 3,
+        "gold": 2,
+        "precision": 0.6666666666666666,
+        "recall": 1.0
+      },
+      "REL": {
+        "tp": 6,
+        "predicted": 7,
+        "gold": 9,
+        "precision": 0.8571428571428571,
+        "recall": 0.6666666666666666
+      },
+      "JOINT_PLACE": {
+        "tp": 12,
+        "predicted": 13,
+        "gold": 14,
+        "precision": 0.9230769230769231,
+        "recall": 0.8571428571428571
+      },
+      "citation": {
+        "matched": 21,
+        "contained": 21,
+        "containment": 1.0
+      },
+      "raw_count": 23,
+      "completion": "COMPLETE",
+      "answer_hash": "cc5ab3028b5420dbef8528521583965e888a29a1b05327bd6c088ed9d266762b",
+      "task_hash": "052f09794aeb60958b0ba1d5685fad7d34aeaa5f5f9b111e820460788605ee53"
+    },
+    {
+      "key": "baseline/u0426",
+      "ordinal": 426,
+      "cohort": "development",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 16,
+        "predicted": 16,
+        "gold": 23,
+        "precision": 1.0,
+        "recall": 0.6956521739130435
+      },
+      "TYPE": {
+        "tp": 3,
+        "predicted": 4,
+        "gold": 17,
+        "precision": 0.75,
+        "recall": 0.17647058823529413
+      },
+      "REL": {
+        "tp": 7,
+        "predicted": 9,
+        "gold": 10,
+        "precision": 0.7777777777777778,
+        "recall": 0.7
+      },
+      "JOINT_PLACE": {
+        "tp": 5,
+        "predicted": 16,
+        "gold": 23,
+        "precision": 0.3125,
+        "recall": 0.21739130434782608
+      },
+      "citation": {
+        "matched": 26,
+        "contained": 26,
+        "containment": 1.0
+      },
+      "raw_count": 29,
+      "completion": "COMPLETE",
+      "answer_hash": "a3267dce441837208186c9bcded2c6605e5b4d593627cbbf4913b4e76064440b",
+      "task_hash": "44c50651f19094036e87c5c5be3eb1f09a8b99b9903e03047046f4980b40ccac"
+    },
+    {
+      "key": "strict/u0426",
+      "ordinal": 426,
+      "cohort": "development",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 15,
+        "predicted": 15,
+        "gold": 23,
+        "precision": 1.0,
+        "recall": 0.6521739130434783
+      },
+      "TYPE": {
+        "tp": 3,
+        "predicted": 5,
+        "gold": 17,
+        "precision": 0.6,
+        "recall": 0.17647058823529413
+      },
+      "REL": {
+        "tp": 6,
+        "predicted": 8,
+        "gold": 10,
+        "precision": 0.75,
+        "recall": 0.6
+      },
+      "JOINT_PLACE": {
+        "tp": 5,
+        "predicted": 15,
+        "gold": 23,
+        "precision": 0.3333333333333333,
+        "recall": 0.21739130434782608
+      },
+      "citation": {
+        "matched": 24,
+        "contained": 23,
+        "containment": 0.9583333333333334
+      },
+      "raw_count": 28,
+      "completion": "COMPLETE",
+      "answer_hash": "b6c3db7e041e9185643963a06b0b1ca8373751673002a11c7c697a1defa27b28",
+      "task_hash": "057e3f4b6cea202c768b1c26c3e7222cd33a26d7189a98bbfbbcd4716760f288"
+    },
+    {
+      "key": "split/u0426",
+      "ordinal": 426,
+      "cohort": "development",
+      "arm": "split",
+      "PLACE": {
+        "tp": 14,
+        "predicted": 14,
+        "gold": 23,
+        "precision": 1.0,
+        "recall": 0.6086956521739131
+      },
+      "TYPE": {
+        "tp": 3,
+        "predicted": 5,
+        "gold": 17,
+        "precision": 0.6,
+        "recall": 0.17647058823529413
+      },
+      "REL": {
+        "tp": 6,
+        "predicted": 8,
+        "gold": 10,
+        "precision": 0.75,
+        "recall": 0.6
+      },
+      "JOINT_PLACE": {
+        "tp": 5,
+        "predicted": 14,
+        "gold": 23,
+        "precision": 0.35714285714285715,
+        "recall": 0.21739130434782608
+      },
+      "citation": {
+        "matched": 23,
+        "contained": 21,
+        "containment": 0.9130434782608695
+      },
+      "raw_count": 27,
+      "completion": "COMPLETE",
+      "answer_hash": "0159b8e23b4dfc4e623aa622726f9cbd2be34c8d5dc764a549c1dd4d33f3cd95",
+      "task_hash": "2810d897fe0fb26206292c6b0d1b4abee327b2e494d168f2a602eb09f8a73291"
+    },
+    {
+      "key": "baseline/u0467",
+      "ordinal": 467,
+      "cohort": "development",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 7,
+        "predicted": 7,
+        "gold": 13,
+        "precision": 1.0,
+        "recall": 0.5384615384615384
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 2,
+        "gold": 3,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 3,
+        "predicted": 7,
+        "gold": 13,
+        "precision": 0.42857142857142855,
+        "recall": 0.23076923076923078
+      },
+      "citation": {
+        "matched": 7,
+        "contained": 7,
+        "containment": 1.0
+      },
+      "raw_count": 8,
+      "completion": "COMPLETE",
+      "answer_hash": "c92a6c4fba09954506b43af73fa56c521bb821cee4a436d821d2fb06b9fcf0d6",
+      "task_hash": "6f62401c7fe542146c5a75b4d45c57105cb7b55e419570dab8d40b52a018b847"
+    },
+    {
+      "key": "strict/u0467",
+      "ordinal": 467,
+      "cohort": "development",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 6,
+        "predicted": 7,
+        "gold": 13,
+        "precision": 0.8571428571428571,
+        "recall": 0.46153846153846156
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 2,
+        "gold": 3,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 2,
+        "predicted": 7,
+        "gold": 13,
+        "precision": 0.2857142857142857,
+        "recall": 0.15384615384615385
+      },
+      "citation": {
+        "matched": 6,
+        "contained": 6,
+        "containment": 1.0
+      },
+      "raw_count": 8,
+      "completion": "COMPLETE",
+      "answer_hash": "d2edaab5c8a213fd9b5b05a196bb3e91e2dd95996540c356cf40ad7710fbe4de",
+      "task_hash": "3ed9a9250aea721c6b0af6fcdd8fdebf38bf45e5bfce52afe73607d8427960f0"
+    },
+    {
+      "key": "split/u0467",
+      "ordinal": 467,
+      "cohort": "development",
+      "arm": "split",
+      "PLACE": {
+        "tp": 6,
+        "predicted": 7,
+        "gold": 13,
+        "precision": 0.8571428571428571,
+        "recall": 0.46153846153846156
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 2,
+        "gold": 3,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 2,
+        "predicted": 7,
+        "gold": 13,
+        "precision": 0.2857142857142857,
+        "recall": 0.15384615384615385
+      },
+      "citation": {
+        "matched": 6,
+        "contained": 6,
+        "containment": 1.0
+      },
+      "raw_count": 9,
+      "completion": "COMPLETE",
+      "answer_hash": "1aa7f2b8bc56ac8f073efe39953c4763ab3ece8f2e96bb49f9a48f06a807189d",
+      "task_hash": "1816288e7633a1653b47e3c243eda394283ce9bd6e3990980466756b92003ee1"
+    },
+    {
+      "key": "baseline/u0486",
+      "ordinal": 486,
+      "cohort": "holdout",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 1,
+        "gold": 0,
+        "precision": 0.0,
+        "recall": null
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 1,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 0.5,
+        "recall": 0.5
+      },
+      "citation": {
+        "matched": 2,
+        "contained": 1,
+        "containment": 0.5
+      },
+      "raw_count": 2,
+      "completion": "COMPLETE",
+      "answer_hash": "988bbb20629eb915b3a8761df01ce7ae3999f60d3f6f6aeda3b718e4b86f7bb5",
+      "task_hash": "33699b85c4f041e55a32b805cba84bfaf5ea863c982b7566cfd6d321c9eac3fa"
+    },
+    {
+      "key": "strict/u0486",
+      "ordinal": 486,
+      "cohort": "holdout",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 1,
+        "gold": 0,
+        "precision": 0.0,
+        "recall": null
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 1,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 0.5,
+        "recall": 0.5
+      },
+      "citation": {
+        "matched": 2,
+        "contained": 1,
+        "containment": 0.5
+      },
+      "raw_count": 3,
+      "completion": "COMPLETE",
+      "answer_hash": "000d4461aa38d50d71a7b886fe1f11e6a2a362fd1389eb781926aae126280cb0",
+      "task_hash": "6c5c1bd4557742d59f788a7d7bd2e22f2c97089c40574546d55b30f924c57a0a"
+    },
+    {
+      "key": "split/u0486",
+      "ordinal": 486,
+      "cohort": "holdout",
+      "arm": "split",
+      "PLACE": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 1,
+        "gold": 0,
+        "precision": 0.0,
+        "recall": null
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 1,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 0.5,
+        "recall": 0.5
+      },
+      "citation": {
+        "matched": 2,
+        "contained": 1,
+        "containment": 0.5
+      },
+      "raw_count": 3,
+      "completion": "COMPLETE",
+      "answer_hash": "73ff1eeea51ddd56b7ec178c70c024597efa554ea1daed6a6c3bc467666b1f79",
+      "task_hash": "ad364b0b2c68402089eeed53df020d3501112a38d2b72b48789e1e2e7962ab1d"
+    },
+    {
+      "key": "baseline/u0513",
+      "ordinal": 513,
+      "cohort": "development",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 5,
+        "predicted": 5,
+        "gold": 10,
+        "precision": 1.0,
+        "recall": 0.5
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 8,
+        "precision": 1.0,
+        "recall": 0.25
+      },
+      "REL": {
+        "tp": 1,
+        "predicted": 2,
+        "gold": 7,
+        "precision": 0.5,
+        "recall": 0.14285714285714285
+      },
+      "JOINT_PLACE": {
+        "tp": 3,
+        "predicted": 5,
+        "gold": 10,
+        "precision": 0.6,
+        "recall": 0.3
+      },
+      "citation": {
+        "matched": 8,
+        "contained": 7,
+        "containment": 0.875
+      },
+      "raw_count": 9,
+      "completion": "COMPLETE",
+      "answer_hash": "8bfce2e0a14cdd109bd9d82933416b15b5323ce5d5a0a793ab3b7b64cf072caa",
+      "task_hash": "8d4c7251bceb86fcae9079869ed02a7ac386fae05740901f8e553f36aa85cd89"
+    },
+    {
+      "key": "strict/u0513",
+      "ordinal": 513,
+      "cohort": "development",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 6,
+        "predicted": 6,
+        "gold": 10,
+        "precision": 1.0,
+        "recall": 0.6
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 5,
+        "gold": 8,
+        "precision": 0.4,
+        "recall": 0.25
+      },
+      "REL": {
+        "tp": 1,
+        "predicted": 2,
+        "gold": 7,
+        "precision": 0.5,
+        "recall": 0.14285714285714285
+      },
+      "JOINT_PLACE": {
+        "tp": 2,
+        "predicted": 6,
+        "gold": 10,
+        "precision": 0.3333333333333333,
+        "recall": 0.2
+      },
+      "citation": {
+        "matched": 9,
+        "contained": 9,
+        "containment": 1.0
+      },
+      "raw_count": 12,
+      "completion": "COMPLETE",
+      "answer_hash": "190cd0d7cac7097150dd5483a0802ac4be507590479bbcdaf8a4975ba5453f27",
+      "task_hash": "d88c7c44f57c8bbca15f6b4294f9cece1525a6a9cef20c1cdffce7665f0c96a5"
+    },
+    {
+      "key": "split/u0513",
+      "ordinal": 513,
+      "cohort": "development",
+      "arm": "split",
+      "PLACE": {
+        "tp": 6,
+        "predicted": 6,
+        "gold": 10,
+        "precision": 1.0,
+        "recall": 0.6
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 5,
+        "gold": 8,
+        "precision": 0.4,
+        "recall": 0.25
+      },
+      "REL": {
+        "tp": 1,
+        "predicted": 2,
+        "gold": 7,
+        "precision": 0.5,
+        "recall": 0.14285714285714285
+      },
+      "JOINT_PLACE": {
+        "tp": 2,
+        "predicted": 6,
+        "gold": 10,
+        "precision": 0.3333333333333333,
+        "recall": 0.2
+      },
+      "citation": {
+        "matched": 9,
+        "contained": 9,
+        "containment": 1.0
+      },
+      "raw_count": 13,
+      "completion": "COMPLETE",
+      "answer_hash": "a29f5ebb6ac9d1541bae80adc783a2e55aee3cd1180fcb9bb65222a184c0b100",
+      "task_hash": "032d9ad4ce5d6860bb078333bf4cfcbf621aa23163a805b6c4be9f31da0e2554"
+    },
+    {
+      "key": "baseline/u0546",
+      "ordinal": 546,
+      "cohort": "holdout",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 7,
+        "predicted": 8,
+        "gold": 7,
+        "precision": 0.875,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 3,
+        "precision": 1.0,
+        "recall": 0.6666666666666666
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 6,
+        "predicted": 8,
+        "gold": 7,
+        "precision": 0.75,
+        "recall": 0.8571428571428571
+      },
+      "citation": {
+        "matched": 9,
+        "contained": 2,
+        "containment": 0.2222222222222222
+      },
+      "raw_count": 10,
+      "completion": "COMPLETE",
+      "answer_hash": "fbc4854bf6f3b4a749af0a6471cedfdea3e78a7da22ebd160b6dae72bef4fbc3",
+      "task_hash": "f02df538f8befee61eb1098d5e0071d1fe85cf478b825c6899bea6e421f27c09"
+    },
+    {
+      "key": "strict/u0546",
+      "ordinal": 546,
+      "cohort": "holdout",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 7,
+        "predicted": 8,
+        "gold": 7,
+        "precision": 0.875,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 3,
+        "precision": 1.0,
+        "recall": 0.6666666666666666
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 6,
+        "predicted": 8,
+        "gold": 7,
+        "precision": 0.75,
+        "recall": 0.8571428571428571
+      },
+      "citation": {
+        "matched": 9,
+        "contained": 4,
+        "containment": 0.4444444444444444
+      },
+      "raw_count": 10,
+      "completion": "COMPLETE",
+      "answer_hash": "60d09a4effa6eabdd5209cfe32dbb50d7e41d6652ba454b659be8d482a3a41ec",
+      "task_hash": "393628371d293462533cebceafc98f285eb713a40e80dc4a872c6107fb884878"
+    },
+    {
+      "key": "split/u0546",
+      "ordinal": 546,
+      "cohort": "holdout",
+      "arm": "split",
+      "PLACE": {
+        "tp": 7,
+        "predicted": 8,
+        "gold": 7,
+        "precision": 0.875,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 3,
+        "precision": 1.0,
+        "recall": 0.6666666666666666
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 6,
+        "predicted": 8,
+        "gold": 7,
+        "precision": 0.75,
+        "recall": 0.8571428571428571
+      },
+      "citation": {
+        "matched": 9,
+        "contained": 5,
+        "containment": 0.5555555555555556
+      },
+      "raw_count": 10,
+      "completion": "COMPLETE",
+      "answer_hash": "0d2ca9931f359eb4eb32326a2d4e6dd7da26f137ef90685219966171213e658a",
+      "task_hash": "31c0f6bb71c01b1ff007c83c9ae2a75deec3a43dd972e29a6c0b36fd6fe57e91"
+    },
+    {
+      "key": "baseline/u0596",
+      "ordinal": 596,
+      "cohort": "development",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 13,
+        "predicted": 13,
+        "gold": 13,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 1,
+        "gold": 2,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "JOINT_PLACE": {
+        "tp": 11,
+        "predicted": 13,
+        "gold": 13,
+        "precision": 0.8461538461538461,
+        "recall": 0.8461538461538461
+      },
+      "citation": {
+        "matched": 15,
+        "contained": 15,
+        "containment": 1.0
+      },
+      "raw_count": 15,
+      "completion": "COMPLETE",
+      "answer_hash": "7bf827521c3917622dea7c13b3f6c64cbd12d45c177a99763db430d0f1d042e6",
+      "task_hash": "f91208b356fcae0b30afb67b552adcb56c85a1b8a7bf7957237fbbb9efd74ff0"
+    },
+    {
+      "key": "strict/u0596",
+      "ordinal": 596,
+      "cohort": "development",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 13,
+        "predicted": 14,
+        "gold": 13,
+        "precision": 0.9285714285714286,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 1,
+        "gold": 2,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "JOINT_PLACE": {
+        "tp": 11,
+        "predicted": 14,
+        "gold": 13,
+        "precision": 0.7857142857142857,
+        "recall": 0.8461538461538461
+      },
+      "citation": {
+        "matched": 15,
+        "contained": 15,
+        "containment": 1.0
+      },
+      "raw_count": 16,
+      "completion": "COMPLETE",
+      "answer_hash": "7e99dc3e7816eccfdfe64bf37ad20d8761a66bf5a3642e6f0619ebeee728cd49",
+      "task_hash": "becc113471b25f95f7c0d93f803c44ea1e26af0fefd3f7b5e38f5cafeb43fc2c"
+    },
+    {
+      "key": "split/u0596",
+      "ordinal": 596,
+      "cohort": "development",
+      "arm": "split",
+      "PLACE": {
+        "tp": 13,
+        "predicted": 13,
+        "gold": 13,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "REL": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "JOINT_PLACE": {
+        "tp": 10,
+        "predicted": 13,
+        "gold": 13,
+        "precision": 0.7692307692307693,
+        "recall": 0.7692307692307693
+      },
+      "citation": {
+        "matched": 15,
+        "contained": 15,
+        "containment": 1.0
+      },
+      "raw_count": 17,
+      "completion": "COMPLETE",
+      "answer_hash": "dde8e91a6895edad7a643ddc00c9d8c63274d179d827317abb2703daa1ebefb1",
+      "task_hash": "caebcf9f9a74127af6f9fe2d9b9ec52bf0e3ce1f64bdd25b879d9d8d994fbb4d"
+    },
+    {
+      "key": "baseline/u0604",
+      "ordinal": 604,
+      "cohort": "development",
+      "arm": "baseline",
+      "PLACE": {
+        "tp": 3,
+        "predicted": 3,
+        "gold": 5,
+        "precision": 1.0,
+        "recall": 0.6
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 3,
+        "predicted": 3,
+        "gold": 5,
+        "precision": 1.0,
+        "recall": 0.6
+      },
+      "citation": {
+        "matched": 3,
+        "contained": 3,
+        "containment": 1.0
+      },
+      "raw_count": 3,
+      "completion": "COMPLETE",
+      "answer_hash": "908e77737a6e843d5c4a804d15f62425083561705ed047398b9ea11c82d3099f",
+      "task_hash": "019e28d653e5bf96716e9067dd78916cbb82ec1cbf9e53943625ed54e7ec305c"
+    },
+    {
+      "key": "strict/u0604",
+      "ordinal": 604,
+      "cohort": "development",
+      "arm": "strict",
+      "PLACE": {
+        "tp": 3,
+        "predicted": 3,
+        "gold": 5,
+        "precision": 1.0,
+        "recall": 0.6
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 3,
+        "predicted": 3,
+        "gold": 5,
+        "precision": 1.0,
+        "recall": 0.6
+      },
+      "citation": {
+        "matched": 3,
+        "contained": 3,
+        "containment": 1.0
+      },
+      "raw_count": 3,
+      "completion": "COMPLETE",
+      "answer_hash": "dd68f2904a45545fabd8cf104c04e9d409d0f99e9992ed4ec5ac6f96b3a8c133",
+      "task_hash": "87f7f9c4f58a4ca40123c194b8078b1d143c09851b195f81509106bdde92e8ce"
+    },
+    {
+      "key": "split/u0604",
+      "ordinal": 604,
+      "cohort": "development",
+      "arm": "split",
+      "PLACE": {
+        "tp": 3,
+        "predicted": 3,
+        "gold": 5,
+        "precision": 1.0,
+        "recall": 0.6
+      },
+      "TYPE": {
+        "tp": 0,
+        "predicted": 1,
+        "gold": 0,
+        "precision": 0.0,
+        "recall": null
+      },
+      "REL": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null
+      },
+      "JOINT_PLACE": {
+        "tp": 2,
+        "predicted": 3,
+        "gold": 5,
+        "precision": 0.6666666666666666,
+        "recall": 0.4
+      },
+      "citation": {
+        "matched": 3,
+        "contained": 3,
+        "containment": 1.0
+      },
+      "raw_count": 4,
+      "completion": "COMPLETE",
+      "answer_hash": "c361782afcd734a40e296ada3f0dde15698d4df27aa57d2ee974611afe132d13",
+      "task_hash": "1370c40df65f8a16cd898922d7a3a3629affadfbcd7366dc89b53e69f339282b"
+    }
+  ],
+  "limitations": [
+    "Single model draw per arm/unit; source-only references are model reviewed, not human gold.",
+    "Matched-atom citation containment is locator agreement, not proof of entailment.",
+    "Historical Experiment C answer bundle unavailable unless supplied separately."
+  ]
+}

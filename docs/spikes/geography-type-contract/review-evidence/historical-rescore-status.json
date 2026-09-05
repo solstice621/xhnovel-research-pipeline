@@ -1,0 +1,17 @@
+{
+  "original_c_rescore": "BLOCKED_MISSING_ORIGINAL_ANSWER_BUNDLE",
+  "searched": [
+    "repository runtime and audit bundles",
+    "temporary xhnovel directories",
+    "Codex worktrees",
+    "Downloads and Documents matching geography/inspection file names"
+  ],
+  "available": "frozen B reference, fresh D answers, later NIGHT-001 answers (different run)",
+  "user_supplied_summary_check": {
+    "correct_type_sets": 53,
+    "matched_names": 129,
+    "weighted_accuracy_from_supplied_counts": 0.4108527131782946,
+    "provenance": "user-provided aggregate counts, not raw C output replay"
+  },
+  "scorer_regression": "macro, matched-name-weighted, perfect-unit rate and zero-denominator cases verified"
+}

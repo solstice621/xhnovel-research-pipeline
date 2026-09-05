@@ -4,6 +4,8 @@ import importlib.util
 import pathlib
 import sys
 
+import pytest
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "spikes" / "geography_experiment_c.py"
 SPEC = importlib.util.spec_from_file_location("geography_experiment_c", SCRIPT)
@@ -24,6 +26,31 @@ def test_zero_denominator_is_null_not_zero_or_one() -> None:
         "precision": None,
         "recall": None,
     }
+
+
+def test_type_aggregation_distinguishes_macro_micro_and_perfect_units() -> None:
+    def row(correct, matched):
+        return {
+            "place_unique": {"tp": 0, "predicted": 0, "gold": 0},
+            "relation_unique": {"tp": 0, "predicted": 0, "gold": 0},
+            "place_name": {"tp": matched, "predicted": matched, "gold": matched},
+            "completion_status": "COMPLETE", "raw_count": 0,
+            "tail_recall": {"Q4": None},
+            "explicit_type_accuracy": correct / matched if matched else None,
+            "explicit_type_counts": {"correct": correct, "matched_names": matched},
+            "unit_local_unique_count": 0, "duplicate_count": 0, "response_bytes": 0,
+        }
+
+    result = experiment_c._aggregate([row(1, 2), row(2, 8), row(0, 0)])
+    assert result["mean_explicit_type_accuracy"] == pytest.approx(0.375)
+    assert result["weighted_explicit_type_accuracy"] == pytest.approx(0.3)
+    assert result["perfect_type_unit_rate"] == 0
+    assert result["explicit_type_counts"] == {"correct": 3, "matched_names": 10}
+    assert experiment_c._aggregate([row(2, 2)])["perfect_type_unit_rate"] == 1
+    for rows in ([], [row(0, 0)]):
+        empty = experiment_c._aggregate(rows)
+        for field in ("mean_explicit_type_accuracy", "weighted_explicit_type_accuracy", "perfect_type_unit_rate"):
+            assert empty[field] is None
 
 
 def test_scoring_does_not_alias_merge_and_separates_cohorts() -> None:

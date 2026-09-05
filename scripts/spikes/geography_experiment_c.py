@@ -30,7 +30,7 @@ class ScoreError(ValueError):
         super().__init__(f"{code}: {message}")
 
 
-def _ratio(numerator: int, denominator: int) -> float | None:
+def _ratio(numerator: int | float, denominator: int) -> float | None:
     if denominator == 0:
         return None
     return numerator / denominator
@@ -181,14 +181,17 @@ def _prf(predicted: set[bytes], gold: set[bytes]) -> dict[str, Any]:
     }
 
 
-def _type_accuracy(pred_typed: dict[str, set[Any]], gold_typed: dict[str, set[Any]]) -> float | None:
+def _type_counts(pred_typed: dict[str, set[Any]], gold_typed: dict[str, set[Any]]) -> dict[str, int]:
     matched = sorted(set(pred_typed) & set(gold_typed))
-    if not matched:
-        return None
     correct = 0
     for name in matched:
         correct += int(pred_typed[name] == gold_typed[name])
-    return correct / len(matched)
+    return {"correct": correct, "matched_names": len(matched)}
+
+
+def _type_accuracy(pred_typed: dict[str, set[Any]], gold_typed: dict[str, set[Any]]) -> float | None:
+    counts = _type_counts(pred_typed, gold_typed)
+    return _ratio(counts["correct"], counts["matched_names"])
 
 
 def _tail_recall(
@@ -275,6 +278,7 @@ def score_unit(
                 _citation_for_match(row["occurrence_rows"], pred["records_by_payload"][key])
             )
     supported = [item for item in citations if item["containment"] is True]
+    type_counts = _type_counts(pred["typed"], gold["typed"])
     return {
         "ordinal": ordinal,
         "unit_id": sample_unit["unit_id"],
@@ -290,7 +294,8 @@ def score_unit(
             {stats._canonical_dumps(name) for name in pred["names"]},
             {stats._canonical_dumps(name) for name in gold["names"]},
         ),
-        "explicit_type_accuracy": _type_accuracy(pred["typed"], gold["typed"]),
+        "explicit_type_accuracy": _ratio(type_counts["correct"], type_counts["matched_names"]),
+        "explicit_type_counts": type_counts,
         "citation": {
             "matched_payloads": len(citations),
             "containment_rate": _ratio(len(supported), len(citations)) if citation_ready else None,
@@ -330,6 +335,9 @@ def _aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
     complete = sum(1 for row in rows if row["completion_status"] == "COMPLETE")
     saturated = sum(1 for row in rows if row["raw_count"] >= 64)
     q4_recalls = [row["tail_recall"]["Q4"] for row in rows if row["tail_recall"]["Q4"] is not None]
+    type_rates = [row["explicit_type_accuracy"] for row in rows if row["explicit_type_accuracy"] is not None]
+    type_correct = sum(row["explicit_type_counts"]["correct"] for row in rows)
+    type_matched = sum(row["explicit_type_counts"]["matched_names"] for row in rows)
     return {
         "unit_count": len(rows),
         "place_unique": {
@@ -351,11 +359,11 @@ def _aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "recall": _ratio(name_tp, name_gold),
         },
         "mean_explicit_type_accuracy": _ratio(
-            sum(1 for row in rows if row["explicit_type_accuracy"] == 1),
-            sum(1 for row in rows if row["explicit_type_accuracy"] is not None),
-        )
-        if any(row["explicit_type_accuracy"] is not None for row in rows)
-        else None,
+            sum(type_rates), len(type_rates),
+        ),
+        "weighted_explicit_type_accuracy": _ratio(type_correct, type_matched),
+        "explicit_type_counts": {"correct": type_correct, "matched_names": type_matched},
+        "perfect_type_unit_rate": _ratio(sum(rate == 1 for rate in type_rates), len(type_rates)),
         "mean_q4_recall": (
             sum(q4_recalls) / len(q4_recalls) if q4_recalls else None
         ),

@@ -1,0 +1,1697 @@
+{
+  "status": "POSTHOC_DIAGNOSTIC_NOT_ACCEPTANCE_RESCORING",
+  "summary": {
+    "baseline": {
+      "CANDIDATE_NARROWER_WITHIN_REFERENCE": 10,
+      "OTHER_OCCURRENCE": 7,
+      "CONTAINED": 8
+    },
+    "strict": {
+      "CANDIDATE_NARROWER_WITHIN_REFERENCE": 6,
+      "PARTIAL_OVERLAP": 2,
+      "CONTAINED": 12,
+      "OTHER_OCCURRENCE": 5
+    },
+    "split": {
+      "CANDIDATE_NARROWER_WITHIN_REFERENCE": 8,
+      "CONTAINED": 11,
+      "OTHER_OCCURRENCE": 5
+    }
+  },
+  "cases": [
+    {
+      "key": "baseline/u0043",
+      "atom": [
+        "PLACE",
+        "乌坦城"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          3235,
+          3241
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3236,
+            3239
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0043",
+      "atom": [
+        "PLACE",
+        "魔兽山脉"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          5351,
+          5357
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            5353,
+            5357
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0043",
+      "atom": [
+        "PLACE",
+        "斗气大陆"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          5652,
+          5657
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            5653,
+            5657
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0043",
+      "atom": [
+        "PLACE",
+        "青山镇"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          8311,
+          8321
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            8313,
+            8316
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0043",
+      "atom": [
+        "PLACE",
+        "乌坦城"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          3235,
+          3241
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3236,
+            3239
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0043",
+      "atom": [
+        "PLACE",
+        "魔兽山脉"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          5351,
+          5357
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            5353,
+            5357
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0043",
+      "atom": [
+        "PLACE",
+        "斗气大陆"
+      ],
+      "category": "PARTIAL_OVERLAP",
+      "reference_spans": [
+        [
+          5652,
+          5657
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            5653,
+            5679
+          ]
+        ],
+        [
+          [
+            6827,
+            6831
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0043",
+      "atom": [
+        "PLACE",
+        "青山镇"
+      ],
+      "category": "PARTIAL_OVERLAP",
+      "reference_spans": [
+        [
+          8311,
+          8321
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            8313,
+            8360
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0043",
+      "atom": [
+        "PLACE",
+        "乌坦城"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          3235,
+          3241
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3236,
+            3239
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0043",
+      "atom": [
+        "PLACE",
+        "魔兽山脉"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          5351,
+          5357
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            5353,
+            5357
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0043",
+      "atom": [
+        "PLACE",
+        "斗气大陆"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          5652,
+          5657
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            5653,
+            5657
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0043",
+      "atom": [
+        "PLACE",
+        "青山镇"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          8311,
+          8321
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            8313,
+            8316
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0293",
+      "atom": [
+        "PLACE",
+        "加玛帝国"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          9756,
+          9762
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            151,
+            155
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0293",
+      "atom": [
+        "PLACE",
+        "炼药师公会"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          330,
+          353
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            330,
+            353
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0293",
+      "atom": [
+        "PLACE",
+        "木家"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          461,
+          483
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            461,
+            483
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0293",
+      "atom": [
+        "PLACE",
+        "纳兰家族"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          661,
+          697
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            661,
+            697
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0293",
+      "atom": [
+        "PLACE",
+        "帝都"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          2407,
+          2419
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1712,
+            1716
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0293",
+      "atom": [
+        "PLACE",
+        "云岚山"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          3046,
+          3062
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            8875,
+            8939
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0293",
+      "atom": [
+        "PLACE",
+        "黑角域"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          3138,
+          3146
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3138,
+            3146
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0293",
+      "atom": [
+        "PLACE",
+        "米特尔家族"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          3504,
+          3517
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3504,
+            3517
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0293",
+      "atom": [
+        "PLACE",
+        "云岚宗大殿"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          9384,
+          9419
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            9384,
+            9389
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0293",
+      "atom": [
+        "REL",
+        "云岚山",
+        "OUTSIDE",
+        "帝都"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          8867,
+          8939
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            8875,
+            8939
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0293",
+      "atom": [
+        "PLACE",
+        "加玛帝国"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          9756,
+          9762
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            9756,
+            9762
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0293",
+      "atom": [
+        "PLACE",
+        "炼药师公会"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          330,
+          353
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            330,
+            353
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0293",
+      "atom": [
+        "PLACE",
+        "木家"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          461,
+          483
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            461,
+            483
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0293",
+      "atom": [
+        "PLACE",
+        "纳兰家族"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          661,
+          697
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            661,
+            697
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0293",
+      "atom": [
+        "PLACE",
+        "帝都"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          2407,
+          2419
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1712,
+            1716
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0293",
+      "atom": [
+        "PLACE",
+        "云岚山"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          3046,
+          3062
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3046,
+            3052
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0293",
+      "atom": [
+        "PLACE",
+        "黑角域"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          3138,
+          3146
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3138,
+            3146
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0293",
+      "atom": [
+        "PLACE",
+        "米特尔家族"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          3504,
+          3517
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3504,
+            3517
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0293",
+      "atom": [
+        "PLACE",
+        "云岚宗大殿"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          9384,
+          9419
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            9384,
+            9394
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0293",
+      "atom": [
+        "REL",
+        "云岚山",
+        "OUTSIDE",
+        "帝都"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          8867,
+          8939
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            8867,
+            8939
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0293",
+      "atom": [
+        "PLACE",
+        "加玛帝国"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          9756,
+          9762
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            9756,
+            9762
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0293",
+      "atom": [
+        "PLACE",
+        "炼药师公会"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          330,
+          353
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            330,
+            353
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0293",
+      "atom": [
+        "PLACE",
+        "木家"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          461,
+          483
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            461,
+            483
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0293",
+      "atom": [
+        "PLACE",
+        "纳兰家族"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          661,
+          697
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            661,
+            697
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0293",
+      "atom": [
+        "PLACE",
+        "帝都"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          2407,
+          2419
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1711,
+            1720
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0293",
+      "atom": [
+        "PLACE",
+        "云岚山"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          3046,
+          3062
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3046,
+            3052
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0293",
+      "atom": [
+        "PLACE",
+        "黑角域"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          3138,
+          3146
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3141,
+            3146
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0293",
+      "atom": [
+        "PLACE",
+        "米特尔家族"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          3504,
+          3517
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3504,
+            3517
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0293",
+      "atom": [
+        "PLACE",
+        "云岚宗大殿"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          9384,
+          9419
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            9384,
+            9394
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0486",
+      "atom": [
+        "PLACE",
+        "万药山脉"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          2544,
+          2556
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3128,
+            3139
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0486",
+      "atom": [
+        "PLACE",
+        "玄冥宗"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          1503,
+          1508
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1503,
+            1508
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0486",
+      "atom": [
+        "PLACE",
+        "万药山脉"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          2544,
+          2556
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            243,
+            252
+          ]
+        ],
+        [
+          [
+            3190,
+            3213
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0486",
+      "atom": [
+        "PLACE",
+        "玄冥宗"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          1503,
+          1508
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1503,
+            1508
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0486",
+      "atom": [
+        "PLACE",
+        "万药山脉"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          2544,
+          2556
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            245,
+            249
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0486",
+      "atom": [
+        "PLACE",
+        "玄冥宗"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          1503,
+          1508
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1503,
+            1508
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0546",
+      "atom": [
+        "PLACE",
+        "古圣城"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          3476,
+          3487
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            330,
+            333
+          ]
+        ],
+        [
+          [
+            383,
+            417
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0546",
+      "atom": [
+        "PLACE",
+        "圣古城"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          623,
+          631
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            498,
+            501
+          ]
+        ],
+        [
+          [
+            648,
+            663
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0546",
+      "atom": [
+        "PLACE",
+        "中州"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          1191,
+          1202
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1194,
+            1196
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0546",
+      "atom": [
+        "PLACE",
+        "叶家"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          1982,
+          1990
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1984,
+            1990
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0546",
+      "atom": [
+        "PLACE",
+        "古界"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          3499,
+          3503
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3499,
+            3503
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0546",
+      "atom": [
+        "PLACE",
+        "古族"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          4094,
+          4110
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            8478,
+            8484
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0546",
+      "atom": [
+        "PLACE",
+        "乌坦城"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          5412,
+          5426
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            5418,
+            5421
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0546",
+      "atom": [
+        "TYPE",
+        "古圣城",
+        "城市"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          383,
+          425
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            383,
+            417
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "baseline/u0546",
+      "atom": [
+        "TYPE",
+        "圣古城",
+        "城市"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          648,
+          663
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            648,
+            663
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0546",
+      "atom": [
+        "PLACE",
+        "古圣城"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          3476,
+          3487
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            383,
+            417
+          ]
+        ],
+        [
+          [
+            1040,
+            1047
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0546",
+      "atom": [
+        "PLACE",
+        "圣古城"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          623,
+          631
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            498,
+            507
+          ]
+        ],
+        [
+          [
+            648,
+            663
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0546",
+      "atom": [
+        "PLACE",
+        "中州"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          1191,
+          1202
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1193,
+            1202
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0546",
+      "atom": [
+        "PLACE",
+        "叶家"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          1982,
+          1990
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1982,
+            1990
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0546",
+      "atom": [
+        "PLACE",
+        "古界"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          3499,
+          3503
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3499,
+            3503
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0546",
+      "atom": [
+        "PLACE",
+        "古族"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          4094,
+          4110
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            8478,
+            8484
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0546",
+      "atom": [
+        "PLACE",
+        "乌坦城"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          5412,
+          5426
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            5412,
+            5426
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0546",
+      "atom": [
+        "TYPE",
+        "古圣城",
+        "城市"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          383,
+          425
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            383,
+            417
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "strict/u0546",
+      "atom": [
+        "TYPE",
+        "圣古城",
+        "城市"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          648,
+          663
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            648,
+            663
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0546",
+      "atom": [
+        "PLACE",
+        "古圣城"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          3476,
+          3487
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            328,
+            333
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0546",
+      "atom": [
+        "PLACE",
+        "圣古城"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          623,
+          631
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            498,
+            507
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0546",
+      "atom": [
+        "PLACE",
+        "中州"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          1191,
+          1202
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1191,
+            1202
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0546",
+      "atom": [
+        "PLACE",
+        "叶家"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          1982,
+          1990
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            1982,
+            1990
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0546",
+      "atom": [
+        "PLACE",
+        "古界"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          3499,
+          3503
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            3499,
+            3503
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0546",
+      "atom": [
+        "PLACE",
+        "古族"
+      ],
+      "category": "OTHER_OCCURRENCE",
+      "reference_spans": [
+        [
+          4094,
+          4110
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            8478,
+            8484
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0546",
+      "atom": [
+        "PLACE",
+        "乌坦城"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          5412,
+          5426
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            5412,
+            5426
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0546",
+      "atom": [
+        "TYPE",
+        "古圣城",
+        "城市"
+      ],
+      "category": "CANDIDATE_NARROWER_WITHIN_REFERENCE",
+      "reference_spans": [
+        [
+          383,
+          425
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            383,
+            417
+          ]
+        ]
+      ]
+    },
+    {
+      "key": "split/u0546",
+      "atom": [
+        "TYPE",
+        "圣古城",
+        "城市"
+      ],
+      "category": "CONTAINED",
+      "reference_spans": [
+        [
+          648,
+          663
+        ]
+      ],
+      "candidate_evidence_sets": [
+        [
+          [
+            648,
+            663
+          ]
+        ]
+      ]
+    }
+  ]
+}

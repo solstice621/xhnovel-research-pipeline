@@ -1,0 +1,11 @@
+{
+  "expected_commit": "3372edd47666175db9f6a17bee1b8446635ce355",
+  "observed_commit": "eca4c7e41b99ec8966111ff11f2ced11c4d16eaf",
+  "engine_source_hash_unchanged": true,
+  "excluded_consumptions": [
+    "split/u0467",
+    "baseline/u0486",
+    "strict/u0486"
+  ],
+  "recovery": "reconsume original unchanged answers in isolated detached worktree at expected commit; preserve excluded artifacts"
+}

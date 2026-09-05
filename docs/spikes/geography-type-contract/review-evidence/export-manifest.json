@@ -1,0 +1,108 @@
+{
+  "purpose": "Source-free review snapshot explicitly prepared for temporary-branch and GPT-Pro review",
+  "source_engine_commit": "3372edd47666175db9f6a17bee1b8446635ce355",
+  "not_included": [
+    "novel source text",
+    "full native task/answer bodies",
+    "original reference occurrence quotes",
+    "credentials",
+    "unrelated workspace changes"
+  ],
+  "limits": [
+    "Statistics and source-free disagreements can be inspected; full native replay requires the original local runtime.",
+    "Original C rescore remains incomplete.",
+    "Hashes attest byte identity only, not semantic truth."
+  ],
+  "files": [
+    {
+      "path": "metrics.json",
+      "source_sha256": "2051e80053d493d3151554fdd85732f6bc5e772c59cbac634a46a97141b9c605",
+      "bytes": 55860,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "payload-diff.json",
+      "source_sha256": "517eaa4609eb6af5266d6006506847a33b986fda08e386465958513cc9219011",
+      "bytes": 36437,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "fresh-legacy-metrics.json",
+      "source_sha256": "0a34bafa22adb9b7e164faa0be07be0f23cabd6ea336c826657bacaf8847eb19",
+      "bytes": 39897,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "fresh-process-validation.json",
+      "source_sha256": "cf68f76f592dd4d688c3007776f5fbecac0a855b505db75e1486a62e9b28508a",
+      "bytes": 5406,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "final-manifest.json",
+      "source_sha256": "258e437369e4bd1cb5b4ba28b2943a11dbf3e62e5c8d790d93db8af8f200c593",
+      "bytes": 35021,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "reference-freeze.json",
+      "source_sha256": "a7bed4ed787d1a0a64bd91bd9588f7e416c511a105ebf96dc21275973fa35e89",
+      "bytes": 2256,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "design-freeze.json",
+      "source_sha256": "881b47b883b59da03dc08533374cfb9846f549a614ea8bd4625c64f54a3436d7",
+      "bytes": 1377,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "semantic-audit.json",
+      "source_sha256": "81164018c375364c4c8c72e90ff4c387453f88cd08be4713133c7b8ce07be2c5",
+      "bytes": 4989,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "locator-audit.json",
+      "source_sha256": "2723211c23b33da498a2f3fd060f45b4e041277b4f570c89cc1af242237ea4cd",
+      "bytes": 27337,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "historical-rescore-status.json",
+      "source_sha256": "a507401f11939cf43efe3a8cac3b55c3b651ab7d90f9054c63295134727319a4",
+      "bytes": 707,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "checkout-interruption.json",
+      "source_sha256": "3d2f51979642f042be849a72f8f355b55708c51d27652a5bee831a43dc8506b4",
+      "bytes": 399,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "audit-scripts/evaluate.py",
+      "source_sha256": "f0d41ca91f661a8a3269c63a05491c66dff14098ca7759aa88c386ad6075e336",
+      "bytes": 6641,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "audit-scripts/legacy_metrics.py",
+      "source_sha256": "6deaea56feb97610bce7abf4e4ceb2e0c1fec4d75365f2c7340c22c87b46b406",
+      "bytes": 1361,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "audit-scripts/native_run.py",
+      "source_sha256": "1debd3c5a89e553d8310b3967633a7e254517f78b4d7f82e649c74428228bd8c",
+      "bytes": 2221,
+      "export": "EXACT_BYTES"
+    },
+    {
+      "path": "audit-scripts/native_validate_all.py",
+      "source_sha256": "70941cf0fa19124b63042f8aaa261176cf9257253a675c9797c961932afb6444",
+      "bytes": 1136,
+      "export": "EXACT_BYTES"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checkout": "isolated temporary clone",
+  "base_commit": "3372edd47666175db9f6a17bee1b8446635ce355",
+  "tests": {
+    "command": "PYTHONPATH=src python -m pytest -q tests/test_geography_experiment_c.py tests/test_geography_type_contract.py tests/test_geography_unique_abi.py",
+    "passed": 11,
+    "exit_code": 0
+  },
+  "integrity": {
+    "exact_byte_exports": 15,
+    "frozen_design_files": 10,
+    "scorer_sources_bound_to_final_manifest": 2,
+    "status": "PASS"
+  },
+  "diff_check": "PASS",
+  "scope": "local review snapshot, no cross-platform qualification claim"
+}

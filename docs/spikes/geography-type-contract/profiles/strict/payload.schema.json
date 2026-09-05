@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xhnovel.local/experiments/geography-type/strict.schema.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "name"
+      ],
+      "properties": {
+        "kind": {
+          "const": "PLACE_MENTION"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "explicit_type": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "subject_name",
+        "relation",
+        "object_name"
+      ],
+      "properties": {
+        "kind": {
+          "const": "SPATIAL_RELATION"
+        },
+        "subject_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relation": {
+          "enum": [
+            "LOCATED_IN",
+            "PART_OF",
+            "NEAR",
+            "OUTSIDE",
+            "CONNECTED_TO"
+          ]
+        },
+        "object_name": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  ]
+}

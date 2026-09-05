@@ -1,0 +1,37 @@
+{
+  "development": {
+    "gold_id": "GOLD-6F9623B825F387835B61",
+    "gold_hash": "sha256:88d8644b2ab676041282315cf45722211a8e81f5cdbd44853e32615d0b64ff25",
+    "unique": "sha256:9942913087ba61889845b36e8cbf63f51661f9adef7e46edda7f46a58aaca923",
+    "occurrences": "sha256:2c48b8367549832d6533807e680bf218862e7df83475156b12260c5575879daf",
+    "verification": "manifest hash, both CAS artifacts, occurrence-to-unique replay; original adjudication inputs absent, full validate-frozen not rerun"
+  },
+  "holdout": {
+    "43": {
+      "task.json": "sha256:78e60c2968c1799643e6f9f3054e41f867f16b0c80ae10456c3ffbc63439a089",
+      "draft.json": "sha256:cc636254c42a7bf48cf81751d85193dba45b61e8b2401030a3f5b204a12df0fa",
+      "audit.json": "sha256:3983b22609d137f92b359bf0828a9a0c6e0bb8a9db76e7bb79b2653e8f9d671d",
+      "final.json": "sha256:01617978b149233dc314f65190440a4bad6f641e3e0500d2000beb84b3317a0c"
+    },
+    "293": {
+      "task.json": "sha256:00e0432884d6faec95f328866568a9cfcf4a0518ac1f6f3fdfb70ce51c4a8db8",
+      "draft.json": "sha256:e6b578ed08f306aeea4e4dc647af3449941df7bb85002de77a55d4442d5c625c",
+      "audit.json": "sha256:31025c8e9fb8cf23410821ffce0580ff7e584e034e9a776e494ad551fc511a0c",
+      "final.json": "sha256:c8a29ee09502b8ed0aa36105a0d9bdefe760aa2ae46333ca3a4cb4cc0a73e130"
+    },
+    "486": {
+      "task.json": "sha256:f3cb7462428355863b15d6f7e4a1f3a351f0e01c67fb489ac453a760ba8ec993",
+      "draft.json": "sha256:4cfa98309c4c3c75631cf5633578869c7ce2825832f8fb7405305d200fc49e42",
+      "audit.json": "sha256:c1766014a0ee091818539de4e828a07f81ec455dffb7185cf3e42d89effc10ef",
+      "final.json": "sha256:4cfa98309c4c3c75631cf5633578869c7ce2825832f8fb7405305d200fc49e42"
+    },
+    "546": {
+      "task.json": "sha256:7792fbbe4e990850b25acf436c33f4111143b9a3608690b7dd489e27e903411c",
+      "draft.json": "sha256:507d48f8f882b5c34d39922b4310cb63fe829ff45a0df7f2493fbea404aad34c",
+      "audit.json": "sha256:711823f9f3beac48c66ecfbd1ffdf47d7121025e130e812787a59e64dec26137",
+      "final.json": "sha256:62c0ae67e94b89934c5b60ec727dd7afab4a34c03660165804789c33648ad942"
+    }
+  },
+  "status": "FROZEN_MODEL_REVIEWED_NOT_HUMAN_GOLD",
+  "manifest_hash": "sha256:3d9473480bf55cc05b45c8231ace9ba2d64fec10647c91fe26f9e019e7e56c86"
+}

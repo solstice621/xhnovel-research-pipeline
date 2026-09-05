@@ -1,0 +1,2093 @@
+[
+  {
+    "key": "baseline/u0005",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "天府联盟"
+    ],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "中州大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "乌坦城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "云岚山",
+        "山"
+      ],
+      [
+        "TYPE",
+        "加玛帝国",
+        "帝国"
+      ],
+      [
+        "TYPE",
+        "北离城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "双帝山脉",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "天府联盟总部",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "斗气大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "米特尔家族的总部",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "花宗后山",
+        "后山"
+      ],
+      [
+        "TYPE",
+        "花宗旧址",
+        "旧址"
+      ],
+      [
+        "TYPE",
+        "萧家的总部",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "西北地域",
+        "地域"
+      ],
+      [
+        "TYPE",
+        "西北大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "青天城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "青山镇",
+        "镇"
+      ],
+      [
+        "TYPE",
+        "魂界",
+        "空间"
+      ],
+      [
+        "TYPE",
+        "魔兽山脉",
+        "山脉"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": [
+      [
+        "REL",
+        "北离城",
+        "LOCATED_IN",
+        "东中州"
+      ],
+      [
+        "REL",
+        "青山镇",
+        "NEAR",
+        "魔兽山脉"
+      ]
+    ]
+  },
+  {
+    "key": "strict/u0005",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "天府联盟"
+    ],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "乌坦城",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "魂界",
+        "空间"
+      ],
+      [
+        "TYPE",
+        "魂界",
+        "老巢"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": [
+      [
+        "REL",
+        "中州",
+        "LOCATED_IN",
+        "斗气大陆"
+      ],
+      [
+        "REL",
+        "萧家的总部",
+        "LOCATED_IN",
+        "乌坦城"
+      ],
+      [
+        "REL",
+        "青山镇",
+        "NEAR",
+        "魔兽山脉"
+      ]
+    ]
+  },
+  {
+    "key": "split/u0005",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "天府联盟"
+    ],
+    "missing_names": [
+      "米特尔家族的总部",
+      "萧家的总部"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "乌坦城",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "魂界",
+        "空间"
+      ],
+      [
+        "TYPE",
+        "魂界",
+        "老巢"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": [
+      [
+        "REL",
+        "中州",
+        "LOCATED_IN",
+        "斗气大陆"
+      ],
+      [
+        "REL",
+        "米特尔家族的总部",
+        "LOCATED_IN",
+        "加玛圣城"
+      ],
+      [
+        "REL",
+        "萧家的总部",
+        "LOCATED_IN",
+        "乌坦城"
+      ],
+      [
+        "REL",
+        "青山镇",
+        "NEAR",
+        "魔兽山脉"
+      ]
+    ]
+  },
+  {
+    "key": "baseline/u0043",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [
+      [
+        "TYPE",
+        "青山镇",
+        "小小的镇子"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "strict/u0043",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [],
+    "same_name_type_substitution": [
+      "青山镇"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "斗气大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "青山镇",
+        "镇子"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "青山镇",
+        "小小的镇子"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "split/u0043",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [],
+    "same_name_type_substitution": [
+      "青山镇"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "青山镇",
+        "镇子"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "青山镇",
+        "小小的镇子"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "baseline/u0102",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "东部省份",
+      "帝都"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "盐城",
+        "城市"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "盐城",
+        "LOCATED_IN",
+        "加玛帝国"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "盐城",
+        "CONNECTED_TO",
+        "东部省份"
+      ],
+      [
+        "REL",
+        "盐城",
+        "LOCATED_IN",
+        "加玛帝国东部省份"
+      ]
+    ]
+  },
+  {
+    "key": "strict/u0102",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "云岚宗",
+      "墨家"
+    ],
+    "missing_names": [
+      "东部省份"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "盐城",
+        "城市"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "盐城",
+        "LOCATED_IN",
+        "加玛帝国"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "盐城",
+        "CONNECTED_TO",
+        "东部省份"
+      ],
+      [
+        "REL",
+        "盐城",
+        "LOCATED_IN",
+        "加玛帝国东部省份"
+      ]
+    ]
+  },
+  {
+    "key": "split/u0102",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "云岚宗"
+    ],
+    "missing_names": [
+      "东部省份"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "盐城",
+        "城市"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "盐城",
+        "LOCATED_IN",
+        "加玛帝国"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "盐城",
+        "CONNECTED_TO",
+        "东部省份"
+      ],
+      [
+        "REL",
+        "盐城",
+        "LOCATED_IN",
+        "加玛帝国东部省份"
+      ]
+    ]
+  },
+  {
+    "key": "baseline/u0233",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "外院",
+      "西极大陆"
+    ],
+    "missing_names": [
+      "混乱地域"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "天焚炼气塔",
+        "塔"
+      ],
+      [
+        "TYPE",
+        "西极大陆",
+        "大陆"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "strict/u0233",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "西极大陆"
+    ],
+    "missing_names": [
+      "混乱地域"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "split/u0233",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "西极大陆"
+    ],
+    "missing_names": [
+      "混乱地域"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "baseline/u0293",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [],
+    "same_name_type_substitution": [
+      "云岚山"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "云岚宗大殿",
+        "大殿"
+      ],
+      [
+        "TYPE",
+        "云岚山",
+        "山峰"
+      ],
+      [
+        "TYPE",
+        "加玛帝国",
+        "帝国"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "云岚山",
+        "一座模糊山峰"
+      ],
+      [
+        "TYPE",
+        "米特尔家族",
+        "庄园"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "strict/u0293",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [
+      "帝"
+    ],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [
+      [
+        "TYPE",
+        "云岚山",
+        "一座模糊山峰"
+      ],
+      [
+        "TYPE",
+        "米特尔家族",
+        "庄园"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "云岚山",
+        "NEAR",
+        "帝"
+      ]
+    ],
+    "missing_relations": []
+  },
+  {
+    "key": "split/u0293",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [
+      [
+        "TYPE",
+        "云岚山",
+        "一座模糊山峰"
+      ],
+      [
+        "TYPE",
+        "米特尔家族",
+        "庄园"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": [
+      [
+        "REL",
+        "云岚山",
+        "OUTSIDE",
+        "帝都"
+      ]
+    ]
+  },
+  {
+    "key": "baseline/u0310",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "大陆西北方位",
+      "帝国",
+      "帝都",
+      "皇城"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "乌坦城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "云岚山",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "加玛圣城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "加玛帝国",
+        "国家"
+      ],
+      [
+        "TYPE",
+        "加玛帝国",
+        "帝国"
+      ],
+      [
+        "TYPE",
+        "加玛帝都",
+        "帝都"
+      ],
+      [
+        "TYPE",
+        "加玛皇城",
+        "皇城"
+      ],
+      [
+        "TYPE",
+        "大陆西北地带",
+        "地带"
+      ],
+      [
+        "TYPE",
+        "天蛇国",
+        "国家"
+      ],
+      [
+        "TYPE",
+        "天蛇国",
+        "帝国"
+      ],
+      [
+        "TYPE",
+        "斗气大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "西北地域",
+        "地域"
+      ],
+      [
+        "TYPE",
+        "西南地域",
+        "地域"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "大陆西北地带",
+        "PART_OF",
+        "斗气大陆"
+      ],
+      [
+        "REL",
+        "萧府",
+        "LOCATED_IN",
+        "加玛圣城"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "加玛帝国",
+        "LOCATED_IN",
+        "大陆西北地带"
+      ],
+      [
+        "REL",
+        "加玛帝国",
+        "LOCATED_IN",
+        "大陆西北方位"
+      ],
+      [
+        "REL",
+        "加玛帝国",
+        "PART_OF",
+        "大陆西北方位"
+      ],
+      [
+        "REL",
+        "萧府",
+        "LOCATED_IN",
+        "帝都"
+      ]
+    ]
+  },
+  {
+    "key": "strict/u0310",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "大陆西北地带",
+      "大陆西北方位",
+      "帝国",
+      "帝都",
+      "皇城"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "加玛帝国",
+        "国家"
+      ],
+      [
+        "TYPE",
+        "加玛帝国",
+        "帝国"
+      ],
+      [
+        "TYPE",
+        "天蛇国",
+        "帝国"
+      ],
+      [
+        "TYPE",
+        "黑角域",
+        "混乱之地"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "萧府",
+        "LOCATED_IN",
+        "加玛圣城"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "加玛帝国",
+        "LOCATED_IN",
+        "大陆西北地带"
+      ],
+      [
+        "REL",
+        "加玛帝国",
+        "LOCATED_IN",
+        "大陆西北方位"
+      ],
+      [
+        "REL",
+        "加玛帝国",
+        "PART_OF",
+        "大陆西北方位"
+      ],
+      [
+        "REL",
+        "萧府",
+        "LOCATED_IN",
+        "帝都"
+      ]
+    ]
+  },
+  {
+    "key": "split/u0310",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "大陆西北地带",
+      "大陆西北方位",
+      "帝国",
+      "帝都",
+      "皇城"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "加玛帝国",
+        "国家"
+      ],
+      [
+        "TYPE",
+        "天蛇国",
+        "国家"
+      ],
+      [
+        "TYPE",
+        "黑角域",
+        "混乱之地"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "云岚宗",
+        "NEAR",
+        "加玛皇城"
+      ],
+      [
+        "REL",
+        "萧府",
+        "LOCATED_IN",
+        "加玛圣城"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "加玛帝国",
+        "LOCATED_IN",
+        "大陆西北地带"
+      ],
+      [
+        "REL",
+        "加玛帝国",
+        "LOCATED_IN",
+        "大陆西北方位"
+      ],
+      [
+        "REL",
+        "加玛帝国",
+        "PART_OF",
+        "大陆西北方位"
+      ],
+      [
+        "REL",
+        "萧府",
+        "LOCATED_IN",
+        "帝都"
+      ]
+    ]
+  },
+  {
+    "key": "baseline/u0395",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "西北地域"
+    ],
+    "missing_names": [
+      "空间虫洞"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "天涯城",
+        "CONNECTED_TO",
+        "中州"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "空间虫洞",
+        "CONNECTED_TO",
+        "中州"
+      ],
+      [
+        "REL",
+        "空间虫洞",
+        "LOCATED_IN",
+        "中州"
+      ],
+      [
+        "REL",
+        "空间虫洞",
+        "LOCATED_IN",
+        "天涯城"
+      ]
+    ]
+  },
+  {
+    "key": "strict/u0395",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "西北地域"
+    ],
+    "missing_names": [
+      "空间虫洞"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "中州",
+        "地方"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "天涯城",
+        "CONNECTED_TO",
+        "中州"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "空间虫洞",
+        "CONNECTED_TO",
+        "中州"
+      ],
+      [
+        "REL",
+        "空间虫洞",
+        "LOCATED_IN",
+        "中州"
+      ],
+      [
+        "REL",
+        "空间虫洞",
+        "LOCATED_IN",
+        "天涯城"
+      ]
+    ]
+  },
+  {
+    "key": "split/u0395",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "空间虫洞"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "中州",
+        "地方"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "天涯城",
+        "CONNECTED_TO",
+        "中州"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "空间虫洞",
+        "CONNECTED_TO",
+        "中州"
+      ],
+      [
+        "REL",
+        "空间虫洞",
+        "LOCATED_IN",
+        "中州"
+      ],
+      [
+        "REL",
+        "空间虫洞",
+        "LOCATED_IN",
+        "天涯城"
+      ]
+    ]
+  },
+  {
+    "key": "baseline/u0426",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "天目山顶",
+      "天空领地",
+      "石屋",
+      "血潭",
+      "银色广场",
+      "雷山之顶",
+      "风雷阁总部东阁"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "风雷阁东阁",
+        "总部"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "中州中央区域",
+        "区域"
+      ],
+      [
+        "TYPE",
+        "中州大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "出云帝国",
+        "帝国"
+      ],
+      [
+        "TYPE",
+        "化骨城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "天山血潭",
+        "血潭"
+      ],
+      [
+        "TYPE",
+        "天目山",
+        "山"
+      ],
+      [
+        "TYPE",
+        "天目山脉",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "天目山顶",
+        "山顶"
+      ],
+      [
+        "TYPE",
+        "天空领地",
+        "领地"
+      ],
+      [
+        "TYPE",
+        "银色广场",
+        "广场"
+      ],
+      [
+        "TYPE",
+        "雷山",
+        "山"
+      ],
+      [
+        "TYPE",
+        "风雷山脉",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "风雷阁总部",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "风雷阁总部东阁",
+        "总部"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "东阁",
+        "LOCATED_IN",
+        "风雷山脉"
+      ],
+      [
+        "REL",
+        "天山血潭",
+        "LOCATED_IN",
+        "天目山脉"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "天山血潭",
+        "PART_OF",
+        "天目山脉"
+      ],
+      [
+        "REL",
+        "天空领地",
+        "PART_OF",
+        "风雷山脉"
+      ],
+      [
+        "REL",
+        "风雷阁总部东阁",
+        "LOCATED_IN",
+        "风雷山脉"
+      ]
+    ]
+  },
+  {
+    "key": "strict/u0426",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "中州中央区域",
+      "天目山顶",
+      "天空领地",
+      "石屋",
+      "血潭",
+      "银色广场",
+      "雷山之顶",
+      "风雷阁总部东阁"
+    ],
+    "same_name_type_substitution": [
+      "风雷山脉"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "风雷山脉",
+        "势力范围"
+      ],
+      [
+        "TYPE",
+        "风雷阁东阁",
+        "总部"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "中州中央区域",
+        "区域"
+      ],
+      [
+        "TYPE",
+        "中州大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "出云帝国",
+        "帝国"
+      ],
+      [
+        "TYPE",
+        "化骨城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "天山血潭",
+        "血潭"
+      ],
+      [
+        "TYPE",
+        "天目山",
+        "山"
+      ],
+      [
+        "TYPE",
+        "天目山脉",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "天目山顶",
+        "山顶"
+      ],
+      [
+        "TYPE",
+        "天空领地",
+        "领地"
+      ],
+      [
+        "TYPE",
+        "银色广场",
+        "广场"
+      ],
+      [
+        "TYPE",
+        "雷山",
+        "山"
+      ],
+      [
+        "TYPE",
+        "风雷山脉",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "风雷阁总部",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "风雷阁总部东阁",
+        "总部"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "东阁",
+        "LOCATED_IN",
+        "风雷山脉"
+      ],
+      [
+        "REL",
+        "天山血潭",
+        "LOCATED_IN",
+        "天目山脉"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "东阁",
+        "NEAR",
+        "中州中央区域"
+      ],
+      [
+        "REL",
+        "天山血潭",
+        "PART_OF",
+        "天目山脉"
+      ],
+      [
+        "REL",
+        "天空领地",
+        "PART_OF",
+        "风雷山脉"
+      ],
+      [
+        "REL",
+        "风雷阁总部东阁",
+        "LOCATED_IN",
+        "风雷山脉"
+      ]
+    ]
+  },
+  {
+    "key": "split/u0426",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "中州中央区域",
+      "天目山顶",
+      "天空领地",
+      "石屋",
+      "血潭",
+      "银色广场",
+      "雷山之顶",
+      "风雷阁总部",
+      "风雷阁总部东阁"
+    ],
+    "same_name_type_substitution": [
+      "风雷山脉"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "风雷山脉",
+        "势力范围"
+      ],
+      [
+        "TYPE",
+        "风雷阁东阁",
+        "总部"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "中州中央区域",
+        "区域"
+      ],
+      [
+        "TYPE",
+        "中州大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "出云帝国",
+        "帝国"
+      ],
+      [
+        "TYPE",
+        "化骨城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "天山血潭",
+        "血潭"
+      ],
+      [
+        "TYPE",
+        "天目山",
+        "山"
+      ],
+      [
+        "TYPE",
+        "天目山脉",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "天目山顶",
+        "山顶"
+      ],
+      [
+        "TYPE",
+        "天空领地",
+        "领地"
+      ],
+      [
+        "TYPE",
+        "银色广场",
+        "广场"
+      ],
+      [
+        "TYPE",
+        "雷山",
+        "山"
+      ],
+      [
+        "TYPE",
+        "风雷山脉",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "风雷阁总部",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "风雷阁总部东阁",
+        "总部"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "东阁",
+        "LOCATED_IN",
+        "风雷山脉"
+      ],
+      [
+        "REL",
+        "天山血潭",
+        "LOCATED_IN",
+        "天目山脉"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "东阁",
+        "NEAR",
+        "中州中央区域"
+      ],
+      [
+        "REL",
+        "天山血潭",
+        "PART_OF",
+        "天目山脉"
+      ],
+      [
+        "REL",
+        "天空领地",
+        "PART_OF",
+        "风雷山脉"
+      ],
+      [
+        "REL",
+        "风雷阁总部东阁",
+        "LOCATED_IN",
+        "风雷山脉"
+      ]
+    ]
+  },
+  {
+    "key": "baseline/u0467",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "前院",
+      "大厅",
+      "密室",
+      "炼丹室",
+      "石亭",
+      "院落"
+    ],
+    "same_name_type_substitution": [
+      "圣丹城"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "丹塔",
+        "圣地"
+      ],
+      [
+        "TYPE",
+        "圣丹城",
+        "炼药师圣地"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "叶城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "圣丹城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "斗气大陆",
+        "大陆"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "strict/u0467",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "叶家"
+    ],
+    "missing_names": [
+      "前院",
+      "叶家前院",
+      "大厅",
+      "密室",
+      "炼丹室",
+      "石亭",
+      "院落"
+    ],
+    "same_name_type_substitution": [
+      "圣丹城"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "丹塔",
+        "圣地"
+      ],
+      [
+        "TYPE",
+        "圣丹城",
+        "炼药师圣地"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "叶城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "圣丹城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "斗气大陆",
+        "大陆"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "split/u0467",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "叶家"
+    ],
+    "missing_names": [
+      "前院",
+      "叶家前院",
+      "大厅",
+      "密室",
+      "炼丹室",
+      "石亭",
+      "院落"
+    ],
+    "same_name_type_substitution": [
+      "圣丹城"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "丹塔",
+        "圣地"
+      ],
+      [
+        "TYPE",
+        "圣丹城",
+        "炼药师圣地"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "叶城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "圣丹城",
+        "城"
+      ],
+      [
+        "TYPE",
+        "斗气大陆",
+        "大陆"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "baseline/u0486",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "万药山脉",
+        "山脉"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "strict/u0486",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "万药山脉",
+        "山脉"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "split/u0486",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "万药山脉",
+        "山脉"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "baseline/u0513",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "天妖凰族的禁地",
+      "石塔",
+      "远古遗迹",
+      "风雷阁",
+      "骸骨海洋"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [
+      [
+        "TYPE",
+        "兽骸山脉",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "天妖凰族的禁地",
+        "禁地"
+      ],
+      [
+        "TYPE",
+        "斗气大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "石塔",
+        "塔"
+      ],
+      [
+        "TYPE",
+        "远古遗迹",
+        "遗迹"
+      ],
+      [
+        "TYPE",
+        "骸骨海洋",
+        "海洋"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "兽骸山脉",
+        "LOCATED_IN",
+        "兽域"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "兽骸山脉",
+        "PART_OF",
+        "兽域"
+      ],
+      [
+        "REL",
+        "远古遗迹",
+        "LOCATED_IN",
+        "兽域"
+      ],
+      [
+        "REL",
+        "远古遗迹",
+        "LOCATED_IN",
+        "兽骸山脉"
+      ],
+      [
+        "REL",
+        "远古遗迹",
+        "LOCATED_IN",
+        "骸骨山脉"
+      ],
+      [
+        "REL",
+        "骸骨山脉",
+        "PART_OF",
+        "兽域"
+      ],
+      [
+        "REL",
+        "骸骨海洋",
+        "LOCATED_IN",
+        "骸骨山脉"
+      ]
+    ]
+  },
+  {
+    "key": "strict/u0513",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "天妖凰族的禁地",
+      "石塔",
+      "远古遗迹",
+      "骸骨海洋"
+    ],
+    "same_name_type_substitution": [
+      "兽骸山脉"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "兽域",
+        "地方"
+      ],
+      [
+        "TYPE",
+        "兽骸山脉",
+        "领地范围"
+      ],
+      [
+        "TYPE",
+        "骸骨山脉",
+        "聚集之地"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "兽骸山脉",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "天妖凰族的禁地",
+        "禁地"
+      ],
+      [
+        "TYPE",
+        "斗气大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "石塔",
+        "塔"
+      ],
+      [
+        "TYPE",
+        "远古遗迹",
+        "遗迹"
+      ],
+      [
+        "TYPE",
+        "骸骨海洋",
+        "海洋"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "兽骸山脉",
+        "LOCATED_IN",
+        "兽域"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "兽骸山脉",
+        "PART_OF",
+        "兽域"
+      ],
+      [
+        "REL",
+        "远古遗迹",
+        "LOCATED_IN",
+        "兽域"
+      ],
+      [
+        "REL",
+        "远古遗迹",
+        "LOCATED_IN",
+        "兽骸山脉"
+      ],
+      [
+        "REL",
+        "远古遗迹",
+        "LOCATED_IN",
+        "骸骨山脉"
+      ],
+      [
+        "REL",
+        "骸骨山脉",
+        "PART_OF",
+        "兽域"
+      ],
+      [
+        "REL",
+        "骸骨海洋",
+        "LOCATED_IN",
+        "骸骨山脉"
+      ]
+    ]
+  },
+  {
+    "key": "split/u0513",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "天妖凰族的禁地",
+      "石塔",
+      "远古遗迹",
+      "骸骨海洋"
+    ],
+    "same_name_type_substitution": [
+      "兽骸山脉"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "兽域",
+        "地方"
+      ],
+      [
+        "TYPE",
+        "兽骸山脉",
+        "领地范围"
+      ],
+      [
+        "TYPE",
+        "骸骨山脉",
+        "聚集之地"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "兽骸山脉",
+        "山脉"
+      ],
+      [
+        "TYPE",
+        "天妖凰族的禁地",
+        "禁地"
+      ],
+      [
+        "TYPE",
+        "斗气大陆",
+        "大陆"
+      ],
+      [
+        "TYPE",
+        "石塔",
+        "塔"
+      ],
+      [
+        "TYPE",
+        "远古遗迹",
+        "遗迹"
+      ],
+      [
+        "TYPE",
+        "骸骨海洋",
+        "海洋"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [
+      [
+        "REL",
+        "兽骸山脉",
+        "LOCATED_IN",
+        "兽域"
+      ]
+    ],
+    "missing_relations": [
+      [
+        "REL",
+        "兽骸山脉",
+        "PART_OF",
+        "兽域"
+      ],
+      [
+        "REL",
+        "远古遗迹",
+        "LOCATED_IN",
+        "兽域"
+      ],
+      [
+        "REL",
+        "远古遗迹",
+        "LOCATED_IN",
+        "兽骸山脉"
+      ],
+      [
+        "REL",
+        "远古遗迹",
+        "LOCATED_IN",
+        "骸骨山脉"
+      ],
+      [
+        "REL",
+        "骸骨山脉",
+        "PART_OF",
+        "兽域"
+      ],
+      [
+        "REL",
+        "骸骨海洋",
+        "LOCATED_IN",
+        "骸骨山脉"
+      ]
+    ]
+  },
+  {
+    "key": "baseline/u0546",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [
+      "内院"
+    ],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [
+      [
+        "TYPE",
+        "古族",
+        "天才云集之处"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "strict/u0546",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [
+      "内院"
+    ],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [
+      [
+        "TYPE",
+        "古族",
+        "天才云集之处"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "split/u0546",
+    "cohort": "holdout",
+    "extra_names_need_semantic_review": [
+      "内院"
+    ],
+    "missing_names": [],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [
+      [
+        "TYPE",
+        "古族",
+        "天才云集之处"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "baseline/u0596",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [],
+    "same_name_type_substitution": [
+      "冥河盟"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "冥河盟",
+        "总部宗门"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "冥河盟",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "星陨阁",
+        "大殿"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "strict/u0596",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [
+      "冥河盟总部"
+    ],
+    "missing_names": [],
+    "same_name_type_substitution": [
+      "冥河盟"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "冥河盟",
+        "总部宗门"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "冥河盟",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "星陨阁",
+        "大殿"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "split/u0596",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [],
+    "same_name_type_substitution": [
+      "冥河盟"
+    ],
+    "extra_types": [
+      [
+        "TYPE",
+        "丹塔",
+        "圣地"
+      ],
+      [
+        "TYPE",
+        "冥河盟",
+        "总部宗门"
+      ]
+    ],
+    "missing_types": [
+      [
+        "TYPE",
+        "冥河盟",
+        "总部"
+      ],
+      [
+        "TYPE",
+        "星陨阁",
+        "大殿"
+      ]
+    ],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "baseline/u0604",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "兽界",
+      "魔兽界"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "strict/u0604",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "兽界",
+      "魔兽界"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  },
+  {
+    "key": "split/u0604",
+    "cohort": "development",
+    "extra_names_need_semantic_review": [],
+    "missing_names": [
+      "兽界",
+      "魔兽界"
+    ],
+    "same_name_type_substitution": [],
+    "extra_types": [
+      [
+        "TYPE",
+        "九幽黄泉",
+        "好地方"
+      ]
+    ],
+    "missing_types": [],
+    "extra_relations_need_semantic_review": [],
+    "missing_relations": []
+  }
+]

@@ -1,0 +1,216 @@
+{
+  "engine_commit": "3372edd47666175db9f6a17bee1b8446635ce355",
+  "count": 42,
+  "results": [
+    {
+      "key": "baseline/u0005",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-A126C1C2FE832E64FEB9"
+    },
+    {
+      "key": "strict/u0005",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-E0C52F4BA8A99BD0869F"
+    },
+    {
+      "key": "split/u0005",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-AEB143E720007E3CBD40"
+    },
+    {
+      "key": "baseline/u0043",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-134D0AFB5FB13DCB0D2D"
+    },
+    {
+      "key": "strict/u0043",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-F21FF119BA45C42C1232"
+    },
+    {
+      "key": "split/u0043",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-4FDCBD993583D6C89E50"
+    },
+    {
+      "key": "baseline/u0102",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-0DDDC21A5C485DE7DA2F"
+    },
+    {
+      "key": "strict/u0102",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-921DFE3470B32E75C4DA"
+    },
+    {
+      "key": "split/u0102",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-FD4809DE9707D9E84A85"
+    },
+    {
+      "key": "baseline/u0233",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-7F74E3B116A0A7C9025B"
+    },
+    {
+      "key": "strict/u0233",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-8D5BB68F4B531399A435"
+    },
+    {
+      "key": "split/u0233",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-E274E280A0C3ECDD10BF"
+    },
+    {
+      "key": "baseline/u0293",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-6FD6998030A73151E13B"
+    },
+    {
+      "key": "strict/u0293",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-87FC7B860908AD7FD2D7"
+    },
+    {
+      "key": "split/u0293",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-D943C07511267E4ECB17"
+    },
+    {
+      "key": "baseline/u0310",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-9DA266E17A25AA1F73E0"
+    },
+    {
+      "key": "strict/u0310",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-B17413D5E7C38F5C4EA0"
+    },
+    {
+      "key": "split/u0310",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-8E5F9D98E121685B2875"
+    },
+    {
+      "key": "baseline/u0395",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-D07BB582CDACA07539B6"
+    },
+    {
+      "key": "strict/u0395",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-F803CCC98F856B9E9C85"
+    },
+    {
+      "key": "split/u0395",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-3D2268FC362D12DAC39C"
+    },
+    {
+      "key": "baseline/u0426",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-2A71521F7A796247E6E3"
+    },
+    {
+      "key": "strict/u0426",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-104761B1B6B464F970D2"
+    },
+    {
+      "key": "split/u0426",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-EB9B3FE97EBFE9F0E5B9"
+    },
+    {
+      "key": "baseline/u0467",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-C90C1C3A0E5384CD745D"
+    },
+    {
+      "key": "strict/u0467",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-8704CF1AB483F728DEC6"
+    },
+    {
+      "key": "split/u0467",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-C05FA80A4A6FDBA4A344"
+    },
+    {
+      "key": "baseline/u0486",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-EDCA6FCC78151A70B67B"
+    },
+    {
+      "key": "strict/u0486",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-88463FC040512197A6B5"
+    },
+    {
+      "key": "split/u0486",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-3D31A6821542F8EA8C74"
+    },
+    {
+      "key": "baseline/u0513",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-D59BA9BC713105A59DB4"
+    },
+    {
+      "key": "strict/u0513",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-C92308020C2969C465E8"
+    },
+    {
+      "key": "split/u0513",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-CADC70C673ED985B1691"
+    },
+    {
+      "key": "baseline/u0546",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-2CC44427C0498843313B"
+    },
+    {
+      "key": "strict/u0546",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-0C5954397D01C28B67E7"
+    },
+    {
+      "key": "split/u0546",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-62F2712579A275AEAD0F"
+    },
+    {
+      "key": "baseline/u0596",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-AB2842306AE7D19FF615"
+    },
+    {
+      "key": "strict/u0596",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-2481A8A90398D3B4AC51"
+    },
+    {
+      "key": "split/u0596",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-B12EF24E8434BB611ED3"
+    },
+    {
+      "key": "baseline/u0604",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-6F31CFBD0A057E5788F9"
+    },
+    {
+      "key": "strict/u0604",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-DCD983D5506BF99A2C7A"
+    },
+    {
+      "key": "split/u0604",
+      "validation": "VALID",
+      "corpus_snapshot_id": "CPS-B7FD7A652FB344EDE86F"
+    }
+  ]
+}
