@@ -98,9 +98,10 @@ Fail closed when rights, identity, or required artifacts are ambiguous.
 Source-quality official or licensed status is different: `edition_status=UNKNOWN`
 means that status is unproven and is eligible when `textual_completeness=COMPLETE`.
 Declare `UNOFFICIAL_COPY` only when unauthorized or infringing status is positively
-established; that combination remains ineligible even if complete. A publisher
-licence is not required. `rights.basis` must still be an explicit non-`UNKNOWN`
-claim such as `FAIR_USE_RESEARCH`.
+established. Operator research policy (2026-09) admits positively declared
+unauthorized copies at Tier B when the text is complete; they never qualify as
+`OFFICIAL`-grade Tier A. A publisher licence is not required. `rights.basis`
+must still be an explicit non-`UNKNOWN` claim such as `FAIR_USE_RESEARCH`.
 
 ### Agent-files is an executor seam, not another pipeline
 
@@ -250,7 +251,7 @@ fail closed on:
 - ambiguous work identity;
 - missing or corrupt CAS artifacts;
 - rights uncertainty (`rights.basis=UNKNOWN` or missing storage/model permission);
-- positively declared unauthorized copies (`UNOFFICIAL_COPY`) and incomplete source text;
+- incomplete source text (`PARTIAL` or unknown completeness);
 - source/Handoff lineage mismatches;
 - task tampering;
 - unsupported executor combinations.
