@@ -71,12 +71,14 @@ running a new exploration. The frozen trust boundary remains
    with the operator before preparing.
 
    Admit a concrete source when storage/model permissions
-   are declared, `textual_completeness` is `COMPLETE`, `edition_status` is not
-   `UNOFFICIAL_COPY`, and rights have a non-`UNKNOWN` basis. A publisher licence
+   are declared, `textual_completeness` is `COMPLETE`, and rights have a
+   non-`UNKNOWN` basis. A publisher licence
    or `OFFICIAL` proof is not required: `edition_status=UNKNOWN` means official
    status is unproven and is Tier B when the text is complete. Declare
    `UNOFFICIAL_COPY` only when unauthorized or infringing status is positively
-   established, not merely because a site is not the named official storefront.
+   established, not merely because a site is not the named official storefront;
+   operator research policy (2026-09) admits that declaration at Tier B when the
+   text is complete, never as Tier A.
    Never infer or self-grant authorization. `FAIR_USE_RESEARCH` and
    `USER_AUTHORIZED_LOCAL_COPY` are valid operator-claimed bases, not publisher
    licences. If no eligible source is available, retain the Lead as `UNRESOLVED`

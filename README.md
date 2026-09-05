@@ -34,9 +34,10 @@ authorized agent, and `prepare-handoff` auto-applies them to each
 SourceDeclaration. Delegation must be explicit and recorded; the acting agent
 cannot infer or self-grant it. Source quality is independent: `COMPLETE` plus
 `OFFICIAL` is Tier A; `COMPLETE` plus `PUBLISHED_EDITION`,
-`USER_VERIFIED_COPY`, or `UNKNOWN` is Tier B. `UNOFFICIAL_COPY` and incomplete
-text remain Tier D / lead-only. These semantics are identified as
-`novel-source-classifier-v2` in generated assessments. A publisher licence is
+`USER_VERIFIED_COPY`, `UNKNOWN`, or a positively declared `UNOFFICIAL_COPY` is
+Tier B (operator research policy, 2026-09). Incomplete text remains Tier D /
+lead-only. These semantics are identified as
+`novel-source-classifier-v3` in generated assessments. A publisher licence is
 not required merely to classify an otherwise complete source whose official
 status is unproven.
 The send and export boundaries validate the complete Bundle → Snapshot → Ingestion

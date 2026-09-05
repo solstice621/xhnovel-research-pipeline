@@ -16,7 +16,7 @@ from .store import ArtifactStore
 
 
 NOVEL_TRIAGE_MATERIALIZER_BUILD_ID = "novel-triage-review-materializer-v1"
-NOVEL_SOURCE_CLASSIFIER_BUILD_ID = "novel-source-classifier-v2"
+NOVEL_SOURCE_CLASSIFIER_BUILD_ID = "novel-source-classifier-v3"
 CHAPTER_IDENTITY_SCOPE = "DISCOVERY_ORDER_VS_BODY_HEADING_V1"
 _LOCAL_NOVEL_PLATFORMS = {"novel:txt", "novel:epub", "novel:directory"}
 RIGHTS_BASES = {
@@ -190,16 +190,18 @@ def source_quality_tier(source_quality: dict[str, str]) -> str:
     Edition status is about a positive legitimacy claim, not a license proof:
 
     - ``COMPLETE`` + ``OFFICIAL`` → A
-    - ``COMPLETE`` + ``PUBLISHED_EDITION`` / ``USER_VERIFIED_COPY`` / ``UNKNOWN`` → B
-    - ``UNOFFICIAL_COPY`` → D even if complete (positively declared unauthorized)
+    - ``COMPLETE`` + ``PUBLISHED_EDITION`` / ``USER_VERIFIED_COPY`` / ``UNKNOWN`` /
+      ``UNOFFICIAL_COPY`` → B
     - any non-``COMPLETE`` text → D
+
+    ``UNOFFICIAL_COPY`` stays a mandatory honest declaration; operator research
+    policy (2026-09) admits positively declared unauthorized copies at Tier B
+    when the text is complete. Only ``OFFICIAL`` reaches Tier A.
     """
 
     edition = source_quality["edition_status"]
     completeness = source_quality["textual_completeness"]
     if completeness != "COMPLETE":
-        return "D"
-    if edition == "UNOFFICIAL_COPY":
         return "D"
     if edition == "OFFICIAL":
         return "A"
