@@ -107,6 +107,12 @@ the user need not provide a novel file or restart each stage by default. See the
 Observation routes and their bounded stop conditions. The compiler remains a
 deterministic tool; automatic progression is implemented in the host Skills.
 
+The [local research library design](docs/LOCAL_RESEARCH_LIBRARY_DESIGN.md) and
+[implementation plan](docs/LOCAL_RESEARCH_LIBRARY_PLAN.md) describe source reuse, chapter-based storage and search, and a unified entry point
+for native results. The host [library commands](docs/LOCAL_RESEARCH_LIBRARY_USAGE.md)
+register sealed sources, allocate research/work/source/execution directories, and
+replay native results before evidence lookup. Full-book TXT generation is not included.
+
 The [observation research architecture](docs/OBSERVATION_RESEARCH_ARCHITECTURE.md)
 and [build plan](docs/OBSERVATION_RESEARCH_BUILD_PLAN.md) define the workflow:
 research goal → fixed Profile selection → source discovery → native generic

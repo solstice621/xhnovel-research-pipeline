@@ -1,0 +1,508 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format_version",
+        "library_id",
+        "kind",
+        "research_id",
+        "key",
+        "name",
+        "request_sha256"
+      ],
+      "properties": {
+        "format_version": {
+          "const": "host-research-library-v1"
+        },
+        "library_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "research"
+        },
+        "research_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "request_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format_version",
+        "library_id",
+        "kind",
+        "protocol",
+        "handoff",
+        "native_root",
+        "input_spec_hash",
+        "work_ref_id",
+        "sealed_path",
+        "source_revision",
+        "work_ref",
+        "mode",
+        "acquisition_script_sha256"
+      ],
+      "properties": {
+        "format_version": {
+          "const": "host-research-library-v1"
+        },
+        "library_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "source"
+        },
+        "protocol": {
+          "enum": [
+            "SCENE",
+            "GENERIC"
+          ]
+        },
+        "handoff": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "native_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_spec_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "work_ref_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sealed_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "work_ref": {
+          "type": "object"
+        },
+        "mode": {
+          "enum": [
+            "MANAGED",
+            "EXTERNAL_REFERENCE"
+          ]
+        },
+        "acquisition_script_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format_version",
+        "library_id",
+        "kind",
+        "protocol",
+        "handoff",
+        "native_root",
+        "input_spec_hash",
+        "work_ref_id",
+        "research_record_id",
+        "source_record_id",
+        "source_revision",
+        "execution_key",
+        "execution_id",
+        "work_dir",
+        "mode"
+      ],
+      "properties": {
+        "format_version": {
+          "const": "host-research-library-v1"
+        },
+        "library_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "execution"
+        },
+        "protocol": {
+          "enum": [
+            "SCENE",
+            "GENERIC"
+          ]
+        },
+        "handoff": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "native_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_spec_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "work_ref_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "research_record_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_record_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "execution_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "execution_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "work_dir": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "enum": [
+            "MANAGED",
+            "EXTERNAL_REFERENCE"
+          ]
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format_version",
+        "library_id",
+        "kind",
+        "execution_record_id",
+        "receipt",
+        "family",
+        "native_run_id",
+        "content_sha256",
+        "record_count",
+        "profile_ref"
+      ],
+      "properties": {
+        "format_version": {
+          "const": "host-research-library-v1"
+        },
+        "library_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "product"
+        },
+        "execution_record_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "receipt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "family": {
+          "enum": [
+            "SCENE_CANDIDATES",
+            "GENERIC_CORPUS"
+          ]
+        },
+        "native_run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "profile_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format_version",
+        "library_id",
+        "kind",
+        "research_record_id",
+        "report",
+        "product_record_ids",
+        "execution_record_ids",
+        "assurance"
+      ],
+      "properties": {
+        "format_version": {
+          "const": "host-research-library-v1"
+        },
+        "library_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "report"
+        },
+        "research_record_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "report": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "product_record_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "execution_record_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "assurance": {
+          "const": "HOST_AUTHORED"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format_version",
+        "library_id",
+        "kind",
+        "target_record_id",
+        "checked_at",
+        "validator_sha256",
+        "outcome",
+        "error"
+      ],
+      "properties": {
+        "format_version": {
+          "const": "host-research-library-v1"
+        },
+        "library_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "validation"
+        },
+        "target_record_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "checked_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "validator_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "outcome": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format_version",
+        "library_id",
+        "protocol",
+        "handoff",
+        "native_root",
+        "input_spec_hash",
+        "work_ref_id",
+        "work_ref",
+        "kind",
+        "research_record_id",
+        "work_dir",
+        "source_ref_id",
+        "mode"
+      ],
+      "properties": {
+        "format_version": {
+          "const": "host-research-library-v1"
+        },
+        "library_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "protocol": {
+          "enum": [
+            "SCENE",
+            "GENERIC"
+          ]
+        },
+        "handoff": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "native_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_spec_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "work_ref_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "work_ref": {
+          "type": "object"
+        },
+        "kind": {
+          "const": "external-execution"
+        },
+        "research_record_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "work_dir": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_ref_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "const": "EXTERNAL_REFERENCE"
+        }
+      }
+    }
+  ]
+}
