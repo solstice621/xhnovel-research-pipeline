@@ -53,20 +53,31 @@ running a new exploration. The frozen trust boundary remains
 3. **Select for diversity.** Deduplicate the explicit Lead set and prefer distinct
    works and interaction families. Do not discard incompatible work/source
    identities merely to force one group.
-4. **Resolve a source.** Admit a concrete source when storage/model permissions
+4. **Resolve a source.** Before drafting the SourceDeclaration, ensure the
+   exploration work root contains the standing `operator-attestation.json`.
+   If it is absent, copy the canonical standing attestation from
+   `attestations/operator-attestation.json` at the repo root into the work root.
+   The copy must stay content-identical with the same `attestation_id`.
+   Preserve an existing standing attestation. Never author, edit, or re-sign an attestation per run;
+   if the required standing attestation is missing or invalid, stop and ask the operator.
+
+   By default, omit `rights` from the draft SourceDeclaration;
+   `prepare-handoff` auto-fills it from the work root's standing attestation and
+   binds `operator_attestation_id`. If `rights` is supplied explicitly, its
+   `basis`, `may_store_full_text`, `may_send_to_external_model`, and
+   `may_export_excerpts` must all match that attestation exactly. A conflict
+   raises `E-PHASE0-ATTEST-MISMATCH`; do not overwrite explicit rights or change
+   the attestation to make preparation pass. Resolve conflicting declarations
+   with the operator before preparing.
+
+   Admit a concrete source when storage/model permissions
    are declared, `textual_completeness` is `COMPLETE`, `edition_status` is not
    `UNOFFICIAL_COPY`, and rights have a non-`UNKNOWN` basis. A publisher licence
    or `OFFICIAL` proof is not required: `edition_status=UNKNOWN` means official
    status is unproven and is Tier B when the text is complete. Declare
    `UNOFFICIAL_COPY` only when unauthorized or infringing status is positively
    established, not merely because a site is not the named official storefront.
-   Rights may be supplied inline on the SourceDeclaration, or omitted when a
-   standing `operator-attestation.json` is already at the Phase 0 work root;
-   `prepare-handoff` then auto-fills `rights` and binds `operator_attestation_id`.
-   The operator may author it directly or explicitly authorize a host agent to
-   create and sign it on the operator's behalf. An agent must preserve the
-   principal, delegation scope, and its own identity in the attestation; it must
-   never infer or self-grant authorization. `FAIR_USE_RESEARCH` and
+   Never infer or self-grant authorization. `FAIR_USE_RESEARCH` and
    `USER_AUTHORIZED_LOCAL_COPY` are valid operator-claimed bases, not publisher
    licences. If no eligible source is available, retain the Lead as `UNRESOLVED`
    or `BLOCKED_BY_RIGHTS`; do not download or execute text whose rights basis is
@@ -77,14 +88,6 @@ running a new exploration. The frozen trust boundary remains
    ```bash
    xhnovel-pipeline prepare-handoff <preparation-input.json> --work-dir <exploration-dir>
    ```
-
-   The exploration work root must contain the standing `operator-attestation.json`.
-   If it is absent, copy the canonical standing attestation from
-   `attestations/operator-attestation.json` at the repo root into the work root
-   before preparing. The copy must stay content-identical with the same
-   `attestation_id`, so every prepared Handoff replays against the operator's one
-   standing signature. Never author, edit, or re-sign an attestation per run; if
-   the canonical file is missing or invalid, stop and ask the operator.
 
    Never compute IDs/hashes or hand-write the final Handoff. The builder owns CAS,
    grouping, preflight, ordinary Novel Spec projection, and deterministic replay.

@@ -153,6 +153,60 @@ def test_prepare_handoff_attestation_formalizes_explicit_rights(tmp_path):
     assert declaration["operator_attestation_id"] == attestation["attestation_id"]
 
 
+@pytest.mark.parametrize("explicit_rights", [False, True], ids=["omitted", "matching"])
+def test_canonical_seed_prepares_and_replays_in_a_fresh_root(tmp_path, explicit_rights):
+    canonical_bytes = (ROOT / "attestations" / "operator-attestation.json").read_bytes()
+    standing_path = tmp_path / "operator-attestation.json"
+    standing_path.write_bytes(canonical_bytes)
+    attestation = validate_operator_attestation(json.loads(canonical_bytes))
+    prep = _preparation_on_disk(tmp_path)
+    if explicit_rights:
+        prep["source_declaration"]["rights"] = attestation_rights(attestation)
+    else:
+        del prep["source_declaration"]["rights"]
+    prep_path = tmp_path / "preparation-input.json"
+    prep_path.write_text(json.dumps(prep, ensure_ascii=False), encoding="utf-8")
+
+    prepared = prepare_handoff_from_input(prep_path, tmp_path)
+
+    declaration_path = next((tmp_path / "source-declarations").glob("*.json"))
+    declaration = json.loads(declaration_path.read_text(encoding="utf-8"))
+    assert declaration["rights"] == attestation_rights(attestation)
+    assert declaration["operator_attestation_id"] == attestation["attestation_id"]
+    validated = validate_evidence_handoff(prepared.handoff_path, phase0_root=tmp_path)
+    assert validated["handoff_id"] == prepared.handoff["handoff_id"]
+    assert standing_path.read_bytes() == canonical_bytes
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("basis", "PUBLIC_DOMAIN"),
+        ("may_store_full_text", False),
+        ("may_send_to_external_model", False),
+        ("may_export_excerpts", False),
+    ],
+)
+def test_canonical_seed_rejects_each_explicit_rights_conflict(tmp_path, field, value):
+    canonical_bytes = (ROOT / "attestations" / "operator-attestation.json").read_bytes()
+    standing_path = tmp_path / "operator-attestation.json"
+    standing_path.write_bytes(canonical_bytes)
+    attestation = validate_operator_attestation(json.loads(canonical_bytes))
+    prep = _preparation_on_disk(tmp_path)
+    rights = attestation_rights(attestation)
+    assert rights[field] != value
+    rights[field] = value
+    prep["source_declaration"]["rights"] = rights
+    prep_path = tmp_path / "preparation-input.json"
+    prep_path.write_text(json.dumps(prep, ensure_ascii=False), encoding="utf-8")
+
+    with pytest.raises(ValidationError, match="E-PHASE0-ATTEST-MISMATCH"):
+        prepare_handoff_from_input(prep_path, tmp_path)
+
+    assert standing_path.read_bytes() == canonical_bytes
+    assert json.loads(prep_path.read_text(encoding="utf-8")) == prep
+
+
 def test_prepare_handoff_rejects_attestation_mismatch(tmp_path):
     attestation = _attestation()
     _standalone(tmp_path, attestation)
