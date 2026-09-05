@@ -229,7 +229,7 @@ def test_declared_source_quality_defaults_and_is_independent():
             "B",
         ),
         ({"edition_status": "UNKNOWN", "textual_completeness": "COMPLETE"}, "B"),
-        ({"edition_status": "UNOFFICIAL_COPY", "textual_completeness": "COMPLETE"}, "D"),
+        ({"edition_status": "UNOFFICIAL_COPY", "textual_completeness": "COMPLETE"}, "B"),
         ({"edition_status": "OFFICIAL", "textual_completeness": "PARTIAL"}, "D"),
         ({"edition_status": "UNKNOWN", "textual_completeness": "UNKNOWN"}, "D"),
     ],

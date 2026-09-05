@@ -130,7 +130,7 @@ def test_handoff_accepts_unknown_edition_when_complete(tmp_path):
     assert result.source_quality_tier == "B"
 
 
-def test_handoff_rejects_unofficial_copy_even_when_complete(tmp_path):
+def test_handoff_admits_unofficial_copy_when_complete_per_operator_policy(tmp_path):
     source = tmp_path / "book.txt"
     source.write_text("第一章\n正文。", encoding="utf-8")
     spec = _spec(source)
@@ -139,11 +139,12 @@ def test_handoff_rejects_unofficial_copy_even_when_complete(tmp_path):
         "textual_completeness": "COMPLETE",
     }
 
-    with pytest.raises(ValidationError, match="E-HANDOFF-QUALITY"):
-        validate_direct_research_spec(
-            spec,
-            purpose=SpecValidationPurpose.EVIDENCE_HANDOFF,
-        )
+    result = validate_direct_research_spec(
+        spec,
+        purpose=SpecValidationPurpose.EVIDENCE_HANDOFF,
+    )
+
+    assert result.source_quality_tier == "B"
 
 
 @pytest.mark.parametrize(

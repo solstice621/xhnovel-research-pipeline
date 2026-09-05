@@ -186,7 +186,7 @@ separate facts:
 | May full text be stored? | explicit `may_store_full_text` declaration |
 | May text be sent to the semantic executor? | explicit `may_send_to_external_model` declaration |
 | What is the rights basis? | user-authorized copy, public domain, licensed, fair-use research, unknown |
-| Is source quality eligible? | `COMPLETE` plus anything except positively declared `UNOFFICIAL_COPY` is A/B; incomplete text and `UNOFFICIAL_COPY` remain D / Lead-only |
+| Is source quality eligible? | `COMPLETE` is eligible (Tier A/B); incomplete text remains D / Lead-only. `UNOFFICIAL_COPY` + `COMPLETE` is Tier B by operator research policy (2026-09) |
 
 Technical access is not rights evidence. A successful HTTP response, a readable
 local file, or a search snippet does not authorize storage or model egress.
@@ -194,8 +194,9 @@ local file, or a search snippet does not authorize storage or model egress.
 Do not require a publisher licence or `OFFICIAL` proof to admit a source.
 `edition_status=UNKNOWN` with `textual_completeness=COMPLETE` is Tier B:
 unproven official status is not a filter. Declare `UNOFFICIAL_COPY` only when
-unauthorized or infringing status is positively established; that remains Tier D
-even if the text looks complete. Incomplete text (`PARTIAL` or unknown
+unauthorized or infringing status is positively established; by operator
+research policy (2026-09) that combination is Tier B when the text is complete,
+never Tier A. Incomplete text (`PARTIAL` or unknown
 completeness) remains Tier D regardless of edition status.
 
 `rights.basis` is a separate fact. External-model execution still requires a
