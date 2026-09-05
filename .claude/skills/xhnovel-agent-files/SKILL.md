@@ -19,6 +19,11 @@ If tasks came from `execute-handoff` or a campaign wrapper, keep that exact
 wrapper and its Handoff/P/W binding throughout; the standalone commands below
 apply to a standalone `research-novel` run.
 
+For a complete research request backed by a local library, this executor is only
+one stage. Before execution, use the continuation guide's `allocate-execution`
+and its returned W. After native success, register the product from the receipt,
+write/register the final report, and reconcile status before claiming delivery.
+
 ## The two-pass flow
 
 Run the pipeline once, fill in the tasks it materializes, then run the identical

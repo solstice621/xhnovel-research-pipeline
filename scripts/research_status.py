@@ -197,6 +197,12 @@ def research_status(library, research_id, *, planning_root=None, legacy_root=(),
     elif requested_works:
         source_ids.update(rid for rid, r in records.items()
                           if r["kind"] == "source" and r["work_ref_id"] in requested_works)
+    # Preparation in the explicitly supplied P is discoverable before allocation.
+    # Other planning roots are never silently adopted, even for the same genre.
+    if planning.get("validation") == "VALIDATED":
+        source_ids.update(rid for rid, r in records.items()
+                          if r["kind"] == "source" and r["protocol"] == "SCENE"
+                          and Path(r["native_root"]) == planning_root)
     items = []
     for rid in sorted(source_ids):
         record = records.get(rid)
@@ -204,9 +210,22 @@ def research_status(library, research_id, *, planning_root=None, legacy_root=(),
             if record is None:
                 lib.fail("referenced source registration is unavailable", "E-LIBRARY-INTEGRITY")
             library.validate(rid)
-            return {"validation": "VALIDATED", "work_ref_id": record["work_ref_id"],
-                    "sealed_path": record["sealed_path"], "source_revision": record["source_revision"],
-                    "research_binding": "CANDIDATE_ONLY", "next_action": "MATCH_AND_PREPARE_SOURCE"}
+            result = {"validation": "VALIDATED", "work_ref_id": record["work_ref_id"],
+                      "sealed_path": record["sealed_path"], "source_revision": record["source_revision"],
+                      "handoff": record["handoff"], "native_root": record["native_root"],
+                      "research_binding": "CANDIDATE_ONLY", "next_action": "MATCH_AND_PREPARE_SOURCE"}
+            if (planning.get("validation") == "VALIDATED" and record["protocol"] == "SCENE"
+                    and Path(record["native_root"]) == planning_root):
+                validate_planning_handoff(
+                    planning_root / "planning-compilation-receipt.json",
+                    Path(record["handoff"]["path"]), planning_root=planning_root,
+                    phase0_root=planning_root, repo_root=lib.ROOT)
+                linked = [eid for eid, e in selected.items() if e["kind"] == "execution"
+                          and e["source_record_id"] == rid]
+                result.update(research_binding="PREPARED_FOR_SUPPLIED_PLANNING",
+                              execution_record_ids=linked,
+                              next_action="CHECK_LINKED_EXECUTIONS" if linked else "ALLOCATE_EXECUTION")
+            return result
         items.append({"record_id": rid, **_inspect("source", rid, source)})
     for rid, record in sorted(selected.items()):
         kind = record["kind"]
@@ -224,6 +243,23 @@ def research_status(library, research_id, *, planning_root=None, legacy_root=(),
         if record["kind"] == "product" and record["execution_record_id"] in execution_ids:
             items.append({"record_id": rid, **_inspect("product", rid, lambda rid=rid: {
                 "validation": library.validate(rid)["status"], "next_action": "REVIEW_RESEARCH_COVERAGE"})})
+    # Registration is observable bookkeeping, never a semantic-completeness claim.
+    for item in items:
+        if item["kind"] not in {"execution", "external-execution"}:
+            continue
+        products = [i["record_id"] for i in items if i["kind"] == "product"
+                    and i["validation"] != "UNAVAILABLE"
+                    and records[i["record_id"]]["execution_record_id"] == item["record_id"]]
+        reports = [i["record_id"] for i in items if i["kind"] == "report"
+                   and i["validation"] != "UNAVAILABLE"
+                   and item["record_id"] in records[i["record_id"]]["execution_record_ids"]
+                   and set(products).issubset(records[i["record_id"]]["product_record_ids"])]
+        item["registered_product_ids"] = products
+        item["registered_report_ids"] = reports
+        if item.get("next_action") == "VALIDATE_PRODUCTS_AND_REPORT":
+            item["next_action"] = ("REGISTER_PRODUCT" if not products else
+                                   "WRITE_AND_REGISTER_REPORT" if not reports else
+                                   "REVIEW_RESEARCH_COVERAGE")
     for root in acquisition_root:
         root = lib.checked_path(root)
         items.append(_inspect("acquisition", root, lambda root=root: _acquisition(root)))

@@ -85,6 +85,34 @@ works. The host chooses routine ordering without asking which book to start.
 | Another task is acquiring this source | Use the shared acquisition result when available; work on other eligible items |
 | Native success | Validate/register products and finish the research report |
 
+### Bind execution and register the delivery
+
+`ALLOCATE_EXECUTION` identifies a registered source whose Handoff replays against
+this supplied planning root. Check the frozen research request and P, then allocate
+before choosing W. Use the returned `record.work_dir` exactly; do not invent a
+`campaign` directory inside the research library.
+
+```bash
+python scripts/research_library.py --library-root L allocate-execution RESEARCH_RECORD_ID SOURCE_RECORD_ID --handoff HANDOFF --native-root P --key KEY
+```
+
+Keep the returned execution record ID. Freeze and execute its ordinary Handoff
+with that W according to the Scene or Observation Skill. On native success,
+locate the actual native execution receipt returned by that wrapper, then:
+
+```bash
+python scripts/research_library.py --library-root L register-product EXECUTION_RECORD_ID --receipt RECEIPT_PATH
+python scripts/research_library.py --library-root L register-report RESEARCH_RECORD_ID REPORT_PATH --executions EXECUTION_RECORD_ID --products PRODUCT_RECORD_ID
+python scripts/research_library.py --library-root L research-status RESEARCH_RECORD_ID --planning-root P
+```
+
+Write the report in the allocated execution's sibling `reports/` directory before
+registering it. Retain actual returned IDs. A terminal execution with
+`REGISTER_PRODUCT` or `WRITE_AND_REGISTER_REPORT` still has delivery work remaining.
+`REVIEW_RESEARCH_COVERAGE` means review the frozen scope, source coverage and actual
+findings; registrations and valid citations do not prove semantic completeness.
+For an inherited external W, use the existing external-registration workflow.
+
 Native source budgets, frozen selection budgets, and host time/context limits are
 different constraints. Measure a small batch before predicting throughput. At an
 actual limit, preserve the native task/answer files and record the exact command,

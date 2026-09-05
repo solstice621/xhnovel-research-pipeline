@@ -98,7 +98,18 @@ def test_stale_report_does_not_override_waiting_and_answer_presence(tmp_path, ca
     view = library.research_status(rid, planning_root=compiled.planning_root)
     item = next(i for i in view["items"] if i["kind"] == "external-execution")
     assert item["native_state"] == "SUCCEEDED"
-    assert item["next_action"] == "VALIDATE_PRODUCTS_AND_REPORT"
+    assert item["next_action"] == "REGISTER_PRODUCT"
+    assert item["registered_product_ids"] == []
+    product = library.register_product(execution["record_id"], result.receipt_path)
+    def current():
+        return next(i for i in library.research_status(rid, planning_root=compiled.planning_root)["items"]
+                    if i["kind"] == "external-execution")
+    assert current()["next_action"] == "WRITE_AND_REGISTER_REPORT"
+    report = _write_json(tmp_path / "report.json", {"findings": "host report"})
+    library.register_report(rid, report, executions=[execution["record_id"]])
+    assert current()["next_action"] == "WRITE_AND_REGISTER_REPORT"  # missing product binding
+    library.register_report(rid, report, executions=[execution["record_id"]], products=[product["record_id"]])
+    assert current()["next_action"] == "REVIEW_RESEARCH_COVERAGE"
 
 
 def test_new_brief_cannot_resume_old_tasks(tmp_path, capsys):
@@ -225,3 +236,36 @@ def test_checkout_launcher_ignores_stale_install_and_returns_native_exit_codes(t
                              env=env, capture_output=True, text=True)
     assert no_site.returncode == 2
     assert json.loads(no_site.stdout)["issues"]
+
+
+def test_prepared_source_is_discovered_before_allocation(setup, tmp_path):
+    library, research, _, sealed, _, options_path = setup
+    _, _, compiled = _stage_planning_run(tmp_path)
+    p = compiled.planning_root
+    options = lib.read_json(options_path)
+    options["brief"] = acq.ref(compiled.brief_path)
+    options["planning"] = {"root": str(p), "receipt": acq.ref(compiled.receipt_path)}
+    prepared = acq.prepare_source(sealed, _write_json(tmp_path / "options.json", options), p)
+    source = library.register_source(sealed, protocol="SCENE", handoff=prepared["handoff_path"], native_root=p)
+    before = _files(library.root)
+    view = library.research_status(research["record_id"], planning_root=p)
+    item = next(i for i in view["items"] if i["kind"] == "source")
+    assert item["record_id"] == source["record_id"]
+    assert item["research_binding"] == "PREPARED_FOR_SUPPLIED_PLANNING"
+    assert item["next_action"] == "ALLOCATE_EXECUTION"
+    assert item["handoff"]["path"] == prepared["handoff_path"]
+    assert _files(library.root) == before
+    library.allocate_execution(research["record_id"], source["record_id"],
+                               handoff=prepared["handoff_path"], native_root=p, key="new")
+    item = next(i for i in library.research_status(research["record_id"], planning_root=p)["items"]
+                if i["kind"] == "source")
+    assert item["next_action"] == "CHECK_LINKED_EXECUTIONS"
+    assert len(item["execution_record_ids"]) == 1
+
+
+def test_unlinked_source_in_other_root_is_not_implicitly_selected(setup, tmp_path):
+    library, research, source, sealed, prepared, planning = setup
+    _, _, compiled = _stage_planning_run(tmp_path)
+    view = library.research_status(research["record_id"], planning_root=compiled.planning_root)
+    assert view["planning"]["validation"] == "VALIDATED"
+    assert view["items"] == []
