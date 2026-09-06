@@ -1,0 +1,1679 @@
+{
+  "configs": {
+    "A": {
+      "units": [
+        {
+          "ordinal": 5,
+          "unit_id": "XUNIT-A67A64F7D2DA595F35EE",
+          "cohort": "stress",
+          "gold_unique": 33,
+          "predicted_unique": 24,
+          "extra_count": 1,
+          "miss_count": 10,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "双帝渊"
+            }
+          ],
+          "misses": [
+            {
+              "explicit_type": "帝都",
+              "kind": "PLACE_MENTION",
+              "name": "加玛圣城"
+            },
+            {
+              "explicit_type": "深渊",
+              "kind": "PLACE_MENTION",
+              "name": "双帝渊"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "米特尔家族的总部"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "萧家的总部"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "东中州",
+              "relation": "LOCATED_IN",
+              "subject_name": "北离城"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "中州",
+              "relation": "LOCATED_IN",
+              "subject_name": "双帝渊"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "乌坦城",
+              "relation": "LOCATED_IN",
+              "subject_name": "萧家的总部"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "加玛圣城",
+              "relation": "LOCATED_IN",
+              "subject_name": "米特尔家族的总部"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "斗气大陆",
+              "relation": "LOCATED_IN",
+              "subject_name": "中州"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "魔兽山脉",
+              "relation": "NEAR",
+              "subject_name": "青山镇"
+            }
+          ]
+        },
+        {
+          "ordinal": 102,
+          "unit_id": "XUNIT-15A2604A648927C67B63",
+          "cohort": "control",
+          "gold_unique": 11,
+          "predicted_unique": 13,
+          "extra_count": 9,
+          "miss_count": 7,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "石漠城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "盐城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "漠城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国东部省份",
+              "explicit_type": "省份"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "东部省份",
+              "explicit_type": "省份"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国",
+              "explicit_type": "帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "帝国边境",
+              "explicit_type": "边境"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑岩城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "云岚山",
+              "explicit_type": "山"
+            }
+          ],
+          "misses": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "东部省份"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "云岚山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "漠城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "盐城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "石漠城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑岩城"
+            }
+          ]
+        },
+        {
+          "ordinal": 233,
+          "unit_id": "XUNIT-FABCF30DD2F6F77259E5",
+          "cohort": "control",
+          "gold_unique": 6,
+          "predicted_unique": 13,
+          "extra_count": 9,
+          "miss_count": 2,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "深山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "外院"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑角域",
+              "explicit_type": "域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "深山山脉",
+              "explicit_type": "山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "混乱地域",
+              "explicit_type": "地域"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "混乱地域",
+              "relation": "LOCATED_IN",
+              "object_name": "山脉"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "迦南学院",
+              "relation": "LOCATED_IN",
+              "object_name": "山脉"
+            }
+          ],
+          "misses": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "混乱地域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑角域"
+            }
+          ]
+        },
+        {
+          "ordinal": 310,
+          "unit_id": "XUNIT-F62C01B618A1D3782CEB",
+          "cohort": "stress",
+          "gold_unique": 27,
+          "predicted_unique": 18,
+          "extra_count": 12,
+          "miss_count": 21,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "帝都",
+              "explicit_type": "帝都"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国",
+              "explicit_type": "帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "云岚山",
+              "explicit_type": "山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝都",
+              "explicit_type": "帝都"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛圣城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "萧府",
+              "explicit_type": "府"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑角域",
+              "explicit_type": "域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "乌坦城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "斗气大陆",
+              "explicit_type": "大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西北地域",
+              "explicit_type": "地域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天蛇国",
+              "explicit_type": "国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛皇城",
+              "explicit_type": "城"
+            }
+          ],
+          "misses": [
+            {
+              "explicit_type": "山峰",
+              "kind": "PLACE_MENTION",
+              "name": "云岚山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "乌坦城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "云岚山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛圣城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝都"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛皇城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "大陆西北地带"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "大陆西北方位"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天蛇国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "帝都"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "斗气大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "皇城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "萧府"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西北地域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西南地域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑角域"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "大陆西北地带",
+              "relation": "LOCATED_IN",
+              "subject_name": "加玛帝国"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "大陆西北方位",
+              "relation": "LOCATED_IN",
+              "subject_name": "加玛帝国"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "大陆西北方位",
+              "relation": "PART_OF",
+              "subject_name": "加玛帝国"
+            }
+          ]
+        },
+        {
+          "ordinal": 395,
+          "unit_id": "XUNIT-08132AD96AEFF2AAAC1E",
+          "cohort": "stress",
+          "gold_unique": 24,
+          "predicted_unique": 12,
+          "extra_count": 2,
+          "miss_count": 14,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "迦南学院"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "中州",
+              "explicit_type": "大陆"
+            }
+          ],
+          "misses": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "万剑阁"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "中州大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "星陨阁"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "焚炎谷"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "空间虫洞"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黄泉阁"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "中州",
+              "relation": "CONNECTED_TO",
+              "subject_name": "空间虫洞"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "中州",
+              "relation": "LOCATED_IN",
+              "subject_name": "万剑阁"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "中州",
+              "relation": "LOCATED_IN",
+              "subject_name": "星陨阁"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "中州",
+              "relation": "LOCATED_IN",
+              "subject_name": "空间虫洞"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "中州",
+              "relation": "LOCATED_IN",
+              "subject_name": "风雷阁"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "中州",
+              "relation": "LOCATED_IN",
+              "subject_name": "黄泉阁"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "天涯城",
+              "relation": "LOCATED_IN",
+              "subject_name": "空间虫洞"
+            }
+          ]
+        },
+        {
+          "ordinal": 426,
+          "unit_id": "XUNIT-E28DEF5742CAC5B53927",
+          "cohort": "stress",
+          "gold_unique": 36,
+          "predicted_unique": 26,
+          "extra_count": 11,
+          "miss_count": 21,
+          "extras": [
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "天山血潭",
+              "relation": "LOCATED_IN",
+              "object_name": "天目山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天目山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天目山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "化骨城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁东阁",
+              "explicit_type": "总部"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "雷山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁总部东阁"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "出云帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天山血潭"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天目山顶"
+            }
+          ],
+          "misses": [
+            {
+              "explicit_type": "区域",
+              "kind": "PLACE_MENTION",
+              "name": "中州中央区域"
+            },
+            {
+              "explicit_type": "城",
+              "kind": "PLACE_MENTION",
+              "name": "化骨城"
+            },
+            {
+              "explicit_type": "大陆",
+              "kind": "PLACE_MENTION",
+              "name": "中州大陆"
+            },
+            {
+              "explicit_type": "山",
+              "kind": "PLACE_MENTION",
+              "name": "天目山"
+            },
+            {
+              "explicit_type": "山",
+              "kind": "PLACE_MENTION",
+              "name": "雷山"
+            },
+            {
+              "explicit_type": "山脉",
+              "kind": "PLACE_MENTION",
+              "name": "天目山脉"
+            },
+            {
+              "explicit_type": "山脉",
+              "kind": "PLACE_MENTION",
+              "name": "风雷山脉"
+            },
+            {
+              "explicit_type": "山顶",
+              "kind": "PLACE_MENTION",
+              "name": "天目山顶"
+            },
+            {
+              "explicit_type": "帝国",
+              "kind": "PLACE_MENTION",
+              "name": "出云帝国"
+            },
+            {
+              "explicit_type": "广场",
+              "kind": "PLACE_MENTION",
+              "name": "银色广场"
+            },
+            {
+              "explicit_type": "总部",
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁总部东阁"
+            },
+            {
+              "explicit_type": "血潭",
+              "kind": "PLACE_MENTION",
+              "name": "天山血潭"
+            },
+            {
+              "explicit_type": "领地",
+              "kind": "PLACE_MENTION",
+              "name": "天空领地"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "石屋"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "血潭"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "雷山之顶"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "中州中央区域",
+              "relation": "NEAR",
+              "subject_name": "东阁"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "北域",
+              "relation": "LOCATED_IN",
+              "subject_name": "风雷山脉"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "天目山脉",
+              "relation": "PART_OF",
+              "subject_name": "天山血潭"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "风雷山脉",
+              "relation": "PART_OF",
+              "subject_name": "天空领地"
+            }
+          ]
+        },
+        {
+          "ordinal": 467,
+          "unit_id": "XUNIT-6DA264A942494F5AAE99",
+          "cohort": "control",
+          "gold_unique": 13,
+          "predicted_unique": 8,
+          "extra_count": 4,
+          "miss_count": 9,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "丹塔",
+              "explicit_type": "塔"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "丹域",
+              "explicit_type": "域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "冰河谷",
+              "explicit_type": "谷"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "中州",
+              "explicit_type": "州"
+            }
+          ],
+          "misses": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "中州"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "丹域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "丹塔"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "前院"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "大厅"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "密室"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "炼丹室"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "石亭"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "院落"
+            }
+          ]
+        },
+        {
+          "ordinal": 513,
+          "unit_id": "XUNIT-7E362A3E3E7C883BF15A",
+          "cohort": "stress",
+          "gold_unique": 18,
+          "predicted_unique": 11,
+          "extra_count": 5,
+          "miss_count": 12,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "骸骨山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "远古遗迹"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "骸骨海洋"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "斗气大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "兽骸山脉"
+            }
+          ],
+          "misses": [
+            {
+              "explicit_type": "地域",
+              "kind": "PLACE_MENTION",
+              "name": "兽域"
+            },
+            {
+              "explicit_type": "塔",
+              "kind": "PLACE_MENTION",
+              "name": "石塔"
+            },
+            {
+              "explicit_type": "大陆",
+              "kind": "PLACE_MENTION",
+              "name": "斗气大陆"
+            },
+            {
+              "explicit_type": "山脉",
+              "kind": "PLACE_MENTION",
+              "name": "兽骸山脉"
+            },
+            {
+              "explicit_type": "山脉",
+              "kind": "PLACE_MENTION",
+              "name": "骸骨山脉"
+            },
+            {
+              "explicit_type": "海洋",
+              "kind": "PLACE_MENTION",
+              "name": "骸骨海洋"
+            },
+            {
+              "explicit_type": "禁地",
+              "kind": "PLACE_MENTION",
+              "name": "天妖凰族的禁地"
+            },
+            {
+              "explicit_type": "遗迹",
+              "kind": "PLACE_MENTION",
+              "name": "远古遗迹"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "兽域",
+              "relation": "PART_OF",
+              "subject_name": "兽骸山脉"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "兽域",
+              "relation": "PART_OF",
+              "subject_name": "骸骨山脉"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "骸骨山脉",
+              "relation": "LOCATED_IN",
+              "subject_name": "骸骨海洋"
+            }
+          ]
+        },
+        {
+          "ordinal": 596,
+          "unit_id": "XUNIT-CA7E10D63957D03B1AF7",
+          "cohort": "stress",
+          "gold_unique": 16,
+          "predicted_unique": 14,
+          "extra_count": 1,
+          "miss_count": 3,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "星陨阁"
+            }
+          ],
+          "misses": [
+            {
+              "explicit_type": "大殿",
+              "kind": "PLACE_MENTION",
+              "name": "星陨阁"
+            },
+            {
+              "explicit_type": "总部",
+              "kind": "PLACE_MENTION",
+              "name": "冥河盟"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "天北城",
+              "relation": "LOCATED_IN",
+              "subject_name": "韩家"
+            }
+          ]
+        },
+        {
+          "ordinal": 604,
+          "unit_id": "XUNIT-FA40CBB1DF4E1DAA0BFC",
+          "cohort": "control",
+          "gold_unique": 5,
+          "predicted_unique": 7,
+          "extra_count": 2,
+          "miss_count": 0,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "九幽黄泉",
+              "explicit_type": "地方"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "九幽地冥蟒族的大本营",
+              "explicit_type": "大本营"
+            }
+          ],
+          "misses": []
+        }
+      ]
+    },
+    "B": {
+      "units": [
+        {
+          "ordinal": 5,
+          "unit_id": "XUNIT-A67A64F7D2DA595F35EE",
+          "cohort": "stress",
+          "gold_unique": 33,
+          "predicted_unique": 57,
+          "extra_count": 24,
+          "miss_count": 0,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "斗气大陆",
+              "explicit_type": "大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "双帝山脉",
+              "explicit_type": "山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天府联盟总部",
+              "explicit_type": "总部"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "双帝渊"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "双帝渊",
+              "explicit_type": "渊"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "魂界",
+              "explicit_type": "界"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "魂族的老巢"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "北离城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "青天城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国",
+              "explicit_type": "帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天府联盟"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "花宗旧址",
+              "explicit_type": "旧址"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "花宗后山",
+              "explicit_type": "后山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "中州大陆",
+              "explicit_type": "大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "云岚山",
+              "explicit_type": "山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "魔兽山脉",
+              "explicit_type": "山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "青山镇",
+              "explicit_type": "镇"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "乌坦城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛圣城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西北地域",
+              "explicit_type": "地域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "米特尔家族的总部",
+              "explicit_type": "总部"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西北大陆",
+              "explicit_type": "大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "萧家的总部",
+              "explicit_type": "总部"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "魔兽山脉",
+              "relation": "LOCATED_IN",
+              "object_name": "加玛帝国"
+            }
+          ],
+          "misses": []
+        },
+        {
+          "ordinal": 102,
+          "unit_id": "XUNIT-15A2604A648927C67B63",
+          "cohort": "control",
+          "gold_unique": 11,
+          "predicted_unique": 14,
+          "extra_count": 10,
+          "miss_count": 7,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "石漠城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "盐城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "盐城",
+              "explicit_type": "城市"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "漠城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国",
+              "explicit_type": "帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国东部省份",
+              "explicit_type": "省份"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "东部省份",
+              "explicit_type": "省份"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑岩城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "云岚山",
+              "explicit_type": "山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "帝国边境",
+              "explicit_type": "边境"
+            }
+          ],
+          "misses": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "东部省份"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "云岚山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "漠城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "盐城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "石漠城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑岩城"
+            }
+          ]
+        },
+        {
+          "ordinal": 233,
+          "unit_id": "XUNIT-FABCF30DD2F6F77259E5",
+          "cohort": "control",
+          "gold_unique": 6,
+          "predicted_unique": 9,
+          "extra_count": 3,
+          "miss_count": 0,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑角域",
+              "explicit_type": "域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "深山山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "深山山脉",
+              "explicit_type": "山脉"
+            }
+          ],
+          "misses": []
+        },
+        {
+          "ordinal": 310,
+          "unit_id": "XUNIT-F62C01B618A1D3782CEB",
+          "cohort": "stress",
+          "gold_unique": 27,
+          "predicted_unique": 51,
+          "extra_count": 25,
+          "miss_count": 1,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国",
+              "explicit_type": "帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "云岚山",
+              "explicit_type": "山"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "云岚山",
+              "explicit_type": "圣地"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "云岚山",
+              "explicit_type": "山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝都",
+              "explicit_type": "帝都"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛圣城",
+              "explicit_type": "圣城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛圣城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "萧府",
+              "explicit_type": "府"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑角域",
+              "explicit_type": "域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "乌坦城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "斗气大陆",
+              "explicit_type": "大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "大陆西北地带",
+              "explicit_type": "地带"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西北地域",
+              "explicit_type": "地域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西南地域",
+              "explicit_type": "地域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天蛇府",
+              "explicit_type": "府"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西北地域中心地带"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西北地域中心地带",
+              "explicit_type": "地带"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天蛇国",
+              "explicit_type": "国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛皇城",
+              "explicit_type": "皇城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛皇城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "大陆西北地带",
+              "relation": "PART_OF",
+              "object_name": "斗气大陆"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "天蛇国",
+              "relation": "LOCATED_IN",
+              "object_name": "西北地域中心地带"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "西北地域中心地带",
+              "relation": "PART_OF",
+              "object_name": "西北地域"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "云岚宗",
+              "relation": "NEAR",
+              "object_name": "皇城"
+            }
+          ],
+          "misses": [
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "西北地域",
+              "relation": "LOCATED_IN",
+              "subject_name": "天蛇国"
+            }
+          ]
+        },
+        {
+          "ordinal": 395,
+          "unit_id": "XUNIT-08132AD96AEFF2AAAC1E",
+          "cohort": "stress",
+          "gold_unique": 24,
+          "predicted_unique": 41,
+          "extra_count": 17,
+          "miss_count": 0,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "中州",
+              "explicit_type": "地方"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黑角域",
+              "explicit_type": "域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "加玛帝国",
+              "explicit_type": "帝国"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西北地域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "西北地域",
+              "explicit_type": "地域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天涯城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "中州大陆",
+              "explicit_type": "大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天擎"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天擎山脉",
+              "explicit_type": "山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "城中心"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "星陨阁",
+              "explicit_type": "阁"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "万剑阁",
+              "explicit_type": "阁"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "黄泉阁",
+              "explicit_type": "阁"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁",
+              "explicit_type": "阁"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "焚炎谷",
+              "explicit_type": "谷"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "天涯城",
+              "relation": "CONNECTED_TO",
+              "object_name": "中州"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "空间虫洞",
+              "relation": "LOCATED_IN",
+              "object_name": "城中心"
+            }
+          ],
+          "misses": []
+        },
+        {
+          "ordinal": 426,
+          "unit_id": "XUNIT-E28DEF5742CAC5B53927",
+          "cohort": "stress",
+          "gold_unique": 36,
+          "predicted_unique": 34,
+          "extra_count": 7,
+          "miss_count": 9,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁东阁",
+              "explicit_type": "总部"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁总部东阁"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天山血潭"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁总部"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天目山顶"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "天山血潭",
+              "relation": "LOCATED_IN",
+              "object_name": "天目山脉"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "雷山之顶",
+              "relation": "PART_OF",
+              "object_name": "雷山"
+            }
+          ],
+          "misses": [
+            {
+              "explicit_type": "区域",
+              "kind": "PLACE_MENTION",
+              "name": "中州中央区域"
+            },
+            {
+              "explicit_type": "山顶",
+              "kind": "PLACE_MENTION",
+              "name": "天目山顶"
+            },
+            {
+              "explicit_type": "广场",
+              "kind": "PLACE_MENTION",
+              "name": "银色广场"
+            },
+            {
+              "explicit_type": "总部",
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁总部"
+            },
+            {
+              "explicit_type": "总部",
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁总部东阁"
+            },
+            {
+              "explicit_type": "血潭",
+              "kind": "PLACE_MENTION",
+              "name": "天山血潭"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "石屋"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "中州中央区域",
+              "relation": "NEAR",
+              "subject_name": "东阁"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "天目山脉",
+              "relation": "PART_OF",
+              "subject_name": "天山血潭"
+            }
+          ]
+        },
+        {
+          "ordinal": 467,
+          "unit_id": "XUNIT-6DA264A942494F5AAE99",
+          "cohort": "control",
+          "gold_unique": 13,
+          "predicted_unique": 17,
+          "extra_count": 5,
+          "miss_count": 1,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "丹域",
+              "explicit_type": "域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "圣丹城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "圣丹城",
+              "explicit_type": "圣地"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "斗气大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "叶城"
+            }
+          ],
+          "misses": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "叶家前院"
+            }
+          ]
+        },
+        {
+          "ordinal": 513,
+          "unit_id": "XUNIT-7E362A3E3E7C883BF15A",
+          "cohort": "stress",
+          "gold_unique": 18,
+          "predicted_unique": 26,
+          "extra_count": 12,
+          "miss_count": 4,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "斗气大陆"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "远古遗迹"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天妖凰族的禁地"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "兽骸山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "骸骨山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "骸骨海洋"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "远古遗迹开启之地"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "骸骨山脉中心"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁的营地"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁的营地",
+              "explicit_type": "营地"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "兽域",
+              "relation": "LOCATED_IN",
+              "object_name": "斗气大陆"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "subject_name": "兽骸山脉",
+              "relation": "LOCATED_IN",
+              "object_name": "兽域"
+            }
+          ],
+          "misses": [
+            {
+              "explicit_type": "塔",
+              "kind": "PLACE_MENTION",
+              "name": "石塔"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷阁"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "兽域",
+              "relation": "PART_OF",
+              "subject_name": "兽骸山脉"
+            },
+            {
+              "kind": "SPATIAL_RELATION",
+              "object_name": "兽域",
+              "relation": "PART_OF",
+              "subject_name": "骸骨山脉"
+            }
+          ]
+        },
+        {
+          "ordinal": 596,
+          "unit_id": "XUNIT-CA7E10D63957D03B1AF7",
+          "cohort": "stress",
+          "gold_unique": 16,
+          "predicted_unique": 25,
+          "extra_count": 11,
+          "miss_count": 2,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "焚炎谷",
+              "explicit_type": "谷"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "冥河盟总部"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天冥宗"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天冥宗",
+              "explicit_type": "总部宗门"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "冰河谷"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "冰河谷",
+              "explicit_type": "谷"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "风雷山脉",
+              "explicit_type": "山脉"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "天北城",
+              "explicit_type": "城"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "北域",
+              "explicit_type": "域"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "星陨阁"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "星陨阁大殿"
+            }
+          ],
+          "misses": [
+            {
+              "explicit_type": "大殿",
+              "kind": "PLACE_MENTION",
+              "name": "星陨阁"
+            },
+            {
+              "explicit_type": "总部",
+              "kind": "PLACE_MENTION",
+              "name": "冥河盟"
+            }
+          ]
+        },
+        {
+          "ordinal": 604,
+          "unit_id": "XUNIT-FA40CBB1DF4E1DAA0BFC",
+          "cohort": "control",
+          "gold_unique": 5,
+          "predicted_unique": 8,
+          "extra_count": 3,
+          "miss_count": 0,
+          "extras": [
+            {
+              "kind": "PLACE_MENTION",
+              "name": "九幽黄泉",
+              "explicit_type": "地方"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "九幽地冥蟒族的大本营"
+            },
+            {
+              "kind": "PLACE_MENTION",
+              "name": "九幽地冥蟒族的大本营",
+              "explicit_type": "大本营"
+            }
+          ],
+          "misses": []
+        }
+      ]
+    }
+  }
+}

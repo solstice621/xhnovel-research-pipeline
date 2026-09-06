@@ -1,0 +1,1288 @@
+{
+ "records": [
+  {
+   "payload": {
+    "kind": "SPATIAL_RELATION",
+    "subject_name": "小丹塔",
+    "relation": "LOCATED_IN",
+    "object_name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/subject_name",
+      "/relation",
+      "/object_name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 939,
+       "end": 953
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "星陨阁"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-C12FD06F66E39A232F18-002",
+       "start": 1322,
+       "end": 1327
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "冥河盟"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-C12FD06F66E39A232F18-002",
+       "start": 1279,
+       "end": 1284
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 273,
+       "end": 277
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 949,
+       "end": 954
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "中州"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 358,
+       "end": 360
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "花宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 487,
+       "end": 491
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "焚炎谷"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 490,
+       "end": 495
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "风雷阁"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+       "start": 926,
+       "end": 931
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "风雷山脉"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+       "start": 1316,
+       "end": 1320
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "星界"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+       "start": 13,
+       "end": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "天北城"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-B0EA9A00D07FC93E0C89-002",
+       "start": 194,
+       "end": 199
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "北域"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-B0EA9A00D07FC93E0C89-002",
+       "start": 813,
+       "end": 817
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "韩家"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-B0EA9A00D07FC93E0C89-002",
+       "start": 141,
+       "end": 145
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "星陨阁"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-C12FD06F66E39A232F18-002",
+       "start": 1379,
+       "end": 1384
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "冥河盟"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-C12FD06F66E39A232F18-002",
+       "start": 1331,
+       "end": 1336
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "冥河盟"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-C12FD06F66E39A232F18-002",
+       "start": 1367,
+       "end": 1372
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 381,
+       "end": 385
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 399,
+       "end": 403
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 412,
+       "end": 416
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 466,
+       "end": 470
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 484,
+       "end": 488
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 527,
+       "end": 531
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 651,
+       "end": 655
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 930,
+       "end": 934
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 939,
+       "end": 943
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1205,
+       "end": 1209
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1227,
+       "end": 1231
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1355,
+       "end": 1359
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1418,
+       "end": 1422
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 956,
+       "end": 961
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1004,
+       "end": 1009
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1017,
+       "end": 1022
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1062,
+       "end": 1067
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1186,
+       "end": 1191
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1192,
+       "end": 1197
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1295,
+       "end": 1300
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1321,
+       "end": 1326
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1440,
+       "end": 1445
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 1485,
+       "end": 1490
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "星陨阁"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 61,
+       "end": 66
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "星陨阁"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 69,
+       "end": 74
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "星陨阁"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+       "start": 123,
+       "end": 128
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 42,
+       "end": 46
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 159,
+       "end": 163
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 398,
+       "end": 402
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 439,
+       "end": 443
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "小丹塔"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 244,
+       "end": 247
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "星陨阁"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 356,
+       "end": 361
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "星陨阁"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 378,
+       "end": 383
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "花宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 604,
+       "end": 608
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "花宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 655,
+       "end": 659
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "花宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 705,
+       "end": 709
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "花宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 727,
+       "end": 731
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "花宗"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 763,
+       "end": 767
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "焚炎谷"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 881,
+       "end": 886
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "焚炎谷"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 905,
+       "end": 910
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "焚炎谷"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 942,
+       "end": 947
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "焚炎谷"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 1084,
+       "end": 1089
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "焚炎谷"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 1182,
+       "end": 1187
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "中州"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 498,
+       "end": 502
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "中州"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 790,
+       "end": 794
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "中州"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 1039,
+       "end": 1043
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "payload": {
+    "kind": "PLACE_MENTION",
+    "name": "中州"
+   },
+   "evidence_bindings": [
+    {
+     "paths": [
+      "/name"
+     ],
+     "source_spans": [
+      {
+       "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+       "start": 1276,
+       "end": 1280
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

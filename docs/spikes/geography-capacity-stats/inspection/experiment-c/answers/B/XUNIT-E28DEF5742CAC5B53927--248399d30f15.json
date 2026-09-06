@@ -1,0 +1,751 @@
+{
+  "records": [
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷山脉",
+        "explicit_type": "山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-000",
+              "start": 8,
+              "end": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "中州",
+        "explicit_type": "大陆"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-001",
+              "start": 443,
+              "end": 449
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "中州"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-001",
+              "start": 1151,
+              "end": 1153
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天目山",
+        "explicit_type": "山"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-001",
+              "start": 895,
+              "end": 898
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天目山脉",
+        "explicit_type": "山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-001",
+              "start": 1280,
+              "end": 1284
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "化骨城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-001",
+              "start": 1519,
+              "end": 1522
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "北域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-001",
+              "start": 1527,
+              "end": 1529
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "东阁",
+        "explicit_type": "总部"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 23,
+              "end": 27
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "东阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 144,
+              "end": 146
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷阁东阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 340,
+              "end": 345
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷阁东阁",
+        "explicit_type": "总部"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 340,
+              "end": 378
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "中州大陆",
+        "explicit_type": "大陆"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 764,
+              "end": 768
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷东阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 1033,
+              "end": 1037
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "雷山",
+        "explicit_type": "山"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 1260,
+              "end": 1262
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷阁总部东阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 1545,
+              "end": 1552
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "出云帝国",
+        "explicit_type": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-001",
+              "start": 211,
+              "end": 215
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天山血潭"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-001",
+              "start": 703,
+              "end": 707
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "血潭"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-001",
+              "start": 738,
+              "end": 740
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷阁总部"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-001",
+              "start": 948,
+              "end": 953
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天空领地",
+        "explicit_type": "领地"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-001",
+              "start": 1151,
+              "end": 1155
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "雷山",
+        "explicit_type": "山峰"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-001",
+              "start": 1508,
+              "end": 1520
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-002",
+              "start": 841,
+              "end": 846
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "雷山之顶"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-1AC7D223CF61B842D7B9-001",
+              "start": 1405,
+              "end": 1409
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天目山顶"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-1AC7D223CF61B842D7B9-001",
+              "start": 1502,
+              "end": 1506
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "东阁",
+        "relation": "LOCATED_IN",
+        "object_name": "北域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 39,
+              "end": 65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "风雷阁东阁",
+        "relation": "LOCATED_IN",
+        "object_name": "风雷山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 1093,
+              "end": 1113
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "风雷山脉",
+        "relation": "LOCATED_IN",
+        "object_name": "北域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 1102,
+              "end": 1111
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "风雷阁东阁",
+        "relation": "LOCATED_IN",
+        "object_name": "雷山"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 1269,
+              "end": 1286
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "风雷阁总部东阁",
+        "relation": "LOCATED_IN",
+        "object_name": "风雷山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-5708A7A7F72CB87AE3DD-002",
+              "start": 1545,
+              "end": 1559
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "天山血潭",
+        "relation": "LOCATED_IN",
+        "object_name": "天目山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-001",
+              "start": 698,
+              "end": 707
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "天空领地",
+        "relation": "PART_OF",
+        "object_name": "风雷山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-001",
+              "start": 1146,
+              "end": 1155
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "雷山",
+        "relation": "LOCATED_IN",
+        "object_name": "风雷山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-001",
+              "start": 1463,
+              "end": 1520
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "风雷东阁",
+        "relation": "LOCATED_IN",
+        "object_name": "雷山"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8C2F48AAFE373B727AA0-002",
+              "start": 32,
+              "end": 42
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "雷山之顶",
+        "relation": "PART_OF",
+        "object_name": "雷山"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-1AC7D223CF61B842D7B9-001",
+              "start": 1405,
+              "end": 1409
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "completion": {
+    "status": "COMPLETE"
+  }
+}

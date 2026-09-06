@@ -1,0 +1,651 @@
+{
+  "per_unit": [
+    {
+      "ordinal": 5,
+      "unit_id": "XUNIT-A67A64F7D2DA595F35EE",
+      "cohort": "stress",
+      "raw_count": 57,
+      "unit_local_unique_count": 57,
+      "duplicate_count": 0,
+      "response_bytes": 25710,
+      "completion_status": "COMPLETE",
+      "place_unique": {
+        "tp": 23,
+        "predicted": 46,
+        "gold": 23,
+        "precision": 0.5,
+        "recall": 1.0,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": 1.0,
+          "Q3": 1.0,
+          "Q4": 1.0
+        }
+      },
+      "relation_unique": {
+        "tp": 10,
+        "predicted": 11,
+        "gold": 10,
+        "precision": 0.9090909090909091,
+        "recall": 1.0,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": 1.0,
+          "Q3": 1.0,
+          "Q4": 1.0
+        }
+      },
+      "place_name": {
+        "tp": 22,
+        "predicted": 24,
+        "gold": 22,
+        "precision": 0.9166666666666666,
+        "recall": 1.0
+      },
+      "explicit_type_accuracy": 0.09090909090909091,
+      "citation": {
+        "matched_payloads": 33,
+        "containment_rate": 0.7878787878787878,
+        "exact_span_rate": 0.7878787878787878
+      },
+      "tail_recall": {
+        "Q1": 1.0,
+        "Q2": 1.0,
+        "Q3": 1.0,
+        "Q4": 1.0
+      }
+    },
+    {
+      "ordinal": 102,
+      "unit_id": "XUNIT-15A2604A648927C67B63",
+      "cohort": "control",
+      "raw_count": 14,
+      "unit_local_unique_count": 14,
+      "duplicate_count": 0,
+      "response_bytes": 7232,
+      "completion_status": "COMPLETE",
+      "place_unique": {
+        "tp": 2,
+        "predicted": 12,
+        "gold": 9,
+        "precision": 0.16666666666666666,
+        "recall": 0.2222222222222222,
+        "tail_recall": {
+          "Q1": 0.0,
+          "Q2": 0.0,
+          "Q3": 1.0,
+          "Q4": 0.0
+        }
+      },
+      "relation_unique": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": null,
+          "Q3": null,
+          "Q4": null
+        }
+      },
+      "place_name": {
+        "tp": 9,
+        "predicted": 11,
+        "gold": 9,
+        "precision": 0.8181818181818182,
+        "recall": 1.0
+      },
+      "explicit_type_accuracy": 0.2222222222222222,
+      "citation": {
+        "matched_payloads": 4,
+        "containment_rate": 0.5,
+        "exact_span_rate": 0.5
+      },
+      "tail_recall": {
+        "Q1": 0.2857142857142857,
+        "Q2": 0.0,
+        "Q3": 1.0,
+        "Q4": 0.0
+      }
+    },
+    {
+      "ordinal": 233,
+      "unit_id": "XUNIT-FABCF30DD2F6F77259E5",
+      "cohort": "control",
+      "raw_count": 9,
+      "unit_local_unique_count": 9,
+      "duplicate_count": 0,
+      "response_bytes": 3757,
+      "completion_status": "COMPLETE",
+      "place_unique": {
+        "tp": 6,
+        "predicted": 9,
+        "gold": 6,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": 1.0,
+          "Q3": null,
+          "Q4": 1.0
+        }
+      },
+      "relation_unique": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null,
+        "tail_recall": {
+          "Q1": null,
+          "Q2": null,
+          "Q3": null,
+          "Q4": null
+        }
+      },
+      "place_name": {
+        "tp": 6,
+        "predicted": 7,
+        "gold": 6,
+        "precision": 0.8571428571428571,
+        "recall": 1.0
+      },
+      "explicit_type_accuracy": 0.8333333333333334,
+      "citation": {
+        "matched_payloads": 6,
+        "containment_rate": 1.0,
+        "exact_span_rate": 1.0
+      },
+      "tail_recall": {
+        "Q1": 1.0,
+        "Q2": 1.0,
+        "Q3": null,
+        "Q4": 1.0
+      }
+    },
+    {
+      "ordinal": 310,
+      "unit_id": "XUNIT-F62C01B618A1D3782CEB",
+      "cohort": "stress",
+      "raw_count": 51,
+      "unit_local_unique_count": 51,
+      "duplicate_count": 0,
+      "response_bytes": 22875,
+      "completion_status": "COMPLETE",
+      "place_unique": {
+        "tp": 21,
+        "predicted": 42,
+        "gold": 21,
+        "precision": 0.5,
+        "recall": 1.0,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": 1.0,
+          "Q3": 1.0,
+          "Q4": 1.0
+        }
+      },
+      "relation_unique": {
+        "tp": 5,
+        "predicted": 9,
+        "gold": 6,
+        "precision": 0.5555555555555556,
+        "recall": 0.8333333333333334,
+        "tail_recall": {
+          "Q1": null,
+          "Q2": 1.0,
+          "Q3": 0.8,
+          "Q4": null
+        }
+      },
+      "place_name": {
+        "tp": 20,
+        "predicted": 22,
+        "gold": 20,
+        "precision": 0.9090909090909091,
+        "recall": 1.0
+      },
+      "explicit_type_accuracy": 0.3,
+      "citation": {
+        "matched_payloads": 26,
+        "containment_rate": 0.9230769230769231,
+        "exact_span_rate": 0.8461538461538461
+      },
+      "tail_recall": {
+        "Q1": 1.0,
+        "Q2": 1.0,
+        "Q3": 0.9230769230769231,
+        "Q4": 1.0
+      }
+    },
+    {
+      "ordinal": 395,
+      "unit_id": "XUNIT-08132AD96AEFF2AAAC1E",
+      "cohort": "stress",
+      "raw_count": 41,
+      "unit_local_unique_count": 41,
+      "duplicate_count": 0,
+      "response_bytes": 18698,
+      "completion_status": "COMPLETE",
+      "place_unique": {
+        "tp": 15,
+        "predicted": 30,
+        "gold": 15,
+        "precision": 0.5,
+        "recall": 1.0,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": 1.0,
+          "Q3": 1.0,
+          "Q4": null
+        }
+      },
+      "relation_unique": {
+        "tp": 9,
+        "predicted": 11,
+        "gold": 9,
+        "precision": 0.8181818181818182,
+        "recall": 1.0,
+        "tail_recall": {
+          "Q1": null,
+          "Q2": 1.0,
+          "Q3": 1.0,
+          "Q4": null
+        }
+      },
+      "place_name": {
+        "tp": 14,
+        "predicted": 16,
+        "gold": 14,
+        "precision": 0.875,
+        "recall": 1.0
+      },
+      "explicit_type_accuracy": 0.14285714285714285,
+      "citation": {
+        "matched_payloads": 24,
+        "containment_rate": 0.9583333333333334,
+        "exact_span_rate": 0.6666666666666666
+      },
+      "tail_recall": {
+        "Q1": 1.0,
+        "Q2": 1.0,
+        "Q3": 1.0,
+        "Q4": null
+      }
+    },
+    {
+      "ordinal": 467,
+      "unit_id": "XUNIT-6DA264A942494F5AAE99",
+      "cohort": "control",
+      "raw_count": 17,
+      "unit_local_unique_count": 17,
+      "duplicate_count": 0,
+      "response_bytes": 5644,
+      "completion_status": "COMPLETE",
+      "place_unique": {
+        "tp": 12,
+        "predicted": 17,
+        "gold": 13,
+        "precision": 0.7058823529411765,
+        "recall": 0.9230769230769231,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": 1.0,
+          "Q3": 0.8,
+          "Q4": 1.0
+        }
+      },
+      "relation_unique": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null,
+        "tail_recall": {
+          "Q1": null,
+          "Q2": null,
+          "Q3": null,
+          "Q4": null
+        }
+      },
+      "place_name": {
+        "tp": 12,
+        "predicted": 12,
+        "gold": 13,
+        "precision": 1.0,
+        "recall": 0.9230769230769231
+      },
+      "explicit_type_accuracy": 0.6666666666666666,
+      "citation": {
+        "matched_payloads": 12,
+        "containment_rate": 1.0,
+        "exact_span_rate": 1.0
+      },
+      "tail_recall": {
+        "Q1": 1.0,
+        "Q2": 1.0,
+        "Q3": 0.8,
+        "Q4": 1.0
+      }
+    },
+    {
+      "ordinal": 426,
+      "unit_id": "XUNIT-E28DEF5742CAC5B53927",
+      "cohort": "stress",
+      "raw_count": 34,
+      "unit_local_unique_count": 34,
+      "duplicate_count": 0,
+      "response_bytes": 15744,
+      "completion_status": "COMPLETE",
+      "place_unique": {
+        "tp": 19,
+        "predicted": 24,
+        "gold": 26,
+        "precision": 0.7916666666666666,
+        "recall": 0.7307692307692307,
+        "tail_recall": {
+          "Q1": 0.75,
+          "Q2": 0.8461538461538461,
+          "Q3": 0.6666666666666666,
+          "Q4": 0.3333333333333333
+        }
+      },
+      "relation_unique": {
+        "tp": 8,
+        "predicted": 10,
+        "gold": 10,
+        "precision": 0.8,
+        "recall": 0.8,
+        "tail_recall": {
+          "Q1": null,
+          "Q2": 0.8571428571428571,
+          "Q3": 0.6666666666666666,
+          "Q4": null
+        }
+      },
+      "place_name": {
+        "tp": 20,
+        "predicted": 20,
+        "gold": 23,
+        "precision": 1.0,
+        "recall": 0.8695652173913043
+      },
+      "explicit_type_accuracy": 0.75,
+      "citation": {
+        "matched_payloads": 27,
+        "containment_rate": 1.0,
+        "exact_span_rate": 0.8518518518518519
+      },
+      "tail_recall": {
+        "Q1": 0.75,
+        "Q2": 0.85,
+        "Q3": 0.6666666666666666,
+        "Q4": 0.3333333333333333
+      }
+    },
+    {
+      "ordinal": 513,
+      "unit_id": "XUNIT-7E362A3E3E7C883BF15A",
+      "cohort": "stress",
+      "raw_count": 26,
+      "unit_local_unique_count": 26,
+      "duplicate_count": 0,
+      "response_bytes": 11943,
+      "completion_status": "COMPLETE",
+      "place_unique": {
+        "tp": 9,
+        "predicted": 19,
+        "gold": 11,
+        "precision": 0.47368421052631576,
+        "recall": 0.8181818181818182,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": 1.0,
+          "Q3": 0.0,
+          "Q4": null
+        }
+      },
+      "relation_unique": {
+        "tp": 5,
+        "predicted": 7,
+        "gold": 7,
+        "precision": 0.7142857142857143,
+        "recall": 0.7142857142857143,
+        "tail_recall": {
+          "Q1": 0.6666666666666666,
+          "Q2": 0.75,
+          "Q3": null,
+          "Q4": null
+        }
+      },
+      "place_name": {
+        "tp": 8,
+        "predicted": 11,
+        "gold": 10,
+        "precision": 0.7272727272727273,
+        "recall": 0.8
+      },
+      "explicit_type_accuracy": 0.25,
+      "citation": {
+        "matched_payloads": 14,
+        "containment_rate": 0.9285714285714286,
+        "exact_span_rate": 0.8571428571428571
+      },
+      "tail_recall": {
+        "Q1": 0.8888888888888888,
+        "Q2": 0.8571428571428571,
+        "Q3": 0.0,
+        "Q4": null
+      }
+    },
+    {
+      "ordinal": 596,
+      "unit_id": "XUNIT-CA7E10D63957D03B1AF7",
+      "cohort": "stress",
+      "raw_count": 25,
+      "unit_local_unique_count": 25,
+      "duplicate_count": 0,
+      "response_bytes": 10581,
+      "completion_status": "COMPLETE",
+      "place_unique": {
+        "tp": 12,
+        "predicted": 23,
+        "gold": 14,
+        "precision": 0.5217391304347826,
+        "recall": 0.8571428571428571,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": 0.8571428571428571,
+          "Q3": 1.0,
+          "Q4": 0.0
+        }
+      },
+      "relation_unique": {
+        "tp": 2,
+        "predicted": 2,
+        "gold": 2,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": null,
+          "Q3": 1.0,
+          "Q4": null
+        }
+      },
+      "place_name": {
+        "tp": 13,
+        "predicted": 17,
+        "gold": 13,
+        "precision": 0.7647058823529411,
+        "recall": 1.0
+      },
+      "explicit_type_accuracy": 0.5384615384615384,
+      "citation": {
+        "matched_payloads": 14,
+        "containment_rate": 1.0,
+        "exact_span_rate": 1.0
+      },
+      "tail_recall": {
+        "Q1": 1.0,
+        "Q2": 0.8571428571428571,
+        "Q3": 1.0,
+        "Q4": 0.0
+      }
+    },
+    {
+      "ordinal": 604,
+      "unit_id": "XUNIT-FA40CBB1DF4E1DAA0BFC",
+      "cohort": "control",
+      "raw_count": 8,
+      "unit_local_unique_count": 8,
+      "duplicate_count": 0,
+      "response_bytes": 3194,
+      "completion_status": "COMPLETE",
+      "place_unique": {
+        "tp": 5,
+        "predicted": 8,
+        "gold": 5,
+        "precision": 0.625,
+        "recall": 1.0,
+        "tail_recall": {
+          "Q1": 1.0,
+          "Q2": 1.0,
+          "Q3": null,
+          "Q4": 1.0
+        }
+      },
+      "relation_unique": {
+        "tp": 0,
+        "predicted": 0,
+        "gold": 0,
+        "precision": null,
+        "recall": null,
+        "tail_recall": {
+          "Q1": null,
+          "Q2": null,
+          "Q3": null,
+          "Q4": null
+        }
+      },
+      "place_name": {
+        "tp": 5,
+        "predicted": 6,
+        "gold": 5,
+        "precision": 0.8333333333333334,
+        "recall": 1.0
+      },
+      "explicit_type_accuracy": 0.8,
+      "citation": {
+        "matched_payloads": 5,
+        "containment_rate": 1.0,
+        "exact_span_rate": 1.0
+      },
+      "tail_recall": {
+        "Q1": 1.0,
+        "Q2": 1.0,
+        "Q3": null,
+        "Q4": 1.0
+      }
+    }
+  ],
+  "cohorts": {
+    "stress": {
+      "unit_count": 6,
+      "place_unique": {
+        "precision": 0.5380434782608695,
+        "recall": 0.9,
+        "tp": 99,
+        "predicted": 184,
+        "gold": 110
+      },
+      "relation_unique": {
+        "precision": 0.78,
+        "recall": 0.8863636363636364,
+        "tp": 39,
+        "predicted": 50,
+        "gold": 44
+      },
+      "place_name": {
+        "precision": 0.8818181818181818,
+        "recall": 0.9509803921568627
+      },
+      "mean_explicit_type_accuracy": 0.0,
+      "mean_q4_recall": 0.5833333333333334,
+      "overflow_units": 0,
+      "complete_units": 6,
+      "raw_saturated_units": 0,
+      "mean_raw_count": 39.0,
+      "mean_unique_count": 39.0,
+      "mean_duplicate_count": 0.0,
+      "mean_response_bytes": 17591.833333333332
+    },
+    "control": {
+      "unit_count": 4,
+      "place_unique": {
+        "precision": 0.5434782608695652,
+        "recall": 0.7575757575757576,
+        "tp": 25,
+        "predicted": 46,
+        "gold": 33
+      },
+      "relation_unique": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 2,
+        "predicted": 2,
+        "gold": 2
+      },
+      "place_name": {
+        "precision": 0.8888888888888888,
+        "recall": 0.9696969696969697
+      },
+      "mean_explicit_type_accuracy": 0.0,
+      "mean_q4_recall": 0.75,
+      "overflow_units": 0,
+      "complete_units": 4,
+      "raw_saturated_units": 0,
+      "mean_raw_count": 12.0,
+      "mean_unique_count": 12.0,
+      "mean_duplicate_count": 0.0,
+      "mean_response_bytes": 4956.75
+    },
+    "all10_diagnostic": {
+      "unit_count": 10,
+      "place_unique": {
+        "precision": 0.5391304347826087,
+        "recall": 0.8671328671328671,
+        "tp": 124,
+        "predicted": 230,
+        "gold": 143
+      },
+      "relation_unique": {
+        "precision": 0.7884615384615384,
+        "recall": 0.8913043478260869,
+        "tp": 41,
+        "predicted": 52,
+        "gold": 46
+      },
+      "place_name": {
+        "precision": 0.8835616438356164,
+        "recall": 0.9555555555555556
+      },
+      "mean_explicit_type_accuracy": 0.0,
+      "mean_q4_recall": 0.6666666666666666,
+      "overflow_units": 0,
+      "complete_units": 10,
+      "raw_saturated_units": 0,
+      "mean_raw_count": 28.2,
+      "mean_unique_count": 28.2,
+      "mean_duplicate_count": 0.0,
+      "mean_response_bytes": 12537.8
+    }
+  },
+  "notes": [
+    "all10_diagnostic is not an unbiased whole-book quality estimate",
+    "capacity decisions may weight the stress cohort",
+    "general quality claims should prioritize controls"
+  ]
+}

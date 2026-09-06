@@ -1,0 +1,930 @@
+{
+  "records": [
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "石漠城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-894D3D7B01FFD4EEE25E-002",
+              "start": 1034,
+              "end": 1037
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-894D3D7B01FFD4EEE25E-002",
+              "start": 1580,
+              "end": 1582
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-000",
+              "start": 8,
+              "end": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 938,
+              "end": 940
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 950,
+              "end": 952
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "漠城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 984,
+              "end": 986
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1115,
+              "end": 1117
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国东部省份",
+        "explicit_type": "省份"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1121,
+              "end": 1129
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "盐城",
+        "relation": "LOCATED_IN",
+        "object_name": "加玛帝国东部省份"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1115,
+              "end": 1129
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "东部省份",
+        "explicit_type": "省份"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1150,
+              "end": 1154
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "盐城",
+        "relation": "CONNECTED_TO",
+        "object_name": "东部省份"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1115,
+              "end": 1154
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国东部省份",
+        "explicit_type": "省份"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1176,
+              "end": 1184
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1205,
+              "end": 1207
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1253,
+              "end": 1255
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国",
+        "explicit_type": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1352,
+              "end": 1356
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1401,
+              "end": 1403
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "东部省份",
+        "explicit_type": "省份"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1412,
+              "end": 1416
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-001",
+              "start": 1543,
+              "end": 1545
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-002",
+              "start": 6,
+              "end": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国",
+        "explicit_type": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-002",
+              "start": 155,
+              "end": 159
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "帝国边境",
+        "explicit_type": "边境"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-002",
+              "start": 316,
+              "end": 320
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "漠城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-002",
+              "start": 329,
+              "end": 331
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-002",
+              "start": 414,
+              "end": 416
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国",
+        "explicit_type": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-A706B3F464783A9AC844-002",
+              "start": 888,
+              "end": 892
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国东部省份",
+        "explicit_type": "省份"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-001",
+              "start": 176,
+              "end": 184
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "黑岩城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-001",
+              "start": 214,
+              "end": 217
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-001",
+              "start": 557,
+              "end": 559
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-001",
+              "start": 605,
+              "end": 607
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国",
+        "explicit_type": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-001",
+              "start": 782,
+              "end": 786
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国",
+        "explicit_type": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-001",
+              "start": 913,
+              "end": 917
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国",
+        "explicit_type": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-001",
+              "start": 1479,
+              "end": 1483
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "帝都"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-001",
+              "start": 1524,
+              "end": 1526
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国",
+        "explicit_type": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-001",
+              "start": 1540,
+              "end": 1544
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "墨索花苑",
+        "explicit_type": "旅馆"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-002",
+              "start": 99,
+              "end": 108
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-002",
+              "start": 355,
+              "end": 357
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-002",
+              "start": 381,
+              "end": 383
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-002",
+              "start": 494,
+              "end": 496
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-002",
+              "start": 603,
+              "end": 605
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-003",
+              "start": 632,
+              "end": 634
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-003",
+              "start": 659,
+              "end": 661
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "盐城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9A7115EEEFF866665058-003",
+              "start": 1237,
+              "end": 1239
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "云岚山",
+        "explicit_type": "山"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8DF75560E993A71D7C59-001",
+              "start": 361,
+              "end": 364
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

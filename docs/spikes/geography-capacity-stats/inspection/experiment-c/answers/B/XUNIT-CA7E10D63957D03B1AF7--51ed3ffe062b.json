@@ -1,0 +1,527 @@
+{
+  "records": [
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "中州"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+              "start": 358,
+              "end": 360
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "丹塔"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+              "start": 940,
+              "end": 942
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "小丹塔"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+              "start": 950,
+              "end": 953
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "小丹塔",
+        "relation": "LOCATED_IN",
+        "object_name": "丹塔"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-99DBFDC80AAEC078AAC2-001",
+              "start": 939,
+              "end": 953
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "花宗"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B756EBC37B2F44F1C8F3-001",
+              "start": 844,
+              "end": 846
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "焚炎谷"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+              "start": 943,
+              "end": 946
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "焚炎谷",
+        "explicit_type": "谷"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-99DBFDC80AAEC078AAC2-002",
+              "start": 943,
+              "end": 946
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "星界"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+              "start": 320,
+              "end": 322
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "冥河盟"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+              "start": 675,
+              "end": 678
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "冥河盟总部"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+              "start": 883,
+              "end": 888
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天冥宗"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+              "start": 682,
+              "end": 685
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天冥宗",
+        "explicit_type": "总部宗门"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+              "start": 682,
+              "end": 690
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "冰河谷"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+              "start": 922,
+              "end": 925
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "冰河谷",
+        "explicit_type": "谷"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+              "start": 922,
+              "end": 925
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+              "start": 1004,
+              "end": 1007
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+              "start": 1316,
+              "end": 1320
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "风雷山脉",
+        "explicit_type": "山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-001",
+              "start": 1316,
+              "end": 1320
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天北城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-002",
+              "start": 195,
+              "end": 198
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天北城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-002",
+              "start": 195,
+              "end": 198
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "韩家"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-002",
+              "start": 499,
+              "end": 501
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "韩家",
+        "relation": "LOCATED_IN",
+        "object_name": "天北城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-002",
+              "start": 495,
+              "end": 501
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "北域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-002",
+              "start": 814,
+              "end": 816
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "北域",
+        "explicit_type": "域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-B0EA9A00D07FC93E0C89-002",
+              "start": 814,
+              "end": 816
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "星陨阁"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-612A065F09EF1279FA9A-001",
+              "start": 31,
+              "end": 34
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "星陨阁大殿"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-612A065F09EF1279FA9A-001",
+              "start": 31,
+              "end": 36
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "completion": {
+    "status": "COMPLETE"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "records": [
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "九幽黄泉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": ["/name"],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3DB20E9F58DF75F463B1-001",
+              "start": 787,
+              "end": 791
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "九幽黄泉",
+        "explicit_type": "地方"
+      },
+      "evidence_bindings": [
+        {
+          "paths": ["/name", "/explicit_type"],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3DB20E9F58DF75F463B1-001",
+              "start": 787,
+              "end": 796
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "黄泉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": ["/name"],
+          "source_spans": [
+            {
+              "segment_id": "SEG-FB7EDBAB866539ACED50-002",
+              "start": 1152,
+              "end": 1154
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "魔兽界"
+      },
+      "evidence_bindings": [
+        {
+          "paths": ["/name"],
+          "source_spans": [
+            {
+              "segment_id": "SEG-BEFFF4E1B3AEF23E2C1A-001",
+              "start": 430,
+              "end": 433
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "兽界"
+      },
+      "evidence_bindings": [
+        {
+          "paths": ["/name"],
+          "source_spans": [
+            {
+              "segment_id": "SEG-FB7EDBAB866539ACED50-002",
+              "start": 1022,
+              "end": 1024
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "九幽地冥蟒族的大本营"
+      },
+      "evidence_bindings": [
+        {
+          "paths": ["/name"],
+          "source_spans": [
+            {
+              "segment_id": "SEG-BEFFF4E1B3AEF23E2C1A-001",
+              "start": 885,
+              "end": 895
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "九幽地冥蟒族的大本营",
+        "explicit_type": "大本营"
+      },
+      "evidence_bindings": [
+        {
+          "paths": ["/name", "/explicit_type"],
+          "source_spans": [
+            {
+              "segment_id": "SEG-BEFFF4E1B3AEF23E2C1A-001",
+              "start": 885,
+              "end": 895
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "九幽地冥蟒族"
+      },
+      "evidence_bindings": [
+        {
+          "paths": ["/name"],
+          "source_spans": [
+            {
+              "segment_id": "SEG-BEFFF4E1B3AEF23E2C1A-001",
+              "start": 262,
+              "end": 268
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "completion": {
+    "status": "COMPLETE"
+  }
+}

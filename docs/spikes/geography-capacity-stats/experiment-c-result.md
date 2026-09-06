@@ -10,7 +10,8 @@
   `310/426/596` was not collected; the capacity direction is the same on every
   stress unit.
 
-Answers and gold JSONL stay runtime-only. This document is counts and rates only.
+PR #14 keeps answers and gold JSONL runtime-only. This inspection branch
+copies the span-coordinate files (no chapter prose) under `inspection/`.
 
 After the dispute-to-candidate-label closure fix, A and B were replayed against
 the new frozen identity. Both score files were byte-identical to the original
@@ -47,9 +48,13 @@ only.
 | all10 diagnostic | A | 0.562 / 0.476 | 0.880 / 0.478 | 6/10 | 0 | 52.2 | 14.6 | 37.6 | 0.312 |
 | all10 diagnostic | B | 0.539 / 0.867 | 0.788 / 0.891 | 0/10 | 0 | 28.2 | 28.2 | 0.0 | 0.667 |
 
-Citation containment on matched payloads stays high for both configs. A's
-exact-span rate is poor on saturated stress units; B's exact-span rate is
-higher once unique payloads match.
+Place-name (ignore `explicit_type`) on stress: A 0.987 / 0.755, B 0.882 /
+0.951. Mean response bytes: A stress 20480, B stress 17592. The cohort field
+`mean_explicit_type_accuracy` is the share of units with perfect type
+accuracy (0.0 here), not the mean of per-unit rates; use the per-unit table.
+
+Inspection copies of scores, gold, and answers:
+`docs/spikes/geography-capacity-stats/inspection/`.
 
 ## 3. Per-unit unique-place recall (capacity-relevant)
 
@@ -69,6 +74,28 @@ higher once unique payloads match.
 Control 102 is a quality miss on both configs (not 64-capped). It does not
 reopen the capacity question.
 
+### Citation, place-name, type, bytes (run1)
+
+Unweighted mean of per-unit citation rates. `null` Q4 is omitted from Q4
+recall in the cohort table above.
+
+| ordinal | A cite contain / exact | B cite contain / exact | A name P/R | B name P/R | A etype | B etype | A bytes | B bytes |
+| ---: | --- | --- | --- | --- | ---: | ---: | ---: | ---: |
+| 5 | 1.00 / 0.48 | 0.79 / 0.79 | 1.00 / 0.91 | 0.92 / 1.00 | 0.90 | 0.09 | 20046 | 25710 |
+| 310 | 1.00 / 0.17 | 0.92 / 0.85 | 1.00 / 0.75 | 0.91 / 1.00 | 0.20 | 0.30 | 22932 | 22875 |
+| 395 | 1.00 / 0.00 | 0.96 / 0.67 | 0.88 / 0.50 | 0.88 / 1.00 | 0.86 | 0.14 | 19893 | 18698 |
+| 426 | 1.00 / 0.20 | 1.00 / 0.85 | 1.00 / 0.65 | 1.00 / 0.87 | 0.33 | 0.75 | 20606 | 15744 |
+| 513 | 1.00 / 0.00 | 0.93 / 0.86 | 1.00 / 0.70 | 0.73 / 0.80 | 0.14 | 0.25 | 19929 | 11943 |
+| 596 | 0.77 / 0.23 | 1.00 / 1.00 | 1.00 / 1.00 | 0.76 / 1.00 | 0.85 | 0.54 | 19475 | 10581 |
+| 102 | 0.75 / 0.75 | 0.50 / 0.50 | 0.82 / 1.00 | 0.82 / 1.00 | 0.22 | 0.22 | 19365 | 7232 |
+| 233 | 1.00 / 1.00 | 1.00 / 1.00 | 0.55 / 1.00 | 0.86 / 1.00 | 0.67 | 0.83 | 17634 | 3757 |
+| 467 | 1.00 / 1.00 | 1.00 / 1.00 | 0.88 / 0.54 | 1.00 / 0.92 | 0.57 | 0.67 | 16318 | 5644 |
+| 604 | 1.00 / 0.20 | 1.00 / 1.00 | 0.83 / 1.00 | 0.83 / 1.00 | 0.80 | 0.80 | 6928 | 3194 |
+
+Stress unweighted citation mean: A contain 0.96 / exact 0.18; B contain 0.93
+/ exact 0.83. A's exact-span collapse is the 64-cap duplicate-storm, not a
+missing-name problem.
+
 ## 4. Why 5k / relation-only stay out
 
 Handoff triggers were unique-capacity pressure, `OVERFLOW`, stable tail
@@ -80,6 +107,10 @@ collapse, or a stable material advantage for 5k. Observed:
 - Stress Q4 recall rises from 0.125 (A) to 0.583 (B). Residual Q4 misses (426,
   596) are not a 64-cap collapse.
 - 5k was not run; nothing in this matrix requires it.
+
+Frozen disputes have `UNRESOLVED=0` (56 rows: EXCLUDED 30, INCLUDED 26).
+Strict, optimistic, and conservative unique-gold views coincide. STOP does
+not change across those views.
 
 ## 5. Limitations
 

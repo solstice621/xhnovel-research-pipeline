@@ -1,0 +1,1103 @@
+{
+  "records": [
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "帝都"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9472F94F59BB21487FD7-002",
+              "start": 698,
+              "end": 700
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9472F94F59BB21487FD7-002",
+              "start": 1031,
+              "end": 1035
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝国",
+        "explicit_type": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9472F94F59BB21487FD7-002",
+              "start": 1031,
+              "end": 1035
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "云岚山"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9472F94F59BB21487FD7-002",
+              "start": 1077,
+              "end": 1080
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "云岚山",
+        "explicit_type": "山"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-9472F94F59BB21487FD7-002",
+              "start": 1077,
+              "end": 1080
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "云岚宗"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 14,
+              "end": 17
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "帝国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 54,
+              "end": 56
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "云岚山",
+        "explicit_type": "山峰"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 560,
+              "end": 603
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "云岚山",
+        "explicit_type": "圣地"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 560,
+              "end": 600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "云岚山",
+        "explicit_type": "山脉"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 560,
+              "end": 617
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝都"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 956,
+              "end": 960
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛帝都",
+        "explicit_type": "帝都"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 956,
+              "end": 960
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛圣城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 961,
+              "end": 965
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛圣城",
+        "explicit_type": "圣城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 961,
+              "end": 965
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛圣城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 961,
+              "end": 965
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "萧府"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 978,
+              "end": 980
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "萧府",
+        "explicit_type": "府"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 978,
+              "end": 980
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "黑角域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-002",
+              "start": 752,
+              "end": 755
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "黑角域",
+        "explicit_type": "域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-002",
+              "start": 752,
+              "end": 755
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "乌坦城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-002",
+              "start": 1189,
+              "end": 1192
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "乌坦城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-002",
+              "start": 1189,
+              "end": 1192
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "大陆"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-001",
+              "start": 1126,
+              "end": 1128
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "斗气大陆"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-001",
+              "start": 1379,
+              "end": 1383
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "斗气大陆",
+        "explicit_type": "大陆"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-001",
+              "start": 1379,
+              "end": 1383
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "大陆西北地带"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-001",
+              "start": 1450,
+              "end": 1456
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "大陆西北地带",
+        "explicit_type": "地带"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-001",
+              "start": 1450,
+              "end": 1456
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "大陆西北方位"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 46,
+              "end": 52
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "西北地域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 160,
+              "end": 164
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "西北地域",
+        "explicit_type": "地域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 160,
+              "end": 164
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "西南地域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 308,
+              "end": 312
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "西南地域",
+        "explicit_type": "地域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 308,
+              "end": 312
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "墨家"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 566,
+              "end": 568
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天蛇府"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 759,
+              "end": 762
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天蛇府",
+        "explicit_type": "府"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 759,
+              "end": 762
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "西北地域中心地带"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 764,
+              "end": 772
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "西北地域中心地带",
+        "explicit_type": "地带"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 764,
+              "end": 772
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天蛇国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 773,
+              "end": 776
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "天蛇国",
+        "explicit_type": "国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 773,
+              "end": 776
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛皇城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-2565A7104AD3432E9713-001",
+              "start": 503,
+              "end": 507
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛皇城",
+        "explicit_type": "皇城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-2565A7104AD3432E9713-001",
+              "start": 503,
+              "end": 507
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "加玛皇城",
+        "explicit_type": "城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name",
+            "/explicit_type"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-2565A7104AD3432E9713-001",
+              "start": 503,
+              "end": 507
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "PLACE_MENTION",
+        "name": "皇城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-2565A7104AD3432E9713-001",
+              "start": 645,
+              "end": 647
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "萧府",
+        "relation": "LOCATED_IN",
+        "object_name": "帝都"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-3611987826AAD3A89B04-001",
+              "start": 978,
+              "end": 990
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "加玛帝国",
+        "relation": "LOCATED_IN",
+        "object_name": "大陆西北地带"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-001",
+              "start": 1396,
+              "end": 1456
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "大陆西北地带",
+        "relation": "PART_OF",
+        "object_name": "斗气大陆"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-001",
+              "start": 1436,
+              "end": 1456
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "加玛帝国",
+        "relation": "LOCATED_IN",
+        "object_name": "大陆西北方位"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 31,
+              "end": 52
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "加玛帝国",
+        "relation": "PART_OF",
+        "object_name": "大陆西北方位"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 31,
+              "end": 89
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "天蛇府",
+        "relation": "LOCATED_IN",
+        "object_name": "天蛇国"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 759,
+              "end": 778
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "天蛇国",
+        "relation": "LOCATED_IN",
+        "object_name": "西北地域中心地带"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 764,
+              "end": 776
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "西北地域中心地带",
+        "relation": "PART_OF",
+        "object_name": "西北地域"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-8A1DB54A65A0D89C58E3-002",
+              "start": 764,
+              "end": 772
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "payload": {
+        "kind": "SPATIAL_RELATION",
+        "subject_name": "云岚宗",
+        "relation": "NEAR",
+        "object_name": "皇城"
+      },
+      "evidence_bindings": [
+        {
+          "paths": [
+            "/subject_name",
+            "/relation",
+            "/object_name"
+          ],
+          "source_spans": [
+            {
+              "segment_id": "SEG-2565A7104AD3432E9713-001",
+              "start": 603,
+              "end": 649
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "completion": {
+    "status": "COMPLETE"
+  }
+}
