@@ -1,0 +1,1015 @@
+name: Implement Scene merge v3
+
+on:
+  push:
+    branches:
+      - cursor/scene-merge-v3-aac8
+
+permissions:
+  contents: write
+
+jobs:
+  implement:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cursor/scene-merge-v3-aac8
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Return to the clean main parent
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git reset --hard HEAD^
+      - name: Implement deterministic merge relation classification
+        shell: python
+        run: |
+          from pathlib import Path
+          from textwrap import dedent
+          import json
+
+          source_path = Path("src/xhnovel_pipeline/scene_scout.py")
+          source = source_path.read_text(encoding="utf-8")
+          old_constant = 'SCENE_MERGE_ALGORITHM_ID = "source-span-action-chain-v2"'
+          new_constants = dedent('''
+          SCENE_MERGE_ALGORITHM_ID = "source-span-action-chain-v3"
+          SCENE_PAIR_RELATIONS = (
+              "EQUIVALENT",
+              "COMPATIBLE_EXTENSION",
+              "SEQUENTIAL_CHAIN",
+              "TRUE_CONFLICT",
+              "NEEDS_SPLIT",
+          )
+          SCENE_MERGEABLE_RELATIONS = frozenset(SCENE_PAIR_RELATIONS[:-1])
+          SCENE_CORE_RELATION_FIELDS = ("actors", "action", "target")
+          ''').strip()
+          if old_constant not in source:
+              raise SystemExit("Scene merge v2 constant not found")
+          source = source.replace(old_constant, new_constants, 1)
+
+          helper_start = source.index("def _normalized_signature(")
+          helper_end = source.index("def _merge_spans(", helper_start)
+          helper_block = dedent('''
+          def _normalize_merge_value(value: Any) -> str:
+              return "".join(str(value).casefold().split())
+
+
+          def _normalized_signature(candidate: dict[str, Any]) -> tuple[str, tuple[str, ...], tuple[str, ...]]:
+              return (
+                  _normalize_merge_value(candidate["summary"]),
+                  tuple(
+                      sorted(
+                          _normalize_merge_value(value)
+                          for value in candidate["action"]["values"]
+                      )
+                  ),
+                  tuple(
+                      sorted(
+                          _normalize_merge_value(value)
+                          for value in candidate["target"]["values"]
+                      )
+                  ),
+              )
+
+
+          def _normalized_observation_values(candidate: dict[str, Any], field: str) -> set[str]:
+              return {
+                  _normalize_merge_value(value)
+                  for value in candidate[field]["values"]
+              }
+
+
+          def _candidate_spans_overlap(left: dict[str, Any], right: dict[str, Any]) -> bool:
+              return any(
+                  first["segment_id"] == second["segment_id"]
+                  and max(first["start"], second["start"])
+                  < min(first["end"], second["end"])
+                  for first in left["source_spans"]
+                  for second in right["source_spans"]
+              )
+
+
+          def _merge_values_compatible(left: str, right: str) -> bool:
+              if left == right:
+                  return True
+              if min(len(left), len(right)) < 2:
+                  return False
+              return left in right or right in left
+
+
+          def _field_has_compatible_value(
+              left: dict[str, Any],
+              right: dict[str, Any],
+              field: str,
+          ) -> bool:
+              left_values = _normalized_observation_values(left, field)
+              right_values = _normalized_observation_values(right, field)
+              return any(
+                  _merge_values_compatible(first, second)
+                  for first in left_values
+                  for second in right_values
+              )
+
+
+          def _field_value_relation(
+              left: dict[str, Any],
+              right: dict[str, Any],
+              field: str,
+          ) -> str:
+              left_values = _normalized_observation_values(left, field)
+              right_values = _normalized_observation_values(right, field)
+              if not left_values and not right_values:
+                  return "ABSENT"
+              if not left_values or not right_values:
+                  return "EXTENSION"
+              if left_values == right_values:
+                  return "EQUIVALENT"
+              left_covered = all(
+                  any(_merge_values_compatible(value, other) for other in right_values)
+                  for value in left_values
+              )
+              right_covered = all(
+                  any(_merge_values_compatible(value, other) for other in left_values)
+                  for value in right_values
+              )
+              if left_covered and right_covered:
+                  return "EQUIVALENT"
+              if left_covered or right_covered:
+                  return "EXTENSION"
+              return "DIVERGENT"
+
+
+          def _observation_support_keys(observation: dict[str, Any]) -> set[tuple[str, int, int]]:
+              return {_span_key(span) for span in observation["support_spans"]}
+
+
+          def _candidate_merge_decision(
+              left: dict[str, Any],
+              right: dict[str, Any],
+          ) -> dict[str, Any]:
+              if not _candidate_spans_overlap(left, right):
+                  return {"relation": "DISJOINT", "conflict_fields": []}
+
+              field_relations = {
+                  field: _field_value_relation(left, right, field)
+                  for field in OBSERVATION_FIELDS
+              }
+              anchors = {
+                  field
+                  for field in SCENE_CORE_RELATION_FIELDS
+                  if _field_has_compatible_value(left, right, field)
+              }
+              exact_signature = (
+                  bool(_normalized_signature(left)[0])
+                  and _normalized_signature(left) == _normalized_signature(right)
+              )
+              if not exact_signature and len(anchors) < 2:
+                  return {"relation": "NEEDS_SPLIT", "conflict_fields": []}
+
+              explicit_conflicts = sorted(
+                  field
+                  for field in OBSERVATION_FIELDS
+                  if left[field]["status"] == "CONFLICTING"
+                  or right[field]["status"] == "CONFLICTING"
+              )
+              if explicit_conflicts:
+                  return {
+                      "relation": "TRUE_CONFLICT",
+                      "conflict_fields": explicit_conflicts,
+                  }
+
+              if all(
+                  relation in {"ABSENT", "EQUIVALENT"}
+                  for relation in field_relations.values()
+              ):
+                  return {"relation": "EQUIVALENT", "conflict_fields": []}
+
+              if (
+                  field_relations["action"] == "DIVERGENT"
+                  and {"actors", "target"} <= anchors
+              ):
+                  if _observation_support_keys(left["action"]) == _observation_support_keys(
+                      right["action"]
+                  ):
+                      return {
+                          "relation": "TRUE_CONFLICT",
+                          "conflict_fields": ["action"],
+                      }
+                  return {"relation": "SEQUENTIAL_CHAIN", "conflict_fields": []}
+
+              if (
+                  field_relations["target"] == "DIVERGENT"
+                  and {"actors", "action"} <= anchors
+              ):
+                  return {"relation": "NEEDS_SPLIT", "conflict_fields": []}
+
+              return {"relation": "COMPATIBLE_EXTENSION", "conflict_fields": []}
+
+
+          def _candidates_overlap(left: dict[str, Any], right: dict[str, Any]) -> bool:
+              return (
+                  _candidate_merge_decision(left, right)["relation"]
+                  in SCENE_MERGEABLE_RELATIONS
+              )
+
+
+          def _raw_pair_key(
+              left: dict[str, Any],
+              right: dict[str, Any],
+          ) -> tuple[str, str]:
+              return tuple(sorted((left["raw_hash"], right["raw_hash"])))
+
+
+          ''')
+          source = source[:helper_start] + helper_block + source[helper_end:]
+
+          observation_start = source.index("def _merge_observations(")
+          observation_end = source.index("def merge_scene_candidates(", observation_start)
+          observation_block = dedent('''
+          def _merge_observations(
+              values: list[dict[str, Any]],
+              *,
+              force_conflict: bool = False,
+          ) -> dict[str, Any]:
+              merged_values = sorted({item for value in values for item in value["values"]})
+              support = _merge_spans(
+                  [span for value in values for span in value["support_spans"]]
+              )
+              if not merged_values:
+                  return {"status": "UNKNOWN", "values": [], "support_spans": []}
+              status = (
+                  "CONFLICTING"
+                  if force_conflict
+                  or any(value["status"] == "CONFLICTING" for value in values)
+                  else "KNOWN"
+              )
+              return {"status": status, "values": merged_values, "support_spans": support}
+
+
+          ''')
+          source = source[:observation_start] + observation_block + source[observation_end:]
+
+          merge_start = source.index("def merge_scene_candidates(")
+          merge_end = source.index("def make_scout_build(", merge_start)
+          merge_block = dedent('''
+          def merge_scene_candidates(
+              catalog: Catalog,
+              raw_candidates: list[dict[str, Any]],
+              *,
+              request_id: str,
+              bundle_id: str,
+              scout_run_id: str,
+          ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+              bundle = catalog.get("EvidenceBundle", bundle_id)
+              chapter_by_segment, _ = bundle_chapter_index(catalog, bundle)
+              input_hashes = sorted(item["raw_hash"] for item in raw_candidates)
+              if len(input_hashes) != len(set(input_hashes)):
+                  raise ValidationError(
+                      "E-SCENE-MERGE",
+                      "raw scene candidate hashes must be unique",
+                  )
+
+              relation_cache: dict[tuple[str, str], dict[str, Any]] = {}
+              candidates_by_hash = sorted(raw_candidates, key=lambda item: item["raw_hash"])
+              for index, left in enumerate(candidates_by_hash):
+                  for right in candidates_by_hash[index + 1 :]:
+                      decision = _candidate_merge_decision(left, right)
+                      if decision["relation"] != "DISJOINT":
+                          relation_cache[_raw_pair_key(left, right)] = decision
+
+              def relation_for(
+                  left: dict[str, Any],
+                  right: dict[str, Any],
+              ) -> dict[str, Any]:
+                  return relation_cache.get(
+                      _raw_pair_key(left, right),
+                      {"relation": "DISJOINT", "conflict_fields": []},
+                  )
+
+              chapter_buckets: dict[int, list[dict[str, Any]]] = {}
+              for candidate in raw_candidates:
+                  chapter_ordinal = min(
+                      chapter_by_segment[span["segment_id"]]["ordinal"]
+                      for span in candidate["source_spans"]
+                  )
+                  chapter_buckets.setdefault(chapter_ordinal, []).append(candidate)
+
+              local_stage_groups: list[list[dict[str, Any]]] = []
+              for chapter_ordinal in sorted(chapter_buckets):
+                  local_groups: list[list[dict[str, Any]]] = []
+                  ordered = sorted(
+                      chapter_buckets[chapter_ordinal],
+                      key=lambda item: (
+                          min(
+                              (
+                                  chapter_by_segment[span["segment_id"]]["ordinal"],
+                                  catalog.get("Segment", span["segment_id"])["ordinal"],
+                                  span["start"],
+                                  span["segment_id"],
+                              )
+                              for span in item["source_spans"]
+                          ),
+                          item["raw_hash"],
+                      ),
+                  )
+                  for candidate in ordered:
+                      matched = [
+                          group
+                          for group in local_groups
+                          if all(
+                              relation_for(candidate, item)["relation"]
+                              in SCENE_MERGEABLE_RELATIONS
+                              for item in group
+                          )
+                      ]
+                      if not matched:
+                          local_groups.append([candidate])
+                          continue
+                      matched[0].append(candidate)
+                  local_stage_groups.extend(local_groups)
+
+              def group_order(group: list[dict[str, Any]]) -> tuple[Any, ...]:
+                  return min(
+                      (
+                          chapter_by_segment[span["segment_id"]]["ordinal"],
+                          catalog.get("Segment", span["segment_id"])["ordinal"],
+                          span["start"],
+                          span["segment_id"],
+                          item["raw_hash"],
+                      )
+                      for item in group
+                      for span in item["source_spans"]
+                  )
+
+              groups: list[list[dict[str, Any]]] = []
+              for local_group in sorted(local_stage_groups, key=group_order):
+                  matched = [
+                      group
+                      for group in groups
+                      if all(
+                          relation_for(left, right)["relation"]
+                          in SCENE_MERGEABLE_RELATIONS
+                          for left in local_group
+                          for right in group
+                      )
+                  ]
+                  if matched:
+                      matched[0].extend(local_group)
+                  else:
+                      groups.append(list(local_group))
+
+              merge_identity = {
+                  "scene_scout_run_id": scout_run_id,
+                  "algorithm_id": SCENE_MERGE_ALGORITHM_ID,
+                  "input_candidate_hashes": input_hashes,
+              }
+              merge_run_id = derived_id("SceneMergeRun", merge_identity)
+
+              def conflict_fields_for(group: list[dict[str, Any]]) -> list[str]:
+                  conflicts = {
+                      field
+                      for item in group
+                      for field in OBSERVATION_FIELDS
+                      if item[field]["status"] == "CONFLICTING"
+                  }
+                  for index, left in enumerate(group):
+                      for right in group[index + 1 :]:
+                          conflicts.update(relation_for(left, right)["conflict_fields"])
+                  return sorted(conflicts)
+
+              def relation_for_group(
+                  group: list[dict[str, Any]],
+                  conflict_fields: list[str],
+              ) -> str:
+                  if conflict_fields:
+                      return "TRUE_CONFLICT"
+                  if len(group) == 1:
+                      return "SINGLETON"
+                  pair_relations = {
+                      relation_for(left, right)["relation"]
+                      for index, left in enumerate(group)
+                      for right in group[index + 1 :]
+                  }
+                  if "SEQUENTIAL_CHAIN" in pair_relations:
+                      return "SEQUENTIAL_CHAIN"
+                  if "COMPATIBLE_EXTENSION" in pair_relations:
+                      return "COMPATIBLE_EXTENSION"
+                  return "EQUIVALENT"
+
+              merged: list[dict[str, Any]] = []
+              group_audit: dict[str, dict[str, Any]] = {}
+              for group in groups:
+                  spans = _merge_spans(
+                      [span for item in group for span in item["source_spans"]]
+                  )
+                  first_span = min(
+                      spans,
+                      key=lambda span: (
+                          chapter_by_segment[span["segment_id"]]["ordinal"],
+                          catalog.get("Segment", span["segment_id"])["ordinal"],
+                          span["start"],
+                          span["segment_id"],
+                      ),
+                  )
+                  segment = catalog.get("Segment", first_span["segment_id"])
+                  conflict_fields = conflict_fields_for(group)
+                  group_relation = relation_for_group(group, conflict_fields)
+                  candidate = {
+                      "schema_version": SCHEMA_VERSION,
+                      "scene_scout_run_id": scout_run_id,
+                      "scene_merge_run_id": merge_run_id,
+                      "request_id": request_id,
+                      "bundle_id": bundle_id,
+                      "status": "DRAFT",
+                      "verification": "UNVERIFIED",
+                      "summary": max(
+                          (item["summary"] for item in group),
+                          key=lambda item: (len(item), item),
+                      ),
+                      "source_spans": spans,
+                      "window_ids": sorted({item["window_id"] for item in group}),
+                      "source_order": {
+                          "chapter_id": chapter_by_segment[first_span["segment_id"]][
+                              "chapter_id"
+                          ],
+                          "chapter_ordinal": chapter_by_segment[
+                              first_span["segment_id"]
+                          ]["ordinal"],
+                          "document_id": segment["document_id"],
+                          "segment_id": segment["segment_id"],
+                          "segment_ordinal": segment["ordinal"],
+                          "start": first_span["start"],
+                      },
+                      **{
+                          field: _merge_observations(
+                              [item[field] for item in group],
+                              force_conflict=field in conflict_fields,
+                          )
+                          for field in OBSERVATION_FIELDS
+                      },
+                  }
+                  candidate["adjudication_status"] = (
+                      "NEEDS_ADJUDICATION"
+                      if any(
+                          candidate[field]["status"] == "CONFLICTING"
+                          for field in OBSERVATION_FIELDS
+                      )
+                      else "NOT_REQUIRED"
+                  )
+                  _close_candidate_support_spans(candidate)
+                  candidate["scene_candidate_id"] = derived_id("SceneCandidate", candidate)
+                  group_audit[candidate["scene_candidate_id"]] = {
+                      "relation": group_relation,
+                      "input_candidate_hashes": sorted(
+                          item["raw_hash"] for item in group
+                      ),
+                      "conflict_fields": conflict_fields,
+                  }
+                  merged.append(candidate)
+
+              merged.sort(
+                  key=lambda item: (
+                      item["source_order"]["chapter_ordinal"],
+                      item["source_order"]["segment_ordinal"],
+                      item["source_order"]["start"],
+                      item["scene_candidate_id"],
+                  )
+              )
+
+              pair_decisions = [
+                  {
+                      "left_raw_hash": left_hash,
+                      "right_raw_hash": right_hash,
+                      "relation": decision["relation"],
+                      "mergeable": decision["relation"] in SCENE_MERGEABLE_RELATIONS,
+                      "conflict_fields": list(decision["conflict_fields"]),
+                  }
+                  for (left_hash, right_hash), decision in sorted(relation_cache.items())
+              ]
+              relation_counts = {relation: 0 for relation in SCENE_PAIR_RELATIONS}
+              for decision in pair_decisions:
+                  relation_counts[decision["relation"]] += 1
+
+              raw_to_candidate = {
+                  raw_hash: candidate_id
+                  for candidate_id, audit in group_audit.items()
+                  for raw_hash in audit["input_candidate_hashes"]
+              }
+              rejected_by_candidate = {
+                  candidate_id: set() for candidate_id in group_audit
+              }
+              for decision in pair_decisions:
+                  if decision["relation"] != "NEEDS_SPLIT":
+                      continue
+                  left_id = raw_to_candidate[decision["left_raw_hash"]]
+                  right_id = raw_to_candidate[decision["right_raw_hash"]]
+                  if left_id == right_id:
+                      raise ValidationError(
+                          "E-SCENE-MERGE",
+                          "a NEEDS_SPLIT pair was placed in one merge group",
+                      )
+                  rejected_by_candidate[left_id].add(decision["right_raw_hash"])
+                  rejected_by_candidate[right_id].add(decision["left_raw_hash"])
+
+              group_records = []
+              for candidate in merged:
+                  candidate_id = candidate["scene_candidate_id"]
+                  audit = group_audit[candidate_id]
+                  rejected = sorted(rejected_by_candidate[candidate_id])
+                  relation = audit["relation"]
+                  if relation == "SINGLETON" and rejected:
+                      relation = "NEEDS_SPLIT"
+                  group_records.append(
+                      {
+                          "scene_candidate_id": candidate_id,
+                          "relation": relation,
+                          "input_candidate_hashes": audit["input_candidate_hashes"],
+                          "rejected_overlap_candidate_hashes": rejected,
+                          "conflict_fields": audit["conflict_fields"],
+                      }
+                  )
+
+              merge_run = {
+                  "schema_version": SCHEMA_VERSION,
+                  "merge_run_id": merge_run_id,
+                  **merge_identity,
+                  "input_candidate_count": len(raw_candidates),
+                  "stages": [
+                      {
+                          "stage": "LOCAL_OVERLAP_MERGE",
+                          "input_count": len(raw_candidates),
+                          "output_count": len(local_stage_groups),
+                      },
+                      {
+                          "stage": "WORK_ORDER_REDUCTION",
+                          "input_count": len(local_stage_groups),
+                          "output_count": len(merged),
+                      },
+                  ],
+                  "pair_decisions": pair_decisions,
+                  "relation_counts": relation_counts,
+                  "groups": group_records,
+                  "output_candidate_ids": [
+                      item["scene_candidate_id"] for item in merged
+                  ],
+                  "status": "SUCCEEDED",
+              }
+              return merge_run, merged
+
+
+          ''')
+          source = source[:merge_start] + merge_block + source[merge_end:]
+          source_path.write_text(source, encoding="utf-8")
+
+          observation_fields = [
+              "actors",
+              "action",
+              "target",
+              "precondition",
+              "state_transition",
+              "external_response",
+              "immediate_feedback",
+              "new_affordances",
+              "persistence",
+              "mechanic_pressure_point",
+          ]
+          pair_relations = [
+              "EQUIVALENT",
+              "COMPATIBLE_EXTENSION",
+              "SEQUENTIAL_CHAIN",
+              "TRUE_CONFLICT",
+              "NEEDS_SPLIT",
+          ]
+          group_relations = ["SINGLETON", *pair_relations]
+          hash_schema = {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+          merge_schema = {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "$id": "https://xhnovel.local/contracts/scene-merge-run.schema.json",
+              "$defs": {
+                  "sha256": hash_schema,
+                  "observation_field": {"enum": observation_fields},
+                  "pair_relation": {"enum": pair_relations},
+                  "group_relation": {"enum": group_relations},
+              },
+              "type": "object",
+              "additionalProperties": False,
+              "required": [
+                  "schema_version",
+                  "merge_run_id",
+                  "scene_scout_run_id",
+                  "algorithm_id",
+                  "input_candidate_hashes",
+                  "input_candidate_count",
+                  "stages",
+                  "pair_decisions",
+                  "relation_counts",
+                  "groups",
+                  "output_candidate_ids",
+                  "status",
+              ],
+              "properties": {
+                  "schema_version": {"const": "0.2-draft"},
+                  "merge_run_id": {
+                      "type": "string",
+                      "pattern": "^SMRUN-[A-Z0-9][A-Z0-9._:-]{1,}$",
+                  },
+                  "scene_scout_run_id": {
+                      "type": "string",
+                      "pattern": "^SSRUN-[A-Z0-9][A-Z0-9._:-]{1,}$",
+                  },
+                  "algorithm_id": {"const": "source-span-action-chain-v3"},
+                  "input_candidate_hashes": {
+                      "type": "array",
+                      "uniqueItems": True,
+                      "items": {"$ref": "#/$defs/sha256"},
+                  },
+                  "input_candidate_count": {"type": "integer", "minimum": 0},
+                  "stages": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "prefixItems": [
+                          {
+                              "type": "object",
+                              "additionalProperties": False,
+                              "required": ["stage", "input_count", "output_count"],
+                              "properties": {
+                                  "stage": {"const": "LOCAL_OVERLAP_MERGE"},
+                                  "input_count": {"type": "integer", "minimum": 0},
+                                  "output_count": {"type": "integer", "minimum": 0},
+                              },
+                          },
+                          {
+                              "type": "object",
+                              "additionalProperties": False,
+                              "required": ["stage", "input_count", "output_count"],
+                              "properties": {
+                                  "stage": {"const": "WORK_ORDER_REDUCTION"},
+                                  "input_count": {"type": "integer", "minimum": 0},
+                                  "output_count": {"type": "integer", "minimum": 0},
+                              },
+                          },
+                      ],
+                      "items": False,
+                  },
+                  "pair_decisions": {
+                      "type": "array",
+                      "uniqueItems": True,
+                      "items": {
+                          "type": "object",
+                          "additionalProperties": False,
+                          "required": [
+                              "left_raw_hash",
+                              "right_raw_hash",
+                              "relation",
+                              "mergeable",
+                              "conflict_fields",
+                          ],
+                          "properties": {
+                              "left_raw_hash": {"$ref": "#/$defs/sha256"},
+                              "right_raw_hash": {"$ref": "#/$defs/sha256"},
+                              "relation": {"$ref": "#/$defs/pair_relation"},
+                              "mergeable": {"type": "boolean"},
+                              "conflict_fields": {
+                                  "type": "array",
+                                  "uniqueItems": True,
+                                  "items": {"$ref": "#/$defs/observation_field"},
+                              },
+                          },
+                          "allOf": [
+                              {
+                                  "if": {
+                                      "properties": {
+                                          "relation": {"const": "NEEDS_SPLIT"}
+                                      },
+                                      "required": ["relation"],
+                                  },
+                                  "then": {
+                                      "properties": {"mergeable": {"const": False}}
+                                  },
+                                  "else": {
+                                      "properties": {"mergeable": {"const": True}}
+                                  },
+                              },
+                              {
+                                  "if": {
+                                      "properties": {
+                                          "relation": {"const": "TRUE_CONFLICT"}
+                                      },
+                                      "required": ["relation"],
+                                  },
+                                  "then": {
+                                      "properties": {
+                                          "conflict_fields": {"minItems": 1}
+                                      }
+                                  },
+                                  "else": {
+                                      "properties": {
+                                          "conflict_fields": {"maxItems": 0}
+                                      }
+                                  },
+                              },
+                          ],
+                      },
+                  },
+                  "relation_counts": {
+                      "type": "object",
+                      "additionalProperties": False,
+                      "required": pair_relations,
+                      "properties": {
+                          relation: {"type": "integer", "minimum": 0}
+                          for relation in pair_relations
+                      },
+                  },
+                  "groups": {
+                      "type": "array",
+                      "uniqueItems": True,
+                      "items": {
+                          "type": "object",
+                          "additionalProperties": False,
+                          "required": [
+                              "scene_candidate_id",
+                              "relation",
+                              "input_candidate_hashes",
+                              "rejected_overlap_candidate_hashes",
+                              "conflict_fields",
+                          ],
+                          "properties": {
+                              "scene_candidate_id": {
+                                  "type": "string",
+                                  "pattern": "^SCN-[A-Z0-9][A-Z0-9._:-]{1,}$",
+                              },
+                              "relation": {"$ref": "#/$defs/group_relation"},
+                              "input_candidate_hashes": {
+                                  "type": "array",
+                                  "minItems": 1,
+                                  "uniqueItems": True,
+                                  "items": {"$ref": "#/$defs/sha256"},
+                              },
+                              "rejected_overlap_candidate_hashes": {
+                                  "type": "array",
+                                  "uniqueItems": True,
+                                  "items": {"$ref": "#/$defs/sha256"},
+                              },
+                              "conflict_fields": {
+                                  "type": "array",
+                                  "uniqueItems": True,
+                                  "items": {"$ref": "#/$defs/observation_field"},
+                              },
+                          },
+                          "allOf": [
+                              {
+                                  "if": {
+                                      "properties": {
+                                          "relation": {"const": "TRUE_CONFLICT"}
+                                      },
+                                      "required": ["relation"],
+                                  },
+                                  "then": {
+                                      "properties": {
+                                          "conflict_fields": {"minItems": 1}
+                                      }
+                                  },
+                                  "else": {
+                                      "properties": {
+                                          "conflict_fields": {"maxItems": 0}
+                                      }
+                                  },
+                              }
+                          ],
+                      },
+                  },
+                  "output_candidate_ids": {
+                      "type": "array",
+                      "uniqueItems": True,
+                      "items": {
+                          "type": "string",
+                          "pattern": "^SCN-[A-Z0-9][A-Z0-9._:-]{1,}$",
+                      },
+                  },
+                  "status": {"const": "SUCCEEDED"},
+              },
+          }
+          Path("contracts/scene-merge-run.schema.json").write_text(
+              json.dumps(merge_schema, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+
+          docs_path = Path("docs/NOVEL_WORKFLOW.md")
+          docs = docs_path.read_text(encoding="utf-8")
+          old_docs = dedent('''
+          Duplicate candidates from overlapping windows are merged using source-span and
+          actor/action/target evidence. Local groups use complete-link overlap, and a
+          second complete-link work-order stage merges duplicates that cross chapter
+          boundaries without transitive wide-span bridging. Results are ordered by
+          chapter ordinal, segment ordinal, and exact span start. There is no whole-book
+          model analysis call.
+          ''')
+          new_docs = dedent('''
+          Scene merge v3 classifies every source-overlapping raw-candidate pair as
+          `EQUIVALENT`, `COMPATIBLE_EXTENSION`, `SEQUENTIAL_CHAIN`, `TRUE_CONFLICT`,
+          or `NEEDS_SPLIT`. Exact duplicates, compatible refinements, ordered action
+          chains, and true conflicts may share one complete-link group. Actor-only
+          overlap and same-action/different-target pairs remain separate, preventing a
+          recurring protagonist from collapsing nearby independent events.
+
+          Different wording no longer becomes a conflict merely because normalized value
+          sets differ. Compatible refinements and sequential details remain multi-valued
+          `KNOWN`; `CONFLICTING` is reserved for explicit model conflicts or divergent
+          actions tied to the same exact action support. Only those candidates require
+          adjudication. `SceneMergeRun` records every considered pair, relation counts,
+          group membership, conflict fields, and rejected overlapping hashes. The local
+          and work-order stages retain complete-link grouping, so a wide candidate cannot
+          transitively bridge two independent scenes. Results remain ordered by chapter,
+          segment, and exact span start. There is no whole-book model analysis call.
+          ''')
+          if old_docs not in docs:
+              raise SystemExit("Novel workflow merge paragraph not found")
+          docs_path.write_text(docs.replace(old_docs, new_docs, 1), encoding="utf-8")
+
+          tests_path = Path("tests/test_novel_workflow.py")
+          tests = tests_path.read_text(encoding="utf-8")
+          overlap_assertion = dedent('''
+              assert len(candidate["window_ids"]) == 2
+              span = candidate["source_spans"][0]
+          ''')
+          overlap_replacement = dedent('''
+              assert len(candidate["window_ids"]) == 2
+              assert result["scout"]["merge_run"]["groups"][0]["relation"] == "EQUIVALENT"
+              span = candidate["source_spans"][0]
+          ''')
+          if overlap_assertion not in tests:
+              raise SystemExit("overlap merge assertion anchor not found")
+          tests = tests.replace(overlap_assertion, overlap_replacement, 1)
+
+          conflict_assertion = dedent('''
+              assert candidate["action"]["status"] == "CONFLICTING"
+              assert candidate["action"]["values"] == ["解除", "触发"]
+              assert candidate["adjudication_status"] == "NEEDS_ADJUDICATION"
+          ''')
+          conflict_replacement = dedent('''
+              assert candidate["action"]["status"] == "CONFLICTING"
+              assert candidate["action"]["values"] == ["解除", "触发"]
+              assert candidate["adjudication_status"] == "NEEDS_ADJUDICATION"
+              decision = result["scout"]["merge_run"]["pair_decisions"][0]
+              assert decision["relation"] == "TRUE_CONFLICT"
+              assert decision["conflict_fields"] == ["action"]
+          ''')
+          if conflict_assertion not in tests:
+              raise SystemExit("conflict assertion anchor not found")
+          tests = tests.replace(conflict_assertion, conflict_replacement, 1)
+
+          added_tests = dedent('''
+
+          def _scene_merge_v3_fixture(tmp_path):
+              result = _run(
+                  tmp_path,
+                  text="第一章 天门\\n" + "甲" * 100,
+                  transport=_empty_transport,
+              )
+              chapter = result["catalog"].get(
+                  "NovelChapter", result["ingestion"]["ready_chapter_ids"][0]
+              )
+              segment = max(
+                  (
+                      result["catalog"].get("Segment", segment_id)
+                      for segment_id in chapter["segment_ids"]
+                  ),
+                  key=lambda item: len(item["normalized_text"]),
+              )
+              return result, segment["segment_id"]
+
+
+          def test_scene_merge_v3_keeps_compatible_extension_known(tmp_path):
+              result, segment_id = _scene_merge_v3_fixture(tmp_path)
+              left = {"segment_id": segment_id, "start": 0, "end": 20}
+              right = {"segment_id": segment_id, "start": 10, "end": 30}
+              first = _raw_candidate([left], "V3-EXT-A")
+              second = _raw_candidate([right], "V3-EXT-B")
+              second["action"]["values"] = ["触发天门机关"]
+
+              merge_run, merged = merge_scene_candidates(
+                  result["catalog"],
+                  [first, second],
+                  request_id=result["bundle"]["request_id"],
+                  bundle_id=result["bundle"]["bundle_id"],
+                  scout_run_id="SSRUN-TEST-V3-EXTENSION",
+              )
+
+              assert len(merged) == 1
+              assert merged[0]["action"]["status"] == "KNOWN"
+              assert merged[0]["action"]["values"] == ["触发", "触发天门机关"]
+              assert merged[0]["adjudication_status"] == "NOT_REQUIRED"
+              assert merge_run["pair_decisions"][0]["relation"] == "COMPATIBLE_EXTENSION"
+              assert merge_run["groups"][0]["relation"] == "COMPATIBLE_EXTENSION"
+
+
+          def test_scene_merge_v3_records_sequential_action_chain_without_conflict(tmp_path):
+              result, segment_id = _scene_merge_v3_fixture(tmp_path)
+              broad = {"segment_id": segment_id, "start": 0, "end": 40}
+              first_action = {"segment_id": segment_id, "start": 2, "end": 8}
+              second_action = {"segment_id": segment_id, "start": 20, "end": 26}
+              first = _raw_candidate([broad], "V3-SEQ-A")
+              second = _raw_candidate([broad], "V3-SEQ-B")
+              first["action"]["support_spans"] = [first_action]
+              second["action"] = {
+                  "status": "KNOWN",
+                  "values": ["解除"],
+                  "support_spans": [second_action],
+              }
+
+              merge_run, merged = merge_scene_candidates(
+                  result["catalog"],
+                  [second, first],
+                  request_id=result["bundle"]["request_id"],
+                  bundle_id=result["bundle"]["bundle_id"],
+                  scout_run_id="SSRUN-TEST-V3-SEQUENCE",
+              )
+
+              assert len(merged) == 1
+              assert merged[0]["action"]["status"] == "KNOWN"
+              assert merged[0]["action"]["values"] == ["解除", "触发"]
+              assert merged[0]["adjudication_status"] == "NOT_REQUIRED"
+              assert merge_run["pair_decisions"][0]["relation"] == "SEQUENTIAL_CHAIN"
+              assert merge_run["groups"][0]["relation"] == "SEQUENTIAL_CHAIN"
+
+
+          def test_scene_merge_v3_actor_only_overlap_needs_split(tmp_path):
+              result, segment_id = _scene_merge_v3_fixture(tmp_path)
+              left = {"segment_id": segment_id, "start": 0, "end": 24}
+              right = {"segment_id": segment_id, "start": 12, "end": 36}
+              first = _raw_candidate([left], "V3-SPLIT-A")
+              second = _raw_candidate([right], "V3-SPLIT-B")
+              second["summary"] = "林舟领取守门令牌"
+              second["action"]["values"] = ["领取"]
+              second["target"]["values"] = ["守门令牌"]
+
+              merge_run, merged = merge_scene_candidates(
+                  result["catalog"],
+                  [first, second],
+                  request_id=result["bundle"]["request_id"],
+                  bundle_id=result["bundle"]["bundle_id"],
+                  scout_run_id="SSRUN-TEST-V3-SPLIT",
+              )
+
+              assert len(merged) == 2
+              decision = merge_run["pair_decisions"][0]
+              assert decision["relation"] == "NEEDS_SPLIT"
+              assert decision["mergeable"] is False
+              assert merge_run["relation_counts"]["NEEDS_SPLIT"] == 1
+              assert {group["relation"] for group in merge_run["groups"]} == {
+                  "NEEDS_SPLIT"
+              }
+              assert all(
+                  len(group["rejected_overlap_candidate_hashes"]) == 1
+                  for group in merge_run["groups"]
+              )
+
+
+          def test_scene_merge_v3_is_input_order_deterministic(tmp_path):
+              result, segment_id = _scene_merge_v3_fixture(tmp_path)
+              left = {"segment_id": segment_id, "start": 0, "end": 20}
+              right = {"segment_id": segment_id, "start": 10, "end": 30}
+              first = _raw_candidate([left], "V3-ORDER-A")
+              second = _raw_candidate([right], "V3-ORDER-B")
+              second["action"]["values"] = ["触发天门机关"]
+              kwargs = {
+                  "request_id": result["bundle"]["request_id"],
+                  "bundle_id": result["bundle"]["bundle_id"],
+                  "scout_run_id": "SSRUN-TEST-V3-ORDER",
+              }
+
+              forward = merge_scene_candidates(
+                  result["catalog"], [first, second], **kwargs
+              )
+              reverse = merge_scene_candidates(
+                  result["catalog"], [second, first], **kwargs
+              )
+
+              assert forward == reverse
+          ''')
+          if "def test_scene_merge_v3_keeps_compatible_extension_known" in tests:
+              raise SystemExit("Scene merge v3 tests already present")
+          tests_path.write_text(tests.rstrip() + added_tests + "\n", encoding="utf-8")
+      - name: Verify implementation
+        run: |
+          python -m pip install --upgrade pip build
+          python -m pip install -e ".[dev]"
+          python -m compileall src tests scripts
+          python -m pytest tests/test_novel_workflow.py
+          python -m pytest
+          python -m build --wheel
+          python scripts/sync_skills.py --check
+          git diff --check
+      - name: Commit implementation and replace helper history
+        run: |
+          git add src/xhnovel_pipeline/scene_scout.py \
+                  contracts/scene-merge-run.schema.json \
+                  docs/NOVEL_WORKFLOW.md \
+                  tests/test_novel_workflow.py
+          git commit -m "feat(scene-merge): classify merge relations explicitly"
+          git push --force origin HEAD:cursor/scene-merge-v3-aac8
