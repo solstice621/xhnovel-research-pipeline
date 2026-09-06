@@ -1,0 +1,38 @@
+{
+  "experiment_id": "xuanhuan-domain-v1",
+  "title": "灰河司灯",
+  "author": "原创实验文本",
+  "language": "zh",
+  "chapter_count": 8,
+  "chapter_files": [
+    "chapters/chapter-01.txt",
+    "chapters/chapter-02.txt",
+    "chapters/chapter-03.txt",
+    "chapters/chapter-04.txt",
+    "chapters/chapter-05.txt",
+    "chapters/chapter-06.txt",
+    "chapters/chapter-07.txt",
+    "chapters/chapter-08.txt"
+  ],
+  "rights": {
+    "basis": "USER_AUTHORIZED_LOCAL_COPY",
+    "may_store_full_text": true,
+    "may_send_to_external_model": true,
+    "may_export_excerpts": false
+  },
+  "source_quality": {
+    "edition_status": "USER_VERIFIED_COPY",
+    "textual_completeness": "COMPLETE"
+  },
+  "provenance": {
+    "kind": "original_experimental_fiction",
+    "commercial_source": false,
+    "notes": "Original Chinese xuanhuan prose authored for the xuanhuan-domain-v1 stress test. Not copied from any commercial novel. Authorized for local storage and external-model Scene Scout.",
+    "native_window_probe": {
+      "window_chars": 10000,
+      "overlap_chars": 1800,
+      "window_count": 10,
+      "cjk_ideographs": 72534
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "source": {
+    "kind": "directory",
+    "path": "../../fixtures/xuanhuan-domain-v1/chapters",
+    "title": "灰河司灯",
+    "author": "原创实验文本",
+    "language": "zh"
+  },
+  "rights": {
+    "basis": "USER_AUTHORIZED_LOCAL_COPY",
+    "may_store_full_text": true,
+    "may_send_to_external_model": true,
+    "may_export_excerpts": false
+  },
+  "source_quality": {
+    "edition_status": "USER_VERIFIED_COPY",
+    "textual_completeness": "COMPLETE"
+  },
+  "request": {
+    "discovery_brief": "寻找交易、承诺、债务、委托或宗门关系形成持续义务，并因此改变角色未来行动空间的场景。区分已经完成的一次性交易、未被接受的提议和真正持续存在的义务。"
+  },
+  "limits": {
+    "max_chapters": 20,
+    "max_bytes": 2000000
+  },
+  "scene_scout": {
+    "window_chars": 10000,
+    "overlap_chars": 1800,
+    "max_input_chars": 20000,
+    "max_request_bytes": 2000000,
+    "max_workers": 8
+  },
+  "strict_order": true
+}
